@@ -1,0 +1,1834 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>dlarasaglıklıyasam - Dyt. DİLARA ÖZKAN Klinik Beslenme Sistemi</title>
+  <style>
+    /* ============================================================ */
+    /* dlarasaglıklıyasam - ULTRA AKICI, SIFIR KAYMA MOBİL & PC CSS */
+    /* Dyt. DİLARA ÖZKAN ÖZEL KLİNİK TEMASI                         */
+    /* ============================================================ */
+    :root {
+      --dusty-pink: #be5b70;
+      --dusty-pink-dark: #8c3648;
+      --dusty-pink-light: #fdf2f4;
+      --dusty-pink-border: #fbcfe8;
+      --dusty-pink-subtle: #db7086;
+      --pastel-green: #6ee7b7;
+      --pastel-green-hover: #5eead4;
+      --pastel-green-dark: #064e3b;
+      --pastel-green-light: #ecfdf5;
+      --pastel-green-border: #34d399;
+      --pastel-sage: #a7f3d0;
+      --dark-slate: #1e1b22;
+      --surface: #ffffff;
+      --bg-page: #faf6f8;
+      --border-color: #f1dfeb;
+      --border-subtle: #fbcfe8;
+      --text-main: #2e1020;
+      --text-pink: #be5b70;
+      --text-muted: #79576b;
+      --text-subtle: #a38295;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      --shadow-sm: 0 1px 3px rgba(190, 91, 112, 0.08);
+      --shadow-md: 0 4px 8px -1px rgba(190, 91, 112, 0.12);
+      --shadow-lg: 0 10px 18px -3px rgba(190, 91, 112, 0.15);
+    }
+
+    /* KÖKTEN ÇÖZÜM: Tüm yatay kaymaları ve taşmaları engelle */
+    html, body {
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden !important;
+      position: relative;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      text-size-adjust: 100%;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: #fdf2f4; }
+    ::-webkit-scrollbar-thumb { background: #f472b6; border-radius: 4px; }
+
+    /* Header */
+    .app-header {
+      background: var(--surface);
+      border-bottom: 2px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: var(--shadow-sm);
+      width: 100%;
+    }
+    .header-inner {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 0 16px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+    .logo-icon {
+      width: 38px;
+      height: 38px;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, #f472b6, #be5b70);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      box-shadow: 0 4px 10px rgba(190, 91, 112, 0.3);
+    }
+    .logo-text {
+      min-width: 0;
+      overflow: hidden;
+    }
+    .logo-text h1 {
+      font-size: 17px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: var(--dark-slate);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    .logo-sub {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-muted);
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    .dilara-signature {
+      font-size: 11px;
+      font-weight: 900;
+      color: #9d3e52;
+      background: #fce7eb;
+      padding: 4px 9px;
+      border-radius: 9999px;
+      border: 1px solid #f9a8d4;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    /* Butonlar */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 8px 12px;
+      font-size: 11px;
+      font-weight: 800;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.15s ease;
+      text-decoration: none;
+      white-space: nowrap;
+      touch-action: manipulation;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn-pastel-green {
+      background: linear-gradient(135deg, #6ee7b7, #34d399);
+      color: #064e3b;
+      border-color: #34d399;
+      box-shadow: 0 2px 6px rgba(52, 211, 153, 0.3);
+    }
+    .btn-pastel-sage {
+      background: #a7f3d0;
+      color: #064e3b;
+      border-color: #6ee7b7;
+    }
+    .btn-whatsapp-pastel {
+      background: #4ade80;
+      color: #052e16;
+      border-color: #22c55e;
+      box-shadow: 0 2px 6px rgba(74, 222, 128, 0.3);
+    }
+    .btn-secondary {
+      background: #ffffff;
+      color: var(--dusty-pink-dark);
+      border-color: var(--dusty-pink-border);
+    }
+
+    .main-container {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+      background: linear-gradient(135deg, #38121f 0%, #561d30 40%, #1f3a2c 100%);
+      border-radius: var(--radius-lg);
+      padding: 16px 20px;
+      color: white;
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(244, 114, 182, 0.3);
+      width: 100%;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      background: rgba(244, 114, 182, 0.2);
+      border: 1px solid rgba(244, 114, 182, 0.4);
+      color: #fbcfe8;
+      border-radius: 9999px;
+      margin-bottom: 6px;
+    }
+    .hero-title {
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: -0.3px;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .hero-desc {
+      font-size: 12px;
+      color: #fce7eb;
+      line-height: 1.5;
+    }
+
+    /* 7 GÜNLÜK DOKUNMATİK SEKME ÇUBUĞU */
+    .day-selector-wrapper {
+      background: var(--surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 5px;
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      width: 100%;
+    }
+    .day-selector-wrapper::-webkit-scrollbar { display: none; }
+    .day-tab-btn {
+      flex: 0 0 auto;
+      min-width: 82px;
+      background: #fffbfe;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 8px 6px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      touch-action: manipulation;
+    }
+    .day-tab-btn.active {
+      background: linear-gradient(135deg, #f472b6, #be5b70);
+      color: white;
+      border-color: #be5b70;
+      box-shadow: 0 3px 8px rgba(190, 91, 112, 0.35);
+    }
+    .day-tab-btn .day-title { font-size: 11px; font-weight: 900; }
+    .day-tab-btn .day-sub { font-size: 9px; font-weight: 600; opacity: 0.9; }
+
+    /* Izgara (Masaüstü & Mobil Uyumlu) */
+    .workspace-grid {
+      display: grid;
+      grid-template-columns: 440px 1fr;
+      gap: 16px;
+      align-items: start;
+      width: 100%;
+    }
+    @media (max-width: 960px) {
+      .workspace-grid { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      width: 100%;
+    }
+    .card-header {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fdf8fa;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .card-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text-pink);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .card-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      width: 100%;
+    }
+
+    /* Form Elemanları */
+    .form-group { display: flex; flex-direction: column; gap: 4px; width: 100%; }
+    .form-label { font-size: 10px; font-weight: 800; color: var(--text-pink); text-transform: uppercase; letter-spacing: 0.5px; }
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(85px, 1fr));
+      gap: 8px;
+      width: 100%;
+    }
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      background: #fffbfe;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 8px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--dark-slate);
+      outline: none;
+      transition: all 0.15s ease;
+      font-family: inherit;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      background: #ffffff;
+      border-color: var(--dusty-pink);
+      box-shadow: 0 0 0 2px rgba(190, 91, 112, 0.15);
+    }
+
+    /* Hesaplama Rozeti */
+    .calc-stat-badge {
+      background: linear-gradient(135deg, #fdf2f4, #fce7eb);
+      border: 1px solid #f9a8d4;
+      border-radius: var(--radius-md);
+      padding: 10px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      text-align: center;
+      width: 100%;
+    }
+    .calc-stat-item h6 { font-size: 9px; font-weight: 800; color: var(--dusty-pink-dark); text-transform: uppercase; margin-bottom: 2px; }
+    .calc-stat-item .val { font-size: 14px; font-weight: 900; color: #9d3e52; }
+    .calc-stat-item .sub { font-size: 9px; font-weight: 700; color: var(--text-muted); }
+
+    /* Değişim Tablosu */
+    .exchange-box {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      width: 100%;
+    }
+    .exchange-header {
+      background: #fdf2f4;
+      padding: 6px 10px;
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--dusty-pink-dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .exchange-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border-color);
+      width: 100%;
+    }
+    @media (max-width: 480px) {
+      .exchange-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .exchange-item {
+      background: #ffffff;
+      padding: 6px 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+    .exchange-item .grp-name { font-size: 9px; font-weight: 800; color: var(--text-pink); }
+    .exchange-item .grp-val { font-size: 12px; font-weight: 900; color: var(--dark-slate); }
+    .exchange-item .grp-desc { font-size: 8px; color: var(--text-subtle); }
+
+    /* Kiler & Çipler */
+    .chips-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      background: #fffbfe;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 6px;
+      min-height: 44px;
+      max-height: 100px;
+      overflow-y: auto;
+      width: 100%;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #fdf2f4;
+      color: #9d3e52;
+      border: 1px solid #fbcfe8;
+      border-radius: var(--radius-sm);
+      padding: 2px 7px;
+      font-size: 10px;
+      font-weight: 700;
+    }
+    .chip button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #be5b70;
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+    }
+
+    /* DSÖ 5 Altın Parametre Çubuğu (Mobilde 2 Kolonlu Katlanma) */
+    .who-audit-bar {
+      background: linear-gradient(135deg, #2d101a 0%, #3f1926 100%);
+      color: white;
+      border-radius: var(--radius-md);
+      padding: 10px 12px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+      text-align: center;
+      border: 1px solid rgba(244, 114, 182, 0.3);
+      width: 100%;
+    }
+    @media (max-width: 640px) {
+      .who-audit-bar {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .who-metric:last-child {
+        grid-column: span 2;
+      }
+    }
+    .who-metric h6 { font-size: 8px; font-weight: 800; color: #fbcfe8; text-transform: uppercase; margin-bottom: 2px; }
+    .who-metric .num { font-size: 13px; font-weight: 900; color: #6ee7b7; }
+    .who-metric .guideline { font-size: 8px; color: #f9a8d4; }
+
+    /* Öğün Kartları */
+    .meals-stack { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+    .meal-card {
+      background: var(--surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: all 0.15s ease;
+      border-left: 4px solid var(--dusty-pink);
+      width: 100%;
+    }
+    .meal-card.snack-card { border-left-color: #f59e0b; }
+    .meal-card.night-card { border-left-color: #8b5cf6; background: #faf8fe; }
+    .meal-card.detox-card { border-left-color: #10b981; background: #f0fdf9; }
+    .meal-card.dessert-card { border-left-color: #ec4899; background: #fff5f8; }
+
+    .meal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .meal-tag-group { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .meal-type-pill {
+      font-size: 9px;
+      font-weight: 900;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 5px;
+    }
+    .meal-type-pill.breakfast { background: #fce7eb; color: #9d3e52; }
+    .meal-type-pill.lunch { background: #e0f2fe; color: #075985; }
+    .meal-type-pill.dinner { background: #ffedd5; color: #9a3412; }
+    .meal-type-pill.snack { background: #fef3c7; color: #92400e; }
+    .meal-type-pill.night { background: #ede9fe; color: #5b21b6; }
+    .meal-type-pill.detox { background: #d1fae5; color: #065f46; }
+    .meal-type-pill.dessert { background: #fce7f3; color: #9d174d; }
+
+    .meal-title { font-size: 13px; font-weight: 800; color: var(--dark-slate); }
+    .meal-cals { font-size: 12px; font-weight: 900; color: var(--dusty-pink-dark); }
+    .meal-ingredients { font-size: 10px; color: #64748b; background: #fffbfe; padding: 6px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); }
+    .meal-recipe { font-size: 11px; color: #1e1b22; line-height: 1.5; background: #ffffff; padding: 8px; border-radius: var(--radius-sm); border: 1px solid #f1dfeb; }
+    .meal-synergy {
+      font-size: 10px;
+      font-weight: 700;
+      color: #9d3e52;
+      background: #fdf2f4;
+      border: 1px solid #fbcfe8;
+      padding: 5px 8px;
+      border-radius: var(--radius-sm);
+    }
+
+    /* Mobil Aksiyon Butonları */
+    .action-button-group {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+    @media (max-width: 640px) {
+      .action-button-group {
+        flex-direction: column;
+      }
+      .action-button-group .btn {
+        width: 100%;
+        padding: 10px 14px;
+        font-size: 12px;
+      }
+      .header-actions .btn span { display: none; }
+      .header-actions .btn { padding: 8px 10px; }
+      .logo-text h1 { font-size: 15px; }
+      .hero-title { font-size: 16px; }
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(30, 27, 34, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal-box {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      max-width: 600px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-lg);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      border: 2px solid var(--border-color);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================ -->
+  <!-- 1. ÜST BAR: dlarasaglıklıyasam & Dyt. DİLARA ÖZKAN           -->
+  <!-- ============================================================ -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="logo-area">
+        <div class="logo-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <h1>dlarasaglıklıyasam <span>🌸</span></h1>
+          <div class="logo-sub">Dyt. <b>DİLARA ÖZKAN</b> Klinik Beslenme</div>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <span class="dilara-signature">Dyt. DİLARA ÖZKAN</span>
+        <button onclick="printClinicalDossier()" class="btn btn-pastel-sage" title="7 Günlük Dosyayı Yazdır / PDF">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+          <span>PDF / Yazdır</span>
+        </button>
+        <button onclick="saveCurrentClient()" class="btn btn-pastel-green" title="Danışanı Kaydet">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          <span>Kaydet</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================ -->
+  <!-- 2. ANA İÇERİK                                                -->
+  <!-- ============================================================ -->
+  <main class="main-container">
+
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+      <div class="hero-tag">dlarasaglıklıyasam • Dyt. DİLARA ÖZKAN Protokolü</div>
+      <h2 class="hero-title">Kişiye Özel Klinik Metrikler, Değişim Tablosu & 7 Günlük Reçeteler</h2>
+      <p class="hero-desc">
+        Yaş, boy, kilo, cinsiyet ve PAL girin; BMR, TDEE ve Değişim Tablosu anında hesaplansın. Evdeki malzemelerle <b>Sabah, Öğle, Akşam, 3 Ara Öğün (biri gece), Günün Detoks Suyu ve Sağlıklı Tatlısı</b> Dünya Sağlık Örgütü standartlarında hazır!
+      </p>
+    </div>
+
+    <!-- 7 GÜNLÜK DOKUNMATİK SEKME ÇUBUĞU -->
+    <div class="day-selector-wrapper">
+      <button class="day-tab-btn active" id="tab-day-1" onclick="switchDay(1)">
+        <span class="day-title">1. Gün</span>
+        <span class="day-sub">Pazartesi</span>
+      </button>
+      <button class="day-tab-btn" id="tab-day-2" onclick="switchDay(2)">
+        <span class="day-title">2. Gün</span>
+        <span class="day-sub">Salı</span>
+      </button>
+      <button class="day-tab-btn" id="tab-day-3" onclick="switchDay(3)">
+        <span class="day-title">3. Gün</span>
+        <span class="day-sub">Çarşamba</span>
+      </button>
+      <button class="day-tab-btn" id="tab-day-4" onclick="switchDay(4)">
+        <span class="day-title">4. Gün</span>
+        <span class="day-sub">Perşembe</span>
+      </button>
+      <button class="day-tab-btn" id="tab-day-5" onclick="switchDay(5)">
+        <span class="day-title">5. Gün</span>
+        <span class="day-sub">Cuma</span>
+      </button>
+      <button class="day-tab-btn" id="tab-day-6" onclick="switchDay(6)">
+        <span class="day-title">6. Gün</span>
+        <span class="day-sub">Cumartesi</span>
+      </button>
+      <button class="day-tab-btn" id="tab-day-7" onclick="switchDay(7)">
+        <span class="day-title">7. Gün</span>
+        <span class="day-sub">Pazar</span>
+      </button>
+    </div>
+
+    <!-- ÇALIŞMA ALANI: SOL (KLİNİK FORM VE DEĞİŞİM) | SAĞ (ÖĞÜNLER) -->
+    <div class="workspace-grid">
+
+      <!-- ============================================================ -->
+      <!-- SOL PANEL: DANIŞAN PARAMETRELERİ & KİLER                     -->
+      <!-- ============================================================ -->
+      <div style="display: flex; flex-direction: column; gap: 16px; width: 100%;">
+
+        <!-- 1. KART: DANIŞAN ANAMNEZ VE FİZİKSEL VERİLERİ -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span>1. Danışan Klinik Parametreleri</span>
+            </span>
+            <button onclick="resetClientForm()" class="btn btn-secondary" style="padding: 3px 8px; font-size: 10px;">Sıfırla</button>
+          </div>
+          <div class="card-body">
+            
+            <div class="form-row">
+              <div class="form-group" style="grid-column: span 2;">
+                <label class="form-label">Danışan Adı Soyadı</label>
+                <input type="text" id="inp-name" value="Ahmet Yılmaz" class="form-input" placeholder="Ad Soyad..." oninput="recalcAndRefresh()">
+              </div>
+              <div class="form-group">
+                <label class="form-label">WhatsApp No</label>
+                <input type="text" id="inp-phone" value="0555 123 45 67" class="form-input" placeholder="05xx...">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Cinsiyet</label>
+                <select id="inp-gender" class="form-select" onchange="recalcAndRefresh()">
+                  <option value="male" selected>Erkek</option>
+                  <option value="female">Kadın</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Yaş</label>
+                <input type="number" id="inp-age" value="32" class="form-input" oninput="recalcAndRefresh()">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Boy (cm)</label>
+                <input type="number" id="inp-height" value="178" class="form-input" oninput="recalcAndRefresh()">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Kilo (kg)</label>
+                <input type="number" id="inp-weight" value="78" class="form-input" oninput="recalcAndRefresh()">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group" style="grid-column: span 2;">
+                <label class="form-label">PAL (Aktivite Düzeyi)</label>
+                <select id="inp-pal" class="form-select" onchange="recalcAndRefresh()">
+                  <option value="1.2">Sedanter / Hareketsiz (PAL: 1.20)</option>
+                  <option value="1.375" selected>Hafif Hareketli (PAL: 1.375)</option>
+                  <option value="1.55">Orta Hareketli (PAL: 1.55)</option>
+                  <option value="1.725">Çok Hareketli (PAL: 1.725)</option>
+                  <option value="1.9">Sporcu (PAL: 1.90)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Hedef</label>
+                <select id="inp-goal" class="form-select" onchange="recalcAndRefresh()">
+                  <option value="deficit" selected>Kilo Verme (-400 kcal)</option>
+                  <option value="maintain">Koruma (TDEE)</option>
+                  <option value="surplus">Kas (+350 kcal)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Hesaplama Rozeti -->
+            <div class="calc-stat-badge">
+              <div class="calc-stat-item">
+                <h6>BMR (Mifflin)</h6>
+                <div class="val" id="stat-bmr">1,732 kcal</div>
+                <div class="sub">Bazal</div>
+              </div>
+              <div class="calc-stat-item">
+                <h6>TDEE</h6>
+                <div class="val" id="stat-tdee">2,381 kcal</div>
+                <div class="sub">Toplam</div>
+              </div>
+              <div class="calc-stat-item">
+                <h6>Hedef Kalori</h6>
+                <div class="val" style="color: var(--dusty-pink-dark);" id="stat-target-cal">1,600 kcal</div>
+                <div class="sub" id="stat-bmi-text">BMI: 24.6</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Kayıtlı Danışan Seç</label>
+              <select id="saved-clients-select" class="form-select" onchange="loadSavedClient(this.value)">
+                <option value="">-- Kayıtlı Danışanlar --</option>
+              </select>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 2. KART: KLİNİK BESİN DEĞİŞİM TABLOSU -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+              <span>2. Besin Değişim Hesabı (1600 kcal)</span>
+            </span>
+            <span class="logo-badge" style="font-size: 9px;">DSÖ Değişim Modeli</span>
+          </div>
+          <div class="card-body">
+            <div class="exchange-box">
+              <div class="exchange-header">
+                <span>Grup</span>
+                <span>Porsiyon</span>
+                <span>Değer</span>
+              </div>
+              <div class="exchange-grid">
+                <div class="exchange-item">
+                  <span class="grp-name">🥛 Süt</span>
+                  <span class="grp-val" id="ex-milk">2.5 Değişim</span>
+                  <span class="grp-desc">285 kcal</span>
+                </div>
+                <div class="exchange-item">
+                  <span class="grp-name">🥩 Et/Yumurta</span>
+                  <span class="grp-val" id="ex-meat">5.0 Değişim</span>
+                  <span class="grp-desc">345 kcal</span>
+                </div>
+                <div class="exchange-item">
+                  <span class="grp-name">🍞 Ekmek/Tahıl</span>
+                  <span class="grp-val" id="ex-bread">6.0 Değişim</span>
+                  <span class="grp-desc">408 kcal</span>
+                </div>
+                <div class="exchange-item">
+                  <span class="grp-name">🥦 Sebze</span>
+                  <span class="grp-val" id="ex-veg">4.0 Değişim</span>
+                  <span class="grp-desc">112 kcal</span>
+                </div>
+                <div class="exchange-item">
+                  <span class="grp-name">🍎 Meyve</span>
+                  <span class="grp-val" id="ex-fruit">3.0 Değişim</span>
+                  <span class="grp-desc">180 kcal</span>
+                </div>
+                <div class="exchange-item">
+                  <span class="grp-name">🫒 Yağ</span>
+                  <span class="grp-val" id="ex-fat">4.0 Değişim</span>
+                  <span class="grp-desc">180 kcal</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="background: #fdf2f4; border: 1px solid #fbcfe8; border-radius: var(--radius-sm); padding: 6px 10px; font-size: 10px; display: flex; justify-content: space-between; font-weight: 700; color: #8c3648;">
+              <span>Toplam: <b id="ex-total-cal">1,510 kcal</b></span>
+              <span>Pro: <b>91g (%24)</b></span>
+              <span>Karb: <b>148g (%48)</b></span>
+              <span>Yağ: <b>48g (%28)</b></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. KART: DANIŞANIN EVİNDEKİ MALZEMELER -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 22h14a2 2 0 0 0 2-2V7.5L14.5 2H5a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="m9 15 3 3 3-3"/></svg>
+              <span>3. Evdeki Gıdalar & WhatsApp Girişi</span>
+            </span>
+            <span class="logo-badge" style="font-size: 9px;">Sıfır Atık</span>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <label class="form-label">WhatsApp Mesajını Yapıştırın:</label>
+              <textarea id="inp-wa-raw" rows="2" class="form-textarea" placeholder="Örn: Evde yumurta, lor peyniri, ıspanak, kabak, elma, muz, yulaf var..."></textarea>
+              <button onclick="parseWhatsAppRawInput()" class="btn btn-pastel-sage" style="width: 100%; margin-top: 4px;">
+                <span>Mesajdan Malzemeleri Ayrıştır</span>
+              </button>
+            </div>
+
+            <div class="form-group">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <label class="form-label">Kullanılan Malzemeler (<span id="chip-count">14</span>)</label>
+                <button onclick="clearPantry()" style="background:none; border:none; color: var(--dusty-pink); font-size: 10px; font-weight:700; cursor:pointer;">Temizle</button>
+              </div>
+              <div class="chips-container" id="pantry-chips-box"></div>
+              <div style="display: flex; gap: 4px; margin-top: 4px;">
+                <input type="text" id="manual-add-chip" class="form-input" placeholder="Gıda ekle..." onkeypress="if(event.key==='Enter') addChipManual()">
+                <button onclick="addChipManual()" class="btn btn-secondary">Ekle</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SAĞ PANEL: ÖĞÜNLER, DETOKS SUYU, TATLI VE AKSİYONLAR          -->
+      <!-- ============================================================ -->
+      <div style="display: flex; flex-direction: column; gap: 16px; width: 100%;">
+
+        <div class="card">
+          <div class="card-header" style="background: #ffffff;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                <span style="font-size: 15px; font-weight: 900; color: var(--dark-slate);" id="active-day-heading">1. Gün Reçetesi (Pazartesi)</span>
+                <span class="logo-badge">Dyt. DİLARA ÖZKAN Onaylı</span>
+              </div>
+              <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;" id="active-day-subheading">
+                Danışan: Ahmet Yılmaz • 1600 kcal • 6 Öğün + Detoks Suyu + Tatlı
+              </div>
+            </div>
+
+            <!-- BUTONLAR (MOBİLDE TAM UYUMLU) -->
+            <div class="action-button-group">
+              <button onclick="shareActiveDayWhatsApp()" class="btn btn-whatsapp-pastel">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <span>Günü WhatsApp'a Gönder</span>
+              </button>
+              
+              <button onclick="downloadOrShareDayPDF()" class="btn btn-pastel-green">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                <span>PDF Olarak Gönder</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="card-body">
+
+            <!-- DSÖ 5 Altın Parametre Çubuğu -->
+            <div class="who-audit-bar">
+              <div class="who-metric">
+                <h6>Tuz / Sodyum</h6>
+                <div class="num" id="who-val-na">1,420 mg</div>
+                <div class="guideline">&lt; 2000mg</div>
+              </div>
+              <div class="who-metric">
+                <h6>İlave Şeker</h6>
+                <div class="num" id="who-val-sugar">%0 (0g)</div>
+                <div class="guideline">&lt; %5 Enerji</div>
+              </div>
+              <div class="who-metric">
+                <h6>Diyet Lifi</h6>
+                <div class="num" id="who-val-fiber">34g</div>
+                <div class="guideline">&gt; 25g Posa</div>
+              </div>
+              <div class="who-metric">
+                <h6>Sebze & Meyve</h6>
+                <div class="num" id="who-val-veg">530g</div>
+                <div class="guideline">&gt; 400g</div>
+              </div>
+              <div class="who-metric">
+                <h6>DSÖ Su İhtiyacı</h6>
+                <div class="num" style="color: #6ee7b7;" id="who-val-water">2,730 ml</div>
+                <div class="guideline">Kilo x 35 ml</div>
+              </div>
+            </div>
+
+            <!-- ÖĞÜNLER -->
+            <div class="meals-stack" id="meals-container">
+              <!-- JS ile doldurulur -->
+            </div>
+
+            <!-- Dyt. Dilara Özkan İmzası -->
+            <div style="background: #fdf2f4; border: 1px solid #fbcfe8; border-radius: var(--radius-sm); padding: 8px 10px; display: flex; align-items: center; justify-content: space-between; font-size: 10px; color: #8c3648; flex-wrap: wrap; gap: 4px;">
+              <span>🌸 <b>dlarasaglıklıyasam:</b> Dyt. <b>DİLARA ÖZKAN</b> onaylı klinik beslenme reçetesidir.</span>
+              <span class="dilara-signature">Dyt. DİLARA ÖZKAN</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <script>
+    const sevenDayPlanData = {
+      1: {
+        dayName: "Pazartesi",
+        detoxWater: {
+          title: "Ödem Atıcı Salatalık-Nane-Limon İnfüzyonu",
+          time: "Güne başlarken ve gün boyu",
+          recipe: "1.5 litre ılık suya 1 adet dilimlenmiş salatalık, yarım limon, 6 yaprak taze nane ve 1 ince dilim taze zencefil ekleyin.",
+          benefit: "Böbrek süzme hızını destekler, sodyum atılımını hızlandırır."
+        },
+        healthyDessert: {
+          title: "Pratik Chia & Kakaolu Avokado Puding",
+          calories: 140,
+          time: "5 dakika",
+          recipe: "Yarım avokado, 1 tatlı kaşığı saf ham kakao ve 1 çay bardağı badem sütünü blenderdan geçirin. Üzerine 1 tatlı kaşığı chia serpin.",
+          benefit: "Rafine şeker içermez; sağlıklı tekli doymamış yağlar ve magnezyum deposudur."
+        },
+        meals: [
+          {
+            type: "KAHVALTI (08:30)",
+            typeClass: "breakfast",
+            title: "Ispanaklı & Lorlu Düşük GI Omlet & Zeytin",
+            calories: 380,
+            usedPantry: ["Yumurta (2 adet)", "Lor (50g)", "Ispanak", "Zeytin (5 adet)"],
+            recipe: "Ispanakları tavada zeytinyağı ile soteleyin. Yumurta ve lor peynirini ekleyip pişirin. 5 zeytinle servis yapın.",
+            synergy: "Ispanak lifi glisemik yükselmeyi frenler; lor proteini 4 saat tokluk sağlar."
+          },
+          {
+            type: "1. ARA / KUŞLUK (10:30)",
+            typeClass: "snack",
+            title: "Antioksidan Yeşil Çay & Çiğ Badem",
+            calories: 110,
+            usedPantry: ["Çiğ Badem (8 adet)", "Limonlu Yeşil Çay"],
+            recipe: "1 fincan limonlu yeşil çayın yanında 8 adet çiğ badem tüketin.",
+            synergy: "EGCG kateşinleri metabolik hızı uyarır."
+          },
+          {
+            type: "ÖĞLE YEMEĞİ (13:00)",
+            typeClass: "lunch",
+            title: "Fırın Kabak Sandalı & Sarımsaklı Yoğurt",
+            calories: 420,
+            usedPantry: ["Kabak (2 adet)", "Yoğurt (4 yk)", "Ceviz (3 tam)"],
+            recipe: "Kabakları ikiye bölüp fırınlayın. Üzerine sarımsaklı naneli yoğurt dökün, cevizle süsleyin.",
+            synergy: "Kabaktaki potasyum sodyum dengesini korur."
+          },
+          {
+            type: "2. ARA / İKİNDİ (16:30)",
+            typeClass: "snack",
+            title: "Tarçınlı Yeşil Elma Dilimleri & Ceviz",
+            calories: 160,
+            usedPantry: ["Yeşil Elma (1 adet)", "Ceviz (2 adet)", "Toz Tarçın"],
+            recipe: "Elmayı dilimleyin, bol tarçın serpip 2 ceviz ile tüketin.",
+            synergy: "Tarçın insülin reseptör duyarlılığını artırır."
+          },
+          {
+            type: "AKŞAM YEMEĞİ (19:30)",
+            typeClass: "dinner",
+            title: "Zeytinyağlı Taze Sebze & Haşlanmış Yumurta",
+            calories: 450,
+            usedPantry: ["Ispanak/Kabak", "Domates", "Yumurta (2 adet)", "Yoğurt"],
+            recipe: "Sebzeleri zeytinyağında pişirin. 2 haşlanmış yumurta ve yoğurtla tüketin.",
+            synergy: "Gece karaciğeri yormayan hafif ve doyurucu profil."
+          },
+          {
+            type: "3. ARA / GECE (21:30)",
+            typeClass: "night",
+            title: "Papatya Çayı & Melatonin Destekli Ceviz",
+            calories: 80,
+            usedPantry: ["Ceviz (2 tam)", "Papatya Çayı"],
+            recipe: "Uykudan 1 saat önce sıcak papatya çayı ve 2 tam ceviz tüketin.",
+            synergy: "Cevizdeki doğal melatonin ve magnezyum derin uyku sağlar."
+          }
+        ]
+      },
+      2: {
+        dayName: "Salı",
+        detoxWater: {
+          title: "İnsülin Dengeleyici Tarçın-Karanfil-Elma Suyu",
+          time: "Günün ilk saatlerinde",
+          recipe: "1 litre suya 1 çubuk tarçın, 3 adet karanfil ve dilimlenmiş yeşil elma atıp bekletin.",
+          benefit: "Karbonhidrat emilimini yavaşlatır, kan şekerini dengede tutar."
+        },
+        healthyDessert: {
+          title: "Fırında Cevizli & Tarçınlı Armut Tatlısı",
+          calories: 130,
+          time: "15 dakika",
+          recipe: "Armudu ikiye bölüp tarçın ve dövülmüş ceviz ekleyerek fırında yumuşayana kadar pişirin.",
+          benefit: "Yüksek pektin lifi ve doğal meyve tatlılığı sağlar."
+        },
+        meals: [
+          {
+            type: "KAHVALTI (08:30)",
+            typeClass: "breakfast",
+            title: "Yulaf Lapası & Muz & Fıstık Ezmesi",
+            calories: 390,
+            usedPantry: ["Yulaf Ezmesi (40g)", "Muz (yarım)", "Fıstık Ezmesi (1 tk)"],
+            recipe: "Yulafı suyla lapa yapın, yoğurtla karıştırıp muz ve fıstık ezmesi ekleyin.",
+            synergy: "Yulaf beta-glukanı kolesterol emilimini engeller."
+          },
+          {
+            type: "1. ARA / KUŞLUK (10:30)",
+            typeClass: "snack",
+            title: "Limonlu Maden Suyu & Taze Nane",
+            calories: 15,
+            usedPantry: ["Maden Suyu", "Limon", "Nane"],
+            recipe: "Maden suyuna yarım limon ve taze nane atın.",
+            synergy: "Doğal magnezyum yorgunluğu giderir."
+          },
+          {
+            type: "ÖĞLE YEMEĞİ (13:00)",
+            typeClass: "lunch",
+            title: "Izgara Tavuk Göğsü & Brokoli & Karabuğday",
+            calories: 440,
+            usedPantry: ["Tavuk Göğsü (180g)", "Brokoli (150g)", "Karabuğday (3 yk)"],
+            recipe: "Tavuğu kekikle ızgara yapın, buharda brokoli ve karabuğdayla servis edin.",
+            synergy: "Sülforafan karaciğer detoksunu aktive eder."
+          },
+          {
+            type: "2. ARA / İKİNDİ (16:30)",
+            typeClass: "snack",
+            title: "Probiyotik Yoğurt & Keten Tohumu",
+            calories: 130,
+            usedPantry: ["Yoğurt (1 kase)", "Keten Tohumu (1 tk)"],
+            recipe: "Yoğurda öğütülmüş keten tohumu ekleyip tüketin.",
+            synergy: "Omega-3 ve probiyotikler bağırsak bariyerini korur."
+          },
+          {
+            type: "AKŞAM YEMEĞİ (19:30)",
+            typeClass: "dinner",
+            title: "Kırmızı Mercimek Çorbası & Yeşillikli Salata",
+            calories: 430,
+            usedPantry: ["Mercimek (1 kepçe)", "Marul", "Roka", "Limon"],
+            recipe: "Süzme mercimek çorbası ve zeytinyağlı taze Akdeniz salatası.",
+            synergy: "Baklagil proteini gece tokluğu garanti eder."
+          },
+          {
+            type: "3. ARA / GECE (21:30)",
+            typeClass: "night",
+            title: "Tarçınlı Ilık Süt",
+            calories: 95,
+            usedPantry: ["Süt (1 çay bardağı)", "Tarçın"],
+            recipe: "Ilık süte bol tarçın serpin.",
+            synergy: "Triptofan seratonin ve melatonin sentezini hızlandırır."
+          }
+        ]
+      },
+      3: {
+        dayName: "Çarşamba",
+        detoxWater: {
+          title: "Elektrolit ve C Vitamini Limon-Greyfurt Suyu",
+          time: "Sabah aç karnına",
+          recipe: "1 litre suya limon ve greyfurt dilimleri ile taze biberiye atın.",
+          benefit: "Karaciğer antioksidan kapasitesini artırır."
+        },
+        healthyDessert: {
+          title: "Yulaflı & Muzlu 2 Malzemeli Kurabiye",
+          calories: 120,
+          time: "10 dakika",
+          recipe: "1 muzu ezin, 3 yemek kaşığı yulafla karıştırıp tavada pişirin.",
+          benefit: "Sıfır un, sıfır rafine şeker."
+        },
+        meals: [
+          {
+            type: "KAHVALTI (08:30)",
+            typeClass: "breakfast",
+            title: "Ezine Peynirli & Yumurtalı Akdeniz Tabağı",
+            calories: 370,
+            usedPantry: ["Peynir (50g)", "Haşlanmış Yumurta", "Domates", "Zeytin"],
+            recipe: "Haşlanmış yumurta, peynir, zeytin, domates ve 1 dilim tam buğday ekmeği.",
+            synergy: "Biyoyararlanımı yüksek yumurta proteini."
+          },
+          {
+            type: "1. ARA / KUŞLUK (10:30)",
+            typeClass: "snack",
+            title: "Filtre Kahve & Çiğ Fındık",
+            calories: 110,
+            usedPantry: ["Fındık (8 adet)", "Filtre Kahve"],
+            recipe: "Sade filtre kahve ve 8 adet çiğ fındık.",
+            synergy: "Zihinsel odaklanmayı artırır."
+          },
+          {
+            type: "ÖĞLE YEMEĞİ (13:00)",
+            typeClass: "lunch",
+            title: "Mantar Sote & Bulgur Pilavı & Yoğurt",
+            calories: 430,
+            usedPantry: ["Mantar (300g)", "Bulgur (3 yk)", "Yoğurt"],
+            recipe: "Mantarları soteleyin, bulgur pilavı ve yoğurtla tüketin.",
+            synergy: "Mantar D vitamini ve çinko sağlar."
+          },
+          {
+            type: "2. ARA / İKİNDİ (16:30)",
+            typeClass: "snack",
+            title: "Kuru Kayısı & Çiğ Badem",
+            calories: 130,
+            usedPantry: ["Gün Kurusu Kayısı (2 adet)", "Badem (5 adet)"],
+            recipe: "2 gün kurusu kayısı ve 5 badem tüketin.",
+            synergy: "Demir ve potasyum emilimi dengelenir."
+          },
+          {
+            type: "AKŞAM YEMEĞİ (19:30)",
+            typeClass: "dinner",
+            title: "Fırında Balık & Roka Salatası",
+            calories: 460,
+            usedPantry: ["Balık (200g)", "Roka", "Limon"],
+            recipe: "Balığı fırında pişirin, bol limonlu roka ile tüketin.",
+            synergy: "Omega-3 hücresel inflamasyonu baskılar."
+          },
+          {
+            type: "3. ARA / GECE (21:30)",
+            typeClass: "night",
+            title: "Rezene Çayı & Kabak Çekirdeği",
+            calories: 85,
+            usedPantry: ["Kabak Çekirdeği (1 tk)", "Rezene Çayı"],
+            recipe: "1 fincan rezene çayı ve 1 tatlı kaşığı kabak çekirdeği.",
+            synergy: "Magnezyum gece doku onarımını destekler."
+          }
+        ]
+      },
+      4: {
+        dayName: "Perşembe",
+        detoxWater: {
+          title: "Metabolizma Hızlandırıcı Sirkeli Su",
+          time: "Öğle yemeğinden 20 dk önce",
+          recipe: "1 bardak ılık suya 1 tatlı kaşığı elma sirkesi ve limon ekleyin.",
+          benefit: "İnsülin pikini düşürür."
+        },
+        healthyDessert: {
+          title: "Dondurulmuş Yoğurt Barı",
+          calories: 115,
+          time: "5 dakika",
+          recipe: "Yoğurdun üzerine çilek koyup dondurun, dilimleyin.",
+          benefit: "Yüksek proteinli ve probiyotiklidir."
+        },
+        meals: [
+          {
+            type: "KAHVALTI (08:30)",
+            typeClass: "breakfast",
+            title: "Menemen & Lorlu Tost",
+            calories: 390,
+            usedPantry: ["Yumurta (2 adet)", "Domates", "Biber", "Lor"],
+            recipe: "Domatesli biberli menemen ve lorlu tost.",
+            synergy: "Likopen emilimi zeytinyağı ile katlanır."
+          },
+          {
+            type: "1. ARA / KUŞLUK (10:30)",
+            typeClass: "snack",
+            title: "Kefir & Çilek",
+            calories: 120,
+            usedPantry: ["Kefir (1 çay bardağı)", "Çilek (4 adet)"],
+            recipe: "Doğal kefir yanında taze çilek.",
+            synergy: "Bağırsak florasını güçlendirir."
+          },
+          {
+            type: "ÖĞLE YEMEĞİ (13:00)",
+            typeClass: "lunch",
+            title: "Taze Fasulye & Yoğurt & Bulgur",
+            calories: 420,
+            usedPantry: ["Taze Fasulye", "Yoğurt", "Bulgur"],
+            recipe: "Zeytinyağlı taze fasulye, yoğurt ve az bulgur.",
+            synergy: "Uzun süreli tokluk verir."
+          },
+          {
+            type: "2. ARA / İKİNDİ (16:30)",
+            typeClass: "snack",
+            title: "Ceviz İçi & Yaban Mersini",
+            calories: 140,
+            usedPantry: ["Ceviz (2 tam)", "Yaban Mersini"],
+            recipe: "2 tam ceviz ve yaban mersini.",
+            synergy: "Beyin fonksiyonlarını destekler."
+          },
+          {
+            type: "AKŞAM YEMEĞİ (19:30)",
+            typeClass: "dinner",
+            title: "Izgara Köfte & Piyaz",
+            calories: 460,
+            usedPantry: ["Kıyma (150g)", "Haşlanmış Fasulye", "Maydanoz"],
+            recipe: "Yağsız ızgara köfteleri piyazla tüketin.",
+            synergy: "Yüksek biyoyararlanımlı demir sağlar."
+          },
+          {
+            type: "3. ARA / GECE (21:30)",
+            typeClass: "night",
+            title: "Melisa Çayı & Badem",
+            calories: 80,
+            usedPantry: ["Badem (5 adet)", "Melisa Çayı"],
+            recipe: "Melisa çayı yanında 5 çiğ badem.",
+            synergy: "Uyku derinliğini artırır."
+          }
+        ]
+      },
+      5: {
+        dayName: "Cuma",
+        detoxWater: {
+          title: "Zencefil & Maydanoz Arındırıcı Suyu",
+          time: "Günün başında",
+          recipe: "1 litre suya maydanoz sapları, zencefil ve limon ekleyin.",
+          benefit: "Ödemi hızla atar."
+        },
+        healthyDessert: {
+          title: "Fıstık Ezmeli Muz Dilimleri",
+          calories: 135,
+          time: "2 dakika",
+          recipe: "Muzu dilimleyin, 1 tatlı kaşığı fıstık ezmesi sürün ve tarçın serpin.",
+          benefit: "Dengeli glisemik tatlı kaçamağıdır."
+        },
+        meals: [
+          {
+            type: "KAHVALTI (08:30)",
+            typeClass: "breakfast",
+            title: "Yumurtalı Avokado Tostu",
+            calories: 390,
+            usedPantry: ["Yumurta (2 adet)", "Avokado", "Tam Buğday Ekmeği"],
+            recipe: "Avokadolu ekmek üzerine haşlanmış yumurta dilimleyin.",
+            synergy: "Kolesterolü dengeler."
+          },
+          {
+            type: "1. ARA / KUŞLUK (10:30)",
+            typeClass: "snack",
+            title: "Kuşburnu Çayı & Fındık",
+            calories: 105,
+            usedPantry: ["Kuşburnu", "Fındık (7 adet)"],
+            recipe: "Kuşburnu çayı ile 7 fındık.",
+            synergy: "Güçlü antioksidan etki."
+          },
+          {
+            type: "ÖĞLE YEMEĞİ (13:00)",
+            typeClass: "lunch",
+            title: "Tavuklu Kinoa Salatası",
+            calories: 440,
+            usedPantry: ["Tavuk Göğsü (150g)", "Kinoa (3 yk)", "Roka"],
+            recipe: "Izgara tavuğu kinoa ve yeşillikle harmanlayın.",
+            synergy: "Kompleks karbonhidrat dengesi."
+          },
+          {
+            type: "2. ARA / İKİNDİ (16:30)",
+            typeClass: "snack",
+            title: "Yoğurt & Chia",
+            calories: 125,
+            usedPantry: ["Yoğurt", "Chia Tohumu"],
+            recipe: "Yoğurda chia ekleyip tüketin.",
+            synergy: "Bağırsak mikrobiyotasını besler."
+          },
+          {
+            type: "AKŞAM YEMEĞİ (19:30)",
+            typeClass: "dinner",
+            title: "Kıymalı Ispanak & Yoğurt",
+            calories: 450,
+            usedPantry: ["Ispanak", "Kıyma (80g)", "Yoğurt"],
+            recipe: "Kıymalı ıspanağı limon ve yoğurtla tüketin.",
+            synergy: "Demir ve folat deposu."
+          },
+          {
+            type: "3. ARA / GECE (21:30)",
+            typeClass: "night",
+            title: "Ihlamur & Ceviz",
+            calories: 80,
+            usedPantry: ["Ceviz (2 tam)", "Ihlamur"],
+            recipe: "Ilık ıhlamur ve 2 ceviz.",
+            synergy: "Rahat nefes ve sakinlik."
+          }
+        ]
+      },
+      6: {
+        dayName: "Cumartesi",
+        detoxWater: {
+          title: "Çilek-Limon-Fesleğen Canlandırıcı Suyu",
+          time: "Gün boyu",
+          recipe: "1.5 litre suya çilek, limon ve fesleğen yaprakları atın.",
+          benefit: "Tatlı isteğini bastırır."
+        },
+        healthyDessert: {
+          title: "Bitter Çikolatalı Fıstık Ezmesi Lokması",
+          calories: 125,
+          time: "2 dakika",
+          recipe: "1 tatlı kaşığı fıstık ezmesine 1 kare bitter çikolata eritin.",
+          benefit: "Kalp damar sağlığını destekler."
+        },
+        meals: [
+          {
+            type: "KAHVALTI (09:00)",
+            typeClass: "breakfast",
+            title: "Mantarlı & Kaşarlı Fırın Omlet",
+            calories: 410,
+            usedPantry: ["Yumurta (2 adet)", "Mantar", "Kaşar (30g)"],
+            recipe: "Mantarlı fırın omlet ve zeytin.",
+            synergy: "Hafta sonu yüksek protein."
+          },
+          {
+            type: "1. ARA / KUŞLUK (11:30)",
+            typeClass: "snack",
+            title: "Türk Kahvesi & 2 Tam Ceviz",
+            calories: 110,
+            usedPantry: ["Sade Türk Kahvesi", "Ceviz (2 tam)"],
+            recipe: "Türk kahvesi yanında 2 ceviz.",
+            synergy: "Antioksidan kapasiteyi artırır."
+          },
+          {
+            type: "ÖĞLE YEMEĞİ (14:00)",
+            typeClass: "lunch",
+            title: "Izgara Hindi & Fırın Sebze",
+            calories: 450,
+            usedPantry: ["Hindi (180g)", "Patates", "Yeşillik"],
+            recipe: "Izgara hindi ve fırın tatlı patates dilimleri.",
+            synergy: "Yağsız protein ve beta-karoten."
+          },
+          {
+            type: "2. ARA / İKİNDİ (17:00)",
+            typeClass: "snack",
+            title: "Muzlu Soğuk Kahve Shake",
+            calories: 140,
+            usedPantry: ["Muz", "Süt", "Kahve"],
+            recipe: "Muz ve soğuk sütü kahveyle blenderdan geçirin.",
+            synergy: "Doğal enerji ve elektrolit desteği."
+          },
+          {
+            type: "AKŞAM YEMEĞİ (20:00)",
+            typeClass: "dinner",
+            title: "Fırında Somon & Sebzeler",
+            calories: 470,
+            usedPantry: ["Somon (180g)", "Fasulye", "Limon"],
+            recipe: "Somonu sebzelerle fırında pişirin.",
+            synergy: "Haftalık Omega-3 hedefini tamamlar."
+          },
+          {
+            type: "3. ARA / GECE (22:00)",
+            typeClass: "night",
+            title: "Rezene Çayı & Kabak Çekirdeği",
+            calories: 80,
+            usedPantry: ["Rezene", "Kabak Çekirdeği"],
+            recipe: "Rezene çayı ve kabak çekirdeği.",
+            synergy: "Gece rahat sindirim sağlar."
+          }
+        ]
+      },
+      7: {
+        dayName: "Pazar",
+        detoxWater: {
+          title: "Kereviz Sapı & Limon Alkali Suyu",
+          time: "Sabah aç karnına",
+          recipe: "Kereviz sapı, yeşil elma ve limonu 1 litre suyla infüze edin.",
+          benefit: "Alkali dengeyi korur."
+        },
+        healthyDessert: {
+          title: "Tarçınlı Fırın Elma & Ceviz",
+          calories: 130,
+          time: "15 dakika",
+          recipe: "Elmanın içine ceviz ve tarçın koyup fırınlayın.",
+          benefit: "Pektin lifi bağırsakları temizler."
+        },
+        meals: [
+          {
+            type: "KAHVALTI (09:30)",
+            typeClass: "breakfast",
+            title: "Pazar Kahvaltısı: Dereotlu Lorlu Yumurta",
+            calories: 410,
+            usedPantry: ["Yumurta (2 adet)", "Lor (50g)", "Avokado", "Roka"],
+            recipe: "Dereotlu lorlu yumurta ve avokado.",
+            synergy: "Tam besleyici pazar tabağı."
+          },
+          {
+            type: "1. ARA / KUŞLUK (11:30)",
+            typeClass: "snack",
+            title: "Maden Suyu & Ayran",
+            calories: 80,
+            usedPantry: ["Yoğurt", "Maden Suyu", "Nane"],
+            recipe: "Maden sulu köpüklü ayran.",
+            synergy: "Elektrolit dengesini sağlar."
+          },
+          {
+            type: "ÖĞLE YEMEĞİ (14:00)",
+            typeClass: "lunch",
+            title: "Dana Bonfile & Izgara Sebzeler",
+            calories: 450,
+            usedPantry: ["Bonfile (150g)", "Biber", "Kabak"],
+            recipe: "Mühürlenmiş bonfile ve ızgara sebzeler.",
+            synergy: "Demir ve protein takviyesi."
+          },
+          {
+            type: "2. ARA / İKİNDİ (17:00)",
+            typeClass: "snack",
+            title: "Kuru Erik & Badem",
+            calories: 120,
+            usedPantry: ["Kuru Erik (3 adet)", "Badem (5 adet)"],
+            recipe: "3 kuru erik ve 5 çiğ badem.",
+            synergy: "Bağırsak hareketlerini hızlandırır."
+          },
+          {
+            type: "AKŞAM YEMEĞİ (19:30)",
+            typeClass: "dinner",
+            title: "Enginar & Yeşil Mercimekli Salata",
+            calories: 420,
+            usedPantry: ["Enginar", "Yeşil Mercimek", "Dereotu"],
+            recipe: "Haşlanmış enginarı mercimek ve dereotuyla tüketin.",
+            synergy: "Karaciğer rejenerasyonunu uyarır."
+          },
+          {
+            type: "3. ARA / GECE (21:30)",
+            typeClass: "night",
+            title: "Papatya Çayı & 2 Ceviz",
+            calories: 80,
+            usedPantry: ["Papatya", "Ceviz (2 tam)"],
+            recipe: "Papatya çayı ve 2 ceviz ile dingin uyku.",
+            synergy: "Kortizolü düşürür, haftayı sakin kapatır."
+          }
+        ]
+      }
+    };
+
+    let activeDay = 1;
+    let savedClientsData = JSON.parse(localStorage.getItem('dlarasaglik_clients')) || {};
+
+    let pantryItems = [
+      "Yumurta (6 adet)", "Lor Peyniri (200g)", "Ispanak (1 demet)", "Kabak (3 adet)",
+      "Domates (4 adet)", "Salatalık (3 adet)", "Ceviz İçi (1 kase)", "Yoğurt (500g)",
+      "Elma (3 adet)", "Muz (2 adet)", "Yulaf Ezmesi", "Zeytinyağı", "Limon (3 adet)", "Maden Suyu"
+    ];
+
+    window.addEventListener('DOMContentLoaded', () => {
+      recalcAndRefresh();
+      renderPantryChips();
+      refreshSavedClientsDropdown();
+    });
+
+    function recalcAndRefresh() {
+      const gender = document.getElementById('inp-gender').value;
+      const age = parseFloat(document.getElementById('inp-age').value) || 30;
+      const height = parseFloat(document.getElementById('inp-height').value) || 170;
+      const weight = parseFloat(document.getElementById('inp-weight').value) || 70;
+      const pal = parseFloat(document.getElementById('inp-pal').value) || 1.375;
+      const goal = document.getElementById('inp-goal').value;
+
+      let bmr = (gender === 'male') 
+        ? (10 * weight) + (6.25 * height) - (5 * age) + 5
+        : (10 * weight) + (6.25 * height) - (5 * age) - 161;
+      bmr = Math.round(bmr);
+
+      const tdee = Math.round(bmr * pal);
+
+      let targetCal = tdee;
+      if (goal === 'deficit') {
+        targetCal = tdee - 450;
+        if (targetCal < 1200) targetCal = 1200;
+      } else if (goal === 'surplus') {
+        targetCal = tdee + 350;
+      }
+
+      const heightM = height / 100;
+      const bmi = (weight / (heightM * heightM)).toFixed(1);
+      let bmiClass = "Normal";
+      if (bmi < 18.5) bmiClass = "Zayıf";
+      else if (bmi >= 25 && bmi < 30) bmiClass = "Fazla Kilo";
+      else if (bmi >= 30) bmiClass = "Obez";
+
+      const waterNeed = Math.round(weight * 35);
+
+      document.getElementById('stat-bmr').innerText = `${bmr.toLocaleString()} kcal`;
+      document.getElementById('stat-tdee').innerText = `${tdee.toLocaleString()} kcal`;
+      document.getElementById('stat-target-cal').innerText = `${targetCal.toLocaleString()} kcal`;
+      document.getElementById('stat-bmi-text').innerText = `BMI: ${bmi}`;
+      document.getElementById('who-val-water').innerText = `${waterNeed.toLocaleString()} ml`;
+
+      calculateExchangeList(targetCal);
+      renderDayMeals();
+    }
+
+    function calculateExchangeList(totalCal) {
+      const milkServings = (totalCal >= 2000) ? 3.0 : 2.0;
+      const meatServings = (totalCal >= 2000) ? 6.5 : (totalCal >= 1600 ? 5.0 : 4.0);
+      const breadServings = (totalCal >= 2000) ? 8.0 : (totalCal >= 1600 ? 6.0 : 4.5);
+      const vegServings = 4.0;
+      const fruitServings = (totalCal >= 1800) ? 3.5 : 2.5;
+      const fatServings = (totalCal >= 2000) ? 5.0 : (totalCal >= 1600 ? 4.0 : 3.0);
+
+      document.getElementById('ex-milk').innerText = `${milkServings} Değişim`;
+      document.getElementById('ex-meat').innerText = `${meatServings} Değişim`;
+      document.getElementById('ex-bread').innerText = `${breadServings} Değişim`;
+      document.getElementById('ex-veg').innerText = `${vegServings} Değişim`;
+      document.getElementById('ex-fruit').innerText = `${fruitServings} Değişim`;
+      document.getElementById('ex-fat').innerText = `${fatServings} Değişim`;
+
+      const sumCal = Math.round(
+        (milkServings * 114) +
+        (meatServings * 69) +
+        (breadServings * 68) +
+        (vegServings * 28) +
+        (fruitServings * 60) +
+        (fatServings * 45)
+      );
+      document.getElementById('ex-total-cal').innerText = `${sumCal.toLocaleString()} kcal`;
+    }
+
+    function switchDay(dayNum) {
+      activeDay = dayNum;
+      for (let i = 1; i <= 7; i++) {
+        const btn = document.getElementById(`tab-day-${i}`);
+        if (i === dayNum) btn.classList.add('active');
+        else btn.classList.remove('active');
+      }
+      renderDayMeals();
+    }
+
+    function renderDayMeals() {
+      const clientName = document.getElementById('inp-name').value.trim() || "Danışan";
+      const targetCal = document.getElementById('stat-target-cal').innerText;
+      const dayData = sevenDayPlanData[activeDay];
+
+      document.getElementById('active-day-heading').innerText = `${activeDay}. Gün (${dayData.dayName})`;
+      document.getElementById('active-day-subheading').innerText = `${clientName} • ${targetCal} • 6 Öğün + Detoks + Tatlı`;
+
+      const container = document.getElementById('meals-container');
+      let html = '';
+
+      html += `
+        <div class="meal-card detox-card">
+          <div class="meal-header">
+            <div class="meal-tag-group">
+              <span class="meal-type-pill detox">🥒 DETOKS SUYU</span>
+              <span class="meal-title">${dayData.detoxWater.title}</span>
+            </div>
+            <span style="font-size: 10px; font-weight: 800; color: #065f46;">${dayData.detoxWater.time}</span>
+          </div>
+          <div class="meal-recipe"><b>Hazırlanışı:</b> ${dayData.detoxWater.recipe}</div>
+          <div class="meal-synergy">
+            <span>🌸 <b>Klinik Etki:</b> ${dayData.detoxWater.benefit}</span>
+          </div>
+        </div>
+      `;
+
+      dayData.meals.forEach((m) => {
+        let cardClass = "meal-card";
+        if (m.typeClass === 'snack') cardClass += " snack-card";
+        if (m.typeClass === 'night') cardClass += " night-card";
+
+        html += `
+          <div class="${cardClass}">
+            <div class="meal-header">
+              <div class="meal-tag-group">
+                <span class="meal-type-pill ${m.typeClass}">${m.type}</span>
+                <span class="meal-title">${m.title}</span>
+              </div>
+              <span class="meal-cals">${m.calories} kcal</span>
+            </div>
+            <div class="meal-ingredients"><b>Malzemeler:</b> ${m.usedPantry.join(', ')}</div>
+            <div class="meal-recipe"><b>Tarif:</b> ${m.recipe}</div>
+            <div class="meal-synergy">
+              <span>🔬 <b>Sinerji:</b> ${m.synergy}</span>
+            </div>
+          </div>
+        `;
+      });
+
+      html += `
+        <div class="meal-card dessert-card">
+          <div class="meal-header">
+            <div class="meal-tag-group">
+              <span class="meal-type-pill dessert">🍓 SAĞLIKLI TATLI</span>
+              <span class="meal-title">${dayData.healthyDessert.title}</span>
+            </div>
+            <span style="font-size: 11px; font-weight: 800; color: #9d174d;">${dayData.healthyDessert.calories} kcal</span>
+          </div>
+          <div class="meal-recipe"><b>Hazırlanışı (${dayData.healthyDessert.time}):</b> ${dayData.healthyDessert.recipe}</div>
+          <div class="meal-synergy">
+            <span>✨ <b>Özellik:</b> ${dayData.healthyDessert.benefit}</span>
+          </div>
+        </div>
+      `;
+
+      container.innerHTML = html;
+    }
+
+    function parseWhatsAppRawInput() {
+      const raw = document.getElementById('inp-wa-raw').value.trim();
+      if (!raw) return;
+
+      const foodDict = [
+        "yumurta", "lor", "peynir", "ıspanak", "kabak", "domates", "salatalık",
+        "ceviz", "badem", "fındık", "yoğurt", "elma", "muz", "çilek", "tavuk", "hindi",
+        "somon", "balık", "yulaf", "mercimek", "nohut", "mantar", "limon", "zeytin"
+      ];
+
+      const lower = raw.toLowerCase();
+      const detected = [];
+
+      foodDict.forEach(item => {
+        if (lower.includes(item)) {
+          detected.push(item.charAt(0).toUpperCase() + item.slice(1));
+        }
+      });
+
+      if (detected.length > 0) {
+        pantryItems = [...new Set([...pantryItems, ...detected])];
+        renderPantryChips();
+        alert(`${detected.length} malzeme ayıklandı ve listeye eklendi.`);
+      }
+    }
+
+    function renderPantryChips() {
+      const box = document.getElementById('pantry-chips-box');
+      document.getElementById('chip-count').innerText = pantryItems.length;
+
+      if (pantryItems.length === 0) {
+        box.innerHTML = `<span style="font-size: 10px; color: #94a3b8; font-style: italic;">Malzeme girilmedi.</span>`;
+        return;
+      }
+
+      box.innerHTML = pantryItems.map((item, idx) => `
+        <span class="chip">
+          <span>${item}</span>
+          <button onclick="removeChip(${idx})">✕</button>
+        </span>
+      `).join('');
+    }
+
+    function addChipManual() {
+      const inp = document.getElementById('manual-add-chip');
+      const val = inp.value.trim();
+      if (!val) return;
+      pantryItems.push(val);
+      inp.value = '';
+      renderPantryChips();
+    }
+
+    function removeChip(idx) {
+      pantryItems.splice(idx, 1);
+      renderPantryChips();
+    }
+
+    function clearPantry() {
+      pantryItems = [];
+      renderPantryChips();
+    }
+
+    function saveCurrentClient() {
+      const name = document.getElementById('inp-name').value.trim();
+      if (!name) {
+        alert("Lütfen önce danışanın Adını ve Soyadını yazın.");
+        return;
+      }
+
+      const clientData = {
+        name,
+        phone: document.getElementById('inp-phone').value.trim(),
+        gender: document.getElementById('inp-gender').value,
+        age: document.getElementById('inp-age').value,
+        height: document.getElementById('inp-height').value,
+        weight: document.getElementById('inp-weight').value,
+        pal: document.getElementById('inp-pal').value,
+        goal: document.getElementById('inp-goal').value,
+        pantry: [...pantryItems]
+      };
+
+      savedClientsData[name] = clientData;
+      localStorage.setItem('dlarasaglik_clients', JSON.stringify(savedClientsData));
+      refreshSavedClientsDropdown();
+      alert(`"${name}" başarıyla kaydedildi!`);
+    }
+
+    function refreshSavedClientsDropdown() {
+      const sel = document.getElementById('saved-clients-select');
+      sel.innerHTML = `<option value="">-- Kayıtlı Danışanlar (${Object.keys(savedClientsData).length}) --</option>`;
+      Object.keys(savedClientsData).forEach(name => {
+        sel.innerHTML += `<option value="${name}">${name}</option>`;
+      });
+    }
+
+    function loadSavedClient(name) {
+      if (!name || !savedClientsData[name]) return;
+      const c = savedClientsData[name];
+      document.getElementById('inp-name').value = c.name;
+      document.getElementById('inp-phone').value = c.phone || '';
+      document.getElementById('inp-gender').value = c.gender || 'male';
+      document.getElementById('inp-age').value = c.age || '30';
+      document.getElementById('inp-height').value = c.height || '175';
+      document.getElementById('inp-weight').value = c.weight || '75';
+      document.getElementById('inp-pal').value = c.pal || '1.375';
+      document.getElementById('inp-goal').value = c.goal || 'deficit';
+
+      if (c.pantry && c.pantry.length) {
+        pantryItems = [...c.pantry];
+      }
+
+      recalcAndRefresh();
+      renderPantryChips();
+    }
+
+    function resetClientForm() {
+      document.getElementById('inp-name').value = '';
+      document.getElementById('inp-phone').value = '';
+      document.getElementById('inp-age').value = '30';
+      document.getElementById('inp-height').value = '175';
+      document.getElementById('inp-weight').value = '75';
+      recalcAndRefresh();
+    }
+
+    function shareActiveDayWhatsApp() {
+      const name = document.getElementById('inp-name').value.trim() || "Danışanım";
+      const rawPhone = document.getElementById('inp-phone').value.replace(/[^0-9]/g, '');
+      const dayData = sevenDayPlanData[activeDay];
+      const targetCal = document.getElementById('stat-target-cal').innerText;
+      const water = document.getElementById('who-val-water').innerText;
+
+      let msg = `🌸 *dlarasaglıklıyasam • Dyt. DİLARA ÖZKAN*\n\n`;
+      msg += `🥗 *Sevgili ${name}, ${activeDay}. Gün (${dayData.dayName}) Planınız:*\n\n`;
+      msg += `🎯 *Hedef Kalori:* ${targetCal} | 💧 *Günlük Su:* ${water}\n`;
+      msg += `🥒 *Detoks Suyu:* ${dayData.detoxWater.title}\n`;
+      msg += `Tarif: ${dayData.detoxWater.recipe}\n\n`;
+
+      dayData.meals.forEach(m => {
+        msg += `🕒 *${m.type}: ${m.title}* (${m.calories} kcal)\n`;
+        msg += `🥘 *Malzemeler:* ${m.usedPantry.join(', ')}\n`;
+        msg += `👩‍🍳 *Tarif:* ${m.recipe}\n\n`;
+      });
+
+      msg += `🍓 *Sağlıklı Tatlı:* ${dayData.healthyDessert.title} (${dayData.healthyDessert.calories} kcal)\n`;
+      msg += `Tarif: ${dayData.healthyDessert.recipe}\n\n`;
+      msg += `Afiyet ve şifa olsun! Sorularınız olursa buradayım.\n\n✨ *Sevgilerimle, Dyt. DİLARA ÖZKAN* 🌸`;
+
+      const encoded = encodeURIComponent(msg);
+      const phone = rawPhone ? (rawPhone.startsWith('90') ? rawPhone : (rawPhone.startsWith('0') ? '9' + rawPhone : '90' + rawPhone)) : '';
+
+      if (phone) {
+        window.open(`https://web.whatsapp.com/send?phone=${phone}&text=${encoded}`, '_blank');
+      } else {
+        window.open(`https://web.whatsapp.com/send?text=${encoded}`, '_blank');
+      }
+    }
+
+    function downloadOrShareDayPDF() {
+      const name = document.getElementById('inp-name').value.trim() || "Danisan";
+      const dayData = sevenDayPlanData[activeDay];
+      const targetCal = document.getElementById('stat-target-cal').innerText;
+      const water = document.getElementById('who-val-water').innerText;
+      
+      const printWindow = window.open('', '_blank');
+      printWindow.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>${name}_${dayData.dayName}_Dlarasaglikliyasam</title>
+          <style>
+            body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 20px; color: #2e1020; line-height: 1.4; font-size: 11pt; }
+            .header { border-bottom: 2px solid #be5b70; padding-bottom: 8px; margin-bottom: 14px; }
+            .brand { font-size: 20px; font-weight: 900; color: #be5b70; }
+            .badge { font-size: 10px; font-weight: 800; background: #fdf2f4; padding: 3px 8px; border-radius: 6px; border: 1px solid #fbcfe8; color: #8c3648; }
+            .info-box { background: #fdf2f4; border: 1px solid #fbcfe8; padding: 10px; border-radius: 8px; margin-bottom: 12px; font-size: 10pt; }
+            .meal { border-bottom: 1px solid #f1dfeb; padding: 8px 0; }
+            .meal-title { font-weight: 900; color: #1e1b22; font-size: 11pt; }
+            .cals { float: right; font-weight: 900; color: #be5b70; }
+            .footer { margin-top: 20px; border-top: 2px solid #be5b70; padding-top: 8px; font-size: 9pt; text-align: center; color: #79576b; }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <div class="brand">dlarasaglıklıyasam</div>
+            <div style="font-weight: 800; color: #8c3648;">Dyt. DİLARA ÖZKAN Klinik Beslenme Reçetesi</div>
+            <div style="margin-top: 4px;"><span class="badge">${activeDay}. Gün (${dayData.dayName})</span></div>
+          </div>
+
+          <div class="info-box">
+            <b>Danışan Adı:</b> ${name} | <b>Hedef:</b> ${targetCal} | <b>Su:</b> ${water}
+          </div>
+
+          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 8px; border-radius: 6px; margin-bottom: 10px;">
+            <b style="color: #065f46;">🥒 DETOKS SUYU:</b> ${dayData.detoxWater.title}<br/>
+            <i>Tarif:</i> ${dayData.detoxWater.recipe}
+          </div>
+
+          ${dayData.meals.map(m => `
+            <div class="meal">
+              <span class="cals">${m.calories} kcal</span>
+              <div class="meal-title">${m.type}: ${m.title}</div>
+              <div style="font-size: 9pt; color: #64748b;"><b>Malzemeler:</b> ${m.usedPantry.join(', ')}</div>
+              <div style="margin: 2px 0;"><b>Tarif:</b> ${m.recipe}</div>
+            </div>
+          `).join('')}
+
+          <div style="background: #fff5f8; border: 1px solid #fecdd3; padding: 8px; border-radius: 6px; margin-top: 10px;">
+            <b style="color: #9d174d;">🍓 SAĞLIKLI TATLI (${dayData.healthyDessert.calories} kcal):</b> ${dayData.healthyDessert.title}<br/>
+            <i>Hazırlanış:</i> ${dayData.healthyDessert.recipe}
+          </div>
+
+          <div class="footer">
+            <b>dlarasaglıklıyasam • Dyt. DİLARA ÖZKAN</b><br/>
+            Şifa ve afiyet olsun. 🌸
+          </div>
+
+          <script>window.onload = function() { window.print(); }<\/script>
+        </body>
+        </html>
+      `);
+      printWindow.document.close();
+    }
+
+    function printClinicalDossier() {
+      window.print();
+    }
+  </script>
+</body>
+</html>
