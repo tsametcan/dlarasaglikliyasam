@@ -573,6 +573,212 @@
       gap: 14px;
       border: 2px solid var(--border-color);
     }
+    /* ============================================================ */
+    /* ANA MOD GEÇİŞ SEKMELERİ (DİYET / INSTAGRAM İÇERİK MOTORU)    */
+    /* ============================================================ */
+    .nav-switcher-bar {
+      background: var(--surface);
+      border-bottom: 2px solid var(--border-color);
+      width: 100%;
+      position: sticky;
+      top: 64px;
+      z-index: 45;
+      box-shadow: 0 2px 6px rgba(190, 91, 112, 0.05);
+    }
+    .nav-switcher-inner {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 6px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-switcher-inner::-webkit-scrollbar { display: none; }
+    .nav-switch-btn {
+      flex: 1;
+      max-width: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: var(--radius-md);
+      border: 1.5px solid var(--border-color);
+      background: #ffffff;
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .nav-switch-btn:hover {
+      background: #fdf2f4;
+      border-color: #fbcfe8;
+      color: var(--dusty-pink);
+    }
+    .nav-switch-btn.active {
+      background: linear-gradient(135deg, #fdf2f4, #ffe4e6);
+      border-color: var(--dusty-pink);
+      color: var(--dusty-pink-dark);
+      box-shadow: 0 2px 8px rgba(190, 91, 112, 0.15);
+    }
+    .nav-switch-btn .pill-tag {
+      font-size: 10px;
+      font-weight: 800;
+      background: #6ee7b7;
+      color: #064e3b;
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+    .nav-switch-btn.active .pill-tag {
+      background: var(--dusty-pink);
+      color: #ffffff;
+    }
+
+    /* ============================================================ */
+    /* INSTAGRAM REELS & VİDEO İÇERİK STÜDYOSU STİLLERİ             */
+    /* ============================================================ */
+    .reels-studio-header {
+      background: linear-gradient(135deg, #ffffff 0%, #fdf2f4 100%);
+      border: 1.5px solid #fbcfe8;
+      border-radius: var(--radius-lg);
+      padding: 18px 20px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+    .reels-grid {
+      display: grid;
+      grid-template-columns: 460px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+    @media (max-width: 1024px) {
+      .reels-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .topic-chips-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 8px;
+    }
+    .topic-chip-btn {
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border-color);
+      background: #ffffff;
+      color: var(--text-main);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.18s ease;
+    }
+    .topic-chip-btn:hover {
+      border-color: var(--dusty-pink);
+      background: #fdf2f4;
+      color: var(--dusty-pink);
+    }
+    .topic-chip-btn.active {
+      background: var(--dusty-pink);
+      border-color: var(--dusty-pink);
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(190, 91, 112, 0.3);
+    }
+    .mode-tab-group {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .mode-btn {
+      padding: 9px 10px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      background: #ffffff;
+      font-size: 11.5px;
+      font-weight: 800;
+      color: var(--text-muted);
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.18s ease;
+    }
+    .mode-btn:hover {
+      background: #fdf2f4;
+      border-color: #fbcfe8;
+    }
+    .mode-btn.active {
+      background: #ecfdf5;
+      border-color: #34d399;
+      color: #065f46;
+      box-shadow: 0 1px 3px rgba(52, 211, 153, 0.2);
+    }
+    .reels-action-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-color);
+    }
+    .reels-card-box {
+      background: #ffffff;
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+    }
+    .reels-box-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .badge-reels-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 900;
+    }
+    .badge-hook { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+    .badge-broll { background: #e0e7ff; color: #3730a3; border: 1px solid #c7d2fe; }
+    .badge-script { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
+    .badge-cta { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+    .badge-caption { background: #fdf2f4; color: #8c3648; border: 1px solid #fbcfe8; }
+    .badge-recipe { background: #fdf4ff; color: #86198f; border: 1px solid #f5d0fe; }
+
+    .agenda-card-item {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      transition: all 0.2s ease;
+    }
+    .agenda-card-item.done {
+      background: #f8fafc;
+      opacity: 0.7;
+    }
+    .agenda-card-item.done .agenda-text {
+      text-decoration: line-through;
+    }
   </style>
 </head>
 <body>
@@ -609,9 +815,30 @@
   </header>
 
   <!-- ============================================================ -->
+  <!-- ANA MOD SEÇİCİ (7 GÜNLÜK DİYET / INSTAGRAM İÇERİK STÜDYOSU)  -->
+  <!-- ============================================================ -->
+  <div class="nav-switcher-bar">
+    <div class="nav-switcher-inner">
+      <button class="nav-switch-btn active" id="btn-tab-diet" onclick="switchAppTab('diet')">
+        <span style="font-size: 16px;">🥗</span>
+        <span>7 Günlük Diyet & Klinik Planlayıcı</span>
+        <span class="pill-tag">DSÖ Standardı</span>
+      </button>
+      <button class="nav-switch-btn" id="btn-tab-reels" onclick="switchAppTab('reels')">
+        <span style="font-size: 16px;">🎬</span>
+        <span>Instagram Reels & Video İçerik Stüdyosu</span>
+        <span class="pill-tag">Dyt. Dilara Özkan Özel</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
   <!-- 2. ANA İÇERİK                                                -->
   <!-- ============================================================ -->
   <main class="main-container">
+
+    <!-- 1. GÖRÜNÜM: 7 GÜNLÜK KLİNİK DİYET & DANIŞAN YÖNETİMİ -->
+    <div id="view-diet">
 
     <!-- Hero Banner -->
     <div class="hero-banner">
@@ -676,11 +903,11 @@
             <div class="form-row">
               <div class="form-group" style="grid-column: span 2;">
                 <label class="form-label">Danışan Adı Soyadı</label>
-                <input type="text" id="inp-name" value="Ahmet Yılmaz" class="form-input" placeholder="Ad Soyad..." oninput="recalcAndRefresh()">
+                <input type="text" id="inp-name" value="" class="form-input" placeholder="Danışan Adı Soyadı yazınız..." oninput="recalcAndRefresh()">
               </div>
               <div class="form-group">
                 <label class="form-label">WhatsApp No</label>
-                <input type="text" id="inp-phone" value="0555 123 45 67" class="form-input" placeholder="05xx...">
+                <input type="text" id="inp-phone" value="" class="form-input" placeholder="05xx xxx xx xx">
               </div>
             </div>
 
@@ -863,7 +1090,7 @@
                 <span class="logo-badge">Dyt. DİLARA ÖZKAN Onaylı</span>
               </div>
               <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;" id="active-day-subheading">
-                Danışan: Ahmet Yılmaz • 1600 kcal • 6 Öğün + Detoks Suyu + Tatlı
+                Dyt. DİLARA ÖZKAN Klinik Beslenme Menüsü
               </div>
             </div>
 
@@ -930,7 +1157,203 @@
 
     </div>
 
-  </main>
+    </div> <!-- /#view-diet -->
+
+    <!-- ============================================================ -->
+    <!-- 2. GÖRÜNÜM: INSTAGRAM REELS & VİDEO İÇERİK STÜDYOSU (AI)     -->
+    <!-- ============================================================ -->
+    <div id="view-reels" style="display: none;">
+      
+      <!-- Reels Hero -->
+      <div class="reels-studio-header">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <div class="hero-tag" style="margin-bottom: 6px;">🎬 Instagram Reels & Video İçerik Stüdyosu • Dyt. DİLARA ÖZKAN</div>
+            <h2 style="font-size: 21px; font-weight: 900; color: var(--dusty-pink-dark); margin-bottom: 4px;">Viral Reels Fikirleri, Çekim Senaryoları & Fit Tarif Motoru</h2>
+            <p style="font-size: 13px; color: var(--text-muted); margin: 0; max-width: 850px;">
+              Takipçileri danışana dönüştüren ilk 3 saniye kancaları (Hook), B-Roll kamera planları, konuşma metinleri, etkileşim mıknatısı Instagram açıklamaları ve denenmiş fit tariflerle hesabınızı profesyonelce büyütün.
+            </p>
+          </div>
+          <button onclick="randomizeReelsTopic()" class="btn btn-pastel-green" style="box-shadow: 0 4px 10px rgba(110,231,183,0.3); padding: 10px 16px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+            <span>🎲 Rastgele İlham Patlaması</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Reels Workspace Grid -->
+      <div class="reels-grid">
+
+        <!-- SOL SÜTUN: KONTROL & SEÇENEKLER -->
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+
+          <!-- Kart 1: Konu Seçimi -->
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg>
+                <span>1. Video Konusu / Kategori Seçin</span>
+              </span>
+            </div>
+            <div class="card-body">
+              <div class="form-group" style="margin-bottom: 10px;">
+                <label class="form-label">Popüler Diyetisyen Trendleri (Tıkla Seç):</label>
+                <div class="topic-chips-grid">
+                  <button type="button" class="topic-chip-btn active" id="chip-belly_fat" onclick="selectTopicChip('belly_fat')">🔥 Göbek / Yağ Yakımı</button>
+                  <button type="button" class="topic-chip-btn" id="chip-sweet_craving" onclick="selectTopicChip('sweet_craving')">🍰 Tatlı Krizleri & Fit Tatlı</button>
+                  <button type="button" class="topic-chip-btn" id="chip-edema" onclick="selectTopicChip('edema')">💧 Sabah Ödem Savar</button>
+                  <button type="button" class="topic-chip-btn" id="chip-insulin" onclick="selectTopicChip('insulin')">🩸 İnsülin & Yemek Sonrası Uyku</button>
+                  <button type="button" class="topic-chip-btn" id="chip-oat_toast" onclick="selectTopicChip('oat_toast')">⚡ 3 Malzemeli Pratik Tarif</button>
+                  <button type="button" class="topic-chip-btn" id="chip-myths" onclick="selectTopicChip('myths')">❌ Diyet Efsaneleri (6'dan Sonra)</button>
+                  <button type="button" class="topic-chip-btn" id="chip-market" onclick="selectTopicChip('market')">🛒 Market / 'Fit' Ürün Tuzağı</button>
+                  <button type="button" class="topic-chip-btn" id="chip-night_eating" onclick="selectTopicChip('night_eating')">🌙 Gece Açlığı & Melatonin</button>
+                  <button type="button" class="topic-chip-btn" id="chip-coffee_metabolism" onclick="selectTopicChip('coffee_metabolism')">☕ Kahve & Metabolizma İksiri</button>
+                  <button type="button" class="topic-chip-btn" id="chip-pcos_hormone" onclick="selectTopicChip('pcos_hormone')">🥑 PCOS & Hormon Dengeleme</button>
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label">Veya Aklınızdaki Özel Konuyu Yazın:</label>
+                <div style="display: flex; gap: 6px;">
+                  <input type="text" id="reels-custom-topic" class="form-input" placeholder="Örn: Magnezyum eksikliği, Bayram detoksu, Su içemeyenler..." onkeydown="if(event.key==='Enter') generateReelsContent()">
+                  <button onclick="applyCustomTopic()" class="btn btn-pastel-sage" style="flex: 0 0 auto;">
+                    <span>Uygula</span>
+                  </button>
+                </div>
+                <div style="font-size: 10.5px; color: var(--text-muted); margin-top: 4px;">
+                  💡 Yazdığınız her özel konuya yapay zeka anında kanca, senaryo ve diyetisyen açıklaması türetir.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kart 2: Format & Çıktı Türü -->
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="m9 12 2 2 4-4"/></svg>
+                <span>2. İçerik Formatı & Çıktı Türü</span>
+              </span>
+            </div>
+            <div class="card-body">
+              <div class="mode-tab-group">
+                <button type="button" class="mode-btn active" id="mode-btn-full" onclick="selectReelsMode('full')">
+                  🚀 Tüm Paket (Hepsi)
+                </button>
+                <button type="button" class="mode-btn" id="mode-btn-script" onclick="selectReelsMode('script')">
+                  🎬 Sadece Çekim Senaryosu
+                </button>
+                <button type="button" class="mode-btn" id="mode-btn-caption" onclick="selectReelsMode('caption')">
+                  📝 Sadece Açıklama & Hashtag
+                </button>
+                <button type="button" class="mode-btn" id="mode-btn-recipe" onclick="selectReelsMode('recipe')">
+                  🍓 Sadece Fit Tarif Reçetesi
+                </button>
+              </div>
+
+              <div class="form-row" style="margin-top: 12px;">
+                <div class="form-group">
+                  <label class="form-label">Tahmini Süre</label>
+                  <select id="reels-duration" class="form-select" onchange="generateReelsContent()">
+                    <option value="30" selected>15 - 30 Saniye (Hızlı Viral)</option>
+                    <option value="60">45 - 60 Saniye (Detaylı Anlatım)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">İçerik Üslubu</label>
+                  <select id="reels-tone" class="form-select" onchange="generateReelsContent()">
+                    <option value="friendly" selected>🌸 Samimi & Enerjik (Kahve Sohbeti)</option>
+                    <option value="clinical">🩺 Uzman & Bilimsel (Klinik Diyetisyen)</option>
+                    <option value="punchy">⚡ Çarpıcı & Merak Uyandıran ("Dur Yapma!")</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- ÜRET BUTONU -->
+              <button onclick="generateReelsContent()" class="btn btn-pastel-green" style="width: 100%; padding: 13px; font-size: 14px; font-weight: 900; justify-content: center; margin-top: 10px; box-shadow: 0 4px 12px rgba(110,231,183,0.35);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <span>✨ Dyt. DİLARA ÖZKAN İçin İçerik Üret</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Kart 3: Çekilecek Videolarım (Ajanda) -->
+          <div class="card">
+            <div class="card-header" style="justify-content: space-between;">
+              <span class="card-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m19 21-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                <span>⭐ Çekilecek Videolarım (Ajandam)</span>
+              </span>
+              <span style="font-size: 11px; font-weight: 800; color: var(--text-muted);" id="agenda-count-badge">0 Video</span>
+            </div>
+            <div class="card-body">
+              <div id="agenda-items-container">
+                <div style="font-size: 11.5px; color: var(--text-muted); text-align: center; padding: 14px; background: #fdf2f4; border-radius: var(--radius-sm); border: 1px dashed var(--border-color);">
+                  Henüz kaydedilen video fikri yok. Beğendiğiniz içerikleri <b>"⭐ Ajandama Kaydet"</b> butonuyla buraya ekleyebilirsiniz!
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- SAĞ SÜTUN: ÜRETİLEN İÇERİK VİTRİNİ -->
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+
+          <!-- Kart: Sonuç Alanı -->
+          <div class="card" style="border: 2px solid #fbcfe8;">
+            <div class="card-header" style="background: linear-gradient(135deg, #fdf2f4, #ffffff); justify-content: space-between; flex-wrap: wrap;">
+              <div>
+                <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                  <span style="font-size: 15px; font-weight: 900; color: var(--dark-slate);" id="reels-result-title">Kortizol Göbeği & Bölgesel Yağ Yakımı</span>
+                  <span class="logo-badge" id="reels-target-badge">🔥 Yüksek Paylaşım Potansiyeli</span>
+                </div>
+                <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;" id="reels-result-meta">
+                  Dyt. DİLARA ÖZKAN • Tahmini Süre: 30 Saniye • Format: Reels / Shorts
+                </div>
+              </div>
+
+              <!-- Hızlı Kopyalama & Paylaşım Araç Çubuğu -->
+              <div class="action-button-group">
+                <button onclick="copyReelsBlock('caption', this)" class="btn btn-pastel-sage" title="Instagram Açıklamasını Kopyala">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                  <span>Açıklamayı Kopyala</span>
+                </button>
+                <button onclick="copyReelsBlock('script', this)" class="btn btn-pastel-green" title="Senaryoyu Kopyala">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                  <span>Senaryoyu Kopyala</span>
+                </button>
+                <button onclick="shareReelsWhatsApp()" class="btn btn-whatsapp-pastel" title="WhatsApp'a Gönder">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  <span>WhatsApp</span>
+                </button>
+                <button onclick="saveReelsToAgenda()" class="btn btn-outline-pink" title="Ajandama Kaydet">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m19 21-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                  <span>⭐ Ajandaya Ekle</span>
+                </button>
+                <button onclick="downloadReelsAsTxt()" class="btn btn-outline-pink" title="Metin Dosyası Olarak İndir">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  <span>.txt İndir</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="card-body" id="reels-display-container">
+              <!-- JS ile dinamik doldurulur -->
+            </div>
+
+            <!-- Dyt. Dilara Özkan Footer İmzası -->
+            <div style="background: #fdf2f4; border-top: 1px solid #fbcfe8; padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: #8c3648; flex-wrap: wrap; gap: 4px;">
+              <span>🌸 <b>dlarasaglıklıyasam:</b> Dyt. <b>DİLARA ÖZKAN</b> İçerik & Reels Üretim Motoru</span>
+              <span class="dilara-signature">@dlarasaglikliyasam</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div> <!-- /#view-reels -->
 
   <script>
     const sevenDayPlanData = {
@@ -1453,6 +1876,7 @@
       recalcAndRefresh();
       renderPantryChips();
       refreshSavedClientsDropdown();
+      renderAgendaList();
     });
 
     function recalcAndRefresh() {
@@ -1534,12 +1958,13 @@
     }
 
     function renderDayMeals() {
-      const clientName = document.getElementById('inp-name').value.trim() || "Danışan";
+      const clientName = document.getElementById('inp-name').value.trim();
+      const clientHeading = clientName ? `Danışan: ${clientName}` : "Dyt. DİLARA ÖZKAN Klinik Menüsü";
       const targetCal = document.getElementById('stat-target-cal').innerText;
       const dayData = sevenDayPlanData[activeDay];
 
       document.getElementById('active-day-heading').innerText = `${activeDay}. Gün (${dayData.dayName})`;
-      document.getElementById('active-day-subheading').innerText = `${clientName} • ${targetCal} • 6 Öğün + Detoks + Tatlı`;
+      document.getElementById('active-day-subheading').innerText = `${clientHeading} • ${targetCal} • 6 Öğün + Detoks + Tatlı`;
 
       const container = document.getElementById('meals-container');
       let html = '';
@@ -1691,10 +2116,15 @@
 
     function refreshSavedClientsDropdown() {
       const sel = document.getElementById('saved-clients-select');
-      sel.innerHTML = `<option value="">-- Kayıtlı Danışanlar (${Object.keys(savedClientsData).length}) --</option>`;
-      Object.keys(savedClientsData).forEach(name => {
-        sel.innerHTML += `<option value="${name}">${name}</option>`;
-      });
+      const count = Object.keys(savedClientsData).length;
+      if (count === 0) {
+        sel.innerHTML = `<option value="">-- Henüz Kayıtlı Danışan Yok --</option>`;
+      } else {
+        sel.innerHTML = `<option value="">-- Kayıtlı Danışan Seç (${count}) --</option>`;
+        Object.keys(savedClientsData).forEach(name => {
+          sel.innerHTML += `<option value="${name}">${name}</option>`;
+        });
+      }
     }
 
     function loadSavedClient(name) {
@@ -1727,14 +2157,15 @@
     }
 
     function shareActiveDayWhatsApp() {
-      const name = document.getElementById('inp-name').value.trim() || "Danışanım";
+      const nameInput = document.getElementById('inp-name').value.trim();
+      const name = nameInput ? `Sevgili ${nameInput}` : "Değerli Danışanımız";
       const rawPhone = document.getElementById('inp-phone').value.replace(/[^0-9]/g, '');
       const dayData = sevenDayPlanData[activeDay];
       const targetCal = document.getElementById('stat-target-cal').innerText;
       const water = document.getElementById('who-val-water').innerText;
 
       let msg = `🌸 *dlarasaglıklıyasam • Dyt. DİLARA ÖZKAN*\n\n`;
-      msg += `🥗 *Sevgili ${name}, ${activeDay}. Gün (${dayData.dayName}) Planınız:*\n\n`;
+      msg += `🥗 *${name}, ${activeDay}. Gün (${dayData.dayName}) Planınız:*\n\n`;
       msg += `🎯 *Hedef Kalori:* ${targetCal} | 💧 *Günlük Su:* ${water}\n`;
       msg += `🥒 *Detoks Suyu:* ${dayData.detoxWater.title}\n`;
       msg += `Tarif: ${dayData.detoxWater.recipe}\n\n`;
@@ -1829,6 +2260,786 @@
     function printClinicalDossier() {
       window.print();
     }
+
+    /* ============================================================ */
+    /* Dyt. DİLARA ÖZKAN INSTAGRAM REELS & VİDEO İÇERİK MOTORU       */
+    /* ============================================================ */
+
+    let currentReelsTopic = 'belly_fat';
+    let currentReelsMode = 'full'; // 'full', 'script', 'caption', 'recipe'
+    let lastGeneratedReelsData = null;
+    let reelsAgenda = JSON.parse(localStorage.getItem('dlarasaglik_reels_agenda')) || [];
+
+    const reelsTopicsDatabase = {
+      belly_fat: {
+        id: "belly_fat",
+        title: "Kortizol Göbeği & İnatçı Yağ Yakımı",
+        targetAudience: "🔥 Yüksek Paylaşım Potansiyeli",
+        estimatedDuration: "25 - 35 sn",
+        hook: "Her gün mekik çekiyorsun ama o alt göbek gitmiyor mu? Sebebi yağ değil, KORTİZOL!",
+        hookOverlayText: "ALT GÖBEK NEDEN GİTMEZ? 🛑 (Mekik Değil!)",
+        broll: "1. Sahne (0-3 sn): Kameraya hafif öne eğilerek şaşkın/ciddi bir bakışla başla, elinde su bardağı olsun.\n2. Sahne (3-12 sn): Kahve kupasını kenara itip saat 23:00 gösteren telefonu ekrana tut.\n3. Sahne (12-25 sn): Tezgaha koyduğun yeşillikleri ve zeytinyağını tabağa dizerken konuşmaya devam et.",
+        voiceover: "Çünkü vücudun sürekli alarm modunda kaldığında, stres hormonu kortizol tüm yağı bel çevrende depolar. Çözüm saatlerce aç kalmak veya kardiyo yapmak değil; akşam 16:00'dan sonra kafeini kesmek, uyku öncesi magnezyum almak ve her ana öğününe kaliteli sağlıklı yağ eklemek. Kortizol düşüren özel gece iksirimi açıklamaya yazdım, kaydetmeyi unutma!",
+        cta: "Sen en çok günün hangi saatinde şişkinlik yaşıyorsun? Yorumlara yaz, birlikte analiz edelim! 👇",
+        caption: `Alt göbeğin gitmemesinin 1 numaralı suçlusu: KORTİZOL! 🤯
+
+Çoğu danışanım "Hocam saatlerce kardiyo yapıyorum, aç geziyorum ama göbeğim erimiyor" diyerek geliyor. Sorun kaloride değil, stres hormonunun yağ depolama sinyalinde! 🛑
+
+Kortizol göbeğini eritmek için 3 klinik kural:
+1️⃣ Saat 16:00'dan sonra kafeini sınırla (Kortizolü tavan yaptırıp gece yağ yakımını bloke eder).
+2️⃣ Aç kalarak metabolizmanı kıtlık moduna sokma; her ana öğünde kaliteli protein + yeşillik tüket.
+3️⃣ Gece 23:00'te melatonin salınımı için odanı zifiri karanlık yap.
+
+🌿 KORTİZOL DÜŞÜREN GECE ÇAYI:
+1 kupa papatya çayına 1 çimdik seylan tarçını ve 1 çay kaşığı organik elma sirkesi ekle. Uykudan 1 saat önce tüket.
+
+📌 Bu videoyu kaydet ve alt göbeğinden şikayetçi olan arkadaşına hemen gönder!
+💬 Sen en çok günün hangi saatinde şişkinlik hissediyorsun? Yorumlarda buluşalım 👇
+
+#dlarasaglıklıyasam #diyetisyendilaraozkan #göbekeritme #bölgeselyağlanma #kortizol #zayıflama #sağlıklıbeslenme #onlinediyet #diyetisyenönerisi #yağyakımı #reels`,
+        recipe: {
+          title: "Kortizol Düşüren Gece İksiri",
+          calories: "15 kcal",
+          prepTime: "3 dk",
+          ingredients: [
+            "1 poşet veya 1 tatlı kaşığı organik papatya çayı",
+            "1 su bardağı ılık su (80°C)",
+            "1 ince dilim taze limon",
+            "1 çimdik gerçek Seylan tarçını",
+            "1 çay kaşığı organik elma sirkesi"
+          ],
+          instructions: "Papatya çayını 5 dakika demleyin. Süzdükten sonra ılıtıp limon dilimi, sirke ve tarçını ekleyin. Uykudan 45 dakika önce yudumlayın.",
+          clinicalNote: "Apigenin maddesi GABA reseptörlerini aktive ederek kortizolü baskılar ve derin uykuda büyüme hormonunu (lipoliz) tetikler."
+        }
+      },
+
+      sweet_craving: {
+        id: "sweet_craving",
+        title: "Tatlı Krizleri & 3 Malzemeli Masum Fit Sufle",
+        targetAudience: "❤️ En Çok Kaydedilenler",
+        estimatedDuration: "30 - 45 sn",
+        hook: "Gece 10'da aniden buzdolabı kapağına yapışıyorsan, iraden zayıf değil; kan şekerin dip yapmış!",
+        hookOverlayText: "GECE GELEN TATLI KRİZİ! 🍫 (İraden Zayıf Değil)",
+        broll: "1. Sahne (0-3 sn): Gece mutfakta buzdolabını açıp içine umutsuzca bakarken başla.\n2. Sahne (3-15 sn): Kameraya dönüp gülümse; tezgaha bir olgun muz, 1 yumurta ve saf ham kakaoyu koy.\n3. Sahne (15-30 sn): Muzu çatalla ezip fincanda mikrodalgaya atışını göster; fincandan duman tüterken kaşığı batır.",
+        voiceover: "Tatlı krizi bir irade savaşı değil, biyolojik bir sinyaldir. Eğer gündüz yeterli protein ve lif almadıysan, beynin en hızlı enerji olan şekere saldırır. Kendine eziyet etme; sadece 3 malzemeyle 2 dakikada hazırlayabileceğin bu fit sufleyi yap. Hem kriz bitsin hem insülinin dengelensin!",
+        cta: "Senin en zayıf noktan hangi tatlı? Yorumlarda yaz, bir sonraki videoda fit versiyonunu yapayım! 👇",
+        caption: `Gece gelen o çikolata krizlerinin gerçek sebebi! 🍫👀
+
+Kendini suçlamayı bırak: "Benim iradem yok" dediğin şey aslında gün boyu yetersiz beslenen vücudunun acil çağrısıdır. Kan şekerin hızla düştüğünde beynin sadece basit şeker arar.
+
+🚨 Çözüm basit:
+Tabağındaki proteini artır, aç karnına kahve içmeyi bırak ve canın tatlı çektiğinde bu masum tarife şans ver!
+
+🥧 3 MALZEMELİ FİT SUFLE:
+• 1 adet küçük olgun muz
+• 1 adet serbest gezen yumurta
+• 1 tatlı kaşığı saf ham kakao
+👉 Çatalla ez, fincana dök, 1.5 dakika mikrodalgada veya fırında pişir. Sadece 135 kcal ve sıfır rafine şeker!
+
+📌 Tatlı krizine giren arkadaşına bu reels'i yolla!
+💬 Senin en zayıf noktan hangi tatlı? Yorumlarda yaz, fit versiyonunu yapalım 👇
+
+#dlarasaglıklıyasam #diyetisyendilaraozkan #fittatlı #tatlıkrizi #şekersizlezzetler #pratiktarifler #sağlıklıyaşam #diyetmenüsü #insülindirenci #fitsufle #reels`,
+        recipe: {
+          title: "3 Malzemeli Akışkan Fit Sufle",
+          calories: "135 kcal",
+          prepTime: "2 dk",
+          ingredients: [
+            "1 adet olgun yerli muz",
+            "1 adet taze yumurta",
+            "1 tatlı kaşığı saf şekersiz ham kakao",
+            "İsteğe bağlı: 1 parça %80 bitter çikolata (ortasına)"
+          ],
+          instructions: "Muzu çatalla pürüzsüz olana kadar ezin. Yumurta ve kakaoyu ekleyip homojen kıvama getirin. Küçük bir sufle kabına döküp ortasına bitter parçasını batırın. Mikrodalgada 90 saniye (veya fırında 180 derecede 8 dk) pişirin.",
+          clinicalNote: "Muzdaki triptofan ve kakaodaki polifenoller dopamin & serotonin üretir; rafine şekersiz tatmin sağlar."
+        }
+      },
+
+      edema: {
+        id: "edema",
+        title: "Sabah Tartıda +1 Kilo Görenlere Ödem Savar İksir",
+        targetAudience: "⚖️ Yüksek Etkileşim & Rahatlatıcı",
+        estimatedDuration: "25 - 30 sn",
+        hook: "Dün akşam diyetini hiç bozmadın ama sabah tartıda +1.5 kilo mu gördün? Sakin ol, o yağ değil!",
+        hookOverlayText: "SABAH TARTIDA +1 KG MI ÇIKTI? 😱 (Yağ Değil!)",
+        broll: "1. Sahne (0-3 sn): Sabah tartıya basıp şok olmuş bir yüz ifadesiyle kameraya bak.\n2. Sahne (3-12 sn): Sürahiye soğuk su doldururken kameraya göz kırp.\n3. Sahne (12-25 sn): Salatalık, taze nane ve limon dilimlerini sürahiye atıp bardağa döküş sahnesi.",
+        voiceover: "1 kilo yağ almak için fazladan tam 7000 kalori yemen gerekir. Bir gecede 7000 kalori yemediğine göre gördüğün şey sadece tuz veya hormonal kaynaklı ödem! Şimdi panik yapıp aç kalmak yerine bu alkali suyu içiyorsun, akşama tartı eski haline dönüyor.",
+        cta: "Bu sabah tartıda durumlar nasıldı? Moralin bozulduysa yoruma yaz, birlikte çözelim 👇",
+        caption: `Sabah tartıda aniden fırlayan rakamın sırrı! ⚖️🚨
+
+Kaç kere sabah tartıya çıkıp moralin bozuldu? "Dün sadece salata yedim neden 1 kilo fazla çıktım?" dediysen iyi dinle:
+1 gram karbonhidrat vücutta tam 3 gram su tutar. Dün yediğin tuzlu bir sos veya hormonal değişim vücudunu sünger gibi suyla doldurmuş olabilir.
+
+🌿 GÜNÜ KURTARAN ÖDEM ATICI İKSİR:
+• 1.5 litre alkali su
+• 1 adet dilimlenmiş salatalık
+• Yarım demet taze maydanoz
+• 1 ince dilim taze zencefil
+• Yarım sulu limon
+Tüm gün yudum yudum iç, sodyumu idrarla süpürsün.
+
+📌 Bir daha tartıda panik yapmamak için hemen kaydet!
+💬 Bu sabah tartıda durumlar nasıldı? Yorumlarda buluşalım 👇
+
+#dlarasaglıklıyasam #diyetisyendilaraozkan #ödematma #detokssuyu #tartıstresi #zayıflamatüyoları #diyetgünlüğü #onlinediyetisyen #ödemçayı #reels`,
+        recipe: {
+          title: "Böbrek Filtreleyen Yeşil Ödem Suyu",
+          calories: "10 kcal",
+          prepTime: "3 dk",
+          ingredients: [
+            "1.5 litre filtrelenmiş ılık su",
+            "1 adet orta boy salatalık",
+            "Yarım demet taze maydanoz (saplarıyla)",
+            "1 dilim taze zencefil",
+            "Yarım limon dilimleri"
+          ],
+          instructions: "Tüm malzemeleri sürahiye ekleyin. En az 1 saat dinlendirdikten sonra gün boyu yudumlayarak tüketin.",
+          clinicalNote: "Maydanozdaki apigenin ve salatalıktaki potasyum, hücre dışı sıvıyı idrar yoluyla drene eder."
+        }
+      },
+
+      insulin: {
+        id: "insulin",
+        title: "İnsülin Direnci & Yemek Sonrası Koltuğa Yığılanlar",
+        targetAudience: "🩺 Bilimsel & Eğitici",
+        estimatedDuration: "35 - 45 sn",
+        hook: "Yemekten 20 dakika sonra gözlerin kapanıyor ve hemen tatlı bir şeyler arıyorsan, DİKKAT!",
+        hookOverlayText: "YEMEKTEN SONRA UYKU MU BASIYOR? 😴 (İnsülin Alarmı!)",
+        broll: "1. Sahne (0-3 sn): Yemekten sonra koltuğa uzanmış, esneyen ve telefonuna bakan sahne.\n2. Sahne (3-15 sn): Tabağı eline alıp kameraya göster; tabağın içindeki sırayı parmağınla işaret et.\n3. Sahne (15-30 sn): Önce salatayı çatallayış, sonra eti yiyiş, pilavı en sona bırakış adımlarını göster.",
+        voiceover: "Bu reaktif hipoglisemi yani kan şekerinin hızla tepe yapıp aniden çakılma belirtisidir. Çözüm porsiyonu kısmak değil, tabağındaki yeme sırasını değiştirmek! Önce salata ve lifleri, sonra proteini, en son karbonhidratı ye. Bu basit sıralama glikoz fırlamasını yüzde 70 azaltıyor!",
+        cta: "Bu uyku hissini en çok hangi yemekten sonra yaşıyorsun? Yorumda paylaş, doğrusunu yazayım 👇",
+        caption: `Yemekten sonra enerjin sıfıra iniyorsa bunu MUTLAKA oku! ⚡😴
+
+Öğle veya akşam yemeğinden hemen sonra koltuğa yığılıp kalıyor musun? Üzerine bir de kahve ve çikolata çekiyorsa, vücudun insülin direnci sinyali veriyor olabilir.
+
+TABAĞINI BU SIRAYLA YE, DEĞİŞİMİ GÖR:
+🥗 1. Adım: Önce lifler (Salata / Sebze) -> Bağırsakta jel bariyer oluşturur.
+🍗 2. Adım: Protein ve sağlıklı yağlar -> Mide boşalmasını yavaşlatır, tokluk hormonu salgılar.
+🍚 3. Adım: En son karbonhidratlar (Pilav, ekmek, patates) -> Şeker kana yavaş karışır.
+
+📌 Beslenme alışkanlığını kökten değiştirecek bu kuralı kaydet!
+💬 Bu uyku hissini en çok hangi yemekten sonra yaşıyorsun? Yorumda paylaş 👇
+
+#dlarasaglıklıyasam #diyetisyendilaraozkan #insülindirenci #kanşekeri #glikoz #sağlıklıbeslenme #diyetisyen #beslenmetüyoları #yorgunluk #reels`,
+        recipe: {
+          title: "Glikoz Frenleyen Elma Sirkeli Başlangıç",
+          calories: "5 kcal",
+          prepTime: "1 dk",
+          ingredients: [
+            "1 su bardağı ılık su",
+            "1 yemek kaşığı organik filtrelenmemiş elma sirkesi",
+            "İsteğe bağlı: 2 damla limon suyu"
+          ],
+          instructions: "Karbonhidrat içeren ağır ana öğünlerden 10 dakika önce için.",
+          clinicalNote: "Asetik asit, alfa-amilaz enzimini yavaşlatarak nişastanın glikoza dönüşüm hızını düşürür."
+        }
+      },
+
+      oat_toast: {
+        id: "oat_toast",
+        title: "3 Malzemeli Ekmeksiz Çıtır Fit Yulaf Tostu",
+        targetAudience: "🥪 Viral Tarif / Hızlı Çekim",
+        estimatedDuration: "25 - 35 sn",
+        hook: "Diyette ekmek yemeden tost yapamazsın diyenlere bu videoyu izletin!",
+        hookOverlayText: "EKMEKSİZ ÇITIR TOST! 🥪 (Sadece 3 Malzeme)",
+        broll: "1. Sahne (0-3 sn): Tost makinesini açıp çıtır çıtır kızarmış tostu ikiye böl; eriyen lor peynirini yakından göster.\n2. Sahne (3-12 sn): Kasede 3 kaşık yulaf, 1 yumurta ve 2 kaşık yoğurdu çatalla çırpma anı.\n3. Sahne (12-25 sn): Yağlı kağıt serili tost makinesine döküş, 4 dakika sonra arasına peynir koyup katlama.",
+        voiceover: "Sadece 3 yemek kaşığı yulaf, 1 yumurta ve 2 kaşık yoğurtla 5 dakikada hazırlayabileceğin en tok tutan kahvaltı! Beyaz un yok, glüten hassasiyeti olanlara birebir ve öğlene kadar taş gibi tok tutuyor. Tarifi kaydetmeyi unutma!",
+        cta: "Tostunun arasına en çok ne yakışır? Kaşar mı, lor mu, avokado mu? Yorumlarda buluşalım 👇",
+        caption: `5 Dakikada Ekmeksiz Çıtır Fit Tost! 🥪🔥
+
+Sabahları pratik ve tok tutan kahvaltı arayanlar için favori tarifimle geldim. Hem glütensiz hem protein ve lif deposu!
+
+MALZEMELER:
+• 3 yemek kaşığı ince öğütülmüş yulaf ezmesi
+• 1 adet serbest gezen yumurta
+• 2 yemek kaşığı ev yoğurdu
+• Bir çimdik tuz, kekik, pul biber
+• Arası için: Yağsız lor peyniri veya kaşar, domates dilimleri
+
+YAPILIŞI:
+Hepsini bir kasede çırpın. Isınmış yağlı kağıt serili tost makinesine dökün. 3-4 dakika piştikten sonra arasına peyniri koyup katlayın. Çıtır çıtır afiyet olsun!
+
+📌 Yarın sabah kahvaltısı için hemen kaydet!
+💬 Tostunun arasına en çok ne yakışır? Yorumlara yaz 👇
+
+#dlarasaglıklıyasam #diyetisyendilaraozkan #yulaftostu #fittarifler #pratikkahvaltı #ekmeksiztarifler #toktutantarifler #sağlıklıbeslenme #reels`,
+        recipe: {
+          title: "Yüksek Proteinli Çıtır Yulaf Tostu",
+          calories: "220 kcal",
+          prepTime: "5 dk",
+          ingredients: [
+            "3 yemek kaşığı öğütülmüş yulaf ezmesi",
+            "1 adet taze yumurta",
+            "2 yemek kaşığı süzme yoğurt",
+            "50g yağsız lor peyniri",
+            "Kekik, pul biber, çörek otu"
+          ],
+          instructions: "Malzemeleri çatalla çırpın. Yağlı kağıt arasına döküp tost makinesinde 4 dakika pişirin. Peyniri koyup ikiye katlayın.",
+          clinicalNote: "Beta-glukan lifi mide boşalmasını geciktirir, tokluk hormonu GLP-1 salgılanmasını tetikler."
+        }
+      },
+
+      myths: {
+        id: "myths",
+        title: "Diyet Efsaneleri: 'Akşam 6'dan Sonra Su Bile İçme!'",
+        targetAudience: "❌ Yüksek Yorum & Tartışma",
+        estimatedDuration: "30 - 40 sn",
+        hook: "Saat 18:01 olunca vücudun yediğin her şeyi yağa dönüştürdüğünü sanıyorsan, büyük yanılıyorsun!",
+        hookOverlayText: "AKŞAM 6'DAN SONRA YEMEK YASAK MI? ⏰❌",
+        broll: "1. Sahne (0-3 sn): Duvardaki saate bakıp elindeki çatalı fırlatan mimikle başla.\n2. Sahne (3-15 sn): Kameraya dönüp gülümseyerek tabağına temiz bir akşam yemeği koy.\n3. Sahne (15-30 sn): Yatağı ve uyku saatini göstererek diyetisyen tüyolarını parmaklarınla say.",
+        voiceover: "Vücudunun kolunda saat yok! Önemli olan saatin kaç olduğu değil, yatmadan önceki 3-4 saatlik sindirim penceresi ve gün boyu aldığın toplam kaloridir. Gece vardiyasında çalışanlar nasıl kilo veriyor sanıyorsun? Kendini gereksiz yasaklarla kısıtlama, bilimsel beslen!",
+        cta: "Sen akşam en son saat kaçta yemek yiyorsun? Yorumlarda yazın, doğrusunu konuşalım 👇",
+        caption: `Diyet dünyasının en büyük efsanesi: "Akşam 6'dan sonra su bile içme!" ❌⏰
+
+Yıllardır herkesin inandığı bu kural yüzünden binlerce insan gece 11'de açlıktan buzdolabını yağmalıyor.
+
+BİLİM NE DİYOR?
+Vücudumuz kalori yakımını saat 18:00'de durdurmaz. Eğer gece 00:00'da uyuyorsan ve saat 18:00'de yemek yemeyi kesersen, 6 saat boyunca aç kalır ve kortizolünü fırlatırsın.
+
+Doğru kural:
+✅ Uykudan 3-3.5 saat önce ana öğününü tamamla.
+✅ Gerekirse uyku kaliteni artıracak hafif bir ara öğün (örneğin 2 ceviz + papatya çayı) yap.
+
+📌 Bu efsaneye hala inanan sevdiklerine bu videoyu gönder!
+💬 Sen akşam en son kaçta yemek yiyorsun? Yorumlarda buluşalım 👇
+
+#dlarasaglıklıyasam #diyetisyendilaraozkan #diyetefsaneleri #akşamyemeği #sağlıklızayıflama #diyetmitleri #beslenmeuzmanı #onlinediyet #reels`,
+        recipe: {
+          title: "Hafif Gece Tokluk Kasesi",
+          calories: "95 kcal",
+          prepTime: "2 dk",
+          ingredients: [
+            "3 yemek kaşığı probiyotik yoğurt",
+            "1 tatlı kaşığı öğütülmüş keten tohumu",
+            "1 çimdik seylan tarçını"
+          ],
+          instructions: "Yoğurdu keten tohumu ve tarçınla karıştırın. Yatmadan 2 saat önce tüketin.",
+          clinicalNote: "Kazein proteini gece boyunca yavaş aminoasit salgılar; keten tohumu bağırsak mikrobiyotasını besler."
+        }
+      },
+
+      market: {
+        id: "market",
+        title: "Market Dedektifi & 'Fit / Diyet' Yazan Ürün Tuzakları",
+        targetAudience: "🛒 Merak & Şok Edici",
+        estimatedDuration: "35 - 45 sn",
+        hook: "Paketin üstünde 'Fit', 'Diyet' veya 'Şekersiz' yazması onu sağlıklı yapmaz; arkasını çevirdiğinde şok olacaksın!",
+        hookOverlayText: "DİYET YAZAN ÜRÜNLERİN GİZLİ ŞEKERİ! 🔍🛒",
+        broll: "1. Sahne (0-3 sn): Market reyonunda diyet bisküvi paketini incelerken başla.\n2. Sahne (3-15 sn): Paketi ters çevirip arkasındaki içindekiler kısmını parmağınla göster.\n3. Sahne (15-30 sn): Elindeki sağlıklı ev yapımı atıştırmalığı kameraya yaklaştırarak karşılaştır.",
+        voiceover: "Üzerinde fit yazan pek çok ürün, yağı azaltıldığı için lezzeti korumak adına gizli şeker, nişasta bazlı glikoz ve tatlandırıcılarla doldurulur. Bir porsiyon 'fit' bisküvi, normal bir dilim ev yapımı kekten daha fazla insülin zıplatabilir. Arkasını oku, ilk 3 sırada şurup görüyorsan rafa geri bırak!",
+        cta: "En son hangi 'fit' ürünü alıp kandırıldığını hissettin? Yorumda yaz, bir sonrakinde inceleyeyim 👇",
+        caption: `Marketlerdeki "DİYET" tuzaklarına düşmeyin! 🛒🔍
+
+Paketin ön yüzü pazarlamadır, arka yüzü ise gerçektir. Sağlıklı beslenmeye çalışırken en çok bu ambalajlara aldanıyoruz.
+
+ETİKET OKURKEN BU 3 ŞEYE DİKKAT:
+1️⃣ İçindekiler listesinde ilk 3 sırada ne var? (İlk 3 sıra ürünün %80'ini oluşturur).
+2️⃣ "İlave şeker içermez" yazıp elma suyu konsantresi veya hurma püresiyle şekere boğulmuş mu?
+3️⃣ Yağsız denilerek yerine mısır nişastası veya maltodekstrin basılmış mı?
+
+📌 Alışverişe gitmeden önce bu videoyu kaydet, sepetine ne attığını bil!
+💬 En son hangi "fit" ürünü aldın? Yorumda yaz, inceleyelim 👇
+
+#dlarasaglıklıyasam #diyetisyendilaraozkan #marketalışverişi #etiketokuma #gizlişeker #sağlıklıyaşam #diyetürünleri #bilinçlitüketici #reels`,
+        recipe: {
+          title: "Ev Yapımı 2 Malzemeli Çıtır Fıstık Ezmesi Bar",
+          calories: "120 kcal",
+          prepTime: "5 dk",
+          ingredients: [
+            "1 yemek kaşığı %100 katkısız fıstık ezmesi",
+            "1 çay bardağı patlamış karabuğday veya sade yulaf patlağı",
+            "1 çay kaşığı ham bal veya pekmez"
+          ],
+          instructions: "Fıstık ezmesini ılıklaştırıp patlakla karıştırın. Yağlı kağıda yayıp dondurucuda 10 dk bekletin.",
+          clinicalNote: "Sıfır palm yağı, sıfır glikoz şurubu; saf protein ve sağlıklı tekli doymamış yağ asitleri içerir."
+        }
+      },
+
+      night_eating: {
+        id: "night_eating",
+        title: "Gece Buzdolabını Tavaf Edenler & Melatonin Çayı",
+        targetAudience: "🌙 Gece Kuşları & Tokluk",
+        estimatedDuration: "25 - 35 sn",
+        hook: "Gündüz her şey harika gidiyor ama gece saat 11 oldu mu mutfaktan çıkamıyor musun?",
+        hookOverlayText: "GECE AÇLIĞI MİDE DEĞİL, BEYİN AÇLIĞIDIR! 🌙🧠",
+        broll: "1. Sahne (0-3 sn): Loş ışıkta fincandan buhar tüterken kameraya samimi bir gülümsemeyle başla.\n2. Sahne (3-12 sn): Elindeki 2 tam cevizi kırıp fincanın yanına koy.\n3. Sahne (12-25 sn): Telefonu uçak moduna alıp komodine koyarak sakinleşme anını göster.",
+        voiceover: "Gece açlığı genellikle mide açlığı değil, beynin dopamin ve serotonin arayışıdır. Günün yorgunluğunu yemekle ödüllendirmek istiyorsun. Şimdi bu döngüyü kırmak için mutfağa gittiğinde bir fincan melisa çayı demliyorsun, içine 2 adet ceviz ekliyorsun. Cevizdeki doğal melatonin beynini sakinleştirir, açlık sinyalini kapatır!",
+        cta: "Sen gece en çok ne aşeriyorsun? Tatlı mı tuzlu mu? Yorumda dertleşelim 👇",
+        caption: `Gece gelen o doymak bilmeyen açlık krizini bitiren formül! 🌙✨
+
+Gün boyu harika bir diyet yapıp, akşam televizyon karşısında her şeyi unutup atıştıranlardan mısın? Yalnız değilsin!
+
+Bu durum iradesizlik değil; beynin günün stresini kapatmak için hızlı bir haz (dopamin) aramasıdır.
+
+GECE DÖNGÜSÜNÜ KIRMA PLANI:
+🍵 1 Kupa Melisa + Papatya Çayı (Kortizolü frenler)
+🌰 Yanında 2 tam ceviz içi (Bitkisel melatonin ve omega-3 kaynağı)
+📱 Uykudan 45 dakika önce telefon ekranını mavi ışıktan uzaklaştır.
+
+📌 Gece buzdolabını tavaf eden arkadaşına hemen gönder!
+💬 Sen gece en çok ne aşeriyorsun? Yorumda paylaş 👇
+
+#dlarasaglıklıyasam #diyetisyendilaraozkan #geceaçlığı #melatonin #uykubeslenmesi #sağlıklıyaşam #diyetisyentavsiyesi #tokluk #reels`,
+        recipe: {
+          title: "Derin Uyku & Melatonin İksiri",
+          calories: "65 kcal",
+          prepTime: "4 dk",
+          ingredients: [
+            "1 tatlı kaşığı melisa yaprağı",
+            "1 tatlı kaşığı papatya çiçeği",
+            "1 bardak kaynar su",
+            "2 adet tam ceviz içi (yanında tüketilmek üzere)"
+          ],
+          instructions: "Bitkileri kaynar suda 6 dakika demleyip süzün. Yanında 2 tam cevizle tüketin.",
+          clinicalNote: "Ceviz, kanda serbest melatonin seviyesini 3 kat artırarak gece uyanmalarını engeller."
+        }
+      },
+
+      coffee_metabolism: {
+        id: "coffee_metabolism",
+        title: "Metabolizma Ateşleyen Filtre Kahve İksiri",
+        targetAudience: "☕ Kahve Severler & Enerji",
+        estimatedDuration: "25 - 30 sn",
+        hook: "Sabah kahveni böyle içersen, yağ yakımını tam iki katına çıkarabilirsin!",
+        hookOverlayText: "KAHVENİ BÖYLE İÇİYORSAN YAĞ YAKIMI x2! ☕🔥",
+        broll: "1. Sahne (0-3 sn): Taze demlenmiş filtre kahveyi bardağa dökerken başla.\n2. Sahne (3-12 sn): Kahvenin içine 1 çimdik seylan tarçını ve yarım çay kaşığı hindistancevizi yağı ekleyip köpürtücüyle çırp.\n3. Sahne (12-25 sn): Köpüklü kahveden bir yudum alıp kameraya enerjik bir gülümseme ver.",
+        voiceover: "Aç karnına içilen sade kahve bazı bünyelerde kortizolü yükseltirken; içine ekleyeceğin yarım çay kaşığı soğuk sıkım hindistancevizi yağı ve bir çimdik Seylan tarçını kan şekerini sabitler, açlık hormonunu susturur ve termogenezi hızlandırır!",
+        cta: "Günde kaç fincan kahve içiyorsun? Yorumlara yaz, sana özel limitini söyleyeyim 👇",
+        caption: `Sabah kahveni metabolizma bombasına dönüştür! ☕🔥
+
+Güne kahvesiz başlayamayanlar burada mı? Kahvenizi sadece uyandırmakla kalmayıp yağ yakımını destekleyen bir iksire çevirebilirsiniz.
+
+METABOLİZMA ATEŞLEYEN FORMÜL:
+• 1 fincan taze filtre kahve / Americano
+• 1 çimdik saf Seylan tarçını (İnsülini kilitler)
+• Yarım çay kaşığı organik soğuk sıkım hindistancevizi yağı (MCT yağ asitleri doğrudan karaciğerde enerjiye dönüşür)
+
+📌 Sabah kahvesini seven arkadaşına göndermeyi unutma!
+💬 Sen günde kaç fincan kahve tüketiyorsun? Yorumda buluşalım 👇
+
+#dlarasaglıklıyasam #diyetisyendilaraozkan #kahvekeyfi #metabolizmahızlandırma #yağyakımı #mctoil #sağlıklıyaşam #fittüyolar #reels`,
+        recipe: {
+          title: "Termojenik MCT Kahve",
+          calories: "25 kcal",
+          prepTime: "2 dk",
+          ingredients: [
+            "1 kupa taze demlenmiş filtre kahve",
+            "Yarım çay kaşığı organik hindistancevizi yağı",
+            "1 çimdik toz Seylan tarçını"
+          ],
+          instructions: "Sıcak filtre kahveye malzemeleri ekleyip el köpürtücüsüyle 15 saniye krema kıvamına gelene kadar çırpın.",
+          clinicalNote: "MCT yağ asitleri safra tuzu gerektirmeden emilir, keton üretimini ve bazal metabolik hızı destekler."
+        }
+      },
+
+      pcos_hormone: {
+        id: "pcos_hormone",
+        title: "PCOS & Hormon Dengeleyen Beslenme Reçetesi",
+        targetAudience: "🥑 Kadın Sağlığı & PCOS",
+        estimatedDuration: "35 - 45 sn",
+        hook: "PCOS teşhisi aldıysan ve 'ömür boyu kilo veremezsin' dedilerse, lütfen bu videoyu sonuna kadar izle!",
+        hookOverlayText: "PCOS İLE KİLO VERİLİR Mİ? 🌸 (Asla Umutsuz Olma!)",
+        broll: "1. Sahne (0-3 sn): Kameraya empati dolu ve güven veren bir bakışla başla.\n2. Sahne (3-15 sn): Avokado, ceviz ve nane yapraklarını içeren hormon dostu tabağı göster.\n3. Sahne (15-30 sn): Kliniğindeki başarı grafiklerini veya tahlil kağıdını simgeleyen defteri kameraya tut.",
+        voiceover: "PCOS bir kilo problemi değil, hücresel bir insülin ve hormon dengesizliğidir. Çözüm kendini aç bırakıp saatlerce koşmak değil; glisemik yükü düşük beslenmek, nane çayıyla androjenleri dengelemek ve tabağına bol lif eklemektir. Yüzlerce danışanımla başardık, sen de başaracaksın!",
+        cta: "PCOS ile mücadele eden güçlü kadınlar, yoruma bir 🌸 bırakın, yalnız değilsiniz!",
+        caption: `PCOS ile yaşayan güçlü kadınlar, bu mesaj sizin için! 🌸✨
+
+Polikistik Over Sendromu teşhisi aldığında moralinin bozulduğunu biliyorum. "Metabolizman çok yavaş, kilo veremezsin" diyenlere kulak asma!
+
+PCOS'TA 3 ALTIN KURAL:
+1️⃣ Glisemik İndeks: Kan şekerini zıplatmayan yulaf, karabuğday ve bakliyatları tercih et.
+2️⃣ Günde 2 Fincan Taze Nane Çayı: Çalışmalar serbest testosteron seviyelerini dengelediğini gösteriyor.
+3️⃣ İnositol ve Magnezyum: Hücrelerin insüline duyarlılığını artırır.
+
+📌 Bu videoyu PCOS ile savaşan arkadaşına gönderip güç ver!
+💬 Sen hangi semptomla en çok zorlanıyorsun? Yorumda paylaş 🌸
+
+#dlarasaglıklıyasam #diyetisyendilaraozkan #pcos #polikistikoversendromu #hormondengesi #kadınsağlığı #insülindirenci #sağlıklıbeslenme #onlinediyet #reels`,
+        recipe: {
+          title: "Androjen Dengeleyen Taze Nane & Çörek Otu İksiri",
+          calories: "10 kcal",
+          prepTime: "4 dk",
+          ingredients: [
+            "10 yaprak taze yeşil nane",
+            "1 su bardağı kaynar su",
+            "Yarım çay kaşığı hafif ezilmiş çörek otu",
+            "1 dilim taze limon"
+          ],
+          instructions: "Taze nane ve çörek otunu sıcak suda 7 dakika demleyin. Süzüp ılık için.",
+          clinicalNote: "Nane (Mentha spicata) hafif androjenik semptomları yatıştırır; çörek otu timokinon ile hücresel duyarlılığı destekler."
+        }
+      }
+    };
+
+    function switchAppTab(tab) {
+      const dietView = document.getElementById('view-diet');
+      const reelsView = document.getElementById('view-reels');
+      const btnDiet = document.getElementById('btn-tab-diet');
+      const btnReels = document.getElementById('btn-tab-reels');
+
+      if (tab === 'diet') {
+        dietView.style.display = 'block';
+        reelsView.style.display = 'none';
+        btnDiet.classList.add('active');
+        btnReels.classList.remove('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        dietView.style.display = 'none';
+        reelsView.style.display = 'block';
+        btnDiet.classList.remove('active');
+        btnReels.classList.add('active');
+        if (!lastGeneratedReelsData) {
+          generateReelsContent();
+        }
+        renderAgendaList();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    function selectTopicChip(topicId) {
+      currentReelsTopic = topicId;
+      document.querySelectorAll('.topic-chip-btn').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.getElementById(`chip-${topicId}`);
+      if (activeBtn) activeBtn.classList.add('active');
+      document.getElementById('reels-custom-topic').value = '';
+      generateReelsContent();
+    }
+
+    function applyCustomTopic() {
+      const val = document.getElementById('reels-custom-topic').value.trim();
+      if (!val) {
+        alert('Lütfen aklınızdaki konuyu kutucuğa yazın.');
+        return;
+      }
+      document.querySelectorAll('.topic-chip-btn').forEach(btn => btn.classList.remove('active'));
+      currentReelsTopic = 'custom';
+      generateReelsContent();
+    }
+
+    function selectReelsMode(mode) {
+      currentReelsMode = mode;
+      document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.getElementById(`mode-btn-${mode}`);
+      if (activeBtn) activeBtn.classList.add('active');
+      if (lastGeneratedReelsData) {
+        renderReelsDisplay(lastGeneratedReelsData);
+      } else {
+        generateReelsContent();
+      }
+    }
+
+    function randomizeReelsTopic() {
+      const keys = Object.keys(reelsTopicsDatabase);
+      const randKey = keys[Math.floor(Math.random() * keys.length)];
+      selectTopicChip(randKey);
+    }
+
+    function synthesizeCustomTopic(customTopic) {
+      const clean = customTopic.trim();
+      const topicLower = clean.toLowerCase();
+
+      return {
+        id: "custom",
+        title: clean.charAt(0).toUpperCase() + clean.slice(1),
+        targetAudience: "✨ Kişiselleştirilmiş Özel Fikir",
+        estimatedDuration: document.getElementById('reels-duration').value + " sn",
+        hook: `Hala ${clean} konusunu yanlış biliyorsanız, bu 30 saniyelik videoyu mutlaka izleyin!`,
+        hookOverlayText: `${clean.toUpperCase()} HAKKINDA BİLİNMEYEN GERÇEK! 🎯`,
+        broll: `1. Sahne (0-3 sn): Kameraya dönüp parmağınla ekrana düşecek kancayı işaret et.\n2. Sahne (3-15 sn): ${clean} konusunu simgeleyen tabağı veya not defterini göstererek konuş.\n3. Sahne (15-30 sn): Samimi ve güven veren bir ses tonuyla diyetisyen tavsiyesini açıkla.`,
+        voiceover: `Danışanlarım bana en çok "${clean}" hakkında sorular soruyor. Eğer bunu doğru zamanda ve doğru kombinasyonla uygulamazsanız beklediğiniz sonucu alamazsınız. Detaylı klinik rehberi ve püf noktalarını açıklamaya bıraktım, kaydetmeyi unutmayın!`,
+        cta: `Siz ${clean} hakkında ne düşünüyorsunuz? Deneyenler yoruma yazsın, birlikte inceleyelim! 👇`,
+        caption: `${clean} Hakkında Bilmeniz Gereken Tüm Gerçekler! 🌸✨
+
+Kliniğimde danışanlarımdan en sık duyduğum konulardan biri: "${clean}". 
+
+Çoğu zaman kulaktan dolma bilgilerle yanlış uygulanıyor ve istenen sonuç alınamıyor.
+
+Dyt. DİLARA ÖZKAN TAVSİYELERİ:
+1️⃣ Tek başına mucize beklemek yerine genel beslenme düzeninize entegre edin.
+2️⃣ Kişiye özel klinik ihtiyaçlarınızı belirlemeden yüksek dozlardan kaçının.
+3️⃣ Günlük su tüketiminizi mutlaka vücut ağırlığınız x 35 ml kuralına göre ayarlayın.
+
+📌 Bu önemli bilgiyi kaydet ve arkadaşına gönder!
+💬 Bu konuda senin aklına takılan soru nedir? Yorumlarda buluşalım 👇
+
+#dlarasaglıklıyasam #diyetisyendilaraozkan #${clean.replace(/[^a-zA-Z0-9çğıöşüÇĞİÖŞÜ]/g, '').toLowerCase()} #sağlıklıbeslenme #diyetisyentavsiyesi #onlinediyet #reels`,
+        recipe: {
+          title: `${clean} Destekleyici Klinik Bitki İksiri`,
+          calories: "12 kcal",
+          prepTime: "3 dk",
+          ingredients: [
+            "1 bardak ılık içme suyu",
+            "1 dilim taze limon",
+            "1 çay kaşığı organik chia veya keten tohumu",
+            "1 yaprak taze nane"
+          ],
+          instructions: "Ilık suya malzemeleri ekleyip 5 dakika bekletin ve gün ortasında için.",
+          clinicalNote: "Antioksidan ve lif sinerjisi oluşturarak biyoyararlanımı en üst seviyeye taşır."
+        }
+      };
+    }
+
+    function generateReelsContent() {
+      let data;
+      if (currentReelsTopic === 'custom') {
+        const val = document.getElementById('reels-custom-topic').value.trim() || "Özel Beslenme Konusu";
+        data = synthesizeCustomTopic(val);
+      } else {
+        data = reelsTopicsDatabase[currentReelsTopic] || reelsTopicsDatabase.belly_fat;
+      }
+
+      lastGeneratedReelsData = data;
+      renderReelsDisplay(data);
+    }
+
+    function renderReelsDisplay(data) {
+      document.getElementById('reels-result-title').innerText = data.title;
+      document.getElementById('reels-target-badge').innerText = data.targetAudience;
+      document.getElementById('reels-result-meta').innerText = `Dyt. DİLARA ÖZKAN • Tahmini Süre: ${data.estimatedDuration} • Format: Instagram Reels`;
+
+      const container = document.getElementById('reels-display-container');
+      let html = '';
+
+      // 1. REELS SENARYO BLOĞU
+      if (currentReelsMode === 'full' || currentReelsMode === 'script') {
+        html += `
+          <div class="reels-card-box" style="border-left: 4px solid #be5b70;">
+            <div class="reels-box-header">
+              <span class="badge-reels-tag badge-hook">🪝 İLK 3 SANİYE KANCASI (HOOK)</span>
+              <button onclick="copySingleText('${escapeForJs(data.hook)}', this)" class="btn btn-outline-pink" style="padding: 3px 8px; font-size: 10px;">Metni Kopyala</button>
+            </div>
+            <div style="font-size: 14px; font-weight: 900; color: #991b1b; margin-bottom: 6px;">"${data.hook}"</div>
+            <div style="font-size: 11px; color: #79576b; background: #fff5f5; padding: 6px 10px; border-radius: 6px; border: 1px dashed #fecaca;">
+              <b>📱 Ekrana Büyük Harfle Yazılacak Yazı:</b> ${data.hookOverlayText}
+            </div>
+
+            <div style="margin-top: 14px;">
+              <div class="reels-box-header" style="margin-bottom: 4px;">
+                <span class="badge-reels-tag badge-broll">🎥 GÖRSEL ÇEKİM & SAHNE PLANI (B-ROLL)</span>
+              </div>
+              <div style="font-size: 12px; color: #1e1b22; white-space: pre-line; line-height: 1.5; background: #f8fafc; padding: 10px; border-radius: 6px; border: 1px solid #e2e8f0;">${data.broll}</div>
+            </div>
+
+            <div style="margin-top: 14px;">
+              <div class="reels-box-header" style="margin-bottom: 4px;">
+                <span class="badge-reels-tag badge-script">🎙️ KAMERA ÖNÜ KONUŞMA METNİ (VOICEOVER)</span>
+              </div>
+              <div style="font-size: 12.5px; color: #064e3b; line-height: 1.5; background: #ecfdf5; padding: 10px; border-radius: 6px; border: 1px solid #a7f3d0;">"${data.voiceover}"</div>
+            </div>
+
+            <div style="margin-top: 14px;">
+              <div class="reels-box-header" style="margin-bottom: 4px;">
+                <span class="badge-reels-tag badge-cta">📢 BİTİŞ ETKİLEŞİM ÇAĞRISI (CTA)</span>
+              </div>
+              <div style="font-size: 12px; font-weight: 700; color: #92400e; background: #fffbeb; padding: 8px 10px; border-radius: 6px; border: 1px solid #fde68a;">${data.cta}</div>
+            </div>
+          </div>
+        `;
+      }
+
+      // 2. INSTAGRAM CAPTION BLOĞU
+      if (currentReelsMode === 'full' || currentReelsMode === 'caption') {
+        html += `
+          <div class="reels-card-box" style="border-left: 4px solid #6ee7b7;">
+            <div class="reels-box-header">
+              <span class="badge-reels-tag badge-caption">📝 INSTAGRAM AÇIKLAMA (CAPTION) & HASHTAG'LER</span>
+              <button onclick="copySingleText('${escapeForJs(data.caption)}', this)" class="btn btn-pastel-green" style="padding: 4px 10px; font-size: 11px;">Instagram'a Kopyala</button>
+            </div>
+            <div style="font-size: 12px; color: var(--text-main); white-space: pre-line; line-height: 1.6; background: #fafafa; padding: 12px; border-radius: 6px; border: 1px solid var(--border-color); max-height: 320px; overflow-y: auto;" id="reels-caption-content">${data.caption}</div>
+          </div>
+        `;
+      }
+
+      // 3. FİT TARİF BLOĞU
+      if ((currentReelsMode === 'full' || currentReelsMode === 'recipe') && data.recipe) {
+        html += `
+          <div class="reels-card-box" style="border-left: 4px solid #f472b6;">
+            <div class="reels-box-header">
+              <span class="badge-reels-tag badge-recipe">🍓 VİRAL FİT TARİF & REÇETE</span>
+              <span style="font-size: 11px; font-weight: 800; color: #be5b70;">${data.recipe.calories} • ${data.recipe.prepTime}</span>
+            </div>
+            <div style="font-size: 14px; font-weight: 900; color: #86198f; margin-bottom: 8px;">${data.recipe.title}</div>
+            
+            <div style="font-size: 11.5px; color: var(--text-main); margin-bottom: 8px;">
+              <b>🥘 Malzemeler:</b>
+              <ul style="margin: 4px 0 0 18px; padding: 0;">
+                ${data.recipe.ingredients.map(ing => `<li>${ing}</li>`).join('')}
+              </ul>
+            </div>
+
+            <div style="font-size: 11.5px; color: var(--text-main); margin-bottom: 8px;">
+              <b>👩‍🍳 Hazırlanışı:</b> ${data.recipe.instructions}
+            </div>
+
+            <div style="font-size: 11px; color: #86198f; background: #fdf4ff; padding: 8px 10px; border-radius: 6px; border: 1px solid #f5d0fe;">
+              ✨ <b>Dyt. Dilara Özkan Klinik Notu:</b> ${data.recipe.clinicalNote}
+            </div>
+          </div>
+        `;
+      }
+
+      container.innerHTML = html;
+    }
+
+    function escapeForJs(str) {
+      if (!str) return '';
+      return str.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\n/g, '\\n').replace(/\r/g, '');
+    }
+
+    function copySingleText(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        const oldText = btn.innerHTML;
+        btn.innerHTML = `✅ Kopyalandı!`;
+        setTimeout(() => { btn.innerHTML = oldText; }, 2000);
+      }).catch(() => {
+        alert("Metin panoya kopyalandı!");
+      });
+    }
+
+    function copyReelsBlock(blockType, btn) {
+      if (!lastGeneratedReelsData) return;
+      let textToCopy = '';
+      if (blockType === 'caption') {
+        textToCopy = lastGeneratedReelsData.caption;
+      } else if (blockType === 'script') {
+        textToCopy = `🎬 REELS SENARYOSU: ${lastGeneratedReelsData.title}\n\n🪝 KANCA:\n"${lastGeneratedReelsData.hook}"\n(Ekrana: ${lastGeneratedReelsData.hookOverlayText})\n\n🎥 ÇEKİM / SAHNE:\n${lastGeneratedReelsData.broll}\n\n🎙️ KONUŞMA METNİ:\n"${lastGeneratedReelsData.voiceover}"\n\n📢 CTA:\n${lastGeneratedReelsData.cta}`;
+      }
+
+      copySingleText(textToCopy, btn);
+    }
+
+    function shareReelsWhatsApp() {
+      if (!lastGeneratedReelsData) return;
+      let msg = `🎬 *Dyt. DİLARA ÖZKAN • Instagram Reels Fikri*\n\n`;
+      msg += `📌 *Konu:* ${lastGeneratedReelsData.title}\n`;
+      msg += `🪝 *Kanca (Hook):* "${lastGeneratedReelsData.hook}"\n\n`;
+      msg += `🎙️ *Konuşma Metni:*\n${lastGeneratedReelsData.voiceover}\n\n`;
+      msg += `📝 *Instagram Açıklaması:*\n${lastGeneratedReelsData.caption}\n\n`;
+      if (lastGeneratedReelsData.recipe) {
+        msg += `🍓 *Tarif:* ${lastGeneratedReelsData.recipe.title} (${lastGeneratedReelsData.recipe.calories})\n`;
+        msg += `Malzemeler: ${lastGeneratedReelsData.recipe.ingredients.join(', ')}\n\n`;
+      }
+      msg += `✨ *dlarasaglıklıyasam* 🌸`;
+
+      const encoded = encodeURIComponent(msg);
+      window.open(`https://web.whatsapp.com/send?text=${encoded}`, '_blank');
+    }
+
+    function downloadReelsAsTxt() {
+      if (!lastGeneratedReelsData) return;
+      let content = `Dyt. DILARA OZKAN - INSTAGRAM REELS ICERIK FORMU\n`;
+      content += `==============================================\n\n`;
+      content += `KONU: ${lastGeneratedReelsData.title}\n`;
+      content += `HEDEF: ${lastGeneratedReelsData.targetAudience}\n`;
+      content += `SURE: ${lastGeneratedReelsData.estimatedDuration}\n\n`;
+      content += `1. KANCA (HOOK):\n"${lastGeneratedReelsData.hook}"\n`;
+      content += `EKRANA YAZILACAK: ${lastGeneratedReelsData.hookOverlayText}\n\n`;
+      content += `2. CEKIM / SAHNE (B-ROLL):\n${lastGeneratedReelsData.broll}\n\n`;
+      content += `3. KONUSMA METNI (VOICEOVER):\n"${lastGeneratedReelsData.voiceover}"\n\n`;
+      content += `4. KAPANIS (CTA):\n${lastGeneratedReelsData.cta}\n\n`;
+      content += `5. INSTAGRAM ACIKLAMASI (CAPTION):\n${lastGeneratedReelsData.caption}\n\n`;
+      if (lastGeneratedReelsData.recipe) {
+        content += `6. FIT TARIF:\n${lastGeneratedReelsData.recipe.title} (${lastGeneratedReelsData.recipe.calories})\n`;
+        content += `Malzemeler: ${lastGeneratedReelsData.recipe.ingredients.join(', ')}\n`;
+        content += `Yapilisi: ${lastGeneratedReelsData.recipe.instructions}\n`;
+        content += `Klinik Not: ${lastGeneratedReelsData.recipe.clinicalNote}\n\n`;
+      }
+      content += `dlarasaglikliyasam - Dyt. Dilara Ozkan\n`;
+
+      const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `Reels_${lastGeneratedReelsData.title.replace(/[^a-zA-Z0-9]/g, '_')}.txt`;
+      a.click();
+    }
+
+    function saveReelsToAgenda() {
+      if (!lastGeneratedReelsData) return;
+      const item = {
+        id: Date.now(),
+        title: lastGeneratedReelsData.title,
+        hook: lastGeneratedReelsData.hook,
+        date: new Date().toLocaleDateString('tr-TR'),
+        done: false,
+        data: lastGeneratedReelsData
+      };
+
+      reelsAgenda.unshift(item);
+      localStorage.setItem('dlarasaglik_reels_agenda', JSON.stringify(reelsAgenda));
+      renderAgendaList();
+      alert(`"${lastGeneratedReelsData.title}" başarıyla ajandanıza eklendi!`);
+    }
+
+    function renderAgendaList() {
+      const container = document.getElementById('agenda-items-container');
+      const countBadge = document.getElementById('agenda-count-badge');
+      if (!container) return;
+
+      countBadge.innerText = `${reelsAgenda.length} Video`;
+
+      if (reelsAgenda.length === 0) {
+        container.innerHTML = `
+          <div style="font-size: 11.5px; color: var(--text-muted); text-align: center; padding: 14px; background: #fdf2f4; border-radius: var(--radius-sm); border: 1px dashed var(--border-color);">
+            Henüz kaydedilen video fikri yok. Beğendiğiniz içerikleri <b>"⭐ Ajandaya Ekle"</b> butonuyla buraya ekleyebilirsiniz!
+          </div>
+        `;
+        return;
+      }
+
+      let html = '';
+      reelsAgenda.forEach((item, idx) => {
+        html += `
+          <div class="agenda-card-item ${item.done ? 'done' : ''}">
+            <div style="flex: 1; min-width: 0;">
+              <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 2px;">
+                <span style="font-size: 12px; font-weight: 800; color: var(--dark-slate);" class="agenda-text">${item.title}</span>
+                <span style="font-size: 9px; padding: 1px 6px; border-radius: 4px; background: #fdf2f4; color: #8c3648;">${item.date}</span>
+              </div>
+              <div style="font-size: 11px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                "${item.hook}"
+              </div>
+            </div>
+            <div style="display: flex; gap: 4px; flex-shrink: 0;">
+              <button onclick="toggleAgendaDone(${idx})" class="btn ${item.done ? 'btn-pastel-sage' : 'btn-pastel-green'}" style="padding: 4px 8px; font-size: 10px;" title="${item.done ? 'Çekilmedi Yap' : 'Çekildi Olarak İşaretle'}">
+                ${item.done ? '↩️' : '✅ Çekildi'}
+              </button>
+              <button onclick="loadAgendaItem(${idx})" class="btn btn-outline-pink" style="padding: 4px 8px; font-size: 10px;" title="İçeriği Aç">
+                👀 Aç
+              </button>
+              <button onclick="deleteAgendaItem(${idx})" class="btn btn-outline-pink" style="padding: 4px 6px; font-size: 10px; color: #dc2626;" title="Sil">
+                🗑️
+              </button>
+            </div>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+    }
+
+    function toggleAgendaDone(idx) {
+      if (!reelsAgenda[idx]) return;
+      reelsAgenda[idx].done = !reelsAgenda[idx].done;
+      localStorage.setItem('dlarasaglik_reels_agenda', JSON.stringify(reelsAgenda));
+      renderAgendaList();
+    }
+
+    function deleteAgendaItem(idx) {
+      if (confirm('Bu videoyu ajandanızdan silmek istediğinize emin misiniz?')) {
+        reelsAgenda.splice(idx, 1);
+        localStorage.setItem('dlarasaglik_reels_agenda', JSON.stringify(reelsAgenda));
+        renderAgendaList();
+      }
+    }
+
+    function loadAgendaItem(idx) {
+      const item = reelsAgenda[idx];
+      if (!item || !item.data) return;
+      lastGeneratedReelsData = item.data;
+      renderReelsDisplay(item.data);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
   </script>
 </body>
 </html>
