@@ -524,6 +524,52 @@
       border-radius: var(--radius-sm);
     }
 
+        /* Mini Değiştir Butonu & Toast Bildirimi */
+    .btn-swap-mini {
+      background: var(--dusty-pink-light);
+      color: var(--dusty-pink);
+      border: 1px solid var(--dusty-pink-border);
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn-swap-mini:hover {
+      background: var(--dusty-pink);
+      color: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 5px rgba(190, 91, 112, 0.25);
+    }
+    .app-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #1e1b22;
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: var(--radius-md);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 99999;
+      border-left: 4px solid var(--pastel-green);
+      animation: toastSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      max-width: 90vw;
+    }
+    @keyframes toastSlideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     /* Mobil Aksiyon Butonları */
     .action-button-group {
       display: flex;
@@ -961,6 +1007,11 @@
                 <div class="val" id="stat-bmr">1,732 kcal</div>
                 <div class="sub">Bazal</div>
               </div>
+            <!-- Hızlı Menü Yenileme Butonu -->
+            <button onclick="regenerateAll7Days()" class="btn btn-pastel-green" style="width: 100%; margin-top: 10px; padding: 11px; font-weight: 800; justify-content: center; box-shadow: 0 3px 8px rgba(110,231,183,0.3);">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
+              <span>✨ 7 Günlük Diyeti Baştan Üret</span>
+            </button>
               <div class="calc-stat-item">
                 <h6>TDEE</h6>
                 <div class="val" id="stat-tdee">2,381 kcal</div>
@@ -1094,11 +1145,21 @@
               </div>
             </div>
 
-            <!-- BUTONLAR (MOBİLDE TAM UYUMLU) -->
+                        <!-- BUTONLAR (MOBİLDE TAM UYUMLU) -->
             <div class="action-button-group">
+              <button onclick="changeCurrentDayDiet()" class="btn btn-pastel-green" title="Bu gün için farklı bir alternatif menü üret">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                <span>🔄 Menüyü Değiştir</span>
+              </button>
+
+              <button onclick="regenerateAll7Days()" class="btn btn-pastel-sage" title="Tüm 7 günün menülerini yepyeni tariflerle yenile">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
+                <span>✨ 7 Günü Yenile</span>
+              </button>
+
               <button onclick="shareActiveDayWhatsApp()" class="btn btn-whatsapp-pastel">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                <span>Günü WhatsApp'a Gönder</span>
+                <span>WhatsApp'a Gönder</span>
               </button>
               
               <button onclick="downloadOrShareDayPDF()" class="btn btn-pastel-green">
@@ -1409,14 +1470,14 @@
             recipe: "Elmayı dilimleyin, bol tarçın serpip 2 ceviz ile tüketin.",
             synergy: "Tarçın insülin reseptör duyarlılığını artırır."
           },
-          {
+                    {
             type: "AKŞAM YEMEĞİ (19:30)",
             typeClass: "dinner",
-            title: "Zeytinyağlı Taze Sebze & Haşlanmış Yumurta",
-            calories: 450,
-            usedPantry: ["Ispanak/Kabak", "Domates", "Yumurta (2 adet)", "Yoğurt"],
-            recipe: "Sebzeleri zeytinyağında pişirin. 2 haşlanmış yumurta ve yoğurtla tüketin.",
-            synergy: "Gece karaciğeri yormayan hafif ve doyurucu profil."
+            title: "Fırında Levrek Fileto & Bol Limonlu Roka Salatası",
+            calories: 440,
+            usedPantry: ["Levrek (180g)", "Roka", "Limon", "Zeytinyağı"],
+            recipe: "Levrek filetoyu fırında zeytinyağı ve limon dilimleriyle pişirin. Bol limonlu taze roka ve cevizli salatayla servis yapın.",
+            synergy: "Hafif balık proteini ve Omega-3, gece sindirimi yormadan hücre yenilenmesini destekler."
           },
           {
             type: "3. ARA / GECE (21:30)",
@@ -1862,6 +1923,462 @@
         ]
       }
     };
+    /* ============================================================ */
+    /* Dyt. DİLARA ÖZKAN ZENGİN KLİNİK ÖĞÜN HAVUZU (mealPools)      */
+    /* TÜM AKŞAM YEMEKLERİNDE KESİNLİKLE YUMURTA YOKTUR!            */
+    /* ============================================================ */
+    const mealPools = {
+      breakfast: [
+        {
+          title: "Ispanaklı & Lorlu Düşük GI Omlet & Zeytin",
+          calories: 380,
+          usedPantry: ["Yumurta (2 adet)", "Lor (50g)", "Ispanak", "Zeytin (5 adet)"],
+          recipe: "Ispanakları tavada zeytinyağı ile soteleyin. Yumurta ve lor peynirini ekleyip pişirin. 5 zeytinle servis yapın.",
+          synergy: "Ispanak lifi glisemik yükselmeyi frenler; lor proteini 4 saat tokluk sağlar."
+        },
+        {
+          title: "Ezine Peynirli & Yumurtalı Akdeniz Tabağı",
+          calories: 370,
+          usedPantry: ["Peynir (50g)", "Haşlanmış Yumurta", "Domates", "Zeytin"],
+          recipe: "1 adet haşlanmış yumurta, kaliteli Ezine peyniri, zeytin, bol domates, salatalık ve 1 dilim tam buğday ekmeği.",
+          synergy: "Biyoyararlanımı yüksek yumurta proteini ve taze antioksidan likopen."
+        },
+        {
+          title: "Avokadolu Poşe Yumurta & Ekşi Mayalı Ekmek",
+          calories: 390,
+          usedPantry: ["Yumurta (2 adet)", "Yarım Avokado", "Ekşi Mayalı Ekmek", "Çörekotu"],
+          recipe: "Kızarmış 1 dilim ekşi mayalı ekmek üzerine ezilmiş avokado sürün. Üzerine poşe yumurtaları yerleştirip pul biber ve çörekotu serpin.",
+          synergy: "Sağlıklı tekli doymamış yağlar ve kolin içeriği uzun süreli tokluk sağlar."
+        },
+        {
+          title: "Mantar & Köy Biberli Fit Menemen & Çeçil Peyniri",
+          calories: 360,
+          usedPantry: ["Yumurta (2 adet)", "Mantar", "Köy Biberi", "Domates", "Çeçil Peyniri"],
+          recipe: "Doğranmış mantar ve köy biberini domatesle soteleyin. Çırpılmış yumurtaları ekleyip hafif sulu bırakarak pişirin.",
+          synergy: "Mantardaki beta-glukanlar bağışıklığı uyarır, yumurta proteiniyle metabolizmayı canlandırır."
+        },
+        {
+          title: "Orman Meyveli & Yulaflı Yoğurt Kasesi (Soğuk)",
+          calories: 340,
+          usedPantry: ["Süzme Yoğurt (200g)", "Yulaf Ezmesi (4 yk)", "Çilek/Yaban Mersini", "Chia (1 tk)"],
+          recipe: "Süzme yoğurt ile yulafı karıştırın. Üzerine taze meyveler, chia tohumu ve bir tutam tarçın ekleyip dinlendirin.",
+          synergy: "Yüksek lif ve probiyotikler bağırsak mikrobiyotasını besler, sindirimi rahatlatır."
+        },
+        {
+          title: "Tulum Peynirli Çıtır Roka Salatası & Ceviz & Haşlanmış Yumurta",
+          calories: 375,
+          usedPantry: ["Yumurta (1 adet)", "Tulum Peyniri (40g)", "Roka", "Ceviz (3 adet)"],
+          recipe: "Bol roka ve maydanozu zeytinyağı-limon sosuyla harmanlayın. Üzerine dilimlenmiş yumurta, ceviz ve ufalanmış peynir ekleyin.",
+          synergy: "Yüksek antioksidan ve kalsiyum bileşimi metabolik sendromu baskılar."
+        }
+      ],
+      snack1: [
+        {
+          title: "Antioksidan Yeşil Çay & Çiğ Badem",
+          calories: 110,
+          usedPantry: ["Çiğ Badem (8 adet)", "Limonlu Yeşil Çay"],
+          recipe: "1 fincan taze demlenmiş limonlu yeşil çayın yanında 8 adet çiğ badem tüketin.",
+          synergy: "EGCG kateşinleri metabolik hızı uyarır, bademdeki E vitamini hücresel koruma sunar."
+        },
+        {
+          title: "Probiyotik Sade Kefir & Çörekotu",
+          calories: 115,
+          usedPantry: ["Kefir (1 bardak)", "Çörekotu (1 çk)"],
+          recipe: "1 su bardağı ev tipi veya probiyotik sade kefire 1 çay kaşığı taze çekilmiş çörekotu karıştırıp için.",
+          synergy: "Kefir probiyotikleri bağırsak florasını güçlendirir, inflamasyonu azaltır."
+        },
+        {
+          title: "Matcha Latte (Badem Sütlü) & Çiğ Fındık",
+          calories: 125,
+          usedPantry: ["Badem Sütü (150ml)", "Matcha Tozu", "Çiğ Fındık (6 adet)"],
+          recipe: "Ilık şekersiz badem sütüne 1 çay kaşığı saf Japon matcha tozu ekleyip köpürtün. Yanında fındıkla tüketin.",
+          synergy: "L-theanine ve kafein sinerjisi sakin ve odaklanmış bir enerji sağlar."
+        },
+        {
+          title: "Maden Suyu & Taze Nane-Limon & 2 Kuru Kayısı",
+          calories: 95,
+          usedPantry: ["Maden Suyu", "Limon", "Nane", "Kuru Kayısı (2 adet)"],
+          recipe: "Soğuk maden suyuna bol limon ve nane yaprakları ekleyin. Yanında 2 gün kurusu kayısı tüketin.",
+          synergy: "Magnezyum ve potasyum dengesi kas kramplarını önler ve sindirimi hızlandırır."
+        }
+      ],
+      lunch: [
+        {
+          title: "Fırın Kabak Sandalı & Sarımsaklı Yoğurt",
+          calories: 420,
+          usedPantry: ["Kabak (2 adet)", "Yoğurt (4 yk)", "Ceviz (3 tam)"],
+          recipe: "Kabakları ikiye bölüp fırınlayın. Üzerine sarımsaklı naneli yoğurt dökün, cevizle süsleyin.",
+          synergy: "Kabaktaki potasyum sodyum dengesini kurar, ödem atımını kolaylaştırır."
+        },
+        {
+          title: "Izgara Tavuk Göğsü & Kinoa & Akdeniz Yeşillikleri",
+          calories: 430,
+          usedPantry: ["Tavuk Göğsü (150g)", "Haşlanmış Kinoa (3 yk)", "Roka", "Limon"],
+          recipe: "Kekikli zeytinyağında marine edilmiş tavuk göğsünü ızgarada pişirin. Kinoa ve bol yeşillikli salatayla servis edin.",
+          synergy: "Yüksek biyolojik değerli saf protein kas kütlesini korur ve termik etkiyi artırır."
+        },
+        {
+          title: "Zeytinyağlı Taze Fasulye & Yoğurt & 1 Dilim Çavdar Ekmeği",
+          calories: 390,
+          usedPantry: ["Taze Fasulye (1 porsiyon)", "Yoğurt (1 kase)", "Çavdar Ekmeği"],
+          recipe: "Domates ve zeytinyağı ile kısık ateşte pişmiş taze fasulyeyi 1 kase kaymaksız yoğurt ve ekmekle tüketin.",
+          synergy: "Çözünür lif bağırsak geçiş süresini optimize eder ve tokluk hormonlarını tetikler."
+        },
+        {
+          title: "Fırın Somon Fileto & Buharda Brokoli-Havuç Tabağı",
+          calories: 460,
+          usedPantry: ["Somon (160g)", "Brokoli", "Havuç", "Zeytinyağı"],
+          recipe: "Somon dilimini fırında 15 dk pişirin. Buharda haşlanmış brokoli ve havuç üzerine zeytinyağı gezdirin.",
+          synergy: "Sülforafan (brokoli) ve Omega-3 sinerjisi karaciğer faz-2 detoksifikasyonunu destekler."
+        },
+        {
+          title: "Geleneksel Etli Nohut Yemeği & Salatalıklı Cacık",
+          calories: 440,
+          usedPantry: ["Nohut (1 porsiyon)", "Yağsız Dana Kuşbaşı (60g)", "Salatalık", "Yoğurt"],
+          recipe: "Kısık ateşte pişirilmiş az etli nohut yemeğini bol naneli soğuk cacıkla tüketin.",
+          synergy: "Dirençli nişasta ve kazein proteini 5 saat boyu kararlı kan şekeri sağlar."
+        },
+        {
+          title: "Hindi Sote & Mantar & Karabuğday (Greçka) Pilavı",
+          calories: 410,
+          usedPantry: ["Hindi Göğsü (130g)", "Mantar", "Karabuğday (3 yk)", "Köz Biber"],
+          recipe: "Hindi küplerini mantar ve biberle soteleyin. Haşlanmış glütensiz karabuğday pilavı ile servis yapın.",
+          synergy: "Greçkadaki rutin maddesi damar elastikiyetini korur, triptofan enerjiyi dengeler."
+        }
+      ],
+      snack2: [
+        {
+          title: "Tarçınlı Yeşil Elma Dilimleri & Ceviz",
+          calories: 160,
+          usedPantry: ["Yeşil Elma (1 adet)", "Ceviz (2 adet)", "Toz Tarçın"],
+          recipe: "Elmayı ince dilimleyin, bol seylon tarçını serpip 2 tam ceviz içi ile tüketin.",
+          synergy: "Tarçındaki MHCP bileşeni insülin reseptör duyarlılığını artırarak tatlı krizini önler."
+        },
+        {
+          title: "Probiyotik Yoğurt & Taze Yaban Mersini & Keten Tohumu",
+          calories: 150,
+          usedPantry: ["Süzme Yoğurt (3 yk)", "Yaban Mersini (1 avuç)", "Öğütülmüş Keten Tohumu (1 tk)"],
+          recipe: "Yoğurda yaban mersini ve taze öğütülmüş keten tohumu ekleyip karıştırın.",
+          synergy: "Antosiyaninler beyin sağlığını korur, lignanlar hormonal dengeyi destekler."
+        },
+        {
+          title: "2 Kare %80 Bitter Çikolata & Taze Çekilmiş Filtre Kahve",
+          calories: 140,
+          usedPantry: ["Bitter Çikolata (%80)", "Filtre Kahve"],
+          recipe: "Şekersiz sıcak filtre kahve veya Türk kahvesi eşliğinde 2 kare kaliteli bitter çikolata tüketin.",
+          synergy: "Kakao flavanoidleri ve kahve polifenolleri bilişsel uyanıklık ve dopamin salgısı sağlar."
+        },
+        {
+          title: "Çıtır Galeta & Labne Peyniri & Çörekotu",
+          calories: 145,
+          usedPantry: ["Tam Tahıllı Galeta (2 adet)", "Labne/Lor (1 yk)", "Salatalık"],
+          recipe: "Galetaların üzerine hafif labne sürün, çörekotu ve salatalık dilimleriyle tüketin.",
+          synergy: "Kompleks karbonhidrat ve protein kombinasyonu ikindi saatlerindeki hipoglisemiyi engeller."
+        }
+      ],
+      dinner: [
+        /* KESİNLİKLE YUMURTA YOKTUR! SADECE ENFES VE KLİNİK AKŞAM YEMEKLERİ */
+        {
+          title: "Fırında Levrek Fileto & Bol Limonlu Roka Salatası",
+          calories: 440,
+          usedPantry: ["Levrek (180g)", "Roka", "Limon", "Zeytinyağı"],
+          recipe: "Levrek filetoyu fırında zeytinyağı ve taze kekikle pişirin. Bol limonlu roka ve cevizli salatayla servis yapın.",
+          synergy: "Hafif balık proteini ve Omega-3, gece sindirimi yormadan hücre yenilenmesini uyarır."
+        },
+        {
+          title: "Izgara Kasap Köfte & Köz Patlıcan-Biber Salatası",
+          calories: 460,
+          usedPantry: ["Yağsız Dana Kıyma (150g)", "Patlıcan", "Kırmızı Biber", "Maydanoz"],
+          recipe: "Baharatlı yağsız köfteleri döküm tavada pişirin. Fırında közlenmiş patlıcan ve biberle zeytinyağlı tabağınızı hazırlayın.",
+          synergy: "Yüksek biyoyararlanımlı demir ve çinko, köz sebzelerin düşük kalorili lifiyle dengelenir."
+        },
+        {
+          title: "Kırmızı Mercimek Çorbası & Zeytinyağlı Enginar",
+          calories: 420,
+          usedPantry: ["Kırmızı Mercimek (1 kase)", "Enginar (1 adet)", "Dereotu", "Limon"],
+          recipe: "Unsuz süzme mercimek çorbasının yanına taze dereotlu ve zeytinyağlı haşlanmış enginar tabağı.",
+          synergy: "Cynarin (enginar) karaciğer rejenerasyonunu hızlandırır, baklagil proteini gece tokluğu garanti eder."
+        },
+        {
+          title: "Kıymalı Ispanak Yemeği & Sarımsaklı Probiyotik Yoğurt",
+          calories: 450,
+          usedPantry: ["Taze Ispanak (1 demet)", "Az Yağlı Dana Kıyma (80g)", "Ev Yoğurdu", "Sarımsak"],
+          recipe: "Kıymayı soğanla kavurup ıspanakları ekleyin. Yanında sarımsaklı ve naneli ev yoğurduyla sıcak servis yapın.",
+          synergy: "Ispanaktaki demir ve folat, yoğurdun kalsiyumu ve sarımsağın allisin bileşeniyle bağışıklığı korur."
+        },
+        {
+          title: "Fırında Somon Fileto & Buharda Kuşkonmaz-Havuç",
+          calories: 470,
+          usedPantry: ["Somon Fileto (170g)", "Kuşkonmaz / Fasulye", "Limon", "Zeytinyağı"],
+          recipe: "Somon dilimini yağlı kağıtta sebzelerle fırınlayın. Taze limon suyu gezdirip servis edin.",
+          synergy: "EPA ve DHA yağ asitleri gece boyunca kardiyovasküler sistemi korur ve inflamasyonu bastırır."
+        },
+        {
+          title: "Zeytinyağlı Taze Fasulye & Sarımsaklı Yoğurt & Ceviz",
+          calories: 410,
+          usedPantry: ["Taze Fasulye (200g)", "Domates", "Yoğurt (1 kase)", "Ceviz (2 tam)"],
+          recipe: "Zeytinyağlı domatesli fasulyeyi ılık servis edin. Üzerine sarımsaklı yoğurt döküp ceviz serpiştirin.",
+          synergy: "Gece bağırsak peristaltizmini destekleyen zengin lif profili ve hafif sindirim konforu."
+        },
+        {
+          title: "Fırında Hindi But Dilimleri & Fırın Sebzeler",
+          calories: 430,
+          usedPantry: ["Hindi But (150g)", "Kabak", "Kırmızı Biber", "Kekik"],
+          recipe: "Hindi etini zeytinyağı ve kekikle marine edip sebzelerle fırınlayın. Taze yeşilliklerle sunun.",
+          synergy: "Hindi etindeki yüksek triptofan amino asidi gece kaliteli melatonin ve derin uyku sağlar."
+        },
+        {
+          title: "Zeytinyağlı Kereviz & Yoğurtlu Köz Biber Salatası",
+          calories: 390,
+          usedPantry: ["Kereviz (1 adet)", "Havuç", "Portakal Suyu", "Közlenmiş Kırmızı Biber", "Yoğurt"],
+          recipe: "Kereviz ve havuçları az portakal suyu ve zeytinyağında pişirin. Yoğurtlu köz biber salatasıyla tüketin.",
+          synergy: "Apigenin bileşiği sakinlik verir, yüksek potasyum sodyum dengesini ve tansiyonu rahatlatır."
+        },
+        {
+          title: "Mantarlı Tavuk Sote & Çoban Salata & 1 Kase Cacık",
+          calories: 440,
+          usedPantry: ["Tavuk Göğsü (140g)", "Kültür Mantarı", "Domates", "Salatalık", "Yoğurt"],
+          recipe: "Tavuk ve mantarları zeytinyağında soteleyin. Yanında zeytinyağlı taze çoban salata ve cacık tüketin.",
+          synergy: "Yüksek protein ve düşük karbonhidrat metabolizmayı gece boyu yağ yakım modunda tutar."
+        },
+        {
+          title: "Yeşil Mercimekli Akdeniz Salatası & Tulum Peyniri",
+          calories: 420,
+          usedPantry: ["Haşlanmış Yeşil Mercimek (1 kase)", "Roka/Marul", "Tulum Peyniri (40g)", "Ceviz"],
+          recipe: "Haşlanmış mercimekleri bol yeşillik, limon, sumak ve zeytinyağıyla karıştırın. Üzerine peynir ve ceviz ekleyin.",
+          synergy: "Bitkisel protein ve kompleks lif gece açlık krizlerini tamamen engeller."
+        }
+      ],
+      night: [
+        {
+          title: "Papatya Çayı & Melatonin Destekli 2 Ceviz",
+          calories: 80,
+          usedPantry: ["Papatya Çayı", "Ceviz (2 tam)"],
+          recipe: "Uykudan 45 dakika önce sıcak papatya çayı demleyin ve 2 tam ceviz içi ile tüketin.",
+          synergy: "Papatyadaki apigenin ve cevizdeki doğal melatonin derin REM uykusunu destekler."
+        },
+        {
+          title: "Ilık Melisa & Rezene Çayı & 1 Tatlı Kaşığı Kabak Çekirdeği",
+          calories: 75,
+          usedPantry: ["Melisa Çayı", "Rezene", "Çiğ Kabak Çekirdeği"],
+          recipe: "Melisa ve rezene karışımını 5 dakika demleyin. Yanında çiğ kabak çekirdeği tüketin.",
+          synergy: "Magnezyum ve GABA reseptör aktivasyonu kas gevşemesini ve mide sakinliğini sağlar."
+        },
+        {
+          title: "Rooibos Çayı & 5 Adet Çiğ Badem",
+          calories: 70,
+          usedPantry: ["Rooibos Çayı", "Çiğ Badem (5 adet)"],
+          recipe: "Kafeinsiz doğal antioksidan Rooibos çayını ılık için, yanında 5 çiğ badem tüketin.",
+          synergy: "Gece kortizol düzeylerini düşürerek kaliteli dinlenme sağlar."
+        },
+        {
+          title: "Ihlamur & Taze Limon Kabuğu & 1 İnce Dilim Elma",
+          calories: 50,
+          usedPantry: ["Ihlamur", "Limon Kabuğu", "Yeşil Elma"],
+          recipe: "Taze çiçek ıhlamuru demleyip içine limon kabuğu ve bir dilim yeşil elma atarak yudumlayın.",
+          synergy: "Solunum yollarını ve sindirim kanalını yatıştırarak uykuya geçişi kolaylaştırır."
+        }
+      ],
+      detoxWater: [
+        {
+          title: "Ödem Atıcı Salatalık-Nane-Limon İnfüzyonu",
+          time: "Güne başlarken ve gün boyu",
+          recipe: "1.5 litre ılık suya 1 adet dilimlenmiş salatalık, yarım limon, 6 yaprak taze nane ve 1 ince dilim taze zencefil ekleyin.",
+          benefit: "Böbrek süzme hızını destekler, sodyum atılımını hızlandırır."
+        },
+        {
+          title: "İnsülin Dengeleyici Tarçın-Karanfil-Elma Suyu",
+          time: "Günün ilk saatlerinde",
+          recipe: "1 litre suya 1 çubuk tarçın, 3 adet karanfil ve dilimlenmiş yeşil elma atıp 1 saat dinlendirin.",
+          benefit: "Karbonhidrat emilimini yavaşlatır, kan şekerini dengede tutar."
+        },
+        {
+          title: "Metabolizma Ateşleyici Zencefil-Yeşil Çay Suyu",
+          time: "Öğleden önce",
+          recipe: "1 fincan demlenmiş soğutulmuş yeşil çayı 1 litre suya katın. 2 dilim taze zencefil ve limon dilimi ekleyin.",
+          benefit: "EGCG ve gingerol sinerjisi ile yağ oksidasyonunu ve hücresel arınmayı tetikler."
+        },
+        {
+          title: "Alkali Maydanoz & Taze Limon Karaciğer Suyu",
+          time: "Sabah aç karnına",
+          recipe: "1 litre suya yarım demet taze maydanoz sapları ve 1 tam limon suyu ekleyip dinlendirin.",
+          benefit: "Yüksek C vitamini ve klorofil içeriğiyle karaciğer enzimlerini dengeler."
+        }
+      ],
+      healthyDessert: [
+        {
+          title: "Pratik Chia & Kakaolu Avokado Puding",
+          calories: 140,
+          time: "5 dakika",
+          recipe: "Yarım avokado, 1 tatlı kaşığı saf ham kakao ve 1 çay bardağı badem sütünü blenderdan geçirin. Üzerine 1 tatlı kaşığı chia serpin.",
+          benefit: "Rafine şeker içermez; sağlıklı tekli doymamış yağlar ve magnezyum deposudur."
+        },
+        {
+          title: "Fırında Cevizli & Tarçınlı Armut Tatlısı",
+          calories: 130,
+          time: "15 dakika",
+          recipe: "Armudu ikiye bölüp çekirdek yatağına tarçın ve dövülmüş ceviz ekleyerek fırında yumuşayana kadar pişirin.",
+          benefit: "Yüksek pektin lifi ve doğal meyve tatlılığı sağlar, kan şekerini zıplatmaz."
+        },
+        {
+          title: "Donmuş Muzlu & Fıstık Ezmeli Fit Dondurma",
+          calories: 135,
+          time: "3 dakika",
+          recipe: "Önceden dondurulmuş 1 küçük muzu 1 çay kaşığı şekersiz fıstık ezmesiyle mutfak robotunda pürüzsüzleşene kadar çekin.",
+          benefit: "Potasyum ve doğal serotonin kaynağıdır; tatlı krizlerini anında sonlandırır."
+        },
+        {
+          title: "Fırında Çıtır Tarçınlı Elma Cipsi & Yoğurt Sosu",
+          calories: 110,
+          time: "10 dakika",
+          recipe: "Elmayı halka halka ince doğrayın, tarçın serpip fırında veya airfryer'da çıtırdatın. Yanında 1 kaşık yoğurtla tüketin.",
+          benefit: "Kalorisi yok denecek kadar azdır; gevrek dokusuyla atıştırma isteğini keser."
+        }
+      ]
+    };
+
+    function pickDifferentMeal(pool, currentTitle) {
+      if (!pool || pool.length === 0) return null;
+      const filtered = pool.filter(item => item.title !== currentTitle);
+      const candidates = (filtered.length > 0) ? filtered : pool;
+      return candidates[Math.floor(Math.random() * candidates.length)];
+    }
+
+    /* Günün tüm menüsünü yenile (Menüyü Değiştir) */
+    function changeCurrentDayDiet() {
+      const day = activeDay;
+      if (!sevenDayPlanData[day]) return;
+
+      const cur = sevenDayPlanData[day].meals;
+      const newB = pickDifferentMeal(mealPools.breakfast, cur[0]?.title);
+      const newS1 = pickDifferentMeal(mealPools.snack1, cur[1]?.title);
+      const newL = pickDifferentMeal(mealPools.lunch, cur[2]?.title);
+      const newS2 = pickDifferentMeal(mealPools.snack2, cur[3]?.title);
+      const newD = pickDifferentMeal(mealPools.dinner, cur[4]?.title);
+      const newN = pickDifferentMeal(mealPools.night, cur[5]?.title);
+
+      sevenDayPlanData[day].meals = [
+        { ...newB, type: "KAHVALTI (08:30)", typeClass: "breakfast" },
+        { ...newS1, type: "1. ARA / KUŞLUK (10:30)", typeClass: "snack" },
+        { ...newL, type: "ÖĞLE YEMEĞİ (13:00)", typeClass: "lunch" },
+        { ...newS2, type: "2. ARA / İKİNDİ (16:30)", typeClass: "snack" },
+        { ...newD, type: "AKŞAM YEMEĞİ (19:30)", typeClass: "dinner" },
+        { ...newN, type: "3. ARA / GECE (21:30)", typeClass: "night" }
+      ];
+
+      sevenDayPlanData[day].detoxWater = pickDifferentMeal(mealPools.detoxWater, sevenDayPlanData[day].detoxWater?.title);
+      sevenDayPlanData[day].healthyDessert = pickDifferentMeal(mealPools.healthyDessert, sevenDayPlanData[day].healthyDessert?.title);
+
+      renderDayMeals();
+      showToastNotification(`🔄 ${day}. Gün Menüsü Yepyeni Alternatiflerle Değiştirildi!`);
+    }
+
+    /* Tüm 7 günü baştan üret (7 Günü Yenile) */
+    function regenerateAll7Days() {
+      const dayNames = {
+        1: "Pazartesi", 2: "Salı", 3: "Çarşamba", 4: "Perşembe",
+        5: "Cuma", 6: "Cumartesi", 7: "Pazar"
+      };
+
+      for (let d = 1; d <= 7; d++) {
+        const b = mealPools.breakfast[(d - 1) % mealPools.breakfast.length];
+        const s1 = mealPools.snack1[(d - 1) % mealPools.snack1.length];
+        const l = mealPools.lunch[(d - 1) % mealPools.lunch.length];
+        const s2 = mealPools.snack2[(d - 1) % mealPools.snack2.length];
+        const dn = mealPools.dinner[(d - 1) % mealPools.dinner.length];
+        const n = mealPools.night[(d - 1) % mealPools.night.length];
+        const dw = mealPools.detoxWater[(d - 1) % mealPools.detoxWater.length];
+        const hd = mealPools.healthyDessert[(d - 1) % mealPools.healthyDessert.length];
+
+        sevenDayPlanData[d] = {
+          dayName: dayNames[d],
+          detoxWater: { ...dw },
+          healthyDessert: { ...hd },
+          meals: [
+            { ...b, type: "KAHVALTI (08:30)", typeClass: "breakfast" },
+            { ...s1, type: "1. ARA / KUŞLUK (10:30)", typeClass: "snack" },
+            { ...l, type: "ÖĞLE YEMEĞİ (13:00)", typeClass: "lunch" },
+            { ...s2, type: "2. ARA / İKİNDİ (16:30)", typeClass: "snack" },
+            { ...dn, type: "AKŞAM YEMEĞİ (19:30)", typeClass: "dinner" },
+            { ...n, type: "3. ARA / GECE (21:30)", typeClass: "night" }
+          ]
+        };
+      }
+
+      renderDayMeals();
+      showToastNotification("✨ 7 Günlük Diyet Planı Baştan Aşağı Yepyeni Menülerle Yenilendi!");
+    }
+
+    /* Tek bir öğünü değiştir */
+    function swapSingleMeal(idx) {
+      const dayData = sevenDayPlanData[activeDay];
+      if (!dayData || !dayData.meals[idx]) return;
+
+      const currentMeal = dayData.meals[idx];
+      let poolKey = 'lunch';
+      if (idx === 0) poolKey = 'breakfast';
+      else if (idx === 1) poolKey = 'snack1';
+      else if (idx === 2) poolKey = 'lunch';
+      else if (idx === 3) poolKey = 'snack2';
+      else if (idx === 4) poolKey = 'dinner';
+      else if (idx === 5) poolKey = 'night';
+
+      const nextMeal = pickDifferentMeal(mealPools[poolKey], currentMeal.title);
+      if (!nextMeal) return;
+
+      dayData.meals[idx] = {
+        ...nextMeal,
+        type: currentMeal.type,
+        typeClass: currentMeal.typeClass
+      };
+
+      renderDayMeals();
+      showToastNotification(`🔄 ${currentMeal.type.split(' ')[0]} Güncellendi: ${nextMeal.title}`);
+    }
+
+    /* Detoks suyunu değiştir */
+    function swapDetoxWater() {
+      const dayData = sevenDayPlanData[activeDay];
+      if (!dayData) return;
+      const currentTitle = dayData.detoxWater?.title;
+      const nextWater = pickDifferentMeal(mealPools.detoxWater, currentTitle);
+      if (!nextWater) return;
+      dayData.detoxWater = { ...nextWater };
+      renderDayMeals();
+      showToastNotification(`🥒 Detoks Suyu Değiştirildi: ${nextWater.title}`);
+    }
+
+    /* Sağlıklı tatlıyı değiştir */
+    function swapDessert() {
+      const dayData = sevenDayPlanData[activeDay];
+      if (!dayData) return;
+      const currentTitle = dayData.healthyDessert?.title;
+      const nextDessert = pickDifferentMeal(mealPools.healthyDessert, currentTitle);
+      if (!nextDessert) return;
+      dayData.healthyDessert = { ...nextDessert };
+      renderDayMeals();
+      showToastNotification(`🍓 Sağlıklı Tatlı Değiştirildi: ${nextDessert.title}`);
+    }
+
+    /* Toast Bildirim Fonksiyonu */
+    function showToastNotification(msg) {
+      const existing = document.getElementById('app-dynamic-toast');
+      if (existing) existing.remove();
+
+      const toast = document.createElement('div');
+      toast.id = 'app-dynamic-toast';
+      toast.className = 'app-toast';
+      toast.innerHTML = `<span>${msg}</span>`;
+      document.body.appendChild(toast);
+
+      setTimeout(() => {
+        toast.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(15px)';
+        setTimeout(() => toast.remove(), 400);
+      }, 2600);
+    }
+
 
     let activeDay = 1;
     let savedClientsData = JSON.parse(localStorage.getItem('dlarasaglik_clients')) || {};
@@ -1957,7 +2474,7 @@
       renderDayMeals();
     }
 
-    function renderDayMeals() {
+        function renderDayMeals() {
       const clientName = document.getElementById('inp-name').value.trim();
       const clientHeading = clientName ? `Danışan: ${clientName}` : "Dyt. DİLARA ÖZKAN Klinik Menüsü";
       const targetCal = document.getElementById('stat-target-cal').innerText;
@@ -1976,7 +2493,10 @@
               <span class="meal-type-pill detox">🥒 DETOKS SUYU</span>
               <span class="meal-title">${dayData.detoxWater.title}</span>
             </div>
-            <span style="font-size: 10px; font-weight: 800; color: #065f46;">${dayData.detoxWater.time}</span>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span style="font-size: 10px; font-weight: 800; color: #065f46;">${dayData.detoxWater.time}</span>
+              <button onclick="swapDetoxWater()" class="btn-swap-mini" title="Farklı bir detoks suyu seç">🔄 Değiştir</button>
+            </div>
           </div>
           <div class="meal-recipe"><b>Hazırlanışı:</b> ${dayData.detoxWater.recipe}</div>
           <div class="meal-synergy">
@@ -1985,7 +2505,7 @@
         </div>
       `;
 
-      dayData.meals.forEach((m) => {
+      dayData.meals.forEach((m, idx) => {
         let cardClass = "meal-card";
         if (m.typeClass === 'snack') cardClass += " snack-card";
         if (m.typeClass === 'night') cardClass += " night-card";
@@ -1997,7 +2517,10 @@
                 <span class="meal-type-pill ${m.typeClass}">${m.type}</span>
                 <span class="meal-title">${m.title}</span>
               </div>
-              <span class="meal-cals">${m.calories} kcal</span>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span class="meal-cals">${m.calories} kcal</span>
+                <button onclick="swapSingleMeal(${idx})" class="btn-swap-mini" title="Bu öğünü yeni bir alternatifle değiştir">🔄 Değiştir</button>
+              </div>
             </div>
             <div class="meal-ingredients"><b>Malzemeler:</b> ${m.usedPantry.join(', ')}</div>
             <div class="meal-recipe"><b>Tarif:</b> ${m.recipe}</div>
@@ -2015,7 +2538,10 @@
               <span class="meal-type-pill dessert">🍓 SAĞLIKLI TATLI</span>
               <span class="meal-title">${dayData.healthyDessert.title}</span>
             </div>
-            <span style="font-size: 11px; font-weight: 800; color: #9d174d;">${dayData.healthyDessert.calories} kcal</span>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span style="font-size: 11px; font-weight: 800; color: #9d174d;">${dayData.healthyDessert.calories} kcal</span>
+              <button onclick="swapDessert()" class="btn-swap-mini" title="Farklı bir sağlıklı tatlı seç">🔄 Değiştir</button>
+            </div>
           </div>
           <div class="meal-recipe"><b>Hazırlanışı (${dayData.healthyDessert.time}):</b> ${dayData.healthyDessert.recipe}</div>
           <div class="meal-synergy">
@@ -2026,6 +2552,7 @@
 
       container.innerHTML = html;
     }
+
 
     function parseWhatsAppRawInput() {
       const raw = document.getElementById('inp-wa-raw').value.trim();
