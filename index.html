@@ -6,10 +6,10 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>FitReçete Pro AI™ - Klinik Diyetisyen, Akıllı Reçete & Danışan Yönetim Platformu</title>
+  <title>DiyetKalfa - Yeni Nesil Diyetisyen Yazılımı & Klinik Beslenme Platformu</title>
   <style>
     /* ============================================================ */
-    /* FitReçete Pro AI™ - ULTRA AKICI, SIFIR KAYMA MOBİL & PC CSS */
+    /* DiyetKalfa AI™ - ULTRA AKICI, SIFIR KAYMA MOBİL & PC CSS */
     /* KLİNİK BESLENME & DİYETİSYEN İŞLETİM SİSTEMİ TEMASI         */
     /* ============================================================ */
     /* ============================================================== */
@@ -1045,7 +1045,7 @@ body:not(.app-locked) .header-landing-actions {
       text-decoration: line-through;
     }
     /* ============================================================ */
-    /* FitReçete Pro AI™ - TİCARİ MODAL, CRM & ALIŞVERİŞ LİSTESİ CSS */
+    /* DiyetKalfa AI™ - TİCARİ MODAL, CRM & ALIŞVERİŞ LİSTESİ CSS */
     /* ============================================================ */
 
     /* 4 Farklı Klinik Renk Teması */
@@ -1248,7 +1248,7 @@ body:not(.app-locked) .header-landing-actions {
     }
 
     /* ============================================================ */
-    /* FitReçete Pro AI™ - ULTRA MODERN WEBAPP STİLLERİ & BUTONLAR */
+    /* DiyetKalfa AI™ - ULTRA MODERN WEBAPP STİLLERİ & BUTONLAR */
     /* ============================================================ */
 
     /* Canlı Durum Rozeti (Pulsing Dot) */
@@ -1685,7 +1685,7 @@ body:not(.app-locked) .header-landing-actions {
     }
 
     /* ============================================================ */
-    /* FitReçete Pro AI™ - ENTERPRISE KLİNİK APP SHELL & SAAS CSS   */
+    /* DiyetKalfa AI™ - ENTERPRISE KLİNİK APP SHELL & SAAS CSS   */
     /* ============================================================ */
 
     :root {
@@ -1947,67 +1947,107 @@ body:not(.app-locked) .header-landing-actions {
       }
     }
 
-  </style>
+  
+    @media (max-width: 860px) {
+      .header-nav-links {
+        display: none !important;
+      }
+    }
+</style>
 </head>
 <body class="app-locked">
 
     <!-- ============================================================ -->
-  <!-- 1. ÜST BAR: FitReçete Pro AI™ & White-Label Klinik Markası   -->
+  <!-- 1. ÜST BAR: DiyetKalfa AI™ & White-Label Klinik Markası   -->
   <!-- ============================================================ -->
-  <header class="app-header">
-    <div class="header-inner">
-      <div class="logo-area">
-        <div class="logo-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
-          </svg>
-        </div>
-        <div class="logo-text">
-          <h1>FitReçete Pro AI™ <span style="font-size:10.5px; font-weight:800; background: var(--pastel-green-light); color: var(--pastel-green-dark); padding: 2px 7px; border-radius: 6px; border: 1px solid var(--pastel-green-border); margin-left: 4px;">v3.5 PRO</span></h1>
-          <div class="logo-sub"><span class="dynamic-clinic-name">FitReçete Klinik</span> • <span class="dynamic-dietitian-name">Uzman Diyetisyen</span></div>
-        </div>
+  <!-- ============================================================== -->
+<!-- DIYETKALFA AI™ - MANGOLIF STİLİ RESMİ HEADER                    -->
+<!-- ============================================================== -->
+<header class="app-header" style="background: #ffffff; border-bottom: 1.5px solid #e5e2da; box-shadow: 0 1px 12px rgba(0, 0, 0, 0.04); position: sticky; top: 0; z-index: 1000;">
+  <div class="header-inner" style="max-width: 1240px; margin: 0 auto; padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; gap: 15px;">
+    
+    <!-- Sol Logo Alanı (DiyetKalfa) -->
+    <div class="logo-area" style="display: flex; align-items: center; gap: 10px; cursor: pointer;" onclick="if(typeof switchAppTab === 'function') switchAppTab('landing');">
+      <div class="logo-icon" style="width: 38px; height: 38px; border-radius: 12px; background: linear-gradient(135deg, #2d4a3e 0%, #1c332b 100%); display: flex; align-items: center; justify-content: center; color: #ffffff; box-shadow: 0 3px 8px rgba(45, 74, 62, 0.3);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+          <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+        </svg>
       </div>
-
-      <div class="header-actions">
-        <span class="live-status-pill"><span class="pulsing-dot"></span> DSÖ 2024 UYUMLU</span>
-        
-        <!-- KİLİTLİ DURUMDA GÖRÜNEN BUTONLAR (Ziyaretçiler için) -->
-        <div class="header-landing-actions" style="display: inline-flex; align-items: center; gap: 8px;">
-          <button type="button" onclick="scrollToPricingSection()" class="btn btn-pricing-highlight" style="background: linear-gradient(135deg, #b4654a 0%, #8c452e 100%); color: #ffffff; border: none; padding: 7px 15px; border-radius: 999px; font-weight: 800; font-size: 11.5px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(180,101,74,0.35);">
-            <span style="background: rgba(255,255,255,0.25); color: #ffffff; font-size: 9px; font-weight: 800; padding: 2px 6px; border-radius: 999px;">7 GÜN ÜCRETSİZ</span>
-            <span>💎 Satın Al & Planlar</span>
-          </button>
-          <button type="button" onclick="unlockWithTrial('Pro Klinik AI™')" class="btn btn-pastel-green" style="background: #2d4a3e; color: #ffffff; border: none; padding: 7px 14px; border-radius: 999px; font-weight: 800; font-size: 11.5px; cursor: pointer;">
-            <span>⚡ Hızlı Aç (Deneme)</span>
-          </button>
-        </div>
-
-        <!-- AÇILMIŞ / LİSANSLI DURUMDA GÖRÜNEN BUTONLAR (Klinik paneli) -->
-        <div class="header-clinical-actions" style="display: none; align-items: center; gap: 6px;">
-          <button onclick="openWhoModal()" class="btn btn-outline-pink" title="Dünya Sağlık Örgütü Klinik Standartları">
-            <span>🩺 DSÖ Standartları</span>
-          </button>
-          <button onclick="openClinicModal()" class="btn btn-pastel-sage" title="Klinik ve Marka Kişiselleştirme">
-            <span>⚙️ Klinik Ayarları</span>
-          </button>
-          <button onclick="openLicenseModal()" class="btn btn-outline-pink" title="Ticari Lisans ve Satış Paketi">
-            <span>🏢 Lisans (Pro)</span>
-          </button>
-          <button onclick="printClinicalDossier()" class="btn btn-pastel-sage" title="7 Günlük Dosyayı Yazdır / PDF">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
-            <span>PDF / Yazdır</span>
-          </button>
-          <button onclick="saveCurrentClient()" class="btn btn-pastel-green" title="Danışanı Kaydet">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
-            <span>Kaydet</span>
-          </button>
-          <button type="button" onclick="lockApplication()" class="btn btn-outline-pink" title="Uygulamayı Kilitle / Çıkış Yap" style="background:#f7f6f2; border:1px solid #d6d2c8; color:#596660;">
-            <span>🔒 Çıkış</span>
-          </button>
+      <div class="logo-text">
+        <h1 style="font-size: 22px; font-weight: 900; color: #1c332b; margin: 0; letter-spacing: -0.03em; line-height: 1;">
+          DiyetKalfa <span style="font-size: 11px; font-weight: 800; background: #faf2ee; color: #b4654a; padding: 2px 7px; border-radius: 6px; border: 1px solid #ebdad2; margin-left: 4px;">PRO AI</span>
+        </h1>
+        <div class="logo-sub" style="font-size: 11px; color: #596660; margin-top: 2px; font-weight: 600;">
+          <span class="dynamic-clinic-name">Klinik Beslenme & Reçete Platformu</span>
         </div>
       </div>
     </div>
-  </header>
+
+    <!-- Orta Navigasyon Linkleri (Mangolif Stili - Sadece Geniş Ekranda) -->
+    <nav class="header-nav-links" style="display: flex; align-items: center; gap: 24px; font-size: 14px; font-weight: 700; color: #334155;">
+      <a href="javascript:void(0)" onclick="scrollToPricingSection()" style="color: #334155; text-decoration: none; transition: color 0.15s;">Özellikler</a>
+      <a href="javascript:void(0)" onclick="openWhoModal()" style="color: #334155; text-decoration: none; transition: color 0.15s; display: flex; align-items: center; gap: 4px;">
+        <span>Çözümler</span>
+        <span style="font-size: 10px; color: #94a3b8;">▼</span>
+      </a>
+      <a href="javascript:void(0)" onclick="scrollToPricingSection()" style="color: #334155; text-decoration: none; transition: color 0.15s;">Fiyatlar</a>
+      <a href="javascript:void(0)" onclick="scrollToPricingSection()" style="color: #334155; text-decoration: none; transition: color 0.15s;">SSS</a>
+      <a href="https://wa.me/905300000000?text=Merhaba%20DiyetKalfa%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum" target="_blank" style="color: #334155; text-decoration: none; transition: color 0.15s;">İletişim</a>
+    </nav>
+
+    <!-- Sağ Header Eylemleri (Mangolif Stili Butonlar) -->
+    <div class="header-actions" style="display: flex; align-items: center; gap: 8px;">
+      
+      <!-- KİLİTLİ DURUMDA GÖRÜNEN BUTONLAR (Mangolif görselindeki butonların birebir aynısı) -->
+      <div class="header-landing-actions" style="display: inline-flex; align-items: center; gap: 8px;">
+        <!-- Kalori Butonu -->
+        <button type="button" onclick="openWhoModal()" style="background: #ffffff; color: #1c332b; border: 1.5px solid #d6d2c8; padding: 8px 14px; border-radius: 999px; font-weight: 800; font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s;">
+          <span style="font-size: 14px;">👌</span>
+          <span>Kalori</span>
+        </button>
+
+        <!-- Demo Talep Et Butonu -->
+        <button type="button" onclick="unlockWithTrial('Pro Klinik AI™')" style="background: transparent; color: #1c332b; border: 1.5px solid #1c332b; padding: 8px 16px; border-radius: 999px; font-weight: 800; font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s;">
+          <span>Demo Talep Et</span>
+          <span style="font-size: 14px;">→</span>
+        </button>
+
+        <!-- Ücretsiz Başla Butonu (Mangolif Yeşili / Askeri Yeşil Dolgulu Buton) -->
+        <button type="button" onclick="unlockWithTrial('Pro Klinik AI™')" style="background: #2d4a3e; color: #ffffff; border: none; padding: 9px 18px; border-radius: 999px; font-weight: 800; font-size: 13.5px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(45, 74, 62, 0.3); transition: all 0.2s;">
+          <span>Ücretsiz Başla</span>
+        </button>
+      </div>
+
+      <!-- AÇILMIŞ / LİSANSLI DURUMDA GÖRÜNEN BUTONLAR (Klinik paneli kontrolleri) -->
+      <div class="header-clinical-actions" style="display: none; align-items: center; gap: 6px;">
+        <button onclick="openWhoModal()" class="btn btn-outline-pink" title="Dünya Sağlık Örgütü Klinik Standartları">
+          <span>🩺 DSÖ Standartları</span>
+        </button>
+        <button onclick="openClinicModal()" class="btn btn-pastel-sage" title="Klinik ve Marka Kişiselleştirme">
+          <span>⚙️ Klinik Ayarları</span>
+        </button>
+        <button onclick="openLicenseModal()" class="btn btn-outline-pink" title="Ticari Lisans ve Satış Paketi">
+          <span>🏢 Lisans (Pro)</span>
+        </button>
+        <button onclick="printClinicalDossier()" class="btn btn-pastel-sage" title="7 Günlük Dosyayı Yazdır / PDF">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+          <span>PDF / Yazdır</span>
+        </button>
+        <button onclick="saveCurrentClient()" class="btn btn-pastel-green" title="Danışanı Kaydet">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          <span>Kaydet</span>
+        </button>
+        <button type="button" onclick="lockApplication()" class="btn btn-outline-pink" title="Uygulamayı Kilitle / Çıkış Yap" style="background:#f7f6f2; border:1px solid #d6d2c8; color:#596660;">
+          <span>🔒 Çıkış</span>
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</header>
+
 
   <!-- ============================================================ -->
   <!-- 4'LÜ PROFESYONEL İŞLETİM MODU SEÇİCİ                         -->
@@ -2078,323 +2118,441 @@ body:not(.app-locked) .header-landing-actions {
 <!-- ============================================================== -->
 <!-- FITREÇETE PRO AI™ - ASKERİ YEŞİL & TABA GİRİŞ VE SATIN ALMA    -->
 <!-- ============================================================== -->
-<div id="view-landing" class="app-view-container" style="display: block; padding: 24px 16px 60px;">
+<!-- ============================================================== -->
+<!-- DIYETKALFA AI™ - RESMİ MANGOLIF DÜZENİNDE HERO & SATIN ALMA    -->
+<!-- ============================================================== -->
+<div id="view-landing" class="app-view-container" style="display: block; padding: 0 0 60px; margin: 0; max-width: 100vw; overflow-x: hidden;">
 
-  <!-- Hero Banner -->
-  <div style="text-align: center; max-width: 920px; margin: 0 auto 36px;">
-    <div style="display: inline-flex; align-items: center; gap: 8px; background: #faf2ee; border: 1px solid #ebdad2; color: #b4654a; padding: 6px 20px; border-radius: 999px; font-size: 13px; font-weight: 800; margin-bottom: 18px; text-transform: uppercase; letter-spacing: 0.06em;">
-      <span style="font-size: 15px;">💎</span> FitReçete Pro AI™ • Kurumsal Lisans & Satın Alma Portalı
-    </div>
+  <!-- 1. MANGOLIF STİLİ KOYU ASKERİ YEŞİL HERO BÖLÜMÜ -->
+  <section style="background: radial-gradient(circle at 80% 20%, #1c4532 0%, #122b1f 45%, #091a13 100%); padding: 50px 24px 75px; color: #ffffff; position: relative; overflow: hidden; border-bottom: 2px solid #1c332b;">
     
-    <h1 style="font-size: clamp(28px, 4.5vw, 44px); font-weight: 900; color: #1c332b; margin-bottom: 16px; letter-spacing: -0.025em; line-height: 1.2;">
-      Yeni Nesil Klinik Diyetisyen, <br>
-      <span style="color: #b4654a;">Akıllı Reçete & Danışan</span> İşletim Sistemi
-    </h1>
-    
-    <p style="font-size: 16px; color: #596660; max-width: 740px; margin: 0 auto; line-height: 1.6;">
-      Dünya Sağlık Örgütü (DSÖ 2024) klinik protokolleri, Türkomp besin veritabanı, HOMA-IR kan tahlili yorumlayıcı ve yapay zeka destekli sosyal medya üreticisi tek bir profesyonel platformda.
-    </p>
-  </div>
-
-  <!-- Kapı Paneli: Lisanslı Giriş & 7 Gün Ücretsiz Deneme ile Kilidi Açma -->
-  <div style="max-width: 1040px; margin: 0 auto 40px; background: #ffffff; border-radius: 24px; border: 1.5px solid #e5e2da; padding: 36px 30px; box-shadow: 0 12px 30px -6px rgba(28, 51, 43, 0.08);">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; align-items: stretch;">
+    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; align-items: center; position: relative; z-index: 2;">
       
-      <!-- Sol: Lisanslı Diyetisyen & Klinik Giriş Formu -->
-      <div style="background: #f7f6f2; border-radius: 18px; padding: 26px; border: 1px solid #ede9e2; display: flex; flex-direction: column; justify-content: space-between;">
-        <div>
-          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;">
-            <div style="width: 40px; height: 40px; border-radius: 12px; background: #2d4a3e; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 3px 8px rgba(45, 74, 62, 0.3);">
-              🔐
-            </div>
-            <div>
-              <h3 style="font-size: 18px; font-weight: 800; color: #1c332b; margin: 0;">Klinik & Diyetisyen Girişi</h3>
-              <p style="font-size: 12.5px; color: #596660; margin: 2px 0 0 0;">Lisanslı kullanıcılar için güvenli giriş</p>
+      <!-- Sol Kolon: Başlık, Açıklama ve Arama Kutusu -->
+      <div>
+        <!-- Üst Rozet -->
+        <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: #a7f3d0; padding: 6px 16px; border-radius: 999px; font-size: 13px; font-weight: 800; margin-bottom: 22px; backdrop-filter: blur(8px);">
+          <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #34d399; box-shadow: 0 0 8px #34d399;"></span>
+          DiyetKalfa Uzmanları & Klinik Ekosistemi
+        </div>
+
+        <!-- Büyük Başlık -->
+        <h1 style="font-size: clamp(32px, 5vw, 52px); font-weight: 900; color: #ffffff; line-height: 1.15; margin-bottom: 18px; letter-spacing: -0.03em;">
+          Size en uygun uzmanı ve beslenme çözümünü bulun
+        </h1>
+
+        <!-- Açıklama -->
+        <p style="font-size: 16.5px; color: #b4c7be; line-height: 1.6; margin-bottom: 28px; max-width: 520px;">
+          Diyetisyenden kişisel antrenöre, yoga eğitmeninden klinik beslenme uzmanına; ihtiyacınıza göre seçin, şehrinizde ya da online randevu alın. Kliniğinizi DiyetKalfa ile yönetin.
+        </p>
+
+        <!-- Sosyal Kanıt: Uzman Avatarları Satırı -->
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 30px;">
+          <div style="display: flex; align-items: center;">
+            <div style="width: 38px; height: 38px; border-radius: 50%; background: #2d4a3e; border: 2.5px solid #122b1f; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: #fff; margin-right: -10px; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">DY</div>
+            <div style="width: 38px; height: 38px; border-radius: 50%; background: #b4654a; border: 2.5px solid #122b1f; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: #fff; margin-right: -10px; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">ŞYT</div>
+            <div style="width: 38px; height: 38px; border-radius: 50%; background: #3d6354; border: 2.5px solid #122b1f; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: #fff; margin-right: -10px; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">MBA</div>
+            <div style="width: 38px; height: 38px; border-radius: 50%; background: #8c452e; border: 2.5px solid #122b1f; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: #fff; margin-right: -10px; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">İÖ</div>
+            <div style="width: 38px; height: 38px; border-radius: 50%; background: #10b981; border: 2.5px solid #122b1f; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 900; color: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">+</div>
+          </div>
+          <span style="font-size: 13.5px; color: #cbd5e1; font-weight: 600; line-height: 1.4;">
+            Türkiye'nin dört bir yanından <br><strong style="color: #ffffff;">1.200+ uzman ve klinik</strong> sizi bekliyor
+          </span>
+        </div>
+
+        <!-- Arama Kartı (Mangolif Tarzı Beyaz Kutu) -->
+        <div style="background: #ffffff; border-radius: 20px; padding: 22px; max-width: 440px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);">
+          <div style="margin-bottom: 14px;">
+            <label style="font-size: 12px; font-weight: 800; color: #64748b; display: block; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em;">Şehir veya Klinik Branşı</label>
+            <div style="position: relative;">
+              <select id="hero-specialty-select" style="width: 100%; padding: 12px 14px; border-radius: 12px; border: 1.5px solid #e2e8f0; font-size: 14px; font-weight: 600; color: #1e293b; outline: none; background: #f8fafc; appearance: none; cursor: pointer;">
+                <option value="all">Tüm Şehirler & Branşlar (Türkiye Geneli)</option>
+                <option value="istanbul">İstanbul - Klinik Beslenme & Obezite</option>
+                <option value="ankara">Ankara - Metabolik Sağlık & HOMA-IR</option>
+                <option value="izmir">İzmir - Fonksiyonel Beslenme & Bağırsak</option>
+                <option value="bursa">Bursa - Sporcu Beslenmesi</option>
+                <option value="antalya">Antalya - Akdeniz Diyeti Protokolü</option>
+                <option value="online">Online Danışmanlık & Reçeteleme</option>
+              </select>
+              <div style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); pointer-events: none; color: #64748b; font-size: 12px;">▼</div>
             </div>
           </div>
 
-          <form id="landing-login-form" onsubmit="handlePortalLogin(event)" style="display: flex; flex-direction: column; gap: 14px;">
-            <div>
-              <label style="font-size: 12px; font-weight: 700; color: #1c332b; display: block; margin-bottom: 5px;">E-Posta veya Diyetisyen Sicil No</label>
-              <input type="text" id="portal-user-email" placeholder="ornek@klinik.com veya Sicil No" style="width: 100%; padding: 12px 14px; border-radius: 10px; border: 1.5px solid #d6d2c8; font-size: 14px; outline: none; background: #ffffff; color: #1c332b; font-family: inherit;">
+          <button type="button" onclick="scrollToPricingSection()" style="width: 100%; background: #2d4a3e; color: #ffffff; border: none; padding: 14px; border-radius: 12px; font-weight: 800; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s; box-shadow: 0 4px 14px rgba(45, 74, 62, 0.35);">
+            <span>Uzman Ara & Çözümleri Gör</span>
+            <span style="font-size: 16px;">→</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Sağ Kolon: Mangolif Ağ & Düğüm Takımyıldızı (Constellation Network) -->
+      <div style="position: relative; min-height: 400px; display: flex; align-items: center; justify-content: center;">
+        
+        <!-- Arka Plan Bağlantı SVG Çizgileri -->
+        <svg width="100%" height="100%" viewBox="0 0 500 400" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.35;">
+          <line x1="80" y1="200" x2="160" y2="150" stroke="#34d399" stroke-width="1.5" stroke-dasharray="3,3" />
+          <line x1="160" y1="150" x2="250" y2="180" stroke="#34d399" stroke-width="1.5" />
+          <line x1="160" y1="150" x2="200" y2="90" stroke="#34d399" stroke-width="1.5" stroke-dasharray="4,4" />
+          <line x1="250" y1="180" x2="330" y2="230" stroke="#34d399" stroke-width="1.5" stroke-dasharray="3,3" />
+          <line x1="330" y1="230" x2="420" y2="200" stroke="#34d399" stroke-width="1.5" />
+          <line x1="250" y1="180" x2="230" y2="290" stroke="#34d399" stroke-width="1.5" />
+          <line x1="230" y1="290" x2="300" y2="340" stroke="#34d399" stroke-width="1.5" stroke-dasharray="4,4" />
+          <line x1="330" y1="230" x2="380" y2="300" stroke="#34d399" stroke-width="1.5" stroke-dasharray="3,3" />
+        </svg>
+
+        <!-- Düğüm Baloncukları -->
+        <div style="position: relative; width: 100%; height: 380px;">
+          
+          <!-- Düğüm 1 (HG) -->
+          <div style="position: absolute; top: 180px; left: 40px; background: #ffffff; color: #1c332b; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; border: 2.5px solid #2d4a3e; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+            HG
+          </div>
+
+          <!-- Düğüm 2 (DY Diyetisyen) -->
+          <div style="position: absolute; top: 120px; left: 140px; background: #2d4a3e; color: #ffffff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 14px; border: 3px solid #34d399; box-shadow: 0 0 15px rgba(52, 211, 153, 0.4);">
+            DY
+          </div>
+
+          <!-- Düğüm 3 (ŞYT Sağlıklı Yaşam) -->
+          <div style="position: absolute; top: 60px; left: 190px; background: #b4654a; color: #ffffff; width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; border: 2.5px solid #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+            ŞYT
+          </div>
+
+          <!-- Düğüm 4 (MBA) -->
+          <div style="position: absolute; top: 160px; left: 230px; background: #ffffff; color: #2d4a3e; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 13px; border: 2.5px solid #b4654a; box-shadow: 0 4px 14px rgba(0,0,0,0.3);">
+            MBA
+          </div>
+
+          <!-- Düğüm 5 (İÖ) -->
+          <div style="position: absolute; top: 170px; left: 320px; background: #1c332b; color: #a7f3d0; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; border: 2.5px solid #34d399; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+            İÖ
+          </div>
+
+          <!-- Düğüm 6 (KK) -->
+          <div style="position: absolute; top: 250px; left: 70px; background: #f0f4f1; color: #1c332b; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 12px; border: 2px solid #2d4a3e;">
+            KK
+          </div>
+
+          <!-- Düğüm 7 (ZB) -->
+          <div style="position: absolute; top: 270px; left: 210px; background: #2d4a3e; color: #ffffff; width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; border: 2.5px solid #ebdad2;">
+            ZB
+          </div>
+
+          <!-- Düğüm 8 (MG) -->
+          <div style="position: absolute; top: 310px; left: 290px; background: #b4654a; color: #ffffff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 12px; border: 2px solid #ffffff;">
+            MG
+          </div>
+
+          <!-- Düğüm 9 (CÖ) -->
+          <div style="position: absolute; top: 310px; left: 350px; background: #ffffff; color: #1c332b; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 11px; border: 2px solid #2d4a3e;">
+            CÖ
+          </div>
+
+          <!-- Düğüm 10 (BBÇ) -->
+          <div style="position: absolute; top: 190px; left: 400px; background: #2d4a3e; color: #a7f3d0; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 13px; border: 2.5px solid #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+            BBÇ
+          </div>
+
+          <!-- Düğüm 11 (YÖ) -->
+          <div style="position: absolute; top: 200px; left: 460px; background: #b4654a; color: #ffffff; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 12px; border: 2px solid #ffffff;">
+            YÖ
+          </div>
+
+          <!-- Chat Konuşma Baloncuğu -->
+          <div style="position: absolute; top: 140px; left: 290px; background: #ffffff; color: #2d4a3e; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 900; border: 1.5px solid #34d399; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+            💬 ...
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- 2. GİRİŞ KAPISI & 7 GÜN ÜCRETSİZ DENEME İLE AÇMA -->
+  <section style="max-width: 1140px; margin: 40px auto; padding: 0 16px;">
+    
+    <div style="background: #ffffff; border-radius: 24px; border: 1.5px solid #e5e2da; padding: 36px 30px; box-shadow: 0 12px 30px -6px rgba(28, 51, 43, 0.08);">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; align-items: stretch;">
+        
+        <!-- Sol: Lisanslı Diyetisyen & Klinik Giriş Formu -->
+        <div style="background: #f7f6f2; border-radius: 18px; padding: 26px; border: 1px solid #ede9e2; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;">
+              <div style="width: 40px; height: 40px; border-radius: 12px; background: #2d4a3e; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 3px 8px rgba(45, 74, 62, 0.3);">
+                🔐
+              </div>
+              <div>
+                <h3 style="font-size: 18px; font-weight: 800; color: #1c332b; margin: 0;">Klinik & Diyetisyen Girişi</h3>
+                <p style="font-size: 12.5px; color: #596660; margin: 2px 0 0 0;">Lisanslı kullanıcılar için güvenli giriş</p>
+              </div>
             </div>
-            <div>
-              <label style="font-size: 12px; font-weight: 700; color: #1c332b; display: block; margin-bottom: 5px;">Lisans Anahtarı veya Şifre</label>
-              <input type="password" id="portal-user-license" placeholder="••••••••••••" style="width: 100%; padding: 12px 14px; border-radius: 10px; border: 1.5px solid #d6d2c8; font-size: 14px; outline: none; background: #ffffff; color: #1c332b; font-family: inherit;">
+
+            <form id="landing-login-form" onsubmit="handlePortalLogin(event)" style="display: flex; flex-direction: column; gap: 14px;">
+              <div>
+                <label style="font-size: 12px; font-weight: 700; color: #1c332b; display: block; margin-bottom: 5px;">E-Posta veya Diyetisyen Sicil No</label>
+                <input type="text" id="portal-user-email" placeholder="ornek@klinik.com veya Sicil No" style="width: 100%; padding: 12px 14px; border-radius: 10px; border: 1.5px solid #d6d2c8; font-size: 14px; outline: none; background: #ffffff; color: #1c332b; font-family: inherit;">
+              </div>
+              <div>
+                <label style="font-size: 12px; font-weight: 700; color: #1c332b; display: block; margin-bottom: 5px;">Lisans Anahtarı veya Şifre</label>
+                <input type="password" id="portal-user-license" placeholder="••••••••••••" style="width: 100%; padding: 12px 14px; border-radius: 10px; border: 1.5px solid #d6d2c8; font-size: 14px; outline: none; background: #ffffff; color: #1c332b; font-family: inherit;">
+              </div>
+              
+              <button type="submit" style="background: linear-gradient(135deg, #2d4a3e 0%, #1c332b 100%); color: #ffffff; border: none; padding: 14px; border-radius: 12px; font-weight: 800; font-size: 14.5px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 4px; box-shadow: 0 4px 12px rgba(45, 74, 62, 0.25);">
+                <span>Giriş Yap & Uygulamayı Aç</span>
+                <span style="font-size: 16px;">→</span>
+              </button>
+            </form>
+          </div>
+
+          <div style="margin-top: 16px; text-align: center; font-size: 12.5px; color: #596660;">
+            Lisansınız henüz yok mu? <a href="javascript:void(0)" onclick="scrollToPricingSection()" style="color: #b4654a; font-weight: 800; text-decoration: underline;">Paketleri İnceleyin</a>
+          </div>
+        </div>
+
+        <!-- Sağ: 7 Gün Ücretsiz Deneme ile Uygulamanın Kilidini Açma -->
+        <div style="background: #ffffff; border-radius: 18px; padding: 26px; border: 2.5px solid #b4654a; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 8px 24px -3px rgba(180, 101, 74, 0.18);">
+          <div>
+            <div style="display: inline-flex; align-items: center; gap: 6px; background: #faf2ee; color: #b4654a; font-size: 11.5px; font-weight: 800; padding: 4px 12px; border-radius: 999px; text-transform: uppercase; margin-bottom: 12px; border: 1px solid #ebdad2;">
+              🎁 KREDİ KARTSIZ TAM YETKİ
             </div>
-            
-            <button type="submit" style="background: linear-gradient(135deg, #2d4a3e 0%, #1c332b 100%); color: #ffffff; border: none; padding: 14px; border-radius: 12px; font-weight: 800; font-size: 14.5px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 4px; box-shadow: 0 4px 12px rgba(45, 74, 62, 0.25);">
-              <span>Giriş Yap & Uygulamayı Aç</span>
-              <span style="font-size: 16px;">→</span>
+            <h3 style="font-size: 22px; font-weight: 900; color: #1c332b; margin-bottom: 10px; line-height: 1.3;">
+              Satın Almadan Önce 7 Gün Boyunca Ücretsiz Deneyin!
+            </h3>
+            <p style="font-size: 14px; color: #596660; line-height: 1.6; margin-bottom: 22px;">
+              DiyetKalfa platformunun tüm modüllerini (Diyet Planlayıcı, HOMA-IR Lab, Türkomp Besin Değişimi, CRM ve Reels Stüdyosu) anında test etmek için 7 günlük ücretsiz denemenizi başlatın.
+            </p>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <button type="button" onclick="unlockWithTrial('Pro Klinik AI™')" style="background: linear-gradient(135deg, #b4654a 0%, #8c452e 100%); color: #ffffff; border: none; padding: 16px 24px; border-radius: 14px; font-weight: 800; font-size: 15.5px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 6px 18px rgba(180, 101, 74, 0.35); transition: all 0.2s;">
+              <span>⚡ 7 Günlük Ücretsiz Denemeyi Başlat & Uygulamayı Aç</span>
+              <span style="font-size: 18px;">🔓</span>
             </button>
-          </form>
+
+            <button type="button" onclick="scrollToPricingSection()" style="background: #f0f4f1; color: #1c332b; border: 1.5px solid #c2d1c8; padding: 13px 20px; border-radius: 14px; font-weight: 800; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
+              <span>💳 Fiyatlandırma Paketleri & Kampanyaları İncele</span>
+              <span style="font-size: 16px;">↓</span>
+            </button>
+          </div>
         </div>
 
-        <div style="margin-top: 16px; text-align: center; font-size: 12.5px; color: #596660;">
-          Lisansınız henüz yok mu? <a href="javascript:void(0)" onclick="scrollToPricingSection()" style="color: #b4654a; font-weight: 800; text-decoration: underline;">Paketleri İnceleyin</a>
-        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- 3. FİYATLANDIRMA VE MATEMATİKSEL KAMPANYA TABLOSU -->
+  <section id="section-saas-pricing" style="max-width: 1140px; margin: 0 auto 50px; padding: 0 16px; scroll-margin-top: 80px;">
+    
+    <div style="text-align: center; margin-bottom: 30px;">
+      <div style="display: inline-flex; align-items: center; gap: 8px; background: #faf2ee; border: 1px solid #ebdad2; color: #b4654a; padding: 6px 18px; border-radius: 999px; font-size: 12.5px; font-weight: 800; margin-bottom: 12px; text-transform: uppercase;">
+        🔥 RESMİ KAMPANYALI FİYATLANDIRMA
+      </div>
+      <h2 style="font-size: 32px; font-weight: 900; color: #1c332b; margin-bottom: 8px;">
+        Kliniğinize Özel Esnek ve Kampanyalı Lisans Paketleri
+      </h2>
+      <p style="font-size: 15px; color: #596660;">
+        12 Aylık yıllık peşin ödemede 50.000 TL yerine sadece 36.000 TL! İhtiyacınıza uygun döngüyü belirleyin.
+      </p>
+
+      <!-- Fatura Döngüsü Seçici (1, 3, 6, 12 Ay) -->
+      <div class="billing-cycle-switch" style="display: inline-flex; flex-wrap: wrap; background: #ede9e2; padding: 6px; border-radius: 18px; gap: 5px; margin-top: 20px; max-width: 100%; justify-content: center;">
+        <button type="button" class="billing-btn" onclick="setBillingCycle('1')" data-cycle="1" style="padding: 10px 18px; border-radius: 12px; font-weight: 700; font-size: 14px; border: none; cursor: pointer; transition: all 0.2s ease; background: transparent; color: #596660;">
+          1 Aylık
+        </button>
+        <button type="button" class="billing-btn" onclick="setBillingCycle('3')" data-cycle="3" style="padding: 10px 18px; border-radius: 12px; font-weight: 700; font-size: 14px; border: none; cursor: pointer; transition: all 0.2s ease; background: transparent; color: #596660;">
+          3 Aylık <span style="background: #2d4a3e; color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 6px; margin-left: 4px;">%10 İNDİRİM</span>
+        </button>
+        <button type="button" class="billing-btn" onclick="setBillingCycle('6')" data-cycle="6" style="padding: 10px 18px; border-radius: 12px; font-weight: 700; font-size: 14px; border: none; cursor: pointer; transition: all 0.2s ease; background: transparent; color: #596660;">
+          6 Aylık <span style="background: #2d4a3e; color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 6px; margin-left: 4px;">%15 İNDİRİM</span>
+        </button>
+        <button type="button" class="billing-btn active-cycle" onclick="setBillingCycle('12')" data-cycle="12" style="padding: 10px 20px; border-radius: 12px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; transition: all 0.2s ease; background: #ffffff; color: #1c332b; box-shadow: 0 4px 12px rgba(28,51,43,0.12);">
+          12 Aylık (Yıllık) <span style="background: #b4654a; color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 6px; margin-left: 4px;">%28 KAMPANYA 🔥</span>
+        </button>
       </div>
 
-      <!-- Sağ: 7 Gün Ücretsiz Deneme ile Uygulamanın Kilidini Açma -->
-      <div style="background: #ffffff; border-radius: 18px; padding: 26px; border: 2px solid #b4654a; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 6px 20px -2px rgba(180, 101, 74, 0.15);">
+      <div id="billing-cycle-subtext" style="font-size: 14px; color: #b4654a; font-weight: 800; margin-top: 14px;">
+        🔥 YILLIK KAMPANYA: Enterprise paket normalde 50.000 TL yerine şu an sadece 36.000 TL! Ayda 3.000 TL'den başlayan fırsat!
+      </div>
+    </div>
+
+    <!-- 3 Paket Kartı Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; align-items: stretch;">
+      
+      <!-- PAKET 1: STARTER -->
+      <div style="background: #ffffff; border-radius: 20px; border: 1.5px solid #e5e2da; padding: 32px 26px; display: flex; flex-direction: column; justify-content: space-between; position: relative;">
         <div>
-          <div style="display: inline-flex; align-items: center; gap: 6px; background: #faf2ee; color: #b4654a; font-size: 11.5px; font-weight: 800; padding: 4px 12px; border-radius: 999px; text-transform: uppercase; margin-bottom: 12px; border: 1px solid #ebdad2;">
-            🎁 KREDİ KARTSIZ TAM YETKİ
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <h3 style="font-size: 20px; font-weight: 800; color: #1c332b;">Starter (Bireysel)</h3>
+            <span style="background: #f0f4f1; color: #2d4a3e; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 20px;">Yeni Başlayanlar</span>
           </div>
-          <h3 style="font-size: 22px; font-weight: 900; color: #1c332b; margin-bottom: 10px; line-height: 1.3;">
-            Satın Almadan Önce 7 Gün Boyunca Ücretsiz Deneyin!
-          </h3>
-          <p style="font-size: 14px; color: #596660; line-height: 1.6; margin-bottom: 22px;">
-            FitReçete Pro AI™ platformunun tüm özelliklerini (Diyet Planlayıcı, HOMA-IR Lab, Türkomp Besin Değişimi, CRM ve Reels Stüdyosu) anında test etmek için 7 günlük ücretsiz denemenizi hemen başlatabilirsiniz.
-          </p>
+          <p style="font-size: 13px; color: #596660; margin-bottom: 20px; min-height: 38px;">Bireysel çalışan veya online danışmanlık veren bağımsız diyetisyenler için ideal.</p>
+          
+          <!-- Fiyat Alanı -->
+          <div style="padding-bottom: 20px; border-bottom: 1px solid #ede9e2; margin-bottom: 20px;">
+            <div style="display: flex; align-items: baseline; gap: 4px;">
+              <span id="orig-starter" style="text-decoration: line-through; color: #85938d; font-size: 16px; margin-right: 6px; font-weight: 700;">14.000 TL</span>
+              <span style="font-size: 18px; font-weight: 700; color: #596660;">₺</span>
+              <span id="price-starter" style="font-size: 44px; font-weight: 900; color: #1c332b; letter-spacing: -0.03em;">800</span>
+              <span style="font-size: 14px; font-weight: 600; color: #596660;">/ay</span>
+            </div>
+            <div id="billed-starter" style="font-size: 12.5px; color: #2d4a3e; font-weight: 700; margin-top: 4px;">Normalde 14.000 TL yerine Yıllık: 9.600 TL /yıl</div>
+          </div>
+
+          <!-- Özellikler -->
+          <div style="font-size: 12px; font-weight: 800; color: #2d4a3e; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px;">Dahil Olan Özellikler:</div>
+          <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px; font-size: 13.5px; color: #1c332b;">
+            <li style="display: flex; align-items: center; gap: 8px;">
+              <span style="color: #2d4a3e; font-size: 16px;">✓</span> <strong>50 Aktif Danışan</strong> Kapasitesi
+            </li>
+            <li style="display: flex; align-items: center; gap: 8px;">
+              <span style="color: #2d4a3e; font-size: 16px;">✓</span> WHO & Türkomp Klinik Veritabanı
+            </li>
+            <li style="display: flex; align-items: center; gap: 8px;">
+              <span style="color: #2d4a3e; font-size: 16px;">✓</span> Akşam Menüsü Sıfır Yumurta Garantisi
+            </li>
+            <li style="display: flex; align-items: center; gap: 8px;">
+              <span style="color: #2d4a3e; font-size: 16px;">✓</span> Tek Tıkla WhatsApp & PDF Paylaşımı
+            </li>
+            <li style="display: flex; align-items: center; gap: 8px;">
+              <span style="color: #2d4a3e; font-size: 16px;">✓</span> Mobil & Bilgisayar %100 Hızlı Senkron
+            </li>
+          </ul>
         </div>
 
-        <div style="display: flex; flex-direction: column; gap: 12px;">
-          <button type="button" onclick="unlockWithTrial('Pro Klinik AI™')" style="background: linear-gradient(135deg, #b4654a 0%, #8c452e 100%); color: #ffffff; border: none; padding: 16px 24px; border-radius: 14px; font-weight: 800; font-size: 15.5px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 6px 18px rgba(180, 101, 74, 0.35); transition: all 0.2s;">
-            <span>⚡ 7 Günlük Ücretsiz Denemeyi Başlat & İçeriği Gör</span>
-            <span style="font-size: 18px;">🔓</span>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <button type="button" onclick="unlockWithTrial('Starter (Bireysel)')" style="width: 100%; background: #2d4a3e; color: #ffffff; border: none; padding: 13px; border-radius: 12px; font-weight: 800; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
+            <span>⚡ Denemeyle Uygulamayı Aç</span>
           </button>
+          <button type="button" onclick="orderPlanWhatsApp('Starter (Bireysel)')" style="width: 100%; background: #faf2ee; color: #b4654a; border: 1.5px solid #ebdad2; padding: 10px; border-radius: 12px; font-weight: 800; font-size: 13px; cursor: pointer;">
+            7 Gün Ücretsiz Satın Al (WhatsApp)
+          </button>
+        </div>
+      </div>
 
-          <button type="button" onclick="scrollToPricingSection()" style="background: #f0f4f1; color: #1c332b; border: 1.5px solid #c2d1c8; padding: 13px 20px; border-radius: 14px; font-weight: 800; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
-            <span>💳 Fiyatlandırma Paketleri & İndirimleri İncele</span>
-            <span style="font-size: 16px;">↓</span>
+      <!-- PAKET 2: PRO KLİNİK (ÖNE ÇIKAN) -->
+      <div style="background: #ffffff; border-radius: 20px; border: 2.5px solid #b4654a; padding: 32px 26px; display: flex; flex-direction: column; justify-content: space-between; position: relative; box-shadow: 0 10px 30px -5px rgba(180, 101, 74, 0.2); transform: translateY(-4px);">
+        <!-- Ribbon -->
+        <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #b4654a 0%, #8c452e 100%); color: #ffffff; font-size: 11px; font-weight: 900; padding: 4px 16px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.08em; box-shadow: 0 4px 10px rgba(180,101,74,0.4);">
+          ⭐ EN ÇOK TERCİH EDİLEN (PRO)
+        </div>
+
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; margin-top: 6px;">
+            <h3 style="font-size: 22px; font-weight: 900; color: #1c332b;">Pro Klinik AI™</h3>
+            <span style="background: #faf2ee; color: #b4654a; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 20px;">Tam Donanım</span>
+          </div>
+          <p style="font-size: 13px; color: #596660; margin-bottom: 20px; min-height: 38px;">Yoğun klinik çalışan, hasta sonuçlarını takip eden ve sosyal medyada büyüyen diyetisyenler için.</p>
+          
+          <!-- Fiyat Alanı -->
+          <div style="padding-bottom: 20px; border-bottom: 1px solid #ede9e2; margin-bottom: 20px;">
+            <div style="display: flex; align-items: baseline; gap: 4px;">
+              <span id="orig-pro" style="text-decoration: line-through; color: #85938d; font-size: 17px; margin-right: 6px; font-weight: 700;">25.000 TL</span>
+              <span style="font-size: 18px; font-weight: 700; color: #b4654a;">₺</span>
+              <span id="price-pro" style="font-size: 46px; font-weight: 900; color: #b4654a; letter-spacing: -0.03em;">1.500</span>
+              <span style="font-size: 14px; font-weight: 600; color: #596660;">/ay</span>
+            </div>
+            <div id="billed-pro" style="font-size: 13px; color: #b4654a; font-weight: 800; margin-top: 4px;">Normalde 25.000 TL yerine Yıllık: 18.000 TL /yıl (%28 Tasarruf 🔥)</div>
+          </div>
+
+          <!-- Özellikler -->
+          <div style="font-size: 12px; font-weight: 800; color: #b4654a; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px;">Starter Paketine Ek Olarak:</div>
+          <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px; font-size: 13.5px; color: #1c332b;">
+            <li style="display: flex; align-items: center; gap: 8px;">
+              <span style="color: #b4654a; font-size: 16px;">★</span> <strong>Sınırsız Danışan Portföyü</strong>
+            </li>
+            <li style="display: flex; align-items: center; gap: 8px;">
+              <span style="color: #b4654a; font-size: 16px;">★</span> <strong>Klinik Biyokimya & Lab Analizörü</strong> (HOMA-IR, Kolesterol, İnsülin)
+            </li>
+            <li style="display: flex; align-items: center; gap: 8px;">
+              <span style="color: #b4654a; font-size: 16px;">★</span> <strong>Instagram & İçerik AI Motoru</strong> (Reels, Açıklama, Tarif Fikirleri)
+            </li>
+            <li style="display: flex; align-items: center; gap: 8px;">
+              <span style="color: #b4654a; font-size: 16px;">★</span> <strong>Kendi Markanızla Reçete Çıktısı</strong> (Logo & White-label Lisans)
+            </li>
+            <li style="display: flex; align-items: center; gap: 8px;">
+              <span style="color: #b4654a; font-size: 16px;">★</span> Öncelikli 7/24 WhatsApp VIP Destek Hattı
+            </li>
+          </ul>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <button type="button" onclick="unlockWithTrial('Pro Klinik AI™')" style="width: 100%; background: linear-gradient(135deg, #b4654a 0%, #8c452e 100%); color: #ffffff; border: none; padding: 14px; border-radius: 12px; font-weight: 800; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(180,101,74,0.35);">
+            <span>⚡ Denemeyle Uygulamayı Aç</span>
+            <span>🔓</span>
+          </button>
+          <button type="button" onclick="orderPlanWhatsApp('Pro Klinik AI™')" style="width: 100%; background: #2d4a3e; color: #ffffff; border: none; padding: 11px; border-radius: 12px; font-weight: 800; font-size: 13px; cursor: pointer;">
+            7 Gün Ücretsiz Satın Al (WhatsApp)
+          </button>
+        </div>
+      </div>
+
+      <!-- PAKET 3: ENTERPRISE (KULLANICININ 50.000 TL -> 36.000 TL KAMPANYASI) -->
+      <div style="background: #ffffff; border-radius: 20px; border: 2px solid #2d4a3e; padding: 32px 26px; display: flex; flex-direction: column; justify-content: space-between; position: relative; box-shadow: 0 8px 24px -2px rgba(45, 74, 62, 0.15);">
+        <!-- Ribbon -->
+        <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: #2d4a3e; color: #ffffff; font-size: 11px; font-weight: 900; padding: 4px 16px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.08em; box-shadow: 0 4px 10px rgba(45,74,62,0.4);">
+          🏢 EN ÜST SEVİYE KURUMSAL
+        </div>
+
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; margin-top: 6px;">
+            <h3 style="font-size: 21px; font-weight: 900; color: #1c332b;">Enterprise Klinik</h3>
+            <span style="background: #f0f4f1; color: #2d4a3e; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 20px;">Hastaneler & Ekipler</span>
+          </div>
+          <p style="font-size: 13px; color: #596660; margin-bottom: 20px; min-height: 38px;">Çoklu diyetisyen kadrosuna sahip klinikler, tıp merkezleri ve spor kulüpleri için en üst düzey paket.</p>
+          
+          <!-- Fiyat Alanı (50.000 TL -> 36.000 TL) -->
+          <div style="padding-bottom: 20px; border-bottom: 1px solid #ede9e2; margin-bottom: 20px;">
+            <div style="display: flex; align-items: baseline; gap: 4px;">
+              <span id="orig-enterprise" style="text-decoration: line-through; color: #dc2626; font-size: 20px; margin-right: 8px; font-weight: 800;">50.000 TL</span>
+              <span style="font-size: 18px; font-weight: 700; color: #2d4a3e;">₺</span>
+              <span id="price-enterprise" style="font-size: 46px; font-weight: 900; color: #2d4a3e; letter-spacing: -0.03em;">3.000</span>
+              <span style="font-size: 14px; font-weight: 600; color: #596660;">/ay</span>
+            </div>
+            <div id="billed-enterprise" style="font-size: 13px; color: #2d4a3e; font-weight: 800; margin-top: 4px;">Normalde 50.000 TL yerine Yıllık: 36.000 TL /yıl (%28 Kampanyalı 🔥)</div>
+          </div>
+
+          <!-- Özellikler -->
+          <div style="font-size: 12px; font-weight: 800; color: #2d4a3e; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px;">Pro Pakete Ek Olarak:</div>
+          <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px; font-size: 13.5px; color: #1c332b;">
+            <li style="display: flex; align-items: center; gap: 8px;">
+              <span style="color: #2d4a3e; font-size: 16px;">✓</span> <strong>Çoklu Diyetisyen & Sekreter Girişi</strong>
+            </li>
+            <li style="display: flex; align-items: center; gap: 8px;">
+              <span style="color: #2d4a3e; font-size: 16px;">✓</span> HBYS / e-Nabız Entegrasyon Desteği
+            </li>
+            <li style="display: flex; align-items: center; gap: 8px;">
+              <span style="color: #2d4a3e; font-size: 16px;">✓</span> Özel Subdomain Desteği
+            </li>
+            <li style="display: flex; align-items: center; gap: 8px;">
+              <span style="color: #2d4a3e; font-size: 16px;">✓</span> Birebir Klinik Eğitimi & Danışmanlık
+            </li>
+            <li style="display: flex; align-items: center; gap: 8px;">
+              <span style="color: #2d4a3e; font-size: 16px;">✓</span> Kurumsal Fatura & Hukuki SLA Sözleşmesi
+            </li>
+          </ul>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <button type="button" onclick="unlockWithTrial('Enterprise Klinik')" style="width: 100%; background: #2d4a3e; color: #ffffff; border: none; padding: 13px; border-radius: 12px; font-weight: 800; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
+            <span>⚡ Denemeyle Uygulamayı Aç</span>
+          </button>
+          <button type="button" onclick="orderPlanWhatsApp('Enterprise Klinik (50.000 TL yerine 36.000 TL Kampanyası)')" style="width: 100%; background: #faf2ee; color: #b4654a; border: 1.5px solid #ebdad2; padding: 10px; border-radius: 12px; font-weight: 800; font-size: 13px; cursor: pointer;">
+            7 Gün Ücretsiz Satın Al (WhatsApp)
           </button>
         </div>
       </div>
 
     </div>
-  </div>
 
-  <!-- 4 Adımda Nasıl Satın Alınır & Başlanır (Onboarding Guide) -->
-  <div style="max-width: 1040px; margin: 0 auto 40px; background: #ffffff; border-radius: 20px; border: 1.5px solid #e5e2da; padding: 30px 24px; box-shadow: 0 4px 16px -2px rgba(28, 51, 43, 0.05);">
-    <div style="text-align: center; margin-bottom: 24px;">
-      <h3 style="font-size: 21px; font-weight: 900; color: #1c332b; margin-bottom: 6px;">🚀 4 Adımda Kolayca Satın Alın ve Başlayın</h3>
-      <p style="font-size: 14px; color: #596660;">Kurulum gerektirmez, telefonunuzdan veya bilgisayarınızdan anında çalışır.</p>
-    </div>
-    
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
-      <!-- Adım 1 -->
-      <div style="background: #f7f6f2; border-radius: 14px; padding: 22px; border: 1px solid #ede9e2;">
-        <div style="width: 36px; height: 36px; border-radius: 10px; background: #2d4a3e; color: #fff; font-weight: 800; font-size: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; box-shadow: 0 4px 10px rgba(45, 74, 62, 0.3);">1</div>
-        <div style="font-size: 15px; font-weight: 800; color: #1c332b; margin-bottom: 6px;">Planınızı Belirleyin</div>
-        <div style="font-size: 13px; color: #596660; line-height: 1.5;">Aylık, 3, 6 veya 12 Aylık (%40 indirimli) sürenizi ve klinik paketinizi seçin.</div>
-      </div>
+  </section>
 
-      <!-- Adım 2 -->
-      <div style="background: #f7f6f2; border-radius: 14px; padding: 22px; border: 1px solid #ede9e2;">
-        <div style="width: 36px; height: 36px; border-radius: 10px; background: #b4654a; color: #fff; font-weight: 800; font-size: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; box-shadow: 0 4px 10px rgba(180, 101, 74, 0.3);">2</div>
-        <div style="font-size: 15px; font-weight: 800; color: #1c332b; margin-bottom: 6px;">7 Gün Ücretsiz Deneyin</div>
-        <div style="font-size: 13px; color: #596660; line-height: 1.5;">Kredi kartı girmeden anında tam yetkili lisansınız açılsın ve test edin.</div>
-      </div>
-
-      <!-- Adım 3 -->
-      <div style="background: #f7f6f2; border-radius: 14px; padding: 22px; border: 1px solid #ede9e2;">
-        <div style="width: 36px; height: 36px; border-radius: 10px; background: #2d4a3e; color: #fff; font-weight: 800; font-size: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; box-shadow: 0 4px 10px rgba(45, 74, 62, 0.3);">3</div>
-        <div style="font-size: 15px; font-weight: 800; color: #1c332b; margin-bottom: 6px;">Markanızı Tanımlayın</div>
-        <div style="font-size: 13px; color: #596660; line-height: 1.5;">Kendi kliniğinizin adını ve logonuzu ekleyin; tüm reçeteler kendi unvanınızla çıksın.</div>
-      </div>
-
-      <!-- Adım 4 -->
-      <div style="background: #f7f6f2; border-radius: 14px; padding: 22px; border: 1px solid #ede9e2;">
-        <div style="width: 36px; height: 36px; border-radius: 10px; background: #b4654a; color: #fff; font-weight: 800; font-size: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; box-shadow: 0 4px 10px rgba(180, 101, 74, 0.3);">4</div>
-        <div style="font-size: 15px; font-weight: 800; color: #1c332b; margin-bottom: 6px;">Danışanları Büyütün</div>
-        <div style="font-size: 13px; color: #596660; line-height: 1.5;">DSÖ standartlarında hatasız menüler ve tahlil yorumlama ile cironuzu katlayın.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Fatura Dönemi Seçici (1 Aylık, 3 Aylık, 6 Aylık, 12 Aylık) -->
-  <div id="section-saas-pricing" style="display: flex; flex-direction: column; align-items: center; margin-bottom: 35px; scroll-margin-top: 80px;">
-    <div style="font-size: 14.5px; font-weight: 800; color: #1c332b; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em;">
-      💎 Lisans & Fiyatlandırma Paketleri
-    </div>
-    <div style="font-size: 13.5px; color: #596660; margin-bottom: 16px;">
-      İhtiyacınıza uygun ödeme döngüsünü seçin; 7 gün boyunca ücretsiz deneyin.
-    </div>
-    
-    <div class="billing-cycle-switch" style="display: inline-flex; flex-wrap: wrap; background: #ede9e2; padding: 5px; border-radius: 16px; gap: 4px; max-width: 100%; justify-content: center;">
-      <button type="button" class="billing-btn" onclick="setBillingCycle('1')" data-cycle="1" style="padding: 10px 18px; border-radius: 12px; font-weight: 700; font-size: 14px; border: none; cursor: pointer; transition: all 0.2s ease; background: transparent; color: #596660;">
-        1 Aylık
-      </button>
-      <button type="button" class="billing-btn" onclick="setBillingCycle('3')" data-cycle="3" style="padding: 10px 18px; border-radius: 12px; font-weight: 700; font-size: 14px; border: none; cursor: pointer; transition: all 0.2s ease; background: transparent; color: #596660;">
-        3 Aylık <span style="background: #2d4a3e; color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 6px; margin-left: 4px;">%15 İNDİRİM</span>
-      </button>
-      <button type="button" class="billing-btn" onclick="setBillingCycle('6')" data-cycle="6" style="padding: 10px 18px; border-radius: 12px; font-weight: 700; font-size: 14px; border: none; cursor: pointer; transition: all 0.2s ease; background: transparent; color: #596660;">
-        6 Aylık <span style="background: #2d4a3e; color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 6px; margin-left: 4px;">%25 İNDİRİM</span>
-      </button>
-      <button type="button" class="billing-btn active-cycle" onclick="setBillingCycle('12')" data-cycle="12" style="padding: 10px 18px; border-radius: 12px; font-weight: 800; font-size: 14px; border: none; cursor: pointer; transition: all 0.2s ease; background: #ffffff; color: #1c332b; box-shadow: 0 4px 12px rgba(28,51,43,0.1);">
-        12 Aylık (Yıllık) <span style="background: #b4654a; color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 6px; margin-left: 4px;">%40 AVANTAJ 🔥</span>
-      </button>
-    </div>
-    
-    <div id="billing-cycle-subtext" style="font-size: 13.5px; color: #b4654a; font-weight: 700; margin-top: 10px;">
-      ✨ Yıllık ödemede 12 ay boyunca ayda sadece ₺299'dan başlayan fiyatlar + 7 Gün Ücretsiz Deneme!
-    </div>
-  </div>
-
-  <!-- Fiyatlandırma Kartları Grid -->
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; max-width: 1140px; margin: 0 auto 40px; align-items: stretch;">
-    
-    <!-- PAKET 1: STARTER -->
-    <div style="background: #ffffff; border-radius: 20px; border: 1.5px solid #e5e2da; padding: 32px 26px; display: flex; flex-direction: column; justify-content: space-between; position: relative;">
-      <div>
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-          <h3 style="font-size: 20px; font-weight: 800; color: #1c332b;">Starter (Bireysel)</h3>
-          <span style="background: #f0f4f1; color: #2d4a3e; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 20px;">Yeni Başlayanlar</span>
-        </div>
-        <p style="font-size: 13px; color: #596660; margin-bottom: 20px; min-height: 38px;">Bireysel çalışan veya online danışmanlık veren bağımsız diyetisyenler için ideal.</p>
-        
-        <!-- Fiyat Alanı -->
-        <div style="padding-bottom: 20px; border-bottom: 1px solid #ede9e2; margin-bottom: 20px;">
-          <div style="display: flex; align-items: baseline; gap: 4px;">
-            <span style="font-size: 18px; font-weight: 700; color: #596660;">₺</span>
-            <span id="price-starter" style="font-size: 42px; font-weight: 900; color: #1c332b; letter-spacing: -0.03em;">299</span>
-            <span style="font-size: 14px; font-weight: 600; color: #596660;">/ay</span>
-          </div>
-          <div id="billed-starter" style="font-size: 12px; color: #85938d; font-weight: 600; margin-top: 4px;">Yıllık tek fatura: ₺3.588 /yıl</div>
-        </div>
-
-        <!-- Özellikler -->
-        <div style="font-size: 12px; font-weight: 800; color: #2d4a3e; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px;">Dahil Olan Özellikler:</div>
-        <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px; font-size: 13.5px; color: #1c332b;">
-          <li style="display: flex; align-items: center; gap: 8px;">
-            <span style="color: #2d4a3e; font-size: 16px;">✓</span> <strong>50 Aktif Danışan</strong> Kapasitesi
-          </li>
-          <li style="display: flex; align-items: center; gap: 8px;">
-            <span style="color: #2d4a3e; font-size: 16px;">✓</span> WHO & Türkomp Klinik Veritabanı
-          </li>
-          <li style="display: flex; align-items: center; gap: 8px;">
-            <span style="color: #2d4a3e; font-size: 16px;">✓</span> Akşam Menüsü Sıfır Yumurta Garantisi
-          </li>
-          <li style="display: flex; align-items: center; gap: 8px;">
-            <span style="color: #2d4a3e; font-size: 16px;">✓</span> Tek Tıkla WhatsApp & PDF Paylaşımı
-          </li>
-          <li style="display: flex; align-items: center; gap: 8px;">
-            <span style="color: #2d4a3e; font-size: 16px;">✓</span> Mobil & Bilgisayar %100 Hızlı Senkron
-          </li>
-        </ul>
-      </div>
-
-      <div style="display: flex; flex-direction: column; gap: 8px;">
-        <button type="button" onclick="unlockWithTrial('Starter (Bireysel)')" style="width: 100%; background: #2d4a3e; color: #ffffff; border: none; padding: 13px; border-radius: 12px; font-weight: 800; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
-          <span>⚡ Denemeyle Uygulamayı Aç</span>
-        </button>
-        <button type="button" onclick="orderPlanWhatsApp('Starter (Bireysel)')" style="width: 100%; background: #faf2ee; color: #b4654a; border: 1.5px solid #ebdad2; padding: 10px; border-radius: 12px; font-weight: 800; font-size: 13px; cursor: pointer;">
-          7 Gün Ücretsiz Satın Al (WhatsApp)
-        </button>
-      </div>
-    </div>
-
-    <!-- PAKET 2: PRO KLİNİK (ÖNE ÇIKAN TABA RİBBON) -->
-    <div style="background: #ffffff; border-radius: 20px; border: 2.5px solid #b4654a; padding: 32px 26px; display: flex; flex-direction: column; justify-content: space-between; position: relative; box-shadow: 0 10px 30px -5px rgba(180, 101, 74, 0.2); transform: translateY(-4px);">
-      <!-- Ribbon -->
-      <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #b4654a 0%, #8c452e 100%); color: #ffffff; font-size: 11px; font-weight: 900; padding: 4px 16px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.08em; box-shadow: 0 4px 10px rgba(180,101,74,0.4);">
-        ⭐ EN ÇOK TERCİH EDİLEN (PRO)
-      </div>
-
-      <div>
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; margin-top: 6px;">
-          <h3 style="font-size: 22px; font-weight: 900; color: #1c332b;">Pro Klinik AI™</h3>
-          <span style="background: #faf2ee; color: #b4654a; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 20px;">Tam Donanım</span>
-        </div>
-        <p style="font-size: 13px; color: #596660; margin-bottom: 20px; min-height: 38px;">Yoğun klinik çalışan, hasta sonuçlarını takip eden ve sosyal medyada büyüyen diyetisyenler için.</p>
-        
-        <!-- Fiyat Alanı -->
-        <div style="padding-bottom: 20px; border-bottom: 1px solid #ede9e2; margin-bottom: 20px;">
-          <div style="display: flex; align-items: baseline; gap: 4px;">
-            <span style="font-size: 18px; font-weight: 700; color: #b4654a;">₺</span>
-            <span id="price-pro" style="font-size: 46px; font-weight: 900; color: #b4654a; letter-spacing: -0.03em;">539</span>
-            <span style="font-size: 14px; font-weight: 600; color: #596660;">/ay</span>
-          </div>
-          <div id="billed-pro" style="font-size: 12.5px; color: #b4654a; font-weight: 700; margin-top: 4px;">Yıllık tek fatura: ₺6.468 /yıl (%40 Tasarruf 🔥)</div>
-        </div>
-
-        <!-- Özellikler -->
-        <div style="font-size: 12px; font-weight: 800; color: #b4654a; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px;">Starter Paketine Ek Olarak:</div>
-        <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px; font-size: 13.5px; color: #1c332b;">
-          <li style="display: flex; align-items: center; gap: 8px;">
-            <span style="color: #b4654a; font-size: 16px;">★</span> <strong>Sınırsız Danışan Portföyü</strong>
-          </li>
-          <li style="display: flex; align-items: center; gap: 8px;">
-            <span style="color: #b4654a; font-size: 16px;">★</span> <strong>Klinik Biyokimya & Lab Analizörü</strong> (HOMA-IR, Kolesterol, İnsülin)
-          </li>
-          <li style="display: flex; align-items: center; gap: 8px;">
-            <span style="color: #b4654a; font-size: 16px;">★</span> <strong>Instagram & İçerik AI Motoru</strong> (Reels, Açıklama, Tarif Fikirleri)
-          </li>
-          <li style="display: flex; align-items: center; gap: 8px;">
-            <span style="color: #b4654a; font-size: 16px;">★</span> <strong>Kendi Markanızla Reçete Çıktısı</strong> (Logo & White-label Lisans)
-          </li>
-          <li style="display: flex; align-items: center; gap: 8px;">
-            <span style="color: #b4654a; font-size: 16px;">★</span> Öncelikli 7/24 WhatsApp VIP Destek Hattı
-          </li>
-        </ul>
-      </div>
-
-      <div style="display: flex; flex-direction: column; gap: 8px;">
-        <button type="button" onclick="unlockWithTrial('Pro Klinik AI™')" style="width: 100%; background: linear-gradient(135deg, #b4654a 0%, #8c452e 100%); color: #ffffff; border: none; padding: 14px; border-radius: 12px; font-weight: 800; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(180,101,74,0.35);">
-          <span>⚡ Denemeyle Uygulamayı Aç</span>
-          <span>🔓</span>
-        </button>
-        <button type="button" onclick="orderPlanWhatsApp('Pro Klinik AI™')" style="width: 100%; background: #2d4a3e; color: #ffffff; border: none; padding: 11px; border-radius: 12px; font-weight: 800; font-size: 13px; cursor: pointer;">
-          7 Gün Ücretsiz Satın Al (WhatsApp)
-        </button>
-      </div>
-    </div>
-
-    <!-- PAKET 3: ENTERPRISE -->
-    <div style="background: #ffffff; border-radius: 20px; border: 1.5px solid #e5e2da; padding: 32px 26px; display: flex; flex-direction: column; justify-content: space-between; position: relative;">
-      <div>
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-          <h3 style="font-size: 20px; font-weight: 800; color: #1c332b;">Enterprise Klinik</h3>
-          <span style="background: #f0f4f1; color: #2d4a3e; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 20px;">Hastaneler & Ekipler</span>
-        </div>
-        <p style="font-size: 13px; color: #596660; margin-bottom: 20px; min-height: 38px;">Çoklu diyetisyen kadrosuna sahip klinikler, tıp merkezleri ve spor kulüpleri için.</p>
-        
-        <!-- Fiyat Alanı -->
-        <div style="padding-bottom: 20px; border-bottom: 1px solid #ede9e2; margin-bottom: 20px;">
-          <div style="display: flex; align-items: baseline; gap: 4px;">
-            <span style="font-size: 18px; font-weight: 700; color: #596660;">₺</span>
-            <span id="price-enterprise" style="font-size: 42px; font-weight: 900; color: #1c332b; letter-spacing: -0.03em;">1.079</span>
-            <span style="font-size: 14px; font-weight: 600; color: #596660;">/ay</span>
-          </div>
-          <div id="billed-enterprise" style="font-size: 12px; color: #85938d; font-weight: 600; margin-top: 4px;">Yıllık tek fatura: ₺12.948 /yıl</div>
-        </div>
-
-        <!-- Özellikler -->
-        <div style="font-size: 12px; font-weight: 800; color: #2d4a3e; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px;">Pro Pakete Ek Olarak:</div>
-        <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px; font-size: 13.5px; color: #1c332b;">
-          <li style="display: flex; align-items: center; gap: 8px;">
-            <span style="color: #2d4a3e; font-size: 16px;">✓</span> <strong>Çoklu Diyetisyen & Sekreter Girişi</strong>
-          </li>
-          <li style="display: flex; align-items: center; gap: 8px;">
-            <span style="color: #2d4a3e; font-size: 16px;">✓</span> HBYS / e-Nabız Entegrasyon Desteği
-          </li>
-          <li style="display: flex; align-items: center; gap: 8px;">
-            <span style="color: #2d4a3e; font-size: 16px;">✓</span> Özel Subdomain Desteği
-          </li>
-          <li style="display: flex; align-items: center; gap: 8px;">
-            <span style="color: #2d4a3e; font-size: 16px;">✓</span> Birebir Klinik Eğitimi & Danışmanlık
-          </li>
-          <li style="display: flex; align-items: center; gap: 8px;">
-            <span style="color: #2d4a3e; font-size: 16px;">✓</span> Kurumsal Fatura & Hukuki SLA Sözleşmesi
-          </li>
-        </ul>
-      </div>
-
-      <div style="display: flex; flex-direction: column; gap: 8px;">
-        <button type="button" onclick="unlockWithTrial('Enterprise Klinik')" style="width: 100%; background: #2d4a3e; color: #ffffff; border: none; padding: 13px; border-radius: 12px; font-weight: 800; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
-          <span>⚡ Denemeyle Uygulamayı Aç</span>
-        </button>
-        <button type="button" onclick="orderPlanWhatsApp('Enterprise Klinik')" style="width: 100%; background: #faf2ee; color: #b4654a; border: 1.5px solid #ebdad2; padding: 10px; border-radius: 12px; font-weight: 800; font-size: 13px; cursor: pointer;">
-          7 Gün Ücretsiz Satın Al (WhatsApp)
-        </button>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Güven ve Kalite Rozetleri -->
-  <div style="max-width: 900px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; text-align: center; border-top: 1.5px solid #ede9e2; padding-top: 30px;">
+  <!-- 4. GÜVEN VE KALİTE ROZETLERİ -->
+  <section style="max-width: 900px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; text-align: center; border-top: 1.5px solid #ede9e2; padding-top: 30px;">
     <div style="display: flex; align-items: center; gap: 8px; color: #1c332b; font-size: 13.5px; font-weight: 700;">
       <span style="color: #2d4a3e; font-size: 20px;">🛡️</span> 14 Gün Koşulsuz Para İade Garantisi
     </div>
@@ -2407,7 +2565,14 @@ body:not(.app-locked) .header-landing-actions {
     <div style="display: flex; align-items: center; gap: 8px; color: #1c332b; font-size: 13.5px; font-weight: 700;">
       <span style="color: #b4654a; font-size: 20px;">📱</span> Telefon, Tablet ve PC Tam Uyum
     </div>
-  </div>
+  </section>
+
+  <!-- 5. KAYAN WHATSAPP BUTONU (MANGOLIF GÖRSELİNDEKİ GİBİ SAĞ ALTTAN YARDIM) -->
+  <a href="https://wa.me/905300000000?text=Merhaba%20DiyetKalfa%20AI%20hakk%C4%B1nda%20bilgi%20ve%20lisans%20almak%20istiyorum" target="_blank" style="position: fixed; bottom: 25px; right: 25px; width: 56px; height: 56px; border-radius: 50%; background: #25d366; color: #ffffff; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); z-index: 99999; text-decoration: none; transition: transform 0.2s;" title="WhatsApp ile İletişime Geçin">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.77.463 3.498 1.341 5.02L2 22l5.09-1.332a9.98 9.98 0 0 0 4.941 1.363h.004c5.535 0 10.031-4.496 10.031-10.031 0-2.68-1.043-5.199-2.937-7.093A9.97 9.97 0 0 0 12.031 2zm5.882 14.185c-.244.686-1.42 1.258-1.956 1.34-.51.077-1.176.11-3.376-.802-2.815-1.166-4.634-4.032-4.774-4.22-.14-.188-1.144-1.523-1.144-2.906 0-1.383.725-2.062.981-2.344.256-.282.558-.353.744-.353.186 0 .372.002.535.01.172.008.403-.065.63.48.232.558.79 1.93.86 2.07.07.14.116.303.023.49-.093.186-.14.302-.279.465-.14.163-.294.364-.42.488-.14.14-.286.292-.123.572.163.28.724 1.194 1.554 1.933 1.068.952 1.968 1.248 2.247 1.388.28.14.442.116.605-.07.163-.186.7-1.002.886-1.342.186-.34.372-.284.628-.188.256.096 1.628.767 1.907.907.28.14.465.21.535.326.07.116.07.674-.174 1.36z"/>
+    </svg>
+  </a>
 
 </div>
 
@@ -2416,7 +2581,7 @@ body:not(.app-locked) .header-landing-actions {
 
     <!-- Hero Banner -->
     <div class="hero-banner">
-      <div class="hero-tag">FitReçete Pro AI™ • Klinik Beslenme Protokolü</div>
+      <div class="hero-tag">DiyetKalfa AI™ • Klinik Beslenme Protokolü</div>
       <h2 class="hero-title">Kişiye Özel Klinik Metrikler, Değişim Tablosu & 7 Günlük Reçeteler</h2>
       <p class="hero-desc">
         Yaş, boy, kilo, cinsiyet ve PAL girin; BMR, TDEE ve Değişim Tablosu anında hesaplansın. Evdeki malzemelerle <b>Sabah, Öğle, Akşam, 3 Ara Öğün (biri gece), Günün Detoks Suyu ve Sağlıklı Tatlısı</b> Dünya Sağlık Örgütü standartlarında hazır!
@@ -2718,7 +2883,7 @@ body:not(.app-locked) .header-landing-actions {
             <div>
               <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
                 <span style="font-size: 15px; font-weight: 900; color: var(--dark-slate);" id="active-day-heading">1. Gün Reçetesi (Pazartesi)</span>
-                <span class="logo-badge dynamic-clinic-name">FitReçete Klinik Onaylı</span>
+                <span class="logo-badge dynamic-clinic-name">DiyetKalfa Klinik Onaylı</span>
               </div>
               <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;" id="active-day-subheading">
                 <span class="dynamic-clinic-sub">Klinik Beslenme & Diyet Menüsü</span>
@@ -2838,7 +3003,7 @@ body:not(.app-locked) .header-landing-actions {
 
             <!-- Klinik Diyetisyen İmzası -->
             <div style="background: #faf2ee; border: 1px solid #ebdad2; border-radius: var(--radius-sm); padding: 8px 10px; display: flex; align-items: center; justify-content: space-between; font-size: 10px; color: #8c452e; flex-wrap: wrap; gap: 4px;">
-              <span>🌸 <b class="dynamic-clinic-name">FitReçete Klinik:</b> <b class="dynamic-dietitian-name">Uzman Diyetisyen</b> onaylı klinik beslenme reçetesidir.</span>
+              <span>🌸 <b class="dynamic-clinic-name">DiyetKalfa Klinik:</b> <b class="dynamic-dietitian-name">Uzman Diyetisyen</b> onaylı klinik beslenme reçetesidir.</span>
               <span class="clinic-signature dynamic-dietitian-name">Uzman Diyetisyen</span>
             </div>
 
@@ -3036,8 +3201,8 @@ body:not(.app-locked) .header-landing-actions {
 
             <!-- Klinik Footer İmzası -->
             <div style="background: #faf2ee; border-top: 1px solid #ebdad2; padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: #8c452e; flex-wrap: wrap; gap: 4px;">
-              <span>🌸 <b class="dynamic-clinic-name">FitReçete:</b> Viral İçerik & Reels Üretim Motoru</span>
-              <span class="clinic-signature dynamic-instagram">@fitreceteklinik</span>
+              <span>🌸 <b class="dynamic-clinic-name">DiyetKalfa:</b> Viral İçerik & Reels Üretim Motoru</span>
+              <span class="clinic-signature dynamic-instagram">@diyetkalfaklinik</span>
             </div>
           </div>
 
@@ -3409,7 +3574,7 @@ body:not(.app-locked) .header-landing-actions {
           <div class="biolink-avatar">🩺</div>
           <div>
             <h3 style="font-size: 20px; font-weight: 900; color: var(--dark-slate); margin-bottom: 2px;" class="dynamic-dietitian-name">Uzman Diyetisyen</h3>
-            <div style="font-size: 12px; color: var(--dusty-pink); font-weight: 800;" class="dynamic-clinic-sub">Klinik & Fonksiyonel Beslenme Uzmanı • FitReçete Klinik</div>
+            <div style="font-size: 12px; color: var(--dusty-pink); font-weight: 800;" class="dynamic-clinic-sub">Klinik & Fonksiyonel Beslenme Uzmanı • DiyetKalfa Klinik</div>
           </div>
           <div class="biolink-trust-badge">
             <span class="pulsing-dot"></span>
@@ -3475,7 +3640,7 @@ body:not(.app-locked) .header-landing-actions {
         </div>
 
         <div style="text-align: center; font-size: 10px; color: var(--text-muted); margin-top: 6px;">
-          FitReçete Pro AI™ • Resmi Diyetisyen & Danışan Portalı
+          DiyetKalfa AI™ • Resmi Diyetisyen & Danışan Portalı
         </div>
 
       </div>
@@ -3732,7 +3897,7 @@ body:not(.app-locked) .header-landing-actions {
         </div>
         <div class="form-group">
           <label class="form-label">Klinik / Merkez Adı</label>
-          <input type="text" id="setting-clinic-name" class="form-input" placeholder="Örn: FitReçete Yaşam Kliniği">
+          <input type="text" id="setting-clinic-name" class="form-input" placeholder="Örn: DiyetKalfa Yaşam Kliniği">
         </div>
         <div class="form-group">
           <label class="form-label">Unvan / Uzmanlık</label>
@@ -3786,7 +3951,7 @@ body:not(.app-locked) .header-landing-actions {
         <span>🎉</span> 7 Gün Kredi Kartsız Ücretsiz Deneyin
       </div>
       <h2 style="font-size: 24px; font-weight: 900; color: #1c332b; margin-bottom: 6px; letter-spacing: -0.02em;">
-        FitReçete Pro AI™ Platformuna Hoş Geldiniz!
+        DiyetKalfa AI™ Platformuna Hoş Geldiniz!
       </h2>
       <p style="font-size: 13.5px; color: #64748b; line-height: 1.5;">
         Klinikler ve profesyonel diyetisyenler için geliştirilen yeni nesil yapay zeka destekli beslenme işletim sistemi.
@@ -3860,7 +4025,7 @@ body:not(.app-locked) .header-landing-actions {
       <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
         <span style="font-size: 24px;">🏢</span>
         <div>
-          <h3 style="font-size: 16px; font-weight: 900; color: var(--dark-slate);">FitReçete Pro AI™ - Ticari Lisans</h3>
+          <h3 style="font-size: 16px; font-weight: 900; color: var(--dark-slate);">DiyetKalfa AI™ - Ticari Lisans</h3>
           <p style="font-size: 11px; color: var(--text-muted);">Klinik Beslenme & Diyet Danışmanlığı İşletim Sistemi</p>
               <div style="margin-top: 15px; text-align: center;">
         <button type="button" onclick="closeLicenseModal(); switchAppTab('pricing');" style="background: linear-gradient(135deg, #2d4a3e 0%, #3d6354 100%); color: #fff; border: none; padding: 10px 18px; border-radius: 10px; font-weight: 800; font-size: 13px; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;">
@@ -3911,7 +4076,7 @@ body:not(.app-locked) .header-landing-actions {
       <span style="font-size: 28px;">🩺</span>
       <div>
         <h3 style="font-size: 16px; font-weight: 900; color: var(--dark-slate);">Dünya Sağlık Örgütü (DSÖ / WHO) Beslenme Standartları</h3>
-        <p style="font-size: 11px; color: var(--text-muted);">FitReçete Pro AI™, DSÖ'nün kronik hastalıkları önleme ve optimal metabolik sağlık kılavuzlarını temel alır.</p>
+        <p style="font-size: 11px; color: var(--text-muted);">DiyetKalfa AI™, DSÖ'nün kronik hastalıkları önleme ve optimal metabolik sağlık kılavuzlarını temel alır.</p>
       </div>
     </div>
 
@@ -3933,7 +4098,7 @@ body:not(.app-locked) .header-landing-actions {
           <span style="font-size: 10px; background: #dc2626; color: white; padding: 2px 6px; border-radius: 8px; font-weight: 800;">&lt; %5-10 Enerji</span>
         </div>
         <p style="font-size: 11px; color: #7f1d1d; line-height: 1.4;">
-          Serbest şekerler toplam günlük kalorinin <b>%5-10'undan az</b> (yaklaşık 25-50g) olmalıdır. FitReçete menülerinde rafine şeker oranı <b>%0</b> olup tatlı ihtiyacı doğal meyvelerden sağlanır.
+          Serbest şekerler toplam günlük kalorinin <b>%5-10'undan az</b> (yaklaşık 25-50g) olmalıdır. DiyetKalfa menülerinde rafine şeker oranı <b>%0</b> olup tatlı ihtiyacı doğal meyvelerden sağlanır.
         </p>
       </div>
 
@@ -4049,24 +4214,24 @@ body:not(.app-locked) .header-landing-actions {
 
 <script>
     /* ============================================================ */
-    /* FitReçete Pro AI™ - TİCARİ İŞLETİM SİSTEMİ MOTORU             */
+    /* DiyetKalfa AI™ - TİCARİ İŞLETİM SİSTEMİ MOTORU             */
     /* ============================================================ */
 
     // 1. Klinik & Marka Profili (White-Label State)
     const DEFAULT_CLINIC_PROFILE = {
       dietitianName: "Uzman Diyetisyen",
-      clinicName: "FitReçete Klinik",
+      clinicName: "DiyetKalfa Klinik",
       title: "Uzman Klinik Diyetisyen",
       phone: "905000000000",
-      instagram: "@fitreceteklinik",
+      instagram: "@diyetkalfaklinik",
       slogan: "Kişiye Özel Bilimsel Beslenme & Sağlıklı Yaşam Protokolü 🌿",
       theme: "default"
     };
 
-    let clinicProfile = JSON.parse(localStorage.getItem('fitrecete_clinic_profile')) || { ...DEFAULT_CLINIC_PROFILE };
+    let clinicProfile = JSON.parse(localStorage.getItem('diyetkalfa_clinic_profile')) || { ...DEFAULT_CLINIC_PROFILE };
     if (!clinicProfile || clinicProfile.version !== "4.0_COMMERCIAL" || !clinicProfile.dietitianName || false) {
       clinicProfile = { ...DEFAULT_CLINIC_PROFILE, version: "4.0_COMMERCIAL" };
-      localStorage.setItem('fitrecete_clinic_profile', JSON.stringify(clinicProfile));
+      localStorage.setItem('diyetkalfa_clinic_profile', JSON.stringify(clinicProfile));
     }
 
     function initClinicProfile() {
@@ -4127,7 +4292,7 @@ body:not(.app-locked) .header-landing-actions {
         slogan: document.getElementById('setting-slogan').value.trim() || DEFAULT_CLINIC_PROFILE.slogan,
         theme: document.getElementById('setting-theme').value
       };
-      localStorage.setItem('fitrecete_clinic_profile', JSON.stringify(clinicProfile));
+      localStorage.setItem('diyetkalfa_clinic_profile', JSON.stringify(clinicProfile));
       applyClinicProfile(clinicProfile);
       closeClinicModal();
       showToastNotification("✨ Klinik ve Marka Ayarları Başarıyla Güncellendi!");
@@ -4135,7 +4300,7 @@ body:not(.app-locked) .header-landing-actions {
 
     function resetClinicProfileToDefault() {
       clinicProfile = { ...DEFAULT_CLINIC_PROFILE };
-      localStorage.setItem('fitrecete_clinic_profile', JSON.stringify(clinicProfile));
+      localStorage.setItem('diyetkalfa_clinic_profile', JSON.stringify(clinicProfile));
       applyClinicProfile(clinicProfile);
       closeClinicModal();
       showToastNotification("🔄 Klinik Ayarları Varsayılana Sıfırlandı.");
@@ -4151,7 +4316,7 @@ body:not(.app-locked) .header-landing-actions {
     }
 
     function contactForSalesLicense() {
-      const msg = encodeURIComponent("Merhaba! FitReçete Pro AI™ Klinik Diyet & İçerik İşletim Sistemini kliniğime lisanslamak ve satın almak istiyorum. Bilgi alabilir miyim?");
+      const msg = encodeURIComponent("Merhaba! DiyetKalfa AI™ Klinik Diyet & İçerik İşletim Sistemini kliniğime lisanslamak ve satın almak istiyorum. Bilgi alabilir miyim?");
       window.open(`https://wa.me/905000000000?text=${msg}`, '_blank');
     }
 
@@ -4410,7 +4575,7 @@ body:not(.app-locked) .header-landing-actions {
     function deleteClientFromCRM(name) {
       if (confirm(`"${name}" adlı danışanı silmek istediğinize emin misiniz?`)) {
         delete savedClientsData[name];
-        localStorage.setItem('fitrecete_clients', JSON.stringify(savedClientsData));
+        localStorage.setItem('diyetkalfa_clients', JSON.stringify(savedClientsData));
         refreshSavedClientsDropdown();
         renderClientVault();
         showToastNotification(`🗑️ "${name}" başarıyla silindi.`);
@@ -4421,7 +4586,7 @@ body:not(.app-locked) .header-landing-actions {
       const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(savedClientsData, null, 2));
       const a = document.createElement('a');
       a.href = dataStr;
-      a.download = `FitRecete_Danisan_Yedegi_${new Date().toISOString().slice(0,10)}.json`;
+      a.download = `DiyetKalfa_Danisan_Yedegi_${new Date().toISOString().slice(0,10)}.json`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -4437,7 +4602,7 @@ body:not(.app-locked) .header-landing-actions {
           const imported = JSON.parse(e.target.result);
           if (typeof imported === 'object' && imported !== null) {
             savedClientsData = { ...savedClientsData, ...imported };
-            localStorage.setItem('fitrecete_clients', JSON.stringify(savedClientsData));
+            localStorage.setItem('diyetkalfa_clients', JSON.stringify(savedClientsData));
             refreshSavedClientsDropdown();
             renderClientVault();
             showToastNotification("✅ Danışan yedekleri başarıyla yüklendi!");
@@ -5434,7 +5599,7 @@ body:not(.app-locked) .header-landing-actions {
 
 
     let activeDay = 1;
-    let savedClientsData = JSON.parse(localStorage.getItem('fitrecete_clients')) || {};
+    let savedClientsData = JSON.parse(localStorage.getItem('diyetkalfa_clients')) || {};
 
     let pantryItems = [
       "Yumurta (6 adet)", "Lor Peyniri (200g)", "Ispanak (1 demet)", "Kabak (3 adet)",
@@ -5734,7 +5899,7 @@ body:not(.app-locked) .header-landing-actions {
       };
 
       savedClientsData[name] = clientData;
-      localStorage.setItem('fitrecete_clients', JSON.stringify(savedClientsData));
+      localStorage.setItem('diyetkalfa_clients', JSON.stringify(savedClientsData));
       refreshSavedClientsDropdown();
       renderClientVault();
       showToastNotification(`💾 "${name}" danışan kasasına kaydedildi!`);
@@ -5787,10 +5952,10 @@ body:not(.app-locked) .header-landing-actions {
 
 
     /* ============================================================ */
-    /* FitReçete Pro AI™ - DSÖ & WEBAPP ETKİLEŞİM MOTORU             */
+    /* DiyetKalfa AI™ - DSÖ & WEBAPP ETKİLEŞİM MOTORU             */
     /* ============================================================ */
 
-    let waterCount = parseInt(localStorage.getItem('fitrecete_water_count') || '0', 10);
+    let waterCount = parseInt(localStorage.getItem('diyetkalfa_water_count') || '0', 10);
 
     function initWaterTracker() {
       renderWaterGlasses();
@@ -5824,27 +5989,27 @@ body:not(.app-locked) .header-landing-actions {
       } else {
         waterCount = index;
       }
-      localStorage.setItem('fitrecete_water_count', waterCount.toString());
+      localStorage.setItem('diyetkalfa_water_count', waterCount.toString());
       renderWaterGlasses();
     }
 
     function resetWaterTracker() {
       waterCount = 0;
-      localStorage.setItem('fitrecete_water_count', '0');
+      localStorage.setItem('diyetkalfa_water_count', '0');
       renderWaterGlasses();
     }
 
     function initClinicalDirective() {
       const el = document.getElementById('inp-clinical-directive');
       if (el) {
-        el.value = localStorage.getItem('fitrecete_clinical_directive') || '';
+        el.value = localStorage.getItem('diyetkalfa_clinical_directive') || '';
       }
     }
 
     function saveClinicalDirective() {
       const el = document.getElementById('inp-clinical-directive');
       if (el) {
-        localStorage.setItem('fitrecete_clinical_directive', el.value);
+        localStorage.setItem('diyetkalfa_clinical_directive', el.value);
       }
     }
 
@@ -5932,7 +6097,7 @@ body:not(.app-locked) .header-landing-actions {
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>${name}_${dayData.dayName}_FitRecete</title>
+          <title>DiyetKalfa - Yeni Nesil Diyetisyen Yazılımı & Klinik Beslenme Platformu</title>
           <style>
             body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 24px; color: #1e1b22; line-height: 1.45; font-size: 11pt; }
             .header { border-bottom: 2px solid #b4654a; padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-start; }
@@ -5948,7 +6113,7 @@ body:not(.app-locked) .header-landing-actions {
           
 /* typography_and_saas_pricing */
     /* ============================================================ */
-    /* FitReçete Pro AI™ - PLUS JAKARTA SANS & SAAS PRICING STİLLERİ*/
+    /* DiyetKalfa AI™ - PLUS JAKARTA SANS & SAAS PRICING STİLLERİ*/
     /* ============================================================ */
 
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap');
@@ -6295,7 +6460,7 @@ body:not(.app-locked) .header-landing-actions {
     /* ============================================================ */
 
     // 1. RANDEVU & SEANS YÖNETİMİ
-    let appointmentsList = JSON.parse(localStorage.getItem('fitrecete_appointments')) || [
+    let appointmentsList = JSON.parse(localStorage.getItem('diyetkalfa_appointments')) || [
       {
         id: "apt_1",
         name: "Zehra Bölük",
@@ -6420,7 +6585,7 @@ body:not(.app-locked) .header-landing-actions {
       };
 
       appointmentsList.unshift(newApt);
-      localStorage.setItem('fitrecete_appointments', JSON.stringify(appointmentsList));
+      localStorage.setItem('diyetkalfa_appointments', JSON.stringify(appointmentsList));
       renderAppointments();
       showToastNotification(`📅 "${name}" randevusu takvime kaydedildi.`);
       document.getElementById('apt-name').value = '';
@@ -6430,7 +6595,7 @@ body:not(.app-locked) .header-landing-actions {
 
     function deleteAppointment(id) {
       appointmentsList = appointmentsList.filter(a => a.id !== id);
-      localStorage.setItem('fitrecete_appointments', JSON.stringify(appointmentsList));
+      localStorage.setItem('diyetkalfa_appointments', JSON.stringify(appointmentsList));
       renderAppointments();
       showToastNotification("🗑️ Randevu silindi.");
     }
@@ -6438,7 +6603,7 @@ body:not(.app-locked) .header-landing-actions {
     function clearAllAppointments() {
       if (confirm("Tüm randevu takvimini temizlemek istediğinize emin misiniz?")) {
         appointmentsList = [];
-        localStorage.setItem('fitrecete_appointments', JSON.stringify(appointmentsList));
+        localStorage.setItem('diyetkalfa_appointments', JSON.stringify(appointmentsList));
         renderAppointments();
         showToastNotification("Randevular temizlendi.");
       }
@@ -6483,7 +6648,7 @@ body:not(.app-locked) .header-landing-actions {
     }
 
     // 2. INBODY & VÜCUT ANALİZİ MOTORU
-    let inbodyHistory = JSON.parse(localStorage.getItem('fitrecete_inbody_history')) || [
+    let inbodyHistory = JSON.parse(localStorage.getItem('diyetkalfa_inbody_history')) || [
       {
         id: "inb_1",
         date: "2026-11-20",
@@ -6562,7 +6727,7 @@ body:not(.app-locked) .header-landing-actions {
       };
 
       inbodyHistory.unshift(record);
-      localStorage.setItem('fitrecete_inbody_history', JSON.stringify(inbodyHistory));
+      localStorage.setItem('diyetkalfa_inbody_history', JSON.stringify(inbodyHistory));
       renderInbodyHistory();
       showToastNotification(`🔬 "${name}" için InBody ölçüm kaydı eklendi.`);
     }
@@ -6596,7 +6761,7 @@ body:not(.app-locked) .header-landing-actions {
 
     function deleteInbodyRecord(id) {
       inbodyHistory = inbodyHistory.filter(r => r.id !== id);
-      localStorage.setItem('fitrecete_inbody_history', JSON.stringify(inbodyHistory));
+      localStorage.setItem('diyetkalfa_inbody_history', JSON.stringify(inbodyHistory));
       renderInbodyHistory();
       showToastNotification("Ölçüm kaydı silindi.");
     }
@@ -6656,7 +6821,7 @@ body:not(.app-locked) .header-landing-actions {
 
 
     /* ============================================================ */
-    /* FitReçete Pro AI™ - TÜRKOMP & KLİNİK BESİN VERİTABANI       */
+    /* DiyetKalfa AI™ - TÜRKOMP & KLİNİK BESİN VERİTABANI       */
     /* ============================================================ */
 
     const CLINICAL_FOOD_DATABASE = [
@@ -6717,10 +6882,10 @@ body:not(.app-locked) .header-landing-actions {
 
 
     /* ============================================================ */
-    /* FitReçete Pro AI™ - KLİNİK TAHLİL & KAN LABORATUVARI MOTORU  */
+    /* DiyetKalfa AI™ - KLİNİK TAHLİL & KAN LABORATUVARI MOTORU  */
     /* ============================================================ */
 
-    let labResultsHistory = JSON.parse(localStorage.getItem('fitrecete_lab_results')) || [
+    let labResultsHistory = JSON.parse(localStorage.getItem('diyetkalfa_lab_results')) || [
       {
         id: "lab_1",
         date: "2026-11-21",
@@ -6791,7 +6956,7 @@ body:not(.app-locked) .header-landing-actions {
 
 
     /* ============================================================ */
-    /* FitReçete Pro AI™ - ENTERPRISE GIDA & LABORATUVAR JS MOTORU  */
+    /* DiyetKalfa AI™ - ENTERPRISE GIDA & LABORATUVAR JS MOTORU  */
     /* ============================================================ */
 
     // 1. BESİN VERİTABANI MOTORU
@@ -6956,7 +7121,7 @@ body:not(.app-locked) .header-landing-actions {
       };
 
       labResultsHistory.unshift(record);
-      localStorage.setItem('fitrecete_lab_results', JSON.stringify(labResultsHistory));
+      localStorage.setItem('diyetkalfa_lab_results', JSON.stringify(labResultsHistory));
       renderLabHistory();
       showToastNotification(`🧪 "${clientName}" tahlil raporu arşive kaydedildi.`);
     }
@@ -6990,7 +7155,7 @@ body:not(.app-locked) .header-landing-actions {
 
     function deleteLabRecord(id) {
       labResultsHistory = labResultsHistory.filter(r => r.id !== id);
-      localStorage.setItem('fitrecete_lab_results', JSON.stringify(labResultsHistory));
+      localStorage.setItem('diyetkalfa_lab_results', JSON.stringify(labResultsHistory));
       renderLabHistory();
       showToastNotification("Tahlil kaydı silindi.");
     }
@@ -7031,7 +7196,7 @@ body:not(.app-locked) .header-landing-actions {
     let currentReelsTopic = 'belly_fat';
     let currentReelsMode = 'full'; // 'full', 'script', 'caption', 'recipe'
     let lastGeneratedReelsData = null;
-    let reelsAgenda = JSON.parse(localStorage.getItem('fitrecete_reels_agenda')) || [];
+    let reelsAgenda = JSON.parse(localStorage.getItem('diyetkalfa_reels_agenda')) || [];
 
     const reelsTopicsDatabase = {
       belly_fat: {
@@ -7059,7 +7224,7 @@ Kortizol göbeğini eritmek için 3 klinik kural:
 📌 Bu videoyu kaydet ve alt göbeğinden şikayetçi olan arkadaşına hemen gönder!
 💬 Sen en çok günün hangi saatinde şişkinlik hissediyorsun? Yorumlarda buluşalım 👇
 
-#fitrecete #diyetisyenönerisi #göbekeritme #bölgeselyağlanma #kortizol #zayıflama #sağlıklıbeslenme #onlinediyet #diyetisyenönerisi #yağyakımı #reels`,
+#diyetkalfa #diyetisyenönerisi #göbekeritme #bölgeselyağlanma #kortizol #zayıflama #sağlıklıbeslenme #onlinediyet #diyetisyenönerisi #yağyakımı #reels`,
         recipe: {
           title: "Kortizol Düşüren Gece İksiri",
           calories: "15 kcal",
@@ -7102,7 +7267,7 @@ Tabağındaki proteini artır, aç karnına kahve içmeyi bırak ve canın tatl�
 📌 Tatlı krizine giren arkadaşına bu reels'i yolla!
 💬 Senin en zayıf noktan hangi tatlı? Yorumlarda yaz, fit versiyonunu yapalım 👇
 
-#fitrecete #diyetisyenönerisi #fittatlı #tatlıkrizi #şekersizlezzetler #pratiktarifler #sağlıklıyaşam #diyetmenüsü #insülindirenci #fitsufle #reels`,
+#diyetkalfa #diyetisyenönerisi #fittatlı #tatlıkrizi #şekersizlezzetler #pratiktarifler #sağlıklıyaşam #diyetmenüsü #insülindirenci #fitsufle #reels`,
         recipe: {
           title: "3 Malzemeli Akışkan Fit Sufle",
           calories: "135 kcal",
@@ -7144,7 +7309,7 @@ Tüm gün yudum yudum iç, sodyumu idrarla süpürsün.
 📌 Bir daha tartıda panik yapmamak için hemen kaydet!
 💬 Bu sabah tartıda durumlar nasıldı? Yorumlarda buluşalım 👇
 
-#fitrecete #diyetisyenönerisi #ödematma #detokssuyu #tartıstresi #zayıflamatüyoları #diyetgünlüğü #onlinediyetisyen #ödemçayı #reels`,
+#diyetkalfa #diyetisyenönerisi #ödematma #detokssuyu #tartıstresi #zayıflamatüyoları #diyetgünlüğü #onlinediyetisyen #ödemçayı #reels`,
         recipe: {
           title: "Böbrek Filtreleyen Yeşil Ödem Suyu",
           calories: "10 kcal",
@@ -7183,7 +7348,7 @@ TABAĞINI BU SIRAYLA YE, DEĞİŞİMİ GÖR:
 📌 Beslenme alışkanlığını kökten değiştirecek bu kuralı kaydet!
 💬 Bu uyku hissini en çok hangi yemekten sonra yaşıyorsun? Yorumda paylaş 👇
 
-#fitrecete #diyetisyenönerisi #insülindirenci #kanşekeri #glikoz #sağlıklıbeslenme #diyetisyen #beslenmetüyoları #yorgunluk #reels`,
+#diyetkalfa #diyetisyenönerisi #insülindirenci #kanşekeri #glikoz #sağlıklıbeslenme #diyetisyen #beslenmetüyoları #yorgunluk #reels`,
         recipe: {
           title: "Glikoz Frenleyen Elma Sirkeli Başlangıç",
           calories: "5 kcal",
@@ -7225,7 +7390,7 @@ Hepsini bir kasede çırpın. Isınmış yağlı kağıt serili tost makinesine 
 📌 Yarın sabah kahvaltısı için hemen kaydet!
 💬 Tostunun arasına en çok ne yakışır? Yorumlara yaz 👇
 
-#fitrecete #diyetisyenönerisi #yulaftostu #fittarifler #pratikkahvaltı #ekmeksiztarifler #toktutantarifler #sağlıklıbeslenme #reels`,
+#diyetkalfa #diyetisyenönerisi #yulaftostu #fittarifler #pratikkahvaltı #ekmeksiztarifler #toktutantarifler #sağlıklıbeslenme #reels`,
         recipe: {
           title: "Yüksek Proteinli Çıtır Yulaf Tostu",
           calories: "220 kcal",
@@ -7266,7 +7431,7 @@ Doğru kural:
 📌 Bu efsaneye hala inanan sevdiklerine bu videoyu gönder!
 💬 Sen akşam en son kaçta yemek yiyorsun? Yorumlarda buluşalım 👇
 
-#fitrecete #diyetisyenönerisi #diyetefsaneleri #akşamyemeği #sağlıklızayıflama #diyetmitleri #beslenmeuzmanı #onlinediyet #reels`,
+#diyetkalfa #diyetisyenönerisi #diyetefsaneleri #akşamyemeği #sağlıklızayıflama #diyetmitleri #beslenmeuzmanı #onlinediyet #reels`,
         recipe: {
           title: "Hafif Gece Tokluk Kasesi",
           calories: "95 kcal",
@@ -7303,7 +7468,7 @@ ETİKET OKURKEN BU 3 ŞEYE DİKKAT:
 📌 Alışverişe gitmeden önce bu videoyu kaydet, sepetine ne attığını bil!
 💬 En son hangi "fit" ürünü aldın? Yorumda yaz, inceleyelim 👇
 
-#fitrecete #diyetisyenönerisi #marketalışverişi #etiketokuma #gizlişeker #sağlıklıyaşam #diyetürünleri #bilinçlitüketici #reels`,
+#diyetkalfa #diyetisyenönerisi #marketalışverişi #etiketokuma #gizlişeker #sağlıklıyaşam #diyetürünleri #bilinçlitüketici #reels`,
         recipe: {
           title: "Ev Yapımı 2 Malzemeli Çıtır Fıstık Ezmesi Bar",
           calories: "120 kcal",
@@ -7342,7 +7507,7 @@ GECE DÖNGÜSÜNÜ KIRMA PLANI:
 📌 Gece buzdolabını tavaf eden arkadaşına hemen gönder!
 💬 Sen gece en çok ne aşeriyorsun? Yorumda paylaş 👇
 
-#fitrecete #diyetisyenönerisi #geceaçlığı #melatonin #uykubeslenmesi #sağlıklıyaşam #diyetisyentavsiyesi #tokluk #reels`,
+#diyetkalfa #diyetisyenönerisi #geceaçlığı #melatonin #uykubeslenmesi #sağlıklıyaşam #diyetisyentavsiyesi #tokluk #reels`,
         recipe: {
           title: "Derin Uyku & Melatonin İksiri",
           calories: "65 kcal",
@@ -7380,7 +7545,7 @@ METABOLİZMA ATEŞLEYEN FORMÜL:
 📌 Sabah kahvesini seven arkadaşına göndermeyi unutma!
 💬 Sen günde kaç fincan kahve tüketiyorsun? Yorumda buluşalım 👇
 
-#fitrecete #diyetisyenönerisi #kahvekeyfi #metabolizmahızlandırma #yağyakımı #mctoil #sağlıklıyaşam #fittüyolar #reels`,
+#diyetkalfa #diyetisyenönerisi #kahvekeyfi #metabolizmahızlandırma #yağyakımı #mctoil #sağlıklıyaşam #fittüyolar #reels`,
         recipe: {
           title: "Termojenik MCT Kahve",
           calories: "25 kcal",
@@ -7417,7 +7582,7 @@ PCOS'TA 3 ALTIN KURAL:
 📌 Bu videoyu PCOS ile savaşan arkadaşına gönderip güç ver!
 💬 Sen hangi semptomla en çok zorlanıyorsun? Yorumda paylaş 🌸
 
-#fitrecete #diyetisyenönerisi #pcos #polikistikoversendromu #hormondengesi #kadınsağlığı #insülindirenci #sağlıklıbeslenme #onlinediyet #reels`,
+#diyetkalfa #diyetisyenönerisi #pcos #polikistikoversendromu #hormondengesi #kadınsağlığı #insülindirenci #sağlıklıbeslenme #onlinediyet #reels`,
         recipe: {
           title: "Androjen Dengeleyen Taze Nane & Çörek Otu İksiri",
           calories: "10 kcal",
@@ -7500,7 +7665,7 @@ DİYETİSYEN KLİNİK TAVSİYELERİ:
 📌 Bu önemli bilgiyi kaydet ve arkadaşına gönder!
 💬 Bu konuda senin aklına takılan soru nedir? Yorumlarda buluşalım 👇
 
-#fitrecete #diyetisyenönerisi #${clean.replace(/[^a-zA-Z0-9çğıöşüÇĞİÖŞÜ]/g, '').toLowerCase()} #sağlıklıbeslenme #diyetisyentavsiyesi #onlinediyet #reels`,
+#diyetkalfa #diyetisyenönerisi #${clean.replace(/[^a-zA-Z0-9çğıöşüÇĞİÖŞÜ]/g, '').toLowerCase()} #sağlıklıbeslenme #diyetisyentavsiyesi #onlinediyet #reels`,
         recipe: {
           title: `${clean} Destekleyici Klinik Bitki İksiri`,
           calories: "12 kcal",
@@ -7703,7 +7868,7 @@ DİYETİSYEN KLİNİK TAVSİYELERİ:
       };
 
       reelsAgenda.unshift(item);
-      localStorage.setItem('fitrecete_reels_agenda', JSON.stringify(reelsAgenda));
+      localStorage.setItem('diyetkalfa_reels_agenda', JSON.stringify(reelsAgenda));
       renderAgendaList();
       alert(`"${lastGeneratedReelsData.title}" başarıyla ajandanıza eklendi!`);
     }
@@ -7758,14 +7923,14 @@ DİYETİSYEN KLİNİK TAVSİYELERİ:
     function toggleAgendaDone(idx) {
       if (!reelsAgenda[idx]) return;
       reelsAgenda[idx].done = !reelsAgenda[idx].done;
-      localStorage.setItem('fitrecete_reels_agenda', JSON.stringify(reelsAgenda));
+      localStorage.setItem('diyetkalfa_reels_agenda', JSON.stringify(reelsAgenda));
       renderAgendaList();
     }
 
     function deleteAgendaItem(idx) {
       if (confirm('Bu videoyu ajandanızdan silmek istediğinize emin misiniz?')) {
         reelsAgenda.splice(idx, 1);
-        localStorage.setItem('fitrecete_reels_agenda', JSON.stringify(reelsAgenda));
+        localStorage.setItem('diyetkalfa_reels_agenda', JSON.stringify(reelsAgenda));
         renderAgendaList();
       }
     }
@@ -7868,7 +8033,7 @@ function orderPlanWhatsApp(planName) {
     dietitianName = nameInput.value.trim();
   }
 
-  var msg = "Merhaba FitReçete Pro AI™ Lisans Ekibi,\n\n" +
+  var msg = "Merhaba DiyetKalfa AI™ Lisans Ekibi,\n\n" +
             "💎 Satın Almak ve 7 Günlük Ücretsiz Denememi Başlatmak İstiyorum:\n" +
             "• Paket: " + planName + "\n" +
             "• Ödeme Döngüsü: " + cycleStr + "\n" +
@@ -7880,7 +8045,7 @@ function orderPlanWhatsApp(planName) {
   var waUrl = "https://api.whatsapp.com/send?phone=905300000000&text=" + encodedMsg;
   
   // Kullanıcıya bildirim modalı veya direkt yönlendirme
-  if (window.confirm("FitReçete Pro AI™ " + planName + " (" + cycleStr + ") için 7 günlük ücretsiz denemenizi başlatmak üzere WhatsApp aktivasyon hattına yönlendiriliyorsunuz. Devam edilsin mi?")) {
+  if (window.confirm("DiyetKalfa AI™ " + planName + " (" + cycleStr + ") için 7 günlük ücretsiz denemenizi başlatmak üzere WhatsApp aktivasyon hattına yönlendiriliyorsunuz. Devam edilsin mi?")) {
     window.open(waUrl, '_blank');
   }
 }
@@ -7901,7 +8066,7 @@ function closeOnboardingModal(dontShowAgain) {
   if (m) m.style.display = 'none';
   if (dontShowAgain) {
     try {
-      localStorage.setItem('fitrecete_onboarding_dismissed', 'true');
+      localStorage.setItem('diyetkalfa_onboarding_dismissed', 'true');
     } catch (e) {}
   }
 }
@@ -7910,13 +8075,13 @@ function closeOnboardingModal(dontShowAgain) {
 window.addEventListener('DOMContentLoaded', function() {
   // Site açılışında direkt Giriş & Satın Al vitrinini aktif et
   try {
-    document.title = "FitReçete Pro AI™ - Satın Al & Klinik Girişi | Profesyonel Diyetisyen Platformu";
+    document.title = "DiyetKalfa AI™ - Satın Al & Klinik Girişi | Profesyonel Diyetisyen Platformu";
     if (typeof switchAppTab === 'function') {
       switchAppTab('landing');
     }
   } catch(e) {}
   try {
-    var dismissed = localStorage.getItem('fitrecete_onboarding_dismissed');
+    var dismissed = localStorage.getItem('diyetkalfa_onboarding_dismissed');
     if (!dismissed) {
       setTimeout(function() {
         openOnboardingModal();
@@ -7939,18 +8104,18 @@ function handlePortalLogin(e) {
   // Giriş Doğrulama / Oturum Açma
   var greeting = email ? email : 'Uzman Diyetisyen';
   try {
-    localStorage.setItem('fitrecete_logged_in', 'true');
-    if (email) localStorage.setItem('fitrecete_user_email', email);
+    localStorage.setItem('diyetkalfa_logged_in', 'true');
+    if (email) localStorage.setItem('diyetkalfa_user_email', email);
   } catch(err) {}
 
-  alert('✅ Giriş Başarılı!\n\nHoş geldiniz ' + greeting + '.\nFitReçete Pro AI™ Klinik Paneli açılıyor...');
+  alert('✅ Giriş Başarılı!\n\nHoş geldiniz ' + greeting + '.\nDiyetKalfa AI™ Klinik Paneli açılıyor...');
   
   // Diyet planlayıcıya ve klinik arayüzüne geçir
   switchAppTab('diet');
 }
 
 function launchLiveDemo() {
-  alert('⚡ FitReçete Pro AI™ Canlı Demo Başlatıldı!\n\nDiyet planlayıcıyı, HOMA-IR laboratuvar analizini ve Türkomp besin veritabanını dilediğiniz gibi deneyebilirsiniz.');
+  alert('⚡ DiyetKalfa AI™ Canlı Demo Başlatıldı!\n\nDiyet planlayıcıyı, HOMA-IR laboratuvar analizini ve Türkomp besin veritabanını dilediğiniz gibi deneyebilirsiniz.');
   switchAppTab('diet');
 }
 
@@ -7975,7 +8140,7 @@ function scrollToPricingSection() {
 
 function isAppUnlocked() {
   try {
-    return localStorage.getItem('fitrecete_unlocked') === 'true';
+    return localStorage.getItem('diyetkalfa_unlocked') === 'true';
   } catch(e) {
     return false;
   }
@@ -7983,8 +8148,8 @@ function isAppUnlocked() {
 
 function unlockApplication(planName, isTrial) {
   try {
-    localStorage.setItem('fitrecete_unlocked', 'true');
-    if (planName) localStorage.setItem('fitrecete_plan', planName);
+    localStorage.setItem('diyetkalfa_unlocked', 'true');
+    if (planName) localStorage.setItem('diyetkalfa_plan', planName);
   } catch(e) {}
 
   document.body.classList.remove('app-locked');
@@ -7995,8 +8160,8 @@ function unlockApplication(planName, isTrial) {
   // Bilgilendirme
   var planStr = planName ? planName : 'Pro Klinik AI™';
   var msg = isTrial ? 
-    "🎉 7 Günlük Ücretsiz Deneme Lisansınız Aktif Edildi!\n\nFitReçete Pro AI™ " + planStr + " sürümünün tüm özellikleri (Diyet Planlayıcı, Tahlil Lab, Besinler, CRM) tam yetkiyle açıldı." :
-    "✅ Giriş Başarılı!\n\nHoş geldiniz. FitReçete Pro AI™ Klinik Paneli açıldı.";
+    "🎉 7 Günlük Ücretsiz Deneme Lisansınız Aktif Edildi!\n\nDiyetKalfa AI™ " + planStr + " sürümünün tüm özellikleri (Diyet Planlayıcı, Tahlil Lab, Besinler, CRM) tam yetkiyle açıldı." :
+    "✅ Giriş Başarılı!\n\nHoş geldiniz. DiyetKalfa AI™ Klinik Paneli açıldı.";
   
   setTimeout(function() {
     alert(msg);
@@ -8009,7 +8174,7 @@ function unlockWithTrial(planName) {
 
 function lockApplication() {
   try {
-    localStorage.removeItem('fitrecete_unlocked');
+    localStorage.removeItem('diyetkalfa_unlocked');
   } catch(e) {}
 
   document.body.classList.add('app-locked');
@@ -8042,6 +8207,130 @@ function initAppGateway() {
 window.addEventListener('DOMContentLoaded', function() {
   initAppGateway();
 });
+
+
+
+/* ============================================================== */
+/* DIYETKALFA AI™ - MATEMATİKSEL FİYATLANDIRMA VE SİPARİŞ MOTORU  */
+/* ============================================================== */
+
+var currentBillingCycle = '12';
+
+var DIYETKALFA_PRICING_MATRIX = {
+  '1': {
+    starter: { monthly: '1.150', originalTotal: '1.150 TL', billedTotal: '1.150 TL', discount: '', note: 'Aylık taahhütsüz esnek plan' },
+    pro: { monthly: '2.100', originalTotal: '2.100 TL', billedTotal: '2.100 TL', discount: '', note: 'Aylık taahhütsüz klinik plan' },
+    enterprise: { monthly: '4.200', originalTotal: '4.200 TL', billedTotal: '4.200 TL', discount: '', note: 'Aylık taahhütsüz kurumsal plan' },
+    subtext: '✨ Aylık periyot: İstediğiniz an iptal edilebilir, taahhütsüz esnek plan + 7 Gün Ücretsiz Deneme!'
+  },
+  '3': {
+    starter: { monthly: '1.030', originalTotal: '3.500 TL', billedTotal: '3.100 TL', discount: '%11 İNDİRİM', note: '3 Aylık tek fatura: 3.100 TL' },
+    pro: { monthly: '1.865', originalTotal: '6.250 TL', billedTotal: '5.600 TL', discount: '%10 İNDİRİM', note: '3 Aylık tek fatura: 5.600 TL' },
+    enterprise: { monthly: '3.750', originalTotal: '12.500 TL', billedTotal: '11.250 TL', discount: '%10 İNDİRİM', note: '3 Aylık tek fatura: 11.250 TL' },
+    subtext: '✨ 3 Aylık periyot: Dönemsel peşin indirim avantajı + 7 Gün Ücretsiz Deneme!'
+  },
+  '6': {
+    starter: { monthly: '965', originalTotal: '7.000 TL', billedTotal: '5.800 TL', discount: '%17 İNDİRİM', note: '6 Aylık tek fatura: 5.800 TL' },
+    pro: { monthly: '1.765', originalTotal: '12.500 TL', billedTotal: '10.600 TL', discount: '%15 İNDİRİM', note: '6 Aylık tek fatura: 10.600 TL' },
+    enterprise: { monthly: '3.540', originalTotal: '25.000 TL', billedTotal: '21.250 TL', discount: '%15 İNDİRİM', note: '6 Aylık tek fatura: 21.250 TL' },
+    subtext: '✨ 6 Aylık periyot: %15-17 avantajlı klinik büyüme paketi + 7 Gün Ücretsiz Deneme!'
+  },
+  '12': {
+    starter: { monthly: '800', originalTotal: '14.000 TL', billedTotal: '9.600 TL', discount: '%31 KAMPANYA', note: 'Normalde 14.000 TL yerine Yıllık: 9.600 TL /yıl' },
+    pro: { monthly: '1.500', originalTotal: '25.000 TL', billedTotal: '18.000 TL', discount: '%28 KAMPANYA 🔥', note: 'Normalde 25.000 TL yerine Yıllık: 18.000 TL /yıl' },
+    enterprise: { monthly: '3.000', originalTotal: '50.000 TL', billedTotal: '36.000 TL', discount: '%28 KAMPANYA 🔥', note: 'Normalde 50.000 TL yerine Yıllık: 36.000 TL /yıl' },
+    subtext: '🔥 YILLIK KAMPANYA: Enterprise paket normalde 50.000 TL yerine şu an sadece 36.000 TL! Ayda 3.000 TL\'den başlayan fırsat!'
+  }
+};
+
+function setBillingCycle(cycle) {
+  currentBillingCycle = cycle;
+  
+  // Buton stillerini güncelle
+  var buttons = document.querySelectorAll('.billing-btn');
+  buttons.forEach(function(btn) {
+    if (btn.getAttribute('data-cycle') === cycle) {
+      btn.style.background = '#ffffff';
+      btn.style.color = '#1c332b';
+      btn.style.boxShadow = '0 4px 12px rgba(28,51,43,0.12)';
+      btn.style.fontWeight = '800';
+    } else {
+      btn.style.background = 'transparent';
+      btn.style.color = '#596660';
+      btn.style.boxShadow = 'none';
+      btn.style.fontWeight = '700';
+    }
+  });
+
+  var data = DIYETKALFA_PRICING_MATRIX[cycle] || DIYETKALFA_PRICING_MATRIX['12'];
+
+  // Starter
+  var pStarter = document.getElementById('price-starter');
+  var bStarter = document.getElementById('billed-starter');
+  var origStarter = document.getElementById('orig-starter');
+  if (pStarter) pStarter.textContent = data.starter.monthly;
+  if (bStarter) bStarter.textContent = data.starter.note;
+  if (origStarter) {
+    origStarter.textContent = (cycle === '12' || cycle === '6' || cycle === '3') ? data.starter.originalTotal : '';
+    origStarter.style.display = (cycle === '12' || cycle === '6' || cycle === '3') ? 'inline' : 'none';
+  }
+
+  // Pro Klinik
+  var pPro = document.getElementById('price-pro');
+  var bPro = document.getElementById('billed-pro');
+  var origPro = document.getElementById('orig-pro');
+  if (pPro) pPro.textContent = data.pro.monthly;
+  if (bPro) bPro.textContent = data.pro.note;
+  if (origPro) {
+    origPro.textContent = (cycle === '12' || cycle === '6' || cycle === '3') ? data.pro.originalTotal : '';
+    origPro.style.display = (cycle === '12' || cycle === '6' || cycle === '3') ? 'inline' : 'none';
+  }
+
+  // Enterprise
+  var pEnt = document.getElementById('price-enterprise');
+  var bEnt = document.getElementById('billed-enterprise');
+  var origEnt = document.getElementById('orig-enterprise');
+  if (pEnt) pEnt.textContent = data.enterprise.monthly;
+  if (bEnt) bEnt.textContent = data.enterprise.note;
+  if (origEnt) {
+    origEnt.textContent = (cycle === '12' || cycle === '6' || cycle === '3') ? data.enterprise.originalTotal : '';
+    origEnt.style.display = (cycle === '12' || cycle === '6' || cycle === '3') ? 'inline' : 'none';
+  }
+
+  var subtext = document.getElementById('billing-cycle-subtext');
+  if (subtext) subtext.textContent = data.subtext;
+}
+
+function orderPlanWhatsApp(planName) {
+  var cycleMap = {
+    '1': '1 Aylık Taahhütsüz Plan',
+    '3': '3 Aylık İndirimli Plan',
+    '6': '6 Aylık İndirimli Plan',
+    '12': '12 Aylık Yıllık Kampanyalı Plan (En Üst Düzey 50.000 TL yerine 36.000 TL)'
+  };
+  var cycleStr = cycleMap[currentBillingCycle] || '12 Aylık Yıllık Plan';
+
+  var dietitianName = 'Diyetisyen / Klinik Yetkilisi';
+  var nameInput = document.getElementById('client-name');
+  if (nameInput && nameInput.value.trim()) {
+    dietitianName = nameInput.value.trim();
+  }
+
+  var msg = "Merhaba DiyetKalfa Lisans & Satış Ekibi,\n\n" +
+            "💎 Satın Almak ve 7 Günlük Ücretsiz Denememi Başlatmak İstiyorum:\n" +
+            "• Platform: DiyetKalfa AI™\n" +
+            "• Paket: " + planName + "\n" +
+            "• Ödeme Döngüsü: " + cycleStr + "\n" +
+            "• Diyetisyen / Klinik: " + dietitianName + "\n\n" +
+            "Kampanyalı fiyat üzerinden lisans aktivasyonumu ve faturamı iletir misiniz? Teşekkürler!";
+
+  var encodedMsg = encodeURIComponent(msg);
+  var waUrl = "https://api.whatsapp.com/send?phone=905300000000&text=" + encodedMsg;
+  
+  if (window.confirm("DiyetKalfa " + planName + " (" + cycleStr + ") siparişi ve lisans aktivasyonu için WhatsApp hattına yönlendiriliyorsunuz. Devam edilsin mi?")) {
+    window.open(waUrl, '_blank');
+  }
+}
 
 </script>
   <!-- Mobil Kolay Dokunma Alt Çubuğu -->
