@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
@@ -1028,6 +1028,235 @@
       color: #0f172a;
     }
 
+    /* ============================================================ */
+    /* FitReçete Pro AI™ - ULTRA MODERN WEBAPP STİLLERİ & BUTONLAR */
+    /* ============================================================ */
+
+    /* Canlı Durum Rozeti (Pulsing Dot) */
+    .live-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 800;
+      background: rgba(16, 185, 129, 0.12);
+      color: #065f46;
+      border: 1px solid rgba(16, 185, 129, 0.25);
+    }
+    .pulsing-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      animation: pulseGreen 2s infinite;
+    }
+    @keyframes pulseGreen {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    /* WebApp Profesyonel Buton Sistemi */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 9px 15px;
+      font-size: 11.5px;
+      font-weight: 800;
+      border-radius: 10px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      text-decoration: none;
+      white-space: nowrap;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+    .btn:hover {
+      transform: translateY(-1.5px);
+    }
+    .btn:active {
+      transform: translateY(1px) scale(0.98);
+    }
+
+    .btn-pastel-green {
+      background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+    }
+    .btn-pastel-green:hover {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      box-shadow: 0 6px 16px rgba(16, 185, 129, 0.35);
+      color: #ffffff;
+    }
+
+    .btn-pastel-sage {
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      color: #065f46;
+      border: 1px solid #86efac;
+      box-shadow: 0 2px 6px rgba(22, 101, 52, 0.08);
+    }
+    .btn-pastel-sage:hover {
+      background: #bbf7d0;
+      color: #064e3b;
+      box-shadow: 0 4px 10px rgba(22, 101, 52, 0.15);
+    }
+
+    .btn-whatsapp-pastel {
+      background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+    }
+    .btn-whatsapp-pastel:hover {
+      background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+      box-shadow: 0 6px 16px rgba(34, 197, 94, 0.4);
+      color: #ffffff;
+    }
+
+    .btn-outline-pink {
+      background: #ffffff;
+      color: var(--dusty-pink);
+      border: 1px solid var(--dusty-pink-border);
+      box-shadow: 0 2px 6px rgba(190, 91, 112, 0.08);
+    }
+    .btn-outline-pink:hover {
+      background: var(--dusty-pink-light);
+      border-color: var(--dusty-pink);
+      color: var(--dusty-pink-dark);
+    }
+
+    .btn-swap-mini {
+      background: #ffffff;
+      color: var(--dusty-pink);
+      border: 1px solid var(--dusty-pink-border);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .btn-swap-mini:hover {
+      background: var(--dusty-pink);
+      color: #ffffff;
+      border-color: var(--dusty-pink);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(190, 91, 112, 0.25);
+    }
+
+    /* İnteraktif Su Takip Çubuğu */
+    .water-tracker-card {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border: 1px solid #bae6fd;
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .water-tracker-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #0369a1;
+    }
+    .water-glasses-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+    .water-glass-btn {
+      flex: 1;
+      min-width: 32px;
+      height: 36px;
+      background: #ffffff;
+      border: 1.5px solid #7dd3fc;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      transition: all 0.2s ease;
+      color: #0284c7;
+    }
+    .water-glass-btn.drank {
+      background: linear-gradient(180deg, #38bdf8 0%, #0284c7 100%);
+      color: #ffffff;
+      border-color: #0369a1;
+      box-shadow: 0 2px 6px rgba(2, 132, 199, 0.35);
+      transform: translateY(-2px);
+    }
+
+    /* Diyetisyen Klinik Talimat Kutusu */
+    .clinical-directive-card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      margin-top: 10px;
+    }
+    .clinical-directive-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .clinical-directive-textarea {
+      width: 100%;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 8px 10px;
+      font-size: 11.5px;
+      font-family: inherit;
+      color: var(--text-main);
+      resize: vertical;
+      min-height: 55px;
+      background: #faf6f8;
+      transition: border-color 0.2s ease;
+    }
+    .clinical-directive-textarea:focus {
+      outline: none;
+      border-color: var(--dusty-pink);
+      background: #ffffff;
+    }
+
+    /* Porsiyon Rehberi Grid */
+    .portion-guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .portion-item-box {
+      background: #faf8f9;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 10px;
+      text-align: center;
+    }
+    .portion-item-box .icon { font-size: 26px; margin-bottom: 4px; }
+    .portion-item-box h5 { font-size: 12px; font-weight: 800; color: var(--dark-slate); margin-bottom: 2px; }
+    .portion-item-box p { font-size: 10.5px; color: var(--text-muted); line-height: 1.35; }
+
   </style>
 </head>
 <body>
@@ -1050,6 +1279,10 @@
       </div>
 
       <div class="header-actions">
+        <span class="live-status-pill"><span class="pulsing-dot"></span> DSÖ 2024 UYUMLU</span>
+        <button onclick="openWhoModal()" class="btn btn-outline-pink" title="Dünya Sağlık Örgütü Klinik Standartları">
+          <span>🩺 DSÖ Standartları</span>
+        </button>
         <button onclick="openClinicModal()" class="btn btn-pastel-sage" title="Klinik ve Marka Kişiselleştirme">
           <span>⚙️ Klinik Ayarları</span>
         </button>
@@ -1454,10 +1687,61 @@
               </div>
             </div>
 
+            <!-- DSÖ Kriterleri & Hızlı Kılavuz Çubuğu -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px; margin-bottom: 6px; padding: 0 4px; flex-wrap: wrap; gap: 6px;">
+              <span style="font-size: 11px; font-weight: 700; color: #065f46; display: inline-flex; align-items: center; gap: 5px;">
+                <span class="live-status-pill"><span class="pulsing-dot"></span> DSÖ 2024 UYUMLU</span>
+                Tuz &lt;2g • Şeker &lt;%5 • Lif &gt;25g
+              </span>
+              <div style="display: flex; gap: 6px;">
+                <button onclick="openWhoModal()" class="btn btn-swap-mini" title="DSÖ Klinik Standartları Raporunu Aç">
+                  🩺 DSÖ Standartları
+                </button>
+                <button onclick="openPortionModal()" class="btn btn-swap-mini" title="Ev Tipi El Porsiyon Rehberini Aç">
+                  🖐️ Porsiyon Rehberi
+                </button>
+              </div>
+            </div>
+
+            <!-- İnteraktif 8 Bardak Su Takip Çubuğu (Nutrium Stili) -->
+            <div class="water-tracker-card">
+              <div class="water-tracker-header">
+                <div style="display: flex; align-items: center; gap: 6px;">
+                  <span style="font-size: 16px;">💧</span>
+                  <span>Günlük Su Hedefi: <b id="water-target-disp" style="color: #0284c7;">2,730 ml</b></span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span id="water-progress-text" style="font-size: 11px; font-weight: 800; color: #0369a1;">0 / 8 Bardak (%0)</span>
+                  <button onclick="resetWaterTracker()" style="background: none; border: none; color: #0284c7; font-size: 11px; cursor: pointer; text-decoration: underline;" title="Bardakları sıfırla">Sıfırla</button>
+                </div>
+              </div>
+              <div class="water-glasses-row" id="water-glasses-container">
+                <!-- 8 Su Bardağı JS ile çizilir -->
+              </div>
+              <div style="display: flex; align-items: center; justify-content: space-between; font-size: 10px; color: #0369a1; margin-top: 2px;">
+                <span>💡 Bardaklara tıklayarak içilen suyu işaretleyin (1 bardak ~ 250 ml).</span>
+                <span id="water-ml-drank" style="font-weight: 800; color: #0284c7;">0 ml içildi</span>
+              </div>
+            </div>
+
+
             <!-- ÖĞÜNLER -->
             <div class="meals-stack" id="meals-container">
               <!-- JS ile doldurulur -->
             </div>
+
+            <!-- Diyetisyen Özel Klinik Talimat & Direktif Kutusu -->
+            <div class="clinical-directive-card">
+              <div class="clinical-directive-header">
+                <span style="font-size: 12px; font-weight: 800; color: var(--dark-slate); display: flex; align-items: center; gap: 5px;">
+                  <span>✍️</span>
+                  <span>Diyetisyen Özel Klinik Notu & Danışan Direktifleri</span>
+                </span>
+                <span style="font-size: 10px; color: var(--text-muted);">WhatsApp & PDF'e otomatik eklenir</span>
+              </div>
+              <textarea id="inp-clinical-directive" class="clinical-directive-textarea" placeholder="Danışana özel tavsiyelerinizi girin (ör: 'Sabah güne 1 bardak ılık limonlu suyla başlayın, akşam yemeğinden sonra 20 dakika tempolu yürüyüş yapın, bol su için...')" oninput="saveClinicalDirective()"></textarea>
+            </div>
+
 
             <!-- Dyt. Dilara Özkan İmzası -->
             <div style="background: #fdf2f4; border: 1px solid #fbcfe8; border-radius: var(--radius-sm); padding: 8px 10px; display: flex; align-items: center; justify-content: space-between; font-size: 10px; color: #8c3648; flex-wrap: wrap; gap: 4px;">
@@ -1862,6 +2146,151 @@
       </div>
     </div>
   </div>
+
+<!-- MODAL 3: DSÖ / WHO BİLİMSEL BESLENME PROTOKOLÜ VE STANDARTLARI -->
+<div id="modal-who-guidelines" class="modal-backdrop" style="display: none; align-items: center; justify-content: center; z-index: 10000;">
+  <div class="commercial-modal-box" style="max-width: 680px;">
+    <button onclick="closeWhoModal()" class="modal-close-btn">✕</button>
+    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+      <span style="font-size: 28px;">🩺</span>
+      <div>
+        <h3 style="font-size: 16px; font-weight: 900; color: var(--dark-slate);">Dünya Sağlık Örgütü (DSÖ / WHO) Beslenme Standartları</h3>
+        <p style="font-size: 11px; color: var(--text-muted);">FitReçete Pro AI™, DSÖ'nün kronik hastalıkları önleme ve optimal metabolik sağlık kılavuzlarını temel alır.</p>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+      
+      <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: var(--radius-sm); padding: 12px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+          <b style="color: #065f46; font-size: 12px;">🧂 Sodyum & Tuz Tüketimi</b>
+          <span style="font-size: 10px; background: #059669; color: white; padding: 2px 6px; border-radius: 8px; font-weight: 800;">&lt; 2,000 mg</span>
+        </div>
+        <p style="font-size: 11px; color: #047857; line-height: 1.4;">
+          DSÖ önerisi: Günlük tuz tüketimi <b>5 gramın</b> (1 silme tatlı kaşığı veya 2,000 mg sodyum) altında tutulmalıdır. Hipertansiyon, inme ve kalp damar riskini %25 oranında azaltır.
+        </p>
+      </div>
+
+      <div style="background: #fff5f5; border: 1px solid #fecaca; border-radius: var(--radius-sm); padding: 12px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+          <b style="color: #991b1b; font-size: 12px;">🍬 Serbest & İlave Şeker</b>
+          <span style="font-size: 10px; background: #dc2626; color: white; padding: 2px 6px; border-radius: 8px; font-weight: 800;">&lt; %5-10 Enerji</span>
+        </div>
+        <p style="font-size: 11px; color: #7f1d1d; line-height: 1.4;">
+          Serbest şekerler toplam günlük kalorinin <b>%5-10'undan az</b> (yaklaşık 25-50g) olmalıdır. FitReçete menülerinde rafine şeker oranı <b>%0</b> olup tatlı ihtiyacı doğal meyvelerden sağlanır.
+        </p>
+      </div>
+
+      <div style="background: #f0f9ff; border: 1px solid #bae6fd; border-radius: var(--radius-sm); padding: 12px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+          <b style="color: #075985; font-size: 12px;">🌾 Diyet Lifi & Posa</b>
+          <span style="font-size: 10px; background: #0284c7; color: white; padding: 2px 6px; border-radius: 8px; font-weight: 800;">&gt; 25-35g / gün</span>
+        </div>
+        <p style="font-size: 11px; color: #0369a1; line-height: 1.4;">
+          Bağırsak mikrobiyotası, glukoz regülasyonu ve kolon sağlığı için yetişkinlerde günde en az <b>25-35 gram</b> lif hedeflenir. Tam tahıllar ve baklagiller ana lif kaynağımızdır.
+        </p>
+      </div>
+
+      <div style="background: #fdf4ff; border: 1px solid #f5d0fe; border-radius: var(--radius-sm); padding: 12px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+          <b style="color: #86198f; font-size: 12px;">🥗 Sebze & Meyve Tüketimi</b>
+          <span style="font-size: 10px; background: #a21caf; color: white; padding: 2px 6px; border-radius: 8px; font-weight: 800;">&gt; 400g / gün</span>
+        </div>
+        <p style="font-size: 11px; color: #701a75; line-height: 1.4;">
+          Patates hariç günde en az <b>400 gram</b> (5 porsiyon) taze sebze ve meyve tüketilmelidir. Antioksidan flavonoidler hücresel yaşlanmayı ve kanser riskini önler.
+        </p>
+      </div>
+
+      <div style="background: #fefce8; border: 1px solid #fef08a; border-radius: var(--radius-sm); padding: 12px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+          <b style="color: #854d0e; font-size: 12px;">🥑 Yağ Oranı & Yağ Asitleri</b>
+          <span style="font-size: 10px; background: #ca8a04; color: white; padding: 2px 6px; border-radius: 8px; font-weight: 800;">≤ %30 Yağ</span>
+        </div>
+        <p style="font-size: 11px; color: #713f12; line-height: 1.4;">
+          Toplam yağ enerjisi %30'u aşmamalı, doymuş yağlar %10'un altında tutulmalı, endüstriyel trans yağlar ise <b>%0</b> olmalıdır. Soğuk sıkım zeytinyağı ve ceviz tercih edilir.
+        </p>
+      </div>
+
+      <div style="background: #ecfeff; border: 1px solid #a5f3fc; border-radius: var(--radius-sm); padding: 12px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+          <b style="color: #155e75; font-size: 12px;">💧 Hidrasyon (Su İhtiyacı)</b>
+          <span style="font-size: 10px; background: #0891b2; color: white; padding: 2px 6px; border-radius: 8px; font-weight: 800;">30-35 ml / kg</span>
+        </div>
+        <p style="font-size: 11px; color: #164e63; line-height: 1.4;">
+          Böbrek filtrasyonu ve bazal metabolizma için vücut ağırlığının her bir kilogramı başına <b>30-35 ml</b> su içilmelidir (Ör: 70 kg birey için günlük 2.1 - 2.5 litre).
+        </p>
+      </div>
+
+    </div>
+
+    <div style="background: #faf8f9; border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 10px 14px; display: flex; align-items: center; justify-content: space-between;">
+      <span style="font-size: 11px; color: var(--text-muted);">
+        📋 <b>Klinik Referans:</b> WHO Healthy Diet Fact Sheet No: 394 & EFSA Dietary Reference Values (DRVs).
+      </span>
+      <button onclick="closeWhoModal()" class="btn btn-pastel-green" style="font-size: 11px; padding: 6px 14px;">Anladım</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL 4: EL & EV TİPİ PORSIYON ÖLÇÜ REHBERİ (NUTRIUM STANDARDI) -->
+<div id="modal-portion-guide" class="modal-backdrop" style="display: none; align-items: center; justify-content: center; z-index: 10000;">
+  <div class="commercial-modal-box" style="max-width: 650px;">
+    <button onclick="closePortionModal()" class="modal-close-btn">✕</button>
+    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+      <span style="font-size: 28px;">🖐️</span>
+      <div>
+        <h3 style="font-size: 16px; font-weight: 900; color: var(--dark-slate);">Ev Tipi Porsiyon & Pratik El Ölçü Rehberi</h3>
+        <p style="font-size: 11px; color: var(--text-muted);">Mutfak terazisi olmayan danışanlar için uluslararası klinik el porsiyonlama standartları.</p>
+      </div>
+    </div>
+
+    <div class="portion-guide-grid">
+      <div class="portion-item-box">
+        <div class="icon">🖐️</div>
+        <h5>Avuç İçi (Parmaksız)</h5>
+        <p><b>90 - 120 gram</b><br>Tavuk göğsü, hindi, yağsız dana eti, ızgara balık veya somon fileto (1 porsiyon protein).</p>
+      </div>
+
+      <div class="portion-item-box">
+        <div class="icon">✊</div>
+        <h5>Sıkılmış Yumruk</h5>
+        <p><b>1 Su Bardağı (~200g)</b><br>Taze mevsim salatası, haşlanmış brokoli, karnabahar veya 1 orta boy meyve (elma/portakal).</p>
+      </div>
+
+      <div class="portion-item-box">
+        <div class="icon">🤲</div>
+        <h5>İki Avuç Çukuru</h5>
+        <p><b>40 - 50 gram (Kuru)</b><br>Haşlanmış mercimek, nohut, kuru fasulye veya çiğ sebze çorbası kasesi porsiyonu.</p>
+      </div>
+
+      <div class="portion-item-box">
+        <div class="icon">👍</div>
+        <h5>Başparmak Büyüklüğü</h5>
+        <p><b>1 Tatlı Kaşığı (~5-10g)</b><br>Soğuk sıkım sızma zeytinyağı, fıstık/badem ezmesi veya tereyağı porsiyonu.</p>
+      </div>
+
+      <div class="portion-item-box">
+        <div class="icon">📦</div>
+        <h5>Kibrit Kutusu</h5>
+        <p><b>30 gram</b><br>Tam yağlı beyaz peynir, süzme peynir, tulum peyniri veya lor peyniri (1 değişim süt/peynir).</p>
+      </div>
+
+      <div class="portion-item-box">
+        <div class="icon">🤏</div>
+        <h5>Bir Avuç İçi (Tek El)</h5>
+        <p><b>25 - 30 gram</b><br>Çiğ badem (12-15 adet), ceviz içi (3-4 tam ceviz) veya kabak çekirdeği.</p>
+      </div>
+    </div>
+
+    <div style="background: #faf8f9; border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 10px 14px; margin-top: 14px; display: flex; align-items: center; justify-content: space-between;">
+      <span style="font-size: 11px; color: var(--text-muted);">
+        💡 Danışanlarınıza tarifleri anlatırken bu el ölçülerini WhatsApp mesajlarında kolaylıkla kullanabilirsiniz.
+      </span>
+      <button onclick="closePortionModal()" class="btn btn-pastel-green" style="font-size: 11px; padding: 6px 14px;">Tamam</button>
+    </div>
+  </div>
+</div>
+
 <script>
     /* ============================================================ */
     /* FitReçete Pro AI™ - TİCARİ İŞLETİM SİSTEMİ MOTORU             */
@@ -3211,6 +3640,8 @@
 
         window.addEventListener('DOMContentLoaded', () => {
       initClinicProfile();
+      initWaterTracker();
+      initClinicalDirective();
       recalcAndRefresh();
       renderPantryChips();
       refreshSavedClientsDropdown();
@@ -3544,18 +3975,107 @@
       recalcAndRefresh();
     }
 
-        function shareActiveDayWhatsApp() {
+
+
+
+    /* ============================================================ */
+    /* FitReçete Pro AI™ - DSÖ & WEBAPP ETKİLEŞİM MOTORU             */
+    /* ============================================================ */
+
+    let waterCount = parseInt(localStorage.getItem('fitrecete_water_count') || '0', 10);
+
+    function initWaterTracker() {
+      renderWaterGlasses();
+    }
+
+    function renderWaterGlasses() {
+      const container = document.getElementById('water-glasses-container');
+      if (!container) return;
+      container.innerHTML = '';
+      const totalGlasses = 8;
+      for (let i = 1; i <= totalGlasses; i++) {
+        const isDrank = i <= waterCount;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'water-glass-btn' + (isDrank ? ' drank' : '');
+        btn.innerHTML = `<span style="font-size:12px;">${isDrank ? '🥤' : '🥛'}</span><span style="font-size:8.5px; font-weight:800; margin-top:1px;">${i*250}ml</span>`;
+        btn.title = `${i}. bardak (250 ml)`;
+        btn.onclick = () => toggleWaterGlass(i);
+        container.appendChild(btn);
+      }
+      const pct = Math.round((waterCount / totalGlasses) * 100);
+      const progressText = document.getElementById('water-progress-text');
+      if (progressText) progressText.innerText = `${waterCount} / ${totalGlasses} Bardak (%${pct})`;
+      const mlDrank = document.getElementById('water-ml-drank');
+      if (mlDrank) mlDrank.innerText = `${waterCount * 250} ml içildi`;
+    }
+
+    function toggleWaterGlass(index) {
+      if (waterCount === index) {
+        waterCount = index - 1;
+      } else {
+        waterCount = index;
+      }
+      localStorage.setItem('fitrecete_water_count', waterCount.toString());
+      renderWaterGlasses();
+    }
+
+    function resetWaterTracker() {
+      waterCount = 0;
+      localStorage.setItem('fitrecete_water_count', '0');
+      renderWaterGlasses();
+    }
+
+    function initClinicalDirective() {
+      const el = document.getElementById('inp-clinical-directive');
+      if (el) {
+        el.value = localStorage.getItem('fitrecete_clinical_directive') || '';
+      }
+    }
+
+    function saveClinicalDirective() {
+      const el = document.getElementById('inp-clinical-directive');
+      if (el) {
+        localStorage.setItem('fitrecete_clinical_directive', el.value);
+      }
+    }
+
+    function openWhoModal() {
+      const m = document.getElementById('modal-who-guidelines');
+      if (m) m.style.display = 'flex';
+    }
+
+    function closeWhoModal() {
+      const m = document.getElementById('modal-who-guidelines');
+      if (m) m.style.display = 'none';
+    }
+
+    function openPortionModal() {
+      const m = document.getElementById('modal-portion-guide');
+      if (m) m.style.display = 'flex';
+    }
+
+    function closePortionModal() {
+      const m = document.getElementById('modal-portion-guide');
+      if (m) m.style.display = 'none';
+    }
+
+    // Güncellenmiş WhatsApp Paylaşım Fonksiyonu (Diyetisyen Notu ve Su Takibi Dahil)
+    function shareActiveDayWhatsApp() {
       const nameInput = document.getElementById('inp-name').value.trim();
       const name = nameInput ? `Sevgili ${nameInput}` : "Değerli Danışanımız";
       const rawPhone = document.getElementById('inp-phone').value.replace(/[^0-9]/g, '');
       const dayData = sevenDayPlanData[activeDay];
       const targetCal = document.getElementById('stat-target-cal').innerText;
       const water = document.getElementById('who-val-water').innerText;
+      const directiveEl = document.getElementById('inp-clinical-directive');
+      const directive = directiveEl ? directiveEl.value.trim() : '';
       const p = clinicProfile;
 
       let msg = `🌸 *${p.clinicName} • ${p.dietitianName}*\n\n`;
       msg += `🥗 *${name}, ${activeDay}. Gün (${dayData.dayName}) Reçeteniz:*\n\n`;
       msg += `🎯 *Hedef Kalori:* ${targetCal} | 💧 *Günlük Su:* ${water}\n`;
+      msg += `🥤 *Bugünkü Su Hedefi:* ${waterCount}/8 Bardak (~${waterCount * 250} ml)\n`;
       msg += `🥒 *Detoks Suyu:* ${dayData.detoxWater.title}\n`;
       msg += `Tarif: ${dayData.detoxWater.recipe}\n\n`;
 
@@ -3567,6 +4087,11 @@
 
       msg += `🍓 *Sağlıklı Tatlı:* ${dayData.healthyDessert.title} (${dayData.healthyDessert.calories} kcal)\n`;
       msg += `Tarif: ${dayData.healthyDessert.recipe}\n\n`;
+
+      if (directive) {
+        msg += `✍️ *Diyetisyenden Özel Not:*\n_${directive}_\n\n`;
+      }
+
       msg += `Afiyet ve şifa olsun! Sorularınız olursa buradayım.\n\n✨ *Sevgilerimle, ${p.dietitianName}* 🌸\n_${p.slogan}_`;
 
       const encoded = encodeURIComponent(msg);
@@ -3579,11 +4104,14 @@
       }
     }
 
+    // Güncellenmiş PDF Fonksiyonu (Diyetisyen Notu ve DSÖ Rozeti Dahil)
     function downloadOrShareDayPDF() {
       const name = document.getElementById('inp-name').value.trim() || "Danisan";
       const dayData = sevenDayPlanData[activeDay];
       const targetCal = document.getElementById('stat-target-cal').innerText;
       const water = document.getElementById('who-val-water').innerText;
+      const directiveEl = document.getElementById('inp-clinical-directive');
+      const directive = directiveEl ? directiveEl.value.trim() : '';
       const p = clinicProfile;
       
       const printWindow = window.open('', '_blank');
@@ -3591,6 +4119,7 @@
         <!DOCTYPE html>
         <html>
         <head>
+          <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <title>${name}_${dayData.dayName}_FitRecete</title>
           <style>
@@ -3602,6 +4131,8 @@
             .meal { border-bottom: 1px solid #f1dfeb; padding: 9px 0; }
             .meal-title { font-weight: 900; color: #1e1b22; font-size: 11pt; }
             .cals { float: right; font-weight: 900; color: #be5b70; }
+            .directive-box { background: #fef2f2; border-left: 4px solid #be5b70; padding: 10px 14px; border-radius: 4px; margin: 14px 0; font-size: 10pt; }
+            .who-pill { display: inline-block; background: #dcfce7; color: #166534; font-size: 9pt; font-weight: 800; padding: 3px 8px; border-radius: 4px; border: 1px solid #86efac; margin-right: 6px; }
             .footer { margin-top: 24px; border-top: 2px solid #be5b70; padding-top: 10px; font-size: 9.5pt; text-align: center; color: #79576b; }
           </style>
         </head>
@@ -3617,8 +4148,20 @@
           </div>
 
           <div class="info-box">
-            <b>Danışan Adı:</b> ${name} | <b>Hedef:</b> ${targetCal} | <b>Günlük Su:</b> ${water}
+            <b>Danışan Adı:</b> ${name} | <b>Hedef:</b> ${targetCal} | <b>Günlük Su:</b> ${water}<br/>
+            <div style="margin-top: 5px;">
+              <span class="who-pill">✓ DSÖ Standardı: Tuz &lt;2g</span>
+              <span class="who-pill">✓ Rafine Şeker %0</span>
+              <span class="who-pill">✓ Yüksek Lif &gt;25g</span>
+            </div>
           </div>
+
+          ${directive ? `
+          <div class="directive-box">
+            <b style="color: #9f1239;">📋 DİYETİSYENİN ÖZEL KLİNİK TALİMATI:</b><br/>
+            <div style="margin-top: 4px; color: #1e1b22;">${directive.replace(/\n/g, '<br/>')}</div>
+          </div>
+          ` : ''}
 
           <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 9px 12px; border-radius: 6px; margin-bottom: 12px;">
             <b style="color: #065f46;">🥒 DETOKS SUYU:</b> ${dayData.detoxWater.title}<br/>
