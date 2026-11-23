@@ -1757,6 +1757,10 @@
         <button onclick="openClinicModal()" class="btn btn-pastel-sage" title="Klinik ve Marka Kişiselleştirme">
           <span>⚙️ Klinik Ayarları</span>
         </button>
+        <button type="button" class="btn btn-pricing-highlight" onclick="switchAppTab('pricing')" title="7 Gün Ücretsiz Deneyin veya Satın Alın" style="background: linear-gradient(135deg, #059669 0%, #0d9488 100%); color: #ffffff; border: none; padding: 7px 14px; border-radius: 999px; font-weight: 800; font-size: 11px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(5,150,105,0.35);">
+          <span style="background: rgba(255,255,255,0.25); color: #ffffff; font-size: 9.5px; font-weight: 800; padding: 2px 6px; border-radius: 999px; letter-spacing: 0.04em;">7 GÜN ÜCRETSİZ</span>
+          <span>💎 Satın Al & Planlar</span>
+        </button>
         <button onclick="openLicenseModal()" class="btn btn-outline-pink" title="Ticari Lisans ve Satış Paketi">
           <span>🏢 Lisans (Pro)</span>
         </button>
@@ -1781,6 +1785,11 @@
         <span>🥗</span>
         <span>Diyet Planlayıcı</span>
         <span class="badge-pill">DSÖ 2024</span>
+      </button>
+            <button class="saas-tab-btn" id="btn-tab-pricing" onclick="switchAppTab('pricing')">
+        <span>💎</span>
+        <span>Fiyatlandırma & Satın Al</span>
+        <span class="badge-pill" style="background:#dcfce7; color:#15803d;">7 Gün Ücretsiz</span>
       </button>
       <button class="saas-tab-btn" id="btn-tab-lab" onclick="switchAppTab('lab')">
         <span>🧪</span>
@@ -2903,7 +2912,279 @@
       <!-- ============================================================ -->
     <!-- 6. GÖRÜNÜM: KLİNİK TAHLİL & BİYOKİMYA LABORATUVARI (YENİ!)   -->
     <!-- ============================================================ -->
-    <div id="view-lab" style="display: none;">
+    <!-- ============================================================== -->
+<!-- FITREÇETE PRO AI™ - RESMİ TİCARİ LİSANS & FİYATLANDIRMA MERKEZİ -->
+<!-- ============================================================== -->
+<div id="view-pricing" class="app-view-container" style="display: none; padding: 20px 15px 40px;">
+  
+  <!-- Hero Section -->
+  <div style="text-align: center; max-width: 860px; margin: 0 auto 30px;">
+    <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.25); color: #059669; padding: 6px 16px; border-radius: 999px; font-size: 13px; font-weight: 700; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.05em;">
+      <span style="font-size: 16px;">🎁</span> 7 Gün Boyunca Kredi Kartsız Tamamen Ücretsiz Deneyin
+    </div>
+    <h1 style="font-size: clamp(26px, 4vw, 38px); font-weight: 800; color: #0f172a; margin-bottom: 12px; letter-spacing: -0.025em; line-height: 1.2;">
+      Kliniğinizi Geleceğe Taşıyacak <br><span style="background: linear-gradient(135deg, #059669 0%, #0d9488 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Yapay Zeka Destekli</span> Lisans Paketleri
+    </h1>
+    <p style="font-size: 16px; color: #64748b; max-width: 680px; margin: 0 auto; line-height: 1.6;">
+      Tüm Türkiye ve yurt dışındaki profesyonel diyetisyenler, klinikler ve beslenme uzmanları için tasarlanmış yeni nesil SaaS platformu. İster bireysel danışan takibi yapın, ister klinik ölçeğinde büyüyün.
+    </p>
+  </div>
+
+  <!-- 4 Adımda Nasıl Satın Alınır & Başlanır (Onboarding Guide) -->
+  <div style="max-width: 1040px; margin: 0 auto 40px; background: #ffffff; border-radius: 20px; border: 1px solid #e2e8f0; padding: 28px 24px; box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);">
+    <div style="text-align: center; margin-bottom: 24px;">
+      <h3 style="font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 6px;">🚀 4 Adımda Kolayca Satın Alın ve Başlayın</h3>
+      <p style="font-size: 14px; color: #64748b;">Kurulum gerektirmez, telefonunuzdan veya bilgisayarınızdan anında çalışır.</p>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+      <!-- Adım 1 -->
+      <div style="background: #f8fafc; border-radius: 14px; padding: 20px; border: 1px solid #edf2f7; position: relative;">
+        <div style="width: 36px; height: 36px; border-radius: 10px; background: #059669; color: #fff; font-weight: 800; font-size: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; box-shadow: 0 4px 10px rgba(5,150,105,0.3);">
+          1
+        </div>
+        <div style="font-size: 15px; font-weight: 700; color: #1e293b; margin-bottom: 6px;">Planınızı Belirleyin</div>
+        <div style="font-size: 13px; color: #64748b; line-height: 1.5;">İhtiyacınıza en uygun süreyi (Aylık, 3, 6 veya 12 Aylık %40 indirimli) ve paketi seçin.</div>
+      </div>
+
+      <!-- Adım 2 -->
+      <div style="background: #f8fafc; border-radius: 14px; padding: 20px; border: 1px solid #edf2f7; position: relative;">
+        <div style="width: 36px; height: 36px; border-radius: 10px; background: #0d9488; color: #fff; font-weight: 800; font-size: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; box-shadow: 0 4px 10px rgba(13,148,136,0.3);">
+          2
+        </div>
+        <div style="font-size: 15px; font-weight: 700; color: #1e293b; margin-bottom: 6px;">7 Gün Ücretsiz Deneyin</div>
+        <div style="font-size: 13px; color: #64748b; line-height: 1.5;">Kart bilgisi girmeden anında tam yetkili deneme lisansınız WhatsApp veya online ile tanımlansın.</div>
+      </div>
+
+      <!-- Adım 3 -->
+      <div style="background: #f8fafc; border-radius: 14px; padding: 20px; border: 1px solid #edf2f7; position: relative;">
+        <div style="width: 36px; height: 36px; border-radius: 10px; background: #3b82f6; color: #fff; font-weight: 800; font-size: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; box-shadow: 0 4px 10px rgba(59,130,246,0.3);">
+          3
+        </div>
+        <div style="font-size: 15px; font-weight: 700; color: #1e293b; margin-bottom: 6px;">Markanızı Tanımlayın</div>
+        <div style="font-size: 13px; color: #64748b; line-height: 1.5;">Kendi kliniğinizin adını ve logonuzu ekleyin; tüm PDF reçeteleriniz kendi markanızla çıksın.</div>
+      </div>
+
+      <!-- Adım 4 -->
+      <div style="background: #f8fafc; border-radius: 14px; padding: 20px; border: 1px solid #edf2f7; position: relative;">
+        <div style="width: 36px; height: 36px; border-radius: 10px; background: #8b5cf6; color: #fff; font-weight: 800; font-size: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; box-shadow: 0 4px 10px rgba(139,92,246,0.3);">
+          4
+        </div>
+        <div style="font-size: 15px; font-weight: 700; color: #1e293b; margin-bottom: 6px;">Danışanları Büyütün</div>
+        <div style="font-size: 13px; color: #64748b; line-height: 1.5;">WHO standartlarında hatasız reçeteler, lab analizleri ve sosyal medya içerikleriyle cironuzu katlayın.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fatura Dönemi Seçici (1 Aylık, 3 Aylık, 6 Aylık, 12 Aylık) -->
+  <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 35px;">
+    <div style="font-size: 14px; font-weight: 700; color: #475569; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em;">
+      Ödeme ve Fatura Döngüsü Seçin
+    </div>
+    
+    <div class="billing-cycle-switch" style="display: inline-flex; flex-wrap: wrap; background: #e2e8f0; padding: 5px; border-radius: 16px; gap: 4px; max-width: 100%; justify-content: center;">
+      <button type="button" class="billing-btn" onclick="setBillingCycle('1')" data-cycle="1" style="padding: 10px 18px; border-radius: 12px; font-weight: 700; font-size: 14px; border: none; cursor: pointer; transition: all 0.2s ease; background: transparent; color: #475569;">
+        1 Aylık
+      </button>
+      <button type="button" class="billing-btn" onclick="setBillingCycle('3')" data-cycle="3" style="padding: 10px 18px; border-radius: 12px; font-weight: 700; font-size: 14px; border: none; cursor: pointer; transition: all 0.2s ease; background: transparent; color: #475569;">
+        3 Aylık <span style="background: #10b981; color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 6px; margin-left: 4px;">%15 İNDİRİM</span>
+      </button>
+      <button type="button" class="billing-btn" onclick="setBillingCycle('6')" data-cycle="6" style="padding: 10px 18px; border-radius: 12px; font-weight: 700; font-size: 14px; border: none; cursor: pointer; transition: all 0.2s ease; background: transparent; color: #475569;">
+        6 Aylık <span style="background: #10b981; color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 6px; margin-left: 4px;">%25 İNDİRİM</span>
+      </button>
+      <button type="button" class="billing-btn active-cycle" onclick="setBillingCycle('12')" data-cycle="12" style="padding: 10px 18px; border-radius: 12px; font-weight: 800; font-size: 14px; border: none; cursor: pointer; transition: all 0.2s ease; background: #ffffff; color: #0f172a; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+        12 Aylık (Yıllık) <span style="background: #dc2626; color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 6px; margin-left: 4px;">%40 AVANTAJ 🔥</span>
+      </button>
+    </div>
+    
+    <div id="billing-cycle-subtext" style="font-size: 13px; color: #059669; font-weight: 600; margin-top: 10px;">
+      ✨ Yıllık ödemede 12 ay boyunca ayda sadece ₺299'dan başlayan fiyatlar + 7 Gün Ücretsiz Deneme!
+    </div>
+  </div>
+
+  <!-- Fiyatlandırma Kartları Grid -->
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; max-width: 1140px; margin: 0 auto 40px; align-items: stretch;">
+    
+    <!-- PAKET 1: STARTER -->
+    <div style="background: #ffffff; border-radius: 20px; border: 1px solid #e2e8f0; padding: 32px 26px; display: flex; flex-direction: column; justify-content: space-between; position: relative; transition: transform 0.2s, box-shadow 0.2s;">
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <h3 style="font-size: 20px; font-weight: 800; color: #0f172a;">Starter (Bireysel)</h3>
+          <span style="background: #f1f5f9; color: #475569; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px;">Yeni Başlayanlar</span>
+        </div>
+        <p style="font-size: 13px; color: #64748b; margin-bottom: 20px; min-height: 38px;">Bireysel çalışan veya online danışmanlık veren bağımsız diyetisyenler için ideal.</p>
+        
+        <!-- Fiyat Alanı -->
+        <div style="padding-bottom: 20px; border-bottom: 1px solid #f1f5f9; margin-bottom: 20px;">
+          <div style="display: flex; align-items: baseline; gap: 4px;">
+            <span style="font-size: 18px; font-weight: 700; color: #64748b;">₺</span>
+            <span id="price-starter" style="font-size: 42px; font-weight: 900; color: #0f172a; letter-spacing: -0.03em;">299</span>
+            <span style="font-size: 14px; font-weight: 600; color: #64748b;">/ay</span>
+          </div>
+          <div id="billed-starter" style="font-size: 12px; color: #94a3b8; font-weight: 500; margin-top: 4px;">Yıllık tek fatura: ₺3.588 /yıl</div>
+        </div>
+
+        <!-- Özellikler -->
+        <div style="font-size: 12px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px;">Dahil Olan Özellikler:</div>
+        <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px; font-size: 13.5px; color: #334155;">
+          <li style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: #059669; font-size: 16px;">✓</span> <strong>50 Aktif Danışan</strong> Kapasitesi
+          </li>
+          <li style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: #059669; font-size: 16px;">✓</span> WHO & Türkomp Klinik Veritabanı
+          </li>
+          <li style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: #059669; font-size: 16px;">✓</span> Akşam Menüsü Sıfır Yumurta Garantisi
+          </li>
+          <li style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: #059669; font-size: 16px;">✓</span> Tek Tıkla WhatsApp & PDF Paylaşımı
+          </li>
+          <li style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: #059669; font-size: 16px;">✓</span> Mobil & Bilgisayar %100 Hızlı Senkron
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <div style="background: rgba(16,185,129,0.08); border-radius: 8px; padding: 8px; text-align: center; font-size: 12px; color: #059669; font-weight: 700; margin-bottom: 12px;">
+          🎉 7 Gün Boyunca Kredi Kartsız Ücretsiz Deneyin
+        </div>
+        <button type="button" onclick="orderPlanWhatsApp('Starter (Bireysel)')" style="width: 100%; background: #0f172a; color: #ffffff; border: none; padding: 14px; border-radius: 12px; font-weight: 800; font-size: 15px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;">
+          <span>7 Gün Ücretsiz Başla</span>
+          <span style="font-size: 18px;">→</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- PAKET 2: PRO KLİNİK (ÖNE ÇIKAN - MOST POPULAR) -->
+    <div style="background: #ffffff; border-radius: 20px; border: 2px solid #059669; padding: 32px 26px; display: flex; flex-direction: column; justify-content: space-between; position: relative; box-shadow: 0 10px 30px -5px rgba(5, 150, 105, 0.2); transform: translateY(-4px);">
+      <!-- Ribbon -->
+      <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #059669 0%, #0d9488 100%); color: #ffffff; font-size: 11px; font-weight: 800; padding: 4px 16px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.08em; box-shadow: 0 4px 10px rgba(5,150,105,0.4);">
+        ⭐ EN ÇOK TERCİH EDİLEN (PRO)
+      </div>
+
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; margin-top: 6px;">
+          <h3 style="font-size: 22px; font-weight: 800; color: #0f172a;">Pro Klinik AI™</h3>
+          <span style="background: rgba(16,185,129,0.15); color: #059669; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 20px;">Tam Donanım</span>
+        </div>
+        <p style="font-size: 13px; color: #64748b; margin-bottom: 20px; min-height: 38px;">Yoğun klinik çalışan, hasta sonuçlarını takip eden ve sosyal medyada büyüyen diyetisyenler için.</p>
+        
+        <!-- Fiyat Alanı -->
+        <div style="padding-bottom: 20px; border-bottom: 1px solid #f1f5f9; margin-bottom: 20px;">
+          <div style="display: flex; align-items: baseline; gap: 4px;">
+            <span style="font-size: 18px; font-weight: 700; color: #059669;">₺</span>
+            <span id="price-pro" style="font-size: 46px; font-weight: 900; color: #059669; letter-spacing: -0.03em;">539</span>
+            <span style="font-size: 14px; font-weight: 600; color: #64748b;">/ay</span>
+          </div>
+          <div id="billed-pro" style="font-size: 12px; color: #059669; font-weight: 600; margin-top: 4px;">Yıllık tek fatura: ₺6.468 /yıl (%40 Tasarruf)</div>
+        </div>
+
+        <!-- Özellikler -->
+        <div style="font-size: 12px; font-weight: 700; color: #059669; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px;">Starter Paketine Ek Olarak:</div>
+        <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px; font-size: 13.5px; color: #1e293b;">
+          <li style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: #059669; font-size: 16px;">★</span> <strong>Sınırsız Danışan Portföyü</strong>
+          </li>
+          <li style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: #059669; font-size: 16px;">★</span> <strong>Klinik Biyokimya & Lab Analizörü</strong> (HOMA-IR, Kolesterol, İnsülin)
+          </li>
+          <li style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: #059669; font-size: 16px;">★</span> <strong>Instagram & İçerik AI Motoru</strong> (Reels, Açıklama, Tarif Fikirleri)
+          </li>
+          <li style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: #059669; font-size: 16px;">★</span> <strong>Kendi Markanızla Reçete Çıktısı</strong> (Logo & White-label Lisans)
+          </li>
+          <li style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: #059669; font-size: 16px;">★</span> Öncelikli 7/24 WhatsApp VIP Destek Hattı
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <div style="background: rgba(16,185,129,0.12); border-radius: 8px; padding: 8px; text-align: center; font-size: 12px; color: #059669; font-weight: 800; margin-bottom: 12px;">
+          🚀 Anında Aktivasyon • 7 Gün Kartsız Deneme
+        </div>
+        <button type="button" onclick="orderPlanWhatsApp('Pro Klinik AI™')" style="width: 100%; background: linear-gradient(135deg, #059669 0%, #0d9488 100%); color: #ffffff; border: none; padding: 15px; border-radius: 12px; font-weight: 800; font-size: 16px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 15px rgba(5,150,105,0.35);">
+          <span>7 Gün Ücretsiz Başla</span>
+          <span style="font-size: 18px;">⚡</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- PAKET 3: ENTERPRISE -->
+    <div style="background: #ffffff; border-radius: 20px; border: 1px solid #e2e8f0; padding: 32px 26px; display: flex; flex-direction: column; justify-content: space-between; position: relative;">
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <h3 style="font-size: 20px; font-weight: 800; color: #0f172a;">Enterprise Klinik</h3>
+          <span style="background: #eff6ff; color: #2563eb; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px;">Hastaneler & Ekipler</span>
+        </div>
+        <p style="font-size: 13px; color: #64748b; margin-bottom: 20px; min-height: 38px;">Çoklu diyetisyen kadrosuna sahip klinikler, tıp merkezleri ve spor kulüpleri için.</p>
+        
+        <!-- Fiyat Alanı -->
+        <div style="padding-bottom: 20px; border-bottom: 1px solid #f1f5f9; margin-bottom: 20px;">
+          <div style="display: flex; align-items: baseline; gap: 4px;">
+            <span style="font-size: 18px; font-weight: 700; color: #64748b;">₺</span>
+            <span id="price-enterprise" style="font-size: 42px; font-weight: 900; color: #0f172a; letter-spacing: -0.03em;">1.079</span>
+            <span style="font-size: 14px; font-weight: 600; color: #64748b;">/ay</span>
+          </div>
+          <div id="billed-enterprise" style="font-size: 12px; color: #94a3b8; font-weight: 500; margin-top: 4px;">Yıllık tek fatura: ₺12.948 /yıl</div>
+        </div>
+
+        <!-- Özellikler -->
+        <div style="font-size: 12px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px;">Pro Pakete Ek Olarak:</div>
+        <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px; font-size: 13.5px; color: #334155;">
+          <li style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: #2563eb; font-size: 16px;">✓</span> <strong>Çoklu Diyetisyen & Sekreter Girişi</strong>
+          </li>
+          <li style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: #2563eb; font-size: 16px;">✓</span> HBYS / e-Nabız Entegrasyon Desteği
+          </li>
+          <li style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: #2563eb; font-size: 16px;">✓</span> Özel Subdomain (kliniginiz.fitrecete.com)
+          </li>
+          <li style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: #2563eb; font-size: 16px;">✓</span> Özel Danışmanlık ve Birebir Eğitim
+          </li>
+          <li style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: #2563eb; font-size: 16px;">✓</span> Kurumsal Fatura & Hukuki SLA Sözleşmesi
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <div style="background: rgba(37,99,235,0.08); border-radius: 8px; padding: 8px; text-align: center; font-size: 12px; color: #2563eb; font-weight: 700; margin-bottom: 12px;">
+          🏢 Kurumsal Demo ve 7 Gün Ücretsiz Deneme
+        </div>
+        <button type="button" onclick="orderPlanWhatsApp('Enterprise Klinik')" style="width: 100%; background: #0f172a; color: #ffffff; border: none; padding: 14px; border-radius: 12px; font-weight: 800; font-size: 15px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;">
+          <span>7 Gün Ücretsiz Başla</span>
+          <span style="font-size: 18px;">→</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Güven ve Kalite Rozetleri -->
+  <div style="max-width: 900px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; text-align: center; border-top: 1px solid #e2e8f0; padding-top: 30px;">
+    <div style="display: flex; align-items: center; gap: 8px; color: #475569; font-size: 13.5px; font-weight: 600;">
+      <span style="color: #059669; font-size: 20px;">🛡️</span> 14 Gün Koşulsuz Para İade Garantisi
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px; color: #475569; font-size: 13.5px; font-weight: 600;">
+      <span style="color: #059669; font-size: 20px;">🔒</span> 256-Bit SSL ve KVKK / GDPR Uyumlu
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px; color: #475569; font-size: 13.5px; font-weight: 600;">
+      <span style="color: #059669; font-size: 20px;">⚡</span> Anında Kullanım (Donanım Gerektirmez)
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px; color: #475569; font-size: 13.5px; font-weight: 600;">
+      <span style="color: #059669; font-size: 20px;">📱</span> Telefon, Tablet ve PC Tam Uyum
+    </div>
+  </div>
+
+</div>
+
+
+<div id="view-lab" style="display: none;">
       <div class="hero-banner">
         <div class="hero-tag">Klinik Diyetisyen Tıbbi Laboratuvar Motoru</div>
         <h2 class="hero-title">🧪 Tahlil Yorumlama & Biyokimya Paneli</h2>
@@ -3196,7 +3477,13 @@
         <div>
           <h3 style="font-size: 16px; font-weight: 900; color: var(--dark-slate);">FitReçete Pro AI™ - Ticari Lisans</h3>
           <p style="font-size: 11px; color: var(--text-muted);">Klinik Beslenme & Diyet Danışmanlığı İşletim Sistemi</p>
-        </div>
+              <div style="margin-top: 15px; text-align: center;">
+        <button type="button" onclick="closeLicenseModal(); switchAppTab('pricing');" style="background: linear-gradient(135deg, #059669 0%, #0d9488 100%); color: #fff; border: none; padding: 10px 18px; border-radius: 10px; font-weight: 800; font-size: 13px; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;">
+          <span>📦 Tüm Fiyatlandırma Paketlerini & 7 Gün Ücretsiz Denemeyi Gör</span>
+          <span>→</span>
+        </button>
+      </div>
+    </div>
       </div>
 
       <div style="background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: var(--radius-sm); padding: 12px; margin-bottom: 14px;">
@@ -5264,7 +5551,290 @@
             .directive-box { background: #fef2f2; border-left: 4px solid #be5b70; padding: 10px 14px; border-radius: 4px; margin: 14px 0; font-size: 10pt; }
             .who-pill { display: inline-block; background: #dcfce7; color: #166534; font-size: 9pt; font-weight: 800; padding: 3px 8px; border-radius: 4px; border: 1px solid #86efac; margin-right: 6px; }
             .footer { margin-top: 24px; border-top: 2px solid #be5b70; padding-top: 10px; font-size: 9.5pt; text-align: center; color: #79576b; }
-          </style>
+          
+/* typography_and_saas_pricing */
+    /* ============================================================ */
+    /* FitReçete Pro AI™ - PLUS JAKARTA SANS & SAAS PRICING STİLLERİ*/
+    /* ============================================================ */
+
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap');
+
+    html, body, button, input, select, textarea {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      letter-spacing: -0.012em;
+    }
+
+    /* Üst Başlık Satın Al & Fiyat Butonu */
+    .btn-pricing-highlight {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: #ffffff !important;
+      font-weight: 800;
+      padding: 7px 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      animation: pulseGreenGlow 2.5s infinite;
+    }
+    .btn-pricing-highlight:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(16, 185, 129, 0.45);
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    }
+    @keyframes pulseGreenGlow {
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+      70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+    .badge-pill-trial {
+      background: #ffffff;
+      color: #065f46;
+      font-size: 9px;
+      font-weight: 900;
+      padding: 2px 6px;
+      border-radius: 8px;
+      text-transform: uppercase;
+    }
+
+    /* Fiyatlandırma Periyot Seçici (Aylık / 3 Aylık / 6 Aylık / 12 Aylık) */
+    .billing-cycle-switch {
+      display: inline-flex;
+      background: #f1f5f9;
+      padding: 4px;
+      border-radius: 30px;
+      border: 1px solid #e2e8f0;
+      margin: 16px auto 24px auto;
+      gap: 4px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .billing-btn {
+      padding: 8px 18px;
+      font-size: 12px;
+      font-weight: 800;
+      border-radius: 20px;
+      border: none;
+      background: transparent;
+      color: #64748b;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .billing-btn:hover {
+      color: #0f172a;
+    }
+    .billing-btn.active {
+      background: #ffffff;
+      color: #0f172a;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+    .billing-discount-badge {
+      font-size: 9.5px;
+      font-weight: 900;
+      padding: 2px 7px;
+      border-radius: 10px;
+      background: #dcfce7;
+      color: #15803d;
+    }
+
+    /* Fiyat Kartları Grid */
+    .pricing-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 20px;
+      margin-top: 10px;
+    }
+    .pricing-card {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: var(--radius-xl);
+      padding: 26px 22px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    }
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.09);
+    }
+    .pricing-card.featured {
+      border: 2px solid #be5b70;
+      box-shadow: 0 10px 30px rgba(190, 91, 112, 0.15);
+      background: linear-gradient(180deg, #fffafb 0%, #ffffff 100%);
+    }
+    .pricing-ribbon {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #be5b70 0%, #8c3648 100%);
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(190, 91, 112, 0.35);
+      white-space: nowrap;
+    }
+
+    .pricing-plan-name {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--dark-slate);
+    }
+    .pricing-plan-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      min-height: 34px;
+    }
+    .pricing-price-row {
+      margin: 18px 0 12px 0;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .pricing-amount {
+      font-size: 38px;
+      font-weight: 900;
+      color: var(--dark-slate);
+      line-height: 1;
+    }
+    .pricing-period {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+    .pricing-billing-total {
+      font-size: 11.5px;
+      color: #059669;
+      font-weight: 800;
+      background: #ecfdf5;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 16px;
+      display: inline-block;
+      width: fit-content;
+    }
+
+    .pricing-features-list {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0 24px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 12px;
+      color: var(--text-main);
+      flex: 1;
+    }
+    .pricing-feature-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pricing-feature-item svg {
+      flex-shrink: 0;
+      color: #10b981;
+    }
+
+    .pricing-cta-btn {
+      width: 100%;
+      padding: 13px;
+      font-size: 13px;
+      font-weight: 900;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+    }
+    .pricing-cta-btn .sub-text {
+      font-size: 10px;
+      font-weight: 600;
+      opacity: 0.9;
+    }
+    .btn-plan-featured {
+      background: linear-gradient(135deg, #be5b70 0%, #8c3648 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(190, 91, 112, 0.3);
+    }
+    .btn-plan-featured:hover {
+      background: linear-gradient(135deg, #8c3648 0%, #682434 100%);
+      transform: translateY(-2px);
+    }
+    .btn-plan-standard {
+      background: #f8fafc;
+      border: 1.5px solid #cbd5e1;
+      color: var(--dark-slate);
+    }
+    .btn-plan-standard:hover {
+      background: #f1f5f9;
+      border-color: #94a3b8;
+      transform: translateY(-2px);
+    }
+
+    /* Nasıl Satın Alınır & Kullanılır? 4 Adım Kartları */
+    .onboarding-steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .step-box {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative;
+    }
+    .step-number {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--dusty-pink);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 900;
+    }
+    .step-box h4 {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--dark-slate);
+      margin: 4px 0 2px 0;
+    }
+    .step-box p {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.4;
+      margin: 0;
+    }
+
+</style>
         </head>
         <body>
           <div class="header">
@@ -6814,7 +7384,114 @@ DİYETİSYEN KLİNİK TAVSİYELERİ:
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-  </script>
+  
+
+/* ============================================================== */
+/* FITREÇETE PRO AI™ - TİCARİ FİYATLANDIRMA VE SİPARİŞ MOTORU     */
+/* ============================================================== */
+
+var currentBillingCycle = '12';
+
+var PRICING_MATRIX = {
+  '1': {
+    starter: { monthly: '499', billed: 'Aylık taahhütsüz fatura: ₺499 /ay' },
+    pro: { monthly: '899', billed: 'Aylık taahhütsüz fatura: ₺899 /ay' },
+    enterprise: { monthly: '1.799', billed: 'Aylık taahhütsüz fatura: ₺1.799 /ay' },
+    subtext: '✨ Aylık periyot: İstediğiniz an iptal edilebilir, taahhütsüz esnek plan + 7 Gün Ücretsiz Deneme!'
+  },
+  '3': {
+    starter: { monthly: '425', billed: '3 Aylık tek fatura: ₺1.275 (%15 İndirim)' },
+    pro: { monthly: '765', billed: '3 Aylık tek fatura: ₺2.295 (%15 İndirim)' },
+    enterprise: { monthly: '1.529', billed: '3 Aylık tek fatura: ₺4.587 (%15 İndirim)' },
+    subtext: '✨ 3 Aylık periyot: %15 indirimli dönemlik avantaj + 7 Gün Ücretsiz Deneme!'
+  },
+  '6': {
+    starter: { monthly: '375', billed: '6 Aylık tek fatura: ₺2.250 (%25 İndirim)' },
+    pro: { monthly: '675', billed: '6 Aylık tek fatura: ₺4.050 (%25 İndirim)' },
+    enterprise: { monthly: '1.349', billed: '6 Aylık tek fatura: ₺8.094 (%25 İndirim)' },
+    subtext: '✨ 6 Aylık periyot: %25 indirimli klinik büyüme paketi + 7 Gün Ücretsiz Deneme!'
+  },
+  '12': {
+    starter: { monthly: '299', billed: 'Yıllık tek fatura: ₺3.588 /yıl (%40 Tasarruf)' },
+    pro: { monthly: '539', billed: 'Yıllık tek fatura: ₺6.468 /yıl (%40 Tasarruf 🔥)' },
+    enterprise: { monthly: '1.079', billed: 'Yıllık tek fatura: ₺12.948 /yıl (%40 Tasarruf)' },
+    subtext: '✨ Yıllık ödemede 12 ay boyunca ayda sadece ₺299\'dan başlayan fiyatlar + 7 Gün Ücretsiz Deneme!'
+  }
+};
+
+function setBillingCycle(cycle) {
+  currentBillingCycle = cycle;
+  
+  // Buton stillerini güncelle
+  var buttons = document.querySelectorAll('.billing-btn');
+  buttons.forEach(function(btn) {
+    if (btn.getAttribute('data-cycle') === cycle) {
+      btn.style.background = '#ffffff';
+      btn.style.color = '#0f172a';
+      btn.style.boxShadow = '0 4px 12px rgba(0,0,0,0.08)';
+      btn.style.fontWeight = '800';
+    } else {
+      btn.style.background = 'transparent';
+      btn.style.color = '#475569';
+      btn.style.boxShadow = 'none';
+      btn.style.fontWeight = '700';
+    }
+  });
+
+  var data = PRICING_MATRIX[cycle] || PRICING_MATRIX['12'];
+
+  var pStarter = document.getElementById('price-starter');
+  var bStarter = document.getElementById('billed-starter');
+  if (pStarter) pStarter.textContent = data.starter.monthly;
+  if (bStarter) bStarter.textContent = data.starter.billed;
+
+  var pPro = document.getElementById('price-pro');
+  var bPro = document.getElementById('billed-pro');
+  if (pPro) pPro.textContent = data.pro.monthly;
+  if (bPro) bPro.textContent = data.pro.billed;
+
+  var pEnt = document.getElementById('price-enterprise');
+  var bEnt = document.getElementById('billed-enterprise');
+  if (pEnt) pEnt.textContent = data.enterprise.monthly;
+  if (bEnt) bEnt.textContent = data.enterprise.billed;
+
+  var subtext = document.getElementById('billing-cycle-subtext');
+  if (subtext) subtext.textContent = data.subtext;
+}
+
+function orderPlanWhatsApp(planName) {
+  var cycleMap = {
+    '1': '1 Aylık Plan',
+    '3': '3 Aylık Plan (%15 İndirimli)',
+    '6': '6 Aylık Plan (%25 İndirimli)',
+    '12': '12 Aylık Yıllık Plan (%40 İndirimli)'
+  };
+  var cycleStr = cycleMap[currentBillingCycle] || '12 Aylık Yıllık Plan';
+
+  var dietitianName = 'Diyetisyen / Klinik Yetkilisi';
+  var nameInput = document.getElementById('client-name');
+  if (nameInput && nameInput.value.trim()) {
+    dietitianName = nameInput.value.trim();
+  }
+
+  var msg = "Merhaba FitReçete Pro AI™ Lisans Ekibi,\n\n" +
+            "💎 Satın Almak ve 7 Günlük Ücretsiz Denememi Başlatmak İstiyorum:\n" +
+            "• Paket: " + planName + "\n" +
+            "• Ödeme Döngüsü: " + cycleStr + "\n" +
+            "• Klinik / Diyetisyen: " + dietitianName + "\n\n" +
+            "Lütfen 7 günlük kartsız deneme lisansımı ve aktivasyon detaylarını iletir misiniz? Teşekkürler!";
+
+  var encodedMsg = encodeURIComponent(msg);
+  // Türkiye geneli kurumsal lisans aktivasyon hattı veya WhatsApp Web
+  var waUrl = "https://api.whatsapp.com/send?phone=905300000000&text=" + encodedMsg;
+  
+  // Kullanıcıya bildirim modalı veya direkt yönlendirme
+  if (window.confirm("FitReçete Pro AI™ " + planName + " (" + cycleStr + ") için 7 günlük ücretsiz denemenizi başlatmak üzere WhatsApp aktivasyon hattına yönlendiriliyorsunuz. Devam edilsin mi?")) {
+    window.open(waUrl, '_blank');
+  }
+}
+
+</script>
   <!-- Mobil Kolay Dokunma Alt Çubuğu -->
   <div class="mobile-bottom-dock">
     <button class="mobile-dock-btn active" id="mob-tab-diet" onclick="switchAppTab('diet')">
@@ -6832,6 +7509,10 @@ DİYETİSYEN KLİNİK TAVSİYELERİ:
     <button class="mobile-dock-btn" id="mob-tab-appointments" onclick="switchAppTab('appointments')">
       <span style="font-size: 18px;">📅</span>
       <span>Randevu</span>
+    </button>
+        <button class="mobile-dock-btn" id="mob-tab-pricing" onclick="switchAppTab('pricing')">
+      <span style="font-size: 18px;">💎</span>
+      <span>Paketler</span>
     </button>
     <button class="mobile-dock-btn" id="mob-tab-crm" onclick="switchAppTab('crm')">
       <span style="font-size: 18px;">👥</span>
