@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>dlarasaglıklıyasam - Dyt. DİLARA ÖZKAN Klinik Beslenme Sistemi</title>
+  <title>FitReçete Pro AI™ - Klinik Diyetisyen, Akıllı Reçete & Danışan Yönetim Platformu</title>
   <style>
     /* ============================================================ */
     /* dlarasaglıklıyasam - ULTRA AKICI, SIFIR KAYMA MOBİL & PC CSS */
@@ -825,12 +825,215 @@
     .agenda-card-item.done .agenda-text {
       text-decoration: line-through;
     }
+    /* ============================================================ */
+    /* FitReçete Pro AI™ - TİCARİ MODAL, CRM & ALIŞVERİŞ LİSTESİ CSS */
+    /* ============================================================ */
+
+    /* 4 Farklı Klinik Renk Teması */
+    body.theme-sapphire {
+      --dusty-pink: #2563eb;
+      --dusty-pink-dark: #1e40af;
+      --dusty-pink-light: #eff6ff;
+      --dusty-pink-border: #bfdbfe;
+      --pastel-green: #38bdf8;
+      --pastel-green-hover: #0ea5e9;
+      --pastel-green-dark: #0369a1;
+      --pastel-green-light: #f0f9ff;
+      --pastel-sage: #bae6fd;
+      --bg-page: #f8fafc;
+      --text-main: #0f172a;
+      --text-pink: #2563eb;
+      --text-muted: #475569;
+    }
+
+    body.theme-emerald {
+      --dusty-pink: #059669;
+      --dusty-pink-dark: #065f46;
+      --dusty-pink-light: #ecfdf5;
+      --dusty-pink-border: #a7f3d0;
+      --pastel-green: #10b981;
+      --pastel-green-hover: #059669;
+      --pastel-green-dark: #064e3b;
+      --pastel-green-light: #f0fdf4;
+      --pastel-sage: #6ee7b7;
+      --bg-page: #f6fcf8;
+      --text-main: #064e3b;
+      --text-pink: #059669;
+      --text-muted: #374151;
+    }
+
+    body.theme-dark {
+      --dusty-pink: #f472b6;
+      --dusty-pink-dark: #fb7185;
+      --dusty-pink-light: #2a1b28;
+      --dusty-pink-border: #4a2840;
+      --pastel-green: #34d399;
+      --pastel-green-hover: #10b981;
+      --pastel-green-dark: #064e3b;
+      --pastel-green-light: #132e27;
+      --pastel-sage: #059669;
+      --dark-slate: #f8fafc;
+      --surface: #1e1b24;
+      --bg-page: #131118;
+      --border-color: #382c35;
+      --border-subtle: #4a2840;
+      --text-main: #f1f5f9;
+      --text-pink: #f472b6;
+      --text-muted: #94a3b8;
+      --text-subtle: #cbd5e1;
+    }
+
+    /* Makro Besin Dağılım Çubukları */
+    .macro-bar-container {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 10px;
+      padding: 10px;
+      background: var(--surface);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+    }
+    .macro-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+    }
+    .macro-track {
+      flex: 1;
+      height: 6px;
+      background: #f1f5f9;
+      border-radius: 3px;
+      margin: 0 8px;
+      overflow: hidden;
+    }
+    .macro-fill-protein { height: 100%; background: #3b82f6; border-radius: 3px; }
+    .macro-fill-carb { height: 100%; background: #f59e0b; border-radius: 3px; }
+    .macro-fill-fat { height: 100%; background: #ef4444; border-radius: 3px; }
+
+    /* Alışveriş Listesi Kartları */
+    .grocery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .grocery-card {
+      background: var(--surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      box-shadow: var(--shadow-sm);
+    }
+    .grocery-card h4 {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--dark-slate);
+      margin-bottom: 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px dashed var(--border-color);
+    }
+    .grocery-item-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .grocery-item-list li {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Danışan Kasası & CRM Tablosu */
+    .crm-table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      margin-top: 12px;
+      background: var(--surface);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+    }
+    .crm-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      text-align: left;
+    }
+    .crm-table th {
+      background: #faf6f8;
+      color: var(--dusty-pink-dark);
+      font-weight: 800;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border-color);
+      white-space: nowrap;
+    }
+    .crm-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-main);
+      white-space: nowrap;
+    }
+    .crm-table tr:hover td {
+      background: #fff9fb;
+    }
+    .crm-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 10px;
+      font-weight: 700;
+    }
+    .crm-badge-active { background: #dcfce7; color: #15803d; }
+    .crm-badge-target { background: #fef3c7; color: #b45309; }
+
+    /* Ticari Modal Pencereleri */
+    .commercial-modal-box {
+      background: #ffffff;
+      width: 92%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      position: relative;
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: #f1f5f9;
+      border: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: #64748b;
+    }
+    .modal-close-btn:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
   </style>
 </head>
 <body>
 
-  <!-- ============================================================ -->
-  <!-- 1. ÜST BAR: dlarasaglıklıyasam & Dyt. DİLARA ÖZKAN           -->
+    <!-- ============================================================ -->
+  <!-- 1. ÜST BAR: FitReçete Pro AI™ & White-Label Klinik Markası   -->
   <!-- ============================================================ -->
   <header class="app-header">
     <div class="header-inner">
@@ -841,13 +1044,18 @@
           </svg>
         </div>
         <div class="logo-text">
-          <h1>dlarasaglıklıyasam <span>🌸</span></h1>
-          <div class="logo-sub">Dyt. <b>DİLARA ÖZKAN</b> Klinik Beslenme</div>
+          <h1>FitReçete Pro AI™ <span style="font-size:10.5px; font-weight:800; background: var(--pastel-green-light); color: var(--pastel-green-dark); padding: 2px 7px; border-radius: 6px; border: 1px solid var(--pastel-green-border); margin-left: 4px;">v3.5 PRO</span></h1>
+          <div class="logo-sub"><span class="dynamic-clinic-name">dlarasaglıklıyasam</span> • <span class="dynamic-dietitian-name">Dyt. DİLARA ÖZKAN</span></div>
         </div>
       </div>
 
       <div class="header-actions">
-        <span class="dilara-signature">Dyt. DİLARA ÖZKAN</span>
+        <button onclick="openClinicModal()" class="btn btn-pastel-sage" title="Klinik ve Marka Kişiselleştirme">
+          <span>⚙️ Klinik Ayarları</span>
+        </button>
+        <button onclick="openLicenseModal()" class="btn btn-outline-pink" title="Ticari Lisans ve Satış Paketi">
+          <span>🏢 Lisans (Pro)</span>
+        </button>
         <button onclick="printClinicalDossier()" class="btn btn-pastel-sage" title="7 Günlük Dosyayı Yazdır / PDF">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
           <span>PDF / Yazdır</span>
@@ -861,7 +1069,7 @@
   </header>
 
   <!-- ============================================================ -->
-  <!-- ANA MOD SEÇİCİ (7 GÜNLÜK DİYET / INSTAGRAM İÇERİK STÜDYOSU)  -->
+  <!-- 4'LÜ PROFESYONEL İŞLETİM MODU SEÇİCİ                         -->
   <!-- ============================================================ -->
   <div class="nav-switcher-bar">
     <div class="nav-switcher-inner">
@@ -872,13 +1080,23 @@
       </button>
       <button class="nav-switch-btn" id="btn-tab-reels" onclick="switchAppTab('reels')">
         <span style="font-size: 16px;">🎬</span>
-        <span>Instagram Reels & Video İçerik Stüdyosu</span>
-        <span class="pill-tag">Dyt. Dilara Özkan Özel</span>
+        <span>Viral Reels & İçerik Stüdyosu</span>
+        <span class="pill-tag">Danışan Kazandıran</span>
+      </button>
+      <button class="nav-switch-btn" id="btn-tab-grocery" onclick="switchAppTab('grocery')">
+        <span style="font-size: 16px;">🛒</span>
+        <span>Pazar & Alışveriş Listesi</span>
+        <span class="pill-tag">Otomatik</span>
+      </button>
+      <button class="nav-switch-btn" id="btn-tab-crm" onclick="switchAppTab('crm')">
+        <span style="font-size: 16px;">👥</span>
+        <span>Danışan Kasası & CRM</span>
+        <span class="pill-tag">Yedekleme</span>
       </button>
     </div>
   </div>
 
-  <!-- ============================================================ -->
+
   <!-- 2. ANA İÇERİK                                                -->
   <!-- ============================================================ -->
   <main class="main-container">
@@ -979,7 +1197,7 @@
               </div>
             </div>
 
-            <div class="form-row">
+                        <div class="form-row">
               <div class="form-group" style="grid-column: span 2;">
                 <label class="form-label">PAL (Aktivite Düzeyi)</label>
                 <select id="inp-pal" class="form-select" onchange="recalcAndRefresh()">
@@ -991,11 +1209,15 @@
                 </select>
               </div>
               <div class="form-group">
-                <label class="form-label">Hedef</label>
-                <select id="inp-goal" class="form-select" onchange="recalcAndRefresh()">
-                  <option value="deficit" selected>Kilo Verme (-400 kcal)</option>
-                  <option value="maintain">Koruma (TDEE)</option>
-                  <option value="surplus">Kas (+350 kcal)</option>
+                <label class="form-label">Klinik Protokol</label>
+                <select id="inp-protocol" class="form-select" onchange="recalcAndRefresh()">
+                  <option value="deficit" selected>🔥 Kilo Verme & Yağ Yakımı</option>
+                  <option value="mediterranean">🥗 Akdeniz & Dengeli Beslenme</option>
+                  <option value="low_gi">⚡ İnsülin Direnci & Düşük GI</option>
+                  <option value="keto">🥩 Ketojenik / Düşük Karbonhidrat</option>
+                  <option value="if_fasting">⏳ Aralıklı Oruç (IF 16:8)</option>
+                  <option value="sports">🏋️ Sporcu & Kas Kazanımı</option>
+                  <option value="detox">🍵 Detoks & Anti-İnflamatuar</option>
                 </select>
               </div>
             </div>
@@ -1007,11 +1229,43 @@
                 <div class="val" id="stat-bmr">1,732 kcal</div>
                 <div class="sub">Bazal</div>
               </div>
+              <div class="calc-stat-item">
+                <h6>TDEE</h6>
+                <div class="val" id="stat-tdee">2,381 kcal</div>
+                <div class="sub">Toplam</div>
+              </div>
+              <div class="calc-stat-item">
+                <h6>Hedef Kalori</h6>
+                <div class="val" style="color: var(--dusty-pink-dark);" id="stat-target-cal">1,600 kcal</div>
+                <div class="sub" id="stat-bmi-text">BMI: 24.6</div>
+              </div>
+            </div>
+
+            <!-- Makro Besin Dağılım Çubukları -->
+            <div class="macro-bar-container">
+              <div class="macro-row">
+                <span style="font-weight: 700; color: #1e40af;">🥩 Protein:</span>
+                <div class="macro-track"><div class="macro-fill-protein" id="macro-bar-protein" style="width: 25%;"></div></div>
+                <span id="macro-val-protein" style="font-weight: 800;">100g (%25)</span>
+              </div>
+              <div class="macro-row">
+                <span style="font-weight: 700; color: #b45309;">🍞 Karbonhidrat:</span>
+                <div class="macro-track"><div class="macro-fill-carb" id="macro-bar-carb" style="width: 45%;"></div></div>
+                <span id="macro-val-carb" style="font-weight: 800;">180g (%45)</span>
+              </div>
+              <div class="macro-row">
+                <span style="font-weight: 700; color: #b91c1c;">🫒 Sağlıklı Yağ:</span>
+                <div class="macro-track"><div class="macro-fill-fat" id="macro-bar-fat" style="width: 30%;"></div></div>
+                <span id="macro-val-fat" style="font-weight: 800;">53g (%30)</span>
+              </div>
+            </div>
+
             <!-- Hızlı Menü Yenileme Butonu -->
             <button onclick="regenerateAll7Days()" class="btn btn-pastel-green" style="width: 100%; margin-top: 10px; padding: 11px; font-weight: 800; justify-content: center; box-shadow: 0 3px 8px rgba(110,231,183,0.3);">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
-              <span>✨ 7 Günlük Diyeti Baştan Üret</span>
+              <span>✨ 7 Günlük Kişisel Menüyü Baştan Üret</span>
             </button>
+
               <div class="calc-stat-item">
                 <h6>TDEE</h6>
                 <div class="val" id="stat-tdee">2,381 kcal</div>
@@ -1416,7 +1670,573 @@
 
     </div> <!-- /#view-reels -->
 
-  <script>
+    <!-- 3. GÖRÜNÜM: HAFTALIK PAZAR & MARKET ALIŞVERİŞ LİSTESİ -->
+    <div id="view-grocery" style="display: none;">
+      <div class="card">
+        <div class="card-header" style="background: #ffffff; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 20px;">🛒</span>
+              <span style="font-size: 16px; font-weight: 900; color: var(--dark-slate);">7 Günlük Akıllı Pazar & Market Alışveriş Listesi</span>
+              <span class="logo-badge">Sıfır İsraf Standardı</span>
+            </div>
+            <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 2px;">
+              Hazırlanan 7 günlük diyet planının tüm malzemeleri kategori bazlı toplanarak listelenmiştir.
+            </div>
+          </div>
+          <div class="action-button-group" style="width: auto;">
+            <button onclick="shareGroceryWhatsApp()" class="btn btn-whatsapp-pastel">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>Listeyi WhatsApp'a Gönder</span>
+            </button>
+            <button onclick="copyGroceryText(this)" class="btn btn-pastel-green">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>Panoya Kopyala</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="grocery-grid" id="grocery-cards-container">
+            <!-- Dinamik Olarak JavaScript ile Doldurulacak -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. GÖRÜNÜM: DANIŞAN CRM KASASI & KİLO TAKİP MERKEZİ -->
+    <div id="view-crm" style="display: none;">
+      <div class="card">
+        <div class="card-header" style="background: #ffffff; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 20px;">👥</span>
+              <span style="font-size: 16px; font-weight: 900; color: var(--dark-slate);">Danışan Kasası & Kilo Takip CRM</span>
+              <span class="logo-badge" id="crm-total-count">0 Danışan</span>
+            </div>
+            <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 2px;">
+              Kayıtlı danışanlarınızın kilo geçmişi, ölçümleri ve diyet protokolleri yerel güvenli depolamada saklanır.
+            </div>
+          </div>
+          <div class="action-button-group" style="width: auto;">
+            <button onclick="exportClientsJSON()" class="btn btn-pastel-sage" title="Tüm danışanları JSON formatında yedekle">
+              💾 <span>Yedek İndir (JSON)</span>
+            </button>
+            <label class="btn btn-outline-pink" style="cursor: pointer;" title="Yedek dosyasını geri yükle">
+              📂 <span>Yedek Yükle</span>
+              <input type="file" id="inp-import-json" accept=".json" style="display: none;" onchange="importClientsJSON(event)">
+            </label>
+            <button onclick="exportClientsCSV()" class="btn btn-pastel-green" title="Excel uyumlu CSV indir">
+              📊 <span>Excel / CSV</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div style="display: flex; gap: 10px; margin-bottom: 12px;">
+            <input type="text" id="crm-search-input" class="form-input" placeholder="🔍 Danışan adına veya telefonuna göre ara..." oninput="filterClientTable()">
+          </div>
+
+          <div class="crm-table-wrapper">
+            <table class="crm-table">
+              <thead>
+                <tr>
+                  <th>Danışan Adı Soyadı</th>
+                  <th>Telefon</th>
+                  <th>Hedef / Protokol</th>
+                  <th>Başlangıç (kg)</th>
+                  <th>Hedef Kalori</th>
+                  <th>Kayıt Tarihi</th>
+                  <th>İşlemler</th>
+                </tr>
+              </thead>
+              <tbody id="crm-table-body">
+                <!-- Dinamik Danışan Satırları -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  <!-- ============================================================ -->
+  <!-- MODAL 1: KLİNİK & MARKA KİŞİSELLEŞTİRME (WHITE-LABEL)       -->
+  <!-- ============================================================ -->
+  <div id="modal-clinic-settings" class="modal-backdrop" style="display: none; align-items: center; justify-content: center; z-index: 10000;">
+    <div class="commercial-modal-box">
+      <button onclick="closeClinicModal()" class="modal-close-btn">✕</button>
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px;">
+        <span style="font-size: 22px;">⚙️</span>
+        <div>
+          <h3 style="font-size: 16px; font-weight: 900; color: var(--dark-slate);">Klinik & Marka Ayarları</h3>
+          <p style="font-size: 11px; color: var(--text-muted);">Tüm reçeteleri, WhatsApp ve PDF çıktılarını kendi kliniğinizin adıyla markalayın.</p>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+        <div class="form-group">
+          <label class="form-label">Diyetisyen Adı Soyadı</label>
+          <input type="text" id="setting-dietitian-name" class="form-input" placeholder="Örn: Dyt. Dilara Özkan">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Klinik / Merkez Adı</label>
+          <input type="text" id="setting-clinic-name" class="form-input" placeholder="Örn: dlarasaglıklıyasam">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Unvan / Uzmanlık</label>
+          <input type="text" id="setting-title" class="form-input" placeholder="Örn: Uzman Klinik Diyetisyen">
+        </div>
+        <div class="form-group">
+          <label class="form-label">İletişim / WhatsApp Hattı</label>
+          <input type="text" id="setting-phone" class="form-input" placeholder="Örn: 905551234567">
+        </div>
+        <div class="form-group" style="grid-column: span 2;">
+          <label class="form-label">Instagram Kullanıcı Adı (Reels & İçerik İçin)</label>
+          <input type="text" id="setting-instagram" class="form-input" placeholder="Örn: @dilarasaglikliyasam">
+        </div>
+        <div class="form-group" style="grid-column: span 2;">
+          <label class="form-label">Reçete İmzası / Dipnot</label>
+          <input type="text" id="setting-slogan" class="form-input" placeholder="Örn: Sağlıklı ve dengeli bir yaşam için sevgiyle hazırlandı. 🌸">
+        </div>
+        <div class="form-group" style="grid-column: span 2;">
+          <label class="form-label">Tema Renk Paleti</label>
+          <select id="setting-theme" class="form-select" onchange="previewTheme(this.value)">
+            <option value="default">🌸 Toz Pembe & Pastel Nane (Dilara Özkan İmzası)</option>
+            <option value="sapphire">💎 Medikal Safir & Mint (Klinik & Hastane)</option>
+            <option value="emerald">🌿 Organik Adaçayı & Zümrüt (Fonksiyonel Tıp)</option>
+            <option value="dark">🌌 Koyu Gece & Neon Nane (Modern Koyu Mod)</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 8px; margin-top: 16px; justify-content: flex-end;">
+        <button onclick="resetClinicProfileToDefault()" class="btn btn-secondary" style="font-size: 11px;">Varsayılana Sıfırla</button>
+        <button onclick="saveClinicProfile()" class="btn btn-pastel-green" style="font-size: 12px; font-weight: 800;">💾 Ayarları Kaydet & Uygula</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- MODAL 2: TİCARİ LİSANS & SATIŞ PAKETİ (COMMERCIAL HUB)      -->
+  <!-- ============================================================ -->
+  <div id="modal-commercial-license" class="modal-backdrop" style="display: none; align-items: center; justify-content: center; z-index: 10000;">
+    <div class="commercial-modal-box">
+      <button onclick="closeLicenseModal()" class="modal-close-btn">✕</button>
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+        <span style="font-size: 24px;">🏢</span>
+        <div>
+          <h3 style="font-size: 16px; font-weight: 900; color: var(--dark-slate);">FitReçete Pro AI™ - Ticari Lisans</h3>
+          <p style="font-size: 11px; color: var(--text-muted);">Klinik Beslenme & Diyet Danışmanlığı İşletim Sistemi</p>
+        </div>
+      </div>
+
+      <div style="background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: var(--radius-sm); padding: 12px; margin-bottom: 14px;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-size: 12px; font-weight: 800; color: #065f46;">Aktif Lisans: KURUMSAL PRO (Ömür Boyu)</span>
+          <span style="font-size: 10px; background: #059669; color: #ffffff; padding: 2px 8px; border-radius: 10px; font-weight: 800;">AKTİF</span>
+        </div>
+        <div style="font-size: 11px; color: #047857; margin-top: 4px; font-family: monospace;">
+          Lisans No: FR-PRO-2026-DL89-9842-ENTERPRISE
+        </div>
+      </div>
+
+      <div style="font-size: 12px; color: var(--text-main); margin-bottom: 10px; font-weight: 800;">Dahil Olan Ticari Yetenekler:</div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 11.5px; color: var(--text-muted); margin-bottom: 16px;">
+        <div style="display: flex; align-items: center; gap: 5px;">✅ SIFIR Yumurta Akşam Yemeği Garantisi</div>
+        <div style="display: flex; align-items: center; gap: 5px;">✅ 7 Günlük DSÖ Uyumlu Menü Motoru</div>
+        <div style="display: flex; align-items: center; gap: 5px;">✅ Tek Tıkla WhatsApp & PDF Çıktısı</div>
+        <div style="display: flex; align-items: center; gap: 5px;">✅ Otomatik Pazar/Market Listesi</div>
+        <div style="display: flex; align-items: center; gap: 5px;">✅ 12 Trend Kategorili Viral Reels Stüdyosu</div>
+        <div style="display: flex; align-items: center; gap: 5px;">✅ Tam Beyaz Etiket (Kendi Markanız)</div>
+        <div style="display: flex; align-items: center; gap: 5px;">✅ Sınırsız Danışan Kasası & Kilo Takibi</div>
+        <div style="display: flex; align-items: center; gap: 5px;">✅ Çevrimdışı Çalışma & Sıfır Sunucu Maliyeti</div>
+      </div>
+
+      <div style="background: #faf5ff; border: 1px solid #e9d5ff; border-radius: var(--radius-sm); padding: 12px; text-align: center;">
+        <div style="font-size: 12px; font-weight: 800; color: #6b21a8; margin-bottom: 4px;">Bu Yazılımı Satın Almak veya Kliniğinize Entegre Etmek İçin:</div>
+        <div style="font-size: 11px; color: #7e22ce; margin-bottom: 8px;">Diyetisyenler, sağlıklı yaşam merkezleri ve klinikler için anahtar teslim kurulum.</div>
+        <button onclick="contactForSalesLicense()" class="btn btn-pastel-green" style="width: 100%; justify-content: center; font-weight: 800; padding: 10px;">
+          📲 Ticari Satış & Bilgi İçin WhatsApp'tan Ulaşın
+        </button>
+      </div>
+    </div>
+  </div>
+<script>
+    /* ============================================================ */
+    /* FitReçete Pro AI™ - TİCARİ İŞLETİM SİSTEMİ MOTORU             */
+    /* ============================================================ */
+
+    // 1. Klinik & Marka Profili (White-Label State)
+    const DEFAULT_CLINIC_PROFILE = {
+      dietitianName: "Dyt. DİLARA ÖZKAN",
+      clinicName: "dlarasaglıklıyasam",
+      title: "Uzman Klinik Diyetisyen",
+      phone: "905000000000",
+      instagram: "@dlarasaglikliyasam",
+      slogan: "Dyt. DİLARA ÖZKAN Klinik Beslenme Sistemi 🌸",
+      theme: "default"
+    };
+
+    let clinicProfile = JSON.parse(localStorage.getItem('fitrecete_clinic_profile')) || { ...DEFAULT_CLINIC_PROFILE };
+
+    function initClinicProfile() {
+      applyClinicProfile(clinicProfile);
+    }
+
+    function applyClinicProfile(p) {
+      if (!p) return;
+      document.body.className = p.theme ? `theme-${p.theme}` : '';
+
+      // Başlıkları ve logoları dinamik güncelle
+      const clinicTitleEls = document.querySelectorAll('.dynamic-clinic-name');
+      clinicTitleEls.forEach(el => el.innerText = p.clinicName || DEFAULT_CLINIC_PROFILE.clinicName);
+
+      const dietitianNameEls = document.querySelectorAll('.dynamic-dietitian-name');
+      dietitianNameEls.forEach(el => el.innerText = p.dietitianName || DEFAULT_CLINIC_PROFILE.dietitianName);
+
+      const subEls = document.querySelectorAll('.dynamic-clinic-sub');
+      subEls.forEach(el => el.innerText = `${p.dietitianName} • ${p.title}`);
+
+      // Inputları doldur
+      const inDietitian = document.getElementById('setting-dietitian-name');
+      if (inDietitian) inDietitian.value = p.dietitianName;
+      const inClinic = document.getElementById('setting-clinic-name');
+      if (inClinic) inClinic.value = p.clinicName;
+      const inTitle = document.getElementById('setting-title');
+      if (inTitle) inTitle.value = p.title;
+      const inPhone = document.getElementById('setting-phone');
+      if (inPhone) inPhone.value = p.phone;
+      const inInsta = document.getElementById('setting-instagram');
+      if (inInsta) inInsta.value = p.instagram;
+      const inSlogan = document.getElementById('setting-slogan');
+      if (inSlogan) inSlogan.value = p.slogan;
+      const inTheme = document.getElementById('setting-theme');
+      if (inTheme) inTheme.value = p.theme || 'default';
+    }
+
+    function openClinicModal() {
+      document.getElementById('modal-clinic-settings').style.display = 'flex';
+      applyClinicProfile(clinicProfile);
+    }
+
+    function closeClinicModal() {
+      document.getElementById('modal-clinic-settings').style.display = 'none';
+    }
+
+    function previewTheme(themeVal) {
+      document.body.className = (themeVal && themeVal !== 'default') ? `theme-${themeVal}` : '';
+    }
+
+    function saveClinicProfile() {
+      clinicProfile = {
+        dietitianName: document.getElementById('setting-dietitian-name').value.trim() || DEFAULT_CLINIC_PROFILE.dietitianName,
+        clinicName: document.getElementById('setting-clinic-name').value.trim() || DEFAULT_CLINIC_PROFILE.clinicName,
+        title: document.getElementById('setting-title').value.trim() || DEFAULT_CLINIC_PROFILE.title,
+        phone: document.getElementById('setting-phone').value.trim() || DEFAULT_CLINIC_PROFILE.phone,
+        instagram: document.getElementById('setting-instagram').value.trim() || DEFAULT_CLINIC_PROFILE.instagram,
+        slogan: document.getElementById('setting-slogan').value.trim() || DEFAULT_CLINIC_PROFILE.slogan,
+        theme: document.getElementById('setting-theme').value
+      };
+      localStorage.setItem('fitrecete_clinic_profile', JSON.stringify(clinicProfile));
+      applyClinicProfile(clinicProfile);
+      closeClinicModal();
+      showToastNotification("✨ Klinik ve Marka Ayarları Başarıyla Güncellendi!");
+    }
+
+    function resetClinicProfileToDefault() {
+      clinicProfile = { ...DEFAULT_CLINIC_PROFILE };
+      localStorage.setItem('fitrecete_clinic_profile', JSON.stringify(clinicProfile));
+      applyClinicProfile(clinicProfile);
+      closeClinicModal();
+      showToastNotification("🔄 Klinik Ayarları Varsayılana Sıfırlandı.");
+    }
+
+    // 2. Ticari Lisans Modalı
+    function openLicenseModal() {
+      document.getElementById('modal-commercial-license').style.display = 'flex';
+    }
+
+    function closeLicenseModal() {
+      document.getElementById('modal-commercial-license').style.display = 'none';
+    }
+
+    function contactForSalesLicense() {
+      const msg = encodeURIComponent("Merhaba! FitReçete Pro AI™ Klinik Diyet & İçerik İşletim Sistemini kliniğime lisanslamak ve satın almak istiyorum. Bilgi alabilir miyim?");
+      window.open(`https://wa.me/905000000000?text=${msg}`, '_blank');
+    }
+
+    // 3. Gelişmiş Nav Switcher (4 Mod)
+    function switchAppTab(mode) {
+      const viewDiet = document.getElementById('view-diet');
+      const viewReels = document.getElementById('view-reels');
+      const viewGrocery = document.getElementById('view-grocery');
+      const viewCrm = document.getElementById('view-crm');
+
+      const btnDiet = document.getElementById('btn-tab-diet');
+      const btnReels = document.getElementById('btn-tab-reels');
+      const btnGrocery = document.getElementById('btn-tab-grocery');
+      const btnCrm = document.getElementById('btn-tab-crm');
+
+      [viewDiet, viewReels, viewGrocery, viewCrm].forEach(el => { if (el) el.style.display = 'none'; });
+      [btnDiet, btnReels, btnGrocery, btnCrm].forEach(btn => { if (btn) btn.classList.remove('active'); });
+
+      if (mode === 'diet') {
+        if (viewDiet) viewDiet.style.display = 'block';
+        if (btnDiet) btnDiet.classList.add('active');
+      } else if (mode === 'reels') {
+        if (viewReels) viewReels.style.display = 'block';
+        if (btnReels) btnReels.classList.add('active');
+        if (!lastGeneratedReelsData) generateReelsContent();
+      } else if (mode === 'grocery') {
+        if (viewGrocery) viewGrocery.style.display = 'block';
+        if (btnGrocery) btnGrocery.classList.add('active');
+        renderGroceryList();
+      } else if (mode === 'crm') {
+        if (viewCrm) viewCrm.style.display = 'block';
+        if (btnCrm) btnCrm.classList.add('active');
+        renderClientVault();
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 4. Haftalık Pazar & Market Alışveriş Listesi Motoru
+    function generateWeeklyGroceryList() {
+      const categories = {
+        produce: { title: "🥦 Manav & Taze Yeşillikler", items: new Set() },
+        protein: { title: "🥩 Kasap, Balık & Saf Proteinler", items: new Set() },
+        dairy: { title: "🥛 Süt & Probiyotikler", items: new Set() },
+        pantry: { title: "🌾 Bakliyat & Kuru Gıda", items: new Set() },
+        superfood: { title: "🌰 Kuruyemiş & Şifalı Baharatlar", items: new Set() }
+      };
+
+      for (let day = 1; day <= 7; day++) {
+        const dData = sevenDayPlanData[day];
+        if (!dData) continue;
+
+        if (dData.meals) {
+          dData.meals.forEach(m => {
+            if (m.usedPantry) {
+              m.usedPantry.forEach(ing => {
+                const lower = ing.toLowerCase();
+                if (lower.includes('somon') || lower.includes('levrek') || lower.includes('balık') || lower.includes('kıyma') || lower.includes('köfte') || lower.includes('tavuk') || lower.includes('hindi') || lower.includes('et')) {
+                  categories.protein.items.add(ing);
+                } else if (lower.includes('yoğurt') || lower.includes('kefir') || lower.includes('peynir') || lower.includes('lor') || lower.includes('süt')) {
+                  categories.dairy.items.add(ing);
+                } else if (lower.includes('nohut') || lower.includes('mercimek') || lower.includes('fasulye') || lower.includes('yulaf') || lower.includes('kinoa') || lower.includes('ekmek') || lower.includes('karabuğday') || lower.includes('greçka')) {
+                  categories.pantry.items.add(ing);
+                } else if (lower.includes('ceviz') || lower.includes('badem') || lower.includes('fındık') || lower.includes('chia') || lower.includes('tarçın') || lower.includes('zencefil') || lower.includes('keten')) {
+                  categories.superfood.items.add(ing);
+                } else {
+                  categories.produce.items.add(ing);
+                }
+              });
+            }
+          });
+        }
+      }
+
+      return categories;
+    }
+
+    function renderGroceryList() {
+      const container = document.getElementById('grocery-cards-container');
+      if (!container) return;
+
+      const catData = generateWeeklyGroceryList();
+      let html = '';
+
+      Object.values(catData).forEach(cat => {
+        if (cat.items.size === 0) return;
+        const listItems = Array.from(cat.items).map(i => `<li><span style="color:var(--pastel-green-dark);">✔</span> ${i}</li>`).join('');
+        html += `
+          <div class="grocery-card">
+            <h4>${cat.title} (${cat.items.size} Çeşit)</h4>
+            <ul class="grocery-item-list">
+              ${listItems}
+            </ul>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+    }
+
+    function shareGroceryWhatsApp() {
+      const clientName = document.getElementById('inp-name').value.trim() || "Danışanımız";
+      const catData = generateWeeklyGroceryList();
+      const p = clinicProfile;
+
+      let msg = `🛒 *${p.clinicName} • ${p.dietitianName}*\n`;
+      msg += `🥗 *Sevgili ${clientName}, 7 Günlük Pazar & Market Alışveriş Listeniz:*\n\n`;
+
+      Object.values(catData).forEach(cat => {
+        if (cat.items.size > 0) {
+          msg += `*${cat.title}:*\n`;
+          cat.items.forEach(item => {
+            msg += `• ${item}\n`;
+          });
+          msg += `\n`;
+        }
+      });
+
+      msg += `Afiyet ve kolaylık olsun! 🌸\n_${p.slogan}_`;
+
+      const rawPhone = document.getElementById('inp-phone').value.replace(/[^0-9]/g, '');
+      const phone = rawPhone ? (rawPhone.startsWith('90') ? rawPhone : (rawPhone.startsWith('0') ? '9' + rawPhone : '90' + rawPhone)) : '';
+      const encoded = encodeURIComponent(msg);
+
+      if (phone) {
+        window.open(`https://web.whatsapp.com/send?phone=${phone}&text=${encoded}`, '_blank');
+      } else {
+        window.open(`https://web.whatsapp.com/send?text=${encoded}`, '_blank');
+      }
+    }
+
+    function copyGroceryText(btn) {
+      const clientName = document.getElementById('inp-name').value.trim() || "Danışanımız";
+      const catData = generateWeeklyGroceryList();
+      const p = clinicProfile;
+
+      let text = `${p.clinicName} - 7 Günlük Pazar & Market Listesi (${clientName})\n\n`;
+      Object.values(catData).forEach(cat => {
+        if (cat.items.size > 0) {
+          text += `${cat.title}:\n`;
+          cat.items.forEach(item => {
+            text += `- ${item}\n`;
+          });
+          text += `\n`;
+        }
+      });
+
+      navigator.clipboard.writeText(text).then(() => {
+        showToastNotification("📋 Alışveriş Listesi Panoya Kopyalandı!");
+      });
+    }
+
+    // 5. Danışan CRM Kasası & Kilo Takip Fonksiyonları
+    function renderClientVault() {
+      const tbody = document.getElementById('crm-table-body');
+      const countBadge = document.getElementById('crm-total-count');
+      if (!tbody) return;
+
+      const keys = Object.keys(savedClientsData);
+      if (countBadge) countBadge.innerText = `${keys.length} Danışan`;
+
+      if (keys.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="7" style="text-align: center; color: var(--text-muted); padding: 24px;">
+              Henüz kayıtlı danışanınız bulunmuyor. Sol paneldeki formu doldurup <b>"Kaydet"</b> butonuna basarak danışan ekleyebilirsiniz.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      let html = '';
+      keys.forEach(name => {
+        const c = savedClientsData[name];
+        const dateStr = c.date || "Kayıtlı";
+        html += `
+          <tr>
+            <td><b>${c.name}</b></td>
+            <td>${c.phone || '-'}</td>
+            <td><span class="crm-badge crm-badge-active">${c.goal === 'deficit' ? 'Kilo Verme' : (c.goal === 'surplus' ? 'Kas Kazanımı' : 'Kilo Koruma')}</span></td>
+            <td><b>${c.weight} kg</b> (${c.height} cm)</td>
+            <td><span class="crm-badge crm-badge-target">${c.targetCal || 'Hesaplandı'} kcal</span></td>
+            <td>${dateStr}</td>
+            <td>
+              <div style="display: flex; gap: 4px;">
+                <button onclick="loadClientFromCRM('${c.name}')" class="btn btn-pastel-green" style="padding: 3px 8px; font-size: 10.5px;">Aç</button>
+                <button onclick="deleteClientFromCRM('${c.name}')" class="btn btn-outline-pink" style="padding: 3px 6px; font-size: 10.5px; color: #dc2626;">Sil</button>
+              </div>
+            </td>
+          </tr>
+        `;
+      });
+
+      tbody.innerHTML = html;
+    }
+
+    function filterClientTable() {
+      const q = document.getElementById('crm-search-input').value.toLowerCase();
+      const rows = document.querySelectorAll('#crm-table-body tr');
+      rows.forEach(r => {
+        const text = r.innerText.toLowerCase();
+        r.style.display = text.includes(q) ? '' : 'none';
+      });
+    }
+
+    function loadClientFromCRM(name) {
+      loadSavedClient(name);
+      switchAppTab('diet');
+      showToastNotification(`📂 "${name}" planlayıcıya yüklendi.`);
+    }
+
+    function deleteClientFromCRM(name) {
+      if (confirm(`"${name}" adlı danışanı silmek istediğinize emin misiniz?`)) {
+        delete savedClientsData[name];
+        localStorage.setItem('dlarasaglik_clients', JSON.stringify(savedClientsData));
+        refreshSavedClientsDropdown();
+        renderClientVault();
+        showToastNotification(`🗑️ "${name}" başarıyla silindi.`);
+      }
+    }
+
+    function exportClientsJSON() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(savedClientsData, null, 2));
+      const a = document.createElement('a');
+      a.href = dataStr;
+      a.download = `FitRecete_Danisan_Yedegi_${new Date().toISOString().slice(0,10)}.json`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      showToastNotification("💾 Danışan Veritabanı JSON olarak indirildi.");
+    }
+
+    function importClientsJSON(evt) {
+      const file = evt.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const imported = JSON.parse(e.target.result);
+          if (typeof imported === 'object' && imported !== null) {
+            savedClientsData = { ...savedClientsData, ...imported };
+            localStorage.setItem('dlarasaglik_clients', JSON.stringify(savedClientsData));
+            refreshSavedClientsDropdown();
+            renderClientVault();
+            showToastNotification("✅ Danışan yedekleri başarıyla yüklendi!");
+          }
+        } catch (err) {
+          alert("Geçersiz JSON dosyası!");
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function exportClientsCSV() {
+      const keys = Object.keys(savedClientsData);
+      if (keys.length === 0) {
+        alert("Dışa aktarılacak kayıtlı danışan yok.");
+        return;
+      }
+      let csv = "Isim,Telefon,Cinsiyet,Yas,Boy,Kilo,Hedef,Tarih\n";
+      keys.forEach(k => {
+        const c = savedClientsData[k];
+        csv += `"${c.name}","${c.phone || ''}","${c.gender || ''}",${c.age || ''},${c.height || ''},${c.weight || ''},"${c.goal || ''}","${c.date || ''}"\n`;
+      });
+      const blob = new Blob(["\uFEFF" + csv], { type: 'text/csv;charset=utf-8;' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `Danisan_Listesi_${new Date().toISOString().slice(0,10)}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      showToastNotification("📊 Danışan tablosu Excel/CSV olarak indirildi.");
+    }
+
     const sevenDayPlanData = {
       1: {
         dayName: "Pazartesi",
@@ -2389,20 +3209,23 @@
       "Elma (3 adet)", "Muz (2 adet)", "Yulaf Ezmesi", "Zeytinyağı", "Limon (3 adet)", "Maden Suyu"
     ];
 
-    window.addEventListener('DOMContentLoaded', () => {
+        window.addEventListener('DOMContentLoaded', () => {
+      initClinicProfile();
       recalcAndRefresh();
       renderPantryChips();
       refreshSavedClientsDropdown();
       renderAgendaList();
+      renderClientVault();
     });
 
-    function recalcAndRefresh() {
+
+        function recalcAndRefresh() {
       const gender = document.getElementById('inp-gender').value;
       const age = parseFloat(document.getElementById('inp-age').value) || 30;
       const height = parseFloat(document.getElementById('inp-height').value) || 170;
       const weight = parseFloat(document.getElementById('inp-weight').value) || 70;
       const pal = parseFloat(document.getElementById('inp-pal').value) || 1.375;
-      const goal = document.getElementById('inp-goal').value;
+      const protocol = document.getElementById('inp-protocol') ? document.getElementById('inp-protocol').value : 'deficit';
 
       let bmr = (gender === 'male') 
         ? (10 * weight) + (6.25 * height) - (5 * age) + 5
@@ -2412,20 +3235,34 @@
       const tdee = Math.round(bmr * pal);
 
       let targetCal = tdee;
-      if (goal === 'deficit') {
+      let pRatio = 0.25, cRatio = 0.45, fRatio = 0.30;
+
+      if (protocol === 'deficit') {
         targetCal = tdee - 450;
         if (targetCal < 1200) targetCal = 1200;
-      } else if (goal === 'surplus') {
+        pRatio = 0.25; cRatio = 0.45; fRatio = 0.30;
+      } else if (protocol === 'mediterranean') {
+        targetCal = tdee;
+        pRatio = 0.20; cRatio = 0.50; fRatio = 0.30;
+      } else if (protocol === 'low_gi') {
+        targetCal = tdee - 300;
+        pRatio = 0.25; cRatio = 0.35; fRatio = 0.40;
+      } else if (protocol === 'keto') {
+        targetCal = tdee - 400;
+        pRatio = 0.25; cRatio = 0.10; fRatio = 0.65;
+      } else if (protocol === 'if_fasting') {
+        targetCal = tdee - 400;
+        pRatio = 0.25; cRatio = 0.45; fRatio = 0.30;
+      } else if (protocol === 'sports') {
         targetCal = tdee + 350;
+        pRatio = 0.30; cRatio = 0.45; fRatio = 0.25;
+      } else if (protocol === 'detox') {
+        targetCal = Math.max(1300, tdee - 500);
+        pRatio = 0.20; cRatio = 0.45; fRatio = 0.35;
       }
 
       const heightM = height / 100;
       const bmi = (weight / (heightM * heightM)).toFixed(1);
-      let bmiClass = "Normal";
-      if (bmi < 18.5) bmiClass = "Zayıf";
-      else if (bmi >= 25 && bmi < 30) bmiClass = "Fazla Kilo";
-      else if (bmi >= 30) bmiClass = "Obez";
-
       const waterNeed = Math.round(weight * 35);
 
       document.getElementById('stat-bmr').innerText = `${bmr.toLocaleString()} kcal`;
@@ -2434,9 +3271,29 @@
       document.getElementById('stat-bmi-text').innerText = `BMI: ${bmi}`;
       document.getElementById('who-val-water').innerText = `${waterNeed.toLocaleString()} ml`;
 
+      // Makro Gramaj ve Yüzde Dağılımı
+      const proteinGrams = Math.round((targetCal * pRatio) / 4);
+      const carbGrams = Math.round((targetCal * cRatio) / 4);
+      const fatGrams = Math.round((targetCal * fRatio) / 9);
+
+      const elProtVal = document.getElementById('macro-val-protein');
+      if (elProtVal) elProtVal.innerText = `${proteinGrams}g (%${Math.round(pRatio*100)})`;
+      const elCarbVal = document.getElementById('macro-val-carb');
+      if (elCarbVal) elCarbVal.innerText = `${carbGrams}g (%${Math.round(cRatio*100)})`;
+      const elFatVal = document.getElementById('macro-val-fat');
+      if (elFatVal) elFatVal.innerText = `${fatGrams}g (%${Math.round(fRatio*100)})`;
+
+      const elProtBar = document.getElementById('macro-bar-protein');
+      if (elProtBar) elProtBar.style.width = `${Math.round(pRatio*100)}%`;
+      const elCarbBar = document.getElementById('macro-bar-carb');
+      if (elCarbBar) elCarbBar.style.width = `${Math.round(cRatio*100)}%`;
+      const elFatBar = document.getElementById('macro-bar-fat');
+      if (elFatBar) elFatBar.style.width = `${Math.round(fRatio*100)}%`;
+
       calculateExchangeList(targetCal);
       renderDayMeals();
     }
+
 
     function calculateExchangeList(totalCal) {
       const milkServings = (totalCal >= 2000) ? 3.0 : 2.0;
@@ -2616,7 +3473,7 @@
       renderPantryChips();
     }
 
-    function saveCurrentClient() {
+        function saveCurrentClient() {
       const name = document.getElementById('inp-name').value.trim();
       if (!name) {
         alert("Lütfen önce danışanın Adını ve Soyadını yazın.");
@@ -2631,15 +3488,19 @@
         height: document.getElementById('inp-height').value,
         weight: document.getElementById('inp-weight').value,
         pal: document.getElementById('inp-pal').value,
-        goal: document.getElementById('inp-goal').value,
+        goal: document.getElementById('inp-protocol') ? document.getElementById('inp-protocol').value : 'deficit',
+        targetCal: document.getElementById('stat-target-cal').innerText,
+        date: new Date().toLocaleDateString('tr-TR'),
         pantry: [...pantryItems]
       };
 
       savedClientsData[name] = clientData;
       localStorage.setItem('dlarasaglik_clients', JSON.stringify(savedClientsData));
       refreshSavedClientsDropdown();
-      alert(`"${name}" başarıyla kaydedildi!`);
+      renderClientVault();
+      showToastNotification(`💾 "${name}" danışan kasasına kaydedildi!`);
     }
+
 
     function refreshSavedClientsDropdown() {
       const sel = document.getElementById('saved-clients-select');
@@ -2683,16 +3544,17 @@
       recalcAndRefresh();
     }
 
-    function shareActiveDayWhatsApp() {
+        function shareActiveDayWhatsApp() {
       const nameInput = document.getElementById('inp-name').value.trim();
       const name = nameInput ? `Sevgili ${nameInput}` : "Değerli Danışanımız";
       const rawPhone = document.getElementById('inp-phone').value.replace(/[^0-9]/g, '');
       const dayData = sevenDayPlanData[activeDay];
       const targetCal = document.getElementById('stat-target-cal').innerText;
       const water = document.getElementById('who-val-water').innerText;
+      const p = clinicProfile;
 
-      let msg = `🌸 *dlarasaglıklıyasam • Dyt. DİLARA ÖZKAN*\n\n`;
-      msg += `🥗 *${name}, ${activeDay}. Gün (${dayData.dayName}) Planınız:*\n\n`;
+      let msg = `🌸 *${p.clinicName} • ${p.dietitianName}*\n\n`;
+      msg += `🥗 *${name}, ${activeDay}. Gün (${dayData.dayName}) Reçeteniz:*\n\n`;
       msg += `🎯 *Hedef Kalori:* ${targetCal} | 💧 *Günlük Su:* ${water}\n`;
       msg += `🥒 *Detoks Suyu:* ${dayData.detoxWater.title}\n`;
       msg += `Tarif: ${dayData.detoxWater.recipe}\n\n`;
@@ -2705,7 +3567,7 @@
 
       msg += `🍓 *Sağlıklı Tatlı:* ${dayData.healthyDessert.title} (${dayData.healthyDessert.calories} kcal)\n`;
       msg += `Tarif: ${dayData.healthyDessert.recipe}\n\n`;
-      msg += `Afiyet ve şifa olsun! Sorularınız olursa buradayım.\n\n✨ *Sevgilerimle, Dyt. DİLARA ÖZKAN* 🌸`;
+      msg += `Afiyet ve şifa olsun! Sorularınız olursa buradayım.\n\n✨ *Sevgilerimle, ${p.dietitianName}* 🌸\n_${p.slogan}_`;
 
       const encoded = encodeURIComponent(msg);
       const phone = rawPhone ? (rawPhone.startsWith('90') ? rawPhone : (rawPhone.startsWith('0') ? '9' + rawPhone : '90' + rawPhone)) : '';
@@ -2722,6 +3584,7 @@
       const dayData = sevenDayPlanData[activeDay];
       const targetCal = document.getElementById('stat-target-cal').innerText;
       const water = document.getElementById('who-val-water').innerText;
+      const p = clinicProfile;
       
       const printWindow = window.open('', '_blank');
       printWindow.document.write(`
@@ -2729,31 +3592,35 @@
         <html>
         <head>
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>${name}_${dayData.dayName}_Dlarasaglikliyasam</title>
+          <title>${name}_${dayData.dayName}_FitRecete</title>
           <style>
-            body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 20px; color: #2e1020; line-height: 1.4; font-size: 11pt; }
-            .header { border-bottom: 2px solid #be5b70; padding-bottom: 8px; margin-bottom: 14px; }
+            body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 24px; color: #1e1b22; line-height: 1.45; font-size: 11pt; }
+            .header { border-bottom: 2px solid #be5b70; padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-start; }
             .brand { font-size: 20px; font-weight: 900; color: #be5b70; }
-            .badge { font-size: 10px; font-weight: 800; background: #fdf2f4; padding: 3px 8px; border-radius: 6px; border: 1px solid #fbcfe8; color: #8c3648; }
-            .info-box { background: #fdf2f4; border: 1px solid #fbcfe8; padding: 10px; border-radius: 8px; margin-bottom: 12px; font-size: 10pt; }
-            .meal { border-bottom: 1px solid #f1dfeb; padding: 8px 0; }
+            .badge { font-size: 10px; font-weight: 800; background: #fdf2f4; padding: 4px 9px; border-radius: 6px; border: 1px solid #fbcfe8; color: #8c3648; display: inline-block; }
+            .info-box { background: #fdf2f4; border: 1px solid #fbcfe8; padding: 10px 14px; border-radius: 8px; margin-bottom: 14px; font-size: 10pt; }
+            .meal { border-bottom: 1px solid #f1dfeb; padding: 9px 0; }
             .meal-title { font-weight: 900; color: #1e1b22; font-size: 11pt; }
             .cals { float: right; font-weight: 900; color: #be5b70; }
-            .footer { margin-top: 20px; border-top: 2px solid #be5b70; padding-top: 8px; font-size: 9pt; text-align: center; color: #79576b; }
+            .footer { margin-top: 24px; border-top: 2px solid #be5b70; padding-top: 10px; font-size: 9.5pt; text-align: center; color: #79576b; }
           </style>
         </head>
         <body>
           <div class="header">
-            <div class="brand">dlarasaglıklıyasam</div>
-            <div style="font-weight: 800; color: #8c3648;">Dyt. DİLARA ÖZKAN Klinik Beslenme Reçetesi</div>
-            <div style="margin-top: 4px;"><span class="badge">${activeDay}. Gün (${dayData.dayName})</span></div>
+            <div>
+              <div class="brand">${p.clinicName}</div>
+              <div style="font-weight: 800; color: #8c3648;">${p.dietitianName} • ${p.title}</div>
+            </div>
+            <div style="text-align: right;">
+              <span class="badge">${activeDay}. Gün (${dayData.dayName}) Reçetesi</span>
+            </div>
           </div>
 
           <div class="info-box">
-            <b>Danışan Adı:</b> ${name} | <b>Hedef:</b> ${targetCal} | <b>Su:</b> ${water}
+            <b>Danışan Adı:</b> ${name} | <b>Hedef:</b> ${targetCal} | <b>Günlük Su:</b> ${water}
           </div>
 
-          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 8px; border-radius: 6px; margin-bottom: 10px;">
+          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 9px 12px; border-radius: 6px; margin-bottom: 12px;">
             <b style="color: #065f46;">🥒 DETOKS SUYU:</b> ${dayData.detoxWater.title}<br/>
             <i>Tarif:</i> ${dayData.detoxWater.recipe}
           </div>
@@ -2762,19 +3629,19 @@
             <div class="meal">
               <span class="cals">${m.calories} kcal</span>
               <div class="meal-title">${m.type}: ${m.title}</div>
-              <div style="font-size: 9pt; color: #64748b;"><b>Malzemeler:</b> ${m.usedPantry.join(', ')}</div>
-              <div style="margin: 2px 0;"><b>Tarif:</b> ${m.recipe}</div>
+              <div style="font-size: 9.5pt; color: #64748b; margin-top: 2px;"><b>Malzemeler:</b> ${m.usedPantry.join(', ')}</div>
+              <div style="margin: 3px 0; font-size: 10pt;"><b>Tarif:</b> ${m.recipe}</div>
             </div>
           `).join('')}
 
-          <div style="background: #fff5f8; border: 1px solid #fecdd3; padding: 8px; border-radius: 6px; margin-top: 10px;">
+          <div style="background: #fff5f8; border: 1px solid #fecdd3; padding: 9px 12px; border-radius: 6px; margin-top: 12px;">
             <b style="color: #9d174d;">🍓 SAĞLIKLI TATLI (${dayData.healthyDessert.calories} kcal):</b> ${dayData.healthyDessert.title}<br/>
             <i>Hazırlanış:</i> ${dayData.healthyDessert.recipe}
           </div>
 
           <div class="footer">
-            <b>dlarasaglıklıyasam • Dyt. DİLARA ÖZKAN</b><br/>
-            Şifa ve afiyet olsun. 🌸
+            <b>${p.clinicName} • ${p.dietitianName}</b><br/>
+            ${p.slogan} • Şifa ve afiyet olsun. 🌸
           </div>
 
           <script>window.onload = function() { window.print(); }<\/script>
@@ -2783,6 +3650,7 @@
       `);
       printWindow.document.close();
     }
+
 
     function printClinicalDossier() {
       window.print();
