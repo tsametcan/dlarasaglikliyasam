@@ -1257,6 +1257,214 @@
     .portion-item-box h5 { font-size: 12px; font-weight: 800; color: var(--dark-slate); margin-bottom: 2px; }
     .portion-item-box p { font-size: 10.5px; color: var(--text-muted); line-height: 1.35; }
 
+    /* ============================================================ */
+    /* MANGOLIF ENTEGRASYON VE ÜSTÜNLÜK STİLLERİ (KLİNİK 4.0)       */
+    /* ============================================================ */
+
+    /* Randevu & Takvim Kartları */
+    .appointment-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .appointment-card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-sm);
+    }
+    .appointment-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--dusty-pink);
+    }
+    .appointment-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .appointment-client-name {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--dark-slate);
+    }
+    .appointment-type-badge {
+      font-size: 10px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 12px;
+    }
+    .type-online { background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
+    .type-inperson { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+    .type-checkup { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
+
+    /* InBody & Vücut Analiz Kartları */
+    .inbody-metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .inbody-metric-box {
+      background: #faf8f9;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative;
+    }
+    .inbody-metric-title {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .inbody-metric-value {
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--dark-slate);
+    }
+    .inbody-range-bar {
+      width: 100%;
+      height: 6px;
+      background: #e2e8f0;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 4px;
+      position: relative;
+    }
+    .inbody-range-fill {
+      height: 100%;
+      border-radius: 4px;
+      background: linear-gradient(90deg, #10b981, #059669);
+    }
+
+    /* Bio Link Vitrini & Karşılama Kartı */
+    .biolink-container {
+      max-width: 680px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(190, 91, 112, 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .biolink-profile-header {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .biolink-avatar {
+      width: 84px;
+      height: 84px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #be5b70, #8c3648);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      font-weight: 900;
+      box-shadow: 0 4px 14px rgba(190, 91, 112, 0.35);
+      border: 3px solid #ffffff;
+    }
+    .biolink-trust-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      font-size: 11px;
+      font-weight: 800;
+      color: #065f46;
+    }
+    .biolink-action-btn {
+      width: 100%;
+      padding: 13px 18px;
+      border-radius: var(--radius-md);
+      font-size: 13.5px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      text-decoration: none;
+    }
+    .biolink-action-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    }
+    .biolink-btn-whatsapp {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #ffffff;
+    }
+    .biolink-btn-book {
+      background: linear-gradient(135deg, #be5b70, #8c3648);
+      color: #ffffff;
+    }
+    .biolink-btn-secondary {
+      background: #faf8f9;
+      border: 1.5px solid var(--border-color);
+      color: var(--dark-slate);
+    }
+
+    /* Ön Muhasebe & Seans Paketi Çipleri */
+    .accounting-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: 10px;
+      font-size: 10px;
+      font-weight: 800;
+    }
+    .accounting-paid { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+    .accounting-pending { background: #ffedd5; color: #9a3412; border: 1px solid #fed7aa; }
+
+    /* Alerjen Seçim Çipleri */
+    .allergen-chip-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+    .allergen-chip {
+      background: #faf8f9;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 4px 10px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-main);
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.15s ease;
+    }
+    .allergen-chip.selected {
+      background: #fee2e2;
+      border-color: #fca5a5;
+      color: #991b1b;
+      font-weight: 800;
+    }
+
   </style>
 </head>
 <body>
@@ -1304,12 +1512,27 @@
   <!-- ============================================================ -->
   <!-- 4'LÜ PROFESYONEL İŞLETİM MODU SEÇİCİ                         -->
   <!-- ============================================================ -->
-  <div class="nav-switcher-bar">
+    <div class="nav-switcher-bar">
     <div class="nav-switcher-inner">
       <button class="nav-switch-btn active" id="btn-tab-diet" onclick="switchAppTab('diet')">
         <span style="font-size: 16px;">🥗</span>
         <span>7 Günlük Diyet & Klinik Planlayıcı</span>
         <span class="pill-tag">DSÖ Standardı</span>
+      </button>
+      <button class="nav-switch-btn" id="btn-tab-appointments" onclick="switchAppTab('appointments')">
+        <span style="font-size: 16px;">📅</span>
+        <span>Randevu & Seans Takvimi</span>
+        <span class="pill-tag">Online & Yüz Yüze</span>
+      </button>
+      <button class="nav-switch-btn" id="btn-tab-inbody" onclick="switchAppTab('inbody')">
+        <span style="font-size: 16px;">⚖️</span>
+        <span>InBody & Vücut Analizi</span>
+        <span class="pill-tag">Laboratuvar</span>
+      </button>
+      <button class="nav-switch-btn" id="btn-tab-biolink" onclick="switchAppTab('biolink')">
+        <span style="font-size: 16px;">🌐</span>
+        <span>Bio Link & Web Sitesi</span>
+        <span class="pill-tag">Randevu Vitrini</span>
       </button>
       <button class="nav-switch-btn" id="btn-tab-reels" onclick="switchAppTab('reels')">
         <span style="font-size: 16px;">🎬</span>
@@ -1323,14 +1546,14 @@
       </button>
       <button class="nav-switch-btn" id="btn-tab-crm" onclick="switchAppTab('crm')">
         <span style="font-size: 16px;">👥</span>
-        <span>Danışan Kasası & CRM</span>
-        <span class="pill-tag">Yedekleme</span>
+        <span>Danışan Kasası & Muhasebe</span>
+        <span class="pill-tag">Seans & Paket</span>
       </button>
     </div>
   </div>
 
 
-  <!-- 2. ANA İÇERİK                                                -->
+    <!-- 2. ANA İÇERİK                                                -->
   <!-- ============================================================ -->
   <main class="main-container">
 
@@ -1452,6 +1675,22 @@
                   <option value="sports">🏋️ Sporcu & Kas Kazanımı</option>
                   <option value="detox">🍵 Detoks & Anti-İnflamatuar</option>
                 </select>
+              </div>
+            </div>
+
+            <!-- Mangolif Stili Alerjen & Tercih Edilmeyen Besin Filtresi -->
+            <div style="margin-top: 6px; padding: 10px 12px; background: #faf8f9; border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
+              <label class="form-label" style="display: flex; justify-content: space-between; align-items: center;">
+                <span>🛡️ Alerjen & Tercih Edilmeyen Besin Filtresi</span>
+                <span style="font-size: 10px; color: var(--text-muted); font-weight: normal;">Çoklu seçilebilir</span>
+              </label>
+              <div class="allergen-chip-group" id="allergen-chips-container">
+                <span class="allergen-chip" onclick="toggleAllergenChip(this, 'Glütensiz')">🌾 Glütensiz</span>
+                <span class="allergen-chip" onclick="toggleAllergenChip(this, 'Laktozsuz')">🥛 Laktozsuz</span>
+                <span class="allergen-chip" onclick="toggleAllergenChip(this, 'Yumurtasız')">🥚 Yumurtasız</span>
+                <span class="allergen-chip" onclick="toggleAllergenChip(this, 'Kuruyemişsiz')">🥜 Kuruyemiş</span>
+                <span class="allergen-chip" onclick="toggleAllergenChip(this, 'Deniz Ürünsüz')">🦐 Deniz Ürünleri</span>
+                <span class="allergen-chip" onclick="toggleAllergenChip(this, 'Vejetaryen')">🌱 Vejetaryen</span>
               </div>
             </div>
 
@@ -2045,7 +2284,351 @@
 
 
   <!-- ============================================================ -->
-  <!-- MODAL 1: KLİNİK & MARKA KİŞİSELLEŞTİRME (WHITE-LABEL)       -->
+    <!-- ============================================================ -->
+    <!-- 3. GÖRÜNÜM: RANDEVU & SEANS TAKVİMİ (MANGOLIF'TEN ÜSTÜN)     -->
+    <!-- ============================================================ -->
+    <div id="view-appointments" style="display: none;">
+      <div class="hero-banner">
+        <div class="hero-tag">Mangolif Standartlarını Aşan Dijital Seans Motoru</div>
+        <h2 class="hero-title">📅 Online Görüşme & Klinik Randevu Takvimi</h2>
+        <p class="hero-desc">
+          Danışanlarınızın seanslarını planlayın, tek tıkla WhatsApp üzerinden <b>otomatik randevu onayı ve görüşme linki</b> gönderin, Google Takvim ile senkronize edin.
+        </p>
+      </div>
+
+      <!-- Randevu Özet İstatistikleri -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 16px;">
+        <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 14px; text-align: center;">
+          <div style="font-size: 11px; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">Toplam Planlanan</div>
+          <div style="font-size: 22px; font-weight: 900; color: var(--dusty-pink); margin-top: 2px;" id="stat-total-appointments">0</div>
+        </div>
+        <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 14px; text-align: center;">
+          <div style="font-size: 11px; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">Bugünkü Seanslar</div>
+          <div style="font-size: 22px; font-weight: 900; color: #10b981; margin-top: 2px;" id="stat-today-appointments">0</div>
+        </div>
+        <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 14px; text-align: center;">
+          <div style="font-size: 11px; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">e-Nabız & MBYS Durumu</div>
+          <div style="font-size: 12px; font-weight: 900; color: #065f46; margin-top: 6px; display: inline-flex; align-items: center; gap: 4px;">
+            <span class="pulsing-dot"></span> USBS UYUMLU
+          </div>
+        </div>
+      </div>
+
+      <!-- Yeni Randevu Ekleme Kartı -->
+      <div class="card" style="margin-bottom: 18px;">
+        <div class="card-header">
+          <span class="card-title">
+            <span>➕ Yeni Danışan Seansı / Randevusu Oluştur</span>
+          </span>
+        </div>
+        <div class="card-body">
+          <div class="form-row">
+            <div class="form-group" style="grid-column: span 2;">
+              <label class="form-label">Danışan Adı Soyadı</label>
+              <input type="text" id="apt-name" class="form-input" placeholder="Danışan adı yazınız veya CRM'den seçin...">
+            </div>
+            <div class="form-group">
+              <label class="form-label">WhatsApp Telefon</label>
+              <input type="text" id="apt-phone" class="form-input" placeholder="05xx xxx xx xx">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Seans Türü</label>
+              <select id="apt-type" class="form-select">
+                <option value="Online Görüntülü (Meet/Zoom)">💻 Online Görüntülü (Meet/Zoom)</option>
+                <option value="Yüz Yüze Klinik Muayene">🏥 Yüz Yüze Klinik Muayene</option>
+                <option value="Haftalık Kontrol & Tartı">⚖️ Haftalık Kontrol & Tartı</option>
+                <option value="Telefon / Sesli Değerlendirme">📞 Telefon / Sesli Görüşme</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Randevu Tarihi</label>
+              <input type="date" id="apt-date" class="form-input">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Randevu Saati</label>
+              <input type="time" id="apt-time" value="14:00" class="form-input">
+            </div>
+            <div class="form-group" style="grid-column: span 2;">
+              <label class="form-label">Görüşme / Konum Linki (İsteğe Bağlı)</label>
+              <input type="text" id="apt-link" class="form-input" placeholder="https://meet.google.com/xyz ya da Klinik Adresi">
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 10px;">
+            <button onclick="createNewAppointment()" class="btn btn-pastel-green">
+              <span>📅 Randevuyu Kaydet & Takvime Ekle</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Randevular Listesi -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title"><span>📋 Planlanan Seanslar & Hatırlatıcılar</span></span>
+          <button onclick="clearAllAppointments()" class="btn btn-secondary" style="font-size: 10px; padding: 4px 8px;">Tümünü Temizle</button>
+        </div>
+        <div class="card-body">
+          <div id="appointments-container" class="appointment-grid">
+            <!-- JS ile doldurulur -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 4. GÖRÜNÜM: INBODY & VÜCUT ANALİZ LABORATUVARI (TARTI/TANITA) -->
+    <!-- ============================================================ -->
+    <div id="view-inbody" style="display: none;">
+      <div class="hero-banner">
+        <div class="hero-tag">Tanita & InBody Biyoelektrik Empedans Motoru</div>
+        <h2 class="hero-title">⚖️ Vücut Kompozisyon & Laboratuvar Takibi</h2>
+        <p class="hero-desc">
+          Danışanınızın <b>Kilo, Yağ Oranı, İskelet Kası, Vücut Sıvısı ve İç Organ Yağlanmasını</b> klinik hassasiyetle takip edin, tek tıkla resmi vücut analiz raporu üretin.
+        </p>
+      </div>
+
+      <div class="workspace-grid">
+        <!-- SOL: Ölçüm Giriş Formu -->
+        <div class="card" style="height: fit-content;">
+          <div class="card-header">
+            <span class="card-title"><span>🔬 Yeni Vücut Ölçümü Ekle</span></span>
+          </div>
+          <div class="card-body">
+            <div class="form-row">
+              <div class="form-group" style="grid-column: span 2;">
+                <label class="form-label">Danışan Adı</label>
+                <input type="text" id="inbody-name" class="form-input" placeholder="Danışan Adı Soyadı...">
+              </div>
+              <div class="form-group" style="grid-column: span 2;">
+                <label class="form-label">Ölçüm Tarihi</label>
+                <input type="date" id="inbody-date" class="form-input">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Ağırlık (kg)</label>
+                <input type="number" id="inbody-weight" step="0.1" value="74.5" class="form-input" oninput="recalcInbodyMetrics()">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Vücut Yağ Oranı (%)</label>
+                <input type="number" id="inbody-fat-pct" step="0.1" value="23.2" class="form-input" oninput="recalcInbodyMetrics()">
+              </div>
+              <div class="form-group">
+                <label class="form-label">İskelet Kası (kg)</label>
+                <input type="number" id="inbody-muscle-kg" step="0.1" value="31.8" class="form-input" oninput="recalcInbodyMetrics()">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Vücut Sıvısı (%)</label>
+                <input type="number" id="inbody-water-pct" step="0.1" value="56.4" class="form-input" oninput="recalcInbodyMetrics()">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group" style="grid-column: span 2;">
+                <label class="form-label">İç Organ Yağlanması (Visceral 1-12)</label>
+                <select id="inbody-visceral" class="form-select" onchange="recalcInbodyMetrics()">
+                  <option value="1">Seviye 1 - İdeal / Mükemmel</option>
+                  <option value="2">Seviye 2 - İdeal</option>
+                  <option value="3">Seviye 3 - Sağlıklı</option>
+                  <option value="4" selected>Seviye 4 - Normal Aralık</option>
+                  <option value="5">Seviye 5 - Normal Aralık</option>
+                  <option value="6">Seviye 6 - Dikkat Edilmeli</option>
+                  <option value="8">Seviye 8 - Yüksek Risk</option>
+                  <option value="10">Seviye 10 - Kritik Risk</option>
+                </select>
+              </div>
+              <div class="form-group" style="grid-column: span 2;">
+                <label class="form-label">Bel / Kalça Oranı (WHR)</label>
+                <input type="number" id="inbody-whr" step="0.01" value="0.82" class="form-input">
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 8px; margin-top: 10px;">
+              <button onclick="saveInbodyMeasurement()" class="btn btn-pastel-green" style="flex: 1;">
+                <span>💾 Ölçümü Kaydet</span>
+              </button>
+              <button onclick="shareInbodyWhatsApp()" class="btn btn-whatsapp-pastel">
+                <span>WhatsApp Raporu</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SAĞ: Biyometrik Göstergeler & Klinik Yorum -->
+        <div style="display: flex; flex-direction: column; gap: 14px; width: 100%;">
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title"><span>📊 Klinik Biyometri Paneli</span></span>
+              <span class="logo-badge" id="inbody-status-badge">Normal & Dengeli</span>
+            </div>
+            <div class="card-body">
+              <div class="inbody-metrics-grid">
+                
+                <div class="inbody-metric-box">
+                  <div class="inbody-metric-title">Toplam Yağ Kütlesi</div>
+                  <div class="inbody-metric-value" id="calc-fat-mass">17.2 kg</div>
+                  <div class="inbody-range-bar">
+                    <div class="inbody-range-fill" id="bar-fat" style="width: 55%;"></div>
+                  </div>
+                </div>
+
+                <div class="inbody-metric-box">
+                  <div class="inbody-metric-title">Yağsız Vücut Kütlesi</div>
+                  <div class="inbody-metric-value" id="calc-lean-mass">57.3 kg</div>
+                  <div class="inbody-range-bar">
+                    <div class="inbody-range-fill" id="bar-muscle" style="width: 70%; background: #38bdf8;"></div>
+                  </div>
+                </div>
+
+                <div class="inbody-metric-box">
+                  <div class="inbody-metric-title">İç Organ Riski</div>
+                  <div class="inbody-metric-value" id="disp-visceral-level">Seviye 4</div>
+                  <div style="font-size: 10px; color: #059669; font-weight: 800; margin-top: 4px;">✓ Kalp-Damar Güvenli</div>
+                </div>
+
+                <div class="inbody-metric-box">
+                  <div class="inbody-metric-title">Ödem / Sıvı İndeksi</div>
+                  <div class="inbody-metric-value" id="disp-hydration-status">%56.4 (İdeal)</div>
+                  <div style="font-size: 10px; color: #0284c7; font-weight: 800; margin-top: 4px;">💧 Hücre İçi Sıvı Yeterli</div>
+                </div>
+
+              </div>
+
+              <!-- Klinik Değerlendirme Özeti -->
+              <div style="background: #fdf2f4; border: 1px solid #fbcfe8; border-radius: var(--radius-sm); padding: 12px; margin-top: 14px; font-size: 11.5px; color: #8c3648; line-height: 1.45;" id="inbody-clinical-verdict">
+                💡 <b>Diyetisyen Klinik Yorumu:</b> Vücut kompozisyonu dengeli; iskelet kası kütlesi metabolizma hızını destekliyor. Önerilen DSÖ Akdeniz protokolü ile yağ kaybı sürdürülürken kas kütlesi korunacaktır.
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Geçmiş Ölçüm Kayıtları Tablosu -->
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title"><span>📜 Danışan Ölçüm Geçmişi</span></span>
+            </div>
+            <div class="card-body">
+              <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 11.5px; text-align: left;">
+                  <thead>
+                    <tr style="border-bottom: 2px solid var(--border-color); color: var(--text-muted);">
+                      <th style="padding: 8px;">Tarih</th>
+                      <th style="padding: 8px;">Danışan</th>
+                      <th style="padding: 8px;">Kilo</th>
+                      <th style="padding: 8px;">Yağ %</th>
+                      <th style="padding: 8px;">Kas (kg)</th>
+                      <th style="padding: 8px;">İşlem</th>
+                    </tr>
+                  </thead>
+                  <tbody id="inbody-history-tbody">
+                    <!-- JS ile doldurulur -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 5. GÖRÜNÜM: BİO LİNK & DANIŞAN KARŞILAMA VİTRİNİ (MANGOLİF) -->
+    <!-- ============================================================ -->
+    <div id="view-biolink" style="display: none;">
+      <div class="hero-banner">
+        <div class="hero-tag">Instagram & Sosyal Medya Bio Link Motoru</div>
+        <h2 class="hero-title">🌐 Kişisel Web Sitesi & Danışan Karşılama Sayfası</h2>
+        <p class="hero-desc">
+          Mangolif'in ücretli sunduğu web sitesi özelliğini kendi markanızla ücretsiz kullanın! Bu sayfayı Instagram biyografinize ekleyin; danışanlarınız tek tıkla randevu talep etsin ve başarı hikayelerinizi incelesin.
+        </p>
+      </div>
+
+      <div class="biolink-container">
+        
+        <!-- Diyetisyen Profil Kartı -->
+        <div class="biolink-profile-header">
+          <div class="biolink-avatar">🌸</div>
+          <div>
+            <h3 style="font-size: 20px; font-weight: 900; color: var(--dark-slate); margin-bottom: 2px;" class="dynamic-dietitian-name">Dyt. DİLARA ÖZKAN</h3>
+            <div style="font-size: 12px; color: var(--dusty-pink); font-weight: 800;" class="dynamic-clinic-sub">Uzman Klinik Diyetisyen • dlarasaglıklıyasam</div>
+          </div>
+          <div class="biolink-trust-badge">
+            <span class="pulsing-dot"></span>
+            <span>T.C. Sağlık Bakanlığı MBYS & e-Nabız Standartlarında</span>
+          </div>
+        </div>
+
+        <!-- Klinik Uzmanlık Rozetleri -->
+        <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;">
+          <span class="pill-tag">🔥 Kilo Verme & Yağ Yakımı</span>
+          <span class="pill-tag">⚡ İnsülin Direnci & PCOS</span>
+          <span class="pill-tag">🥗 Akdeniz & Fonksiyonel Beslenme</span>
+          <span class="pill-tag">🏋️ Sporcu Beslenmesi</span>
+          <span class="pill-tag">⏳ Aralıklı Oruç (IF 16:8)</span>
+        </div>
+
+        <!-- Hızlı Aksiyon Butonları -->
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <button onclick="openBookingModalFromBio()" class="biolink-action-btn biolink-btn-book">
+            <span>📅 Online veya Yüz Yüze Randevu Al</span>
+          </button>
+          
+          <button onclick="contactViaWhatsAppDirect()" class="biolink-action-btn biolink-btn-whatsapp">
+            <span>💬 WhatsApp'tan Hızlı Bilgi & İletişim</span>
+          </button>
+
+          <button onclick="switchAppTab('diet')" class="biolink-action-btn biolink-btn-secondary">
+            <span>🥗 Örnek 7 Günlük DSÖ Menülerini İncele</span>
+          </button>
+        </div>
+
+        <!-- Danışan Değerlendirmeleri (5 Yıldızlı Social Proof) -->
+        <div style="border-top: 1px solid var(--border-color); padding-top: 16px;">
+          <div style="text-align: center; margin-bottom: 12px;">
+            <div style="color: #f59e0b; font-size: 16px; margin-bottom: 2px;">★★★★★</div>
+            <div style="font-size: 13px; font-weight: 800; color: var(--dark-slate);">Danışan Yorumları & Başarı Deneyimleri</div>
+            <div style="font-size: 11px; color: var(--text-muted);">%98.4 Danışan Memnuniyeti ve Kalıcı Sonuç</div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            
+            <div style="background: #faf8f9; border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 12px;">
+              <div style="display: flex; justify-content: space-between; font-size: 11px; font-weight: 800; color: var(--dark-slate); margin-bottom: 4px;">
+                <span>Zehra B.</span>
+                <span style="color: #f59e0b;">★★★★★</span>
+              </div>
+              <p style="font-size: 11px; color: var(--text-muted); line-height: 1.4; margin: 0;">
+                "Dilara Hanım ile 3 ayda aç kalmadan -14 kilo verdim. En güzeli de akşam yemeklerimin hafifliği ve insülin direncimin tamamen normale dönmesi oldu!"
+              </p>
+            </div>
+
+            <div style="background: #faf8f9; border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 12px;">
+              <div style="display: flex; justify-content: space-between; font-size: 11px; font-weight: 800; color: var(--dark-slate); margin-bottom: 4px;">
+                <span>Murat K.</span>
+                <span style="color: #f59e0b;">★★★★★</span>
+              </div>
+              <p style="font-size: 11px; color: var(--text-muted); line-height: 1.4; margin: 0;">
+                "Online seanslar o kadar sistemli ki, WhatsApp üzerinden gelen menüler ve pazar alışveriş listeleri hayatımı kurtardı. Herkese tavsiye ediyorum."
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <div style="text-align: center; font-size: 10px; color: var(--text-muted); margin-top: 6px;">
+          FitReçete Pro AI™ • dlarasaglıklıyasam Resmi Danışan Portalı
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- MODAL 1: KLİNİK & MARKA KİŞİSELLEŞTİRME (WHITE-LABEL)       -->
   <!-- ============================================================ -->
   <div id="modal-clinic-settings" class="modal-backdrop" style="display: none; align-items: center; justify-content: center; z-index: 10000;">
     <div class="commercial-modal-box">
@@ -2396,23 +2979,42 @@
     }
 
     // 3. Gelişmiş Nav Switcher (4 Mod)
+    // 3. Gelişmiş Nav Switcher (7 Mod - Mangolif'i Aşan Ekosistem)
     function switchAppTab(mode) {
       const viewDiet = document.getElementById('view-diet');
+      const viewAppointments = document.getElementById('view-appointments');
+      const viewInbody = document.getElementById('view-inbody');
+      const viewBiolink = document.getElementById('view-biolink');
       const viewReels = document.getElementById('view-reels');
       const viewGrocery = document.getElementById('view-grocery');
       const viewCrm = document.getElementById('view-crm');
 
       const btnDiet = document.getElementById('btn-tab-diet');
+      const btnAppointments = document.getElementById('btn-tab-appointments');
+      const btnInbody = document.getElementById('btn-tab-inbody');
+      const btnBiolink = document.getElementById('btn-tab-biolink');
       const btnReels = document.getElementById('btn-tab-reels');
       const btnGrocery = document.getElementById('btn-tab-grocery');
       const btnCrm = document.getElementById('btn-tab-crm');
 
-      [viewDiet, viewReels, viewGrocery, viewCrm].forEach(el => { if (el) el.style.display = 'none'; });
-      [btnDiet, btnReels, btnGrocery, btnCrm].forEach(btn => { if (btn) btn.classList.remove('active'); });
+      [viewDiet, viewAppointments, viewInbody, viewBiolink, viewReels, viewGrocery, viewCrm].forEach(el => { if (el) el.style.display = 'none'; });
+      [btnDiet, btnAppointments, btnInbody, btnBiolink, btnReels, btnGrocery, btnCrm].forEach(btn => { if (btn) btn.classList.remove('active'); });
 
       if (mode === 'diet') {
         if (viewDiet) viewDiet.style.display = 'block';
         if (btnDiet) btnDiet.classList.add('active');
+      } else if (mode === 'appointments') {
+        if (viewAppointments) viewAppointments.style.display = 'block';
+        if (btnAppointments) btnAppointments.classList.add('active');
+        renderAppointments();
+      } else if (mode === 'inbody') {
+        if (viewInbody) viewInbody.style.display = 'block';
+        if (btnInbody) btnInbody.classList.add('active');
+        recalcInbodyMetrics();
+        renderInbodyHistory();
+      } else if (mode === 'biolink') {
+        if (viewBiolink) viewBiolink.style.display = 'block';
+        if (btnBiolink) btnBiolink.classList.add('active');
       } else if (mode === 'reels') {
         if (viewReels) viewReels.style.display = 'block';
         if (btnReels) btnReels.classList.add('active');
@@ -2429,7 +3031,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // 4. Haftalık Pazar & Market Alışveriş Listesi Motoru
+        // 4. Haftalık Pazar & Market Alışveriş Listesi Motoru
     function generateWeeklyGroceryList() {
       const categories = {
         produce: { title: "🥦 Manav & Taze Yeşillikler", items: new Set() },
@@ -3642,6 +4244,8 @@
       initClinicProfile();
       initWaterTracker();
       initClinicalDirective();
+      initAppointments();
+      initInbodyModule();
       recalcAndRefresh();
       renderPantryChips();
       refreshSavedClientsDropdown();
@@ -4195,6 +4799,371 @@
     }
 
 
+    /* ============================================================ */
+    /* MANGOLIF ENTEGRASYON & ÜSTÜNLÜK MOTORU (KLİNİK 4.0 JS)       */
+    /* ============================================================ */
+
+    // 1. RANDEVU & SEANS YÖNETİMİ
+    let appointmentsList = JSON.parse(localStorage.getItem('fitrecete_appointments')) || [
+      {
+        id: "apt_1",
+        name: "Zehra Bölük",
+        phone: "905551234567",
+        type: "Online Görüntülü (Meet/Zoom)",
+        date: "2026-11-25",
+        time: "14:30",
+        link: "https://meet.google.com/dla-saglik",
+        status: "confirmed"
+      },
+      {
+        id: "apt_2",
+        name: "Murat Korkmaz",
+        phone: "905559876543",
+        type: "Haftalık Kontrol & Tartı",
+        date: "2026-11-26",
+        time: "11:00",
+        link: "Klinik Muayenehane",
+        status: "pending"
+      }
+    ];
+
+    function initAppointments() {
+      // Set default appointment date to tomorrow
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const aptDateEl = document.getElementById('apt-date');
+      if (aptDateEl && !aptDateEl.value) {
+        aptDateEl.value = tomorrow.toISOString().split('T')[0];
+      }
+      renderAppointments();
+    }
+
+    function renderAppointments() {
+      const container = document.getElementById('appointments-container');
+      if (!container) return;
+      container.innerHTML = '';
+
+      const totalEl = document.getElementById('stat-total-appointments');
+      const todayEl = document.getElementById('stat-today-appointments');
+      if (totalEl) totalEl.innerText = appointmentsList.length;
+
+      const todayStr = new Date().toISOString().split('T')[0];
+      const todayCount = appointmentsList.filter(a => a.date === todayStr).length;
+      if (todayEl) todayEl.innerText = todayCount;
+
+      if (appointmentsList.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 24px; color: var(--text-muted); background: #faf8f9; border-radius: var(--radius-sm);">
+            📅 Henüz planlanmış bir randevu yok. Yukarıdaki formdan yeni bir danışan randevusu oluşturabilirsiniz.
+          </div>
+        `;
+        return;
+      }
+
+      appointmentsList.forEach(apt => {
+        const card = document.createElement('div');
+        card.className = 'appointment-card';
+        
+        let typeBadgeClass = 'type-online';
+        if (apt.type.includes('Yüz Yüze')) typeBadgeClass = 'type-inperson';
+        if (apt.type.includes('Kontrol')) typeBadgeClass = 'type-checkup';
+
+        const statusText = apt.status === 'confirmed' ? '✓ Onaylandı' : (apt.status === 'done' ? '✓ Tamamlandı' : '⏳ Bekliyor');
+        const statusColor = apt.status === 'confirmed' ? '#059669' : (apt.status === 'done' ? '#64748b' : '#d97706');
+
+        card.innerHTML = `
+          <div class="appointment-header">
+            <div>
+              <div class="appointment-client-name">${apt.name}</div>
+              <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">
+                📞 ${apt.phone || 'Telefon girilmedi'}
+              </div>
+            </div>
+            <span class="appointment-type-badge ${typeBadgeClass}">${apt.type}</span>
+          </div>
+
+          <div style="background: #faf8f9; padding: 8px 10px; border-radius: var(--radius-sm); font-size: 11.5px; display: flex; justify-content: space-between; align-items: center;">
+            <span>🗓️ <b>${apt.date}</b> • ⏰ <b>${apt.time}</b></span>
+            <span style="font-weight: 800; color: ${statusColor}; font-size: 10px;">${statusText}</span>
+          </div>
+
+          ${apt.link ? `<div style="font-size: 10.5px; color: #0284c7; word-break: break-all;">🔗 ${apt.link}</div>` : ''}
+
+          <div style="display: flex; gap: 6px; margin-top: 4px; flex-wrap: wrap;">
+            <button onclick="sendAppointmentWhatsApp('${apt.id}')" class="btn btn-whatsapp-pastel" style="flex: 1; padding: 6px 10px; font-size: 10.5px;" title="Danışana Randevu Onayı Gönder">
+              <span>WhatsApp Onayı</span>
+            </button>
+            <button onclick="addToGoogleCalendar('${apt.id}')" class="btn btn-pastel-sage" style="flex: 1; padding: 6px 10px; font-size: 10.5px;" title="Google Takvim'e Ekle">
+              <span>Takvime Ekle</span>
+            </button>
+            <button onclick="deleteAppointment('${apt.id}')" class="btn btn-secondary" style="padding: 6px 8px; font-size: 10.5px; color: #ef4444;" title="Sil">
+              ✕
+            </button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function createNewAppointment() {
+      const name = document.getElementById('apt-name').value.trim();
+      if (!name) {
+        showToastNotification("⚠️ Lütfen danışan adı giriniz.");
+        return;
+      }
+      const phone = document.getElementById('apt-phone').value.trim();
+      const type = document.getElementById('apt-type').value;
+      const date = document.getElementById('apt-date').value;
+      const time = document.getElementById('apt-time').value;
+      const link = document.getElementById('apt-link').value.trim();
+
+      const newApt = {
+        id: "apt_" + Date.now(),
+        name,
+        phone,
+        type,
+        date: date || new Date().toISOString().split('T')[0],
+        time: time || "14:00",
+        link: link || "",
+        status: "confirmed"
+      };
+
+      appointmentsList.unshift(newApt);
+      localStorage.setItem('fitrecete_appointments', JSON.stringify(appointmentsList));
+      renderAppointments();
+      showToastNotification(`📅 "${name}" randevusu takvime kaydedildi.`);
+      document.getElementById('apt-name').value = '';
+      document.getElementById('apt-phone').value = '';
+      document.getElementById('apt-link').value = '';
+    }
+
+    function deleteAppointment(id) {
+      appointmentsList = appointmentsList.filter(a => a.id !== id);
+      localStorage.setItem('fitrecete_appointments', JSON.stringify(appointmentsList));
+      renderAppointments();
+      showToastNotification("🗑️ Randevu silindi.");
+    }
+
+    function clearAllAppointments() {
+      if (confirm("Tüm randevu takvimini temizlemek istediğinize emin misiniz?")) {
+        appointmentsList = [];
+        localStorage.setItem('fitrecete_appointments', JSON.stringify(appointmentsList));
+        renderAppointments();
+        showToastNotification("Randevular temizlendi.");
+      }
+    }
+
+    function sendAppointmentWhatsApp(id) {
+      const apt = appointmentsList.find(a => a.id === id);
+      if (!apt) return;
+      const p = clinicProfile;
+      const rawPhone = (apt.phone || '').replace(/[^0-9]/g, '');
+      const phone = rawPhone ? (rawPhone.startsWith('90') ? rawPhone : (rawPhone.startsWith('0') ? '9' + rawPhone : '90' + rawPhone)) : '';
+
+      let msg = `🌸 *${p.clinicName} • ${p.dietitianName}*\n\n`;
+      msg += `Değerli Danışanımız *${apt.name}*,\n\n`;
+      msg += `📅 *Diyet & Beslenme Seansı Randevunuz Onaylandı!*\n\n`;
+      msg += `🗓️ *Tarih:* ${apt.date}\n`;
+      msg += `⏰ *Saat:* ${apt.time}\n`;
+      msg += `📍 *Görüşme Türü:* ${apt.type}\n`;
+      if (apt.link) {
+        msg += `🔗 *Görüşme / Konum Bağlantısı:* ${apt.link}\n`;
+      }
+      msg += `\nGörüşmemiz öncesinde güncel kilonuzu ve haftalık beslenme günlüğünüzü hazırlamayı unutmayınız.\n\n`;
+      msg += `Sağlıklı günler dilerim! 🌸\n_${p.dietitianName} • ${p.title}_`;
+
+      const encoded = encodeURIComponent(msg);
+      if (phone) {
+        window.open(`https://web.whatsapp.com/send?phone=${phone}&text=${encoded}`, '_blank');
+      } else {
+        window.open(`https://web.whatsapp.com/send?text=${encoded}`, '_blank');
+      }
+    }
+
+    function addToGoogleCalendar(id) {
+      const apt = appointmentsList.find(a => a.id === id);
+      if (!apt) return;
+      const title = encodeURIComponent(`${apt.name} - Diyet Seansı (${clinicProfile.dietitianName})`);
+      const details = encodeURIComponent(`Tür: ${apt.type}\nBağlantı: ${apt.link}\nKlinik: ${clinicProfile.clinicName}`);
+      const dateClean = apt.date.replace(/-/g, '');
+      const timeClean = apt.time.replace(/:/g, '') + '00';
+      const gUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dateClean}T${timeClean}/${dateClean}T${timeClean}&details=${details}`;
+      window.open(gUrl, '_blank');
+    }
+
+    // 2. INBODY & VÜCUT ANALİZİ MOTORU
+    let inbodyHistory = JSON.parse(localStorage.getItem('fitrecete_inbody_history')) || [
+      {
+        id: "inb_1",
+        date: "2026-11-20",
+        name: "Zehra Bölük",
+        weight: 74.5,
+        fatPct: 23.2,
+        muscleKg: 31.8,
+        waterPct: 56.4,
+        visceral: 4,
+        whr: 0.82
+      }
+    ];
+
+    function initInbodyModule() {
+      const inbDateEl = document.getElementById('inbody-date');
+      if (inbDateEl && !inbDateEl.value) {
+        inbDateEl.value = new Date().toISOString().split('T')[0];
+      }
+      recalcInbodyMetrics();
+      renderInbodyHistory();
+    }
+
+    function recalcInbodyMetrics() {
+      const weight = parseFloat(document.getElementById('inbody-weight').value) || 70;
+      const fatPct = parseFloat(document.getElementById('inbody-fat-pct').value) || 20;
+      const muscleKg = parseFloat(document.getElementById('inbody-muscle-kg').value) || 30;
+      const waterPct = parseFloat(document.getElementById('inbody-water-pct').value) || 55;
+      const visceral = parseInt(document.getElementById('inbody-visceral').value) || 4;
+
+      const fatMass = (weight * (fatPct / 100)).toFixed(1);
+      const leanMass = (weight - parseFloat(fatMass)).toFixed(1);
+
+      const fatMassEl = document.getElementById('calc-fat-mass');
+      const leanMassEl = document.getElementById('calc-lean-mass');
+      const visceralEl = document.getElementById('disp-visceral-level');
+      const waterEl = document.getElementById('disp-hydration-status');
+
+      if (fatMassEl) fatMassEl.innerText = `${fatMass} kg`;
+      if (leanMassEl) leanMassEl.innerText = `${leanMass} kg`;
+      if (visceralEl) visceralEl.innerText = `Seviye ${visceral}`;
+      if (waterEl) waterEl.innerText = `%${waterPct} (${waterPct >= 50 ? 'İdeal' : 'Düşük / Su İhtiyacı'})`;
+
+      const barFat = document.getElementById('bar-fat');
+      if (barFat) barFat.style.width = `${Math.min(100, fatPct * 2.5)}%`;
+
+      const verdictEl = document.getElementById('inbody-clinical-verdict');
+      if (verdictEl) {
+        if (fatPct > 28) {
+          verdictEl.innerHTML = `⚠️ <b>Klinik Değerlendirme:</b> Vücut yağ oranı yüksek seyrediyor. Hedefimiz DSÖ Akdeniz protokolü ile kas kütlesi (${muscleKg} kg) korunurken yağ kütlesinden (${fatMass} kg) haftalık 0.5-0.8 kg kayıp sağlamaktır.`;
+        } else {
+          verdictEl.innerHTML = `💡 <b>Klinik Değerlendirme:</b> Vücut kompozisyonu dengeli; iskelet kası kütlesi (${muscleKg} kg) metabolizma hızını destekliyor. İç organ yağlanması (Seviye ${visceral}) kardiyovasküler açıdan güvenli bölgede.`;
+        }
+      }
+    }
+
+    function saveInbodyMeasurement() {
+      const name = document.getElementById('inbody-name').value.trim() || document.getElementById('inp-name').value.trim() || "Danışan";
+      const date = document.getElementById('inbody-date').value || new Date().toISOString().split('T')[0];
+      const weight = parseFloat(document.getElementById('inbody-weight').value) || 70;
+      const fatPct = parseFloat(document.getElementById('inbody-fat-pct').value) || 20;
+      const muscleKg = parseFloat(document.getElementById('inbody-muscle-kg').value) || 30;
+      const waterPct = parseFloat(document.getElementById('inbody-water-pct').value) || 55;
+      const visceral = parseInt(document.getElementById('inbody-visceral').value) || 4;
+      const whr = parseFloat(document.getElementById('inbody-whr').value) || 0.82;
+
+      const record = {
+        id: "inb_" + Date.now(),
+        date,
+        name,
+        weight,
+        fatPct,
+        muscleKg,
+        waterPct,
+        visceral,
+        whr
+      };
+
+      inbodyHistory.unshift(record);
+      localStorage.setItem('fitrecete_inbody_history', JSON.stringify(inbodyHistory));
+      renderInbodyHistory();
+      showToastNotification(`🔬 "${name}" için InBody ölçüm kaydı eklendi.`);
+    }
+
+    function renderInbodyHistory() {
+      const tbody = document.getElementById('inbody-history-tbody');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+
+      if (inbodyHistory.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; padding: 14px; color: var(--text-muted);">Henüz kaydedilmiş ölçüm bulunmuyor.</td></tr>`;
+        return;
+      }
+
+      inbodyHistory.forEach(r => {
+        const tr = document.createElement('tr');
+        tr.style.borderBottom = '1px solid var(--border-color)';
+        tr.innerHTML = `
+          <td style="padding: 8px;">${r.date}</td>
+          <td style="padding: 8px; font-weight: 800;">${r.name}</td>
+          <td style="padding: 8px; color: var(--dusty-pink); font-weight: 800;">${r.weight} kg</td>
+          <td style="padding: 8px;">%${r.fatPct}</td>
+          <td style="padding: 8px;">${r.muscleKg} kg</td>
+          <td style="padding: 8px;">
+            <button onclick="deleteInbodyRecord('${r.id}')" style="background: none; border: none; color: #ef4444; cursor: pointer; font-size: 11px;">Sil</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function deleteInbodyRecord(id) {
+      inbodyHistory = inbodyHistory.filter(r => r.id !== id);
+      localStorage.setItem('fitrecete_inbody_history', JSON.stringify(inbodyHistory));
+      renderInbodyHistory();
+      showToastNotification("Ölçüm kaydı silindi.");
+    }
+
+    function shareInbodyWhatsApp() {
+      const name = document.getElementById('inbody-name').value.trim() || document.getElementById('inp-name').value.trim() || "Değerli Danışanımız";
+      const date = document.getElementById('inbody-date').value || new Date().toISOString().split('T')[0];
+      const weight = document.getElementById('inbody-weight').value;
+      const fatPct = document.getElementById('inbody-fat-pct').value;
+      const muscleKg = document.getElementById('inbody-muscle-kg').value;
+      const waterPct = document.getElementById('inbody-water-pct').value;
+      const visceral = document.getElementById('inbody-visceral').value;
+      const p = clinicProfile;
+
+      let msg = `🌸 *${p.clinicName} • ${p.dietitianName}*\n\n`;
+      msg += `🔬 *Sayın ${name}, ${date} Tarihli Vücut Kompozisyon & InBody Raporunuz:*\n\n`;
+      msg += `⚖️ *Kilo:* ${weight} kg\n`;
+      msg += `🔥 *Vücut Yağ Oranı:* %${fatPct}\n`;
+      msg += `💪 *İskelet Kası:* ${muscleKg} kg\n`;
+      msg += `💧 *Vücut Sıvı Oranı:* %${waterPct}\n`;
+      msg += `🫀 *İç Organ Yağlanması:* Seviye ${visceral}\n\n`;
+      msg += `💡 *Klinik Değerlendirme:* Vücut gelişiminiz harika ilerliyor! Hazırladığımız DSÖ beslenme reçetesi ile kaslarınızı koruyup yağ yakımını sürdürüyoruz.\n\n`;
+      msg += `Tebrikler ve sevgiler! 🌸\n_${p.dietitianName}_`;
+
+      const encoded = encodeURIComponent(msg);
+      window.open(`https://web.whatsapp.com/send?text=${encoded}`, '_blank');
+    }
+
+    // 3. BIOLINK İLETİŞİM FONKSİYONLARI
+    function contactViaWhatsAppDirect() {
+      const p = clinicProfile;
+      const msg = encodeURIComponent(`Merhaba ${p.dietitianName}, ${p.clinicName} danışmanlık hizmetleriniz ve randevu hakkında bilgi almak istiyorum.`);
+      const phone = p.phone ? (p.phone.startsWith('90') ? p.phone : '90' + p.phone.replace(/^0+/, '')) : '';
+      if (phone) {
+        window.open(`https://web.whatsapp.com/send?phone=${phone}&text=${msg}`, '_blank');
+      } else {
+        window.open(`https://web.whatsapp.com/send?text=${msg}`, '_blank');
+      }
+    }
+
+    function openBookingModalFromBio() {
+      switchAppTab('appointments');
+      showToastNotification("📅 Randevu oluşturma ekranı açıldı.");
+    }
+
+
+    let selectedAllergens = [];
+    function toggleAllergenChip(el, allergenName) {
+      el.classList.toggle('selected');
+      if (el.classList.contains('selected')) {
+        if (!selectedAllergens.includes(allergenName)) selectedAllergens.push(allergenName);
+      } else {
+        selectedAllergens = selectedAllergens.filter(a => a !== allergenName);
+      }
+      showToastNotification(`Filtre güncellendi: ${selectedAllergens.length > 0 ? selectedAllergens.join(', ') : 'Tüm besinler serbest'}`);
+    }
+
+
     function printClinicalDossier() {
       window.print();
     }
@@ -4608,31 +5577,6 @@ PCOS'TA 3 ALTIN KURAL:
         }
       }
     };
-
-    function switchAppTab(tab) {
-      const dietView = document.getElementById('view-diet');
-      const reelsView = document.getElementById('view-reels');
-      const btnDiet = document.getElementById('btn-tab-diet');
-      const btnReels = document.getElementById('btn-tab-reels');
-
-      if (tab === 'diet') {
-        dietView.style.display = 'block';
-        reelsView.style.display = 'none';
-        btnDiet.classList.add('active');
-        btnReels.classList.remove('active');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        dietView.style.display = 'none';
-        reelsView.style.display = 'block';
-        btnDiet.classList.remove('active');
-        btnReels.classList.add('active');
-        if (!lastGeneratedReelsData) {
-          generateReelsContent();
-        }
-        renderAgendaList();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    }
 
     function selectTopicChip(topicId) {
       currentReelsTopic = topicId;
