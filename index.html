@@ -1465,6 +1465,269 @@
       font-weight: 800;
     }
 
+    /* ============================================================ */
+    /* FitReçete Pro AI™ - ENTERPRISE KLİNİK APP SHELL & SAAS CSS   */
+    /* ============================================================ */
+
+    :root {
+      --saas-bg: #f8fafc;
+      --saas-card: #ffffff;
+      --saas-border: #e2e8f0;
+      --saas-primary: #be5b70;
+      --saas-primary-dark: #8c3648;
+      --saas-accent: #10b981;
+      --saas-accent-dark: #065f46;
+      --saas-text-dark: #0f172a;
+      --saas-text-muted: #64748b;
+    }
+
+    /* Üst Konsol Aktif Danışan Rozeti */
+    .active-client-dock {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fdf2f4;
+      border: 1px solid #fbcfe8;
+      border-radius: 30px;
+      padding: 5px 14px;
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #8c3648;
+    }
+
+    /* 8'li SaaS Segmented Dock Navigasyon */
+    .saas-nav-dock {
+      background: #ffffff;
+      border-bottom: 1px solid var(--saas-border);
+      position: sticky;
+      top: 0;
+      z-index: 99;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+    .saas-nav-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 6px 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .saas-nav-inner::-webkit-scrollbar { display: none; }
+
+    .saas-tab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      font-size: 12px;
+      font-weight: 800;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      background: #f8fafc;
+      color: var(--saas-text-muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .saas-tab-btn:hover {
+      background: #fdf2f4;
+      color: var(--saas-primary);
+      border-color: #fbcfe8;
+      transform: translateY(-1px);
+    }
+    .saas-tab-btn.active {
+      background: linear-gradient(135deg, #be5b70 0%, #9d3d52 100%);
+      color: #ffffff;
+      border-color: #8c3648;
+      box-shadow: 0 4px 12px rgba(190, 91, 112, 0.25);
+    }
+    .saas-tab-btn .badge-pill {
+      font-size: 9px;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.06);
+    }
+    .saas-tab-btn.active .badge-pill {
+      background: rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+    }
+
+    /* Besin Veritabanı Arama & Filtre Paneli */
+    .food-search-box {
+      position: relative;
+      width: 100%;
+    }
+    .food-search-input {
+      width: 100%;
+      padding: 12px 16px 12px 42px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      border: 1.5px solid var(--border-color);
+      background: #ffffff;
+      color: var(--text-main);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      transition: all 0.2s ease;
+    }
+    .food-search-input:focus {
+      outline: none;
+      border-color: var(--dusty-pink);
+      box-shadow: 0 0 0 3px rgba(190, 91, 112, 0.15);
+    }
+    .food-search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+
+    .food-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .food-card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+    .food-card:hover {
+      border-color: var(--dusty-pink);
+      box-shadow: 0 6px 16px rgba(190, 91, 112, 0.08);
+      transform: translateY(-2px);
+    }
+    .food-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .food-title {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--dark-slate);
+    }
+    .food-portion {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+    .food-macro-pills {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+    .macro-chip {
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 6px;
+    }
+    .chip-cal { background: #fee2e2; color: #991b1b; }
+    .chip-pro { background: #dcfce7; color: #166534; }
+    .chip-carb { background: #e0f2fe; color: #075985; }
+    .chip-fat { background: #fef3c7; color: #92400e; }
+    .chip-fiber { background: #f3e8ff; color: #6b21a8; }
+
+    /* Klinik Tahlil & Kan Laboratuvarı */
+    .lab-panels-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 16px;
+      margin-top: 14px;
+    }
+    .lab-card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .lab-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border-color);
+      font-size: 12px;
+    }
+    .lab-row:last-child { border-bottom: none; }
+    .lab-status-badge {
+      font-size: 9.5px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .status-optimal { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+    .status-warning { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
+    .status-danger { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
+
+    /* Mobilde Kolay Dokunma Alt Çubuğu (Bottom Navigation) */
+    @media (max-width: 768px) {
+      .mobile-bottom-dock {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 62px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-top: 1px solid var(--border-color);
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        z-index: 9999;
+        box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.06);
+        padding: 0 4px;
+      }
+      .mobile-dock-btn {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        height: 100%;
+        background: none;
+        border: none;
+        color: var(--text-muted);
+        font-size: 9.5px;
+        font-weight: 800;
+        cursor: pointer;
+        transition: color 0.15s ease;
+      }
+      .mobile-dock-btn.active {
+        color: var(--dusty-pink);
+      }
+      .mobile-dock-btn svg {
+        width: 20px;
+        height: 20px;
+      }
+      /* Alt çubuk boşluğu */
+      body {
+        padding-bottom: 70px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1512,48 +1775,57 @@
   <!-- ============================================================ -->
   <!-- 4'LÜ PROFESYONEL İŞLETİM MODU SEÇİCİ                         -->
   <!-- ============================================================ -->
-    <div class="nav-switcher-bar">
-    <div class="nav-switcher-inner">
-      <button class="nav-switch-btn active" id="btn-tab-diet" onclick="switchAppTab('diet')">
-        <span style="font-size: 16px;">🥗</span>
-        <span>7 Günlük Diyet & Klinik Planlayıcı</span>
-        <span class="pill-tag">DSÖ Standardı</span>
+      <div class="saas-nav-dock">
+    <div class="saas-nav-inner">
+      <button class="saas-tab-btn active" id="btn-tab-diet" onclick="switchAppTab('diet')">
+        <span>🥗</span>
+        <span>Diyet Planlayıcı</span>
+        <span class="badge-pill">DSÖ 2024</span>
       </button>
-      <button class="nav-switch-btn" id="btn-tab-appointments" onclick="switchAppTab('appointments')">
-        <span style="font-size: 16px;">📅</span>
-        <span>Randevu & Seans Takvimi</span>
-        <span class="pill-tag">Online & Yüz Yüze</span>
+      <button class="saas-tab-btn" id="btn-tab-lab" onclick="switchAppTab('lab')">
+        <span>🧪</span>
+        <span>Tahlil & Kan Laboratuvarı</span>
+        <span class="badge-pill" style="background:#fef3c7; color:#b45309;">HOMA-IR</span>
       </button>
-      <button class="nav-switch-btn" id="btn-tab-inbody" onclick="switchAppTab('inbody')">
-        <span style="font-size: 16px;">⚖️</span>
+      <button class="saas-tab-btn" id="btn-tab-foods" onclick="switchAppTab('foods')">
+        <span>🍏</span>
+        <span>Besin Veritabanı & Değişim</span>
+        <span class="badge-pill" style="background:#dcfce7; color:#15803d;">Türkomp</span>
+      </button>
+      <button class="saas-tab-btn" id="btn-tab-inbody" onclick="switchAppTab('inbody')">
+        <span>⚖️</span>
         <span>InBody & Vücut Analizi</span>
-        <span class="pill-tag">Laboratuvar</span>
+        <span class="badge-pill">Tanita</span>
       </button>
-      <button class="nav-switch-btn" id="btn-tab-biolink" onclick="switchAppTab('biolink')">
-        <span style="font-size: 16px;">🌐</span>
-        <span>Bio Link & Web Sitesi</span>
-        <span class="pill-tag">Randevu Vitrini</span>
+      <button class="saas-tab-btn" id="btn-tab-appointments" onclick="switchAppTab('appointments')">
+        <span>📅</span>
+        <span>Randevu & Seans Takvimi</span>
+        <span class="badge-pill">Takvim</span>
       </button>
-      <button class="nav-switch-btn" id="btn-tab-reels" onclick="switchAppTab('reels')">
-        <span style="font-size: 16px;">🎬</span>
-        <span>Viral Reels & İçerik Stüdyosu</span>
-        <span class="pill-tag">Danışan Kazandıran</span>
+      <button class="saas-tab-btn" id="btn-tab-crm" onclick="switchAppTab('crm')">
+        <span>👥</span>
+        <span>Danışan Kasası & CRM</span>
+        <span class="badge-pill">Kasa</span>
       </button>
-      <button class="nav-switch-btn" id="btn-tab-grocery" onclick="switchAppTab('grocery')">
-        <span style="font-size: 16px;">🛒</span>
-        <span>Pazar & Alışveriş Listesi</span>
-        <span class="pill-tag">Otomatik</span>
+      <button class="saas-tab-btn" id="btn-tab-reels" onclick="switchAppTab('reels')">
+        <span>🎬</span>
+        <span>Viral Reels Stüdyosu</span>
+        <span class="badge-pill" style="background:#fce7f3; color:#9d174d;">AI Video</span>
       </button>
-      <button class="nav-switch-btn" id="btn-tab-crm" onclick="switchAppTab('crm')">
-        <span style="font-size: 16px;">👥</span>
-        <span>Danışan Kasası & Muhasebe</span>
-        <span class="pill-tag">Seans & Paket</span>
+      <button class="saas-tab-btn" id="btn-tab-grocery" onclick="switchAppTab('grocery')">
+        <span>🛒</span>
+        <span>Pazar Listesi</span>
+        <span class="badge-pill">Otomatik</span>
+      </button>
+      <button class="saas-tab-btn" id="btn-tab-biolink" onclick="switchAppTab('biolink')">
+        <span>🌐</span>
+        <span>Bio Link & Vitrin</span>
+        <span class="badge-pill">Web Sitesi</span>
       </button>
     </div>
   </div>
 
-
-    <!-- 2. ANA İÇERİK                                                -->
+  <!-- 2. ANA İÇERİK                                                -->
   <!-- ============================================================ -->
   <main class="main-container">
 
@@ -2628,6 +2900,235 @@
     </div>
 
 
+      <!-- ============================================================ -->
+    <!-- 6. GÖRÜNÜM: KLİNİK TAHLİL & BİYOKİMYA LABORATUVARI (YENİ!)   -->
+    <!-- ============================================================ -->
+    <div id="view-lab" style="display: none;">
+      <div class="hero-banner">
+        <div class="hero-tag">Klinik Diyetisyen Tıbbi Laboratuvar Motoru</div>
+        <h2 class="hero-title">🧪 Tahlil Yorumlama & Biyokimya Paneli</h2>
+        <p class="hero-desc">
+          Danışanınızın kan tahlili değerlerini girin; <b>HOMA-IR insülin direnci</b>, <b>Aterojenik kardiyovasküler indeks</b>, tiroid ve vitamin depoları uluslararası klinik kılavuzlara göre otomatik yorumlansın.
+        </p>
+      </div>
+
+      <div class="workspace-grid">
+        <!-- SOL: Tahlil Parametre Giriş Formu -->
+        <div class="card" style="height: fit-content;">
+          <div class="card-header">
+            <span class="card-title"><span>🔬 Yeni Kan Tahlili Verisi Ekle</span></span>
+          </div>
+          <div class="card-body">
+            <div class="form-row">
+              <div class="form-group" style="grid-column: span 2;">
+                <label class="form-label">Danışan Adı</label>
+                <input type="text" id="lab-client-name" class="form-input" placeholder="Danışan adı seçin veya yazın...">
+              </div>
+              <div class="form-group" style="grid-column: span 2;">
+                <label class="form-label">Tahlil Tarihi</label>
+                <input type="date" id="lab-date" class="form-input">
+              </div>
+            </div>
+
+            <!-- Glukoz & İnsülin -->
+            <div style="font-size: 11px; font-weight: 800; color: #be5b70; margin-top: 6px; text-transform: uppercase;">
+              1. Glukoz & İnsülin Metabolizması
+            </div>
+            <div class="form-row" style="margin-top: 4px;">
+              <div class="form-group">
+                <label class="form-label">Açlık Glikoz (mg/dL)</label>
+                <input type="number" id="lab-glucose" value="94" class="form-input" oninput="recalcLabPanels()">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Açlık İnsülin (uIU/mL)</label>
+                <input type="number" id="lab-insulin" value="7.2" step="0.1" class="form-input" oninput="recalcLabPanels()">
+              </div>
+              <div class="form-group" style="grid-column: span 2;">
+                <label class="form-label">HbA1c (% Üç Aylık Şeker)</label>
+                <input type="number" id="lab-hba1c" value="5.4" step="0.1" class="form-input" oninput="recalcLabPanels()">
+              </div>
+            </div>
+
+            <!-- Lipit Profili -->
+            <div style="font-size: 11px; font-weight: 800; color: #be5b70; margin-top: 8px; text-transform: uppercase;">
+              2. Kardiyovasküler & Lipit Profili
+            </div>
+            <div class="form-row" style="margin-top: 4px;">
+              <div class="form-group">
+                <label class="form-label">Trigliserid (mg/dL)</label>
+                <input type="number" id="lab-triglycerides" value="110" class="form-input" oninput="recalcLabPanels()">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Total Kolesterol</label>
+                <input type="number" id="lab-total-chol" value="188" class="form-input">
+              </div>
+              <div class="form-group">
+                <label class="form-label">HDL (İyi Kolesterol)</label>
+                <input type="number" id="lab-hdl" value="58" class="form-input" oninput="recalcLabPanels()">
+              </div>
+              <div class="form-group">
+                <label class="form-label">LDL (Kötü Kolesterol)</label>
+                <input type="number" id="lab-ldl" value="108" class="form-input">
+              </div>
+            </div>
+
+            <!-- Karaciğer, Tiroid & Vitaminler -->
+            <div style="font-size: 11px; font-weight: 800; color: #be5b70; margin-top: 8px; text-transform: uppercase;">
+              3. Karaciğer, Tiroid & Vitamin Depoları
+            </div>
+            <div class="form-row" style="margin-top: 4px;">
+              <div class="form-group">
+                <label class="form-label">ALT (Karaciğer U/L)</label>
+                <input type="number" id="lab-alt" value="22" class="form-input">
+              </div>
+              <div class="form-group">
+                <label class="form-label">TSH (Tiroid mIU/L)</label>
+                <input type="number" id="lab-tsh" value="1.85" step="0.01" class="form-input" oninput="recalcLabPanels()">
+              </div>
+              <div class="form-group">
+                <label class="form-label">D3 Vitamini (ng/mL)</label>
+                <input type="number" id="lab-d3" value="42" class="form-input" oninput="recalcLabPanels()">
+              </div>
+              <div class="form-group">
+                <label class="form-label">B12 Vitamini (pg/mL)</label>
+                <input type="number" id="lab-b12" value="440" class="form-input" oninput="recalcLabPanels()">
+              </div>
+              <div class="form-group" style="grid-column: span 2;">
+                <label class="form-label">Ferritin (Demir Deposu ng/mL)</label>
+                <input type="number" id="lab-ferritin" value="55" class="form-input">
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 8px; margin-top: 14px;">
+              <button onclick="saveLabRecord()" class="btn btn-pastel-green" style="flex: 1;">
+                <span>💾 Tahlili Kaydet</span>
+              </button>
+              <button onclick="shareLabReportWhatsApp()" class="btn btn-whatsapp-pastel">
+                <span>WhatsApp Raporu</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SAĞ: Anlık Tıbbi Skor Kartları & Değerlendirme Raporu -->
+        <div style="display: flex; flex-direction: column; gap: 14px; width: 100%;">
+          
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title"><span>📊 Otomatik Klinik Biyomarker Değerlendirmesi</span></span>
+              <span class="logo-badge" id="lab-overall-status">Metabolik Denge İdeal</span>
+            </div>
+            <div class="card-body">
+              
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;">
+                
+                <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: var(--radius-sm); padding: 12px; text-align: center;">
+                  <div style="font-size: 11px; font-weight: 800; color: #065f46;">HOMA-IR (İnsülin Skoru)</div>
+                  <div style="font-size: 24px; font-weight: 900; color: #059669; margin: 4px 0;" id="disp-homa-ir">1.67</div>
+                  <span class="lab-status-badge status-optimal" id="badge-homa">✓ Normal (&lt; 2.5)</span>
+                </div>
+
+                <div style="background: #f0f9ff; border: 1px solid #bae6fd; border-radius: var(--radius-sm); padding: 12px; text-align: center;">
+                  <div style="font-size: 11px; font-weight: 800; color: #0369a1;">Trigliserid / HDL Oranı</div>
+                  <div style="font-size: 24px; font-weight: 900; color: #0284c7; margin: 4px 0;" id="disp-tg-hdl">1.90</div>
+                  <span class="lab-status-badge status-optimal" id="badge-tg-hdl">✓ Aterojenik Risk Düşük</span>
+                </div>
+
+                <div style="background: #faf8f9; border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 12px; text-align: center;">
+                  <div style="font-size: 11px; font-weight: 800; color: var(--text-muted);">HbA1c & Glisemik Kontrol</div>
+                  <div style="font-size: 24px; font-weight: 900; color: var(--dark-slate); margin: 4px 0;" id="disp-hba1c">%5.4</div>
+                  <span class="lab-status-badge status-optimal" id="badge-hba1c">✓ Normoglisemi</span>
+                </div>
+
+                <div style="background: #faf8f9; border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 12px; text-align: center;">
+                  <div style="font-size: 11px; font-weight: 800; color: var(--text-muted);">D3 & B12 Deposu</div>
+                  <div style="font-size: 18px; font-weight: 900; color: var(--dark-slate); margin: 6px 0;" id="disp-vitamins">D: 42 | B12: 440</div>
+                  <span class="lab-status-badge status-optimal" id="badge-vitamins">✓ Hücresel Doygunluk</span>
+                </div>
+
+              </div>
+
+              <!-- Klinik Yorum Metni -->
+              <div style="background: #fdf2f4; border-left: 4px solid var(--dusty-pink); border-radius: 4px; padding: 12px 14px; margin-top: 14px; font-size: 12px; color: #8c3648; line-height: 1.5;" id="lab-verdict-box">
+                💡 <b>Diyetisyen Klinik Yorumu:</b> Metabolik profil ve insülin duyarlılığı optimal bölgede. Trigliserid/HDL oranı (1.90) kardiyovasküler açıdan mükemmel. Akdeniz diyeti protokolüne devam edilebilir.
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Geçmiş Tahlil Kayıtları Tablosu -->
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title"><span>📜 Kayıtlı Kan Tahlili Geçmişi</span></span>
+            </div>
+            <div class="card-body">
+              <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 11.5px; text-align: left;">
+                  <thead>
+                    <tr style="border-bottom: 2px solid var(--border-color); color: var(--text-muted);">
+                      <th style="padding: 8px;">Tarih</th>
+                      <th style="padding: 8px;">Danışan</th>
+                      <th style="padding: 8px;">Açlık Glikoz</th>
+                      <th style="padding: 8px;">HOMA-IR</th>
+                      <th style="padding: 8px;">Tg / HDL</th>
+                      <th style="padding: 8px;">İşlem</th>
+                    </tr>
+                  </thead>
+                  <tbody id="lab-history-tbody">
+                    <!-- JS ile doldurulur -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ============================================================ -->
+    <!-- 7. GÖRÜNÜM: TÜRKOMP & KLİNİK BESİN VERİTABANI (YENİ!)        -->
+    <!-- ============================================================ -->
+    <div id="view-foods" style="display: none;">
+      <div class="hero-banner">
+        <div class="hero-tag">Türkomp & USDA Destekli Klinik Gıda Sözlüğü</div>
+        <h2 class="hero-title">🍏 Besin Veritabanı & Değişim Cetveli</h2>
+        <p class="hero-desc">
+          100+ klinik besinin <b>Kalori, Protein, Karbonhidrat, Yağ, Lif ve Glisemik İndeks</b> değerlerini anında arayın; danışanlarınıza porsiyon değişim listeleri oluşturun.
+        </p>
+      </div>
+
+      <!-- Arama ve Kategori Filtre Çubuğu -->
+      <div class="card" style="margin-bottom: 16px;">
+        <div class="card-body">
+          <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+            <div class="food-search-box" style="flex: 1; min-width: 260px;">
+              <span class="food-search-icon">🔍</span>
+              <input type="text" id="food-search-query" class="food-search-input" placeholder="Besin adı veya malzeme ara (örn: somon, yulaf, mercimek, yoğurt...)" oninput="filterFoodDatabase()">
+            </div>
+            
+            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+              <button onclick="filterFoodCategory('all')" class="btn btn-swap-mini active" id="btn-cat-all">Tümü (40+)</button>
+              <button onclick="filterFoodCategory('protein')" class="btn btn-swap-mini" id="btn-cat-protein">🥩 Protein</button>
+              <button onclick="filterFoodCategory('dairy')" class="btn btn-swap-mini" id="btn-cat-dairy">🥛 Süt & Probiyotik</button>
+              <button onclick="filterFoodCategory('legume')" class="btn btn-swap-mini" id="btn-cat-legume">🌾 Bakliyat</button>
+              <button onclick="filterFoodCategory('grain')" class="btn btn-swap-mini" id="btn-cat-grain">🍞 Tam Tahıl</button>
+              <button onclick="filterFoodCategory('vegetable')" class="btn btn-swap-mini" id="btn-cat-vegetable">🥦 Sebze</button>
+              <button onclick="filterFoodCategory('fruit')" class="btn btn-swap-mini" id="btn-cat-fruit">🍎 Meyve</button>
+              <button onclick="filterFoodCategory('healthy_fat')" class="btn btn-swap-mini" id="btn-cat-healthy_fat">🥑 Sağlıklı Yağ</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Besin Kartları Listesi -->
+      <div id="food-cards-container" class="food-grid">
+        <!-- JS ile doldurulur -->
+      </div>
+    </div>
+
+
     <!-- MODAL 1: KLİNİK & MARKA KİŞİSELLEŞTİRME (WHITE-LABEL)       -->
   <!-- ============================================================ -->
   <div id="modal-clinic-settings" class="modal-backdrop" style="display: none; align-items: center; justify-content: center; z-index: 10000;">
@@ -2984,56 +3485,75 @@
 
     // 3. Gelişmiş Nav Switcher (4 Mod)
     // 3. Gelişmiş Nav Switcher (7 Mod - Mangolif'i Aşan Ekosistem)
+    // ============================================================
+    // Gelişmiş Nav Switcher (9 Modlu Enterprise Klinik İşletim Sistemi)
+    // ============================================================
     function switchAppTab(mode) {
-      const viewDiet = document.getElementById('view-diet');
-      const viewAppointments = document.getElementById('view-appointments');
-      const viewInbody = document.getElementById('view-inbody');
-      const viewBiolink = document.getElementById('view-biolink');
-      const viewReels = document.getElementById('view-reels');
-      const viewGrocery = document.getElementById('view-grocery');
-      const viewCrm = document.getElementById('view-crm');
+      const views = {
+        diet: document.getElementById('view-diet'),
+        lab: document.getElementById('view-lab'),
+        foods: document.getElementById('view-foods'),
+        inbody: document.getElementById('view-inbody'),
+        appointments: document.getElementById('view-appointments'),
+        crm: document.getElementById('view-crm'),
+        reels: document.getElementById('view-reels'),
+        grocery: document.getElementById('view-grocery'),
+        biolink: document.getElementById('view-biolink')
+      };
 
-      const btnDiet = document.getElementById('btn-tab-diet');
-      const btnAppointments = document.getElementById('btn-tab-appointments');
-      const btnInbody = document.getElementById('btn-tab-inbody');
-      const btnBiolink = document.getElementById('btn-tab-biolink');
-      const btnReels = document.getElementById('btn-tab-reels');
-      const btnGrocery = document.getElementById('btn-tab-grocery');
-      const btnCrm = document.getElementById('btn-tab-crm');
+      const desktopButtons = {
+        diet: document.getElementById('btn-tab-diet'),
+        lab: document.getElementById('btn-tab-lab'),
+        foods: document.getElementById('btn-tab-foods'),
+        inbody: document.getElementById('btn-tab-inbody'),
+        appointments: document.getElementById('btn-tab-appointments'),
+        crm: document.getElementById('btn-tab-crm'),
+        reels: document.getElementById('btn-tab-reels'),
+        grocery: document.getElementById('btn-tab-grocery'),
+        biolink: document.getElementById('btn-tab-biolink')
+      };
 
-      [viewDiet, viewAppointments, viewInbody, viewBiolink, viewReels, viewGrocery, viewCrm].forEach(el => { if (el) el.style.display = 'none'; });
-      [btnDiet, btnAppointments, btnInbody, btnBiolink, btnReels, btnGrocery, btnCrm].forEach(btn => { if (btn) btn.classList.remove('active'); });
+      const mobileButtons = {
+        diet: document.getElementById('mob-tab-diet'),
+        lab: document.getElementById('mob-tab-lab'),
+        foods: document.getElementById('mob-tab-foods'),
+        appointments: document.getElementById('mob-tab-appointments'),
+        crm: document.getElementById('mob-tab-crm')
+      };
 
-      if (mode === 'diet') {
-        if (viewDiet) viewDiet.style.display = 'block';
-        if (btnDiet) btnDiet.classList.add('active');
-      } else if (mode === 'appointments') {
-        if (viewAppointments) viewAppointments.style.display = 'block';
-        if (btnAppointments) btnAppointments.classList.add('active');
-        renderAppointments();
+      // Hide all views
+      Object.values(views).forEach(v => { if (v) v.style.display = 'none'; });
+      // Deactivate all buttons
+      Object.values(desktopButtons).forEach(b => { if (b) b.classList.remove('active'); });
+      Object.values(mobileButtons).forEach(b => { if (b) b.classList.remove('active'); });
+
+      // Activate selected view and button
+      if (views[mode]) views[mode].style.display = 'block';
+      if (desktopButtons[mode]) desktopButtons[mode].classList.add('active');
+      if (mobileButtons[mode]) mobileButtons[mode].classList.add('active');
+
+      // Specific initializations
+      if (mode === 'foods') {
+        renderFoodCards();
+      } else if (mode === 'lab') {
+        recalcLabPanels();
+        renderLabHistory();
       } else if (mode === 'inbody') {
-        if (viewInbody) viewInbody.style.display = 'block';
-        if (btnInbody) btnInbody.classList.add('active');
         recalcInbodyMetrics();
         renderInbodyHistory();
-      } else if (mode === 'biolink') {
-        if (viewBiolink) viewBiolink.style.display = 'block';
-        if (btnBiolink) btnBiolink.classList.add('active');
-      } else if (mode === 'reels') {
-        if (viewReels) viewReels.style.display = 'block';
-        if (btnReels) btnReels.classList.add('active');
-        if (!lastGeneratedReelsData) generateReelsContent();
-      } else if (mode === 'grocery') {
-        if (viewGrocery) viewGrocery.style.display = 'block';
-        if (btnGrocery) btnGrocery.classList.add('active');
-        renderGroceryList();
+      } else if (mode === 'appointments') {
+        renderAppointments();
       } else if (mode === 'crm') {
-        if (viewCrm) viewCrm.style.display = 'block';
-        if (btnCrm) btnCrm.classList.add('active');
         renderClientVault();
+      } else if (mode === 'grocery') {
+        renderGroceryList();
+      } else if (mode === 'reels') {
+        if (!lastGeneratedReelsData) generateReelsContent();
       }
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
 
         // 4. Haftalık Pazar & Market Alışveriş Listesi Motoru
     function generateWeeklyGroceryList() {
@@ -4250,6 +4770,8 @@
       initClinicalDirective();
       initAppointments();
       initInbodyModule();
+      initLabModule();
+      initFoodDatabase();
       recalcAndRefresh();
       renderPantryChips();
       refreshSavedClientsDropdown();
@@ -4796,7 +5318,8 @@
           </div>
 
           <script>window.onload = function() { window.print(); }<\/script>
-        </body>
+
+</body>
         </html>
       `);
       printWindow.document.close();
@@ -5165,6 +5688,371 @@
         selectedAllergens = selectedAllergens.filter(a => a !== allergenName);
       }
       showToastNotification(`Filtre güncellendi: ${selectedAllergens.length > 0 ? selectedAllergens.join(', ') : 'Tüm besinler serbest'}`);
+    }
+
+
+    /* ============================================================ */
+    /* FitReçete Pro AI™ - TÜRKOMP & KLİNİK BESİN VERİTABANI       */
+    /* ============================================================ */
+
+    const CLINICAL_FOOD_DATABASE = [
+      // ET, TAVUK, BALIK & SAF PROTEİNLER (1 Et Değişimi: ~6g Protein, ~5g Yağ, 0g Karb, ~70 kcal)
+      { id: "f_1", name: "Izgara Tavuk Göğsü", category: "protein", portion: "100g", cal: 165, p: 31.0, c: 0.0, f: 3.6, fiber: 0.0, gi: "Düşük (0)", exchange: "1.5 Et Değişimi", tag: "Yağsız Saf Protein" },
+      { id: "f_2", name: "Fırında Somon Fileto", category: "protein", portion: "100g", cal: 208, p: 20.0, c: 0.0, f: 13.0, fiber: 0.0, gi: "Düşük (0)", exchange: "1.5 Yağlı Et (Omega-3)", tag: "EPA/DHA Zengin" },
+      { id: "f_3", name: "Izgara Yağsız Dana Bonfile", category: "protein", portion: "100g", cal: 156, p: 26.0, c: 0.0, f: 5.0, fiber: 0.0, gi: "Düşük (0)", exchange: "1.5 Az Yağlı Et", tag: "Demir & B12 Deposu" },
+      { id: "f_4", name: "Hindi Göğüs Eti", category: "protein", portion: "100g", cal: 135, p: 30.0, c: 0.0, f: 1.0, fiber: 0.0, gi: "Düşük (0)", exchange: "1.5 Yağsız Et", tag: "Triptofan Zengin" },
+      { id: "f_5", name: "Buharda Levrek Fileto", category: "protein", portion: "100g", cal: 97, p: 18.4, c: 0.0, f: 2.0, fiber: 0.0, gi: "Düşük (0)", exchange: "1 Az Yağlı Et", tag: "Hafif Sindirilen Balık" },
+      { id: "f_6", name: "Haşlanmış Yumurta", category: "protein", portion: "1 Adet (50g)", cal: 72, p: 6.3, c: 0.4, f: 4.8, fiber: 0.0, gi: "Düşük (0)", exchange: "1 Et Değişimi", tag: "Örnek Protein (Sabah/Öğle)" },
+      { id: "f_7", name: "Ton Balığı (Suda Konserve)", category: "protein", portion: "80g (Süzülmüş)", cal: 96, p: 21.0, c: 0.0, f: 0.8, fiber: 0.0, gi: "Düşük (0)", exchange: "1.5 Yağsız Et", tag: "Pratik Protein" },
+      { id: "f_8", name: "Izgara Köfte (Yağsız Kıyma)", category: "protein", portion: "3 Köfte (90g)", cal: 195, p: 19.0, c: 3.0, f: 11.5, fiber: 0.5, gi: "Düşük (15)", exchange: "2 Orta Yağlı Et", tag: "Geleneksel Protein" },
+
+      // SÜT & FERMENTE PROBİYOTİKLER (1 Süt Değişimi: ~6g Protein, ~6g Yağ, ~9g Karb, ~114 kcal)
+      { id: "f_9", name: "Ev Yapımı Probiyotik Yoğurt", category: "dairy", portion: "1 Kase (200g)", cal: 122, p: 7.0, c: 9.4, f: 6.5, fiber: 0.0, gi: "Düşük (35)", exchange: "1 Süt Değişimi", tag: "Mikrobiyota Dostu" },
+      { id: "f_10", name: "Kefir (Sade)", category: "dairy", portion: "1 Su Bardağı (200ml)", cal: 104, p: 6.0, c: 8.0, f: 5.0, fiber: 0.0, gi: "Düşük (30)", exchange: "1 Süt Değişimi", tag: "30+ Canlı Bakteri" },
+      { id: "f_11", name: "Süzme Peynir / Beyaz Peynir", category: "dairy", portion: "1 Dilim (30g)", cal: 78, p: 5.5, c: 1.0, f: 6.0, fiber: 0.0, gi: "Düşük (0)", exchange: "1 Et / Süt Değişimi", tag: "Kalsiyum Deposu" },
+      { id: "f_12", name: "Taze Lor Peyniri", category: "dairy", portion: "3 Yemek Kaşığı (60g)", cal: 62, p: 10.0, c: 2.0, f: 1.5, fiber: 0.0, gi: "Düşük (10)", exchange: "1 Yağsız Et", tag: "Yüksek Kazein" },
+      { id: "f_13", name: "Badem Sütü (Şekersiz)", category: "dairy", portion: "1 Bardak (200ml)", cal: 30, p: 1.0, c: 0.5, f: 2.5, fiber: 0.5, gi: "Düşük (15)", exchange: "0.5 Yağ Değişimi", tag: "Laktozsuz Bitkisel" },
+      { id: "f_14", name: "Süzme Yoğurt", category: "dairy", portion: "4 Yemek Kaşığı (100g)", cal: 110, p: 9.0, c: 4.0, f: 6.0, fiber: 0.0, gi: "Düşük (25)", exchange: "1 Süt Değişimi", tag: "Koyu Kıvam Tokluk" },
+
+      // BAKLİYATLAR & BİTKİSEL PROTEİNLER (1 Kuru Baklagil Değişimi: ~5g Protein, ~15g Karb, ~1g Yağ, ~90 kcal)
+      { id: "f_15", name: "Yeşil Mercimek (Haşlanmış)", category: "legume", portion: "1 Su Bardağı (150g)", cal: 175, p: 13.0, c: 29.0, f: 0.6, fiber: 11.0, gi: "Düşük (30)", exchange: "1 Ekmek + 1 Et", tag: "Yüksek Posa & Demir" },
+      { id: "f_16", name: "Nohut (Haşlanmış)", category: "legume", portion: "1 Su Bardağı (150g)", cal: 210, p: 11.0, c: 35.0, f: 3.0, fiber: 10.0, gi: "Düşük (28)", exchange: "1.5 Ekmek + 0.5 Et", tag: "Dirençli Nişasta" },
+      { id: "f_17", name: "Kuru Fasulye (Haşlanmış)", category: "legume", portion: "1 Su Bardağı (150g)", cal: 180, p: 12.0, c: 32.0, f: 0.8, fiber: 10.5, gi: "Düşük (29)", exchange: "1.5 Ekmek + 0.5 Et", tag: "Kolesterol Düşürücü" },
+      { id: "f_18", name: "Kırmızı Mercimek Çorbası", category: "legume", portion: "1 Kase (250ml)", cal: 145, p: 7.5, c: 22.0, f: 3.0, fiber: 4.5, gi: "Orta (45)", exchange: "1 Ekmek + 0.5 Yağ", tag: "Geleneksel Şifa" },
+
+      // TAM TAHILLAR & KOMPLEKS KARBONHİDRATLAR (1 Ekmek Değişimi: ~2g Protein, ~15g Karb, 0g Yağ, ~70 kcal)
+      { id: "f_19", name: "Yulaf Ezmesi", category: "grain", portion: "3 Yemek Kaşığı (30g)", cal: 110, p: 3.8, c: 18.0, f: 2.1, fiber: 3.2, gi: "Düşük (40)", exchange: "1 Ekmek Değişimi", tag: "Beta-Glukan Lif Zengin" },
+      { id: "f_20", name: "Karabuğday (Greçka)", category: "grain", portion: "1 Çay Bardağı Pişmiş (100g)", cal: 120, p: 4.5, c: 25.0, f: 1.0, fiber: 3.8, gi: "Düşük (35)", exchange: "1.5 Ekmek Değişimi", tag: "Glütensiz Rutin Zengin" },
+      { id: "f_21", name: "Kinoa (Pişmiş)", category: "grain", portion: "1 Çay Bardağı (100g)", cal: 120, p: 4.4, c: 21.0, f: 1.9, fiber: 2.8, gi: "Düşük (35)", exchange: "1.5 Ekmek Değişimi", tag: "Tam Amino Asit Profili" },
+      { id: "f_22", name: "Tam Buğday / Çavdar Ekmeği", category: "grain", portion: "1 İnce Dilim (25g)", cal: 65, p: 2.8, c: 12.0, f: 0.8, fiber: 2.2, gi: "Düşük (42)", exchange: "1 Ekmek Değişimi", tag: "B Grubu Vitaminleri" },
+      { id: "f_23", name: "Bulgur Pilavı (Zeytinyağlı)", category: "grain", portion: "3 Yemek Kaşığı (90g)", cal: 125, p: 3.2, c: 22.0, f: 2.8, fiber: 3.5, gi: "Düşük (45)", exchange: "1.5 Ekmek Değişimi", tag: "Akdeniz Karbonhidratı" },
+
+      // SEBZELER (1 Sebze Değişimi: ~1g Protein, ~6g Karb, 0g Yağ, ~25 kcal)
+      { id: "f_24", name: "Brokoli (Buharda)", category: "vegetable", portion: "1 Porsiyon (150g)", cal: 45, p: 3.8, c: 8.0, f: 0.5, fiber: 4.0, gi: "Çok Düşük (15)", exchange: "1.5 Sebze Değişimi", tag: "Sülforafan & Antikanser" },
+      { id: "f_25", name: "Taze Ispanak", category: "vegetable", portion: "1 Kase (100g)", cal: 23, p: 2.9, c: 3.6, f: 0.4, fiber: 2.2, gi: "Çok Düşük (15)", exchange: "1 Sebze Değişimi", tag: "Lutein & Folat" },
+      { id: "f_26", name: "Zeytinyağlı Kabak Yemeği", category: "vegetable", portion: "1 Porsiyon (200g)", cal: 95, p: 2.5, c: 9.0, f: 5.5, fiber: 3.0, gi: "Düşük (15)", exchange: "1 Sebze + 1 Yağ", tag: "Hafif Detoks Öğünü" },
+      { id: "f_27", name: "Kuşkonmaz (Izgara)", category: "vegetable", portion: "1 Porsiyon (100g)", cal: 20, p: 2.2, c: 3.9, f: 0.2, fiber: 2.1, gi: "Çok Düşük (15)", exchange: "1 Sebze Değişimi", tag: "Doğal Diüretik Ödem Atıcı" },
+      { id: "f_28", name: "Karnabahar Fırın", category: "vegetable", portion: "150g", cal: 40, p: 3.0, c: 7.5, f: 0.5, fiber: 3.5, gi: "Düşük (15)", exchange: "1 Sebze Değişimi", tag: "Glukozinolat Zengin" },
+      { id: "f_29", name: "Enginar (Zeytinyağlı)", category: "vegetable", portion: "1 Adet Çanak (100g)", cal: 85, p: 2.5, c: 8.0, f: 4.5, fiber: 4.8, gi: "Düşük (15)", exchange: "1 Sebze + 0.5 Yağ", tag: "Karaciğer Koruyucu (Sinarin)" },
+      { id: "f_30", name: "Roka & Maydanoz & Taze Nane", category: "vegetable", portion: "Geniş Salata (100g)", cal: 25, p: 2.5, c: 3.5, f: 0.4, fiber: 2.8, gi: "Çok Düşük (10)", exchange: "Serbest Sebze", tag: "Alkali & C Vitamini" },
+
+      // MEYVELER (1 Meyve Değişimi: 0g Protein, ~15g Karb, 0g Yağ, ~60 kcal)
+      { id: "f_31", name: "Yeşil Elma", category: "fruit", portion: "1 Küçük Boy (120g)", cal: 62, p: 0.3, c: 15.0, f: 0.2, fiber: 3.0, gi: "Düşük (38)", exchange: "1 Meyve Değişimi", tag: "Pektin Lif Zengin" },
+      { id: "f_32", name: "Yaban Mersini / Orman Meyveleri", category: "fruit", portion: "1 Çay Bardağı (100g)", cal: 57, p: 0.7, c: 14.0, f: 0.3, fiber: 2.4, gi: "Düşük (25)", exchange: "1 Meyve Değişimi", tag: "Antosiyanin Antioksidan" },
+      { id: "f_33", name: "Çilek", category: "fruit", portion: "10-12 Adet (150g)", cal: 48, p: 1.0, c: 11.5, f: 0.4, fiber: 3.0, gi: "Düşük (40)", exchange: "1 Meyve Değişimi", tag: "C Vitamini Deposu" },
+      { id: "f_34", name: "Nar Taneleri", category: "fruit", portion: "Yarım Çay Bardağı (80g)", cal: 65, p: 1.2, c: 14.5, f: 0.8, fiber: 3.2, gi: "Düşük (35)", exchange: "1 Meyve Değişimi", tag: "Punikalagin Hücre Yenileyici" },
+      { id: "f_35", name: "Avokado", category: "healthy_fat", portion: "Yarım Avokado (70g)", cal: 112, p: 1.4, c: 6.0, f: 10.5, fiber: 4.8, gi: "Çok Düşük (10)", exchange: "2 Yağ Değişimi", tag: "Oleik Asit & Doymamış Yağ" },
+
+      // SAĞLIKLI YAĞLAR & ÇİĞ KURUYEMİŞLER (1 Yağ Değişimi: 0g P, 0g C, ~5g Yağ, ~45 kcal)
+      { id: "f_36", name: "Soğuk Sıkım Sızma Zeytinyağı", category: "healthy_fat", portion: "1 Tatlı Kaşığı (5ml)", cal: 45, p: 0.0, c: 0.0, f: 5.0, fiber: 0.0, gi: "Düşük (0)", exchange: "1 Yağ Değişimi", tag: "Polifenol & E Vitamini" },
+      { id: "f_37", name: "Çiğ Ceviz İçi", category: "healthy_fat", portion: "3 Tam Ceviz (15g)", cal: 98, p: 2.3, c: 2.0, f: 9.8, fiber: 1.0, gi: "Düşük (15)", exchange: "2 Yağ Değişimi", tag: "Bitkisel Omega-3 (ALA)" },
+      { id: "f_38", name: "Çiğ Badem", category: "healthy_fat", portion: "10-12 Adet (15g)", cal: 88, p: 3.2, c: 3.0, f: 7.5, fiber: 1.8, gi: "Düşük (15)", exchange: "1.5 Yağ Değişimi", tag: "Magnezyum & Tokluk" },
+      { id: "f_39", name: "Chia Tohumu", category: "healthy_fat", portion: "1 Tatlı Kaşığı (10g)", cal: 48, p: 1.7, c: 4.2, f: 3.1, fiber: 3.4, gi: "Çok Düşük (1)", exchange: "0.5 Yağ + Lif", tag: "Sıvı Tutucu Mukilaj" },
+      { id: "f_40", name: "Keten Tohumu (Öğütülmüş)", category: "healthy_fat", portion: "1 Tatlı Kaşığı (10g)", cal: 53, p: 1.8, c: 2.9, f: 4.2, fiber: 2.7, gi: "Çok Düşük (1)", exchange: "1 Yağ Değişimi", tag: "Lignan & Bağırsak Motoru" }
+    ];
+
+
+    /* ============================================================ */
+    /* FitReçete Pro AI™ - KLİNİK TAHLİL & KAN LABORATUVARI MOTORU  */
+    /* ============================================================ */
+
+    let labResultsHistory = JSON.parse(localStorage.getItem('fitrecete_lab_results')) || [
+      {
+        id: "lab_1",
+        date: "2026-11-21",
+        clientName: "Zehra Bölük",
+        glucose: 94,
+        insulin: 7.2,
+        hba1c: 5.4,
+        homaIr: 1.67,
+        totalChol: 188,
+        triglycerides: 110,
+        hdl: 58,
+        ldl: 108,
+        tgHdlRatio: 1.90,
+        alt: 22,
+        ast: 20,
+        tsh: 1.85,
+        b12: 440,
+        d3: 42,
+        ferritin: 55,
+        verdict: "Metabolik profil ve insülin duyarlılığı optimal bölgede. Trigliserid/HDL oranı (1.90) kardiyovasküler açıdan mükemmel. Akdeniz diyeti protokolüne devam edilebilir."
+      }
+    ];
+
+    function calculateHomaIr(glucose, insulin) {
+      if (!glucose || !insulin) return 0;
+      return parseFloat(((glucose * insulin) / 405).toFixed(2));
+    }
+
+    function calculateTgHdlRatio(triglycerides, hdl) {
+      if (!triglycerides || !hdl) return 0;
+      return parseFloat((triglycerides / hdl).toFixed(2));
+    }
+
+    function interpretLabValues(data) {
+      const notes = [];
+      
+      // Glikoz & İnsülin & HOMA-IR
+      const homa = calculateHomaIr(data.glucose, data.insulin);
+      if (homa >= 2.5) {
+        notes.push(`⚠️ HOMA-IR skoru (${homa}) insülin direnci varlığına işaret ediyor. Düşük Glisemik İndeksli (Low GI) Akdeniz protokolü ve lif takviyesi önerilir.`);
+      } else {
+        notes.push(`✓ İnsülin duyarlılığı optimal (HOMA-IR: ${homa}). Kan şekeri regülasyonu dengeli.`);
+      }
+
+      // Lipit & Aterojenik Risk
+      const tgHdl = calculateTgHdlRatio(data.triglycerides, data.hdl);
+      if (tgHdl > 3.0) {
+        notes.push(`⚠️ Trigliserid/HDL oranı (${tgHdl}) yüksek aterojenik kalp-damar riskine işaret ediyor. Basit şeker ve rafine tahıllar sıfırlanmalı, Omega-3 artırılmalıdır.`);
+      } else {
+        notes.push(`✓ Lipid dengesi ve aterojenik indeks (< 2.5) kardiyovasküler açıdan güvenli.`);
+      }
+
+      // Tiroid (TSH)
+      if (data.tsh > 3.0) {
+        notes.push(`⚠️ TSH (${data.tsh} mIU/L) üst sınıra yakın; bazal metabolizma hızını yavaşlatabilir. İyot, selenyum ve çinko destekli besinler önceliklendirilmelidir.`);
+      }
+
+      // D3 ve B12
+      if (data.d3 < 30) {
+        notes.push(`⚠️ D3 Vitamini (${data.d3} ng/mL) yetersiz; hücresel yağ yakımı ve insülin reseptör duyarlılığı için hekim kontrolünde D3 K2 takviyesi gerekebilir.`);
+      }
+      if (data.b12 < 300) {
+        notes.push(`⚠️ B12 Vitamini (${data.b12} pg/mL) düşük sınırda; metabolik yorgunluğu önlemek için hayvansal saf protein alımı artırılmalıdır.`);
+      }
+
+      return notes.join(' ');
+    }
+
+
+    /* ============================================================ */
+    /* FitReçete Pro AI™ - ENTERPRISE GIDA & LABORATUVAR JS MOTORU  */
+    /* ============================================================ */
+
+    // 1. BESİN VERİTABANI MOTORU
+    let activeFoodCategory = 'all';
+
+    function initFoodDatabase() {
+      renderFoodCards();
+    }
+
+    function filterFoodCategory(cat) {
+      activeFoodCategory = cat;
+      document.querySelectorAll('[id^="btn-cat-"]').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.getElementById(`btn-cat-${cat}`);
+      if (activeBtn) activeBtn.classList.add('active');
+      renderFoodCards();
+    }
+
+    function filterFoodDatabase() {
+      renderFoodCards();
+    }
+
+    function renderFoodCards() {
+      const container = document.getElementById('food-cards-container');
+      if (!container) return;
+      const query = (document.getElementById('food-search-query') ? document.getElementById('food-search-query').value.trim().toLowerCase() : '');
+
+      let filtered = CLINICAL_FOOD_DATABASE;
+      if (activeFoodCategory !== 'all') {
+        filtered = filtered.filter(f => f.category === activeFoodCategory);
+      }
+      if (query) {
+        filtered = filtered.filter(f => f.name.toLowerCase().includes(query) || f.tag.toLowerCase().includes(query) || f.exchange.toLowerCase().includes(query));
+      }
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 32px; color: var(--text-muted); background: #ffffff; border-radius: var(--radius-md); border: 1px dashed var(--border-color);">
+            🔍 "${query}" ile eşleşen besin bulunamadı. Aramanızı değiştirip tekrar deneyiniz.
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(f => `
+        <div class="food-card">
+          <div class="food-header">
+            <div>
+              <div class="food-title">${f.name}</div>
+              <div class="food-portion">📦 Standart Porsiyon: <b>${f.portion}</b></div>
+            </div>
+            <span class="pill-tag" style="font-size: 9.5px; background: #fdf2f4; color: #8c3648; border-color: #fbcfe8;">${f.exchange}</span>
+          </div>
+
+          <div class="food-macro-pills">
+            <span class="macro-chip chip-cal">🔥 ${f.cal} kcal</span>
+            <span class="macro-chip chip-pro">🥩 ${f.p}g P</span>
+            <span class="macro-chip chip-carb">🌾 ${f.c}g K</span>
+            <span class="macro-chip chip-fat">🥑 ${f.f}g Y</span>
+            <span class="macro-chip chip-fiber">🌿 ${f.fiber}g Lif</span>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 10.5px; color: var(--text-muted); border-top: 1px solid var(--border-color); padding-top: 8px; margin-top: 4px;">
+            <span>GI: <b>${f.gi}</b></span>
+            <button onclick="copyFoodExchange('${escapeForJs(f.name)} (${f.portion}): ${f.cal} kcal | P:${f.p}g K:${f.c}g Y:${f.f}g | ${f.exchange}', this)" class="btn btn-swap-mini" style="font-size: 10px; padding: 2px 8px;">
+              📋 Kopyala
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function copyFoodExchange(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        const oldText = btn.innerHTML;
+        btn.innerHTML = `✓ Alındı`;
+        setTimeout(() => { btn.innerHTML = oldText; }, 1500);
+      });
+    }
+
+    // 2. KLİNİK TAHLİL MOTORU
+    function initLabModule() {
+      const dateEl = document.getElementById('lab-date');
+      if (dateEl && !dateEl.value) {
+        dateEl.value = new Date().toISOString().split('T')[0];
+      }
+      recalcLabPanels();
+      renderLabHistory();
+    }
+
+    function recalcLabPanels() {
+      const glucose = parseFloat(document.getElementById('lab-glucose').value) || 90;
+      const insulin = parseFloat(document.getElementById('lab-insulin').value) || 6.0;
+      const hba1c = parseFloat(document.getElementById('lab-hba1c').value) || 5.2;
+      const tg = parseFloat(document.getElementById('lab-triglycerides').value) || 100;
+      const hdl = parseFloat(document.getElementById('lab-hdl').value) || 50;
+      const d3 = parseFloat(document.getElementById('lab-d3').value) || 35;
+      const b12 = parseFloat(document.getElementById('lab-b12').value) || 400;
+      const tsh = parseFloat(document.getElementById('lab-tsh').value) || 2.0;
+
+      const homa = calculateHomaIr(glucose, insulin);
+      const tgHdl = calculateTgHdlRatio(tg, hdl);
+
+      const dispHoma = document.getElementById('disp-homa-ir');
+      const badgeHoma = document.getElementById('badge-homa');
+      if (dispHoma) dispHoma.innerText = homa;
+      if (badgeHoma) {
+        if (homa >= 2.5) {
+          badgeHoma.className = 'lab-status-badge status-danger';
+          badgeHoma.innerText = '⚠️ İnsülin Direnci (≥ 2.5)';
+        } else {
+          badgeHoma.className = 'lab-status-badge status-optimal';
+          badgeHoma.innerText = '✓ Normal (< 2.5)';
+        }
+      }
+
+      const dispTgHdl = document.getElementById('disp-tg-hdl');
+      const badgeTgHdl = document.getElementById('badge-tg-hdl');
+      if (dispTgHdl) dispTgHdl.innerText = tgHdl;
+      if (badgeTgHdl) {
+        if (tgHdl > 3.0) {
+          badgeTgHdl.className = 'lab-status-badge status-danger';
+          badgeTgHdl.innerText = '⚠️ Aterojenik Risk (> 3.0)';
+        } else {
+          badgeTgHdl.className = 'lab-status-badge status-optimal';
+          badgeTgHdl.innerText = '✓ Risk Düşük (< 2.5)';
+        }
+      }
+
+      const dispHba1c = document.getElementById('disp-hba1c');
+      if (dispHba1c) dispHba1c.innerText = `%${hba1c}`;
+
+      const dispVitamins = document.getElementById('disp-vitamins');
+      if (dispVitamins) dispVitamins.innerText = `D: ${d3} | B12: ${b12}`;
+
+      const verdictBox = document.getElementById('lab-verdict-box');
+      if (verdictBox) {
+        const text = interpretLabValues({ glucose, insulin, triglycerides: tg, hdl, tsh, d3, b12 });
+        verdictBox.innerHTML = `💡 <b>Diyetisyen Klinik Yorumu:</b> ${text}`;
+      }
+    }
+
+    function saveLabRecord() {
+      const clientName = document.getElementById('lab-client-name').value.trim() || document.getElementById('inp-name').value.trim() || "Danışan";
+      const date = document.getElementById('lab-date').value || new Date().toISOString().split('T')[0];
+      const glucose = parseFloat(document.getElementById('lab-glucose').value) || 90;
+      const insulin = parseFloat(document.getElementById('lab-insulin').value) || 6.0;
+      const hba1c = parseFloat(document.getElementById('lab-hba1c').value) || 5.2;
+      const tg = parseFloat(document.getElementById('lab-triglycerides').value) || 100;
+      const hdl = parseFloat(document.getElementById('lab-hdl').value) || 50;
+      const homa = calculateHomaIr(glucose, insulin);
+      const tgHdl = calculateTgHdlRatio(tg, hdl);
+      const verdict = interpretLabValues({ glucose, insulin, triglycerides: tg, hdl, tsh: 2.0, d3: 35, b12: 400 });
+
+      const record = {
+        id: "lab_" + Date.now(),
+        date,
+        clientName,
+        glucose,
+        homaIr: homa,
+        tgHdlRatio: tgHdl,
+        verdict
+      };
+
+      labResultsHistory.unshift(record);
+      localStorage.setItem('fitrecete_lab_results', JSON.stringify(labResultsHistory));
+      renderLabHistory();
+      showToastNotification(`🧪 "${clientName}" tahlil raporu arşive kaydedildi.`);
+    }
+
+    function renderLabHistory() {
+      const tbody = document.getElementById('lab-history-tbody');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+
+      if (labResultsHistory.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; padding: 14px; color: var(--text-muted);">Henüz kayıtlı kan tahlili bulunmuyor.</td></tr>`;
+        return;
+      }
+
+      labResultsHistory.forEach(r => {
+        const tr = document.createElement('tr');
+        tr.style.borderBottom = '1px solid var(--border-color)';
+        tr.innerHTML = `
+          <td style="padding: 8px;">${r.date}</td>
+          <td style="padding: 8px; font-weight: 800;">${r.clientName}</td>
+          <td style="padding: 8px;">${r.glucose} mg/dL</td>
+          <td style="padding: 8px; font-weight: 800; color: ${r.homaIr >= 2.5 ? '#b91c1c' : '#059669'};">${r.homaIr}</td>
+          <td style="padding: 8px; font-weight: 800; color: ${r.tgHdlRatio > 3.0 ? '#b91c1c' : '#0284c7'};">${r.tgHdlRatio}</td>
+          <td style="padding: 8px;">
+            <button onclick="deleteLabRecord('${r.id}')" style="background: none; border: none; color: #ef4444; cursor: pointer; font-size: 11px;">Sil</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function deleteLabRecord(id) {
+      labResultsHistory = labResultsHistory.filter(r => r.id !== id);
+      localStorage.setItem('fitrecete_lab_results', JSON.stringify(labResultsHistory));
+      renderLabHistory();
+      showToastNotification("Tahlil kaydı silindi.");
+    }
+
+    function shareLabReportWhatsApp() {
+      const clientName = document.getElementById('lab-client-name').value.trim() || document.getElementById('inp-name').value.trim() || "Değerli Danışanımız";
+      const date = document.getElementById('lab-date').value || new Date().toISOString().split('T')[0];
+      const glucose = document.getElementById('lab-glucose').value;
+      const insulin = document.getElementById('lab-insulin').value;
+      const hba1c = document.getElementById('lab-hba1c').value;
+      const homa = document.getElementById('disp-homa-ir').innerText;
+      const tgHdl = document.getElementById('disp-tg-hdl').innerText;
+      const p = clinicProfile;
+
+      let msg = `🌸 *${p.clinicName} • ${p.dietitianName}*\n\n`;
+      msg += `🧪 *Sayın ${clientName}, ${date} Tarihli Kan Tahlili & Metabolik Analiz Raporunuz:*\n\n`;
+      msg += `🩸 *Açlık Glikoz:* ${glucose} mg/dL\n`;
+      msg += `⚡ *Açlık İnsülin:* ${insulin} uIU/mL\n`;
+      msg += `📊 *HOMA-IR İnsülin Skoru:* ${homa} (${parseFloat(homa) >= 2.5 ? 'İnsülin Direnci Mevcut' : 'İdeal Düzey'})\n`;
+      msg += `🎯 *HbA1c (3 Aylık Şeker):* %${hba1c}\n`;
+      msg += `❤️ *Aterojenik Lipit Skoru (Tg/HDL):* ${tgHdl}\n\n`;
+      msg += `💡 *Klinik Diyetisyen Tavsiyesi:* Beslenme reçetemizi tahlil sonuçlarınıza göre optimize ettik. Lif alımını artırarak insülin duyarlılığınızı güçlendiriyoruz.\n\n`;
+      msg += `Sağlık ve şifa dilerim! 🌸\n_${p.dietitianName}_`;
+
+      const encoded = encodeURIComponent(msg);
+      window.open(`https://web.whatsapp.com/send?text=${encoded}`, '_blank');
     }
 
 
@@ -5927,5 +6815,28 @@ DİYETİSYEN KLİNİK TAVSİYELERİ:
     }
 
   </script>
+  <!-- Mobil Kolay Dokunma Alt Çubuğu -->
+  <div class="mobile-bottom-dock">
+    <button class="mobile-dock-btn active" id="mob-tab-diet" onclick="switchAppTab('diet')">
+      <span style="font-size: 18px;">🥗</span>
+      <span>Diyet</span>
+    </button>
+    <button class="mobile-dock-btn" id="mob-tab-lab" onclick="switchAppTab('lab')">
+      <span style="font-size: 18px;">🧪</span>
+      <span>Tahlil</span>
+    </button>
+    <button class="mobile-dock-btn" id="mob-tab-foods" onclick="switchAppTab('foods')">
+      <span style="font-size: 18px;">🍏</span>
+      <span>Besinler</span>
+    </button>
+    <button class="mobile-dock-btn" id="mob-tab-appointments" onclick="switchAppTab('appointments')">
+      <span style="font-size: 18px;">📅</span>
+      <span>Randevu</span>
+    </button>
+    <button class="mobile-dock-btn" id="mob-tab-crm" onclick="switchAppTab('crm')">
+      <span style="font-size: 18px;">👥</span>
+      <span>Danışan</span>
+    </button>
+  </div>
 </body>
 </html>
