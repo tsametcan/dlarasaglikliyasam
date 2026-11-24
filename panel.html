@@ -3874,7 +3874,7 @@ body:not(.app-locked) .header-landing-actions {
       dietitianName: "Uzman Diyetisyen",
       clinicName: "DiyetKalfa Klinik",
       title: "Uzman Klinik Diyetisyen",
-      phone: "905000000000",
+      phone: "905321202846",
       instagram: "@diyetkalfaklinik",
       slogan: "Kişiye Özel Bilimsel Beslenme & Sağlıklı Yaşam Protokolü 🌿",
       theme: "default"
@@ -3969,7 +3969,7 @@ body:not(.app-locked) .header-landing-actions {
 
     function contactForSalesLicense() {
       const msg = encodeURIComponent("Merhaba! DiyetKalfa Klinik Diyet & İçerik İşletim Sistemini kliniğime lisanslamak ve satın almak istiyorum. Bilgi alabilir miyim?");
-      window.open(`https://wa.me/905000000000?text=${msg}`, '_blank');
+      window.open(`https://wa.me/905321202846?text=${msg}`, '_blank');
     }
 
     // 3. Gelişmiş Nav Switcher (4 Mod)
@@ -7553,7 +7553,7 @@ function orderPlanWhatsApp(planName) {
 
   var encodedMsg = encodeURIComponent(msg);
   // Türkiye geneli kurumsal lisans aktivasyon hattı veya WhatsApp Web
-  var waUrl = "https://api.whatsapp.com/send?phone=905300000000&text=" + encodedMsg;
+  var waUrl = "https://api.whatsapp.com/send?phone=905321202846&text=" + encodedMsg;
   
   // Kullanıcıya bildirim modalı veya direkt yönlendirme
   if (window.confirm("DiyetKalfa " + planName + " (" + cycleStr + ") için 7 günlük ücretsiz denemenizi başlatmak üzere WhatsApp aktivasyon hattına yönlendiriliyorsunuz. Devam edilsin mi?")) {
@@ -7686,11 +7686,12 @@ function unlockWithTrial(planName) {
 function lockApplication() {
   try {
     localStorage.removeItem('diyetkalfa_unlocked');
+    localStorage.removeItem('diyetkalfa_licensed');
+    localStorage.removeItem('diyetkalfa_logged_in');
   } catch(e) {}
 
-  document.body.classList.add('app-locked');
-  switchAppTab('diet');
-  alert('🔒 Uygulama Kilitlendi.\n\nTekrar giriş yapabilir veya 7 günlük ücretsiz denemenizi başlatabilirsiniz.');
+  alert('🔒 Çıkış Yapıldı.\n\nKlinik çalışma alanından güvenle çıkış yaptınız. Giriş sayfasına yönlendiriliyorsunuz...');
+  window.location.replace('kayit.html');
 }
 
 function handlePortalLogin(e) {
@@ -7836,7 +7837,7 @@ function orderPlanWhatsApp(planName) {
             "Kampanyalı fiyat üzerinden lisans aktivasyonumu ve faturamı iletir misiniz? Teşekkürler!";
 
   var encodedMsg = encodeURIComponent(msg);
-  var waUrl = "https://api.whatsapp.com/send?phone=905300000000&text=" + encodedMsg;
+  var waUrl = "https://api.whatsapp.com/send?phone=905321202846&text=" + encodedMsg;
   
   if (window.confirm("DiyetKalfa " + planName + " (" + cycleStr + ") siparişi ve lisans aktivasyonu için WhatsApp hattına yönlendiriliyorsunuz. Devam edilsin mi?")) {
     window.open(waUrl, '_blank');

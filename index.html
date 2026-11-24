@@ -2127,6 +2127,60 @@ body:not(.app-locked) .header-clinical-actions {
     display: none !important;
   }
 }
+
+/* 7/24 DİYETKALFA AI ASİSTAN VE İLETİŞİM PANELİ STİLLERİ */
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.92) translateY(12px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+.ai-msg-bubble {
+  max-width: 86%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  line-height: 1.45;
+  word-break: break-word;
+}
+.ai-msg-bot {
+  background: #ffffff;
+  color: #0f172a;
+  border: 1px solid #e2e8f0;
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+}
+.ai-msg-user {
+  background: linear-gradient(135deg, #0f766e 0%, #059669 100%);
+  color: #ffffff;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+.ai-chip-btn {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #0f766e;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s;
+}
+.ai-chip-btn:hover {
+  background: #f0fdf4;
+  border-color: #0f766e;
+}
+.ai-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 800;
+  text-decoration: none;
+}
 </style>
 </head>
 <body class="app-locked">
@@ -2174,7 +2228,7 @@ body:not(.app-locked) .header-clinical-actions {
       </div>
       <a href="fiyatlar.html" style="color: #334155; text-decoration: none; transition: color 0.15s;">Fiyatlar</a>
       <a href="sss.html" style="color: #334155; text-decoration: none; transition: color 0.15s;">SSS</a>
-      <a href="javascript:void(0)" onclick="scrollToSection('section-contact')" style="color: #334155; text-decoration: none; transition: color 0.15s;">İletişim</a>
+      <a href="javascript:void(0)" onclick="openContactModal()" style="color: #334155; text-decoration: none; transition: color 0.15s;">İletişim</a>
     </nav>
 
     <!-- Sağ Header Eylemleri (Demo Talep Et & Ücretsiz Başla) -->
@@ -2185,11 +2239,11 @@ body:not(.app-locked) .header-clinical-actions {
         <span>Kalori</span>
       </button>
 
-      <!-- DEMO TALEP ET BUTONU (DANIŞANIM & UZMANIM) -->
-      <button type="button" onclick="openDemoModal()" style="background: #ffffff; color: #163b2c; border: 1.5px solid #2e5e4b; padding: 8px 16px; border-radius: 999px; font-weight: 800; font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s; box-shadow: 0 2px 8px rgba(22, 59, 44, 0.08);">
+      <!-- DEMO TALEP ET BUTONU (0532 120 28 46 WhatsApp Doğrudan Yönlendirme) -->
+      <a href="https://wa.me/905321202846?text=Merhaba%2C%20DiyetKalfa%20AI%20klinik%20demo%20sunumu%20talep%20ediyorum." target="_blank" style="background: #ffffff; color: #163b2c; border: 1.5px solid #2e5e4b; padding: 8px 16px; border-radius: 999px; font-weight: 800; font-size: 13px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s; box-shadow: 0 2px 8px rgba(22, 59, 44, 0.08);">
         <span>Demo Talep Et</span>
         <span style="font-size: 13px;">→</span>
-      </button>
+      </a>
 
       <!-- 7 Gün Ücretsiz Başla Butonu (Kayıt Sayfasına Yönlendirir) -->
       <a href="kayit.html" style="background: linear-gradient(135deg, #163b2c 0%, #0d241b 100%); color: #ffffff; text-decoration: none; padding: 9px 20px; border-radius: 999px; font-weight: 800; font-size: 13.5px; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(45, 74, 62, 0.3); transition: all 0.2s;">
@@ -2812,12 +2866,12 @@ body:not(.app-locked) .header-clinical-actions {
       <!-- Sağ Sütun: Klinik Destek & İletişim -->
       <div>
         <h4 style="font-size: 16px; font-weight: 800; color: #ffffff; margin: 0 0 16px 0; letter-spacing: 0.05em; text-transform: uppercase;">Klinik İletişim & Destek</h4>
-        <div style="display: flex; flex-direction: column; gap: 12px; font-size: 13.5px; color: #cbd5e1;">
+        <div style="display: flex; flex-direction: column; gap: 14px; font-size: 13.5px; color: #cbd5e1;">
           <div style="display: flex; align-items: center; gap: 10px;">
-            <span style="font-size: 18px;">💬</span>
+            <span style="font-size: 20px;">💬</span>
             <div>
-              <div style="font-size: 11px; color: #94a3b8; font-weight: 700;">WHATSAPP KLİNİK HATTI</div>
-              <a href="https://wa.me/905300000000?text=Merhaba%20DiyetKalfa%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum" target="_blank" style="color: #86efac; font-weight: 800; text-decoration: none;">+90 (530) 000 00 00</a>
+              <div style="font-size: 11px; color: #94a3b8; font-weight: 700;">WHATSAPP & ÇAĞRI MERKEZİ</div>
+              <a href="https://wa.me/905321202846?text=Merhaba%20DiyetKalfa%20AI%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum" target="_blank" style="color: #86efac; font-weight: 900; font-size: 16px; text-decoration: none;">0532 120 28 46</a>
             </div>
           </div>
           <div style="display: flex; align-items: center; gap: 10px;">
@@ -2828,18 +2882,17 @@ body:not(.app-locked) .header-clinical-actions {
             </div>
           </div>
           <div style="display: flex; align-items: center; gap: 10px;">
-            <span style="font-size: 18px;">📍</span>
+            <span style="font-size: 18px;">⚡</span>
             <div>
-              <div style="font-size: 11px; color: #94a3b8; font-weight: 700;">LOKASYON</div>
-              <span>Maslak Mah. Büyükdere Cad. No: 255, Sarıyer / İstanbul</span>
+              <div style="font-size: 11px; color: #94a3b8; font-weight: 700;">DESTEK ÇALIŞMA SAATLERİ</div>
+              <span style="color: #6ee7b7; font-weight: 800;">7/24 Kesintisiz Klinik & Teknik Destek</span>
             </div>
           </div>
-          <div style="display: flex; align-items: center; gap: 10px;">
-            <span style="font-size: 18px;">⏰</span>
-            <div>
-              <div style="font-size: 11px; color: #94a3b8; font-weight: 700;">ÇALIŞMA SAATLERİ</div>
-              <span>Pazartesi - Cumartesi: 09:00 - 19:00</span>
-            </div>
+          <div style="margin-top: 4px;">
+            <button type="button" onclick="openContactModal()" style="background: rgba(15, 118, 110, 0.45); color: #5eead4; border: 1.5px solid rgba(94, 234, 212, 0.5); padding: 8px 16px; border-radius: 999px; font-weight: 800; font-size: 12.5px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s;">
+              <span>📞 Biz Sizi Arayalım Formu</span>
+              <span>→</span>
+            </button>
           </div>
         </div>
       </div>
@@ -2858,12 +2911,72 @@ body:not(.app-locked) .header-clinical-actions {
       </div>
     </div>
   </footer>
-  <!-- 5. KAYAN WHATSAPP BUTONU (MANGOLIF GÖRSELİNDEKİ GİBİ SAĞ ALTTAN YARDIM) -->
-  <a href="https://wa.me/905300000000?text=Merhaba%20DiyetKalfa%20AI%20hakk%C4%B1nda%20bilgi%20ve%20lisans%20almak%20istiyorum" target="_blank" style="position: fixed; bottom: 25px; right: 25px; width: 56px; height: 56px; border-radius: 50%; background: #25d366; color: #ffffff; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); z-index: 99999; text-decoration: none; transition: transform 0.2s;" title="WhatsApp ile İletişime Geçin">
-    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.77.463 3.498 1.341 5.02L2 22l5.09-1.332a9.98 9.98 0 0 0 4.941 1.363h.004c5.535 0 10.031-4.496 10.031-10.031 0-2.68-1.043-5.199-2.937-7.093A9.97 9.97 0 0 0 12.031 2zm5.882 14.185c-.244.686-1.42 1.258-1.956 1.34-.51.077-1.176.11-3.376-.802-2.815-1.166-4.634-4.032-4.774-4.22-.14-.188-1.144-1.523-1.144-2.906 0-1.383.725-2.062.981-2.344.256-.282.558-.353.744-.353.186 0 .372.002.535.01.172.008.403-.065.63.48.232.558.79 1.93.86 2.07.07.14.116.303.023.49-.093.186-.14.302-.279.465-.14.163-.294.364-.42.488-.14.14-.286.292-.123.572.163.28.724 1.194 1.554 1.933 1.068.952 1.968 1.248 2.247 1.388.28.14.442.116.605-.07.163-.186.7-1.002.886-1.342.186-.34.372-.284.628-.188.256.096 1.628.767 1.907.907.28.14.465.21.535.326.07.116.07.674-.174 1.36z"/>
-    </svg>
-  </a>
+
+  <!-- 5. 7/24 AI KLİNİK ASİSTANI & WHATSAPP FLOATING DOCK -->
+  <div style="position: fixed; bottom: 22px; right: 22px; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; z-index: 99999;">
+    
+    <!-- AI CHAT PENCERESİ (WIDGET) -->
+    <div id="diyetkalfa-ai-widget" style="display: none; width: 370px; max-width: 90vw; height: 520px; max-height: 80vh; background: #ffffff; border-radius: 20px; box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3); border: 1.5px solid #0f766e; flex-direction: column; overflow: hidden; animation: popIn 0.25s ease-out;">
+      <!-- AI Widget Header -->
+      <div style="background: #0f172a; padding: 14px 16px; color: #ffffff; display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #0f766e;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, #0f766e 0%, #059669 100%); display: flex; align-items: center; justify-content: center; font-size: 18px; box-shadow: 0 2px 8px rgba(15, 118, 110, 0.4);">
+            🤖
+          </div>
+          <div>
+            <div style="font-weight: 800; font-size: 13.5px; display: flex; align-items: center; gap: 6px;">
+              <span>DiyetKalfa AI™</span>
+              <span style="font-size: 10px; background: rgba(16, 185, 129, 0.2); color: #6ee7b7; padding: 2px 6px; border-radius: 999px; border: 1px solid rgba(110, 231, 183, 0.3);">7/24 Aktif</span>
+            </div>
+            <div style="font-size: 11px; color: #94a3b8;">Klinik & Lisans Asistanı</div>
+          </div>
+        </div>
+        <button type="button" onclick="toggleAiChat()" style="background: rgba(255, 255, 255, 0.1); border: none; width: 28px; height: 28px; border-radius: 50%; color: #ffffff; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center;">✕</button>
+      </div>
+
+      <!-- AI Mesajlaşma Gövdesi -->
+      <div id="ai-chat-messages" style="flex: 1; padding: 14px; overflow-y: auto; background: #f8fafc; display: flex; flex-direction: column; gap: 10px; font-size: 13px;">
+        <div class="ai-msg-bubble ai-msg-bot">
+          <div>Merhaba! Ben <strong>DiyetKalfa Yapay Zeka Asistanıyım</strong> 🌿</div>
+          <div style="margin-top: 6px; color: #475569;">
+            Platformumuz, 12 aylık kampanyalı paketlerimiz, kartsız 7 günlük deneme veya DSÖ standartlarımız hakkında dilediğinizi sorabilirsiniz.
+          </div>
+        </div>
+        <!-- Hızlı Soru Çipleri -->
+        <div id="ai-quick-chips" style="display: flex; flex-direction: column; gap: 6px; margin-top: 4px;">
+          <button type="button" onclick="triggerQuickPrompt('Paketler ve fiyatlar ne kadar?')" class="ai-chip-btn">💎 Paketler ve Fiyatlar Ne Kadar?</button>
+          <button type="button" onclick="triggerQuickPrompt('7 gün ücretsiz nasıl deneyebilirim?')" class="ai-chip-btn">🚀 7 Gün Ücretsiz Nasıl Denenir?</button>
+          <button type="button" onclick="triggerQuickPrompt('DSÖ 2024 ve HOMA-IR tahlil motoru nasıl çalışır?')" class="ai-chip-btn">🩺 DSÖ 2024 & HOMA-IR Nedir?</button>
+          <button type="button" onclick="triggerQuickPrompt('Türkomp besin veritabanı içeriği nedir?')" class="ai-chip-btn">🍏 Türkomp Besin Veritabanı Var mı?</button>
+          <button type="button" onclick="triggerQuickPrompt('0532 120 28 46 WhatsApp canlı destek hattına bağlan')" class="ai-chip-btn">💬 0532 120 28 46 WhatsApp'a Bağlan</button>
+        </div>
+      </div>
+
+      <!-- AI Input Alanı -->
+      <form onsubmit="handleAiChatSubmit(event)" style="display: flex; align-items: center; gap: 6px; padding: 10px; background: #ffffff; border-top: 1px solid #e2e8f0; margin: 0;">
+        <input type="text" id="ai-chat-input" placeholder="Bir soru sorun veya konu yazın..." style="flex: 1; padding: 9px 12px; border-radius: 999px; border: 1.5px solid #cbd5e1; font-size: 13px; outline: none; font-family: inherit;">
+        <button type="submit" style="background: #0f766e; color: #ffffff; border: none; width: 36px; height: 36px; border-radius: 50%; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 6px rgba(15, 118, 110, 0.3);">➔</button>
+      </form>
+    </div>
+
+    <!-- ALT BUTONLAR (AI BUTONU + WHATSAPP BUTONU) -->
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <!-- AI Canlı Destek Butonu -->
+      <button type="button" onclick="toggleAiChat()" style="background: linear-gradient(135deg, #0f172a 0%, #0f766e 100%); color: #ffffff; border: 1.5px solid #5eead4; padding: 10px 16px; border-radius: 999px; font-weight: 800; font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 6px 20px rgba(15, 23, 42, 0.35); transition: all 0.2s;" title="7/24 DiyetKalfa Yapay Zeka Canlı Destek">
+        <span style="font-size: 18px;">🤖</span>
+        <span>7/24 AI Asistan</span>
+        <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 8px #4ade80;"></span>
+      </button>
+
+      <!-- WhatsApp Butonu -->
+      <a href="https://wa.me/905321202846?text=Merhaba%20DiyetKalfa%20AI%20hakk%C4%B1nda%20bilgi%20ve%20destek%20almak%20istiyorum." target="_blank" style="width: 52px; height: 52px; border-radius: 50%; background: #25d366; color: #ffffff; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); text-decoration: none; transition: transform 0.2s;" title="0532 120 28 46 WhatsApp Klinik Hattı">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.77.463 3.498 1.341 5.02L2 22l5.09-1.332a9.98 9.98 0 0 0 4.941 1.363h.004c5.535 0 10.031-4.496 10.031-10.031 0-2.68-1.043-5.199-2.937-7.093A9.97 9.97 0 0 0 12.031 2zm5.882 14.185c-.244.686-1.42 1.258-1.956 1.34-.51.077-1.176.11-3.376-.802-2.815-1.166-4.634-4.032-4.774-4.22-.14-.188-1.144-1.523-1.144-2.906 0-1.383.725-2.062.981-2.344.256-.282.558-.353.744-.353.186 0 .372.002.535.01.172.008.403-.065.63.48.232.558.79 1.93.86 2.07.07.14.116.303.023.49-.093.186-.14.302-.279.465-.14.163-.294.364-.42.488-.14.14-.286.292-.123.572.163.28.724 1.194 1.554 1.933 1.068.952 1.968 1.248 2.247 1.388.28.14.442.116.605-.07.163-.186.7-1.002.886-1.342.186-.34.372-.284.628-.188.256.096 1.628.767 1.907.907.28.14.465.21.535.326.07.116.07.674-.174 1.36z"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
 
 </div>
 
@@ -4513,7 +4626,7 @@ body:not(.app-locked) .header-clinical-actions {
       dietitianName: "Uzman Diyetisyen",
       clinicName: "DiyetKalfa Klinik",
       title: "Uzman Klinik Diyetisyen",
-      phone: "905000000000",
+      phone: "905321202846",
       instagram: "@diyetkalfaklinik",
       slogan: "Kişiye Özel Bilimsel Beslenme & Sağlıklı Yaşam Protokolü 🌿",
       theme: "default"
@@ -4608,7 +4721,7 @@ body:not(.app-locked) .header-clinical-actions {
 
     function contactForSalesLicense() {
       const msg = encodeURIComponent("Merhaba! DiyetKalfa Klinik Diyet & İçerik İşletim Sistemini kliniğime lisanslamak ve satın almak istiyorum. Bilgi alabilir miyim?");
-      window.open(`https://wa.me/905000000000?text=${msg}`, '_blank');
+      window.open(`https://wa.me/905321202846?text=${msg}`, '_blank');
     }
 
     // 3. Gelişmiş Nav Switcher (4 Mod)
@@ -8142,7 +8255,7 @@ function orderPlanWhatsApp(planName) {
 
   var encodedMsg = encodeURIComponent(msg);
   // Türkiye geneli kurumsal lisans aktivasyon hattı veya WhatsApp Web
-  var waUrl = "https://api.whatsapp.com/send?phone=905300000000&text=" + encodedMsg;
+  var waUrl = "https://api.whatsapp.com/send?phone=905321202846&text=" + encodedMsg;
   
   // Kullanıcıya bildirim modalı veya direkt yönlendirme
   if (window.confirm("DiyetKalfa " + planName + " (" + cycleStr + ") için 7 günlük ücretsiz denemenizi başlatmak üzere WhatsApp aktivasyon hattına yönlendiriliyorsunuz. Devam edilsin mi?")) {
@@ -8448,7 +8561,7 @@ function orderPlanWhatsApp(planName) {
             "Kampanyalı fiyat üzerinden lisans aktivasyonumu ve faturamı iletir misiniz? Teşekkürler!";
 
   var encodedMsg = encodeURIComponent(msg);
-  var waUrl = "https://api.whatsapp.com/send?phone=905300000000&text=" + encodedMsg;
+  var waUrl = "https://api.whatsapp.com/send?phone=905321202846&text=" + encodedMsg;
   
   if (window.confirm("DiyetKalfa " + planName + " (" + cycleStr + ") siparişi ve lisans aktivasyonu için WhatsApp hattına yönlendiriliyorsunuz. Devam edilsin mi?")) {
     window.open(waUrl, '_blank');
@@ -8749,6 +8862,114 @@ function orderPlanWhatsApp(planName) {
   </div>
 
   <!-- ============================================================== -->
+  <!-- DIYETKALFA İLETİŞİM & BİZ SİZİ ARAYALIM PANELİ (7/24 DESTEK)   -->
+  <!-- ============================================================== -->
+  <div id="modal-contact" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 10008; align-items: center; justify-content: center; padding: 16px;">
+    <div style="background: #ffffff; border-radius: 24px; max-width: 820px; width: 100%; box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.4); border: 1.5px solid #e2e8f0; overflow: hidden; position: relative; max-height: 92vh; overflow-y: auto;">
+      
+      <!-- Modal Üst Kapat Butonu -->
+      <button type="button" onclick="closeContactModal()" style="position: absolute; top: 16px; right: 16px; background: #f1f5f9; border: none; width: 34px; height: 34px; border-radius: 50%; color: #475569; font-size: 16px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; transition: all 0.2s;">✕</button>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));">
+        
+        <!-- Sol Panel: Biz Sizi Arayalım Formu -->
+        <div style="padding: 36px 32px; background: #ffffff;">
+          <div style="display: inline-flex; align-items: center; gap: 6px; background: #f0fdf4; color: #166534; font-size: 11px; font-weight: 800; padding: 4px 12px; border-radius: 999px; border: 1px solid #bbf7d0; text-transform: uppercase; margin-bottom: 12px;">
+            <span style="display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #16a34a;"></span>
+            7/24 Kesintisiz Klinik Destek
+          </div>
+          <h3 style="font-size: 22px; font-weight: 900; color: #0f172a; margin: 0 0 6px 0; letter-spacing: -0.02em;">Biz Sizi Arayalım</h3>
+          <p style="font-size: 13.5px; color: #64748b; margin: 0 0 22px 0; line-height: 1.5;">
+            İletişim bilgilerinizi bırakın, klinik danışmanımız <b>15 dakika içinde</b> sizi arasın veya WhatsApp'tan yanıtlasın.
+          </p>
+
+          <form id="contact-callback-form" onsubmit="handleContactCallbackSubmit(event)" style="display: flex; flex-direction: column; gap: 14px;">
+            <div>
+              <label style="font-size: 12px; font-weight: 700; color: #334155; display: block; margin-bottom: 4px;">Adınız Soyadınız *</label>
+              <input type="text" id="cb-name" required placeholder="Dyt. Adınız Soyadınız" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 14px; outline: none; font-family: inherit;">
+            </div>
+            <div>
+              <label style="font-size: 12px; font-weight: 700; color: #334155; display: block; margin-bottom: 4px;">Telefon Numaranız *</label>
+              <input type="tel" id="cb-phone" required placeholder="05xx xxx xx xx" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 14px; outline: none; font-family: inherit;">
+            </div>
+            <div>
+              <label style="font-size: 12px; font-weight: 700; color: #334155; display: block; margin-bottom: 4px;">Görüşmek İstediğiniz Konu</label>
+              <select id="cb-subject" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 14px; outline: none; font-family: inherit; background: #ffffff;">
+                <option value="Paketler & Lisanslama">💎 Paketler & Lisans Satın Alma</option>
+                <option value="Demo Tanıtımı">🖥️ Canlı Klinik Demo Tanıtımı</option>
+                <option value="7 Günlük Ücretsiz Deneme">✨ 7 Günlük Deneme Aktivasyonu</option>
+                <option value="Teknik Destek">🛠️ 7/24 Teknik Destek & Kurulum</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size: 12px; font-weight: 700; color: #334155; display: block; margin-bottom: 4px;">Notunuz (Opsiyonel)</label>
+              <textarea id="cb-note" rows="2" placeholder="Klinik ihtiyaçlarınız veya sorularınız..." style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 13.5px; outline: none; font-family: inherit; resize: none;"></textarea>
+            </div>
+            <button type="submit" style="background: linear-gradient(135deg, #0f766e 0%, #059669 100%); color: #ffffff; border: none; padding: 14px; border-radius: 12px; font-weight: 800; font-size: 14.5px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(15, 118, 110, 0.35); transition: transform 0.15s; margin-top: 4px;">
+              <span>🚀 Sizi Hemen Arayalım</span>
+              <span>→</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Sağ Panel: Doğrudan 7/24 İletişim & WhatsApp Hattı -->
+        <div style="padding: 36px 32px; background: #0f172a; color: #ffffff; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;">
+              <div style="width: 42px; height: 42px; border-radius: 12px; background: rgba(15, 118, 110, 0.35); border: 1px solid #0f766e; display: flex; align-items: center; justify-content: center; font-size: 20px;">
+                📞
+              </div>
+              <div>
+                <h4 style="font-size: 18px; font-weight: 900; margin: 0; color: #ffffff;">Doğrudan İletişim</h4>
+                <p style="font-size: 12px; color: #94a3b8; margin: 2px 0 0 0;">7/24 Yetkili Klinik & Satış Hattı</p>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 24px;">
+              <!-- Telefon & WhatsApp Kartı -->
+              <a href="https://wa.me/905321202846?text=Merhaba%2C%20DiyetKalfa%20hakk%C4%B1nda%20bilgi%20ve%20destek%20almak%20istiyorum." target="_blank" style="background: rgba(255, 255, 255, 0.06); border: 1.5px solid rgba(15, 118, 110, 0.5); padding: 16px 18px; border-radius: 16px; text-decoration: none; color: #ffffff; display: flex; align-items: center; justify-content: space-between; transition: all 0.2s;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <span style="font-size: 26px;">💬</span>
+                  <div>
+                    <div style="font-size: 11px; color: #5eead4; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;">7/24 WHATSAPP & ÇAĞRI MERKEZİ</div>
+                    <div style="font-size: 19px; font-weight: 900; color: #ffffff; letter-spacing: 0.03em; margin-top: 2px;">0532 120 28 46</div>
+                  </div>
+                </div>
+                <span style="font-size: 18px; color: #5eead4;">→</span>
+              </a>
+
+              <!-- E-posta Kartı -->
+              <a href="mailto:destek@diyetkalfa.com" style="background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12); padding: 14px 18px; border-radius: 16px; text-decoration: none; color: #ffffff; display: flex; align-items: center; gap: 12px;">
+                <span style="font-size: 22px;">📧</span>
+                <div>
+                  <div style="font-size: 11px; color: #94a3b8; font-weight: 700; text-transform: uppercase;">KURUMSAL E-POSTA</div>
+                  <div style="font-size: 14.5px; font-weight: 800; color: #ffffff; margin-top: 2px;">destek@diyetkalfa.com</div>
+                </div>
+              </a>
+
+              <!-- 7/24 Canlı Destek Vurgusu -->
+              <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.25); padding: 14px 18px; border-radius: 16px; display: flex; align-items: flex-start; gap: 10px;">
+                <span style="font-size: 20px;">⚡</span>
+                <div>
+                  <div style="font-size: 13px; font-weight: 800; color: #6ee7b7;">7/24 Kesintisiz Canlı Destek</div>
+                  <div style="font-size: 12px; color: #94a3b8; line-height: 1.4; margin-top: 2px;">
+                    Mesai saati kısıtlaması olmadan, yapay zeka asistanımız ve uzman ekibimizle anında yanınızdayız.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 28px; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.1); font-size: 12px; color: #64748b; text-align: center;">
+            🛡️ Tüm danışan ve lisans verileri 256-Bit SSL ile korunmaktadır.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
   <!-- DEMO TALEP ET MODALI (UZMANIM & DANIŞANIM EŞLEŞTİRME SİSTEMİ)   -->
   <!-- ============================================================== -->
   <div id="modal-demo" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(23, 12, 7, 0.78); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 10006; align-items: center; justify-content: center; padding: 16px;">
@@ -8897,7 +9118,7 @@ function orderPlanWhatsApp(planName) {
       var city = document.getElementById('demo-expert-city').value || 'Belirtilmedi';
       var time = document.getElementById('demo-expert-time').value;
       var msg = 'Merhaba DiyetKalfa Ekibi, adım ' + name + '. Diyetisyen yazılımınızı kliniğimde kullanmak için canlı demo randevusu almak istiyorum. Telefon: ' + phone + ', Şehir: ' + city + ', Tercih Edilen Saat: ' + time;
-      window.open('https://wa.me/905300000000?text=' + encodeURIComponent(msg), '_blank');
+      window.open('https://wa.me/905321202846?text=' + encodeURIComponent(msg), '_blank');
       closeDemoModal();
       alert('Talebiniz başarıyla alındı! Klinik koordinatörümüz 15 dakika içinde WhatsApp üzerinden canlı demo bağlantısını paylaşacaktır.');
     }
@@ -8908,9 +9129,173 @@ function orderPlanWhatsApp(planName) {
       var goal = document.getElementById('client-match-goal').value;
       var city = document.getElementById('client-match-city').value || 'Online Görüşme';
       var msg = 'Merhaba DiyetKalfa Danışan Ağı, adım ' + name + '. \'' + goal + '\' hedefim için ' + city + ' lokasyonunda/online bana en uygun DiyetKalfa lisanslı uzman diyetisyenle eşleşmek ve ücretsiz ön değerlendirme almak istiyorum. Tel: ' + phone;
-      window.open('https://wa.me/905300000000?text=' + encodeURIComponent(msg), '_blank');
+      window.open('https://wa.me/905321202846?text=' + encodeURIComponent(msg), '_blank');
       closeDemoModal();
       alert('Talebiniz DiyetKalfa Klinik Ağına iletildi! Yapay zeka eşleştirme algoritmamız vakanıza en uygun diyetisyen profilini WhatsApp hattınıza iletmektedir.');
+    }
+
+    /* İLETİŞİM & BİZ SİZİ ARAYALIM MODALI JS */
+    function openContactModal() {
+      var modal = document.getElementById('modal-contact');
+      if (modal) modal.style.display = 'flex';
+    }
+    function closeContactModal() {
+      var modal = document.getElementById('modal-contact');
+      if (modal) modal.style.display = 'none';
+    }
+    function handleContactCallbackSubmit(e) {
+      e.preventDefault();
+      var name = document.getElementById('cb-name').value;
+      var phone = document.getElementById('cb-phone').value;
+      var subject = document.getElementById('cb-subject').value;
+      var note = document.getElementById('cb-note') ? document.getElementById('cb-note').value : '';
+
+      var lead = { name: name, phone: phone, subject: subject, note: note, date: new Date().toISOString() };
+      try {
+        var leads = JSON.parse(localStorage.getItem('diyetkalfa_callback_leads') || '[]');
+        leads.push(lead);
+        localStorage.setItem('diyetkalfa_callback_leads', JSON.stringify(leads));
+      } catch(err) {}
+
+      var msg = 'Merhaba DiyetKalfa Ekibi, adım ' + name + '. ' + subject + ' konusunda bilgi almak ve aranmak istiyorum. Telefonum: ' + phone + (note ? '. Not: ' + note : '');
+      closeContactModal();
+      alert('Talebiniz başarıyla alındı Sn. ' + name + '!\n\nKlinik danışmanımız 15 dakika içinde ' + phone + ' numarasından sizi arayacaktır. Dilerseniz WhatsApp üzerinden de hemen yazabilirsiniz.');
+      window.open('https://wa.me/905321202846?text=' + encodeURIComponent(msg), '_blank');
+    }
+
+    /* 7/24 DİYETKALFA AI KLİNİK ASİSTANI JS */
+    function toggleAiChat() {
+      var panel = document.getElementById('diyetkalfa-ai-widget');
+      if (!panel) return;
+      var isHidden = panel.style.display === 'none' || panel.style.display === '';
+      panel.style.display = isHidden ? 'flex' : 'none';
+      if (isHidden) {
+        setTimeout(function() {
+          var input = document.getElementById('ai-chat-input');
+          if (input) input.focus();
+        }, 100);
+      }
+    }
+
+    function triggerQuickPrompt(promptText) {
+      sendAiChatMessage(promptText);
+    }
+
+    function handleAiChatSubmit(e) {
+      if (e) e.preventDefault();
+      var input = document.getElementById('ai-chat-input');
+      if (!input) return;
+      var text = input.value.trim();
+      if (!text) return;
+      sendAiChatMessage(text);
+      input.value = '';
+    }
+
+    function sendAiChatMessage(userText) {
+      var messagesContainer = document.getElementById('ai-chat-messages');
+      if (!messagesContainer) return;
+
+      var chips = document.getElementById('ai-quick-chips');
+      if (chips) chips.style.display = 'none';
+
+      // User Message
+      var userMsgEl = document.createElement('div');
+      userMsgEl.className = 'ai-msg-bubble ai-msg-user';
+      userMsgEl.textContent = userText;
+      messagesContainer.appendChild(userMsgEl);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+      // Typing Indicator
+      var typingEl = document.createElement('div');
+      typingEl.className = 'ai-msg-bubble ai-msg-bot';
+      typingEl.id = 'ai-typing-indicator';
+      typingEl.innerHTML = '<span style="color:#0f766e; font-style:italic;">DiyetKalfa AI yanıt hazırlıyor...</span>';
+      messagesContainer.appendChild(typingEl);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+      // Bot Response
+      setTimeout(function() {
+        var typ = document.getElementById('ai-typing-indicator');
+        if (typ) typ.remove();
+
+        var replyHtml = getAiResponse(userText);
+        var botMsgEl = document.createElement('div');
+        botMsgEl.className = 'ai-msg-bubble ai-msg-bot';
+        botMsgEl.innerHTML = replyHtml;
+        messagesContainer.appendChild(botMsgEl);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      }, 400);
+    }
+
+    function getAiResponse(rawQuery) {
+      var q = rawQuery.toLowerCase();
+
+      if (q.includes('fiyat') || q.includes('ücret') || q.includes('paket') || q.includes('kaç para') || q.includes('kampanya') || q.includes('yıllık') || q.includes('maliyet')) {
+        return '<div>DiyetKalfa lisans seçenekleri şu şekildedir:</div>' +
+          '<div style="margin-top: 6px; line-height: 1.5;">' +
+            '• <strong>Giriş Paketi:</strong> 1.500 TL/ay (12 aylıkta 1.080 TL/ay)<br>' +
+            '• <strong>Profesyonel Paket:</strong> 2.900 TL/ay (12 aylıkta 2.088 TL/ay)<br>' +
+            '• <strong>Sınırsız Paket:</strong> Normalde 50.000 TL, 12 aylık yıllık kampanyamızla <strong>36.000 TL</strong> (Aylık sadece 3.000 TL).' +
+          '</div>' +
+          '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
+            '<a href="fiyatlar.html" class="ai-link-btn" style="background: #0f766e; color: #fff;">💳 Fiyatları İncele →</a>' +
+            '<a href="kayit.html" class="ai-link-btn" style="background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0;">✨ 7 Gün Ücretsiz Dene</a>' +
+          '</div>';
+      }
+
+      if (q.includes('deneme') || q.includes('ücretsiz') || q.includes('7 gün') || q.includes('bedava') || q.includes('test')) {
+        return '<div>DiyetKalfa\'yı <strong>7 gün boyunca kredi kartı bilgisi girmeden</strong> tamamen ücretsiz deneyebilirsiniz!</div>' +
+          '<div style="margin-top: 6px; color: #475569;">' +
+            'Diyet Planlayıcı, HOMA-IR Laboratuvar Analizi, Türkomp Besin Değişimi ve CRM modülleri anında tam yetkiyle açılır. 7 gün sonunda otomatik para çekilmez.' +
+          '</div>' +
+          '<a href="kayit.html" class="ai-link-btn" style="background: #059669; color: #fff; margin-top: 8px;">🚀 7 Günlük Denemeyi Başlat →</a>';
+      }
+
+      if (q.includes('dsö') || q.includes('who') || q.includes('homa') || q.includes('tahlil') || q.includes('laboratuvar') || q.includes('insülin') || q.includes('protokol')) {
+        return '<div><strong>DSÖ 2024 & HOMA-IR Akıllı Analiz Motoru:</strong></div>' +
+          '<div style="margin-top: 6px; color: #475569;">' +
+            'Danışanınızın açlık glukoz ve insülin değerlerini girerek saniyeler içinde HOMA-IR metabolik risk skorunu hesaplayabilir; düşük glisemik indeksli bilimsel reçeteler üretebilirsiniz.' +
+          '</div>' +
+          '<a href="ozellikler.html" class="ai-link-btn" style="background: #0f766e; color: #fff; margin-top: 8px;">🔬 Klinik Özellikleri Gör →</a>';
+      }
+
+      if (q.includes('türkomp') || q.includes('besin') || q.includes('değişim') || q.includes('tarif') || q.includes('kalori')) {
+        return '<div><strong>Türkomp & USDA Destekli Besin Veritabanı:</strong></div>' +
+          '<div style="margin-top: 6px; color: #475569;">' +
+            'Türkiye\'ye özgü 100+ klinik yemek tarifi, resmi Türkomp gıda veri bankası, porsiyon gramajları ve otomatik makro-mikro besin dağılımı sistemimizde entegredir.' +
+          '</div>';
+      }
+
+      if (q.includes('demo') || q.includes('sunum') || q.includes('tanıtım') || q.includes('nasıl kullanılır')) {
+        return '<div>Klinik ekibimiz size canlı sistem üzerinden 15 dakikalık birebir demo sunumu yapmaktan mutluluk duyar!</div>' +
+          '<div style="margin-top: 6px; color: #475569;">' +
+            'Canlı demo talebiniz doğrudan 0532 120 28 46 WhatsApp hattımıza iletilir:' +
+          '</div>' +
+          '<a href="https://wa.me/905321202846?text=Merhaba%2C%20DiyetKalfa%20AI%20klinik%20demo%20sunumu%20talep%20ediyorum." target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff; margin-top: 8px;">💬 0532 120 28 46 Demo WhatsApp Hattı →</a>';
+      }
+
+      if (q.includes('iletişim') || q.includes('telefon') || q.includes('numara') || q.includes('whatsapp') || q.includes('destek') || q.includes('ara') || q.includes('adres')) {
+        return '<div><strong>DiyetKalfa 7/24 İletişim & Destek Bilgileri:</strong></div>' +
+          '<div style="margin-top: 6px; line-height: 1.5;">' +
+            '📞 <strong>WhatsApp & Tel:</strong> 0532 120 28 46<br>' +
+            '📧 <strong>E-Posta:</strong> destek@diyetkalfa.com<br>' +
+            '⚡ <strong>Çalışma Saatleri:</strong> 7/24 Kesintisiz Canlı Destek' +
+          '</div>' +
+          '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
+            '<a href="https://wa.me/905321202846?text=Merhaba%20DiyetKalfa%20canl%C4%B1%20destek%20almak%20istiyorum." target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 WhatsApp\'tan Yaz</a>' +
+            '<button type="button" onclick="openContactModal()" class="ai-link-btn" style="background: #0f766e; color: #fff; border: none; cursor: pointer;">📞 Biz Sizi Arayalım</button>' +
+          '</div>';
+      }
+
+      // Genel varsayılan yanıt
+      return '<div>Sorunuz için teşekkürler! DiyetKalfa, klinikler için geliştirilmiş yeni nesil yapay zeka beslenme işletim sistemidir.</div>' +
+        '<div style="margin-top: 6px; color: #475569;">' +
+          'Bu konuda size daha detaylı bilgi aktarmak ve sorularınızı anında yanıtlamak için <strong>0532 120 28 46</strong> WhatsApp hattımız 7/24 hizmetinizdedir.' +
+        '</div>' +
+        '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
+          '<a href="https://wa.me/905321202846?text=' + encodeURIComponent('Merhaba, ' + rawQuery + ' hakkında bilgi almak istiyorum.') + '" target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 0532 120 28 46 WhatsApp\'a Sor</a>' +
+          '<button type="button" onclick="openContactModal()" class="ai-link-btn" style="background: #0f172a; color: #fff; border: none; cursor: pointer;">📞 Biz Sizi Arayalım</button>' +
+        '</div>';
     }
   </script>
 
