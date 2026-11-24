@@ -1,6 +1,9 @@
 ﻿<!DOCTYPE html>
 <html lang="tr">
 <head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
@@ -2086,7 +2089,7 @@ body:not(.app-locked) .header-landing-actions {
   <div class="header-inner" style="max-width: 1240px; margin: 0 auto; padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; gap: 15px;">
     
     <!-- Sol Logo Alanı (DiyetKalfa) -->
-    <div class="logo-area" style="display: flex; align-items: center; gap: 10px; cursor: pointer;" onclick="if(typeof switchAppTab === 'function') switchAppTab('landing');">
+    <div class="logo-area" style="display: flex; align-items: center; gap: 10px; cursor: pointer;" onclick="if(typeof switchAppTab === 'function') switchAppTab('diet');">
       <div class="logo-icon" style="width: 38px; height: 38px; border-radius: 12px; background: linear-gradient(135deg, #163b2c 0%, #170c07 100%); display: flex; align-items: center; justify-content: center; color: #ffffff; box-shadow: 0 3px 8px rgba(45, 74, 62, 0.3);">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
@@ -2104,19 +2107,10 @@ body:not(.app-locked) .header-landing-actions {
     </div>
 
     <!-- Orta Navigasyon Linkleri (Mangolif Stili - Sadece Geniş Ekranda) -->
-    <nav class="header-nav-links" style="display: flex; align-items: center; gap: 24px; font-size: 14px; font-weight: 700; color: #334155;">
-      <a href="javascript:void(0)" onclick="scrollToPricingSection()" style="color: #334155; text-decoration: none; transition: color 0.15s;">Özellikler</a>
-      <a href="javascript:void(0)" onclick="openWhoModal()" style="color: #334155; text-decoration: none; transition: color 0.15s; display: flex; align-items: center; gap: 4px;">
-        <span>Çözümler</span>
-        <span style="font-size: 10px; color: #94a3b8;">▼</span>
-      </a>
-      <a href="javascript:void(0)" onclick="scrollToPricingSection()" style="color: #334155; text-decoration: none; transition: color 0.15s;">Fiyatlar</a>
-      <a href="javascript:void(0)" onclick="scrollToPricingSection()" style="color: #334155; text-decoration: none; transition: color 0.15s;">SSS</a>
-      <a href="https://wa.me/905300000000?text=Merhaba%20DiyetKalfa%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum" target="_blank" style="color: #334155; text-decoration: none; transition: color 0.15s;">İletişim</a>
-    </nav>
+    
 
     <!-- Sağ Header Eylemleri (Mangolif Stili Butonlar) -->
-    <div class="header-actions" style="display: flex; align-items: center; gap: 8px;">
+    <div class="header-actions" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
       
       <!-- KİLİTLİ DURUMDA GÖRÜNEN BUTONLAR (Mangolif görselindeki butonların birebir aynısı) -->
       <div class="header-landing-actions" style="display: none; align-items: center; gap: 8px;">
@@ -2139,7 +2133,7 @@ body:not(.app-locked) .header-landing-actions {
       </div>
 
       <!-- AÇILMIŞ / LİSANSLI DURUMDA GÖRÜNEN BUTONLAR (Klinik paneli kontrolleri) -->
-      <div class="header-clinical-actions" style="display: inline-flex; align-items: center; gap: 6px;">
+      <div class="header-clinical-actions" style="display: inline-flex; gap: 8px; flex-wrap: wrap; align-items: center; gap: 6px;">
         <button onclick="openWhoModal()" class="btn btn-outline-pink" title="Dünya Sağlık Örgütü Klinik Standartları">
           <span>🩺 DSÖ Standartları</span>
         </button>
@@ -2173,12 +2167,8 @@ body:not(.app-locked) .header-landing-actions {
   <!-- ============================================================ -->
       <div class="saas-nav-dock">
     <div class="saas-nav-inner">
-      <button class="saas-tab-btn active" id="btn-tab-landing" onclick="switchAppTab('landing')">
-        <span>💎</span>
-        <span>Giriş & Satın Al</span>
-        <span class="badge-pill" style="background:#f0f4f1; color:#15803d;">7 Gün Ücretsiz</span>
-      </button>
-      <button class="saas-tab-btn" id="btn-tab-diet" onclick="switchAppTab('diet')">
+      
+      <button class="saas-tab-btn active" id="btn-tab-diet" onclick="switchAppTab('diet')">
         <span>🥗</span>
         <span>Diyet Planlayıcı</span>
         <span class="badge-pill">DSÖ 2024</span>
@@ -2240,478 +2230,8 @@ body:not(.app-locked) .header-landing-actions {
 <!-- ============================================================== -->
 <!-- DIYETKALFA AI™ - RESMİ MANGOLIF DÜZENİNDE HERO & SATIN ALMA    -->
 <!-- ============================================================== -->
-<div id="view-landing" class="app-view-container" style="display: none; padding: 0 0 60px; margin: 0; max-width: 100vw; overflow-x: hidden;">
+<div id="view-diet" style="display: block;">
 
-  <!-- 1. DIYETKALFA AI CANLI KLINIK REÇETE VE SİMÜLATÖR HERO -->
-  <!-- ============================================================== -->
-<!-- DIYETKALFA AI™ - YARATICI KLİNİK ASİSTAN VE SİMÜLATÖR HERO     -->
-<!-- ============================================================== -->
-<section style="background: radial-gradient(circle at 80% 20%, #163b2c 0%, #0d241b 45%, #0a1711 100%); padding: 50px 24px 75px; color: #ffffff; position: relative; overflow: hidden; border-bottom: 2px solid #170c07;">
-  
-  <div style="max-width: 1220px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; align-items: center; position: relative; z-index: 2;">
-    
-    <!-- Sol Kolon: Başlık, Açıklama ve Canlı Simülatör Kartı -->
-    <div>
-      <!-- Üst Rozet -->
-      <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: #edf5f0; padding: 6px 16px; border-radius: 999px; font-size: 13px; font-weight: 800; margin-bottom: 20px; backdrop-filter: blur(8px);">
-        <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #2e5e4b; box-shadow: 0 0 8px #2e5e4b;"></span>
-        DiyetKalfa • Klinik Beslenme & Danışan İşletim Sistemi
-      </div>
-
-      <!-- Büyük Yaratıcı Başlık -->
-      <h1 style="font-size: clamp(32px, 5vw, 50px); font-weight: 900; color: #ffffff; line-height: 1.15; margin-bottom: 18px; letter-spacing: -0.03em;">
-        Kliniğinizi Yapay Zeka ile Yönetin, <br>
-        <span style="color: #edf5f0;">Danışanlarınıza Bilimsel Reçeteler</span> Yazın
-      </h1>
-
-      <!-- Açıklama -->
-      <p style="font-size: 16px; color: #b4c7be; line-height: 1.6; margin-bottom: 26px; max-width: 530px;">
-        Diyetisyenlerin yeni nesil dijital kalfası: Saniyeler içinde DSÖ 2024 reçeteleri, HOMA-IR kan tahlili yorumlama, Türkomp besin veritabanı ve viral Reels içerik üretimi tek platformda.
-      </p>
-
-      <!-- YARATICI SİMÜLATÖR KARTI (Şehir Ara Yerine Gelen Özgün İnovasyon) -->
-      <div style="background: #ffffff; border-radius: 20px; padding: 22px; max-width: 480px; box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3); border: 1.5px solid rgba(255, 255, 255, 0.9);">
-        
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-          <div style="display: flex; align-items: center; gap: 6px;">
-            <span style="font-size: 16px;">🤖</span>
-            <span style="font-size: 13px; font-weight: 800; color: #170c07;">Canlı Yapay Zeka Protokol Simülatörü</span>
-          </div>
-          <span style="background: #f0f4f1; color: #163b2c; font-size: 10.5px; font-weight: 800; padding: 2px 8px; border-radius: 999px;">DSÖ 2024</span>
-        </div>
-
-        <!-- Vaka Seçici Dropdown -->
-        <div style="margin-bottom: 12px;">
-          <label style="font-size: 11.5px; font-weight: 800; color: #64748b; display: block; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.05em;">Danışan Profilini veya Vakasını Seçin</label>
-          <div style="position: relative;">
-            <select id="sim-case-select" onchange="runLiveCaseSimulation()" style="width: 100%; padding: 11px 13px; border-radius: 12px; border: 1.5px solid #cbd5e1; font-size: 13.5px; font-weight: 700; color: #1e293b; outline: none; background: #f8fafc; cursor: pointer; appearance: none; font-family: inherit;">
-              <option value="insulin">🩸 İnsülin Direnci & HOMA-IR > 2.5 (32 Yaş - Masa Başı)</option>
-              <option value="kilo_verme">⚖️ İnatçı Kilo & Yavaş Metabolizma (38 Yaş - Kadın)</option>
-              <option value="sporcu">🏃 Sporcu Hipertrofi & Kas Kazanımı (78 kg - Yüksek Efor)</option>
-              <option value="pcos">🌸 PCOS & Hormonal Denge Protokolü (26 Yaş)</option>
-              <option value="keto">🥑 Aralıklı Oruç (IF 16:8) & Düşük Karbonhidrat</option>
-            </select>
-            <div style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); pointer-events: none; color: #64748b; font-size: 12px;">▼</div>
-          </div>
-        </div>
-
-        <!-- Canlı Simülasyon Sonuç Paneli (Otomatik Güncellenir) -->
-        <div id="sim-result-box" style="background: #faf8f4; border: 1px solid #e6ded1; border-radius: 14px; padding: 14px; margin-bottom: 14px; transition: all 0.25s ease;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-            <span id="sim-res-title" style="font-size: 13px; font-weight: 800; color: #163b2c;">İnsülin Direnci & Metabolik Protokol</span>
-            <span id="sim-res-cal" style="background: #163b2c; color: #ffffff; font-size: 11.5px; font-weight: 800; padding: 2px 8px; border-radius: 6px;">1.680 kcal</span>
-          </div>
-
-          <div style="font-size: 12px; color: #685951; margin-bottom: 6px;">
-            <strong>Makrolar:</strong> <span id="sim-res-macros" style="color: #170c07; font-weight: 700;">Karb: %40 • Prot: %28 • Yağ: %32</span>
-          </div>
-
-          <div style="font-size: 11.5px; color: #685951; line-height: 1.4; margin-bottom: 6px;">
-            <strong>Örnek Akşam Menüsü:</strong> <span id="sim-res-dinner" style="color: #94593f; font-weight: 700;">Fırında Somon & Kuşkonmazlı Roka Salatası (Hafif Akşam Sindirimi)</span>
-          </div>
-
-          <div style="font-size: 11px; color: #163b2c; font-weight: 600; display: flex; align-items: center; gap: 5px;">
-            <span>💡</span> <span id="sim-res-tip">HOMA-IR > 2.5 için krom pikolinat ve tarçın desteği önerilir.</span>
-          </div>
-        </div>
-
-        <!-- Aksiyon Butonu: 7 Gün Ücretsiz Başlat & Planlayıcıya Yükle -->
-        <button type="button" onclick="openDirectCheckout('Pro Klinik', '12')" style="width: 100%; background: linear-gradient(135deg, #163b2c 0%, #170c07 100%); color: #ffffff; border: none; padding: 13px; border-radius: 12px; font-weight: 800; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s; box-shadow: 0 4px 14px rgba(45, 74, 62, 0.35);">
-          <span>⚡ Bu Protokolü Kliniğimde Kullan (Ücretsiz Başla)</span>
-          <span style="font-size: 16px;">→</span>
-        </button>
-
-      </div>
-
-    </div>
-
-    <!-- Sağ Kolon: DiyetKalfa Klinik Zekası & Modül Ekosistemi (Constellation Network) -->
-    <div style="position: relative; min-height: 420px; display: flex; align-items: center; justify-content: center;">
-      
-      <!-- Arka Plan Bağlantı SVG Çizgileri -->
-      <svg width="100%" height="100%" viewBox="0 0 500 420" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.35;">
-        <line x1="90" y1="210" x2="160" y2="140" stroke="#2e5e4b" stroke-width="1.5" stroke-dasharray="3,3" />
-        <line x1="160" y1="140" x2="250" y2="180" stroke="#2e5e4b" stroke-width="2" />
-        <line x1="160" y1="140" x2="210" y2="80" stroke="#2e5e4b" stroke-width="1.5" stroke-dasharray="4,4" />
-        <line x1="250" y1="180" x2="340" y2="230" stroke="#2e5e4b" stroke-width="2" />
-        <line x1="340" y1="230" x2="430" y2="190" stroke="#2e5e4b" stroke-width="1.5" />
-        <line x1="250" y1="180" x2="230" y2="300" stroke="#2e5e4b" stroke-width="1.5" stroke-dasharray="3,3" />
-        <line x1="230" y1="300" x2="310" y2="350" stroke="#2e5e4b" stroke-width="1.5" />
-        <line x1="340" y1="230" x2="390" y2="310" stroke="#2e5e4b" stroke-width="1.5" stroke-dasharray="4,4" />
-      </svg>
-
-      <!-- Düğüm Baloncukları: DiyetKalfa'nın Klinik Zeka Modülleri -->
-      <div style="position: relative; width: 100%; height: 400px;">
-        
-        <!-- Düğüm 1: Biyokimya Lab -->
-        <div style="position: absolute; top: 190px; left: 30px; background: #ffffff; color: #170c07; padding: 8px 12px; border-radius: 20px; display: flex; align-items: center; gap: 6px; font-weight: 800; font-size: 12px; border: 2px solid #163b2c; box-shadow: 0 4px 14px rgba(0,0,0,0.3);">
-          <span>🧪</span> <span>Biyokimya Lab</span>
-        </div>
-
-        <!-- Düğüm 2: Diyetisyen (DY) -->
-        <div style="position: absolute; top: 110px; left: 140px; background: #163b2c; color: #ffffff; width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 15px; border: 3px solid #2e5e4b; box-shadow: 0 0 18px rgba(52, 211, 153, 0.45);">
-          DY
-        </div>
-
-        <!-- Düğüm 3: DSÖ 2024 Protokolü -->
-        <div style="position: absolute; top: 55px; left: 200px; background: #94593f; color: #ffffff; padding: 6px 14px; border-radius: 20px; font-weight: 800; font-size: 11.5px; border: 2px solid #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
-          🩺 DSÖ 2024
-        </div>
-
-        <!-- Düğüm 4: MERKEZİ AI ÇEKİRDEĞİ (DiyetKalfa Core) -->
-        <div style="position: absolute; top: 155px; left: 225px; background: linear-gradient(135deg, #163b2c 0%, #059669 100%); color: #ffffff; width: 62px; height: 62px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: 900; font-size: 14px; border: 3px solid #ffffff; box-shadow: 0 0 25px rgba(16, 185, 129, 0.6); animation: pulseAiCore 2s infinite ease-in-out;">
-          <span style="font-size: 16px;">⚡</span>
-          <span style="font-size: 11px; letter-spacing: 0.05em;">AI CORE</span>
-        </div>
-
-        <!-- Düğüm 5: HOMA-IR İnsülin -->
-        <div style="position: absolute; top: 165px; left: 325px; background: #170c07; color: #edf5f0; padding: 7px 13px; border-radius: 20px; font-weight: 800; font-size: 12px; border: 2px solid #2e5e4b; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
-          🩸 HOMA-IR Analizi
-        </div>
-
-        <!-- Düğüm 6: Türkomp Besin Değişimi -->
-        <div style="position: absolute; top: 260px; left: 60px; background: #f0f4f1; color: #170c07; padding: 6px 12px; border-radius: 20px; font-weight: 800; font-size: 11.5px; border: 2px solid #163b2c;">
-          🍏 Türkomp Veritabanı
-        </div>
-
-        <!-- Düğüm 7: Danışan CRM & Randevu -->
-        <div style="position: absolute; top: 280px; left: 200px; background: #163b2c; color: #ffffff; padding: 6px 14px; border-radius: 20px; font-weight: 800; font-size: 11.5px; border: 2px solid #e6d3c9;">
-          👥 Danışan CRM & Kasa
-        </div>
-
-        <!-- Düğüm 8: Viral Reels Motoru -->
-        <div style="position: absolute; top: 325px; left: 280px; background: #94593f; color: #ffffff; padding: 7px 14px; border-radius: 20px; font-weight: 800; font-size: 12px; border: 2px solid #ffffff;">
-          🎬 Viral Reels AI
-        </div>
-
-        <!-- Düğüm 9: Tek Tık PDF / WhatsApp Reçete -->
-        <div style="position: absolute; top: 215px; left: 410px; background: #ffffff; color: #163b2c; padding: 6px 12px; border-radius: 20px; font-weight: 900; font-size: 11.5px; border: 2px solid #94593f; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
-          📄 Akıllı PDF Reçete
-        </div>
-
-        <!-- Canlı Durum Baloncuğu -->
-        <div style="position: absolute; top: 125px; left: 300px; background: #ffffff; color: #163b2c; padding: 5px 12px; border-radius: 14px; font-size: 11.5px; font-weight: 800; border: 1.5px solid #2e5e4b; box-shadow: 0 4px 12px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 5px;">
-          <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #163b2c;"></span>
-          <span>1.200+ Aktif Klinik</span>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-  <!-- 2. GİRİŞ KAPISI & 7 GÜN ÜCRETSİZ DENEME İLE AÇMA -->
-  <section style="max-width: 1140px; margin: 40px auto; padding: 0 16px;">
-    
-    <div style="background: #ffffff; border-radius: 24px; border: 1.5px solid #e6ded1; padding: 36px 30px; box-shadow: 0 12px 30px -6px rgba(28, 51, 43, 0.08);">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; align-items: stretch;">
-        
-        <!-- Sol: Lisanslı Diyetisyen & Klinik Giriş Formu -->
-        <div style="background: #faf8f4; border-radius: 18px; padding: 26px; border: 1px solid #f4efe6; display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;">
-              <div style="width: 40px; height: 40px; border-radius: 12px; background: #163b2c; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 3px 8px rgba(45, 74, 62, 0.3);">
-                🔐
-              </div>
-              <div>
-                <h3 style="font-size: 18px; font-weight: 800; color: #170c07; margin: 0;">Klinik & Diyetisyen Girişi</h3>
-                <p style="font-size: 12.5px; color: #685951; margin: 2px 0 0 0;">Lisanslı kullanıcılar için güvenli giriş</p>
-              </div>
-            </div>
-
-            <form id="landing-login-form" onsubmit="handlePortalLogin(event)" style="display: flex; flex-direction: column; gap: 14px;">
-              <div>
-                <label style="font-size: 12px; font-weight: 700; color: #170c07; display: block; margin-bottom: 5px;">E-Posta veya Diyetisyen Sicil No</label>
-                <input type="text" id="portal-user-email" placeholder="ornek@klinik.com veya Sicil No" style="width: 100%; padding: 12px 14px; border-radius: 10px; border: 1.5px solid #d8cdbc; font-size: 14px; outline: none; background: #ffffff; color: #170c07; font-family: inherit;">
-              </div>
-              <div>
-                <label style="font-size: 12px; font-weight: 700; color: #170c07; display: block; margin-bottom: 5px;">Lisans Anahtarı veya Şifre</label>
-                <input type="password" id="portal-user-license" placeholder="••••••••••••" style="width: 100%; padding: 12px 14px; border-radius: 10px; border: 1.5px solid #d8cdbc; font-size: 14px; outline: none; background: #ffffff; color: #170c07; font-family: inherit;">
-              </div>
-              
-              <button type="submit" style="background: linear-gradient(135deg, #163b2c 0%, #170c07 100%); color: #ffffff; border: none; padding: 14px; border-radius: 12px; font-weight: 800; font-size: 14.5px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 4px; box-shadow: 0 4px 12px rgba(45, 74, 62, 0.25);">
-                <span>Giriş Yap & Uygulamayı Aç</span>
-                <span style="font-size: 16px;">→</span>
-              </button>
-            </form>
-          </div>
-
-          <div style="margin-top: 16px; text-align: center; font-size: 12.5px; color: #685951;">
-            Lisansınız henüz yok mu? <a href="javascript:void(0)" onclick="scrollToPricingSection()" style="color: #94593f; font-weight: 800; text-decoration: underline;">Paketleri İnceleyin</a>
-          </div>
-        </div>
-
-        <!-- Sağ: 7 Gün Ücretsiz Deneme ile Uygulamanın Kilidini Açma -->
-        <div style="background: #ffffff; border-radius: 18px; padding: 26px; border: 2.5px solid #94593f; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 8px 24px -3px rgba(180, 101, 74, 0.18);">
-          <div>
-            <div style="display: inline-flex; align-items: center; gap: 6px; background: #fbf4f0; color: #94593f; font-size: 11.5px; font-weight: 800; padding: 4px 12px; border-radius: 999px; text-transform: uppercase; margin-bottom: 12px; border: 1px solid #e6d3c9;">
-              🎁 KREDİ KARTSIZ TAM YETKİ
-            </div>
-            <h3 style="font-size: 22px; font-weight: 900; color: #170c07; margin-bottom: 10px; line-height: 1.3;">
-              Satın Almadan Önce 7 Gün Boyunca Ücretsiz Deneyin!
-            </h3>
-            <p style="font-size: 14px; color: #685951; line-height: 1.6; margin-bottom: 22px;">
-              DiyetKalfa platformunun tüm modüllerini (Diyet Planlayıcı, HOMA-IR Lab, Türkomp Besin Değişimi, CRM ve Reels Stüdyosu) anında test etmek için 7 günlük ücretsiz denemenizi başlatın.
-            </p>
-          </div>
-
-          <div style="display: flex; flex-direction: column; gap: 12px;">
-            <button type="button" onclick="openDirectCheckout('Pro Klinik', '12')" style="background: linear-gradient(135deg, #94593f 0%, #743f29 100%); color: #ffffff; border: none; padding: 16px 24px; border-radius: 14px; font-weight: 800; font-size: 15.5px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 6px 18px rgba(180, 101, 74, 0.35); transition: all 0.2s;">
-              <span>⚡ 7 Günlük Ücretsiz Denemeyi Başlat & Uygulamayı Aç</span>
-              <span style="font-size: 18px;">🔓</span>
-            </button>
-
-            <button type="button" onclick="scrollToPricingSection()" style="background: #f0f4f1; color: #170c07; border: 1.5px solid #c2d1c8; padding: 13px 20px; border-radius: 14px; font-weight: 800; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
-              <span>💳 Fiyatlandırma Paketleri & Kampanyaları İncele</span>
-              <span style="font-size: 16px;">↓</span>
-            </button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-  </section>
-
-  <!-- 3. FİYATLANDIRMA VE MATEMATİKSEL KAMPANYA TABLOSU -->
-  <section id="section-saas-pricing" style="max-width: 1140px; margin: 0 auto 50px; padding: 0 16px; scroll-margin-top: 80px;">
-    
-    <div style="text-align: center; margin-bottom: 30px;">
-      <div style="display: inline-flex; align-items: center; gap: 8px; background: #fbf4f0; border: 1px solid #e6d3c9; color: #94593f; padding: 6px 18px; border-radius: 999px; font-size: 12.5px; font-weight: 800; margin-bottom: 12px; text-transform: uppercase;">
-        🔥 RESMİ KAMPANYALI FİYATLANDIRMA
-      </div>
-      <h2 style="font-size: 32px; font-weight: 900; color: #170c07; margin-bottom: 8px;">
-        Kliniğinize Özel Esnek ve Kampanyalı Lisans Paketleri
-      </h2>
-      <p style="font-size: 15px; color: #685951;">
-        12 Aylık yıllık peşin ödemede 50.000 TL yerine sadece 36.000 TL! İhtiyacınıza uygun döngüyü belirleyin.
-      </p>
-
-      <!-- Fatura Döngüsü Seçici (1, 3, 6, 12 Ay) -->
-      <div class="billing-cycle-switch" style="display: inline-flex; flex-wrap: wrap; background: #f4efe6; padding: 6px; border-radius: 18px; gap: 5px; margin-top: 20px; max-width: 100%; justify-content: center;">
-        <button type="button" class="billing-btn" onclick="setBillingCycle('1')" data-cycle="1" style="padding: 10px 18px; border-radius: 12px; font-weight: 700; font-size: 14px; border: none; cursor: pointer; transition: all 0.2s ease; background: transparent; color: #685951;">
-          1 Aylık
-        </button>
-        <button type="button" class="billing-btn" onclick="setBillingCycle('3')" data-cycle="3" style="padding: 10px 18px; border-radius: 12px; font-weight: 700; font-size: 14px; border: none; cursor: pointer; transition: all 0.2s ease; background: transparent; color: #685951;">
-          3 Aylık <span style="background: #163b2c; color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 6px; margin-left: 4px;">%10 İNDİRİM</span>
-        </button>
-        <button type="button" class="billing-btn" onclick="setBillingCycle('6')" data-cycle="6" style="padding: 10px 18px; border-radius: 12px; font-weight: 700; font-size: 14px; border: none; cursor: pointer; transition: all 0.2s ease; background: transparent; color: #685951;">
-          6 Aylık <span style="background: #163b2c; color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 6px; margin-left: 4px;">%15 İNDİRİM</span>
-        </button>
-        <button type="button" class="billing-btn active-cycle" onclick="setBillingCycle('12')" data-cycle="12" style="padding: 10px 20px; border-radius: 12px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; transition: all 0.2s ease; background: #ffffff; color: #170c07; box-shadow: 0 4px 12px rgba(28,51,43,0.12);">
-          12 Aylık (Yıllık) <span style="background: #94593f; color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 6px; margin-left: 4px;">%28 KAMPANYA 🔥</span>
-        </button>
-      </div>
-
-      <div id="billing-cycle-subtext" style="font-size: 14px; color: #94593f; font-weight: 800; margin-top: 14px;">
-        🔥 YILLIK KAMPANYA: Enterprise paket normalde 50.000 TL yerine şu an sadece 36.000 TL! Ayda 3.000 TL'den başlayan fırsat!
-      </div>
-    </div>
-
-    <!-- 3 Paket Kartı Grid -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; align-items: stretch;">
-      
-      <!-- PAKET 1: STARTER -->
-      <div style="background: #ffffff; border-radius: 20px; border: 1.5px solid #e6ded1; padding: 32px 26px; display: flex; flex-direction: column; justify-content: space-between; position: relative;">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-            <h3 style="font-size: 20px; font-weight: 800; color: #170c07;">Starter (Bireysel)</h3>
-            <span style="background: #f0f4f1; color: #163b2c; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 20px;">Yeni Başlayanlar</span>
-          </div>
-          <p style="font-size: 13px; color: #685951; margin-bottom: 20px; min-height: 38px;">Bireysel çalışan veya online danışmanlık veren bağımsız diyetisyenler için ideal.</p>
-          
-          <!-- Fiyat Alanı -->
-          <div style="padding-bottom: 20px; border-bottom: 1px solid #f4efe6; margin-bottom: 20px;">
-            <div style="display: flex; align-items: baseline; gap: 4px;">
-              <span id="orig-starter" style="text-decoration: line-through; color: #94867e; font-size: 16px; margin-right: 6px; font-weight: 700;">14.000 TL</span>
-              <span style="font-size: 18px; font-weight: 700; color: #685951;">₺</span>
-              <span id="price-starter" style="font-size: 44px; font-weight: 900; color: #170c07; letter-spacing: -0.03em;">800</span>
-              <span style="font-size: 14px; font-weight: 600; color: #685951;">/ay</span>
-            </div>
-            <div id="billed-starter" style="font-size: 12.5px; color: #163b2c; font-weight: 700; margin-top: 4px;">Normalde 14.000 TL yerine Yıllık: 9.600 TL /yıl</div>
-          </div>
-
-          <!-- Özellikler -->
-          <div style="font-size: 12px; font-weight: 800; color: #163b2c; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px;">Dahil Olan Özellikler:</div>
-          <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px; font-size: 13.5px; color: #170c07;">
-            <li style="display: flex; align-items: center; gap: 8px;">
-              <span style="color: #163b2c; font-size: 16px;">✓</span> <strong>50 Aktif Danışan</strong> Kapasitesi
-            </li>
-            <li style="display: flex; align-items: center; gap: 8px;">
-              <span style="color: #163b2c; font-size: 16px;">✓</span> WHO & Türkomp Klinik Veritabanı
-            </li>
-            <li style="display: flex; align-items: center; gap: 8px;">
-              <span style="color: #163b2c; font-size: 16px;">✓</span> Akşam Menüsü Sıfır Yumurta Garantisi
-            </li>
-            <li style="display: flex; align-items: center; gap: 8px;">
-              <span style="color: #163b2c; font-size: 16px;">✓</span> Tek Tıkla WhatsApp & PDF Paylaşımı
-            </li>
-            <li style="display: flex; align-items: center; gap: 8px;">
-              <span style="color: #163b2c; font-size: 16px;">✓</span> Mobil & Bilgisayar %100 Hızlı Senkron
-            </li>
-          </ul>
-        </div>
-
-        <div style="display: flex; flex-direction: column; gap: 8px;">
-          <button type="button" onclick="openDirectCheckout('Starter', currentBillingCycle)" style="width: 100%; background: #163b2c; color: #ffffff; border: none; padding: 13px; border-radius: 12px; font-weight: 800; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
-            <span>⚡ Denemeyle Uygulamayı Aç</span>
-          </button>
-          <button type="button" onclick="openDirectCheckout('Starter', currentBillingCycle)" style="width: 100%; background: #fbf4f0; color: #94593f; border: 1.5px solid #e6d3c9; padding: 10px; border-radius: 12px; font-weight: 800; font-size: 13px; cursor: pointer;">
-            7 Gün Ücretsiz Satın Al (Kredi Kartı / Banka)
-          </button>
-        </div>
-      </div>
-
-      <!-- PAKET 2: PRO KLİNİK (ÖNE ÇIKAN) -->
-      <div style="background: #ffffff; border-radius: 20px; border: 2.5px solid #94593f; padding: 32px 26px; display: flex; flex-direction: column; justify-content: space-between; position: relative; box-shadow: 0 10px 30px -5px rgba(180, 101, 74, 0.2); transform: translateY(-4px);">
-        <!-- Ribbon -->
-        <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #94593f 0%, #743f29 100%); color: #ffffff; font-size: 11px; font-weight: 900; padding: 4px 16px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.08em; box-shadow: 0 4px 10px rgba(180,101,74,0.4);">
-          ⭐ EN ÇOK TERCİH EDİLEN (PRO)
-        </div>
-
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; margin-top: 6px;">
-            <h3 style="font-size: 22px; font-weight: 900; color: #170c07;">Pro Klinik AI™</h3>
-            <span style="background: #fbf4f0; color: #94593f; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 20px;">Tam Donanım</span>
-          </div>
-          <p style="font-size: 13px; color: #685951; margin-bottom: 20px; min-height: 38px;">Yoğun klinik çalışan, hasta sonuçlarını takip eden ve sosyal medyada büyüyen diyetisyenler için.</p>
-          
-          <!-- Fiyat Alanı -->
-          <div style="padding-bottom: 20px; border-bottom: 1px solid #f4efe6; margin-bottom: 20px;">
-            <div style="display: flex; align-items: baseline; gap: 4px;">
-              <span id="orig-pro" style="text-decoration: line-through; color: #94867e; font-size: 17px; margin-right: 6px; font-weight: 700;">25.000 TL</span>
-              <span style="font-size: 18px; font-weight: 700; color: #94593f;">₺</span>
-              <span id="price-pro" style="font-size: 46px; font-weight: 900; color: #94593f; letter-spacing: -0.03em;">1.500</span>
-              <span style="font-size: 14px; font-weight: 600; color: #685951;">/ay</span>
-            </div>
-            <div id="billed-pro" style="font-size: 13px; color: #94593f; font-weight: 800; margin-top: 4px;">Normalde 25.000 TL yerine Yıllık: 18.000 TL /yıl (%28 Tasarruf 🔥)</div>
-          </div>
-
-          <!-- Özellikler -->
-          <div style="font-size: 12px; font-weight: 800; color: #94593f; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px;">Starter Paketine Ek Olarak:</div>
-          <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px; font-size: 13.5px; color: #170c07;">
-            <li style="display: flex; align-items: center; gap: 8px;">
-              <span style="color: #94593f; font-size: 16px;">★</span> <strong>Sınırsız Danışan Portföyü</strong>
-            </li>
-            <li style="display: flex; align-items: center; gap: 8px;">
-              <span style="color: #94593f; font-size: 16px;">★</span> <strong>Klinik Biyokimya & Lab Analizörü</strong> (HOMA-IR, Kolesterol, İnsülin)
-            </li>
-            <li style="display: flex; align-items: center; gap: 8px;">
-              <span style="color: #94593f; font-size: 16px;">★</span> <strong>Instagram & İçerik AI Motoru</strong> (Reels, Açıklama, Tarif Fikirleri)
-            </li>
-            <li style="display: flex; align-items: center; gap: 8px;">
-              <span style="color: #94593f; font-size: 16px;">★</span> <strong>Kendi Markanızla Reçete Çıktısı</strong> (Logo & White-label Lisans)
-            </li>
-            <li style="display: flex; align-items: center; gap: 8px;">
-              <span style="color: #94593f; font-size: 16px;">★</span> Öncelikli 7/24 WhatsApp VIP Destek Hattı
-            </li>
-          </ul>
-        </div>
-
-        <div style="display: flex; flex-direction: column; gap: 8px;">
-          <button type="button" onclick="openDirectCheckout('Pro Klinik', '12')" style="width: 100%; background: linear-gradient(135deg, #94593f 0%, #743f29 100%); color: #ffffff; border: none; padding: 14px; border-radius: 12px; font-weight: 800; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(180,101,74,0.35);">
-            <span>⚡ Denemeyle Uygulamayı Aç</span>
-            <span>🔓</span>
-          </button>
-          <button type="button" onclick="openDirectCheckout('Pro Klinik', currentBillingCycle)" style="width: 100%; background: #163b2c; color: #ffffff; border: none; padding: 11px; border-radius: 12px; font-weight: 800; font-size: 13px; cursor: pointer;">
-            7 Gün Ücretsiz Satın Al (Kredi Kartı / Banka)
-          </button>
-        </div>
-      </div>
-
-      <!-- PAKET 3: ENTERPRISE (KULLANICININ 50.000 TL -> 36.000 TL KAMPANYASI) -->
-      <div style="background: #ffffff; border-radius: 20px; border: 2px solid #163b2c; padding: 32px 26px; display: flex; flex-direction: column; justify-content: space-between; position: relative; box-shadow: 0 8px 24px -2px rgba(45, 74, 62, 0.15);">
-        <!-- Ribbon -->
-        <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: #163b2c; color: #ffffff; font-size: 11px; font-weight: 900; padding: 4px 16px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.08em; box-shadow: 0 4px 10px rgba(45,74,62,0.4);">
-          🏢 EN ÜST SEVİYE KURUMSAL
-        </div>
-
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; margin-top: 6px;">
-            <h3 style="font-size: 21px; font-weight: 900; color: #170c07;">Enterprise Klinik</h3>
-            <span style="background: #f0f4f1; color: #163b2c; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 20px;">Hastaneler & Ekipler</span>
-          </div>
-          <p style="font-size: 13px; color: #685951; margin-bottom: 20px; min-height: 38px;">Çoklu diyetisyen kadrosuna sahip klinikler, tıp merkezleri ve spor kulüpleri için en üst düzey paket.</p>
-          
-          <!-- Fiyat Alanı (50.000 TL -> 36.000 TL) -->
-          <div style="padding-bottom: 20px; border-bottom: 1px solid #f4efe6; margin-bottom: 20px;">
-            <div style="display: flex; align-items: baseline; gap: 4px;">
-              <span id="orig-enterprise" style="text-decoration: line-through; color: #dc2626; font-size: 20px; margin-right: 8px; font-weight: 800;">50.000 TL</span>
-              <span style="font-size: 18px; font-weight: 700; color: #163b2c;">₺</span>
-              <span id="price-enterprise" style="font-size: 46px; font-weight: 900; color: #163b2c; letter-spacing: -0.03em;">3.000</span>
-              <span style="font-size: 14px; font-weight: 600; color: #685951;">/ay</span>
-            </div>
-            <div id="billed-enterprise" style="font-size: 13px; color: #163b2c; font-weight: 800; margin-top: 4px;">Normalde 50.000 TL yerine Yıllık: 36.000 TL /yıl (%28 Kampanyalı 🔥)</div>
-          </div>
-
-          <!-- Özellikler -->
-          <div style="font-size: 12px; font-weight: 800; color: #163b2c; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px;">Pro Pakete Ek Olarak:</div>
-          <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px; font-size: 13.5px; color: #170c07;">
-            <li style="display: flex; align-items: center; gap: 8px;">
-              <span style="color: #163b2c; font-size: 16px;">✓</span> <strong>Çoklu Diyetisyen & Sekreter Girişi</strong>
-            </li>
-            <li style="display: flex; align-items: center; gap: 8px;">
-              <span style="color: #163b2c; font-size: 16px;">✓</span> HBYS / e-Nabız Entegrasyon Desteği
-            </li>
-            <li style="display: flex; align-items: center; gap: 8px;">
-              <span style="color: #163b2c; font-size: 16px;">✓</span> Özel Subdomain Desteği
-            </li>
-            <li style="display: flex; align-items: center; gap: 8px;">
-              <span style="color: #163b2c; font-size: 16px;">✓</span> Birebir Klinik Eğitimi & Danışmanlık
-            </li>
-            <li style="display: flex; align-items: center; gap: 8px;">
-              <span style="color: #163b2c; font-size: 16px;">✓</span> Kurumsal Fatura & Hukuki SLA Sözleşmesi
-            </li>
-          </ul>
-        </div>
-
-        <div style="display: flex; flex-direction: column; gap: 8px;">
-          <button type="button" onclick="openDirectCheckout('Enterprise Klinik', currentBillingCycle)" style="width: 100%; background: #163b2c; color: #ffffff; border: none; padding: 13px; border-radius: 12px; font-weight: 800; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
-            <span>⚡ Denemeyle Uygulamayı Aç</span>
-          </button>
-          <button type="button" onclick="openDirectCheckout('Enterprise Klinik', currentBillingCycle)" style="width: 100%; background: #fbf4f0; color: #94593f; border: 1.5px solid #e6d3c9; padding: 10px; border-radius: 12px; font-weight: 800; font-size: 13px; cursor: pointer;">
-            7 Gün Ücretsiz Satın Al (Kredi Kartı / Banka)
-          </button>
-        </div>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- 4. GÜVEN VE KALİTE ROZETLERİ -->
-  <section style="max-width: 900px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; text-align: center; border-top: 1.5px solid #f4efe6; padding-top: 30px;">
-    <div style="display: flex; align-items: center; gap: 8px; color: #170c07; font-size: 13.5px; font-weight: 700;">
-      <span style="color: #163b2c; font-size: 20px;">🛡️</span> 14 Gün Koşulsuz Para İade Garantisi
-    </div>
-    <div style="display: flex; align-items: center; gap: 8px; color: #170c07; font-size: 13.5px; font-weight: 700;">
-      <span style="color: #94593f; font-size: 20px;">🔒</span> 256-Bit SSL ve KVKK / GDPR Uyumlu
-    </div>
-    <div style="display: flex; align-items: center; gap: 8px; color: #170c07; font-size: 13.5px; font-weight: 700;">
-      <span style="color: #163b2c; font-size: 20px;">⚡</span> Anında Kullanım (Donanım Gerektirmez)
-    </div>
-    <div style="display: flex; align-items: center; gap: 8px; color: #170c07; font-size: 13.5px; font-weight: 700;">
-      <span style="color: #94593f; font-size: 20px;">📱</span> Telefon, Tablet ve PC Tam Uyum
-    </div>
-  </section>
-
-  <!-- 5. KAYAN WHATSAPP BUTONU (MANGOLIF GÖRSELİNDEKİ GİBİ SAĞ ALTTAN YARDIM) -->
-  <a href="https://wa.me/905300000000?text=Merhaba%20DiyetKalfa%20AI%20hakk%C4%B1nda%20bilgi%20ve%20lisans%20almak%20istiyorum" target="_blank" style="position: fixed; bottom: 25px; right: 25px; width: 56px; height: 56px; border-radius: 50%; background: #25d366; color: #ffffff; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); z-index: 99999; text-decoration: none; transition: transform 0.2s;" title="WhatsApp ile İletişime Geçin">
-    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.77.463 3.498 1.341 5.02L2 22l5.09-1.332a9.98 9.98 0 0 0 4.941 1.363h.004c5.535 0 10.031-4.496 10.031-10.031 0-2.68-1.043-5.199-2.937-7.093A9.97 9.97 0 0 0 12.031 2zm5.882 14.185c-.244.686-1.42 1.258-1.956 1.34-.51.077-1.176.11-3.376-.802-2.815-1.166-4.634-4.032-4.774-4.22-.14-.188-1.144-1.523-1.144-2.906 0-1.383.725-2.062.981-2.344.256-.282.558-.353.744-.353.186 0 .372.002.535.01.172.008.403-.065.63.48.232.558.79 1.93.86 2.07.07.14.116.303.023.49-.093.186-.14.302-.279.465-.14.163-.294.364-.42.488-.14.14-.286.292-.123.572.163.28.724 1.194 1.554 1.933 1.068.952 1.968 1.248 2.247 1.388.28.14.442.116.605-.07.163-.186.7-1.002.886-1.342.186-.34.372-.284.628-.188.256.096 1.628.767 1.907.907.28.14.465.21.535.326.07.116.07.674-.174 1.36z"/>
-    </svg>
-  </a>
-
-</div>
-
-
-  <div id="view-diet" style="display: block;">
-
-    <!-- Hero Banner -->
         <!-- DİYETKALFA - ULTRA PRESTİJLİ VE AYDINLIK KLİNİK ÇALIŞMA KOKPİTİ -->
     <div class="clinical-cockpit-box" style="background: #ffffff; border: 1.5px solid #e6ded1; border-radius: 20px; padding: 24px 26px; margin-bottom: 22px; box-shadow: 0 4px 22px rgba(23, 12, 7, 0.05);">
       <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; margin-bottom: 18px; border-bottom: 1.5px solid #f4efe6; padding-bottom: 14px;">
@@ -2756,6 +2276,68 @@ body:not(.app-locked) .header-landing-actions {
         </div>
       </div>
     </div>
+
+    <!-- 7 GÜNLÜK DOKUNMATİK SEKME ÇUBUĞU -->
+    <div class="day-selector-wrapper">
+      <button class="day-tab-btn active" id="tab-day-1" onclick="switchDay(1)">
+        <span class="day-title">1. Gün</span>
+        <span class="day-sub">Pazartesi</span>
+      </button>
+      <button class="day-tab-btn" id="tab-day-2" onclick="switchDay(2)">
+        <span class="day-title">2. Gün</span>
+        <span class="day-sub">Salı</span>
+      </button>
+      <button class="day-tab-btn" id="tab-day-3" onclick="switchDay(3)">
+        <span class="day-title">3. Gün</span>
+        <span class="day-sub">Çarşamba</span>
+      </button>
+      <button class="day-tab-btn" id="tab-day-4" onclick="switchDay(4)">
+        <span class="day-title">4. Gün</span>
+        <span class="day-sub">Perşembe</span>
+      </button>
+      <button class="day-tab-btn" id="tab-day-5" onclick="switchDay(5)">
+        <span class="day-title">5. Gün</span>
+        <span class="day-sub">Cuma</span>
+      </button>
+      <button class="day-tab-btn" id="tab-day-6" onclick="switchDay(6)">
+        <span class="day-title">6. Gün</span>
+        <span class="day-sub">Cumartesi</span>
+      </button>
+      <button class="day-tab-btn" id="tab-day-7" onclick="switchDay(7)">
+        <span class="day-title">7. Gün</span>
+        <span class="day-sub">Pazar</span>
+      </button>
+    </div>
+
+    <!-- ÇALIŞMA ALANI: SOL (KLİNİK FORM VE DEĞİŞİM) | SAĞ (ÖĞÜNLER) -->
+    <div class="workspace-grid">
+
+      <!-- ============================================================ -->
+      <!-- SOL PANEL: DANIŞAN PARAMETRELERİ & KİLER                     -->
+      <!-- ============================================================ -->
+      <div style="display: flex; flex-direction: column; gap: 16px; width: 100%;">
+
+        <!-- 1. KART: DANIŞAN ANAMNEZ VE FİZİKSEL VERİLERİ -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span>1. Danışan Klinik Parametreleri</span>
+            </span>
+            <button onclick="resetClientForm()" class="btn btn-secondary" style="padding: 3px 8px; font-size: 10px;">Sıfırla</button>
+          </div>
+          <div class="card-body">
+            
+            <div class="form-row">
+              <div class="form-group" style="grid-column: span 2;">
+                <label class="form-label">Danışan Adı Soyadı</label>
+                <input type="text" id="inp-name" value="" class="form-input" placeholder="Danışan Adı Soyadı yazınız..." oninput="recalcAndRefresh()">
+              </div>
+              <div class="form-group">
+                <label class="form-label">WhatsApp No</label>
+                <input type="text" id="inp-phone" value="" class="form-input" placeholder="05xx xxx xx xx">
+              </div>
+            </div>
 
             <div class="form-row">
               <div class="form-group">
@@ -6199,6 +5781,9 @@ body:not(.app-locked) .header-landing-actions {
         <!DOCTYPE html>
         <html>
         <head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
           <meta charset="UTF-8">
             <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
@@ -6553,33 +6138,8 @@ body:not(.app-locked) .header-landing-actions {
             ${p.slogan} • Şifa ve afiyet olsun. 🌸
           </div>
 
-          <script>window.onload = function() { window.print(); }<\/script>
+          \x3Cscript\x3Ewindow.onload = function() { window.print(); }\x3C/script\x3E
 
-<script>
-function quickSwitchCockpitClient(val) {
-  if (typeof DIYETKALFA_SIMULATOR_CASES !== 'undefined' && DIYETKALFA_SIMULATOR_CASES[val]) {
-    var c = DIYETKALFA_SIMULATOR_CASES[val];
-    var calEl = document.getElementById('cockpit-target-cal');
-    if (calEl) calEl.innerHTML = c.calories + ' <span style="font-size: 12px; font-weight: 700; color: #685951;">kcal</span>';
-    
-    var nameInp = document.getElementById('client-name');
-    var ageInp = document.getElementById('client-age');
-    var weightInp = document.getElementById('client-weight');
-    var heightInp = document.getElementById('client-height');
-    var genderInp = document.getElementById('client-gender');
-
-    if (nameInp) nameInp.value = c.title + " (Aktif Danışan)";
-    if (ageInp) ageInp.value = c.age;
-    if (weightInp) weightInp.value = c.weight;
-    if (heightInp) heightInp.value = c.height;
-    if (genderInp) genderInp.value = c.gender;
-
-    if (typeof calculateMetricsAndPlan === 'function') {
-      calculateMetricsAndPlan();
-    }
-  }
-}
-</script>
 </body>
         </html>
       `);
@@ -8209,7 +7769,7 @@ window.addEventListener('DOMContentLoaded', function() {
   try {
     document.title = "DiyetKalfa - Satın Al & Klinik Girişi | Profesyonel Diyetisyen Platformu";
     if (typeof switchAppTab === 'function') {
-      switchAppTab('landing');
+      switchAppTab('diet');
     }
   } catch(e) {}
   try {
@@ -8256,7 +7816,7 @@ function scrollToPricingSection() {
   if (el) {
     el.scrollIntoView({ behavior: 'smooth' });
   } else {
-    switchAppTab('landing');
+    switchAppTab('diet');
     setTimeout(function() {
       var el2 = document.getElementById('section-saas-pricing');
       if (el2) el2.scrollIntoView({ behavior: 'smooth' });
@@ -8310,7 +7870,7 @@ function lockApplication() {
   } catch(e) {}
 
   document.body.classList.add('app-locked');
-  switchAppTab('landing');
+  switchAppTab('diet');
   alert('🔒 Uygulama Kilitlendi.\n\nTekrar giriş yapabilir veya 7 günlük ücretsiz denemenizi başlatabilirsiniz.');
 }
 
@@ -8329,7 +7889,7 @@ function initAppGateway() {
   if (!unlocked) {
     document.body.classList.add('app-locked');
     if (typeof switchAppTab === 'function') {
-      switchAppTab('landing');
+      switchAppTab('diet');
     }
   } else {
     document.body.classList.remove('app-locked');
@@ -8746,7 +8306,7 @@ function orderPlanWhatsApp(planName) {
 </script>
   <!-- Mobil Kolay Dokunma Alt Çubuğu -->
   <div class="mobile-bottom-dock">
-    <button class="mobile-dock-btn active" id="mob-tab-landing" onclick="switchAppTab('landing')">
+    <button class="mobile-dock-btn active" id="mob-tab-landing" onclick="switchAppTab('diet')">
       <span style="font-size: 18px;">💎</span>
       <span>Giriş / Satın Al</span>
     </button>
