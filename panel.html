@@ -864,7 +864,7 @@ body:not(.app-locked) .header-landing-actions {
     .btn-swap-mini {
       background: #edf5f0 !important;
       color: #163b2c !important;
-      border: 1.5px solid #2e5e4b !important;
+      border: 1.5px solid #b86b3b !important;
       padding: 4px 12px !important;
       border-radius: 999px !important;
       font-size: 11px !important;
@@ -875,14 +875,14 @@ body:not(.app-locked) .header-landing-actions {
       gap: 5px !important;
       transition: all 0.2s ease !important;
       white-space: nowrap !important;
-      box-shadow: 0 2px 6px rgba(22, 59, 44, 0.12) !important;
+      box-shadow: 0 2px 6px rgba(184, 107, 59, 0.15) !important;
     }
     .btn-swap-mini:hover {
-      background: #163b2c !important;
+      background: linear-gradient(135deg, #163b2c 0%, #b86b3b 100%) !important;
       color: #ffffff !important;
-      border-color: #163b2c !important;
+      border-color: #d4af37 !important;
       transform: translateY(-1.5px) !important;
-      box-shadow: 0 4px 12px rgba(22, 59, 44, 0.28) !important;
+      box-shadow: 0 4px 12px rgba(184, 107, 59, 0.35) !important;
     }
     .app-toast {
       position: fixed;
@@ -1474,7 +1474,7 @@ body:not(.app-locked) .header-landing-actions {
     .btn-swap-mini {
       background: #edf5f0 !important;
       color: #163b2c !important;
-      border: 1.5px solid #2e5e4b !important;
+      border: 1.5px solid #b86b3b !important;
       padding: 4px 12px !important;
       border-radius: 999px !important;
       font-size: 11px !important;
@@ -1484,14 +1484,14 @@ body:not(.app-locked) .header-landing-actions {
       align-items: center !important;
       gap: 5px !important;
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
-      box-shadow: 0 2px 6px rgba(22, 59, 44, 0.12) !important;
+      box-shadow: 0 2px 6px rgba(184, 107, 59, 0.15) !important;
     }
     .btn-swap-mini:hover {
-      background: #163b2c !important;
+      background: linear-gradient(135deg, #163b2c 0%, #b86b3b 100%) !important;
       color: #ffffff !important;
-      border-color: #163b2c !important;
+      border-color: #d4af37 !important;
       transform: translateY(-1.5px) !important;
-      box-shadow: 0 4px 12px rgba(22, 59, 44, 0.28) !important;
+      box-shadow: 0 4px 12px rgba(184, 107, 59, 0.35) !important;
     }
 
     /* İnteraktif Su Takip Çubuğu */
@@ -5274,6 +5274,11 @@ body:not(.app-locked) .header-landing-actions {
       function getUniqueMeal(category, currentTitle, originalPool) {
         if (!history[category]) history[category] = [];
         
+        // Ensure active title is already tracked so it never repeats immediately
+        if (currentTitle && !history[category].includes(currentTitle)) {
+          history[category].push(currentTitle);
+        }
+
         // Merge originalPool with extraPools for massive variety
         var combined = [];
         if (originalPool && Array.isArray(originalPool)) {
@@ -5293,17 +5298,16 @@ body:not(.app-locked) .header-landing-actions {
         });
 
         var picked = null;
-        if (candidates.length > 0) {
+        // If we have candidates and coin flip favors pool, pick from candidates, otherwise synthesize dynamically
+        if (candidates.length > 2 && Math.random() < 0.45) {
           picked = candidates[Math.floor(Math.random() * candidates.length)];
         } else {
-          // If candidates exhausted, synthesize a fresh clinical combinatorial recipe!
-          picked = generateAlgorithmicMeal(category);
-          // ensure synthetic title does not repeat in recent history
+          // Synthesize a fresh clinical combinatorial recipe with zero repetition!
           var attempts = 0;
-          while (attempts < 8 && history[category].includes(picked.title)) {
+          do {
             picked = generateAlgorithmicMeal(category);
             attempts++;
-          }
+          } while (attempts < 15 && (history[category].includes(picked.title) || picked.title === currentTitle));
         }
 
         if (picked && picked.title) {
@@ -5312,6 +5316,9 @@ body:not(.app-locked) .header-landing-actions {
             history[category].shift();
           }
         }
+
+        return picked;
+      }
 
         return picked;
       }
