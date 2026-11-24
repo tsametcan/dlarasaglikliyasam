@@ -2140,14 +2140,14 @@ body:not(.app-locked) .header-clinical-actions {
 <header class="app-header" style="background: #ffffff; border-bottom: 1.5px solid #e6ded1; box-shadow: 0 1px 12px rgba(0, 0, 0, 0.04); position: sticky; top: 0; z-index: 1000;">
   <div class="header-inner" style="max-width: 1240px; margin: 0 auto; padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; gap: 15px;">
     
-        <!-- Sol Logo Alanı: Resmi DiyetKalfa Logosu -->
+    <!-- Sol Logo Alanı: Resmi DiyetKalfa Logosu -->
     <div class="logo-area" style="display: flex; align-items: center; gap: 12px; cursor: pointer;" onclick="window.location.href='index.html';">
       <img src="logo.png" alt="DiyetKalfa" style="height: 52px; width: auto; object-fit: contain; filter: drop-shadow(0 4px 12px rgba(22, 59, 44, 0.15)); transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
     </div>
 
-    <!-- Orta Navigasyon Linkleri (Mangolif Stili - Sadece Geniş Ekranda) -->
+    <!-- Orta Navigasyon Linkleri (Ayrı Sayfa Mimarisi) -->
     <nav class="header-nav-links" style="display: flex; align-items: center; gap: 24px; font-size: 14px; font-weight: 700; color: #334155;">
-      <a href="javascript:void(0)" onclick="scrollToSection('section-features')" style="color: #334155; text-decoration: none; transition: color 0.15s;">Özellikler</a>
+      <a href="ozellikler.html" style="color: #334155; text-decoration: none; transition: color 0.15s;">Özellikler</a>
       <!-- DIYETKALFA - ÇÖZÜMLER DROPDOWN MENÜSÜ -->
       <div class="dropdown-solutions-container" style="position: relative; display: inline-block;">
         <button type="button" id="btn-toggle-solutions" onclick="toggleSolutionsMenu(event)" style="background: none; border: none; font-size: 14px; font-weight: 700; color: #170c07; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 6px 12px; border-radius: 999px; transition: all 0.2s;">
@@ -2172,29 +2172,34 @@ body:not(.app-locked) .header-clinical-actions {
           <a href="javascript:void(0)" onclick="openSolutionModal('recipes')" class="solution-item"><span class="sol-icon">🍲</span><div class="sol-text"><div class="sol-title">Tarifler</div><div class="sol-desc">Türkomp onaylı, kalorisi ve makroları hesaplanmış 100+ klinik tarif</div></div></a>
         </div>
       </div>
-      <a href="javascript:void(0)" onclick="scrollToSection('section-saas-pricing')" style="color: #334155; text-decoration: none; transition: color 0.15s;">Fiyatlar</a>
+      <a href="fiyatlar.html" style="color: #334155; text-decoration: none; transition: color 0.15s;">Fiyatlar</a>
       <a href="javascript:void(0)" onclick="scrollToSection('section-faq')" style="color: #334155; text-decoration: none; transition: color 0.15s;">SSS</a>
       <a href="javascript:void(0)" onclick="scrollToSection('section-contact')" style="color: #334155; text-decoration: none; transition: color 0.15s;">İletişim</a>
     </nav>
 
-    <!-- Sağ Header Eylemleri (Mangolif Stili Butonlar) -->
+    <!-- Sağ Header Eylemleri (Demo Talep Et & Ücretsiz Başla) -->
     <div class="header-actions" style="display: flex; align-items: center; gap: 10px; flex-shrink: 0;">
-      <!-- Kalori Hesaplama Butonu -->
+      <!-- Kalori Butonu -->
       <button type="button" onclick="openSolutionModal('calorie')" style="background: #ffffff; color: #170c07; border: 1.5px solid #d8cdbc; padding: 8px 14px; border-radius: 999px; font-weight: 800; font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s;">
         <span style="font-size: 14px;">👌</span>
         <span>Kalori</span>
       </button>
 
-      <!-- HER ZAMAN GÖRÜNÜR KLİNİK PANELİ BUTONU -->
-      <a href="panel.html" style="background: #faf8f4; color: #163b2c; border: 1.5px solid #2e5e4b; padding: 8px 16px; border-radius: 999px; font-weight: 800; font-size: 13px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s; box-shadow: 0 2px 8px rgba(22, 59, 44, 0.1);">
-        <span>🏥 Klinik Paneli</span>
+      <!-- DEMO TALEP ET BUTONU (DANIŞANIM & UZMANIM) -->
+      <button type="button" onclick="openDemoModal()" style="background: #ffffff; color: #163b2c; border: 1.5px solid #2e5e4b; padding: 8px 16px; border-radius: 999px; font-weight: 800; font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s; box-shadow: 0 2px 8px rgba(22, 59, 44, 0.08);">
+        <span>Demo Talep Et</span>
         <span style="font-size: 13px;">→</span>
+      </button>
+
+      <!-- HER ZAMAN GÖRÜNÜR KLİNİK PANELİ BUTONU -->
+      <a href="panel.html" style="background: #faf8f4; color: #163b2c; border: 1.5px solid #2e5e4b; padding: 8px 16px; border-radius: 999px; font-weight: 800; font-size: 13px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s;">
+        <span>🏥 Klinik Paneli</span>
       </a>
 
-      <!-- 7 Gün Ücretsiz Başla Butonu -->
-      <button type="button" onclick="openDirectCheckout('Pro Klinik', '12')" style="background: #163b2c; color: #ffffff; border: none; padding: 9px 18px; border-radius: 999px; font-weight: 800; font-size: 13.5px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(45, 74, 62, 0.3); transition: all 0.2s;">
+      <!-- 7 Gün Ücretsiz Başla Butonu (Kayıt Sayfasına Yönlendirir) -->
+      <a href="kayit.html" style="background: linear-gradient(135deg, #163b2c 0%, #0d241b 100%); color: #ffffff; text-decoration: none; padding: 9px 20px; border-radius: 999px; font-weight: 800; font-size: 13.5px; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(45, 74, 62, 0.3); transition: all 0.2s;">
         <span>Ücretsiz Başla</span>
-      </button>
+      </a>
     </div>
   </div>
 </header>
@@ -2278,155 +2283,158 @@ body:not(.app-locked) .header-clinical-actions {
   <!-- ============================================================== -->
 <!-- DIYETKALFA AI™ - YARATICI KLİNİK ASİSTAN VE SİMÜLATÖR HERO     -->
 <!-- ============================================================== -->
-<section style="background: radial-gradient(circle at 80% 20%, #163b2c 0%, #0d241b 45%, #0a1711 100%); padding: 50px 24px 75px; color: #ffffff; position: relative; overflow: hidden; border-bottom: 2px solid #170c07;">
+<section style="background: radial-gradient(circle at 75% 25%, #2a1810 0%, #170c07 55%, #0d0603 100%); padding: 55px 24px 80px; color: #fbf8f3; position: relative; overflow: hidden; border-bottom: 2px solid #b86b3b;">
   
-  <div style="max-width: 1220px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; align-items: center; position: relative; z-index: 2;">
+  <!-- Lüks Arka Plan Işık Efekti & İnce Geometrik Desen -->
+  <div style="position: absolute; top: -100px; right: -80px; width: 550px; height: 550px; background: radial-gradient(circle, rgba(184, 107, 59, 0.15) 0%, rgba(22, 59, 44, 0.08) 50%, transparent 70%); border-radius: 50%; pointer-events: none; z-index: 1;"></div>
+  <div style="position: absolute; bottom: -50px; left: -50px; width: 450px; height: 450px; background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%); border-radius: 50%; pointer-events: none; z-index: 1;"></div>
+
+  <div style="max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 46px; align-items: center; position: relative; z-index: 2;">
     
     <!-- Sol Kolon: Başlık, Açıklama ve Canlı Simülatör Kartı -->
     <div>
-      <!-- Üst Rozet -->
-      <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: #edf5f0; padding: 6px 16px; border-radius: 999px; font-size: 13px; font-weight: 800; margin-bottom: 20px; backdrop-filter: blur(8px);">
-        <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #2e5e4b; box-shadow: 0 0 8px #2e5e4b;"></span>
-        DiyetKalfa • Klinik Beslenme & Danışan İşletim Sistemi
+      <!-- Üst Rozet (Lüks Taba / Altın Tonları) -->
+      <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(184, 107, 59, 0.15); border: 1px solid rgba(212, 175, 55, 0.4); color: #f4efe6; padding: 6px 18px; border-radius: 999px; font-size: 13px; font-weight: 800; margin-bottom: 22px; backdrop-filter: blur(8px);">
+        <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #d4af37; box-shadow: 0 0 10px #d4af37;"></span>
+        DiyetKalfa • Yeni Nesil Klinik Karar Destek & Biyoistatistik Sistemi
       </div>
 
-      <!-- Büyük Yaratıcı Başlık -->
-      <h1 style="font-size: clamp(32px, 5vw, 50px); font-weight: 900; color: #ffffff; line-height: 1.15; margin-bottom: 18px; letter-spacing: -0.03em;">
+      <!-- Büyük Yaratıcı Başlık (Acı Kahve Üzeri Bej & Altın) -->
+      <h1 style="font-size: clamp(34px, 5.2vw, 50px); font-weight: 900; color: #fbf8f3; line-height: 1.15; margin-bottom: 20px; letter-spacing: -0.03em;">
         Kliniğinizi Yapay Zeka ile Yönetin, <br>
-        <span style="color: #edf5f0;">Danışanlarınıza Bilimsel Reçeteler</span> Yazın
+        <span style="background: linear-gradient(135deg, #d4af37 0%, #f4efe6 45%, #b86b3b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Danışanlarınıza Bilimsel Reçeteler</span> Yazın
       </h1>
 
-      <!-- Açıklama -->
-      <p style="font-size: 16px; color: #b4c7be; line-height: 1.6; margin-bottom: 26px; max-width: 530px;">
-        Diyetisyenlerin yeni nesil dijital kalfası: Saniyeler içinde DSÖ 2024 reçeteleri, HOMA-IR kan tahlili yorumlama, Türkomp besin veritabanı ve viral Reels içerik üretimi tek platformda.
+      <!-- Açıklama (Krem Bej) -->
+      <p style="font-size: 16.5px; color: #d8c8b4; line-height: 1.6; margin-bottom: 28px; max-width: 530px;">
+        Diyetisyenlerin yeni nesil dijital kalfası: Saniyeler içinde DSÖ 2024 reçeteleri, HOMA-IR kan tahlili yorumlama, Türkomp besin veritabanı ve sonsuz reçeteleme tek platformda.
       </p>
 
-      <!-- YARATICI SİMÜLATÖR KARTI (Şehir Ara Yerine Gelen Özgün İnovasyon) -->
-      <div style="background: #ffffff; border-radius: 20px; padding: 22px; max-width: 480px; box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3); border: 1.5px solid rgba(255, 255, 255, 0.9);">
+      <!-- YARATICI SİMÜLATÖR KARTI (Lüks Acı Kahve & Cam Tasarım) -->
+      <div style="background: rgba(36, 21, 14, 0.88); border-radius: 22px; padding: 24px; max-width: 500px; box-shadow: 0 20px 48px rgba(0, 0, 0, 0.5); border: 1.5px solid rgba(212, 175, 55, 0.35); backdrop-filter: blur(12px);">
         
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-          <div style="display: flex; align-items: center; gap: 6px;">
-            <span style="font-size: 16px;">🤖</span>
-            <span style="font-size: 13px; font-weight: 800; color: #170c07;">Canlı Yapay Zeka Protokol Simülatörü</span>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 18px;">🤖</span>
+            <span style="font-size: 13.5px; font-weight: 800; color: #fbf8f3;">Canlı Yapay Zeka Protokol Simülatörü</span>
           </div>
-          <span style="background: #f0f4f1; color: #163b2c; font-size: 10.5px; font-weight: 800; padding: 2px 8px; border-radius: 999px;">DSÖ 2024</span>
+          <span style="background: rgba(22, 59, 44, 0.7); color: #edf5f0; border: 1px solid #2e5e4b; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 999px;">DSÖ 2024 AI</span>
         </div>
 
         <!-- Vaka Seçici Dropdown -->
-        <div style="margin-bottom: 12px;">
-          <label style="font-size: 11.5px; font-weight: 800; color: #64748b; display: block; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.05em;">Danışan Profilini veya Vakasını Seçin</label>
+        <div style="margin-bottom: 14px;">
+          <label style="font-size: 11px; font-weight: 800; color: #d8c8b4; display: block; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.06em;">Danışan Profilini veya Vakasını Seçin</label>
           <div style="position: relative;">
-            <select id="sim-case-select" onchange="runLiveCaseSimulation()" style="width: 100%; padding: 11px 13px; border-radius: 12px; border: 1.5px solid #cbd5e1; font-size: 13.5px; font-weight: 700; color: #1e293b; outline: none; background: #f8fafc; cursor: pointer; appearance: none; font-family: inherit;">
+            <select id="sim-case-select" onchange="runLiveCaseSimulation()" style="width: 100%; padding: 12px 14px; border-radius: 12px; border: 1.5px solid rgba(212, 175, 55, 0.35); font-size: 13.5px; font-weight: 700; color: #fbf8f3; outline: none; background: #160c07; cursor: pointer; appearance: none; font-family: inherit;">
               <option value="insulin">🩸 İnsülin Direnci & HOMA-IR > 2.5 (32 Yaş - Masa Başı)</option>
               <option value="kilo_verme">⚖️ İnatçı Kilo & Yavaş Metabolizma (38 Yaş - Kadın)</option>
               <option value="sporcu">🏃 Sporcu Hipertrofi & Kas Kazanımı (78 kg - Yüksek Efor)</option>
               <option value="pcos">🌸 PCOS & Hormonal Denge Protokolü (26 Yaş)</option>
               <option value="keto">🥑 Aralıklı Oruç (IF 16:8) & Düşük Karbonhidrat</option>
             </select>
-            <div style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); pointer-events: none; color: #64748b; font-size: 12px;">▼</div>
+            <div style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); pointer-events: none; color: #d4af37; font-size: 12px;">▼</div>
           </div>
         </div>
 
-        <!-- Canlı Simülasyon Sonuç Paneli (Otomatik Güncellenir) -->
-        <div id="sim-result-box" style="background: #faf8f4; border: 1px solid #e6ded1; border-radius: 14px; padding: 14px; margin-bottom: 14px; transition: all 0.25s ease;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-            <span id="sim-res-title" style="font-size: 13px; font-weight: 800; color: #163b2c;">İnsülin Direnci & Metabolik Protokol</span>
-            <span id="sim-res-cal" style="background: #163b2c; color: #ffffff; font-size: 11.5px; font-weight: 800; padding: 2px 8px; border-radius: 6px;">1.680 kcal</span>
+        <!-- Canlı Simülasyon Sonuç Paneli -->
+        <div id="sim-result-box" style="background: rgba(18, 10, 6, 0.75); border: 1px solid rgba(184, 107, 59, 0.35); border-radius: 14px; padding: 16px; margin-bottom: 16px; transition: all 0.25s ease;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <span id="sim-res-title" style="font-size: 13.5px; font-weight: 800; color: #d4af37;">İnsülin Direnci & Metabolik Protokol</span>
+            <span id="sim-res-cal" style="background: #163b2c; color: #ffffff; border: 1px solid #2e5e4b; font-size: 12px; font-weight: 800; padding: 3px 9px; border-radius: 6px;">1.680 kcal</span>
           </div>
 
-          <div style="font-size: 12px; color: #685951; margin-bottom: 6px;">
-            <strong>Makrolar:</strong> <span id="sim-res-macros" style="color: #170c07; font-weight: 700;">Karb: %40 • Prot: %28 • Yağ: %32</span>
+          <div style="font-size: 12.5px; color: #d8c8b4; margin-bottom: 8px;">
+            <strong style="color: #fbf8f3;">Makrolar:</strong> <span id="sim-res-macros" style="color: #edf5f0; font-weight: 700;">Karb: %40 • Prot: %28 • Yağ: %32</span>
           </div>
 
-          <div style="font-size: 11.5px; color: #685951; line-height: 1.4; margin-bottom: 6px;">
-            <strong>Örnek Akşam Menüsü:</strong> <span id="sim-res-dinner" style="color: #94593f; font-weight: 700;">Fırında Somon & Kuşkonmazlı Roka Salatası (Hafif Akşam Sindirimi)</span>
+          <div style="font-size: 12px; color: #d8c8b4; line-height: 1.45; margin-bottom: 8px;">
+            <strong style="color: #fbf8f3;">Örnek Akşam Menüsü:</strong> <span id="sim-res-dinner" style="color: #eedfc8; font-weight: 700;">Fırında Somon & Kuşkonmazlı Roka Salatası (Hafif Akşam Sindirimi)</span>
           </div>
 
-          <div style="font-size: 11px; color: #163b2c; font-weight: 600; display: flex; align-items: center; gap: 5px;">
+          <div style="font-size: 11.5px; color: #a3c9b4; font-weight: 600; display: flex; align-items: center; gap: 6px;">
             <span>💡</span> <span id="sim-res-tip">HOMA-IR > 2.5 için krom pikolinat ve tarçın desteği önerilir.</span>
           </div>
         </div>
 
-        <!-- Aksiyon Butonu: 7 Gün Ücretsiz Başlat & Planlayıcıya Yükle -->
-        <button type="button" onclick="openDirectCheckout('Pro Klinik', '12')" style="width: 100%; background: linear-gradient(135deg, #163b2c 0%, #170c07 100%); color: #ffffff; border: none; padding: 13px; border-radius: 12px; font-weight: 800; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s; box-shadow: 0 4px 14px rgba(45, 74, 62, 0.35);">
-          <span>⚡ Bu Protokolü Kliniğimde Kullan (Ücretsiz Başla)</span>
+        <!-- Aksiyon Butonu: 7 Gün Ücretsiz Başla (kayit.html'e Yönlendirir) -->
+        <a href="kayit.html" style="width: 100%; background: linear-gradient(135deg, #163b2c 0%, #2e5e4b 50%, #b86b3b 100%); color: #ffffff; text-decoration: none; border: none; padding: 14px; border-radius: 12px; font-weight: 800; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);">
+          <span>⚡ Bu Protokolü Kliniğimde Kullan (7 Gün Ücretsiz Başla)</span>
           <span style="font-size: 16px;">→</span>
-        </button>
+        </a>
 
       </div>
 
     </div>
 
-    <!-- Sağ Kolon: DiyetKalfa Klinik Zekası & Modül Ekosistemi (Constellation Network) -->
-    <div style="position: relative; min-height: 450px; display: flex; align-items: center; justify-content: center; margin-top: 50px;">
+    <!-- Sağ Kolon: ÖZGÜN KLİNİK KOMUTA KOKPİTİ & CANLI TELEMETRİ (Mangolif Benzerliği Kaldırıldı) -->
+    <div style="position: relative; display: flex; flex-direction: column; gap: 16px;">
       
-      <!-- Arka Plan Bağlantı SVG Çizgileri -->
-      <svg width="100%" height="100%" viewBox="0 0 500 420" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.35;">
-        <line x1="90" y1="210" x2="160" y2="140" stroke="#2e5e4b" stroke-width="1.5" stroke-dasharray="3,3" />
-        <line x1="160" y1="140" x2="250" y2="180" stroke="#2e5e4b" stroke-width="2" />
-        <line x1="160" y1="140" x2="210" y2="80" stroke="#2e5e4b" stroke-width="1.5" stroke-dasharray="4,4" />
-        <line x1="250" y1="180" x2="340" y2="230" stroke="#2e5e4b" stroke-width="2" />
-        <line x1="340" y1="230" x2="430" y2="190" stroke="#2e5e4b" stroke-width="1.5" />
-        <line x1="250" y1="180" x2="230" y2="300" stroke="#2e5e4b" stroke-width="1.5" stroke-dasharray="3,3" />
-        <line x1="230" y1="300" x2="310" y2="350" stroke="#2e5e4b" stroke-width="1.5" />
-        <line x1="340" y1="230" x2="390" y2="310" stroke="#2e5e4b" stroke-width="1.5" stroke-dasharray="4,4" />
-      </svg>
+      <!-- Telemetri Kartı 1: DSÖ 2024 AI Algoritma Çekirdeği -->
+      <div style="background: rgba(36, 21, 14, 0.85); border: 1.5px solid rgba(212, 175, 55, 0.3); border-radius: 18px; padding: 20px 22px; backdrop-filter: blur(10px); box-shadow: 0 12px 30px rgba(0,0,0,0.35);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(22, 59, 44, 0.8); border: 1px solid #2e5e4b; display: flex; align-items: center; justify-content: center; font-size: 18px;">
+              🧬
+            </div>
+            <div>
+              <div style="font-size: 14px; font-weight: 900; color: #fbf8f3;">DSÖ 2024 AI Algoritma Çekirdeği</div>
+              <div style="font-size: 11.5px; color: #d4af37; font-weight: 700;">42.000+ Algoritmik Kombinasyon</div>
+            </div>
+          </div>
+          <span style="display: inline-flex; align-items: center; gap: 5px; background: rgba(22, 59, 44, 0.6); color: #edf5f0; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 999px; border: 1px solid #2e5e4b;">
+            <span style="width: 6px; height: 6px; border-radius: 50%; background: #34d399; box-shadow: 0 0 6px #34d399;"></span>
+            Canlı & Aktif
+          </span>
+        </div>
+        <p style="font-size: 12.5px; color: #d8c8b4; line-height: 1.45; margin: 0;">
+          Klinik danışanın BMR, Harris-Benedict ve PAL katsayılarını anında hesaplayarak sıfır hata ile kişiye özel reçete üretir.
+        </p>
+      </div>
 
-      <!-- Düğüm Baloncukları: DiyetKalfa'nın Klinik Zeka Modülleri -->
-      <div style="position: relative; width: 100%; height: 400px;">
-        
-        <!-- Düğüm 1: Biyokimya Lab -->
-        <div style="position: absolute; top: 190px; left: 30px; background: #ffffff; color: #170c07; padding: 8px 12px; border-radius: 20px; display: flex; align-items: center; gap: 6px; font-weight: 800; font-size: 12px; border: 2px solid #163b2c; box-shadow: 0 4px 14px rgba(0,0,0,0.3);">
-          <span>🧪</span> <span>Biyokimya Lab</span>
+      <!-- Telemetri Kartı 2: Biyokimya & HOMA-IR Otomatik Triyaj -->
+      <div style="background: rgba(36, 21, 14, 0.85); border: 1.5px solid rgba(184, 107, 59, 0.35); border-radius: 18px; padding: 20px 22px; backdrop-filter: blur(10px); box-shadow: 0 12px 30px rgba(0,0,0,0.35);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(184, 107, 59, 0.3); border: 1px solid #b86b3b; display: flex; align-items: center; justify-content: center; font-size: 18px;">
+              🩸
+            </div>
+            <div>
+              <div style="font-size: 14px; font-weight: 900; color: #fbf8f3;">Biyokimya Lab & HOMA-IR Triyajı</div>
+              <div style="font-size: 11.5px; color: #eedfc8; font-weight: 700;">Açlık Glukozu + İnsülin Otomasyonu</div>
+            </div>
+          </div>
+          <span style="background: rgba(184, 107, 59, 0.3); color: #f4efe6; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 999px; border: 1px solid #b86b3b;">
+            Oto-Korelasyon
+          </span>
+        </div>
+        <div style="background: rgba(18, 10, 6, 0.6); border-radius: 10px; padding: 10px 14px; border: 1px solid rgba(212, 175, 55, 0.2); font-size: 12px; color: #d8c8b4; display: flex; justify-content: space-between;">
+          <span>Kan Tahlili Girişi ➔</span>
+          <span style="color: #d4af37; font-weight: 800;">Diyet Listesine Anında Besin Kısıtı Enjeksiyonu</span>
+        </div>
+      </div>
+
+      <!-- Telemetri Kartı 3: Türkomp Besin Veritabanı & White-Label Reçete -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+        <div style="background: rgba(36, 21, 14, 0.85); border: 1.5px solid rgba(212, 175, 55, 0.25); border-radius: 16px; padding: 16px; backdrop-filter: blur(8px);">
+          <div style="font-size: 20px; margin-bottom: 6px;">🍏</div>
+          <div style="font-size: 13px; font-weight: 900; color: #fbf8f3;">Türkomp 2.400+ Besin</div>
+          <div style="font-size: 11px; color: #d8c8b4; margin-top: 4px;">TÜBİTAK veritabanıyla gramaj & porsiyon değişimi.</div>
         </div>
 
-        <!-- Düğüm 2: Diyetisyen (DY) -->
-        <div style="position: absolute; top: 110px; left: 140px; background: #163b2c; color: #ffffff; width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 15px; border: 3px solid #2e5e4b; box-shadow: 0 0 18px rgba(52, 211, 153, 0.45);">
-          DY
+        <div style="background: rgba(36, 21, 14, 0.85); border: 1.5px solid rgba(22, 59, 44, 0.4); border-radius: 16px; padding: 16px; backdrop-filter: blur(8px);">
+          <div style="font-size: 20px; margin-bottom: 6px;">🏷️</div>
+          <div style="font-size: 13px; font-weight: 900; color: #fbf8f3;">White-Label PDF & WhatsApp</div>
+          <div style="font-size: 11px; color: #d8c8b4; margin-top: 4px;">Kliniğinizin kendi logosu ve antetiyle anında çıktı.</div>
         </div>
+      </div>
 
-        <!-- Düğüm 3: DSÖ 2024 Protokolü -->
-        <div style="position: absolute; top: 55px; left: 200px; background: #94593f; color: #ffffff; padding: 6px 14px; border-radius: 20px; font-weight: 800; font-size: 11.5px; border: 2px solid #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
-          🩺 DSÖ 2024
+      <!-- Lüks Güven ve İstatistik Barı -->
+      <div style="background: linear-gradient(135deg, rgba(22, 59, 44, 0.35) 0%, rgba(184, 107, 59, 0.25) 100%); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 14px; padding: 12px 18px; display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 16px;">🏆</span>
+          <span style="font-size: 12.5px; font-weight: 800; color: #fbf8f3;">Türkiye Genelinde 1.200+ Aktif Diyetisyen & Klinik</span>
         </div>
-
-        <!-- Düğüm 4: MERKEZİ AI ÇEKİRDEĞİ (DiyetKalfa Core) -->
-        <div style="position: absolute; top: 155px; left: 225px; background: linear-gradient(135deg, #163b2c 0%, #059669 100%); color: #ffffff; width: 62px; height: 62px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: 900; font-size: 14px; border: 3px solid #ffffff; box-shadow: 0 0 25px rgba(16, 185, 129, 0.6); animation: pulseAiCore 2s infinite ease-in-out;">
-          <span style="font-size: 16px;">⚡</span>
-          <span style="font-size: 11px; letter-spacing: 0.05em;">AI CORE</span>
-        </div>
-
-        <!-- Düğüm 5: HOMA-IR İnsülin -->
-        <div style="position: absolute; top: 165px; left: 325px; background: #170c07; color: #edf5f0; padding: 7px 13px; border-radius: 20px; font-weight: 800; font-size: 12px; border: 2px solid #2e5e4b; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
-          🩸 HOMA-IR Analizi
-        </div>
-
-        <!-- Düğüm 6: Türkomp Besin Değişimi -->
-        <div style="position: absolute; top: 260px; left: 60px; background: #f0f4f1; color: #170c07; padding: 6px 12px; border-radius: 20px; font-weight: 800; font-size: 11.5px; border: 2px solid #163b2c;">
-          🍏 Türkomp Veritabanı
-        </div>
-
-        <!-- Düğüm 7: Danışan CRM & Randevu -->
-        <div style="position: absolute; top: 280px; left: 200px; background: #163b2c; color: #ffffff; padding: 6px 14px; border-radius: 20px; font-weight: 800; font-size: 11.5px; border: 2px solid #e6d3c9;">
-          👥 Danışan CRM & Kasa
-        </div>
-
-        <!-- Düğüm 8: Viral Reels Motoru -->
-        <div style="position: absolute; top: 325px; left: 280px; background: #94593f; color: #ffffff; padding: 7px 14px; border-radius: 20px; font-weight: 800; font-size: 12px; border: 2px solid #ffffff;">
-          🎬 Viral Reels AI
-        </div>
-
-        <!-- Düğüm 9: Tek Tık PDF / WhatsApp Reçete -->
-        <div style="position: absolute; top: 215px; left: 410px; background: #ffffff; color: #163b2c; padding: 6px 12px; border-radius: 20px; font-weight: 900; font-size: 11.5px; border: 2px solid #94593f; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
-          📄 Akıllı PDF Reçete
-        </div>
-
-        <!-- Canlı Durum Baloncuğu -->
-        <div style="position: absolute; top: 125px; left: 300px; background: #ffffff; color: #163b2c; padding: 5px 12px; border-radius: 14px; font-size: 11.5px; font-weight: 800; border: 1.5px solid #2e5e4b; box-shadow: 0 4px 12px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 5px;">
-          <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #163b2c;"></span>
-          <span>1.200+ Aktif Klinik</span>
-        </div>
-
+        <span style="font-size: 11.5px; font-weight: 700; color: #d4af37;">%100 Memnuniyet</span>
       </div>
 
     </div>
@@ -8788,6 +8796,171 @@ function orderPlanWhatsApp(planName) {
     </button>
   </div>
 
+  <!-- ============================================================== -->
+  <!-- DEMO TALEP ET MODALI (UZMANIM & DANIŞANIM EŞLEŞTİRME SİSTEMİ)   -->
+  <!-- ============================================================== -->
+  <div id="modal-demo" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(23, 12, 7, 0.78); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 10006; align-items: center; justify-content: center; padding: 16px;">
+    <div style="background: #ffffff; border-radius: 22px; max-width: 540px; width: 100%; box-shadow: 0 24px 60px rgba(0,0,0,0.4); border: 1.5px solid #e6ded1; overflow: hidden; position: relative; max-height: 94vh; overflow-y: auto;">
+      <button type="button" onclick="closeDemoModal()" style="position: absolute; top: 16px; right: 16px; background: rgba(255, 255, 255, 0.25); border: none; width: 32px; height: 32px; border-radius: 50%; color: #ffffff; font-size: 16px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10;">✕</button>
+      
+      <!-- Modal Başlık Alanı -->
+      <div style="background: linear-gradient(135deg, #163b2c 0%, #0d241b 100%); color: #ffffff; padding: 26px 22px 18px;">
+        <span style="background: rgba(255,255,255,0.12); color: #edf5f0; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 999px;">DİYETKALFA CANLI DESTEK & DEMO</span>
+        <h3 style="font-size: 21px; font-weight: 800; margin-top: 8px; color: #ffffff;">DiyetKalfa'yı Canlı Keşfedin</h3>
+        <p style="font-size: 13px; color: #c9dbd1; margin-top: 4px;">İhtiyacınıza uygun seçeneği belirleyin, uzman ekibimizle anında iletişime geçin.</p>
+      </div>
+
+      <!-- Tab Seçicisi -->
+      <div style="display: flex; border-bottom: 1.5px solid #e6ded1; background: #ffffff;">
+        <button type="button" id="tab-demo-expert" onclick="switchDemoTab('expert')" style="flex: 1; padding: 13px; background: #f4fbf7; border: none; font-size: 14px; font-weight: 800; color: #163b2c; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; border-bottom: 2.5px solid #163b2c;">
+          <span>🩺</span> <span>Uzmanım (Diyetisyen)</span>
+        </button>
+        <button type="button" id="tab-demo-client" onclick="switchDemoTab('client')" style="flex: 1; padding: 13px; background: transparent; border: none; font-size: 14px; font-weight: 800; color: #64748b; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; border-bottom: 2.5px solid transparent;">
+          <span>👥</span> <span>Danışanım (Bireysel)</span>
+        </button>
+      </div>
+
+      <!-- TAB 1: UZMANIM (DİYETİSYEN DEMO FORMU) -->
+      <div id="demo-content-expert" style="padding: 22px;">
+        <p style="font-size: 13px; color: #685951; margin-bottom: 16px; line-height: 1.45;">
+          Klinik koordinatörümüz 15 dakikalık canlı ekran paylaşımı ile DiyetKalfa'nın tüm yapay zeka araçlarını kliniğinize özel tanıtsın.
+        </p>
+        <form onsubmit="handleExpertDemoSubmit(event)">
+          <div style="margin-bottom: 12px;">
+            <label style="font-size: 12px; font-weight: 800; color: #170c07; display: block; margin-bottom: 4px;">Adınız Soyadınız *</label>
+            <input type="text" id="demo-expert-name" required placeholder="Uzm. Dyt. Ayşe Yılmaz" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 13px; font-family: inherit;">
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+            <div>
+              <label style="font-size: 12px; font-weight: 800; color: #170c07; display: block; margin-bottom: 4px;">WhatsApp Telefon *</label>
+              <input type="tel" id="demo-expert-phone" required placeholder="05XX XXX XX XX" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 13px; font-family: inherit;">
+            </div>
+            <div>
+              <label style="font-size: 12px; font-weight: 800; color: #170c07; display: block; margin-bottom: 4px;">Klinik Şehri</label>
+              <input type="text" id="demo-expert-city" placeholder="İstanbul, Ankara..." style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 13px; font-family: inherit;">
+            </div>
+          </div>
+          <div style="margin-bottom: 16px;">
+            <label style="font-size: 12px; font-weight: 800; color: #170c07; display: block; margin-bottom: 4px;">Tercih Edilen Demo Saati</label>
+            <select id="demo-expert-time" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 13px; font-family: inherit; background: #fff;">
+              <option value="Hemen / En Kısa Sürede">⚡ Hemen / En Kısa Sürede</option>
+              <option value="Bugün 14:00 - 16:00">Bugün 14:00 - 16:00</option>
+              <option value="Bugün 16:00 - 18:00">Bugün 16:00 - 18:00</option>
+              <option value="Yarın Sabah (10:00 - 12:00)">Yarın Sabah (10:00 - 12:00)</option>
+            </select>
+          </div>
+          <button type="submit" style="width: 100%; background: linear-gradient(135deg, #163b2c 0%, #0d241b 100%); color: #ffffff; border: none; padding: 13px; border-radius: 12px; font-weight: 800; font-size: 14px; cursor: pointer; box-shadow: 0 4px 15px rgba(22, 59, 44, 0.3);">
+            🚀 Canlı Diyetisyen Demosunu Planla
+          </button>
+        </form>
+      </div>
+
+      <!-- TAB 2: DANIŞANIM (YARATICI AKILLI KLİNİK EŞLEŞTİRME MOTORU) -->
+      <div id="demo-content-client" style="padding: 22px; display: none;">
+        <div style="background: #edf5f0; border: 1px solid #c8e0d1; border-radius: 14px; padding: 14px; margin-bottom: 16px;">
+          <div style="display: flex; align-items: center; gap: 8px; font-weight: 800; color: #163b2c; font-size: 13px;">
+            <span>🤝</span> <span>DiyetKalfa Akıllı Danışan Yönlendirme Ağı</span>
+          </div>
+          <p style="font-size: 12px; color: #64748b; margin-top: 4px; line-height: 1.45;">
+            DiyetKalfa altyapısıyla çalışan 1.200+ onaylı uzman diyetisyenimiz arasından hedefinize en uygun klinik uzmanıyla sizi ücretsiz eşleştiriyoruz.
+          </p>
+        </div>
+
+        <form onsubmit="handleClientMatchingSubmit(event)">
+          <div style="margin-bottom: 12px;">
+            <label style="font-size: 12px; font-weight: 800; color: #170c07; display: block; margin-bottom: 4px;">Beslenme & Sağlık Hedefiniz *</label>
+            <select id="client-match-goal" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 13px; font-family: inherit; background: #fff;">
+              <option value="Kilo Verme & Yağ Yakımı">⚖️ Kilo Verme & İnatçı Yağ Yakımı</option>
+              <option value="İnsülin Direnci & HOMA-IR Dengeleme">🩸 İnsülin Direnci / HOMA-IR / Şeker Dengesi</option>
+              <option value="PCOS & Kadın Hormonal Beslenmesi">🌸 PCOS & Hormonal Denge Protokolü</option>
+              <option value="Sporcu Beslenmesi & Kas Kazanımı">🏃 Sporcu Beslenmesi & Hipertrofi</option>
+              <option value="Gastrointestinal & Bağırsak Sağlığı">🥑 Şişkinlik, İBS & Eliminasyon Diyeti</option>
+            </select>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+            <div>
+              <label style="font-size: 12px; font-weight: 800; color: #170c07; display: block; margin-bottom: 4px;">Adınız Soyadınız *</label>
+              <input type="text" id="client-match-name" required placeholder="Adınız Soyadınız" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 13px; font-family: inherit;">
+            </div>
+            <div>
+              <label style="font-size: 12px; font-weight: 800; color: #170c07; display: block; margin-bottom: 4px;">WhatsApp Numaranız *</label>
+              <input type="tel" id="client-match-phone" required placeholder="05XX XXX XX XX" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 13px; font-family: inherit;">
+            </div>
+          </div>
+
+          <div style="margin-bottom: 16px;">
+            <label style="font-size: 12px; font-weight: 800; color: #170c07; display: block; margin-bottom: 4px;">Tercihiniz: Şehir veya Online Görüşme</label>
+            <input type="text" id="client-match-city" placeholder="Örn: Online Görüşme veya İstanbul/Kadıköy" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 13px; font-family: inherit;">
+          </div>
+
+          <button type="submit" style="width: 100%; background: linear-gradient(135deg, #b86b3b 0%, #874921 100%); color: #ffffff; border: none; padding: 13px; border-radius: 12px; font-weight: 800; font-size: 14px; cursor: pointer; box-shadow: 0 4px 15px rgba(184, 107, 59, 0.35);">
+            🔍 Bana En Uygun Uzman Diyetisyeni Bul & Eşleştir
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openDemoModal() {
+      var modal = document.getElementById('modal-demo');
+      if (modal) modal.style.display = 'flex';
+    }
+    function closeDemoModal() {
+      var modal = document.getElementById('modal-demo');
+      if (modal) modal.style.display = 'none';
+    }
+    function switchDemoTab(tab) {
+      var btnExpert = document.getElementById('tab-demo-expert');
+      var btnClient = document.getElementById('tab-demo-client');
+      var contentExpert = document.getElementById('demo-content-expert');
+      var contentClient = document.getElementById('demo-content-client');
+      if (!btnExpert || !btnClient) return;
+
+      if (tab === 'expert') {
+        btnExpert.style.background = '#f4fbf7';
+        btnExpert.style.color = '#163b2c';
+        btnExpert.style.borderBottom = '2.5px solid #163b2c';
+        btnClient.style.background = 'transparent';
+        btnClient.style.color = '#64748b';
+        btnClient.style.borderBottom = '2.5px solid transparent';
+        if (contentExpert) contentExpert.style.display = 'block';
+        if (contentClient) contentClient.style.display = 'none';
+      } else {
+        btnClient.style.background = '#fcf7f3';
+        btnClient.style.color = '#b86b3b';
+        btnClient.style.borderBottom = '2.5px solid #b86b3b';
+        btnExpert.style.background = 'transparent';
+        btnExpert.style.color = '#64748b';
+        btnExpert.style.borderBottom = '2.5px solid transparent';
+        if (contentClient) contentClient.style.display = 'block';
+        if (contentExpert) contentExpert.style.display = 'none';
+      }
+    }
+    function handleExpertDemoSubmit(e) {
+      e.preventDefault();
+      var name = document.getElementById('demo-expert-name').value;
+      var phone = document.getElementById('demo-expert-phone').value;
+      var city = document.getElementById('demo-expert-city').value || 'Belirtilmedi';
+      var time = document.getElementById('demo-expert-time').value;
+      var msg = 'Merhaba DiyetKalfa Ekibi, adım ' + name + '. Diyetisyen yazılımınızı kliniğimde kullanmak için canlı demo randevusu almak istiyorum. Telefon: ' + phone + ', Şehir: ' + city + ', Tercih Edilen Saat: ' + time;
+      window.open('https://wa.me/905300000000?text=' + encodeURIComponent(msg), '_blank');
+      closeDemoModal();
+      alert('Talebiniz başarıyla alındı! Klinik koordinatörümüz 15 dakika içinde WhatsApp üzerinden canlı demo bağlantısını paylaşacaktır.');
+    }
+    function handleClientMatchingSubmit(e) {
+      e.preventDefault();
+      var name = document.getElementById('client-match-name').value;
+      var phone = document.getElementById('client-match-phone').value;
+      var goal = document.getElementById('client-match-goal').value;
+      var city = document.getElementById('client-match-city').value || 'Online Görüşme';
+      var msg = 'Merhaba DiyetKalfa Danışan Ağı, adım ' + name + '. \'' + goal + '\' hedefim için ' + city + ' lokasyonunda/online bana en uygun DiyetKalfa lisanslı uzman diyetisyenle eşleşmek ve ücretsiz ön değerlendirme almak istiyorum. Tel: ' + phone;
+      window.open('https://wa.me/905300000000?text=' + encodeURIComponent(msg), '_blank');
+      closeDemoModal();
+      alert('Talebiniz DiyetKalfa Klinik Ağına iletildi! Yapay zeka eşleştirme algoritmamız vakanıza en uygun diyetisyen profilini WhatsApp hattınıza iletmektedir.');
+    }
+  </script>
 
 <!-- ========================================================================== -->
 <!-- DIYETKALFA - DOĞRUDAN KREDİ KARTI / BANKA KARTI SATIN ALMA & DENEME MODALI -->

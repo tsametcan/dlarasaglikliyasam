@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Fiyatlar & Paket Karşılaştırması | DiyetKalfa - Yeni Nesil Diyetisyen Yazılımı</title>
+  <meta name="description" content="DiyetKalfa lisans paketleri, yıllık ₺36.000 kampanyalı fiyatlandırma, 7 gün ücretsiz deneme ve detaylı özellik karşılaştırma tablosu.">
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --luxury-espresso: #1a100a;
+      --luxury-green: #163b2c;
+      --luxury-green-dark: #0d241b;
+      --earth-taba: #b86b3b;
+      --earth-taba-dark: #94593f;
+      --cream-beige: #f9f6f0;
+      --cream-beige-dark: #f0e9df;
+      --cream-beige-border: #e6ded1;
+      --text-main: #170c07;
+      --text-muted: #685951;
+      --gold-accent: #d4af37;
+      --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-display: 'Playfair Display', Georgia, serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-main);
+      background-color: var(--cream-beige);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* HEADER */
+    .app-header {
+      background: #ffffff;
+      border-bottom: 1.5px solid var(--cream-beige-border);
+      box-shadow: 0 4px 20px rgba(23, 12, 7, 0.04);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .logo-area img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      transition: transform 0.25s ease;
+    }
+    .logo-area img:hover { transform: scale(1.04); }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 14.5px;
+      font-weight: 700;
+    }
+    .header-nav a {
+      color: #334155;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .header-nav a:hover, .header-nav a.active {
+      color: var(--luxury-green);
+    }
+    .header-nav a.active {
+      border-bottom: 2px solid var(--earth-taba);
+      padding-bottom: 4px;
+    }
+
+    .btn-header-primary {
+      background: linear-gradient(135deg, var(--luxury-green) 0%, var(--luxury-green-dark) 100%);
+      color: #ffffff;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 13.5px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(22, 59, 44, 0.35);
+      transition: all 0.25s;
+    }
+
+    /* PRICING HERO */
+    .pricing-hero {
+      background: radial-gradient(circle at 70% 30%, #2b1810 0%, #1a100a 60%, #120b07 100%);
+      color: #ffffff;
+      padding: 75px 24px 85px;
+      text-align: center;
+      position: relative;
+      border-bottom: 2px solid var(--earth-taba-dark);
+    }
+    .pricing-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #fcf9f5;
+    }
+    .pricing-hero h1 span {
+      background: linear-gradient(135deg, #f7e7ce 0%, #d4af37 50%, #f7e7ce 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .pricing-hero p {
+      font-size: 17px;
+      color: #d8c8b4;
+      max-width: 720px;
+      margin: 0 auto 35px;
+      line-height: 1.6;
+    }
+
+    /* BILLING CYCLE SELECTOR */
+    .cycle-selector-wrap {
+      display: inline-flex;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 6px;
+      border-radius: 999px;
+      border: 1.5px solid rgba(212, 175, 55, 0.4);
+      backdrop-filter: blur(10px);
+      margin-bottom: 12px;
+    }
+    .cycle-pill {
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 800;
+      color: #e2d7cd;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .cycle-pill.active {
+      background: linear-gradient(135deg, var(--gold-accent) 0%, #b8972e 100%);
+      color: #170c07;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+    }
+
+    /* PRICING CARDS GRID */
+    .pricing-grid-section {
+      max-width: 1280px;
+      margin: -45px auto 80px;
+      padding: 0 24px;
+      position: relative;
+      z-index: 10;
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      align-items: stretch;
+    }
+    .price-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 34px 26px;
+      border: 1.5px solid var(--cream-beige-border);
+      box-shadow: 0 12px 35px rgba(23, 12, 7, 0.06);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .price-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(23, 12, 7, 0.12);
+    }
+    .price-card.featured {
+      border: 2.5px solid var(--luxury-green);
+      box-shadow: 0 16px 45px rgba(22, 59, 44, 0.15);
+      background: #fafdfb;
+    }
+    .featured-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--luxury-green) 0%, var(--luxury-green-dark) 100%);
+      color: #ffffff;
+      font-size: 11.5px;
+      font-weight: 900;
+      padding: 4px 16px;
+      border-radius: 999px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow: 0 4px 12px rgba(22, 59, 44, 0.3);
+    }
+
+    .card-tier-name {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+    .card-tier-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      min-height: 38px;
+    }
+    .price-wrap {
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--cream-beige-dark);
+    }
+    .orig-price {
+      font-size: 15px;
+      color: #94a3b8;
+      text-decoration: line-through;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .main-price {
+      font-size: 38px;
+      font-weight: 900;
+      color: var(--luxury-green);
+      line-height: 1;
+    }
+    .price-period {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+    .billed-text {
+      font-size: 12px;
+      color: #64748b;
+      margin-top: 6px;
+    }
+
+    .features-list {
+      list-style: none;
+      margin-bottom: 28px;
+      flex-grow: 1;
+    }
+    .features-list li {
+      font-size: 13.5px;
+      color: var(--text-main);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-weight: 600;
+    }
+    .features-list li span.check {
+      color: var(--luxury-green);
+      font-weight: 900;
+      font-size: 16px;
+    }
+
+    .btn-buy-card {
+      width: 100%;
+      padding: 13px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 14.5px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.25s;
+    }
+    .btn-buy-green {
+      background: linear-gradient(135deg, var(--luxury-green) 0%, var(--luxury-green-dark) 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(22, 59, 44, 0.3);
+    }
+    .btn-buy-green:hover {
+      box-shadow: 0 6px 20px rgba(22, 59, 44, 0.45);
+      transform: translateY(-2px);
+    }
+    .btn-buy-gold {
+      background: linear-gradient(135deg, var(--gold-accent) 0%, #b8972e 100%);
+      color: #170c07;
+      box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35);
+    }
+    .btn-buy-gold:hover {
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.45);
+      transform: translateY(-2px);
+    }
+    .btn-trial-sub {
+      width: 100%;
+      text-align: center;
+      margin-top: 10px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--earth-taba-dark);
+      text-decoration: none;
+      display: block;
+    }
+    .btn-trial-sub:hover { text-decoration: underline; }
+
+    /* ============================================================== */
+    /* DETAYLI ÖZELLİK KARŞILAŞTIRMA TABLOSU (MANGOLIF GÖRSELİ ŞABLONU) */
+    /* ============================================================== */
+    .comparison-section {
+      max-width: 1240px;
+      margin: 0 auto 90px;
+      padding: 0 24px;
+    }
+    .comp-header {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+    .comp-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3.8vw, 38px);
+      color: var(--text-main);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .comp-table-card {
+      background: #ffffff;
+      border-radius: 24px;
+      border: 1.5px solid var(--cream-beige-border);
+      box-shadow: 0 16px 45px rgba(23, 12, 7, 0.05);
+      overflow-x: auto;
+    }
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 820px;
+    }
+    .comp-table th, .comp-table td {
+      padding: 16px 20px;
+      text-align: center;
+      border-bottom: 1px solid var(--cream-beige-dark);
+      font-size: 14px;
+    }
+    .comp-table th:first-child, .comp-table td:first-child {
+      text-align: left;
+      font-weight: 700;
+      color: var(--text-main);
+      width: 38%;
+    }
+    .comp-table th {
+      background: #fdfaf6;
+      font-weight: 800;
+      color: var(--text-main);
+      padding: 22px 20px;
+    }
+    .comp-table th .th-title {
+      font-size: 16.5px;
+      font-weight: 900;
+      color: var(--text-main);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .comp-table th.th-featured .th-title {
+      color: var(--luxury-green);
+    }
+    .comp-table th .th-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .comp-table tr.category-row td {
+      background: #edf5f0;
+      color: var(--luxury-green);
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      padding: 12px 20px;
+    }
+    .comp-table tr.category-row-brown td {
+      background: #fdf5ec;
+      color: var(--earth-taba-dark);
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      padding: 12px 20px;
+    }
+    .icon-check {
+      color: #15803d;
+      font-weight: 900;
+      font-size: 18px;
+    }
+    .icon-dash {
+      color: #94a3b8;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    /* FOOTER */
+    footer.app-footer {
+      background: #120b07;
+      color: #dfcfc3;
+      padding: 60px 24px 30px;
+      border-top: 1.5px solid #2a1b12;
+      font-size: 13.5px;
+    }
+    .footer-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-col h4 {
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a {
+      color: #b5a498;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: #ffffff; }
+
+    /* CHECKOUT MODAL */
+    .modal-backdrop {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(18, 11, 7, 0.78);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10005;
+      padding: 20px;
+    }
+    .modal-box {
+      background: #ffffff;
+      border-radius: 24px;
+      max-width: 620px;
+      width: 100%;
+      max-height: 92vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+      border: 1.5px solid var(--cream-beige-border);
+      position: relative;
+    }
+
+    @media (max-width: 900px) {
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 680px) {
+      .header-nav { display: none; }
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. HEADER -->
+  <header class="app-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo-area">
+        <img src="logo.png" alt="DiyetKalfa Logo">
+      </a>
+
+      <nav class="header-nav">
+        <a href="index.html">Ana Sayfa</a>
+        <a href="ozellikler.html">Özellikler</a>
+        <a href="fiyatlar.html" class="active">Fiyatlar</a>
+        <a href="index.html#section-faq">SSS</a>
+        <a href="index.html#section-contact">İletişim</a>
+      </nav>
+
+      <div class="header-actions" style="display: flex; gap: 10px;">
+        <a href="panel.html" style="background: #faf8f4; color: #163b2c; border: 1.5px solid #2e5e4b; padding: 8px 16px; border-radius: 999px; font-weight: 800; font-size: 13px; text-decoration: none;">
+          🏥 Klinik Paneli
+        </a>
+        <a href="kayit.html" class="btn-header-primary">
+          <span>7 Gün Ücretsiz Başla</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. PRICING HERO -->
+  <section class="pricing-hero">
+    <div style="display: inline-block; background: rgba(212, 175, 55, 0.15); border: 1px solid rgba(212, 175, 55, 0.4); color: #f7e7ce; padding: 6px 18px; border-radius: 999px; font-size: 12.5px; font-weight: 800; margin-bottom: 20px; text-transform: uppercase;">
+      🔥 2026 RESMİ KAMPANYA • YILLIK %40 TASARRUF
+    </div>
+
+    <h1>Şeffaf, Esnek ve <span>Klinik Odaklı</span> Yatırım</h1>
+    <p>
+      Gizli ücret veya danışan başı komisyon yok. Kliniğinize en uygun lisansı seçin, 256-Bit SSL güvencesiyle anında kredi kartınızla başlayın.
+    </p>
+
+    <!-- Fatura Döngüsü Seçicisi -->
+    <div class="cycle-selector-wrap">
+      <button type="button" class="cycle-pill" id="pill-monthly" onclick="selectCycle('1')">Aylık</button>
+      <button type="button" class="cycle-pill" id="pill-quarterly" onclick="selectCycle('3')">3 Aylık (%15 İndirim)</button>
+      <button type="button" class="cycle-pill" id="pill-semi" onclick="selectCycle('6')">6 Aylık (%25 İndirim)</button>
+      <button type="button" class="cycle-pill active" id="pill-annual" onclick="selectCycle('12')">12 Ay Yıllık (%40 Kampanyalı)</button>
+    </div>
+    <div id="cycle-subtext" style="font-size: 13px; color: #f7e7ce; font-weight: 700;">
+      ✨ Yıllık lisanslarda 50.000 TL yerine kampanyalı 36.000 TL (Ayda sadece 3.000 TL)
+    </div>
+  </section>
+
+  <!-- 3. PRICING CARDS (4 PAKET) -->
+  <section class="pricing-grid-section">
+    <div class="pricing-grid">
+      <!-- 1. GİRİŞ PAKETİ (STARTER) -->
+      <div class="price-card">
+        <h3 class="card-tier-name">Giriş Paketi</h3>
+        <p class="card-tier-desc">Yeni mezun ve kliniğini yeni açan diyetisyenler için ideal başlangıç.</p>
+        <div class="price-wrap">
+          <span class="orig-price" id="orig-starter">2.500 TL</span>
+          <div>
+            <span class="main-price" id="price-starter">1.500</span>
+            <span class="price-period">TL / ay</span>
+          </div>
+          <div class="billed-text" id="billed-starter">Yıllık 18.000 TL faturalandırılır</div>
+        </div>
+        <ul class="features-list">
+          <li><span class="check">✓</span> <strong>10 Danışana Kadar</strong> Aktif Takip</li>
+          <li><span class="check">✓</span> DSÖ 2024 Diyet Planlayıcı</li>
+          <li><span class="check">✓</span> Temel Türkomp Besin Değişimi</li>
+          <li><span class="check">✓</span> Dijital Onam & Anamnez</li>
+          <li><span class="check">✓</span> WhatsApp ile Liste Paylaşımı</li>
+        </ul>
+        <button type="button" onclick="openCheckoutModal('Giriş Paketi')" class="btn-buy-card btn-buy-green">
+          <span>Satın Al / Başla</span>
+          <span>→</span>
+        </button>
+        <a href="kayit.html" class="btn-trial-sub">veya 7 Gün Ücretsiz Dene</a>
+      </div>
+
+      <!-- 2. TEMEL PAKET (CORE) -->
+      <div class="price-card">
+        <h3 class="card-tier-name">Temel Paket</h3>
+        <p class="card-tier-desc">Klinik hasta hacmini büyüten aktif diyetisyenler için sınırsız güç.</p>
+        <div class="price-wrap">
+          <span class="orig-price" id="orig-core">3.200 TL</span>
+          <div>
+            <span class="main-price" id="price-core">2.200</span>
+            <span class="price-period">TL / ay</span>
+          </div>
+          <div class="billed-text" id="billed-core">Yıllık 26.400 TL faturalandırılır</div>
+        </div>
+        <ul class="features-list">
+          <li><span class="check">✓</span> <strong>Sınırsız Danışan</strong> ve Dosya</li>
+          <li><span class="check">✓</span> DSÖ 2024 & Sonsuz Tarif Motoru</li>
+          <li><span class="check">✓</span> Biyokimya & HOMA-IR Labı</li>
+          <li><span class="check">✓</span> InBody & Tanita Grafikleri</li>
+          <li><span class="check">✓</span> Otomatik Pazar Listesi</li>
+        </ul>
+        <button type="button" onclick="openCheckoutModal('Temel Paket')" class="btn-buy-card btn-buy-green">
+          <span>Satın Al / Başla</span>
+          <span>→</span>
+        </button>
+        <a href="kayit.html" class="btn-trial-sub">veya 7 Gün Ücretsiz Dene</a>
+      </div>
+
+      <!-- 3. PROFESYONEL PAKET (PRO) - EN ÇOK TERCİH EDİLEN -->
+      <div class="price-card featured">
+        <div class="featured-badge">⭐ EN ÇOK TERCİH EDİLEN</div>
+        <h3 class="card-tier-name" style="color: var(--luxury-green);">Profesyonel Paket</h3>
+        <p class="card-tier-desc">Sınırsız Danışan + Özel Web Sitesi & SEO + Sosyal Medya AI.</p>
+        <div class="price-wrap">
+          <span class="orig-price" id="orig-pro">4.166 TL</span>
+          <div>
+            <span class="main-price" id="price-pro">3.000</span>
+            <span class="price-period">TL / ay</span>
+          </div>
+          <div class="billed-text" id="billed-pro" style="color: var(--luxury-green); font-weight: 800;">
+            Kampanyalı 36.000 TL / yıl (50.000 TL yerine)
+          </div>
+        </div>
+        <ul class="features-list">
+          <li><span class="check">✓</span> <strong>Sınırsız Danışan</strong> + Özel Web Sitesi</li>
+          <li><span class="check">✓</span> <strong>Google SEO & BioLink Vitrini</strong></li>
+          <li><span class="check">✓</span> Viral Reels & Video İçerik AI</li>
+          <li><span class="check">✓</span> White-Label Kendi Logonuz & PDF</li>
+          <li><span class="check">✓</span> Danışan Kasası & Finans Takibi</li>
+          <li><span class="check">✓</span> Akıllı Danışan Eşleştirme Ağı</li>
+        </ul>
+        <button type="button" onclick="openCheckoutModal('Profesyonel Paket')" class="btn-buy-card btn-buy-gold">
+          <span>💳 Kampanyalı Satın Al</span>
+          <span>→</span>
+        </button>
+        <a href="kayit.html" class="btn-trial-sub" style="font-weight: 800; color: var(--luxury-green);">
+          ✨ Kredi Kartsız 7 Gün Dene
+        </a>
+      </div>
+
+      <!-- 4. SINIRSIZ PAKET (ENTERPRISE) -->
+      <div class="price-card">
+        <h3 class="card-tier-name">Sınırsız Paket</h3>
+        <p class="card-tier-desc">Büyük tıp merkezleri, poliklinikler ve çoklu diyetisyen klinikleri.</p>
+        <div class="price-wrap">
+          <span class="orig-price" id="orig-enterprise">6.500 TL</span>
+          <div>
+            <span class="main-price" id="price-enterprise">4.500</span>
+            <span class="price-period">TL / ay</span>
+          </div>
+          <div class="billed-text" id="billed-enterprise">Yıllık 54.000 TL faturalandırılır</div>
+        </div>
+        <ul class="features-list">
+          <li><span class="check">✓</span> <strong>Sınırsız Danışan + Çoklu Diyetisyen</strong></li>
+          <li><span class="check">✓</span> Sınırsız Randevu & Google Takvim</li>
+          <li><span class="check">✓</span> Özel Alan Adı (.com) & Barındırma</li>
+          <li><span class="check">✓</span> Öncelikli VIP WhatsApp Destek</li>
+          <li><span class="check">✓</span> Özel AI Model Eğitimi & Şablonlar</li>
+        </ul>
+        <button type="button" onclick="openCheckoutModal('Sınırsız Paket')" class="btn-buy-card btn-buy-green">
+          <span>Satın Al / Başla</span>
+          <span>→</span>
+        </button>
+        <a href="kayit.html" class="btn-trial-sub">veya 7 Gün Ücretsiz Dene</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================== -->
+  <!-- 4. DETAYLI ÖZELLİK KARŞILAŞTIRMA TABLOSU (MANGOLIF GÖRSELİ ŞABLONU) -->
+  <!-- ============================================================== -->
+  <section class="comparison-section">
+    <div class="comp-header">
+      <span style="font-size: 12px; font-weight: 900; color: var(--earth-taba); background: #fdf5ec; border: 1px solid #f2decb; padding: 4px 14px; border-radius: 999px; text-transform: uppercase;">
+        TÜM ÖZELLİKLERİ DETAYLICA KARŞILAŞTIRIN
+      </span>
+      <h2>Paket Karşılaştırma Matrisi</h2>
+      <p style="color: var(--text-muted); font-size: 15.5px; max-width: 680px; margin: 0 auto;">
+        Kliniğinizin ihtiyaç duyduğu araçları tek tek inceleyin; ihtiyacınıza en uygun seviyeyi belirleyin.
+      </p>
+    </div>
+
+    <div class="comp-table-card">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Özellikler & Modüller</th>
+            <th>
+              <span class="th-title">Giriş Paketi</span>
+              <span class="th-sub">10 danışana kadar</span>
+            </th>
+            <th>
+              <span class="th-title">Temel Paket</span>
+              <span class="th-sub">Sınırsız Danışan</span>
+            </th>
+            <th class="th-featured" style="background: #edf5f0; border-top: 3px solid var(--luxury-green);">
+              <span class="th-title">Profesyonel Paket</span>
+              <span class="th-sub">Sınırsız Danışan + Web & SEO</span>
+            </th>
+            <th>
+              <span class="th-title">Sınırsız Paket</span>
+              <span class="th-sub">Sınırsız Danışan + VIP Randevu</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- TEMEL KLİNİK ÖZELLİKLERİ -->
+          <tr class="category-row">
+            <td colspan="5">TEMEL KLİNİK ÖZELLİKLERİ & DANIŞAN YÖNETİMİ</td>
+          </tr>
+          <tr>
+            <td>Dijital onam & anamnez formunu gönderme</td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Biolink vitrin sayfanız</td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Ölçüm & gelişim grafikleri (Kilo, çevre vb.)</td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Tartı, InBody, Tanita ölçümlerini okuma</td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+          </tr>
+          <tr>
+            <td>DSÖ 2024 ve TÜBER kişiye özel reçete motoru</td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Sonsuz ve tekrarsız alternatif yemek değişimi</td>
+            <td><span class="icon-dash">—</span></td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Otomatik manav & pazar alışveriş listesi</td>
+            <td><span class="icon-dash">—</span></td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+          </tr>
+
+          <!-- SAĞLIK BAKANLIĞI UYUMU (MANGOLIF GÖRSELİ ŞABLONU) -->
+          <tr class="category-row-brown">
+            <td colspan="5">SAĞLIK BAKANLIĞI UYUMU & RESMİ MEVZUAT</td>
+          </tr>
+          <tr>
+            <td>Sağlık Bakanlığı MBYS onaylı yazılım mimarisi</td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+          </tr>
+          <tr>
+            <td>e-Nabız entegrasyon altyapısı</td>
+            <td><span class="icon-dash">—</span></td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+          </tr>
+          <tr>
+            <td>e-Reçete entegrasyonu</td>
+            <td><span class="icon-dash">—</span></td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+          </tr>
+          <tr>
+            <td>e-Rapor ve klinik epikriz entegrasyonu</td>
+            <td><span class="icon-dash">—</span></td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+          </tr>
+          <tr>
+            <td>256-Bit SSL & KVKK Sağlık Verisi Koruması</td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+          </tr>
+
+          <!-- KLİNİK BÜYÜTME & İLERİ DÜZEY YAPAY ZEKA -->
+          <tr class="category-row">
+            <td colspan="5">KLİNİK BÜYÜTME & İLERİ DÜZEY YAPAY ZEKA</td>
+          </tr>
+          <tr>
+            <td>Biyokimya & HOMA-IR İnsülin Direnci Yorumlama</td>
+            <td><span class="icon-dash">—</span></td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Viral Reels & Sosyal Medya AI Video İçerik Stüdyosu</td>
+            <td><span class="icon-dash">—</span></td>
+            <td><span class="icon-dash">—</span></td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Kişisel Klinik Web Sitesi & Google SEO Entegrasyonu</td>
+            <td><span class="icon-dash">—</span></td>
+            <td><span class="icon-dash">—</span></td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+          </tr>
+          <tr>
+            <td>White-Label (Kendi Logonuz & Kaşenizle Lüks PDF)</td>
+            <td><span class="icon-dash">—</span></td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Akıllı Danışan Eşleştirme Ağından Hasta Yönlendirme</td>
+            <td><span class="icon-dash">—</span></td>
+            <td><span class="icon-dash">—</span></td>
+            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Öncelikli WhatsApp VIP Klinik Destek Hattı</td>
+            <td>Standart E-Posta</td>
+            <td>WhatsApp Destek</td>
+            <td>Öncelikli VIP Hat</td>
+            <td>7/24 Birebir Danışman</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 5. FOOTER -->
+  <footer class="app-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <img src="logo.png" alt="DiyetKalfa Logo" style="height: 44px; margin-bottom: 16px;">
+        <p style="color: #a39285; line-height: 1.6; margin-bottom: 18px;">
+          DiyetKalfa™ ile kliniğinizi saniyeler içinde yeni nesil yapay zeka işletim sistemine kavuşturun. 14 gün koşulsuz iade garantisi kapsamındadır.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Hızlı Erişim</h4>
+        <ul>
+          <li><a href="ozellikler.html">✨ Özellikler</a></li>
+          <li><a href="fiyatlar.html">💳 Fiyatlandırma</a></li>
+          <li><a href="index.html#section-faq">❓ SSS</a></li>
+          <li><a href="panel.html">🏥 Klinik Paneli</a></li>
+          <li><a href="kayit.html">💎 7 Gün Ücretsiz Başla</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Güvenceler</h4>
+        <ul>
+          <li><span style="color:#4ade80;">✓ 14 Gün İade Garantisi</span></li>
+          <li><span style="color:#4ade80;">✓ 256-Bit SSL Koruması</span></li>
+          <li><span style="color:#4ade80;">✓ KVKK Çift Katman</span></li>
+          <li><span style="color:#4ade80;">✓ Gizli Ücret Yok</span></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>İletişim</h4>
+        <p style="color: #a39285; margin-bottom: 6px;">WhatsApp Lisans & Destek:</p>
+        <p style="color: #4ade80; font-weight: 800; font-size: 15px; margin-bottom: 12px;">+90 (530) 000 00 00</p>
+        <p style="color: #a39285; font-size: 12px;">Maslak Mah. Büyükdere Cad. Sarıyer / İstanbul</p>
+      </div>
+    </div>
+    <div style="text-align: center; color: #78665a; font-size: 12px; padding-top: 20px; border-top: 1px solid #22140c;">
+      © 2026 DiyetKalfa™ Beslenme Teknolojileri A.Ş. Tüm hakları saklıdır.
+    </div>
+  </footer>
+
+  <!-- SATIN ALMA / ÖDEME MODALI -->
+  <div id="modal-checkout" class="modal-backdrop">
+    <div class="modal-box" style="padding: 30px;">
+      <button type="button" style="position: absolute; top: 16px; right: 18px; background: none; border: none; font-size: 20px; cursor: pointer;" onclick="closeCheckoutModal()">✕</button>
+      
+      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+        <span style="font-size: 24px;">💳</span>
+        <div>
+          <h3 id="checkout-title" style="font-size: 20px; font-weight: 800; color: var(--text-main);">DiyetKalfa Lisans Satın Alma</h3>
+          <div id="checkout-subtitle" style="font-size: 12.5px; color: var(--luxury-green); font-weight: 700;">12 Ay Yıllık Lisans • %40 Kampanyalı</div>
+        </div>
+      </div>
+
+      <div style="background: #edf5f0; border: 1.5px solid #c8e0d1; border-radius: 14px; padding: 14px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <div style="font-size: 12px; color: var(--text-muted);">Ödenecek Toplam Tutar:</div>
+          <div id="checkout-amount" style="font-size: 24px; font-weight: 900; color: var(--luxury-green);">36.000 TL</div>
+        </div>
+        <span style="background: #2e5e4b; color: #edf5f0; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 999px;">✓ 256-Bit SSL Güvenli</span>
+      </div>
+
+      <form onsubmit="handlePaymentSubmit(event)">
+        <div style="margin-bottom: 12px;">
+          <label style="font-size: 11.5px; font-weight: 800; color: #475569; display: block; margin-bottom: 4px;">Kart Sahibi Ad Soyad</label>
+          <input type="text" required placeholder="Adınız Soyadınız" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 13.5px; font-family: inherit;">
+        </div>
+        <div style="margin-bottom: 12px;">
+          <label style="font-size: 11.5px; font-weight: 800; color: #475569; display: block; margin-bottom: 4px;">Kart Numarası</label>
+          <input type="text" required maxlength="19" placeholder="0000 0000 0000 0000" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 13.5px; font-family: inherit;">
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px;">
+          <div>
+            <label style="font-size: 11.5px; font-weight: 800; color: #475569; display: block; margin-bottom: 4px;">Son Kullanma (AA/YY)</label>
+            <input type="text" required maxlength="5" placeholder="12/28" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 13.5px; font-family: inherit;">
+          </div>
+          <div>
+            <label style="font-size: 11.5px; font-weight: 800; color: #475569; display: block; margin-bottom: 4px;">Güvenlik Kodu (CVC)</label>
+            <input type="text" required maxlength="3" placeholder="123" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 13.5px; font-family: inherit;">
+          </div>
+        </div>
+
+        <button type="submit" style="width: 100%; background: linear-gradient(135deg, var(--luxury-green) 0%, var(--luxury-green-dark) 100%); color: #ffffff; border: none; padding: 14px; border-radius: 12px; font-weight: 900; font-size: 15px; cursor: pointer; box-shadow: 0 4px 15px rgba(22, 59, 44, 0.35);">
+          🔒 Güvenli Ödemeyi Tamamla & Lisansı Başlat
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    let activeCycle = '12';
+    const planPrices = {
+      '1': {
+        starter: { orig: '2.500 TL', price: '2.500', billed: 'Aylık 2.500 TL faturalandırılır', total: '2.500 TL' },
+        core: { orig: '3.500 TL', price: '3.500', billed: 'Aylık 3.500 TL faturalandırılır', total: '3.500 TL' },
+        pro: { orig: '5.000 TL', price: '4.800', billed: 'Aylık 4.800 TL faturalandırılır', total: '4.800 TL' },
+        enterprise: { orig: '7.500 TL', price: '7.500', billed: 'Aylık 7.500 TL faturalandırılır', total: '7.500 TL' },
+        subtext: 'Aylık taahhütsüz faturalandırma. İstediğiniz an iptal edebilirsiniz.'
+      },
+      '3': {
+        starter: { orig: '2.500 TL', price: '2.125', billed: '3 Aylık 6.375 TL faturalandırılır', total: '6.375 TL' },
+        core: { orig: '3.500 TL', price: '2.975', billed: '3 Aylık 8.925 TL faturalandırılır', total: '8.925 TL' },
+        pro: { orig: '5.000 TL', price: '4.080', billed: '3 Aylık 12.240 TL faturalandırılır', total: '12.240 TL' },
+        enterprise: { orig: '7.500 TL', price: '6.375', billed: '3 Aylık 19.125 TL faturalandırılır', total: '19.125 TL' },
+        subtext: '✨ 3 Aylık ödemelerde anında %15 indirim uygulanır.'
+      },
+      '6': {
+        starter: { orig: '2.500 TL', price: '1.875', billed: '6 Aylık 11.250 TL faturalandırılır', total: '11.250 TL' },
+        core: { orig: '3.500 TL', price: '2.625', billed: '6 Aylık 15.750 TL faturalandırılır', total: '15.750 TL' },
+        pro: { orig: '5.000 TL', price: '3.600', billed: '6 Aylık 21.600 TL faturalandırılır', total: '21.600 TL' },
+        enterprise: { orig: '7.500 TL', price: '5.625', billed: '6 Aylık 33.750 TL faturalandırılır', total: '33.750 TL' },
+        subtext: '✨ 6 Aylık ödemelerde anında %25 tasarruf sağlayın.'
+      },
+      '12': {
+        starter: { orig: '2.500 TL', price: '1.500', billed: 'Yıllık 18.000 TL faturalandırılır', total: '18.000 TL' },
+        core: { orig: '3.500 TL', price: '2.200', billed: 'Yıllık 26.400 TL faturalandırılır', total: '26.400 TL' },
+        pro: { orig: '4.166 TL', price: '3.000', billed: 'Kampanyalı 36.000 TL / yıl (50.000 TL yerine)', total: '36.000 TL' },
+        enterprise: { orig: '7.500 TL', price: '4.500', billed: 'Yıllık 54.000 TL faturalandırılır', total: '54.000 TL' },
+        subtext: '✨ Yıllık lisanslarda 50.000 TL yerine kampanyalı 36.000 TL (Ayda sadece 3.000 TL)'
+      }
+    };
+
+    function selectCycle(cycle) {
+      activeCycle = cycle;
+      document.querySelectorAll('.cycle-pill').forEach(b => b.classList.remove('active'));
+      if (cycle === '1') document.getElementById('pill-monthly').classList.add('active');
+      if (cycle === '3') document.getElementById('pill-quarterly').classList.add('active');
+      if (cycle === '6') document.getElementById('pill-semi').classList.add('active');
+      if (cycle === '12') document.getElementById('pill-annual').classList.add('active');
+
+      const data = planPrices[cycle];
+      document.getElementById('cycle-subtext').innerText = data.subtext;
+
+      // Starter
+      document.getElementById('orig-starter').innerText = data.starter.orig;
+      document.getElementById('price-starter').innerText = data.starter.price;
+      document.getElementById('billed-starter').innerText = data.starter.billed;
+
+      // Core
+      document.getElementById('orig-core').innerText = data.core.orig;
+      document.getElementById('price-core').innerText = data.core.price;
+      document.getElementById('billed-core').innerText = data.core.billed;
+
+      // Pro
+      document.getElementById('orig-pro').innerText = data.pro.orig;
+      document.getElementById('price-pro').innerText = data.pro.price;
+      document.getElementById('billed-pro').innerText = data.pro.billed;
+
+      // Enterprise
+      document.getElementById('orig-enterprise').innerText = data.enterprise.orig;
+      document.getElementById('price-enterprise').innerText = data.enterprise.price;
+      document.getElementById('billed-enterprise').innerText = data.enterprise.billed;
+    }
+
+    let chosenPlan = 'Profesyonel Paket';
+    function openCheckoutModal(planName) {
+      chosenPlan = planName;
+      const data = planPrices[activeCycle];
+      let amount = '36.000 TL';
+      if (planName.includes('Giriş')) amount = data.starter.total;
+      else if (planName.includes('Temel')) amount = data.core.total;
+      else if (planName.includes('Profesyonel')) amount = data.pro.total;
+      else if (planName.includes('Sınırsız')) amount = data.enterprise.total;
+
+      document.getElementById('checkout-title').innerText = `${planName} Satın Al`;
+      document.getElementById('checkout-subtitle').innerText = `${activeCycle} Ay Döngüsü • Güvenli 256-Bit SSL`;
+      document.getElementById('checkout-amount').innerText = amount;
+      document.getElementById('modal-checkout').style.display = 'flex';
+    }
+
+    function closeCheckoutModal() {
+      document.getElementById('modal-checkout').style.display = 'none';
+    }
+
+    function handlePaymentSubmit(e) {
+      e.preventDefault();
+      alert('Tebrikler! Lisans ödemeniz başarıyla alındı. Klinik panelinize aktarılıyorsunuz...');
+      localStorage.setItem('diyetkalfa_licensed', 'true');
+      localStorage.setItem('diyetkalfa_tier', chosenPlan);
+      window.location.href = 'panel.html';
+    }
+
+    window.addEventListener('click', function(e) {
+      const modal = document.getElementById('modal-checkout');
+      if (e.target === modal) closeCheckoutModal();
+    });
+  </script>
+</body>
+</html>

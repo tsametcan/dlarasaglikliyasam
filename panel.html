@@ -860,27 +860,29 @@ body:not(.app-locked) .header-landing-actions {
       border-radius: var(--radius-sm);
     }
 
-        /* Mini Değiştir Butonu & Toast Bildirimi */
+        /* Lüks Mini Değiştir Butonu & Toast Bildirimi */
     .btn-swap-mini {
-      background: var(--dusty-pink-light);
-      color: var(--dusty-pink);
-      border: 1px solid var(--dusty-pink-border);
-      padding: 3px 8px;
-      border-radius: var(--radius-sm);
-      font-size: 11px;
-      font-weight: 700;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 3px;
-      transition: all 0.2s ease;
-      white-space: nowrap;
+      background: #edf5f0 !important;
+      color: #163b2c !important;
+      border: 1.5px solid #2e5e4b !important;
+      padding: 4px 12px !important;
+      border-radius: 999px !important;
+      font-size: 11px !important;
+      font-weight: 800 !important;
+      cursor: pointer !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 5px !important;
+      transition: all 0.2s ease !important;
+      white-space: nowrap !important;
+      box-shadow: 0 2px 6px rgba(22, 59, 44, 0.12) !important;
     }
     .btn-swap-mini:hover {
-      background: var(--dusty-pink);
-      color: #ffffff;
-      transform: translateY(-1px);
-      box-shadow: 0 2px 5px rgba(190, 91, 112, 0.25);
+      background: #163b2c !important;
+      color: #ffffff !important;
+      border-color: #163b2c !important;
+      transform: translateY(-1.5px) !important;
+      box-shadow: 0 4px 12px rgba(22, 59, 44, 0.28) !important;
     }
     .app-toast {
       position: fixed;
@@ -1470,26 +1472,26 @@ body:not(.app-locked) .header-landing-actions {
     }
 
     .btn-swap-mini {
-      background: #ffffff;
-      color: var(--dusty-pink);
-      border: 1px solid var(--dusty-pink-border);
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 11px;
-      font-weight: 800;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      background: #edf5f0 !important;
+      color: #163b2c !important;
+      border: 1.5px solid #2e5e4b !important;
+      padding: 4px 12px !important;
+      border-radius: 999px !important;
+      font-size: 11px !important;
+      font-weight: 800 !important;
+      cursor: pointer !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 5px !important;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      box-shadow: 0 2px 6px rgba(22, 59, 44, 0.12) !important;
     }
     .btn-swap-mini:hover {
-      background: var(--dusty-pink);
-      color: #ffffff;
-      border-color: var(--dusty-pink);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 10px rgba(190, 91, 112, 0.25);
+      background: #163b2c !important;
+      color: #ffffff !important;
+      border-color: #163b2c !important;
+      transform: translateY(-1.5px) !important;
+      box-shadow: 0 4px 12px rgba(22, 59, 44, 0.28) !important;
     }
 
     /* İnteraktif Su Takip Çubuğu */
@@ -5278,7 +5280,6 @@ body:not(.app-locked) .header-landing-actions {
           combined = combined.concat(originalPool);
         }
         if (extraPools[category] && Array.isArray(extraPools[category])) {
-          // avoid duplicates by title in base array
           extraPools[category].forEach(function(item) {
             if (!combined.some(function(c) { return c.title === item.title; })) {
               combined.push(item);
@@ -5291,20 +5292,19 @@ body:not(.app-locked) .header-landing-actions {
           return item.title !== currentTitle && !history[category].includes(item.title);
         });
 
-        // If candidates exhausted, purge oldest half of history to allow endless cycling
-        if (candidates.length === 0) {
-          history[category] = history[category].slice(Math.floor(history[category].length / 2));
-          candidates = combined.filter(function(item) {
-            return item.title !== currentTitle && !history[category].includes(item.title);
-          });
-          if (candidates.length === 0) {
-            candidates = combined.filter(function(item) {
-              return item.title !== currentTitle;
-            });
+        var picked = null;
+        if (candidates.length > 0) {
+          picked = candidates[Math.floor(Math.random() * candidates.length)];
+        } else {
+          // If candidates exhausted, synthesize a fresh clinical combinatorial recipe!
+          picked = generateAlgorithmicMeal(category);
+          // ensure synthetic title does not repeat in recent history
+          var attempts = 0;
+          while (attempts < 8 && history[category].includes(picked.title)) {
+            picked = generateAlgorithmicMeal(category);
+            attempts++;
           }
         }
-
-        var picked = candidates.length > 0 ? candidates[Math.floor(Math.random() * candidates.length)] : combined[0];
 
         if (picked && picked.title) {
           history[category].push(picked.title);
@@ -5314,6 +5314,54 @@ body:not(.app-locked) .header-landing-actions {
         }
 
         return picked;
+      }
+
+      function generateAlgorithmicMeal(category) {
+        var proteins = {
+          breakfast: ["Ispanaklı & Lorlu Düşük GI", "Ezine Peynirli & Organik Yumurtalı", "Poşe Köy Yumurtalı", "Labneli & Somon Fümeli", "Çılbır Usulü Sarımsaksız", "Çeçil Peynirli & Biberli", "Karabuğday Krepli Lorlu", "Fırın Frittata Usulü", "Avokadolu & Çırpılmış Yumurtalı", "Köy Mantarlı & Kaşarlı"],
+          lunch: ["Izgara Norveç Somonu &", "Fırında Marine Hindi Bonfile &", "Döküm Tavada Dana Bonfile &", "Zeytinyağlı Dağ Kekiği ile Levrek Fileto &", "Fırın Çipura Fileto &", "Izgara Dana Köfte &", "Kıymalı Yeşil Mercimek &", "Buharda Tavuk Göğsü &", "Karides & Sarımsak Sote &", "Zeytinyağlı Taze Enginar Kalbi &"],
+          dinner: ["Fırında Sebzeli Hindi Bonfile &", "Levrek Buğulama &", "Izgara Kasap Köfte (Yağsız) &", "Zeytinyağlı Taze Fasulye &", "Fırında Mantarlı Tavuk Pirzola (Derisiz) &", "Kıymalı Fırın Kabak Sandal &", "Fırında Somon Şiş &", "Çıtır Fırın Falafel &", "Köz Patlıcanlı Dana Külbastı &", "Buharda Hindi Göğüs &"],
+          snack1: ["Antioksidan Yeşil Çay &", "Sade Kefir &", "Yeşil Elma Dilimleri &", "Filtre Kahve &", "Kavrulmamış Çiğ Fındık &", "Labneli Salatalık Ruloları &", "Ceviz İçi &"],
+          snack2: ["Süzme Yoğurt &", "Çıtır Havuç Çubukları &", "Çavdar Galeta &", "Yarım Olgun Avokado &", "Fıstık Ezmeli Ekşi Elma &", "Keten Tohumlu Kefir &"],
+          night: ["Papatya & Melisa Çayı &", "Ilık Tarçınlı Badem Sütü &", "Rezene Çayı &", "Doğal Ihlamur Çayı &", "Lavanta Çayı &", "Ilık Laktozsuz Süt &"],
+          detoxWater: ["Alkali Salatalık & Taze Nane", "Taze Zencefil & Çubuk Seylan Tarçını", "Biberiye & Pembe Greyfurt", "Hibiskus & Yeşil Elma Kabuğu", "Taze Maydanoz Sapı & Limon", "Çilek & Taze Fesleğen", "Organik Elma Sirkesi & Tarçın"],
+          healthyDessert: ["Chia & Ham Kakaolu Puding", "Fırında Tarçınlı & Cevizli Armut", "Donmuş Muzlu & Fıstık Ezmeli Fit Dondurma", "Çıtır Fırın Elma Cipsi & Yoğurt", "Hurmalı & Fındıklı Ham Kakao Topu", "Fırınlanmış İncir & Labne Dolgusu", "Yaban Mersinli Fit Chia Parfe"]
+        };
+        var complements = {
+          breakfast: ["Kuşkonmaz Sote & 5 Az Tuzlu Zeytin", "Siyez Ekmeği & Çıtır Roka", "Avokado Püresi & Domates Dilimleri", "Közlenmiş Köy Biberi & Ceviz", "Çörekotlu Salatalık Tabağı", "Keten Tohumu & Taze Nane", "Bebek Ispanak & Limon Sosu"],
+          lunch: ["Zerdeçallı Siyez Bulguru & Naneli Cacık", "Buharda Kinoa & Roka Salatası", "Fırınlanmış Tatlı Patates & Brokoli", "Karabuğday Greçka Pilavı & Süzme Yoğurt", "Köz Patlıcan & Roka Tabağı", "Buharda Kuşkonmaz & Çeri Domates", "Zeytinyağlı Basmati Pilavı & Mevsim Yeşillikleri"],
+          dinner: ["Buharda Brokoli & Fırın Havuç", "Taze Otlu Akdeniz Salatası", "Karnabahar Püresi & Roka", "Sarımsaksız Yoğurt & Dereotu", "Köz Kırmızı Biber & Karalahana", "Zeytinyağlı Limon Sosu & Kuşkonmaz", "Çıtır Semizotu & Ceviz Salatası"],
+          snack1: ["10 Çiğ Badem", "1 Çay Kaşığı Çörekotu", "Seylan Tarçını", "%85 Bitter Çikolata (2 Kare)", "1 Avuç Taze Yaban Mersini", "Taze Nane & Pul Biber", "2 Adet Kükürtsüz Gün Kurusu"],
+          snack2: ["2 Tam Ceviz İçi & Tarçın", "Ev Yapımı Humus (2 yk)", "Lor Peyniri & Çörekotu", "Pul Biber & Taze Limon", "1 Tatlı Kaşığı Şekersiz Fıstık Ezmesi", "Öğütülmüş Keten Tohumu"],
+          night: ["2 Tam Ceviz İçi", "Seylan Tarçını", "1 Tatlı Kaşığı Çiğ Kabak Çekirdeği", "5 Adet Çiğ Badem", "1 İnce Dilim Yeşil Elma", "Muskat Rendesi"],
+          detoxWater: ["Hücresel Drenaj İksiri", "Termojenik Metabolizma Suyu", "Karaciğer Arındırıcı Su", "Antioksidan Canlandırıcı Su", "Böbrek Drenaj İksiri", "Hücresel Gençleşme Suyu", "Glukoz Dengeleyici Kalkan"],
+          healthyDessert: ["(Rafine Şekersiz)", "(Doğal Meyve Tatlısı)", "(Antioksidan Deposu)", "(Prebiyotik Lif Zengini)", "(Yüksek Magnezyumlu)", "(Hafif Akşam Tatlısı)", "(Metabolizma Dostu)"]
+        };
+        var synergies = [
+          "Sülforafan ve kaliteli protein kombinasyonu hücresel faz-2 detoksifikasyonunu destekler.",
+          "Düşük glisemik indeks ve dirençli nişasta tokluk hormonu GLP-1 salınımını 4 saat boyunca uyarır.",
+          "Omega-3 ve antioksidan sinerjisi insülin reseptör duyarlılığını optimize eder.",
+          "Alkali mineraller ve polifenoller gece hücresel onarımı ve mitokondriyal enerji üretimini hızlandırır.",
+          "Yüksek lif ve prebiyotik yapı bağırsak mikrobiyotasını besleyerek kısa zincirli yağ asitleri üretimini artırır."
+        ];
+        var protList = proteins[category] || proteins.lunch;
+        var compList = complements[category] || complements.lunch;
+        var prot = protList[Math.floor(Math.random() * protList.length)];
+        var comp = compList[Math.floor(Math.random() * compList.length)];
+        var syn = synergies[Math.floor(Math.random() * synergies.length)];
+        var fullTitle = prot + " " + comp;
+        var calBase = category === 'breakfast' ? 370 : category === 'lunch' ? 490 : category === 'dinner' ? 420 : category === 'night' ? 60 : category === 'detoxWater' ? 0 : 125;
+        var cal = calBase + Math.floor(Math.random() * 30) - 15;
+        if (category === 'detoxWater') cal = 0;
+        return {
+          title: fullTitle,
+          calories: cal,
+          usedPantry: [prot.replace('&', '').trim(), comp.split('&')[0].trim(), "Zeytinyağı", "Kaya Tuzu"],
+          recipe: prot + " özenle hazırlanır ve " + comp + " ile birlikte taze olarak servis edilir.",
+          synergy: syn,
+          time: "Günün saatinde",
+          benefit: syn
+        };
       }
 
       return {
@@ -8149,33 +8197,7 @@ function orderPlanWhatsApp(planName) {
 }
 
 </script>
-  <!-- Mobil Kolay Dokunma Alt Çubuğu -->
-  <div class="mobile-bottom-dock">
-    <button class="mobile-dock-btn active" id="mob-tab-landing" onclick="switchAppTab('diet')">
-      <span style="font-size: 18px;">💎</span>
-      <span>Giriş / Satın Al</span>
-    </button>
-    <button class="mobile-dock-btn" id="mob-tab-diet" onclick="switchAppTab('diet')">
-      <span style="font-size: 18px;">🥗</span>
-      <span>Diyet</span>
-    </button>
-    <button class="mobile-dock-btn" id="mob-tab-lab" onclick="switchAppTab('lab')">
-      <span style="font-size: 18px;">🧪</span>
-      <span>Tahlil</span>
-    </button>
-    <button class="mobile-dock-btn" id="mob-tab-foods" onclick="switchAppTab('foods')">
-      <span style="font-size: 18px;">🍏</span>
-      <span>Besinler</span>
-    </button>
-    <button class="mobile-dock-btn" id="mob-tab-appointments" onclick="switchAppTab('appointments')">
-      <span style="font-size: 18px;">📅</span>
-      <span>Randevu</span>
-    </button>
-    <button class="mobile-dock-btn" id="mob-tab-crm" onclick="switchAppTab('crm')">
-      <span style="font-size: 18px;">👥</span>
-      <span>Danışan</span>
-    </button>
-  </div>
+
 
 
 <!-- ========================================================================== -->

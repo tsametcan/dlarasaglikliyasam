@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>7 Gün Ücretsiz Başla & Kayıt Ol | DiyetKalfa</title>
+  <meta name="description" content="Kredi kartı gerekmeden 7 günlük ücretsiz tam yetkili DiyetKalfa klinik lisansınızı hemen başlatın.">
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --luxury-espresso: #1a100a;
+      --luxury-green: #163b2c;
+      --luxury-green-dark: #0d241b;
+      --earth-taba: #b86b3b;
+      --earth-taba-dark: #94593f;
+      --cream-beige: #f9f6f0;
+      --cream-beige-dark: #f0e9df;
+      --cream-beige-border: #e6ded1;
+      --text-main: #170c07;
+      --text-muted: #685951;
+      --gold-accent: #d4af37;
+      --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-display: 'Playfair Display', Georgia, serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-main);
+      background-color: var(--cream-beige);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* HEADER */
+    .register-header {
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .register-header img {
+      height: 48px;
+    }
+
+    /* MAIN CONTAINER */
+    .register-main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 20px 60px;
+    }
+    .register-card-wrap {
+      max-width: 980px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 28px;
+      border: 1.5px solid var(--cream-beige-border);
+      box-shadow: 0 20px 60px rgba(23, 12, 7, 0.08);
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      overflow: hidden;
+    }
+
+    /* SOL: BİLGİLENDİRME & GÜVEN PANELİ */
+    .register-left {
+      background: radial-gradient(circle at 80% 20%, #2b1810 0%, #1a100a 60%, #120b07 100%);
+      color: #ffffff;
+      padding: 50px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .register-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      color: #f7e7ce;
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .register-left h2 {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 18px;
+      color: #fcf9f5;
+    }
+    .register-left h2 span {
+      color: var(--gold-accent);
+    }
+    .register-left p {
+      font-size: 14.5px;
+      color: #d8c8b4;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .benefit-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .benefit-item .icon {
+      background: rgba(255, 255, 255, 0.1);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-accent);
+      font-weight: 900;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .benefit-item div {
+      font-size: 13.5px;
+      color: #e2d7cd;
+      line-height: 1.4;
+    }
+
+    /* SAĞ: KAYIT FORMU */
+    .register-right {
+      padding: 45px 36px;
+    }
+    .form-title {
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+    .form-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+    .form-group label {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--text-main);
+      display: block;
+      margin-bottom: 5px;
+    }
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 10px;
+      border: 1.5px solid var(--cream-beige-border);
+      font-size: 13.5px;
+      font-family: inherit;
+      color: var(--text-main);
+      background: #faf8f5;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group select:focus {
+      border-color: var(--luxury-green);
+      background: #ffffff;
+    }
+
+    .btn-submit-reg {
+      width: 100%;
+      background: linear-gradient(135deg, var(--luxury-green) 0%, var(--luxury-green-dark) 100%);
+      color: #ffffff;
+      border: none;
+      padding: 14px;
+      border-radius: 12px;
+      font-weight: 900;
+      font-size: 15px;
+      cursor: pointer;
+      margin-top: 10px;
+      box-shadow: 0 4px 15px rgba(22, 59, 44, 0.35);
+      transition: all 0.25s;
+    }
+    .btn-submit-reg:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(22, 59, 44, 0.45);
+    }
+
+    .login-link {
+      text-align: center;
+      margin-top: 18px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .login-link a {
+      color: var(--earth-taba-dark);
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .login-link a:hover { text-decoration: underline; }
+
+    @media (max-width: 820px) {
+      .register-card-wrap { grid-template-columns: 1fr; }
+      .register-left { display: none; }
+      .register-right { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="register-header">
+    <a href="index.html">
+      <img src="logo.png" alt="DiyetKalfa Logo">
+    </a>
+    <a href="index.html" style="color: var(--text-muted); text-decoration: none; font-size: 13.5px; font-weight: 700;">
+      ← Ana Sayfaya Dön
+    </a>
+  </header>
+
+  <!-- MAIN -->
+  <main class="register-main">
+    <div class="register-card-wrap">
+      
+      <!-- SOL: GÜVEN & BİLGİ -->
+      <div class="register-left">
+        <div>
+          <div class="register-badge">✨ 7 GÜNLÜK TAM YETKİLİ DENEME</div>
+          <h2>Kliniğinizi <span>Yapay Zeka</span> ile Güçlendirin</h2>
+          <p>
+            Hiçbir kredi kartı veya ödeme bilgisi vermeden, kliniğinizi saniyeler içinde DiyetKalfa'nın bilimsel altyapısına bağlayın.
+          </p>
+
+          <div class="benefit-item">
+            <div class="icon">✓</div>
+            <div>
+              <strong>Kredi Kartı Gerekmez:</strong> Deneme süresi boyunca sizden hiçbir kart veya ödeme bilgisi istenmez.
+            </div>
+          </div>
+
+          <div class="benefit-item">
+            <div class="icon">✓</div>
+            <div>
+              <strong>Tüm Modüllere Tam Yetki:</strong> DSÖ 2024 planlayıcı, Türkomp veritabanı, HOMA-IR tahlil labı eksiksiz açılır.
+            </div>
+          </div>
+
+          <div class="benefit-item">
+            <div class="icon">✓</div>
+            <div>
+              <strong>White-Label Markalama:</strong> Kendi klinik logonuzu ekleyin, danışanlarınıza profesyonel PDF reçeteler gönderin.
+            </div>
+          </div>
+
+          <div class="benefit-item">
+            <div class="icon">✓</div>
+            <div>
+              <strong>14 Gün İade Garantisi:</strong> Satın alım sonrasında dahi koşulsuz memnuniyet garantisi altındasınız.
+            </div>
+          </div>
+        </div>
+
+        <div style="font-size: 12px; color: #a39285; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px;">
+          🔒 256-Bit SSL • KVKK & Sağlık Bakanlığı Veri Güvenliği Standartları
+        </div>
+      </div>
+
+      <!-- SAĞ: KAYIT FORMU -->
+      <div class="register-right">
+        <h1 class="form-title">Hesabınızı Oluşturun</h1>
+        <p class="form-subtitle">7 gün ücretsiz denemeniz form sonrasında anında aktifleşir.</p>
+
+        <form id="reg-form" onsubmit="handleRegistration(event)">
+          <div class="form-group">
+            <label>Adınız Soyadınız *</label>
+            <input type="text" id="reg-name" required placeholder="Dyt. Selin Kaya">
+          </div>
+
+          <div class="form-group">
+            <label>Mesleki Unvanınız *</label>
+            <select id="reg-title" required>
+              <option value="Uzm. Diyetisyen">Uzm. Diyetisyen</option>
+              <option value="Diyetisyen">Diyetisyen</option>
+              <option value="Klinik Sahibi / Hekim">Klinik Sahibi / Hekim</option>
+              <option value="Beslenme ve Diyet Uzmanı">Beslenme ve Diyet Uzmanı</option>
+              <option value="Diyetisyenlik Öğrencisi / Stajyer">Diyetisyenlik Öğrencisi / Stajyer</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Kurumsal veya Kişisel E-Posta *</label>
+            <input type="email" id="reg-email" required placeholder="selin@klinik.com">
+          </div>
+
+          <div class="form-group">
+            <label>Telefon Numarası (WhatsApp) *</label>
+            <input type="tel" id="reg-phone" required placeholder="05XX XXX XX XX">
+          </div>
+
+          <div class="form-group">
+            <label>Klinik / Muayenehane Adınız (Opsiyonel)</label>
+            <input type="text" id="reg-clinic" placeholder="Örn: FitLife Beslenme & Danışmanlık">
+          </div>
+
+          <div class="form-group">
+            <label>Giriş Şifresi Belirleyin *</label>
+            <input type="password" id="reg-password" required minlength="6" placeholder="En az 6 karakter">
+          </div>
+
+          <button type="submit" class="btn-submit-reg">
+            🚀 7 Günlük Ücretsiz Denememi Başlat
+          </button>
+        </form>
+
+        <div class="login-link">
+          Zaten lisansınız veya hesabınız var mı? <br>
+          <a href="panel.html">Klinik Paneline Doğrudan Giriş Yapın →</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    function handleRegistration(e) {
+      e.preventDefault();
+      const name = document.getElementById('reg-name').value;
+      const title = document.getElementById('reg-title').value;
+      const email = document.getElementById('reg-email').value;
+      const phone = document.getElementById('reg-phone').value;
+      const clinic = document.getElementById('reg-clinic').value || `${name} Beslenme Kliniği`;
+
+      // Lisans ve kullanıcı bilgilerini güvenli yerel depolamaya kaydet
+      const userProfile = {
+        name: name,
+        title: title,
+        email: email,
+        phone: phone,
+        clinic: clinic,
+        licensed: true,
+        trialActive: true,
+        trialStartDate: new Date().toISOString(),
+        trialDaysRemaining: 7,
+        tier: 'Profesyonel Paket (7 Günlük Deneme)'
+      };
+
+      localStorage.setItem('diyetkalfa_user', JSON.stringify(userProfile));
+      localStorage.setItem('diyetkalfa_licensed', 'true');
+      localStorage.setItem('diyetkalfa_tier', 'Profesyonel Paket (7 Günlük Deneme)');
+      localStorage.setItem('diyetkalfa_clinic_name', clinic);
+      localStorage.setItem('diyetkalfa_dietitian_name', `${title} ${name}`);
+
+      alert(`Hoş geldiniz ${title} ${name}! 7 günlük ücretsiz tam yetkili lisansınız anında tanımlandı. Klinik çalışma alanınıza yönlendiriliyorsunuz...`);
+      window.location.href = 'panel.html';
+    }
+  </script>
+</body>
+</html>
