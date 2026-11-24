@@ -452,7 +452,7 @@
       <!-- CANLI ARAMA ÇUBUĞU -->
       <div class="faq-search-box">
         <span class="faq-search-icon">🔍</span>
-        <input type="text" id="faqSearchInput" onkeyup="filterFaq()" placeholder="Aklınıza takılan soruyu arayın (Örn: İade, DSÖ, e-Nabız, Taksit, White-Label)..." class="faq-search-input">
+        <input type="text" id="faqSearchInput" oninput="filterFaq()" onkeyup="filterFaq()" placeholder="Aklınıza takılan soruyu arayın (Örn: İade, DSÖ, e-Nabız, Taksit, White-Label)..." class="faq-search-input">
       </div>
     </div>
   </section>
@@ -797,12 +797,15 @@
     /* FAQ SEARCH FILTER */
     function filterFaq() {
       const input = document.getElementById('faqSearchInput');
-      const filter = input.value.toLowerCase();
+      const raw = input.value.trim();
+      const filter1 = raw.toLowerCase();
+      const filter2 = raw.toLocaleLowerCase('tr-TR');
       const items = document.querySelectorAll('.faq-item');
 
       items.forEach(function(item) {
-        const text = item.textContent.toLowerCase();
-        if (text.indexOf(filter) > -1) {
+        const text1 = item.textContent.toLowerCase();
+        const text2 = item.textContent.toLocaleLowerCase('tr-TR');
+        if (!raw || text1.includes(filter1) || text2.includes(filter2)) {
           item.style.display = 'block';
         } else {
           item.style.display = 'none';

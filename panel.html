@@ -11,6 +11,23 @@
   <meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>DiyetKalfa - Klinik İşletim Sistemi & Diyetisyen Paneli</title>
+  <script>
+    (function enforceClinicalGate() {
+      try {
+        var isLicensed = localStorage.getItem('diyetkalfa_licensed') === 'true' || localStorage.getItem('diyetkalfa_unlocked') === 'true';
+        var params = new URLSearchParams(window.location.search);
+        if (params.get('unlock') === 'true' || params.get('demo') === 'true') {
+          localStorage.setItem('diyetkalfa_licensed', 'true');
+          localStorage.setItem('diyetkalfa_unlocked', 'true');
+          isLicensed = true;
+        }
+        if (!isLicensed) {
+          alert('🔒 Klinik Paneli Girişi Korumalıdır.\n\nKlinik çalışma alanına erişebilmek için lütfen 7 günlük ücretsiz denemenizi başlatın veya bir lisans paketi satın alın.');
+          window.location.replace('kayit.html');
+        }
+      } catch(e) {}
+    })();
+  </script>
   <style>
     /* ============================================================ */
     /* DiyetKalfa - ULTRA AKICI, SIFIR KAYMA MOBİL & PC CSS */
@@ -214,154 +231,6 @@ body {
   box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05) !important;
 }
 
-/* Fiyatlandırma Switcher */
-.billing-cycle-switch {
-  background: var(--luxury-beige-border) !important;
-}
-
-
-
-/* Global Arka Plan ve Tipografi */
-body {
-  background-color: var(--bg-page) !important;
-  color: var(--text-main) !important;
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
-}
-
-/* Header Düzenlemeleri */
-.app-header {
-  background: rgba(255, 255, 255, 0.96) !important;
-  border-bottom: 1.5px solid var(--border-color) !important;
-  box-shadow: 0 2px 10px rgba(28, 51, 43, 0.05) !important;
-}
-
-.logo-icon {
-  background: linear-gradient(135deg, var(--military-green) 0%, var(--taba) 100%) !important;
-  color: #ffffff !important;
-  box-shadow: 0 3px 8px rgba(45, 74, 62, 0.25) !important;
-}
-
-.logo-text h1 {
-  color: var(--military-green-dark) !important;
-}
-
-.live-status-pill {
-  background: var(--military-green-light) !important;
-  border-color: var(--military-green-border) !important;
-  color: var(--military-green-dark) !important;
-}
-
-.pulsing-dot {
-  background: var(--military-green) !important;
-}
-
-/* Buton Renkleri (Askeri Yeşil & Taba & Beyaz) */
-.btn-pastel-green {
-  background: linear-gradient(135deg, var(--military-green) 0%, var(--military-green-dark) 100%) !important;
-  color: #ffffff !important;
-  border-color: var(--military-green-dark) !important;
-  box-shadow: 0 2px 8px rgba(45, 74, 62, 0.2) !important;
-}
-
-.btn-pastel-green:hover {
-  background: var(--military-green-hover) !important;
-  color: #ffffff !important;
-}
-
-.btn-pastel-sage {
-  background: var(--military-green-light) !important;
-  color: var(--military-green-dark) !important;
-  border-color: var(--military-green-border) !important;
-}
-
-.btn-pastel-sage:hover {
-  background: #e3ebe5 !important;
-  color: var(--military-green-dark) !important;
-}
-
-.btn-outline-pink {
-  background: var(--taba-light) !important;
-  color: var(--taba-dark) !important;
-  border-color: var(--taba-border) !important;
-}
-
-.btn-outline-pink:hover {
-  background: #f4e6df !important;
-  color: var(--taba-dark) !important;
-}
-
-.btn-pricing-highlight {
-  background: linear-gradient(135deg, var(--taba) 0%, var(--taba-dark) 100%) !important;
-  color: #ffffff !important;
-  box-shadow: 0 4px 14px rgba(180, 101, 74, 0.35) !important;
-}
-
-.btn-pricing-highlight:hover {
-  background: var(--taba-hover) !important;
-  box-shadow: 0 6px 18px rgba(180, 101, 74, 0.45) !important;
-}
-
-/* Nav Dock ve Sekmeler */
-.saas-nav-dock {
-  background: rgba(255, 255, 255, 0.95) !important;
-  border-bottom: 1px solid var(--border-color) !important;
-  box-shadow: 0 2px 8px rgba(28, 51, 43, 0.04) !important;
-}
-
-.saas-tab-btn {
-  color: var(--text-muted) !important;
-  background: transparent !important;
-}
-
-.saas-tab-btn:hover {
-  color: var(--military-green-dark) !important;
-  background: var(--military-green-light) !important;
-}
-
-.saas-tab-btn.active {
-  background: var(--military-green-light) !important;
-  color: var(--military-green-dark) !important;
-  border-color: var(--military-green-border) !important;
-  box-shadow: 0 2px 6px rgba(45, 74, 62, 0.1) !important;
-}
-
-.saas-tab-btn.active .badge-pill {
-  background: var(--taba) !important;
-  color: #ffffff !important;
-}
-
-/* Mobil Alt Çubuk */
-.mobile-bottom-dock {
-  background: rgba(255, 255, 255, 0.96) !important;
-  border-top: 1.5px solid var(--border-color) !important;
-  box-shadow: 0 -4px 16px rgba(28, 51, 43, 0.06) !important;
-}
-
-.mobile-dock-btn {
-  color: var(--text-muted) !important;
-}
-
-.mobile-dock-btn.active {
-  color: var(--taba) !important;
-}
-
-/* Kartlar ve Yüzeyler */
-.metric-card, .plan-day-card, .client-summary-card, .macro-bar-card, .commercial-modal-box {
-  background: var(--surface) !important;
-  border-color: var(--border-color) !important;
-  box-shadow: var(--shadow-sm) !important;
-}
-
-.metric-card:hover, .plan-day-card:hover {
-  border-color: var(--military-green-border) !important;
-  box-shadow: var(--shadow-md) !important;
-}
-
-/* Fiyatlandırma Switcher */
-.billing-cycle-switch {
-  background: #f4efe6 !important;
-}
-
 /* ============================================================== */
 /* PAYWALL & KİLİTLİ / AÇIK UYGULAMA DURUM KONTROLÜ               */
 /* ============================================================== */
@@ -440,7 +309,7 @@ body:not(.app-locked) .header-landing-actions {
     /* Scrollbar */
     ::-webkit-scrollbar { width: 5px; height: 5px; }
     ::-webkit-scrollbar-track { background: #fbf4f0; }
-    ::-webkit-scrollbar-thumb { background: #94593f; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb { background: #0f766e; border-radius: 4px; }
 
     /* Header */
     .app-header {
@@ -472,7 +341,7 @@ body:not(.app-locked) .header-landing-actions {
       width: 38px;
       height: 38px;
       flex-shrink: 0;
-      background: linear-gradient(135deg, #94593f, #94593f);
+      background: linear-gradient(135deg, #0f766e, #0f766e);
       border-radius: var(--radius-md);
       display: flex;
       align-items: center;
@@ -641,10 +510,10 @@ body:not(.app-locked) .header-landing-actions {
       touch-action: manipulation;
     }
     .day-tab-btn.active {
-      background: linear-gradient(135deg, #94593f, #94593f);
-      color: white;
-      border-color: #94593f;
-      box-shadow: 0 3px 8px rgba(190, 91, 112, 0.35);
+      background: linear-gradient(135deg, #0f766e, #059669) !important;
+      color: white !important;
+      border-color: #0f766e !important;
+      box-shadow: 0 4px 12px rgba(15, 118, 110, 0.35) !important;
     }
     .day-tab-btn .day-title { font-size: 11px; font-weight: 900; }
     .day-tab-btn .day-sub { font-size: 9px; font-weight: 600; opacity: 0.9; }
@@ -808,7 +677,7 @@ body:not(.app-locked) .header-landing-actions {
       background: none;
       border: none;
       cursor: pointer;
-      color: #94593f;
+      color: #0f766e;
       font-size: 11px;
       display: flex;
       align-items: center;
@@ -1236,7 +1105,7 @@ body:not(.app-locked) .header-landing-actions {
     }
 
     body.theme-dark {
-      --dusty-pink: #94593f;
+      --dusty-pink: #0f766e;
       --dusty-pink-dark: #fb7185;
       --dusty-pink-light: #2a1b28;
       --dusty-pink-border: #4a2840;
@@ -1251,7 +1120,7 @@ body:not(.app-locked) .header-landing-actions {
       --border-color: #382c35;
       --border-subtle: #4a2840;
       --text-main: #f0ede6;
-      --text-pink: #94593f;
+      --text-pink: #0f766e;
       --text-muted: #94a3b8;
       --text-subtle: #d8cdbc;
     }
@@ -1744,7 +1613,7 @@ body:not(.app-locked) .header-landing-actions {
       width: 84px;
       height: 84px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #94593f, #743f29);
+      background: linear-gradient(135deg, #0f766e, #743f29);
       color: #ffffff;
       display: flex;
       align-items: center;
@@ -1790,7 +1659,7 @@ body:not(.app-locked) .header-landing-actions {
       color: #ffffff;
     }
     .biolink-btn-book {
-      background: linear-gradient(135deg, #94593f, #743f29);
+      background: linear-gradient(135deg, #0f766e, #743f29);
       color: #ffffff;
     }
     .biolink-btn-secondary {
@@ -1846,7 +1715,7 @@ body:not(.app-locked) .header-landing-actions {
       --saas-bg: #faf8f4;
       --saas-card: #ffffff;
       --saas-border: #e6ded1;
-      --saas-primary: #94593f;
+      --saas-primary: #0f766e;
       --saas-primary-dark: #743f29;
       --saas-accent: #163b2c;
       --saas-accent-dark: #170c07;
@@ -1911,7 +1780,7 @@ body:not(.app-locked) .header-landing-actions {
       transform: translateY(-1px);
     }
     .saas-tab-btn.active {
-      background: linear-gradient(135deg, #94593f 0%, #9d3d52 100%);
+      background: linear-gradient(135deg, #0f766e 0%, #9d3d52 100%);
       color: #ffffff;
       border-color: #743f29;
       box-shadow: 0 4px 12px rgba(190, 91, 112, 0.25);
@@ -2174,12 +2043,12 @@ body:not(.app-locked) .header-landing-actions {
   <!-- ============================================================== -->
 <!-- DIYETKALFA AI™ - MANGOLIF STİLİ RESMİ HEADER                    -->
 <!-- ============================================================== -->
-<header class="app-header" style="background: #ffffff; border-bottom: 1.5px solid #e6ded1; box-shadow: 0 1px 12px rgba(0, 0, 0, 0.04); position: sticky; top: 0; z-index: 1000;">
+<header class="app-header" style="background: #0f172a !important; border-bottom: 2px solid #0f766e; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25); position: sticky; top: 0; z-index: 1000;">
   <div class="header-inner" style="max-width: 1240px; margin: 0 auto; padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; gap: 15px;">
     
         <!-- Sol Logo Alanı: Resmi DiyetKalfa Logosu -->
     <div class="logo-area" style="display: flex; align-items: center; gap: 12px; cursor: pointer;" onclick="window.location.href='index.html';">
-      <img src="logo.png" alt="DiyetKalfa" style="height: 52px; width: auto; object-fit: contain; filter: drop-shadow(0 4px 12px rgba(22, 59, 44, 0.15)); transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+      <img src="logo.png" alt="DiyetKalfa" style="height: 52px; width: auto; object-fit: contain; filter: drop-shadow(0 4px 12px rgba(15, 118, 110, 0.35)); transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
     </div>
 
     <!-- Orta Navigasyon Linkleri (Mangolif Stili - Sadece Geniş Ekranda) -->
@@ -2210,25 +2079,25 @@ body:not(.app-locked) .header-landing-actions {
 
       <!-- AÇILMIŞ / LİSANSLI DURUMDA GÖRÜNEN BUTONLAR (Modernize Edilmiş Klinik Paneli Kontrolleri) -->
       <div class="header-clinical-actions" style="display: inline-flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-        <button onclick="openWhoModal()" style="background: rgba(15, 118, 110, 0.25); color: #5eead4; border: 1px solid rgba(94, 234, 212, 0.4); padding: 7px 12px; border-radius: 999px; font-weight: 700; font-size: 11.5px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;">
+        <button onclick="openWhoModal()" style="background: rgba(15, 118, 110, 0.35); color: #5eead4 !important; border: 1px solid rgba(94, 234, 212, 0.5); padding: 7px 12px; border-radius: 999px; font-weight: 700; font-size: 11.5px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;">
           <span>🩺 DSÖ Standartları</span>
         </button>
-        <button onclick="openClinicModal()" style="background: rgba(255, 255, 255, 0.12); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.25); padding: 7px 12px; border-radius: 999px; font-weight: 700; font-size: 11.5px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;">
+        <button onclick="openClinicModal()" style="background: rgba(255, 255, 255, 0.15); color: #ffffff !important; border: 1px solid rgba(255, 255, 255, 0.35); padding: 7px 12px; border-radius: 999px; font-weight: 700; font-size: 11.5px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;">
           <span>⚙️ Klinik Ayarları</span>
         </button>
-        <button onclick="openLicenseModal()" style="background: rgba(217, 119, 6, 0.2); color: #fde68a; border: 1px solid rgba(253, 230, 138, 0.4); padding: 7px 12px; border-radius: 999px; font-weight: 700; font-size: 11.5px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;">
+        <button onclick="openLicenseModal()" style="background: rgba(217, 119, 6, 0.25); color: #fde68a !important; border: 1px solid rgba(253, 230, 138, 0.5); padding: 7px 12px; border-radius: 999px; font-weight: 700; font-size: 11.5px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;">
           <span>🏢 Lisans (Pro)</span>
         </button>
-        <button onclick="printClinicalDossier()" style="background: linear-gradient(135deg, #0f766e 0%, #047857 100%); color: #ffffff; border: none; padding: 7px 14px; border-radius: 999px; font-weight: 800; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(15, 118, 110, 0.3);">
+        <button onclick="printClinicalDossier()" style="background: linear-gradient(135deg, #0f766e 0%, #047857 100%); color: #ffffff !important; border: none; padding: 7px 14px; border-radius: 999px; font-weight: 800; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(15, 118, 110, 0.3);">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
           <span>PDF / Yazdır</span>
         </button>
-        <button onclick="saveCurrentClient()" style="background: linear-gradient(135deg, #059669 0%, #047857 100%); color: #ffffff; border: none; padding: 7px 14px; border-radius: 999px; font-weight: 800; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(5, 150, 105, 0.3);">
+        <button onclick="saveCurrentClient()" style="background: linear-gradient(135deg, #059669 0%, #047857 100%); color: #ffffff !important; border: none; padding: 7px 14px; border-radius: 999px; font-weight: 800; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(5, 150, 105, 0.3);">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
           <span>Kaydet</span>
         </button>
-        <a href="index.html" style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.25); color: #ffffff; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; font-weight: 700; font-size: 12px; padding: 7px 12px; border-radius: 999px;">🏠 Web Sitesi</a>
-        <button type="button" onclick="lockApplication()" style="background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.35); color: #fca5a5; padding: 7px 12px; border-radius: 999px; font-weight: 700; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+        <a href="index.html" style="background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.35); color: #ffffff !important; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; font-weight: 700; font-size: 12px; padding: 7px 12px; border-radius: 999px;">🏠 Web Sitesi</a>
+        <button type="button" onclick="lockApplication()" style="background: rgba(239, 68, 68, 0.25); border: 1px solid rgba(239, 68, 68, 0.45); color: #fca5a5 !important; padding: 7px 12px; border-radius: 999px; font-weight: 700; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
           <span>🔒 Çıkış</span>
         </button>
       </div>
@@ -2348,7 +2217,7 @@ body:not(.app-locked) .header-landing-actions {
         </div>
         <div style="background: #faf8f4; border: 1px solid #f4efe6; border-radius: 14px; padding: 14px; text-align: center;">
           <div style="font-size: 10.5px; font-weight: 800; color: #685951; text-transform: uppercase; letter-spacing: 0.05em;">REÇETE PLANI</div>
-          <div class="num-font" style="font-size: 24px; font-weight: 900; color: #94593f; margin-top: 2px;">7 <span style="font-size: 13px; font-weight: 800;">Günlük</span></div>
+          <div class="num-font" style="font-size: 24px; font-weight: 900; color: #0f766e; margin-top: 2px;">7 <span style="font-size: 13px; font-weight: 800;">Günlük</span></div>
           <div style="font-size: 11px; color: #685951; margin-top: 2px;">Tüm Menüler Hazır</div>
         </div>
       </div>
@@ -3445,7 +3314,7 @@ body:not(.app-locked) .header-landing-actions {
             </div>
 
             <!-- Glukoz & İnsülin -->
-            <div style="font-size: 11px; font-weight: 800; color: #94593f; margin-top: 6px; text-transform: uppercase;">
+            <div style="font-size: 11px; font-weight: 800; color: #0f766e; margin-top: 6px; text-transform: uppercase;">
               1. Glukoz & İnsülin Metabolizması
             </div>
             <div class="form-row" style="margin-top: 4px;">
@@ -3464,7 +3333,7 @@ body:not(.app-locked) .header-landing-actions {
             </div>
 
             <!-- Lipit Profili -->
-            <div style="font-size: 11px; font-weight: 800; color: #94593f; margin-top: 8px; text-transform: uppercase;">
+            <div style="font-size: 11px; font-weight: 800; color: #0f766e; margin-top: 8px; text-transform: uppercase;">
               2. Kardiyovasküler & Lipit Profili
             </div>
             <div class="form-row" style="margin-top: 4px;">
@@ -3487,7 +3356,7 @@ body:not(.app-locked) .header-landing-actions {
             </div>
 
             <!-- Karaciğer, Tiroid & Vitaminler -->
-            <div style="font-size: 11px; font-weight: 800; color: #94593f; margin-top: 8px; text-transform: uppercase;">
+            <div style="font-size: 11px; font-weight: 800; color: #0f766e; margin-top: 8px; text-transform: uppercase;">
               3. Karaciğer, Tiroid & Vitamin Depoları
             </div>
             <div class="form-row" style="margin-top: 4px;">
@@ -5373,9 +5242,6 @@ body:not(.app-locked) .header-landing-actions {
         return picked;
       }
 
-        return picked;
-      }
-
       function generateAlgorithmicMeal(category) {
         var proteins = {
           breakfast: ["Ispanaklı & Lorlu Düşük GI", "Ezine Peynirli & Organik Yumurtalı", "Poşe Köy Yumurtalı", "Labneli & Somon Fümeli", "Çılbır Usulü Sarımsaksız", "Çeçil Peynirli & Biberli", "Karabuğday Krepli Lorlu", "Fırın Frittata Usulü", "Avokadolu & Çırpılmış Yumurtalı", "Köy Mantarlı & Kaşarlı"],
@@ -6088,7 +5954,7 @@ body:not(.app-locked) .header-landing-actions {
           dayData.meals.map(function(m) {
             return '<div class="meal"><span class="cals">' + m.calories + ' kcal</span><div class="meal-title">' + m.type + ': ' + m.title + '</div><div style="font-size: 9.5pt; color: #64748b; margin-top: 2px;"><b>Malzemeler:</b> ' + m.usedPantry.join(', ') + '</div><div style="margin: 3px 0; font-size: 10pt;"><b>Tarif:</b> ' + m.recipe + '</div></div>';
           }).join('') +
-          '<div style="background: #faf8f4; border: 1px solid #e6ded1; padding: 9px 12px; border-radius: 6px; margin-top: 12px;"><b style="color: #94593f;">🍓 SAĞLIKLI TATLI (' + dayData.healthyDessert.calories + ' kcal):</b> ' + dayData.healthyDessert.title + '<br/><i>Hazırlanış:</i> ' + dayData.healthyDessert.recipe + '</div>' +
+          '<div style="background: #faf8f4; border: 1px solid #e6ded1; padding: 9px 12px; border-radius: 6px; margin-top: 12px;"><b style="color: #0f766e;">🍓 SAĞLIKLI TATLI (' + dayData.healthyDessert.calories + ' kcal):</b> ' + dayData.healthyDessert.title + '<br/><i>Hazırlanış:</i> ' + dayData.healthyDessert.recipe + '</div>' +
           '<div class="footer"><b>' + p.clinicName + ' • ' + p.dietitianName + '</b><br/>' + p.slogan + ' • Şifa ve afiyet olsun. 🌸</div>' +
           '</body></html>';
           
@@ -7351,7 +7217,7 @@ DİYETİSYEN KLİNİK TAVSİYELERİ:
       // 1. REELS SENARYO BLOĞU
       if (currentReelsMode === 'full' || currentReelsMode === 'script') {
         html += `
-          <div class="reels-card-box" style="border-left: 4px solid #94593f;">
+          <div class="reels-card-box" style="border-left: 4px solid #0f766e;">
             <div class="reels-box-header">
               <span class="badge-reels-tag badge-hook">🪝 İLK 3 SANİYE KANCASI (HOOK)</span>
               <button onclick="copySingleText('${escapeForJs(data.hook)}', this)" class="btn btn-outline-pink" style="padding: 3px 8px; font-size: 10px;">Metni Kopyala</button>
@@ -7401,10 +7267,10 @@ DİYETİSYEN KLİNİK TAVSİYELERİ:
       // 3. FİT TARİF BLOĞU
       if ((currentReelsMode === 'full' || currentReelsMode === 'recipe') && data.recipe) {
         html += `
-          <div class="reels-card-box" style="border-left: 4px solid #94593f;">
+          <div class="reels-card-box" style="border-left: 4px solid #0f766e;">
             <div class="reels-box-header">
               <span class="badge-reels-tag badge-recipe">🍓 VİRAL FİT TARİF & REÇETE</span>
-              <span style="font-size: 11px; font-weight: 800; color: #94593f;">${data.recipe.calories} • ${data.recipe.prepTime}</span>
+              <span style="font-size: 11px; font-weight: 800; color: #0f766e;">${data.recipe.calories} • ${data.recipe.prepTime}</span>
             </div>
             <div style="font-size: 14px; font-weight: 900; color: #86198f; margin-bottom: 8px;">${data.recipe.title}</div>
             
@@ -8289,7 +8155,7 @@ function orderPlanWhatsApp(planName) {
       <div style="background: #fdfbf7; border: 1.5px solid #e6ded1; border-radius: 18px; padding: 20px; margin-bottom: 22px;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
           <div>
-            <div style="font-size: 11px; font-weight: 800; color: #94593f; text-transform: uppercase; letter-spacing: 0.06em;">SEÇİLEN LİSANS PAKETİ</div>
+            <div style="font-size: 11px; font-weight: 800; color: #0f766e; text-transform: uppercase; letter-spacing: 0.06em;">SEÇİLEN LİSANS PAKETİ</div>
             <div id="checkout-plan-name" style="font-size: 18px; font-weight: 900; color: #170c07;">Enterprise Klinik</div>
             <div id="checkout-plan-cycle" style="font-size: 12.5px; color: #685951;">12 Ay Peşin Kampanyalı Plan</div>
           </div>
@@ -8368,7 +8234,7 @@ function orderPlanWhatsApp(planName) {
         <div style="display: flex; align-items: flex-start; gap: 8px; margin-top: 4px;">
           <input type="checkbox" id="card-terms" required checked style="margin-top: 3px; accent-color: #163b2c; cursor: pointer;">
           <label for="card-terms" style="font-size: 12px; color: #685951; line-height: 1.4; cursor: pointer;">
-            <a href="javascript:void(0)" style="color: #94593f; font-weight: 700;">Mesafeli Satış Sözleşmesi</a>'ni ve 7 Günlük İptal Koşullarını okudum, onaylıyorum.
+            <a href="javascript:void(0)" style="color: #0f766e; font-weight: 700;">Mesafeli Satış Sözleşmesi</a>'ni ve 7 Günlük İptal Koşullarını okudum, onaylıyorum.
           </label>
         </div>
 
@@ -8400,7 +8266,7 @@ function orderPlanWhatsApp(planName) {
       </p>
 
       <div style="background: #fdfbf7; border: 1.5px dashed #163b2c; border-radius: 12px; padding: 14px; margin-bottom: 24px; display: inline-block;">
-        <div style="font-size: 11px; font-weight: 700; color: #94593f; text-transform: uppercase;">DİYETKALFA LİSANS ANAHTARINIZ:</div>
+        <div style="font-size: 11px; font-weight: 700; color: #0f766e; text-transform: uppercase;">DİYETKALFA LİSANS ANAHTARINIZ:</div>
         <div id="checkout-generated-key" style="font-size: 18px; font-weight: 900; color: #163b2c; letter-spacing: 0.1em; font-family: monospace; margin-top: 4px;">DK-2026-KLINIK-9842</div>
       </div>
 
