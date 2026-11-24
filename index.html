@@ -8562,7 +8562,7 @@ function runLiveCaseSimulation() {
   }
 }
 
-function openDirectCheckout('Pro Klinik', '12') {
+function unlockWithSimulatedCase() {
   var sel = document.getElementById('sim-case-select');
   var key = sel ? sel.value : 'insulin';
   var c = DIYETKALFA_SIMULATOR_CASES[key] || DIYETKALFA_SIMULATOR_CASES['insulin'];
