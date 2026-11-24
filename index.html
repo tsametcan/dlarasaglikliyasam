@@ -9683,8 +9683,8 @@ var SOLUTIONS_DATA = {
           </div>
 
           <div style="display: flex; gap: 8px;">
-            <input type="text" id="ai-chat-input" placeholder="Klinik sorunuzu yazın (Örn: PCOS için en iyi inositol dozu...)" style="flex: 1; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #d8cdbc; font-size: 13px; outline: none;" onkeydown="if(event.key==='Enter') sendAiChatMessage();">
-            <button type="button" onclick="sendAiChatMessage()" style="background: #163b2c; color: #ffffff; border: none; padding: 10px 18px; border-radius: 10px; font-weight: 800; font-size: 13px; cursor: pointer;">Gönder</button>
+            <input type="text" id="ai-sim-input" placeholder="Klinik sorunuzu yazın (Örn: PCOS için en iyi inositol dozu...)" style="flex: 1; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #d8cdbc; font-size: 13px; outline: none;" onkeydown="if(event.key==='Enter') sendLegacyAiSimulationMessage();">
+            <button type="button" onclick="sendLegacyAiSimulationMessage()" style="background: #163b2c; color: #ffffff; border: none; padding: 10px 18px; border-radius: 10px; font-weight: 800; font-size: 13px; cursor: pointer;">Gönder</button>
           </div>
         </div>
       `;
@@ -10184,15 +10184,15 @@ function calcSolEnabizHoma() {
   }
 }
 
-// AI Asistan Fonksiyonları
+// AI Asistan Fonksiyonları (Çözümler Simülatörü)
 function askAiAssistant(question) {
-  var inp = document.getElementById('ai-chat-input');
+  var inp = document.getElementById('ai-sim-input');
   if (inp) inp.value = question;
-  sendAiChatMessage();
+  sendLegacyAiSimulationMessage();
 }
 
-function sendAiChatMessage() {
-  var inp = document.getElementById('ai-chat-input');
+function sendLegacyAiSimulationMessage() {
+  var inp = document.getElementById('ai-sim-input');
   if (!inp || !inp.value.trim()) return;
   var q = inp.value.trim();
   inp.value = '';
