@@ -2283,6 +2283,7 @@ body:not(.app-locked) .header-landing-actions {
 
       <!-- AÇILMIŞ / LİSANSLI DURUMDA GÖRÜNEN BUTONLAR (Klinik paneli kontrolleri) -->
       <div class="header-clinical-actions" style="display: none; align-items: center; gap: 6px;">
+        <a href="panel.html" style="background: #163b2c; color: #ffffff; border: 1.5px solid #2e5e4b; padding: 7px 14px; border-radius: 999px; font-weight: 800; font-size: 12.5px; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; box-shadow: 0 3px 10px rgba(22, 59, 44, 0.25);"><span>🏥 Klinik Paneli</span><span>→</span></a> 
         <button onclick="openWhoModal()" class="btn btn-outline-pink" title="Dünya Sağlık Örgütü Klinik Standartları">
           <span>🩺 DSÖ Standartları</span>
         </button>
@@ -8094,7 +8095,7 @@ function unlockApplication(planName, isTrial) {
     if (planName) localStorage.setItem('diyetkalfa_plan', planName);
   } catch(e) {}
 
-  document.body.classList.remove('app-locked');
+  // document.body.classList.remove('app-locked'); (landing stays clean)
   
   // Diyet planlayıcıya geçir
   switchAppTab('diet');
@@ -8142,7 +8143,7 @@ function initAppGateway() {
       switchAppTab('landing');
     }
   } else {
-    document.body.classList.remove('app-locked');
+    // document.body.classList.remove('app-locked'); (landing stays clean)
   }
 }
 
