@@ -23,45 +23,47 @@
 /* ========================================================================== */
 /* DIYETKALFA - ULTRA LÜKS YEŞİL, BEJ, ACI KAHVERENGİ VE TOPRAK TONLARI TEMASI */
 /* ========================================================================== */
+/* DIYETKALFA - MODERN EXECUTIVE SLATE, MINT & CLINICAL GOLD PALETTE         */
+/* ========================================================================== */
 
 :root {
-  /* 1. YEŞİL (Derin Zümrüt & Asil Orman Yeşili) */
-  --luxury-green: #163b2c;
-  --luxury-green-dark: #0d241b;
-  --luxury-green-hover: #1e4d3a;
-  --luxury-green-border: #2e5e4b;
-  --luxury-green-tint: #edf5f0;
+  /* 1. EXECUTIVE NORDIC TEAL & CLINICAL MINT */
+  --luxury-green: #0f766e;
+  --luxury-green-dark: #0f172a;
+  --luxury-green-hover: #115e59;
+  --luxury-green-border: #0d9488;
+  --luxury-green-tint: #f0fdfa;
 
-  /* 2. BEJ (İpeksi Alabaster & Sıcak Lüks Bej) */
-  --luxury-beige: #f4efe6;
-  --luxury-beige-light: #faf8f4;
-  --luxury-beige-card: #fdfbf7;
-  --luxury-beige-border: #e6ded1;
-  --luxury-beige-dark: #d8cdbc;
+  /* 2. MODERN ALABASTER & SLATE SURFACES */
+  --luxury-beige: #f1f5f9;
+  --luxury-beige-light: #f8fafc;
+  --luxury-beige-card: #ffffff;
+  --luxury-beige-border: #e2e8f0;
+  --luxury-beige-dark: #cbd5e1;
 
-  /* 3. ACI KAHVERENGİ (Dark Espresso & Derin Kavrulmuş Kakao) */
-  --espresso-brown: #24150e;
-  --espresso-dark: #170c07;
-  --espresso-hover: #351f15;
-  --espresso-border: #4a3225;
-  --espresso-light: #f9f5f2;
+  /* 3. EXECUTIVE SLATE */
+  --espresso-brown: #1e293b;
+  --espresso-dark: #0f172a;
+  --espresso-hover: #334155;
+  --espresso-border: #334155;
+  --espresso-light: #f8fafc;
 
-  /* 4. TOPRAK TONLARI (Organik Pişmiş Toprak / Terracotta & Kehribar) */
-  --earth-terracotta: #94593f;
-  --earth-terracotta-dark: #743f29;
-  --earth-terracotta-light: #fbf4f0;
-  --earth-terracotta-border: #e6d3c9;
-  --earth-amber: #c2854e;
+  /* 4. CLINICAL AMBER ACCENTS */
+  --earth-terracotta: #d97706;
+  --earth-terracotta-dark: #b45309;
+  --earth-terracotta-light: #fef3c7;
+  --earth-terracotta-border: #fde68a;
+  --earth-amber: #f59e0b;
 
   /* YÜZEY VE TABAN RENKLERİ */
   --surface: #ffffff;
-  --bg-page: #faf8f4;
-  --border-color: #e6ded1;
-  --border-subtle: #efe9df;
-  --dark-slate: #170c07;
-  --text-main: #170c07;
-  --text-muted: #685951;
-  --text-subtle: #94867e;
+  --bg-page: #f8fafc;
+  --border-color: #e2e8f0;
+  --border-subtle: #f1f5f9;
+  --dark-slate: #0f172a;
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-subtle: #94a3b8;
 
   /* UYUMLULUK KÖPRÜLERİ */
   --military-green: var(--luxury-green);
@@ -85,9 +87,9 @@
   --radius-md: 12px;
   --radius-lg: 16px;
   --radius-xl: 22px;
-  --shadow-sm: 0 1px 3px rgba(36, 21, 14, 0.05);
-  --shadow-md: 0 4px 14px -2px rgba(36, 21, 14, 0.08);
-  --shadow-lg: 0 14px 28px -4px rgba(36, 21, 14, 0.12);
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 14px -2px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 12px 28px -4px rgba(15, 23, 42, 0.1);
 }
 
 /* Genel Arka Plan ve Tipografi */
@@ -97,86 +99,119 @@ body {
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
 }
 
-/* Header Düzenlemeleri (Lüks Bej & Zümrüt Yeşili) */
+/* Header Düzenlemeleri: Executive Modern Slate Command Header */
 .app-header {
-  background: rgba(250, 248, 244, 0.97) !important;
-  border-bottom: 1.5px solid var(--luxury-beige-border) !important;
-  box-shadow: 0 2px 14px rgba(36, 21, 14, 0.04) !important;
+  background: #0f172a !important;
+  border-bottom: 2px solid #0f766e !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+  color: #ffffff !important;
 }
 
 .logo-icon {
-  background: linear-gradient(135deg, var(--luxury-green) 0%, var(--espresso-brown) 100%) !important;
+  background: linear-gradient(135deg, #0f766e 0%, #059669 100%) !important;
   color: #ffffff !important;
-  box-shadow: 0 4px 10px rgba(22, 59, 44, 0.3) !important;
+  box-shadow: 0 4px 12px rgba(15, 118, 110, 0.4) !important;
 }
 
 .logo-text h1 {
-  color: var(--espresso-dark) !important;
+  color: #ffffff !important;
 }
 
-/* Lüks Butonlar */
+/* Modernize Edilmiş Butonlar */
 .btn-pastel-green {
-  background: linear-gradient(135deg, var(--luxury-green) 0%, var(--luxury-green-dark) 100%) !important;
+  background: linear-gradient(135deg, #0f766e 0%, #059669 100%) !important;
   color: #ffffff !important;
-  border-color: var(--luxury-green-dark) !important;
-  box-shadow: 0 3px 10px rgba(22, 59, 44, 0.25) !important;
+  border: 1px solid #0d9488 !important;
+  box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25) !important;
+  border-radius: 12px !important;
+  font-weight: 700 !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 .btn-pastel-green:hover {
-  background: var(--luxury-green-hover) !important;
-  color: #ffffff !important;
+  background: linear-gradient(135deg, #115e59 0%, #047857 100%) !important;
+  transform: translateY(-1.5px) !important;
+  box-shadow: 0 6px 18px rgba(15, 118, 110, 0.35) !important;
 }
 
 .btn-pricing-highlight {
-  background: linear-gradient(135deg, var(--earth-terracotta) 0%, var(--earth-terracotta-dark) 100%) !important;
+  background: linear-gradient(135deg, #d97706 0%, #b45309 100%) !important;
   color: #ffffff !important;
-  box-shadow: 0 4px 14px rgba(148, 89, 63, 0.35) !important;
+  border-radius: 12px !important;
+  font-weight: 800 !important;
+  box-shadow: 0 4px 14px rgba(217, 119, 6, 0.3) !important;
 }
 
 .btn-pricing-highlight:hover {
-  background: var(--earth-terracotta-dark) !important;
-  box-shadow: 0 6px 18px rgba(148, 89, 63, 0.45) !important;
+  background: #b45309 !important;
+  transform: translateY(-1.5px) !important;
+  box-shadow: 0 6px 18px rgba(217, 119, 6, 0.4) !important;
 }
 
 .btn-outline-pink {
-  background: var(--earth-terracotta-light) !important;
-  color: var(--earth-terracotta-dark) !important;
-  border-color: var(--earth-terracotta-border) !important;
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 12px !important;
+  font-weight: 700 !important;
+}
+
+.btn-outline-pink:hover {
+  background: #f1f5f9 !important;
+  border-color: #94a3b8 !important;
 }
 
 .btn-pastel-sage {
-  background: var(--luxury-green-tint) !important;
-  color: var(--luxury-green-dark) !important;
-  border-color: var(--luxury-green-border) !important;
+  background: #f0fdfa !important;
+  color: #0f766e !important;
+  border: 1.5px solid #99f6e4 !important;
+  border-radius: 12px !important;
+  font-weight: 700 !important;
 }
 
-/* Nav Dock ve Kartlar */
+.btn-pastel-sage:hover {
+  background: #0f766e !important;
+  color: #ffffff !important;
+  border-color: #0f766e !important;
+}
+
+/* Nav Dock ve Kartlar (Segmented Floating Pill Design) */
 .saas-nav-dock {
-  background: rgba(250, 248, 244, 0.96) !important;
-  border-bottom: 1.5px solid var(--luxury-beige-border) !important;
-  box-shadow: 0 2px 10px rgba(36, 21, 14, 0.04) !important;
+  background: #ffffff !important;
+  border-bottom: 1.5px solid #e2e8f0 !important;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04) !important;
+}
+
+.saas-tab-btn {
+  color: #475569 !important;
+  background: transparent !important;
+  border-radius: 12px !important;
+  font-weight: 700 !important;
+  transition: all 0.2s !important;
 }
 
 .saas-tab-btn:hover {
-  color: var(--luxury-green) !important;
-  background: var(--luxury-green-tint) !important;
+  color: #0f766e !important;
+  background: #f0fdfa !important;
 }
 
 .saas-tab-btn.active {
-  background: var(--luxury-green-tint) !important;
-  color: var(--luxury-green-dark) !important;
-  border-color: var(--luxury-green-border) !important;
+  background: #0f766e !important;
+  color: #ffffff !important;
+  border-color: #0f766e !important;
+  box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25) !important;
 }
 
 .saas-tab-btn.active .badge-pill {
-  background: var(--earth-terracotta) !important;
+  background: rgba(255, 255, 255, 0.25) !important;
   color: #ffffff !important;
 }
 
 .metric-card, .plan-day-card, .client-summary-card, .macro-bar-card, .commercial-modal-box {
-  background: var(--surface) !important;
-  border-color: var(--border-color) !important;
-  box-shadow: var(--shadow-sm) !important;
+  background: #ffffff !important;
+  border: 1.5px solid #e2e8f0 !important;
+  border-radius: 20px !important;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05) !important;
 }
 
 /* Fiyatlandırma Switcher */
@@ -2173,26 +2208,27 @@ body:not(.app-locked) .header-landing-actions {
         </button>
       </div>
 
-      <!-- AÇILMIŞ / LİSANSLI DURUMDA GÖRÜNEN BUTONLAR (Klinik paneli kontrolleri) -->
-      <div class="header-clinical-actions" style="display: inline-flex; gap: 6px; flex-wrap: wrap; align-items: center;">
-        <button onclick="openWhoModal()" class="btn btn-outline-pink" title="Dünya Sağlık Örgütü Klinik Standartları" style="padding: 6px 10px; font-size: 11.5px;">
+      <!-- AÇILMIŞ / LİSANSLI DURUMDA GÖRÜNEN BUTONLAR (Modernize Edilmiş Klinik Paneli Kontrolleri) -->
+      <div class="header-clinical-actions" style="display: inline-flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+        <button onclick="openWhoModal()" style="background: rgba(15, 118, 110, 0.25); color: #5eead4; border: 1px solid rgba(94, 234, 212, 0.4); padding: 7px 12px; border-radius: 999px; font-weight: 700; font-size: 11.5px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;">
           <span>🩺 DSÖ Standartları</span>
         </button>
-        <button onclick="openClinicModal()" class="btn btn-pastel-sage" title="Klinik ve Marka Kişiselleştirme" style="padding: 6px 10px; font-size: 11.5px;">
+        <button onclick="openClinicModal()" style="background: rgba(255, 255, 255, 0.12); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.25); padding: 7px 12px; border-radius: 999px; font-weight: 700; font-size: 11.5px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;">
           <span>⚙️ Klinik Ayarları</span>
         </button>
-        <button onclick="openLicenseModal()" class="btn btn-outline-pink" title="Ticari Lisans ve Satış Paketi" style="padding: 6px 10px; font-size: 11.5px;">
+        <button onclick="openLicenseModal()" style="background: rgba(217, 119, 6, 0.2); color: #fde68a; border: 1px solid rgba(253, 230, 138, 0.4); padding: 7px 12px; border-radius: 999px; font-weight: 700; font-size: 11.5px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;">
           <span>🏢 Lisans (Pro)</span>
         </button>
-        <button onclick="printClinicalDossier()" class="btn btn-pastel-sage" title="7 Günlük Dosyayı Yazdır / PDF" style="padding: 6px 10px; font-size: 11.5px;">
+        <button onclick="printClinicalDossier()" style="background: linear-gradient(135deg, #0f766e 0%, #047857 100%); color: #ffffff; border: none; padding: 7px 14px; border-radius: 999px; font-weight: 800; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(15, 118, 110, 0.3);">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
           <span>PDF / Yazdır</span>
         </button>
-        <button onclick="saveCurrentClient()" class="btn btn-pastel-green" title="Danışanı Kaydet" style="padding: 6px 10px; font-size: 11.5px;">
+        <button onclick="saveCurrentClient()" style="background: linear-gradient(135deg, #059669 0%, #047857 100%); color: #ffffff; border: none; padding: 7px 14px; border-radius: 999px; font-weight: 800; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(5, 150, 105, 0.3);">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
           <span>Kaydet</span>
         </button>
-        <a href="index.html" class="btn btn-outline-pink" style="background:#ffffff; border:1.5px solid #163b2c; color:#163b2c; text-decoration:none; display:inline-flex; align-items:center; gap:5px; font-weight:800; font-size:12.5px; padding:7px 12px; border-radius:10px;">🏠 Web Sitesi</a> <button type="button" onclick="lockApplication()" class="btn btn-outline-pink" title="Uygulamayı Kilitle / Çıkış Yap" style="background:#faf8f4; border:1px solid #d8cdbc; color:#685951;">
+        <a href="index.html" style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.25); color: #ffffff; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; font-weight: 700; font-size: 12px; padding: 7px 12px; border-radius: 999px;">🏠 Web Sitesi</a>
+        <button type="button" onclick="lockApplication()" style="background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.35); color: #fca5a5; padding: 7px 12px; border-radius: 999px; font-weight: 700; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
           <span>🔒 Çıkış</span>
         </button>
       </div>
@@ -3943,6 +3979,23 @@ body:not(.app-locked) .header-landing-actions {
 </div>
 
 <script>
+    // GÜVENLİK & LİSANS DENETİMİ: Yalnızca satın almış veya 7 günlük ücretsiz deneme kaydı oluşturmuş kullanıcılar girebilir.
+    (function enforceClinicalLicense() {
+      try {
+        var isLicensed = localStorage.getItem('diyetkalfa_licensed') === 'true' || localStorage.getItem('diyetkalfa_unlocked') === 'true';
+        var params = new URLSearchParams(window.location.search);
+        if (params.get('unlock') === 'true' || params.get('demo') === 'true') {
+          localStorage.setItem('diyetkalfa_licensed', 'true');
+          localStorage.setItem('diyetkalfa_unlocked', 'true');
+          isLicensed = true;
+        }
+        if (!isLicensed) {
+          alert('🔒 Klinik Paneli Girişi Korumalıdır.\n\nKlinik çalışma alanına erişebilmek için lütfen 7 günlük ücretsiz denemenizi başlatın veya bir lisans paketi satın alın.');
+          window.location.replace('kayit.html');
+        }
+      } catch(e) {}
+    })();
+
     /* ============================================================ */
     /* DiyetKalfa - TİCARİ İŞLETİM SİSTEMİ MOTORU             */
     /* ============================================================ */
@@ -7732,7 +7785,7 @@ function scrollToPricingSection() {
 
 function isAppUnlocked() {
   try {
-    return localStorage.getItem('diyetkalfa_unlocked') === 'true';
+    return localStorage.getItem('diyetkalfa_unlocked') === 'true' || localStorage.getItem('diyetkalfa_licensed') === 'true';
   } catch(e) {
     return false;
   }

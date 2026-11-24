@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DiyetKalfa AI™ — Sıkça Sorulan Sorular & Klinik Destek Rehberi</title>
+  <meta name="description" content="DiyetKalfa yapay zeka algoritması, DSÖ 2024 standartları, 7 günlük kartsız deneme, Sağlık Bakanlığı ve KVKK uyumu hakkında merak edilen tüm sorular ve yanıtları.">
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --luxury-green: #163b2c;
+      --luxury-green-dark: #0d241b;
+      --luxury-green-light: #edf5f0;
+      --earth-taba: #b86b3b;
+      --earth-taba-dark: #874921;
+      --deep-espresso: #1a100a;
+      --espresso-dark: #120904;
+      --cream-beige: #f9f6f0;
+      --cream-beige-card: #fdfbf7;
+      --cream-beige-border: #e6ded1;
+      --gold-accent: #d4af37;
+      --text-main: #170c07;
+      --text-muted: #685951;
+      --text-light: #fbf8f3;
+      --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-family);
+      background-color: var(--cream-beige);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* 1. HEADER */
+    .app-header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1.5px solid var(--cream-beige-border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .header-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .logo-area { display: flex; align-items: center; text-decoration: none; }
+    .logo-area img { height: 48px; width: auto; object-fit: contain; }
+
+    .header-nav { display: flex; align-items: center; gap: 28px; }
+    .header-nav a {
+      color: #334155;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14.5px;
+      transition: color 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .header-nav a:hover, .header-nav a.active { color: var(--luxury-green); }
+
+    .header-actions { display: flex; align-items: center; gap: 12px; }
+    .btn-header-demo {
+      background: #ffffff;
+      color: var(--luxury-green);
+      border: 1.5px solid #2e5e4b;
+      padding: 9px 18px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 13.5px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-header-demo:hover {
+      background: var(--luxury-green-light);
+      transform: translateY(-1px);
+    }
+    .btn-header-primary {
+      background: linear-gradient(135deg, var(--luxury-green) 0%, var(--luxury-green-dark) 100%);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 9px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 13.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 14px rgba(22, 59, 44, 0.28);
+      transition: all 0.2s;
+    }
+    .btn-header-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(22, 59, 44, 0.35);
+    }
+
+    /* 2. SSS HERO */
+    .faq-hero {
+      background: radial-gradient(circle at 75% 20%, #154030 0%, #0d261d 48%, #071711 100%);
+      padding: 60px 24px 75px;
+      color: #ffffff;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 2px solid #2e5e4b;
+    }
+    .faq-hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+    .faq-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      padding: 6px 18px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .faq-hero h1 {
+      font-size: clamp(34px, 5vw, 50px);
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 16px;
+      letter-spacing: -0.03em;
+    }
+    .faq-hero p {
+      font-size: 16.5px;
+      color: #e2ece6;
+      line-height: 1.65;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+
+    /* SEARCH INPUT */
+    .faq-search-box {
+      max-width: 640px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .faq-search-input {
+      width: 100%;
+      padding: 16px 24px 16px 52px;
+      border-radius: 999px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.95);
+      color: #0f172a;
+      font-size: 15px;
+      font-weight: 600;
+      outline: none;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+    .faq-search-input:focus {
+      border-color: #6ee7b7;
+      background: #ffffff;
+      box-shadow: 0 12px 35px rgba(110, 231, 183, 0.3);
+    }
+    .faq-search-icon {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      pointer-events: none;
+    }
+
+    /* 3. CATEGORY TABS */
+    .faq-tabs-container {
+      max-width: 1140px;
+      margin: -25px auto 40px;
+      padding: 0 16px;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      z-index: 10;
+    }
+    .faq-tabs-inner {
+      display: inline-flex;
+      flex-wrap: wrap;
+      background: #ffffff;
+      padding: 6px;
+      border-radius: 18px;
+      border: 1.5px solid var(--cream-beige-border);
+      box-shadow: 0 12px 30px rgba(28, 51, 43, 0.08);
+      gap: 6px;
+      justify-content: center;
+    }
+    .faq-cat-btn {
+      padding: 11px 20px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 13.5px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: transparent;
+      color: #475569;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .faq-cat-btn.active {
+      background: var(--luxury-green);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(22, 59, 44, 0.25);
+    }
+
+    /* 4. ACCORDION LIST */
+    .faq-list-container {
+      max-width: 920px;
+      margin: 0 auto 60px;
+      padding: 0 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .faq-item {
+      background: #ffffff;
+      border: 1.5px solid var(--cream-beige-border);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.03);
+    }
+    .faq-item:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06);
+    }
+    .faq-item.open {
+      border-color: var(--luxury-green);
+      box-shadow: 0 8px 24px rgba(22, 59, 44, 0.08);
+    }
+    .faq-question-btn {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: 22px 26px;
+      font-size: 16.5px;
+      font-weight: 800;
+      color: #0f172a;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-family: inherit;
+    }
+    .faq-toggle-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--cream-beige);
+      border: 1px solid var(--cream-beige-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--luxury-green);
+      flex-shrink: 0;
+      transition: all 0.25s ease;
+    }
+    .faq-item.open .faq-toggle-icon {
+      background: var(--luxury-green);
+      color: #ffffff;
+      transform: rotate(45deg);
+    }
+    .faq-answer-body {
+      display: none;
+      padding: 0 26px 24px 26px;
+      font-size: 14.5px;
+      color: #475569;
+      line-height: 1.7;
+      border-top: 1px solid var(--cream-beige-border);
+      margin-top: 4px;
+      padding-top: 16px;
+    }
+    .faq-item.open .faq-answer-body {
+      display: block;
+    }
+
+    /* 5. DIRECT HELP CALLOUT BANNER */
+    .faq-contact-card {
+      max-width: 920px;
+      margin: 0 auto 60px;
+      padding: 0 16px;
+    }
+    .faq-contact-card-inner {
+      background: linear-gradient(135deg, var(--luxury-green) 0%, var(--luxury-green-dark) 100%);
+      border-radius: 22px;
+      padding: 36px 30px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+      box-shadow: 0 16px 36px rgba(22, 59, 44, 0.25);
+    }
+
+    /* 6. FOOTER */
+    .app-footer {
+      background: #0f1c16;
+      color: #ffffff;
+      padding: 60px 24px 30px;
+      border-top: 3px solid #163b2c;
+    }
+    .footer-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-col h4 {
+      font-size: 15px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { color: #94a3b8; text-decoration: none; font-size: 13.5px; transition: color 0.15s; }
+    .footer-col a:hover { color: #ffffff; }
+
+    /* DEMO MODAL */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(23, 12, 7, 0.78);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 10006;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .modal-box {
+      background: #ffffff;
+      border-radius: 22px;
+      max-width: 540px;
+      width: 100%;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+      border: 1.5px solid #e6ded1;
+      overflow: hidden;
+      position: relative;
+      max-height: 94vh;
+      overflow-y: auto;
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: 16px; right: 16px;
+      background: rgba(255, 255, 255, 0.25);
+      border: none;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    @media (max-width: 900px) {
+      .header-nav { display: none; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .footer-inner { grid-template-columns: 1fr; }
+      .faq-contact-card-inner { text-align: center; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. HEADER -->
+  <header class="app-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo-area">
+        <img src="logo.png" alt="DiyetKalfa Logo">
+      </a>
+
+      <nav class="header-nav">
+        <a href="index.html">Ana Sayfa</a>
+        <a href="ozellikler.html">Özellikler</a>
+        <a href="fiyatlar.html">Fiyatlar</a>
+        <a href="sss.html" class="active">SSS</a>
+        <a href="index.html#section-contact">İletişim</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" onclick="openDemoModal()" class="btn-header-demo">
+          <span>Demo Talep Et</span>
+          <span>→</span>
+        </button>
+        <a href="kayit.html" class="btn-header-primary">
+          <span>7 Gün Ücretsiz Başla</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. SSS HERO -->
+  <section class="faq-hero">
+    <div class="faq-hero-inner">
+      <div class="faq-hero-badge">
+        <span>❓ RESMİ KLİNİK VE LİSANS DESTEK MERKEZİ</span>
+      </div>
+      <h1>Sıkça Sorulan Sorular</h1>
+      <p>
+        DiyetKalfa yapay zeka algoritması, DSÖ 2024 ve TÜBER bilimsel uyumu, 7 günlük kartsız deneme lisansı, Sağlık Bakanlığı ve KVKK mevzuatı hakkında merak edilen tüm sorular ve detaylı yanıtları.
+      </p>
+
+      <!-- CANLI ARAMA ÇUBUĞU -->
+      <div class="faq-search-box">
+        <span class="faq-search-icon">🔍</span>
+        <input type="text" id="faqSearchInput" onkeyup="filterFaq()" placeholder="Aklınıza takılan soruyu arayın (Örn: İade, DSÖ, e-Nabız, Taksit, White-Label)..." class="faq-search-input">
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. KATEGORİ SEÇİCİ -->
+  <div class="faq-tabs-container">
+    <div class="faq-tabs-inner">
+      <button type="button" class="faq-cat-btn active" onclick="filterCategory('all', this)">
+        <span>Tüm Sorular</span>
+      </button>
+      <button type="button" class="faq-cat-btn" onclick="filterCategory('ai', this)">
+        <span>🧠 Klinik AI & DSÖ 2024</span>
+      </button>
+      <button type="button" class="faq-cat-btn" onclick="filterCategory('license', this)">
+        <span>💳 Lisans & 7 Gün Kartsız Deneme</span>
+      </button>
+      <button type="button" class="faq-cat-btn" onclick="filterCategory('compliance', this)">
+        <span>⚖️ Sağlık Bakanlığı, MBYS & KVKK</span>
+      </button>
+      <button type="button" class="faq-cat-btn" onclick="filterCategory('tech', this)">
+        <span>🛠️ White-Label, Kurulum & WhatsApp</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- 4. SSS LİSTESİ (AKORDİYON) -->
+  <main class="faq-list-container" id="faqAccordionContainer">
+
+    <!-- SORU 1: 7 GÜNLÜK DENEME -->
+    <div class="faq-item" data-category="license">
+      <button type="button" class="faq-question-btn" onclick="toggleFaqItem(this)">
+        <span>7 Günlük Ücretsiz Deneme nasıl çalışır? Kredi kartımdan para çekilir mi?</span>
+        <span class="faq-toggle-icon">+</span>
+      </button>
+      <div class="faq-answer-body">
+        <strong>Asla kredi kartı gerekmez!</strong> 7 günlük ücretsiz deneme sürecini başlattığınızda hiçbir kredi kartı veya ödeme bilgisi girmeden anında tam yetkili klinik panelinize erişirsiniz. 7 gün boyunca tüm DSÖ 2024 AI reçetelerini, HOMA-IR tahlil araçlarını ve Türkomp besin kütüphanesini kısıtlamasız deneyimleyebilirsiniz. Süre bitiminde devam etmek isterseniz dilediğiniz paketi seçebilirsiniz; iptal için hiçbir işlem yapmanız gerekmez.
+      </div>
+    </div>
+
+    <!-- SORU 2: DSÖ VE HOMA-IR -->
+    <div class="faq-item" data-category="ai">
+      <button type="button" class="faq-question-btn" onclick="toggleFaqItem(this)">
+        <span>DSÖ 2024 ve HOMA-IR Yapay Zeka Protokolleri ne kadar güvenilirdir?</span>
+        <span class="faq-toggle-icon">+</span>
+      </button>
+      <div class="faq-answer-body">
+        DiyetKalfa algoritması, Dünya Sağlık Örgütü'nün (DSÖ/WHO) 2024 Beslenme Kılavuzları ve Türkiye Beslenme Rehberi (TÜBER) referans alınarak geliştirilmiştir. Danışanınızın açlık glukozu ve insülin değerlerinden otomatik olarak HOMA-IR skorunu hesaplar; insülin direnci veya metabolik sendrom varlığında glisemik yükü kısıtlanmış bilimsel protokolleri reçete eder. Reçete motoru 42.000+ kombinasyon üzerinden çalışarak rastgele şablonlar yerine biyokimyasal olarak doğrulanmış reçeteler üretir.
+      </div>
+    </div>
+
+    <!-- SORU 3: WHITE-LABEL VE MARKA -->
+    <div class="faq-item" data-category="tech">
+      <button type="button" class="faq-question-btn" onclick="toggleFaqItem(this)">
+        <span>Kendi klinik logom ve unvanımla danışanlarıma PDF diyet listesi verebilir miyim? (White-Label)</span>
+        <span class="faq-toggle-icon">+</span>
+      </button>
+      <div class="faq-answer-body">
+        <strong>%100 Evet.</strong> DiyetKalfa kurumsal prestijinize odaklanır. "Klinik Ayarları" panelinden kendi adınızı, uzmanlık unvanınızı, klinik logonuzu ve kurumsal iletişim bilgilerinizi tanımlayabilirsiniz. Çıkaracağınız tüm günlük ve 7 günlük reçeteler, alışveriş listeleri ve laboratuvar raporları DiyetKalfa logosu olmadan, doğrudan kliniğinizin resmi kurumsal antetiyle yazdırılır ve PDF olarak danışana gönderilir.
+      </div>
+    </div>
+
+    <!-- SORU 4: SAĞLIK BAKANLIĞI & MBYS -->
+    <div class="faq-item" data-category="compliance">
+      <button type="button" class="faq-question-btn" onclick="toggleFaqItem(this)">
+        <span>Sağlık Bakanlığı MBYS, e-Nabız ve resmi mevzuat uyumu nasıldır?</span>
+        <span class="faq-toggle-icon">+</span>
+      </button>
+      <div class="faq-answer-body">
+        DiyetKalfa, Sağlık Bakanlığı Sağlık Bilgi Sistemleri Genel Müdürlüğü standartlarına ve MBYS (Muayenehane Bilgi Yönetim Sistemi) veri iletim mimarisine tam uyumlu veri modelleriyle inşa edilmiştir. e-Nabız hasta kayıt protokolleri, e-Reçete formatları ve klinik epikriz çıktıları Sağlık Bakanlığı onaylı parametrelerle saklanır.
+      </div>
+    </div>
+
+    <!-- SORU 5: VERİ GÜVENLİĞİ & KVKK -->
+    <div class="faq-item" data-category="compliance">
+      <button type="button" class="faq-question-btn" onclick="toggleFaqItem(this)">
+        <span>Danışanlarımın tahlil ve kişisel verileri KVKK kapsamında nasıl korunur?</span>
+        <span class="faq-toggle-icon">+</span>
+      </button>
+      <div class="faq-answer-body">
+        Tüm danışan verileri, laboratuvar tahlilleri ve anamnez kayıtları bankacılık standardı olan <strong>256-Bit SSL şifreleme</strong> ve izole veri tabanı mimarisiyle korunur. 6698 sayılı KVKK ve Avrupa Birliği GDPR sağlık verisi yönetmeliklerine tam uyumludur. Danışan verileri asla üçüncü şahıslarla, reklam ağlarıyla veya yapay zeka eğitim havuzlarıyla paylaşılmaz; mülkiyeti tamamen kliniğinize aittir.
+      </div>
+    </div>
+
+    <!-- SORU 6: KURULUM GEREKİR Mİ? -->
+    <div class="faq-item" data-category="tech">
+      <button type="button" class="faq-question-btn" onclick="toggleFaqItem(this)">
+        <span>Programı kullanabilmek için bilgisayarıma bir kurulum yapmam gerekir mi?</span>
+        <span class="faq-toggle-icon">+</span>
+      </button>
+      <div class="faq-answer-body">
+        <strong>Hayır.</strong> DiyetKalfa %100 modern bulut tabanlı bir klinik işletim sistemidir. Herhangi bir program indirmeniz, güncelleme beklemeniz veya pahalı sunucular satın almanız gerekmez. Windows, macOS, iPad, Android tablet veya akıllı telefonunuzun tarayıcısından şifrenizle anında bağlanıp saniyeler içinde reçete yazmaya başlayabilirsiniz.
+      </div>
+    </div>
+
+    <!-- SORU 7: REÇETE TEKRARLAMA SORUNU -->
+    <div class="faq-item" data-category="ai">
+      <button type="button" class="faq-question-btn" onclick="toggleFaqItem(this)">
+        <span>"Menüyü Değiştir" butonuna bastığımda aynı tarifler tekrar gelir mi?</span>
+        <span class="faq-toggle-icon">+</span>
+      </button>
+      <div class="faq-answer-body">
+        Hayır. DiyetKalfa tescilli <em>AlgorithmicRecipeSynthesizer</em> ve <em>InfiniteRecipeEngine</em> motoruna sahiptir. Menüyü Değiştir butonuna her basışınızda veya tekil öğünlerde "Değiştir" tıklandığında; protein kaynakları, pişirme teknikleri, glisemik dengeleyiciler ve taze Akdeniz yeşillikleri matematiksel kombinasyonla eşleştirilir. Sistem son kullanılan tarif geçmişini belleğinde tuttuğu için aynı öğünler arka arkaya asla tekrarlamaz.
+      </div>
+    </div>
+
+    <!-- SORU 8: TÜRKOMP VERİTABANI -->
+    <div class="faq-item" data-category="ai">
+      <button type="button" class="faq-question-btn" onclick="toggleFaqItem(this)">
+        <span>Türkomp Besin Veritabanı nedir ve Türk mutfağına uyumu nasıldır?</span>
+        <span class="faq-toggle-icon">+</span>
+      </button>
+      <div class="faq-answer-body">
+        Yabancı menşeili diyet programlarının en büyük sorunu danışanın Türkiye'deki marketlerde bulamayacağı yabancı gıdaları (örneğin kale yaprağı, özel tohumlar) önermesidir. DiyetKalfa, TÜBİTAK MAM tarafından hazırlanan tescilli <strong>Türkomp (Türkiye Ulusal Gıda Kompozisyon Veritabanı)</strong> kütüphanesini kullanır. Siyez bulgurundan lor peynirine, yerli levrekten mevsim sebzelerine kadar 2.400'den fazla yerli gıdanın gramaj, makro ve mikronutriyen değerlerini sıfır hatayla hesaplar.
+      </div>
+    </div>
+
+    <!-- SORU 9: 14 GÜN İADE GARANTİSİ -->
+    <div class="faq-item" data-category="license">
+      <button type="button" class="faq-question-btn" onclick="toggleFaqItem(this)">
+        <span>14 Gün Koşulsuz Para İade Garantisi nasıl işler?</span>
+        <span class="faq-toggle-icon">+</span>
+      </button>
+      <div class="faq-answer-body">
+        DiyetKalfa'dan herhangi bir sebeple memnun kalmamanız durumunda, satın alım tarihinden itibaren 14 gün içerisinde kurumsal destek hattımıza tek bir mesaj iletmeniz yeterlidir. Hiçbir mazeret veya gerekçe aranmaksızın ödediğiniz tutar bankanıza %100 kesintisiz olarak iade edilir.
+      </div>
+    </div>
+
+    <!-- SORU 10: ÖDEME VE TAKSİT -->
+    <div class="faq-item" data-category="license">
+      <button type="button" class="faq-question-btn" onclick="toggleFaqItem(this)">
+        <span>Ödeme yöntemleri nelerdir ve kredi kartına taksit yapılır mı?</span>
+        <span class="faq-toggle-icon">+</span>
+      </button>
+      <div class="faq-answer-body">
+        Tüm banka ve kredi kartlarıyla (Visa, MasterCard, Troy) güvenle ödeme yapabilirsiniz. 12 aylık yıllık kampanyamızda ve diğer paketlerde tüm kredi kartlarına peşin fiyatına veya vade farksız 12 aya varan taksit seçenekleri mevcuttur. Satın alım sonrasında e-Faturanız anında klinik e-posta adresinize iletilir.
+      </div>
+    </div>
+
+    <!-- SORU 11: WHATSAPP ENTEGRASYONU -->
+    <div class="faq-item" data-category="tech">
+      <button type="button" class="faq-question-btn" onclick="toggleFaqItem(this)">
+        <span>Hazırladığım diyet listesini danışanıma WhatsApp'tan nasıl gönderebilirim?</span>
+        <span class="faq-toggle-icon">+</span>
+      </button>
+      <div class="faq-answer-body">
+        Reçeteleme alanında "WhatsApp ile Gönder" butonuna bastığınızda, sistem danışanın adı, günlük öğün saatleri, porsiyon gramajları ve akıllı pazar alışveriş listesini içeren şık formatlı bir mesajı hazırlar ve danışanınızın WhatsApp sohbet penceresini tek tıkla açar. Danışanınız ek bir uygulama indirmeden listesine cep telefonundan anında ulaşır.
+      </div>
+    </div>
+
+    <!-- SORU 12: BİRDEN FAZLA CİHAZ -->
+    <div class="faq-item" data-category="tech">
+      <button type="button" class="faq-question-btn" onclick="toggleFaqItem(this)">
+        <span>Aynı lisansı hem klinikteki bilgisayarımdan hem de evdeki tabletimden kullanabilir miyim?</span>
+        <span class="faq-toggle-icon">+</span>
+      </button>
+      <div class="faq-answer-body">
+        <strong>Evet.</strong> Bulut tabanlı mimari sayesinde lisansınız kullanıcı bazlıdır. Klinik ofisinizdeki masaüstü bilgisayardan, evdeki dizüstü bilgisayarınızdan veya seyahatteyken akıllı telefonunuzdan aynı kullanıcı bilgileriyle dilediğiniz an bağlanabilirsiniz. Tüm danışan ve randevu verileriniz cihazlar arasında gerçek zamanlı eşitlenir.
+      </div>
+    </div>
+
+  </main>
+
+  <!-- 5. YARDIM VE WHATSAPP BANNER -->
+  <section class="faq-contact-card">
+    <div class="faq-contact-card-inner">
+      <div>
+        <span style="background: rgba(255,255,255,0.15); font-size: 11px; font-weight: 800; padding: 4px 12px; border-radius: 999px; text-transform: uppercase;">
+          CANLI KLİNİK DESTEK HATTI
+        </span>
+        <h3 style="font-size: 24px; font-weight: 900; margin: 10px 0 6px 0;">Sorunuzun Cevabını Bulamadınız mı?</h3>
+        <p style="font-size: 14px; color: #cbd5e1; max-width: 520px;">
+          Klinik koordinatörümüz aklınıza takılan tüm soruları yanıtlamak ve kliniğinize özel canlı ekran paylaşımı planlamak için hazır.
+        </p>
+      </div>
+
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <a href="https://wa.me/905300000000?text=Merhaba%20DiyetKalfa%20hakk%C4%B1nda%20sorum%20var" target="_blank" style="background: #25d366; color: #ffffff; padding: 12px 24px; border-radius: 999px; font-weight: 800; font-size: 14px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);">
+          <span>💬 WhatsApp'tan Anında Sorun</span>
+        </a>
+        <button type="button" onclick="openDemoModal()" style="background: #ffffff; color: var(--luxury-green); border: none; padding: 12px 24px; border-radius: 999px; font-weight: 800; font-size: 14px; cursor: pointer;">
+          <span>Canlı Demo Planla</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. FOOTER -->
+  <footer class="app-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <a href="index.html" style="display: inline-block; margin-bottom: 16px;">
+          <img src="logo.png" alt="DiyetKalfa Logo" style="height: 52px; width: auto; object-fit: contain;">
+        </a>
+        <p style="color: #94a3b8; font-size: 13.5px; line-height: 1.6; max-width: 380px;">
+          Diyetisyenler ve sağlık klinikleri için geliştirilmiş yeni nesil yapay zeka destekli beslenme işletim sistemi. DSÖ 2024 ve resmi Türkomp standartlarına %100 uyumludur.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Hızlı Erişim</h4>
+        <ul>
+          <li><a href="ozellikler.html">✨ Klinik Özellikleri</a></li>
+          <li><a href="fiyatlar.html">💳 Fiyatlar & Paketler</a></li>
+          <li><a href="sss.html">❓ Sıkça Sorulan Sorular</a></li>
+          <li><a href="kayit.html">💎 7 Gün Ücretsiz Başla</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Yasal & Güvenlik</h4>
+        <ul>
+          <li><a href="javascript:void(0)" onclick="alert('DiyetKalfa KVKK Metni: Verileriniz 256-Bit SSL ile korunur, 3. şahıslarla asla paylaşılmaz.')">KVKK Aydınlatma Metni</a></li>
+          <li><a href="javascript:void(0)" onclick="alert('Kullanıcı Sözleşmesi: DiyetKalfa lisansı 14 gün koşulsuz iade garantisi kapsamındadır.')">Kullanıcı Sözleşmesi</a></li>
+          <li><a href="javascript:void(0)" onclick="alert('Çerez Politikası: Sadece oturum ve güvenlik amaçlı çerezler kullanılır.')">Çerez Politikası</a></li>
+          <li><a href="javascript:void(0)" onclick="alert('DSÖ 2024 ve TÜBER standartlarına tam uyum sertifikasyonu.')">Bilimsel Sertifikasyon</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Klinik Destek & İletişim</h4>
+        <p style="margin-bottom: 8px; color: #a39285; font-size: 13.5px;">💬 WhatsApp Klinik Hattı:</p>
+        <p style="font-weight: 800; color: #4ade80; margin-bottom: 12px; font-size: 14px;">+90 (530) 000 00 00</p>
+        <p style="margin-bottom: 8px; color: #a39285; font-size: 13.5px;">📧 Kurumsal E-Posta:</p>
+        <p style="font-weight: 800; color: #ffffff; margin-bottom: 12px; font-size: 14px;">destek@diyetkalfa.com</p>
+        <p style="color: #a39285; font-size: 12px;">📍 Maslak Mah. Büyükdere Cad. Sarıyer / İstanbul</p>
+      </div>
+    </div>
+    <div style="max-width: 1240px; margin: 0 auto; padding-top: 20px; border-top: 1px solid #22140c; text-align: center; color: #78665a; font-size: 12px;">
+      © 2026 DiyetKalfa™ Beslenme Teknolojileri A.Ş. Tüm hakları saklıdır.
+    </div>
+  </footer>
+
+  <!-- DEMO TALEP ET MODALI -->
+  <div id="modal-demo" class="modal-backdrop">
+    <div class="modal-box">
+      <button type="button" class="modal-close-btn" onclick="closeDemoModal()">✕</button>
+      
+      <div style="background: linear-gradient(135deg, var(--luxury-green) 0%, var(--luxury-green-dark) 100%); color: #ffffff; padding: 26px 22px 18px;">
+        <span style="background: rgba(255,255,255,0.12); color: #edf5f0; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 999px;">DİYETKALFA CANLI DESTEK & DEMO</span>
+        <h3 style="font-size: 21px; font-weight: 800; margin-top: 8px; color: #ffffff;">DiyetKalfa'yı Canlı Keşfedin</h3>
+        <p style="font-size: 13px; color: #c9dbd1; margin-top: 4px;">İhtiyacınıza uygun seçeneği belirleyin, uzman ekibimizle anında iletişime geçin.</p>
+      </div>
+
+      <div style="display: flex; border-bottom: 1.5px solid var(--cream-beige-border); background: #ffffff;">
+        <button type="button" id="tab-demo-expert" onclick="switchDemoTab('expert')" style="flex: 1; padding: 13px; background: #f4fbf7; border: none; font-size: 14px; font-weight: 800; color: #163b2c; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; border-bottom: 2.5px solid #163b2c;">
+          <span>🩺</span> <span>Uzmanım (Diyetisyen)</span>
+        </button>
+        <button type="button" id="tab-demo-client" onclick="switchDemoTab('client')" style="flex: 1; padding: 13px; background: transparent; border: none; font-size: 14px; font-weight: 800; color: #64748b; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; border-bottom: 2.5px solid transparent;">
+          <span>👥</span> <span>Danışanım (Bireysel)</span>
+        </button>
+      </div>
+
+      <!-- TAB 1: UZMANIM -->
+      <div id="demo-content-expert" style="padding: 22px;">
+        <p style="font-size: 13px; color: #685951; margin-bottom: 16px; line-height: 1.45;">
+          Klinik koordinatörümüz 15 dakikalık canlı ekran paylaşımı ile DiyetKalfa'nın tüm yapay zeka araçlarını kliniğinize özel tanıtsın.
+        </p>
+        <form onsubmit="handleExpertDemoSubmit(event)">
+          <div style="margin-bottom: 12px;">
+            <label style="font-size: 12px; font-weight: 800; color: #170c07; display: block; margin-bottom: 4px;">Adınız Soyadınız *</label>
+            <input type="text" id="demo-expert-name" required placeholder="Uzm. Dyt. Ayşe Yılmaz" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 13px; font-family: inherit;">
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+            <div>
+              <label style="font-size: 12px; font-weight: 800; color: #170c07; display: block; margin-bottom: 4px;">WhatsApp Telefon *</label>
+              <input type="tel" id="demo-expert-phone" required placeholder="05XX XXX XX XX" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 13px; font-family: inherit;">
+            </div>
+            <div>
+              <label style="font-size: 12px; font-weight: 800; color: #170c07; display: block; margin-bottom: 4px;">Klinik Şehri</label>
+              <input type="text" id="demo-expert-city" placeholder="İstanbul, Ankara..." style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 13px; font-family: inherit;">
+            </div>
+          </div>
+          <div style="margin-bottom: 16px;">
+            <label style="font-size: 12px; font-weight: 800; color: #170c07; display: block; margin-bottom: 4px;">Tercih Edilen Demo Saati</label>
+            <select id="demo-expert-time" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 13px; font-family: inherit; background: #fff;">
+              <option value="Hemen / En Kısa Sürede">⚡ Hemen / En Kısa Sürede</option>
+              <option value="Bugün 14:00 - 16:00">Bugün 14:00 - 16:00</option>
+              <option value="Bugün 16:00 - 18:00">Bugün 16:00 - 18:00</option>
+              <option value="Yarın Sabah (10:00 - 12:00)">Yarın Sabah (10:00 - 12:00)</option>
+            </select>
+          </div>
+          <button type="submit" style="width: 100%; background: linear-gradient(135deg, var(--luxury-green) 0%, var(--luxury-green-dark) 100%); color: #ffffff; border: none; padding: 13px; border-radius: 12px; font-weight: 800; font-size: 14px; cursor: pointer; box-shadow: 0 4px 15px rgba(22, 59, 44, 0.3);">
+            🚀 Canlı Diyetisyen Demosunu Planla
+          </button>
+        </form>
+      </div>
+
+      <!-- TAB 2: DANIŞANIM -->
+      <div id="demo-content-client" style="padding: 22px; display: none;">
+        <div style="background: #edf5f0; border: 1px solid #c8e0d1; border-radius: 14px; padding: 14px; margin-bottom: 16px;">
+          <div style="display: flex; align-items: center; gap: 8px; font-weight: 800; color: #163b2c; font-size: 13px;">
+            <span>🤝</span> <span>DiyetKalfa Akıllı Danışan Yönlendirme Ağı</span>
+          </div>
+          <p style="font-size: 12px; color: #64748b; margin-top: 4px; line-height: 1.45;">
+            DiyetKalfa altyapısıyla çalışan 1.200+ onaylı uzman diyetisyenimiz arasından hedefinize en uygun klinik uzmanıyla sizi ücretsiz eşleştiriyoruz.
+          </p>
+        </div>
+
+        <form onsubmit="handleClientMatchingSubmit(event)">
+          <div style="margin-bottom: 12px;">
+            <label style="font-size: 12px; font-weight: 800; color: #170c07; display: block; margin-bottom: 4px;">Beslenme & Sağlık Hedefiniz *</label>
+            <select id="client-match-goal" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 13px; font-family: inherit; background: #fff;">
+              <option value="Kilo Verme & Yağ Yakımı">⚖️ Kilo Verme & İnatçı Yağ Yakımı</option>
+              <option value="İnsülin Direnci & HOMA-IR Dengeleme">🩸 İnsülin Direnci / HOMA-IR / Şeker Dengesi</option>
+              <option value="PCOS & Kadın Hormonal Beslenmesi">🌸 PCOS & Hormonal Denge Protokolü</option>
+              <option value="Sporcu Beslenmesi & Kas Kazanımı">🏃 Sporcu Beslenmesi & Hipertrofi</option>
+              <option value="Gastrointestinal & Bağırsak Sağlığı">🥑 Şişkinlik, İBS & Eliminasyon Diyeti</option>
+            </select>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+            <div>
+              <label style="font-size: 12px; font-weight: 800; color: #170c07; display: block; margin-bottom: 4px;">Adınız Soyadınız *</label>
+              <input type="text" id="client-match-name" required placeholder="Adınız Soyadınız" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 13px; font-family: inherit;">
+            </div>
+            <div>
+              <label style="font-size: 12px; font-weight: 800; color: #170c07; display: block; margin-bottom: 4px;">WhatsApp Numaranız *</label>
+              <input type="tel" id="client-match-phone" required placeholder="05XX XXX XX XX" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 13px; font-family: inherit;">
+            </div>
+          </div>
+
+          <div style="margin-bottom: 16px;">
+            <label style="font-size: 12px; font-weight: 800; color: #170c07; display: block; margin-bottom: 4px;">Tercihiniz: Şehir veya Online Görüşme</label>
+            <input type="text" id="client-match-city" placeholder="Örn: Online Görüşme veya İstanbul/Kadıköy" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 13px; font-family: inherit;">
+          </div>
+
+          <button type="submit" style="width: 100%; background: linear-gradient(135deg, #b86b3b 0%, #874921 100%); color: #ffffff; border: none; padding: 13px; border-radius: 12px; font-weight: 800; font-size: 14px; cursor: pointer; box-shadow: 0 4px 15px rgba(184, 107, 59, 0.35);">
+            🔍 Bana En Uygun Uzman Diyetisyeni Bul & Eşleştir
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* FAQ ACCORDION TOGGLE */
+    function toggleFaqItem(btn) {
+      const item = btn.closest('.faq-item');
+      item.classList.toggle('open');
+    }
+
+    /* FAQ SEARCH FILTER */
+    function filterFaq() {
+      const input = document.getElementById('faqSearchInput');
+      const filter = input.value.toLowerCase();
+      const items = document.querySelectorAll('.faq-item');
+
+      items.forEach(function(item) {
+        const text = item.textContent.toLowerCase();
+        if (text.indexOf(filter) > -1) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    /* FAQ CATEGORY TABS */
+    function filterCategory(cat, btn) {
+      const tabs = document.querySelectorAll('.faq-cat-btn');
+      tabs.forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+
+      const items = document.querySelectorAll('.faq-item');
+      items.forEach(function(item) {
+        if (cat === 'all' || item.getAttribute('data-category') === cat) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    /* DEMO MODAL CONTROLS */
+    function openDemoModal() {
+      var modal = document.getElementById('modal-demo');
+      if (modal) modal.style.display = 'flex';
+    }
+    function closeDemoModal() {
+      var modal = document.getElementById('modal-demo');
+      if (modal) modal.style.display = 'none';
+    }
+    function switchDemoTab(tab) {
+      var btnExpert = document.getElementById('tab-demo-expert');
+      var btnClient = document.getElementById('tab-demo-client');
+      var contentExpert = document.getElementById('demo-content-expert');
+      var contentClient = document.getElementById('demo-content-client');
+      if (!btnExpert || !btnClient) return;
+
+      if (tab === 'expert') {
+        btnExpert.style.background = '#f4fbf7';
+        btnExpert.style.color = '#163b2c';
+        btnExpert.style.borderBottom = '2.5px solid #163b2c';
+        btnClient.style.background = 'transparent';
+        btnClient.style.color = '#64748b';
+        btnClient.style.borderBottom = '2.5px solid transparent';
+        if (contentExpert) contentExpert.style.display = 'block';
+        if (contentClient) contentClient.style.display = 'none';
+      } else {
+        btnClient.style.background = '#fcf7f3';
+        btnClient.style.color = '#b86b3b';
+        btnClient.style.borderBottom = '2.5px solid #b86b3b';
+        btnExpert.style.background = 'transparent';
+        btnExpert.style.color = '#64748b';
+        btnExpert.style.borderBottom = '2.5px solid transparent';
+        if (contentClient) contentClient.style.display = 'block';
+        if (contentExpert) contentExpert.style.display = 'none';
+      }
+    }
+    function handleExpertDemoSubmit(e) {
+      e.preventDefault();
+      var name = document.getElementById('demo-expert-name').value;
+      var phone = document.getElementById('demo-expert-phone').value;
+      var city = document.getElementById('demo-expert-city').value || 'Belirtilmedi';
+      var time = document.getElementById('demo-expert-time').value;
+      var msg = 'Merhaba DiyetKalfa Ekibi, adım ' + name + '. Diyetisyen yazılımınızı kliniğimde kullanmak için canlı demo randevusu almak istiyorum. Telefon: ' + phone + ', Şehir: ' + city + ', Tercih Edilen Saat: ' + time;
+      window.open('https://wa.me/905300000000?text=' + encodeURIComponent(msg), '_blank');
+      closeDemoModal();
+      alert('Talebiniz başarıyla alındı! Klinik koordinatörümüz 15 dakika içinde WhatsApp üzerinden canlı demo bağlantısını paylaşacaktır.');
+    }
+    function handleClientMatchingSubmit(e) {
+      e.preventDefault();
+      var name = document.getElementById('client-match-name').value;
+      var phone = document.getElementById('client-match-phone').value;
+      var goal = document.getElementById('client-match-goal').value;
+      var city = document.getElementById('client-match-city').value || 'Online Görüşme';
+      var msg = 'Merhaba DiyetKalfa Danışan Ağı, adım ' + name + '. \'' + goal + '\' hedefim için ' + city + ' lokasyonunda/online bana en uygun DiyetKalfa lisanslı uzman diyetisyenle eşleşmek ve ücretsiz ön değerlendirme almak istiyorum. Tel: ' + phone;
+      window.open('https://wa.me/905300000000?text=' + encodeURIComponent(msg), '_blank');
+      closeDemoModal();
+      alert('Talebiniz DiyetKalfa Klinik Ağına iletildi! Yapay zeka eşleştirme algoritmamız vakanıza en uygun diyetisyen profilini WhatsApp hattınıza iletmektedir.');
+    }
+  </script>
+</body>
+</html>

@@ -330,7 +330,7 @@
 
         <div class="login-link">
           Zaten lisansınız veya hesabınız var mı? <br>
-          <a href="panel.html">Klinik Paneline Doğrudan Giriş Yapın →</a>
+          <a href="javascript:void(0)" onclick="handleDirectLogin()">Klinik Paneline Doğrudan Giriş Yapın →</a>
         </div>
       </div>
 
@@ -338,6 +338,22 @@
   </main>
 
   <script>
+    function handleDirectLogin() {
+      var isLicensed = localStorage.getItem('diyetkalfa_licensed') === 'true' || localStorage.getItem('diyetkalfa_unlocked') === 'true';
+      if (isLicensed) {
+        window.location.href = 'panel.html';
+        return;
+      }
+      var email = prompt("Lütfen lisanslı diyetisyen e-posta adresinizi veya lisans kodunuzu girin:");
+      if (email && email.trim().length > 0) {
+        localStorage.setItem('diyetkalfa_licensed', 'true');
+        localStorage.setItem('diyetkalfa_unlocked', 'true');
+        localStorage.setItem('diyetkalfa_dietitian_name', email.split('@')[0] || 'Klinik Yetkilisi');
+        alert("Giriş başarılı! DiyetKalfa Klinik çalışma alanına yönlendiriliyorsunuz.");
+        window.location.href = 'panel.html';
+      }
+    }
+
     function handleRegistration(e) {
       e.preventDefault();
       const name = document.getElementById('reg-name').value;
@@ -362,6 +378,7 @@
 
       localStorage.setItem('diyetkalfa_user', JSON.stringify(userProfile));
       localStorage.setItem('diyetkalfa_licensed', 'true');
+      localStorage.setItem('diyetkalfa_unlocked', 'true');
       localStorage.setItem('diyetkalfa_tier', 'Profesyonel Paket (7 Günlük Deneme)');
       localStorage.setItem('diyetkalfa_clinic_name', clinic);
       localStorage.setItem('diyetkalfa_dietitian_name', `${title} ${name}`);

@@ -484,14 +484,11 @@
         <a href="index.html">Ana Sayfa</a>
         <a href="ozellikler.html">Özellikler</a>
         <a href="fiyatlar.html" class="active">Fiyatlar</a>
-        <a href="index.html#section-faq">SSS</a>
+        <a href="sss.html">SSS</a>
         <a href="index.html#section-contact">İletişim</a>
       </nav>
 
       <div class="header-actions" style="display: flex; gap: 10px;">
-        <a href="panel.html" style="background: #faf8f4; color: #163b2c; border: 1.5px solid #2e5e4b; padding: 8px 16px; border-radius: 999px; font-weight: 800; font-size: 13px; text-decoration: none;">
-          🏥 Klinik Paneli
-        </a>
         <a href="kayit.html" class="btn-header-primary">
           <span>7 Gün Ücretsiz Başla</span>
         </a>
@@ -834,8 +831,7 @@
         <ul>
           <li><a href="ozellikler.html">✨ Özellikler</a></li>
           <li><a href="fiyatlar.html">💳 Fiyatlandırma</a></li>
-          <li><a href="index.html#section-faq">❓ SSS</a></li>
-          <li><a href="panel.html">🏥 Klinik Paneli</a></li>
+          <li><a href="sss.html">❓ SSS</a></li>
           <li><a href="kayit.html">💎 7 Gün Ücretsiz Başla</a></li>
         </ul>
       </div>
@@ -997,6 +993,7 @@
       e.preventDefault();
       alert('Tebrikler! Lisans ödemeniz başarıyla alındı. Klinik panelinize aktarılıyorsunuz...');
       localStorage.setItem('diyetkalfa_licensed', 'true');
+      localStorage.setItem('diyetkalfa_unlocked', 'true');
       localStorage.setItem('diyetkalfa_tier', chosenPlan);
       window.location.href = 'panel.html';
     }
