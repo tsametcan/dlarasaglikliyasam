@@ -1025,23 +1025,23 @@
   </div>
 
   <!-- DEMO TALEP ET MODALI -->
-  <div id="modal-demo" class="modal-backdrop">
-    <div class="modal-box">
-      <button type="button" class="modal-close-btn" onclick="closeDemoModal()">✕</button>
+  <div id="modal-demo" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(23, 12, 7, 0.78); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 10006; align-items: center; justify-content: center; padding: 16px;">
+    <div style="background: #ffffff; border-radius: 22px; max-width: 540px; width: 100%; box-shadow: 0 24px 60px rgba(0,0,0,0.4); border: 1.5px solid #e6ded1; overflow: hidden; position: relative; max-height: 94vh; overflow-y: auto;">
+      <button type="button" onclick="closeDemoModal()" style="position: absolute; top: 16px; right: 16px; background: rgba(255, 255, 255, 0.25); border: none; width: 32px; height: 32px; border-radius: 50%; color: #ffffff; font-size: 16px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10;">✕</button>
       
       <!-- Modal Başlık Alanı -->
-      <div style="background: linear-gradient(135deg, var(--luxury-green) 0%, var(--luxury-green-dark) 100%); color: #ffffff; padding: 28px 24px 20px; border-radius: 22px 22px 0 0;">
+      <div style="background: linear-gradient(135deg, #163b2c 0%, #0d241b 100%); color: #ffffff; padding: 26px 22px 18px;">
         <span style="background: rgba(255,255,255,0.12); color: #edf5f0; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 999px;">DİYETKALFA CANLI DESTEK & DEMO</span>
-        <h3 style="font-size: 22px; font-weight: 800; margin-top: 8px;">DiyetKalfa'yı Canlı Keşfedin</h3>
-        <p style="font-size: 13.5px; color: #c9dbd1; margin-top: 4px;">İhtiyacınıza uygun seçeneği belirleyin, uzman ekibimizle anında iletişime geçin.</p>
+        <h3 style="font-size: 21px; font-weight: 800; margin-top: 8px; color: #ffffff;">DiyetKalfa'yı Canlı Keşfedin</h3>
+        <p style="font-size: 13px; color: #c9dbd1; margin-top: 4px;">İhtiyacınıza uygun seçeneği belirleyin, uzman ekibimizle anında iletişime geçin.</p>
       </div>
 
       <!-- Tab Seçicisi -->
-      <div style="display: flex; border-bottom: 1.5px solid var(--cream-beige-border); background: #ffffff;">
-        <button type="button" id="tab-demo-expert" class="demo-tab-btn active" onclick="switchDemoTab('expert')">
+      <div style="display: flex; border-bottom: 1.5px solid #e6ded1; background: #ffffff;">
+        <button type="button" id="tab-demo-expert" onclick="switchDemoTab('expert')" style="flex: 1; padding: 13px; background: #f4fbf7; border: none; font-size: 14px; font-weight: 800; color: #163b2c; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; border-bottom: 2.5px solid #163b2c;">
           <span>🩺</span> <span>Uzmanım (Diyetisyen)</span>
         </button>
-        <button type="button" id="tab-demo-client" class="demo-tab-btn" onclick="switchDemoTab('client')">
+        <button type="button" id="tab-demo-client" onclick="switchDemoTab('client')" style="flex: 1; padding: 13px; background: transparent; border: none; font-size: 14px; font-weight: 800; color: #64748b; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; border-bottom: 2.5px solid transparent;">
           <span>👥</span> <span>Danışanım (Bireysel)</span>
         </button>
       </div>
@@ -1295,21 +1295,30 @@
       if (modal) modal.style.display = 'none';
     }
     function switchDemoTab(tab) {
-      const btnExpert = document.getElementById('tab-demo-expert');
-      const btnClient = document.getElementById('tab-demo-client');
-      const contentExpert = document.getElementById('demo-content-expert');
-      const contentClient = document.getElementById('demo-content-client');
+      var btnExpert = document.getElementById('tab-demo-expert');
+      var btnClient = document.getElementById('tab-demo-client');
+      var contentExpert = document.getElementById('demo-content-expert');
+      var contentClient = document.getElementById('demo-content-client');
+      if (!btnExpert || !btnClient) return;
 
       if (tab === 'expert') {
-        btnExpert.classList.add('active');
-        btnClient.classList.remove('active');
-        contentExpert.style.display = 'block';
-        contentClient.style.display = 'none';
+        btnExpert.style.background = '#f4fbf7';
+        btnExpert.style.color = '#163b2c';
+        btnExpert.style.borderBottom = '2.5px solid #163b2c';
+        btnClient.style.background = 'transparent';
+        btnClient.style.color = '#64748b';
+        btnClient.style.borderBottom = '2.5px solid transparent';
+        if (contentExpert) contentExpert.style.display = 'block';
+        if (contentClient) contentClient.style.display = 'none';
       } else {
-        btnClient.classList.add('active');
-        btnExpert.classList.remove('active');
-        contentClient.style.display = 'block';
-        contentExpert.style.display = 'none';
+        btnClient.style.background = '#fcf7f3';
+        btnClient.style.color = '#b86b3b';
+        btnClient.style.borderBottom = '2.5px solid #b86b3b';
+        btnExpert.style.background = 'transparent';
+        btnExpert.style.color = '#64748b';
+        btnExpert.style.borderBottom = '2.5px solid transparent';
+        if (contentClient) contentClient.style.display = 'block';
+        if (contentExpert) contentExpert.style.display = 'none';
       }
     }
     function handleExpertDemoSubmit(e) {
