@@ -491,10 +491,10 @@
       </nav>
 
       <div class="header-actions" style="display: flex; gap: 10px; align-items: center;">
-        <a href="https://wa.me/905321202846?text=Merhaba%2C%20DiyetKalfa%20AI%20klinik%20demo%20sunumu%20talep%20ediyorum." target="_blank" style="background:#ffffff; color:#163b2c; border:1.5px solid #2e5e4b; padding:8px 16px; border-radius:999px; font-weight:800; font-size:13px; text-decoration:none; display:inline-flex; align-items:center; gap:5px;">
+        <button type="button" onclick="openDemoModal()" style="background:#ffffff; color:#163b2c; border:1.5px solid #2e5e4b; padding:8px 16px; border-radius:999px; font-weight:800; font-size:13px; cursor: pointer; display:inline-flex; align-items:center; gap:5px; transition: all 0.2s;">
           <span>Demo Talep Et</span>
           <span>→</span>
-        </a>
+        </button>
         <a href="kayit.html" target="_blank" rel="noopener noreferrer" class="btn-header-primary">
           <span>7 Gün Ücretsiz Başla</span>
         </a>
@@ -1024,6 +1024,116 @@
     </div>
   </div>
 
+  <!-- DEMO TALEP ET MODALI -->
+  <div id="modal-demo" class="modal-backdrop">
+    <div class="modal-box">
+      <button type="button" class="modal-close-btn" onclick="closeDemoModal()">✕</button>
+      
+      <!-- Modal Başlık Alanı -->
+      <div style="background: linear-gradient(135deg, var(--luxury-green) 0%, var(--luxury-green-dark) 100%); color: #ffffff; padding: 28px 24px 20px; border-radius: 22px 22px 0 0;">
+        <span style="background: rgba(255,255,255,0.12); color: #edf5f0; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 999px;">DİYETKALFA CANLI DESTEK & DEMO</span>
+        <h3 style="font-size: 22px; font-weight: 800; margin-top: 8px;">DiyetKalfa'yı Canlı Keşfedin</h3>
+        <p style="font-size: 13.5px; color: #c9dbd1; margin-top: 4px;">İhtiyacınıza uygun seçeneği belirleyin, uzman ekibimizle anında iletişime geçin.</p>
+      </div>
+
+      <!-- Tab Seçicisi -->
+      <div style="display: flex; border-bottom: 1.5px solid var(--cream-beige-border); background: #ffffff;">
+        <button type="button" id="tab-demo-expert" class="demo-tab-btn active" onclick="switchDemoTab('expert')">
+          <span>🩺</span> <span>Uzmanım (Diyetisyen)</span>
+        </button>
+        <button type="button" id="tab-demo-client" class="demo-tab-btn" onclick="switchDemoTab('client')">
+          <span>👥</span> <span>Danışanım (Bireysel)</span>
+        </button>
+      </div>
+
+      <!-- TAB 1: UZMANIM (DİYETİSYEN DEMO FORMU) -->
+      <div id="demo-content-expert" style="padding: 24px;">
+        <!-- HIZLI DEMO PANELİ BAŞLATMA KARTI -->
+        <div style="background: linear-gradient(135deg, #163b2c 0%, #0d241b 100%); color: #ffffff; padding: 14px 16px; border-radius: 14px; margin-bottom: 18px; display: flex; align-items: center; justify-content: space-between; gap: 12px; box-shadow: 0 4px 14px rgba(22, 59, 44, 0.25);">
+          <div>
+            <div style="font-weight: 800; font-size: 13.5px; color: #d4af37;">⚡ Beklemeden Canlı Deneyin</div>
+            <div style="font-size: 11.5px; color: #edf5f0; margin-top: 2px;">Kurulum veya şifre gerekmeden klinik demo panelini anında açın.</div>
+          </div>
+          <a href="panel.html?unlock=true&demo=true" target="_blank" style="background: #d4af37; color: #163b2c; font-weight: 900; font-size: 12px; padding: 8px 14px; border-radius: 8px; text-decoration: none; white-space: nowrap; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">🚀 Demo Paneli Aç</a>
+        </div>
+
+        <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 18px;">
+          Dilerseniz klinik ekibimiz 15 dakikalık canlı ekran paylaşımı ile DiyetKalfa'nın tüm yapay zeka araçlarını kliniğinize özel tanıtsın:
+        </p>
+        <form onsubmit="handleExpertDemoSubmit(event)">
+          <div style="margin-bottom: 14px;">
+            <label style="font-size: 12px; font-weight: 800; color: var(--text-main); display: block; margin-bottom: 4px;">Adınız Soyadınız *</label>
+            <input type="text" id="demo-expert-name" required placeholder="Uzm. Dyt. Ayşe Yılmaz" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid var(--cream-beige-border); font-size: 13.5px; font-family: inherit;">
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px;">
+            <div>
+              <label style="font-size: 12px; font-weight: 800; color: var(--text-main); display: block; margin-bottom: 4px;">Telefon (WhatsApp) *</label>
+              <input type="tel" id="demo-expert-phone" required placeholder="05XX XXX XX XX" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid var(--cream-beige-border); font-size: 13.5px; font-family: inherit;">
+            </div>
+            <div>
+              <label style="font-size: 12px; font-weight: 800; color: var(--text-main); display: block; margin-bottom: 4px;">Klinik Şehri</label>
+              <input type="text" id="demo-expert-city" placeholder="İstanbul, Ankara..." style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid var(--cream-beige-border); font-size: 13.5px; font-family: inherit;">
+            </div>
+          </div>
+          <div style="margin-bottom: 18px;">
+            <label style="font-size: 12px; font-weight: 800; color: var(--text-main); display: block; margin-bottom: 4px;">Tercih Edilen Demo Saati</label>
+            <select id="demo-expert-time" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid var(--cream-beige-border); font-size: 13.5px; font-family: inherit; background: #fff;">
+              <option value="Hemen / En Kısa Sürede">⚡ Hemen / En Kısa Sürede</option>
+              <option value="Bugün 14:00 - 16:00">Bugün 14:00 - 16:00</option>
+              <option value="Bugün 16:00 - 18:00">Bugün 16:00 - 18:00</option>
+              <option value="Yarın Sabah (10:00 - 12:00)">Yarın Sabah (10:00 - 12:00)</option>
+            </select>
+          </div>
+          <button type="submit" style="width: 100%; background: linear-gradient(135deg, var(--luxury-green) 0%, var(--luxury-green-dark) 100%); color: #ffffff; border: none; padding: 13px; border-radius: 12px; font-weight: 900; font-size: 14.5px; cursor: pointer; box-shadow: 0 4px 15px rgba(22, 59, 44, 0.3);">
+            🚀 Canlı Diyetisyen Demosunu Planla
+          </button>
+        </form>
+      </div>
+
+      <!-- TAB 2: DANIŞANIM (YARATICI AKILLI KLİNİK EŞLEŞTİRME MOTORU) -->
+      <div id="demo-content-client" style="padding: 24px; display: none;">
+        <div style="background: #edf5f0; border: 1px solid #c8e0d1; border-radius: 14px; padding: 14px; margin-bottom: 18px;">
+          <div style="display: flex; align-items: center; gap: 8px; font-weight: 800; color: var(--luxury-green); font-size: 13.5px;">
+            <span>🤝</span> <span>DiyetKalfa Akıllı Danışan Yönlendirme Ağı</span>
+          </div>
+          <p style="font-size: 12.5px; color: var(--text-muted); margin-top: 4px; line-height: 1.45;">
+            DiyetKalfa altyapısıyla çalışan 1.200+ onaylı uzman diyetisyenimiz arasından hedefinize en uygun klinik uzmanıyla sizi ücretsiz eşleştiriyoruz.
+          </p>
+        </div>
+
+        <form onsubmit="handleClientMatchingSubmit(event)">
+          <div style="margin-bottom: 14px;">
+            <label style="font-size: 12px; font-weight: 800; color: var(--text-main); display: block; margin-bottom: 4px;">Beslenme & Sağlık Hedefiniz *</label>
+            <select id="client-match-goal" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid var(--cream-beige-border); font-size: 13.5px; font-family: inherit; background: #fff;">
+              <option value="Kilo Verme & Yağ Yakımı">⚖️ Kilo Verme & İnatçı Yağ Yakımı</option>
+              <option value="İnsülin Direnci & HOMA-IR Dengeleme">🩸 İnsülin Direnci / HOMA-IR / Şeker Dengesi</option>
+              <option value="PCOS & Kadın Hormonal Beslenmesi">🌸 PCOS & Hormonal Denge Protokolü</option>
+              <option value="Sporcu Beslenmesi & Kas Kazanımı">🏃 Sporcu Beslenmesi & Hipertrofi</option>
+              <option value="Gastrointestinal & Bağırsak Sağlığı">🥑 Şişkinlik, İBS & Eliminasyon Diyeti</option>
+            </select>
+          </div>
+          <div style="margin-bottom: 14px;">
+            <label style="font-size: 12px; font-weight: 800; color: var(--text-main); display: block; margin-bottom: 4px;">Adınız Soyadınız *</label>
+            <input type="text" id="client-match-name" required placeholder="Adınız Soyadınız" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid var(--cream-beige-border); font-size: 13.5px; font-family: inherit;">
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px;">
+            <div>
+              <label style="font-size: 12px; font-weight: 800; color: var(--text-main); display: block; margin-bottom: 4px;">Telefon (WhatsApp) *</label>
+              <input type="tel" id="client-match-phone" required placeholder="05XX XXX XX XX" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid var(--cream-beige-border); font-size: 13.5px; font-family: inherit;">
+            </div>
+            <div>
+              <label style="font-size: 12px; font-weight: 800; color: var(--text-main); display: block; margin-bottom: 4px;">Bulunduğunuz Şehir</label>
+              <input type="text" id="client-match-city" placeholder="Online Görüşme veya Şehir" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid var(--cream-beige-border); font-size: 13.5px; font-family: inherit;">
+            </div>
+          </div>
+          <button type="submit" style="width: 100%; background: linear-gradient(135deg, #b86b3b 0%, #85461e 100%); color: #ffffff; border: none; padding: 13px; border-radius: 12px; font-weight: 900; font-size: 14.5px; cursor: pointer; box-shadow: 0 4px 15px rgba(184, 107, 59, 0.3);">
+            ✨ Ücretsiz Diyetisyen Eşleştirmesi Al
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <!-- SATIN ALMA / ÖDEME MODALI -->
   <div id="modal-checkout" class="modal-backdrop">
     <div class="modal-box" style="padding: 30px;">
@@ -1171,7 +1281,63 @@
       if (e.target === modal) closeCheckoutModal();
       const modalC = document.getElementById('modal-contact');
       if (e.target === modalC) closeContactModal();
+      const modalD = document.getElementById('modal-demo');
+      if (e.target === modalD) closeDemoModal();
     });
+
+    /* DEMO MODALI JS */
+    function openDemoModal() {
+      var modal = document.getElementById('modal-demo');
+      if (modal) modal.style.display = 'flex';
+    }
+    function closeDemoModal() {
+      var modal = document.getElementById('modal-demo');
+      if (modal) modal.style.display = 'none';
+    }
+    function switchDemoTab(tab) {
+      const btnExpert = document.getElementById('tab-demo-expert');
+      const btnClient = document.getElementById('tab-demo-client');
+      const contentExpert = document.getElementById('demo-content-expert');
+      const contentClient = document.getElementById('demo-content-client');
+
+      if (tab === 'expert') {
+        btnExpert.classList.add('active');
+        btnClient.classList.remove('active');
+        contentExpert.style.display = 'block';
+        contentClient.style.display = 'none';
+      } else {
+        btnClient.classList.add('active');
+        btnExpert.classList.remove('active');
+        contentClient.style.display = 'block';
+        contentExpert.style.display = 'none';
+      }
+    }
+    function handleExpertDemoSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('demo-expert-name').value;
+      const phone = document.getElementById('demo-expert-phone').value;
+      const city = document.getElementById('demo-expert-city').value || 'Belirtilmedi';
+      const time = document.getElementById('demo-expert-time').value;
+
+      const msg = `Merhaba DiyetKalfa Ekibi, adım ${name}. Diyetisyen yazılımınızı kliniğimde kullanmak için canlı demo randevusu almak istiyorum. Telefon: ${phone}, Şehir: ${city}, Tercih Edilen Saat: ${time}`;
+      window.open(`https://wa.me/905321202846?text=${encodeURIComponent(msg)}`, '_blank');
+      closeDemoModal();
+      if (confirm('Talebiniz başarıyla alındı Sn. ' + name + '!\n\nKlinik koordinatörümüz 15 dakika içinde WhatsApp üzerinden sizinle iletişime geçecektir.\n\nBeklemeden hemen şimdi Canlı Klinik Demo Panelini açıp test etmek ister misiniz?')) {
+        window.open('panel.html?unlock=true&demo=true', '_blank');
+      }
+    }
+    function handleClientMatchingSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('client-match-name').value;
+      const phone = document.getElementById('client-match-phone').value;
+      const goal = document.getElementById('client-match-goal').value;
+      const city = document.getElementById('client-match-city').value || 'Online Görüşme';
+
+      const msg = `Merhaba DiyetKalfa Danışan Ağı, adım ${name}. '${goal}' hedefim için ${city} lokasyonunda/online bana en uygun DiyetKalfa lisanslı uzman diyetisyenle eşleşmek ve ücretsiz ön değerlendirme almak istiyorum. Tel: ${phone}`;
+      window.open(`https://wa.me/905321202846?text=${encodeURIComponent(msg)}`, '_blank');
+      closeDemoModal();
+      alert('Talebiniz DiyetKalfa Klinik Ağına iletildi! Yapay zeka eşleştirme algoritmamız vakanıza en uygun diyetisyen profilini WhatsApp hattınıza iletmektedir.');
+    }
 
     /* İLETİŞİM & BİZ SİZİ ARAYALIM MODALI JS */
     function openContactModal() {
