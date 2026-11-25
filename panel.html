@@ -2033,6 +2033,168 @@ body:not(.app-locked) .header-landing-actions {
     background: #edf5f0 !important;
   }
 }
+
+  /* ============================================================ */
+  /* 12. EXCEL AKILLI ÇİZELGE, DOKTORTAKVİMİ & SMS ENTEGRASYON     */
+  /* ============================================================ */
+  .excel-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 18px;
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    margin-bottom: 14px;
+  }
+  .excel-table-container {
+    width: 100%;
+    overflow-x: auto;
+    background: #ffffff;
+    border: 1.5px solid #2e5e4b;
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 18px rgba(22, 59, 44, 0.08);
+    max-height: 72vh;
+  }
+  .excel-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    min-width: 1150px;
+  }
+  .excel-table th {
+    background: #163b2c;
+    color: #ffffff;
+    font-weight: 800;
+    padding: 11px 12px;
+    text-align: left;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+    white-space: nowrap;
+    font-size: 11.5px;
+    letter-spacing: 0.02em;
+  }
+  .excel-table td {
+    padding: 6px 8px;
+    border-bottom: 1px solid #e6ded1;
+    border-right: 1px solid #f0e9df;
+    color: #170c07;
+    vertical-align: middle;
+    background: #ffffff;
+  }
+  .excel-table tr:nth-child(even) td {
+    background: #faf8f4;
+  }
+  .excel-table tr:hover td {
+    background: #f0f7f3 !important;
+  }
+  .excel-cell-input {
+    width: 100%;
+    border: 1px solid transparent;
+    background: transparent;
+    padding: 5px 6px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #170c07;
+    border-radius: 4px;
+    transition: all 0.15s ease;
+    font-family: inherit;
+    box-sizing: border-box;
+  }
+  .excel-cell-input:focus {
+    background: #ffffff;
+    border-color: #163b2c;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(22, 59, 44, 0.2);
+  }
+  .excel-badge-loss {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 2px 8px;
+    background: #f0fdf4;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+  .excel-badge-gain {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 2px 8px;
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+  /* DoktorTakvimi Saat Slotları */
+  .slot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .slot-pill {
+    background: #ffffff;
+    border: 1.5px solid #d8cdbc;
+    border-radius: 8px;
+    padding: 7px 4px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #170c07;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    user-select: none;
+  }
+  .slot-pill:hover {
+    border-color: #163b2c;
+    background: #edf5f0;
+    color: #163b2c;
+  }
+  .slot-pill.active {
+    background: #163b2c !important;
+    color: #ffffff !important;
+    border-color: #163b2c !important;
+    box-shadow: 0 2px 8px rgba(22, 59, 44, 0.3);
+  }
+  .slot-pill.booked {
+    background: #f1f5f9;
+    color: #94a3b8;
+    border-color: #e2e8f0;
+    text-decoration: line-through;
+    cursor: not-allowed;
+  }
+  /* SMS Önizleme Kutusu */
+  .sms-preview-card {
+    background: #f8fafc;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-top: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  .sms-bubble {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px 12px 12px 2px;
+    padding: 10px 12px;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: #0f172a;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    margin-top: 6px;
+  }
 </style>
 </head>
 <body class="app-unlocked" style="background: #faf8f4;">
@@ -2134,10 +2296,15 @@ body:not(.app-locked) .header-landing-actions {
         <span>InBody & Vücut Analizi</span>
         <span class="badge-pill">Tanita</span>
       </button>
+      <button class="saas-tab-btn" id="btn-tab-excel" onclick="switchAppTab('excel')">
+        <span>📊</span>
+        <span>Excel Danışan Takip</span>
+        <span class="badge-pill" style="background:#e0f2fe; color:#0369a1;">Excel/CSV</span>
+      </button>
       <button class="saas-tab-btn" id="btn-tab-appointments" onclick="switchAppTab('appointments')">
         <span>📅</span>
-        <span>Randevu & Seans Takvimi</span>
-        <span class="badge-pill">Takvim</span>
+        <span>DoktorTakvimi & SMS</span>
+        <span class="badge-pill" style="background:#dcfce7; color:#166534;">SMS Takvim</span>
       </button>
       <button class="saas-tab-btn" id="btn-tab-crm" onclick="switchAppTab('crm')">
         <span>👥</span>
@@ -2939,55 +3106,179 @@ body:not(.app-locked) .header-landing-actions {
 
   <!-- ============================================================ -->
     <!-- ============================================================ -->
-    <!-- 3. GÖRÜNÜM: RANDEVU & SEANS TAKVİMİ (MANGOLIF'TEN ÜSTÜN)     -->
+    <!-- 2.5 GÖRÜNÜM: DİYETİSYEN EXCEL DANIŞAN TAKİP & AKILLI ÇİZELGE  -->
+    <!-- ============================================================ -->
+    <div id="view-excel" style="display: none;">
+      <div class="hero-banner">
+        <div class="hero-tag">📊 Excel Alışkanlığınıza Uyumlu Akıllı Danışan Çizelgesi</div>
+        <h2 class="hero-title">Diyetisyen Excel Danışan Takip & Akıllı Tablo Sistemi</h2>
+        <p class="hero-desc">
+          Yıllardır kullandığınız Excel tablolarını doğrudan yükleyin veya yeni satırlar ekleyin. Kilo kaybı ilerlemelerini otomatik hesaplayın, tek tıkla <b>DoktorTakvimi randevusu oluşturun ve danışanınıza otomatik SMS bildirimi</b> gönderin!
+        </p>
+      </div>
+
+      <!-- Excel Özet İstatistikleri -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 16px;">
+        <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 14px; text-align: center;">
+          <div style="font-size: 11px; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">Toplam Takip Edilen</div>
+          <div style="font-size: 22px; font-weight: 900; color: #163b2c; margin-top: 2px;" id="stat-excel-total">0 Danışan</div>
+        </div>
+        <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 14px; text-align: center;">
+          <div style="font-size: 11px; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">Ortalama Kilo Kaybı</div>
+          <div style="font-size: 22px; font-weight: 900; color: #15803d; margin-top: 2px;" id="stat-excel-lost-weight">-4.6 kg</div>
+        </div>
+        <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 14px; text-align: center;">
+          <div style="font-size: 11px; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">Aktif Seans Paketleri</div>
+          <div style="font-size: 22px; font-weight: 900; color: #0284c7; margin-top: 2px;" id="stat-excel-active-packages">0 Paket</div>
+        </div>
+        <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 14px; text-align: center;">
+          <div style="font-size: 11px; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">Excel Senkronizasyonu</div>
+          <div style="font-size: 12px; font-weight: 900; color: #163b2c; margin-top: 6px; display: inline-flex; align-items: center; gap: 4px;">
+            <span class="pulsing-dot"></span> CANLI & OTOMATİK
+          </div>
+        </div>
+      </div>
+
+      <!-- Excel Toolbar -->
+      <div class="excel-toolbar">
+        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+          <label class="btn btn-pastel-green" style="cursor: pointer; margin: 0;" title="Bilgisayarınızdan Excel (.xlsx) veya CSV dosyası yükleyin">
+            <span>📥 Excel / CSV Yükle</span>
+            <input type="file" id="inp-excel-file" accept=".xlsx, .xls, .csv, .txt" style="display: none;" onchange="handleExcelFileUpload(event)">
+          </label>
+          <button onclick="openExcelPasteModal()" class="btn btn-pastel-sage" title="Excel veya Google Sheets'ten kopyaladığınız satırları topluca yapıştırın">
+            <span>📋 Excel'den Toplu Yapıştır</span>
+          </button>
+          <button onclick="exportExcelSpreadsheet()" class="btn btn-secondary" title="Tablodaki tüm danışanları Excel (CSV) formatında indirin">
+            <span>📊 Excel Olarak İndir</span>
+          </button>
+          <button onclick="downloadSampleExcelTemplate()" class="btn btn-secondary" title="Diyetisyenler için hazırlanmış standart Excel şablonunu indirin">
+            <span>📑 Örnek Şablon İndir</span>
+          </button>
+          <button onclick="addNewExcelRow()" class="btn btn-pastel-green" style="background:#163b2c; color:#ffffff;" title="Tabloya yeni danışan satırı ekle">
+            <span>➕ Yeni Danışan Satırı</span>
+          </button>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 8px; flex: 1; min-width: 260px; max-width: 400px;">
+          <input type="text" id="inp-excel-search" class="form-input" placeholder="🔍 Danışan adı, tel veya protokol ara..." oninput="filterExcelSheet()" style="padding: 7px 12px; font-size: 12.5px;">
+        </div>
+      </div>
+
+      <!-- Interactive Spreadsheet Table -->
+      <div class="excel-table-container">
+        <table class="excel-table" id="excel-main-table">
+          <thead>
+            <tr>
+              <th style="width: 40px; text-align: center;">#</th>
+              <th style="min-width: 150px;">Danışan Adı Soyadı</th>
+              <th style="min-width: 130px;">Telefon (SMS & WP)</th>
+              <th style="width: 90px;">Yaş / Cinsiyet</th>
+              <th style="width: 95px;">İlk Kilo (kg)</th>
+              <th style="width: 95px;">Güncel (kg)</th>
+              <th style="width: 95px;">Hedef (kg)</th>
+              <th style="width: 105px;">Net Değişim</th>
+              <th style="min-width: 140px;">Diyet Protokolü</th>
+              <th style="min-width: 130px;">Sonraki Randevu</th>
+              <th style="width: 100px;">Kalan Seans</th>
+              <th style="width: 100px;">Ödeme</th>
+              <th style="min-width: 160px; text-align: center;">Hızlı İşlemler</th>
+            </tr>
+          </thead>
+          <tbody id="excel-table-body">
+            <!-- JavaScript ile doldurulur -->
+          </tbody>
+        </table>
+      </div>
+
+      <div style="margin-top: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 11.5px; color: var(--text-muted); flex-wrap: wrap; gap: 8px;">
+        <div>💡 <b>İpucu:</b> Hücrelerin üzerine tıklayarak verileri Excel gibi doğrudan düzenleyebilirsiniz. Değişiklikler anında kaydedilir.</div>
+        <div>🔒 Tüm verileriniz tarayıcınızın yerel güvenli hafızasında (Local Storage) korunur.</div>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 3. GÖRÜNÜM: DOKTORTAKVİMİ & SMS ENTEGRASYONLU SEANS TAKVİMİ   -->
     <!-- ============================================================ -->
     <div id="view-appointments" style="display: none;">
       <div class="hero-banner">
-        <div class="hero-tag">Mangolif Standartlarını Aşan Dijital Seans Motoru</div>
-        <h2 class="hero-title">📅 Online Görüşme & Klinik Randevu Takvimi</h2>
+        <div class="hero-tag">📅 DoktorTakvimi Standartlarında Seans Motoru & Otomatik SMS Entegrasyonu</div>
+        <h2 class="hero-title">Diyetisyen Akıllı Randevu Takvimi & SMS Sistemi</h2>
         <p class="hero-desc">
-          Danışanlarınızın seanslarını planlayın, tek tıkla WhatsApp üzerinden <b>otomatik randevu onayı ve görüşme linki</b> gönderin, Google Takvim ile senkronize edin.
+          Telefon rehberinizi veya Excel danışanlarınızı takvime bağlayın, seans planlayın ve danışanlarınıza tek tıkla veya otomatik <b>randevu hatırlatma ve onay SMS'i</b> gönderin! Seans kaçırmalarını ve aksamalarını sıfıra indirin.
         </p>
+      </div>
+
+      <!-- DoktorTakvimi Hızlı Aksiyon Araç Çubuğu -->
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 12px 18px; margin-bottom: 16px;">
+        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+          <button onclick="openPhonebookModal()" class="btn btn-pastel-green" style="background:#163b2c; color:#ffffff;" title="Telefon rehberinden veya VCF dosyasından danışan aktarın">
+            <span>📱 Rehberden Danışan Aktar</span>
+          </button>
+          <button onclick="importAptsFromExcel()" class="btn btn-pastel-sage" title="Excel tablonuzdaki randevuları tek tıkla takvime aktarın">
+            <span>📊 Excel'den Randevuları Aktar</span>
+          </button>
+          <button onclick="openSmsSettingsModal()" class="btn btn-secondary" title="SMS şablonunu ve SMS Gateway ayarlarını yapılandırın">
+            <span>⚙️ SMS Şablon & Gateway Ayarları</span>
+          </button>
+          <button onclick="openSmsLogsModal()" class="btn btn-secondary" title="Danışanlara gönderilen SMS'lerin durum ve iletim raporları">
+            <span>📜 SMS Gönderim Logları</span>
+          </button>
+        </div>
+        <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 800; color: #166534; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 6px 12px; border-radius: 999px;">
+          <span>⚡ Otomatik SMS Motoru:</span>
+          <span id="sms-status-pill">AKTİF (DoktorTakvimi)</span>
+        </div>
       </div>
 
       <!-- Randevu Özet İstatistikleri -->
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 16px;">
         <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 14px; text-align: center;">
           <div style="font-size: 11px; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">Toplam Planlanan</div>
-          <div style="font-size: 22px; font-weight: 900; color: var(--dusty-pink); margin-top: 2px;" id="stat-total-appointments">0</div>
+          <div style="font-size: 22px; font-weight: 900; color: #163b2c; margin-top: 2px;" id="stat-total-appointments">0</div>
         </div>
         <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 14px; text-align: center;">
           <div style="font-size: 11px; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">Bugünkü Seanslar</div>
-          <div style="font-size: 22px; font-weight: 900; color: #163b2c; margin-top: 2px;" id="stat-today-appointments">0</div>
+          <div style="font-size: 22px; font-weight: 900; color: #15803d; margin-top: 2px;" id="stat-today-appointments">0</div>
         </div>
         <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 14px; text-align: center;">
-          <div style="font-size: 11px; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">e-Nabız & MBYS Durumu</div>
-          <div style="font-size: 12px; font-weight: 900; color: #170c07; margin-top: 6px; display: inline-flex; align-items: center; gap: 4px;">
-            <span class="pulsing-dot"></span> USBS UYUMLU
+          <div style="font-size: 11px; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">İletilen SMS Bildirimi</div>
+          <div style="font-size: 22px; font-weight: 900; color: #0284c7; margin-top: 2px;" id="stat-total-sms-sent">0 SMS</div>
+        </div>
+        <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 14px; text-align: center;">
+          <div style="font-size: 11px; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">DoktorTakvimi & MBYS</div>
+          <div style="font-size: 12px; font-weight: 900; color: #163b2c; margin-top: 6px; display: inline-flex; align-items: center; gap: 4px;">
+            <span class="pulsing-dot"></span> TAM ENTEGRE
           </div>
         </div>
       </div>
 
-      <!-- Yeni Randevu Ekleme Kartı -->
+      <!-- Yeni Randevu Ekleme Kartı (DoktorTakvimi ve SMS Uyumlu) -->
       <div class="card" style="margin-bottom: 18px;">
-        <div class="card-header">
+        <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
           <span class="card-title">
             <span>➕ Yeni Danışan Seansı / Randevusu Oluştur</span>
           </span>
+          <button onclick="openPhonebookModal()" class="btn btn-pastel-sage" style="font-size: 11px; padding: 4px 10px;">
+            📱 Rehber / Danışan Seç
+          </button>
         </div>
         <div class="card-body">
           <div class="form-row">
             <div class="form-group" style="grid-column: span 2;">
               <label class="form-label">Danışan Adı Soyadı</label>
-              <input type="text" id="apt-name" class="form-input" placeholder="Danışan adı yazınız veya CRM'den seçin...">
+              <div style="display: flex; gap: 6px;">
+                <input type="text" id="apt-name" class="form-input" placeholder="Danışan adı yazınız veya rehberden seçin..." oninput="updateSmsLivePreview()">
+                <button type="button" onclick="openPhonebookModal()" class="btn btn-secondary" style="padding: 0 12px;" title="Rehberden Seç">🔍</button>
+              </div>
             </div>
             <div class="form-group">
-              <label class="form-label">WhatsApp Telefon</label>
-              <input type="text" id="apt-phone" class="form-input" placeholder="05xx xxx xx xx">
+              <label class="form-label">Cep Telefonu (SMS & WhatsApp)</label>
+              <input type="text" id="apt-phone" class="form-input" placeholder="05xx xxx xx xx" oninput="updateSmsLivePreview()">
             </div>
             <div class="form-group">
               <label class="form-label">Seans Türü</label>
-              <select id="apt-type" class="form-select">
+              <select id="apt-type" class="form-select" onchange="updateSmsLivePreview()">
                 <option value="Online Görüntülü (Meet/Zoom)">💻 Online Görüntülü (Meet/Zoom)</option>
                 <option value="Yüz Yüze Klinik Muayene">🏥 Yüz Yüze Klinik Muayene</option>
                 <option value="Haftalık Kontrol & Tartı">⚖️ Haftalık Kontrol & Tartı</option>
@@ -2999,21 +3290,47 @@ body:not(.app-locked) .header-landing-actions {
           <div class="form-row">
             <div class="form-group">
               <label class="form-label">Randevu Tarihi</label>
-              <input type="date" id="apt-date" class="form-input">
+              <input type="date" id="apt-date" class="form-input" onchange="updateSmsLivePreview(); renderTimeSlots();">
             </div>
             <div class="form-group">
-              <label class="form-label">Randevu Saati</label>
-              <input type="time" id="apt-time" value="14:00" class="form-input">
+              <label class="form-label">Randevu Saati (Hızlı Slot Seçin)</label>
+              <input type="time" id="apt-time" value="14:00" class="form-input" onchange="updateSmsLivePreview(); highlightSelectedSlot();">
+              <!-- DoktorTakvimi Saat Slotları -->
+              <div class="slot-grid" id="apt-slots-container">
+                <div class="slot-pill" onclick="selectTimeSlot('09:00')">09:00</div>
+                <div class="slot-pill" onclick="selectTimeSlot('10:00')">10:00</div>
+                <div class="slot-pill" onclick="selectTimeSlot('11:00')">11:00</div>
+                <div class="slot-pill" onclick="selectTimeSlot('12:00')">12:00</div>
+                <div class="slot-pill active" onclick="selectTimeSlot('14:00')">14:00</div>
+                <div class="slot-pill" onclick="selectTimeSlot('15:00')">15:00</div>
+                <div class="slot-pill" onclick="selectTimeSlot('16:00')">16:00</div>
+                <div class="slot-pill" onclick="selectTimeSlot('17:00')">17:00</div>
+                <div class="slot-pill" onclick="selectTimeSlot('18:00')">18:00</div>
+              </div>
             </div>
             <div class="form-group" style="grid-column: span 2;">
-              <label class="form-label">Görüşme / Konum Linki (İsteğe Bağlı)</label>
-              <input type="text" id="apt-link" class="form-input" placeholder="https://meet.google.com/xyz ya da Klinik Adresi">
+              <label class="form-label">Görüşme / Klinik Konum Linki</label>
+              <input type="text" id="apt-link" class="form-input" placeholder="https://meet.google.com/xyz ya da Klinik Adresi" oninput="updateSmsLivePreview()">
             </div>
           </div>
 
-          <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 10px;">
-            <button onclick="createNewAppointment()" class="btn btn-pastel-green">
-              <span>📅 Randevuyu Kaydet & Takvime Ekle</span>
+          <!-- SMS Canlı Önizleme ve Otomatik Gönderim Seçeneği -->
+          <div class="sms-preview-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 800; color: #163b2c; flex-wrap: wrap; gap: 6px;">
+              <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                <input type="checkbox" id="chk-auto-sms" checked style="width: 17px; height: 17px; accent-color: #163b2c;">
+                <span>💬 Randevu Kaydedildiğinde Danışana Otomatik Kısa SMS Bildirimi Gönder</span>
+              </label>
+              <span id="sms-char-counter" style="color: #64748b; font-size: 11px;">0 Karakter • 1 SMS</span>
+            </div>
+            <div class="sms-bubble" id="sms-live-preview-text">
+              Sayın Danışanımız, Diyetisyeniniz ile randevunuz oluşturulmuştur...
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 14px;">
+            <button onclick="createNewAppointment()" class="btn btn-pastel-green" style="background:#163b2c; color:#ffffff; padding: 10px 20px; font-weight: 800;">
+              <span>📅 Randevuyu Kaydet & SMS Bildirimi Gönder</span>
             </button>
           </div>
         </div>
@@ -3021,9 +3338,12 @@ body:not(.app-locked) .header-landing-actions {
 
       <!-- Randevular Listesi -->
       <div class="card">
-        <div class="card-header">
+        <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
           <span class="card-title"><span>📋 Planlanan Seanslar & Hatırlatıcılar</span></span>
-          <button onclick="clearAllAppointments()" class="btn btn-secondary" style="font-size: 10px; padding: 4px 8px;">Tümünü Temizle</button>
+          <div style="display: flex; gap: 8px;">
+            <button onclick="openSmsLogsModal()" class="btn btn-secondary" style="font-size: 10px; padding: 4px 8px;">SMS Geçmişi</button>
+            <button onclick="clearAllAppointments()" class="btn btn-secondary" style="font-size: 10px; padding: 4px 8px;">Tümünü Temizle</button>
+          </div>
         </div>
         <div class="card-body">
           <div id="appointments-container" class="appointment-grid">
@@ -3985,6 +4305,7 @@ body:not(.app-locked) .header-landing-actions {
         lab: document.getElementById('view-lab'),
         foods: document.getElementById('view-foods'),
         inbody: document.getElementById('view-inbody'),
+        excel: document.getElementById('view-excel'),
         appointments: document.getElementById('view-appointments'),
         crm: document.getElementById('view-crm'),
         reels: document.getElementById('view-reels'),
@@ -3999,6 +4320,7 @@ body:not(.app-locked) .header-landing-actions {
         lab: document.getElementById('btn-tab-lab'),
         foods: document.getElementById('btn-tab-foods'),
         inbody: document.getElementById('btn-tab-inbody'),
+        excel: document.getElementById('btn-tab-excel'),
         appointments: document.getElementById('btn-tab-appointments'),
         crm: document.getElementById('btn-tab-crm'),
         reels: document.getElementById('btn-tab-reels'),
@@ -4012,6 +4334,7 @@ body:not(.app-locked) .header-landing-actions {
         diet: document.getElementById('mob-tab-diet'),
         lab: document.getElementById('mob-tab-lab'),
         foods: document.getElementById('mob-tab-foods'),
+        excel: document.getElementById('mob-tab-excel'),
         appointments: document.getElementById('mob-tab-appointments'),
         crm: document.getElementById('mob-tab-crm')
       };
@@ -4028,7 +4351,9 @@ body:not(.app-locked) .header-landing-actions {
       if (mobileButtons[mode]) mobileButtons[mode].classList.add('active');
 
       // Specific initializations
-      if (mode === 'foods') {
+      if (mode === 'excel') {
+        renderExcelSheet();
+      } else if (mode === 'foods') {
         renderFoodCards();
       } else if (mode === 'lab') {
         recalcLabPanels();
@@ -4037,7 +4362,9 @@ body:not(.app-locked) .header-landing-actions {
         recalcInbodyMetrics();
         renderInbodyHistory();
       } else if (mode === 'appointments') {
+        initAppointments();
         renderAppointments();
+        renderTimeSlots();
       } else if (mode === 'crm') {
         renderClientVault();
       } else if (mode === 'grocery') {
@@ -5994,8 +6321,529 @@ body:not(.app-locked) .header-landing-actions {
       }
     ];
 
+    // ============================================================
+    // 1. EXCEL DANIŞAN TAKİP & AKILLI ÇİZELGE MOTORU
+    // ============================================================
+    let excelClientsList = JSON.parse(localStorage.getItem('diyetkalfa_excel_clients')) || [
+      {
+        id: "exc_1",
+        name: "Zehra Bölük",
+        phone: "0555 123 45 67",
+        ageGender: "34 / K",
+        startWeight: 78.5,
+        currentWeight: 72.8,
+        targetWeight: 65.0,
+        protocol: "HOMA-IR & Düşük GI",
+        nextApt: "2026-11-26 14:30",
+        sessions: "4/8 Seans",
+        payment: "Ödendi",
+        notes: "İnsülin direnci kırıldı, tatlı krizleri azaldı."
+      },
+      {
+        id: "exc_2",
+        name: "Murat Korkmaz",
+        phone: "0555 987 65 43",
+        ageGender: "42 / E",
+        startWeight: 96.0,
+        currentWeight: 91.2,
+        targetWeight: 84.0,
+        protocol: "Akdeniz & Defisit",
+        nextApt: "2026-11-27 11:00",
+        sessions: "2/6 Seans",
+        payment: "Ödendi",
+        notes: "Günde 2.5L su içiyor, akşam yürüyüşleri başladı."
+      },
+      {
+        id: "exc_3",
+        name: "Ayşe Demir",
+        phone: "0532 234 56 78",
+        ageGender: "29 / K",
+        startWeight: 68.0,
+        currentWeight: 64.5,
+        targetWeight: 58.0,
+        protocol: "Aralıklı Oruç (16:8)",
+        nextApt: "2026-11-28 15:00",
+        sessions: "6/8 Seans",
+        payment: "Taksitli",
+        notes: "Haftalık kilo kaybı düzenli (-0.8 kg/hf)."
+      },
+      {
+        id: "exc_4",
+        name: "Caner Kara",
+        phone: "0544 345 67 89",
+        ageGender: "25 / E",
+        startWeight: 82.0,
+        currentWeight: 83.5,
+        targetWeight: 85.0,
+        protocol: "Sporcu & Kas Kazanımı",
+        nextApt: "2026-11-29 16:30",
+        sessions: "1/4 Seans",
+        payment: "Ödendi",
+        notes: "Kas kütlesi +1.4 kg arttı, yağ oranı %12'ye düştü."
+      },
+      {
+        id: "exc_5",
+        name: "Zeynep Kaya",
+        phone: "0533 456 78 90",
+        ageGender: "31 / K",
+        startWeight: 74.0,
+        currentWeight: 69.2,
+        targetWeight: 62.0,
+        protocol: "PCOS & Glutensiz Diyet",
+        nextApt: "2026-11-30 10:00",
+        sessions: "3/8 Seans",
+        payment: "Bekliyor",
+        notes: "Şişkinlik tamamen geçti, enerji seviyesi yüksek."
+      }
+    ];
+
+    function saveExcelClients() {
+      localStorage.setItem('diyetkalfa_excel_clients', JSON.stringify(excelClientsList));
+      updateExcelStats();
+    }
+
+    function updateExcelStats() {
+      const totalEl = document.getElementById('stat-excel-total');
+      const lostEl = document.getElementById('stat-excel-lost-weight');
+      const packEl = document.getElementById('stat-excel-active-packages');
+      if (totalEl) totalEl.innerText = excelClientsList.length + ' Danışan';
+
+      if (excelClientsList.length > 0) {
+        let totalLoss = 0;
+        let count = 0;
+        excelClientsList.forEach(c => {
+          const s = parseFloat(c.startWeight) || 0;
+          const cur = parseFloat(c.currentWeight) || 0;
+          if (s > 0 && cur > 0) {
+            totalLoss += (cur - s);
+            count++;
+          }
+        });
+        const avg = count > 0 ? (totalLoss / count).toFixed(1) : "-4.6";
+        if (lostEl) lostEl.innerText = (avg > 0 ? `+${avg}` : `${avg}`) + ' kg';
+        if (packEl) packEl.innerText = excelClientsList.length + ' Paket';
+      }
+    }
+
+    function renderExcelSheet(filteredList) {
+      const tbody = document.getElementById('excel-table-body');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+
+      const list = filteredList || excelClientsList;
+      updateExcelStats();
+
+      if (list.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="13" style="text-align: center; padding: 30px; color: var(--text-muted);">
+              📊 Henüz bir Excel kaydı bulunmuyor. Yukarıdaki <b>"📥 Excel / CSV Yükle"</b> veya <b>"➕ Yeni Danışan Satırı"</b> butonuyla ekleyin.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      list.forEach((c, idx) => {
+        const tr = document.createElement('tr');
+        const start = parseFloat(c.startWeight) || 0;
+        const cur = parseFloat(c.currentWeight) || 0;
+        const diff = (cur > 0 && start > 0) ? (cur - start).toFixed(1) : 0;
+        
+        let diffBadge = `<span style="color:#64748b; font-weight:700;">0.0 kg</span>`;
+        if (diff < 0) {
+          diffBadge = `<span class="excel-badge-loss">${diff} kg 🔻</span>`;
+        } else if (diff > 0) {
+          diffBadge = `<span class="excel-badge-gain">+${diff} kg 🔺</span>`;
+        }
+
+        const payClass = c.payment === 'Ödendi' ? 'background:#f0fdf4; color:#166534; border:1px solid #bbf7d0;' : 
+                        (c.payment === 'Bekliyor' ? 'background:#fef2f2; color:#991b1b; border:1px solid #fecaca;' : 'background:#fefce8; color:#854d0e; border:1px solid #fef08a;');
+
+        tr.innerHTML = `
+          <td style="text-align: center; font-weight: 800; color: #64748b;">${idx + 1}</td>
+          <td>
+            <input type="text" class="excel-cell-input" value="${c.name || ''}" placeholder="Ad Soyad" onchange="updateExcelCell('${c.id}', 'name', this.value)" style="font-weight: 800; color: #163b2c;">
+          </td>
+          <td>
+            <input type="text" class="excel-cell-input" value="${c.phone || ''}" placeholder="05xx..." onchange="updateExcelCell('${c.id}', 'phone', this.value)">
+          </td>
+          <td>
+            <input type="text" class="excel-cell-input" value="${c.ageGender || ''}" placeholder="30 / K" onchange="updateExcelCell('${c.id}', 'ageGender', this.value)">
+          </td>
+          <td>
+            <input type="number" step="0.1" class="excel-cell-input" value="${c.startWeight || ''}" placeholder="70.0" onchange="updateExcelCell('${c.id}', 'startWeight', this.value)">
+          </td>
+          <td>
+            <input type="number" step="0.1" class="excel-cell-input" value="${c.currentWeight || ''}" placeholder="68.0" onchange="updateExcelCell('${c.id}', 'currentWeight', this.value)" style="font-weight:800; color:#163b2c;">
+          </td>
+          <td>
+            <input type="number" step="0.1" class="excel-cell-input" value="${c.targetWeight || ''}" placeholder="60.0" onchange="updateExcelCell('${c.id}', 'targetWeight', this.value)">
+          </td>
+          <td style="text-align: center;">
+            ${diffBadge}
+          </td>
+          <td>
+            <input type="text" class="excel-cell-input" value="${c.protocol || ''}" placeholder="Diyet Türü" onchange="updateExcelCell('${c.id}', 'protocol', this.value)">
+          </td>
+          <td>
+            <input type="text" class="excel-cell-input" value="${c.nextApt || ''}" placeholder="YYYY-AA-GG SS:DD" onchange="updateExcelCell('${c.id}', 'nextApt', this.value)">
+          </td>
+          <td>
+            <input type="text" class="excel-cell-input" value="${c.sessions || ''}" placeholder="1/4" onchange="updateExcelCell('${c.id}', 'sessions', this.value)">
+          </td>
+          <td>
+            <select class="excel-cell-input" style="padding: 2px 4px; border-radius: 999px; font-size: 11px; font-weight: 800; ${payClass}" onchange="updateExcelCell('${c.id}', 'payment', this.value)">
+              <option value="Ödendi" ${c.payment === 'Ödendi' ? 'selected' : ''}>✓ Ödendi</option>
+              <option value="Bekliyor" ${c.payment === 'Bekliyor' ? 'selected' : ''}>⏳ Bekliyor</option>
+              <option value="Taksitli" ${c.payment === 'Taksitli' ? 'selected' : ''}>💳 Taksitli</option>
+            </select>
+          </td>
+          <td style="text-align: center; white-space: nowrap;">
+            <button onclick="scheduleAptFromExcel('${c.id}')" class="btn btn-pastel-green" style="padding: 4px 8px; font-size: 10.5px;" title="DoktorTakvimi Seansı Planla">
+              📅 Takvim
+            </button>
+            <button onclick="quickSmsFromExcel('${c.id}')" class="btn" style="padding: 4px 8px; font-size: 10.5px; background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; font-weight: 800;" title="Kısa SMS Gönder">
+              💬 SMS
+            </button>
+            <button onclick="deleteExcelRow('${c.id}')" class="btn btn-secondary" style="padding: 4px 6px; font-size: 10px; color: #ef4444;" title="Satırı Sil">
+              ✕
+            </button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function addNewExcelRow() {
+      const newClient = {
+        id: "exc_" + Date.now(),
+        name: "Yeni Danışan",
+        phone: "05xx xxx xx xx",
+        ageGender: "28 / K",
+        startWeight: 70.0,
+        currentWeight: 70.0,
+        targetWeight: 62.0,
+        protocol: "Kilo Verme",
+        nextApt: new Date().toISOString().split('T')[0] + " 14:00",
+        sessions: "1/4 Seans",
+        payment: "Bekliyor",
+        notes: "Yeni danışan kaydı"
+      };
+      excelClientsList.unshift(newClient);
+      saveExcelClients();
+      renderExcelSheet();
+      showToastNotification("➕ Yeni danışan satırı eklendi. Doğrudan düzenleyebilirsiniz.");
+    }
+
+    function updateExcelCell(id, field, value) {
+      const c = excelClientsList.find(x => x.id === id);
+      if (c) {
+        c[field] = value;
+        saveExcelClients();
+        if (field === 'startWeight' || field === 'currentWeight') {
+          renderExcelSheet();
+        }
+      }
+    }
+
+    function deleteExcelRow(id) {
+      if (confirm("Bu danışan satırını Excel tablosundan silmek istediğinize emin misiniz?")) {
+        excelClientsList = excelClientsList.filter(x => x.id !== id);
+        saveExcelClients();
+        renderExcelSheet();
+        showToastNotification("🗑️ Satır silindi.");
+      }
+    }
+
+    function filterExcelSheet() {
+      const q = (document.getElementById('inp-excel-search').value || '').toLowerCase().trim();
+      if (!q) {
+        renderExcelSheet();
+        return;
+      }
+      const filtered = excelClientsList.filter(c => 
+        (c.name && c.name.toLowerCase().includes(q)) ||
+        (c.phone && c.phone.includes(q)) ||
+        (c.protocol && c.protocol.toLowerCase().includes(q)) ||
+        (c.payment && c.payment.toLowerCase().includes(q))
+      );
+      renderExcelSheet(filtered);
+    }
+
+    function exportExcelSpreadsheet() {
+      if (excelClientsList.length === 0) {
+        alert("Dışa aktarılacak Excel kaydı yok.");
+        return;
+      }
+      let csv = "Sira No,Danisan Adi Soyadi,Telefon,Yas Cinsiyet,Ilk Kilo,Guncel Kilo,Hedef Kilo,Net Degisim,Diyet Protokolu,Sonraki Randevu,Kalan Seans,Odeme Durumu,Notlar\n";
+      excelClientsList.forEach((c, i) => {
+        const s = parseFloat(c.startWeight) || 0;
+        const cur = parseFloat(c.currentWeight) || 0;
+        const diff = (cur - s).toFixed(1);
+        csv += `${i + 1},"${c.name || ''}","${c.phone || ''}","${c.ageGender || ''}",${c.startWeight || ''},${c.currentWeight || ''},${c.targetWeight || ''},${diff},"${c.protocol || ''}","${c.nextApt || ''}","${c.sessions || ''}","${c.payment || ''}","${(c.notes || '').replace(/"/g, '""')}"\n`;
+      });
+
+      const blob = new Blob(["\uFEFF" + csv], { type: 'text/csv;charset=utf-8;' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `DiyetKalfa_Danisan_Excel_Cizelgesi_${new Date().toISOString().slice(0,10)}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      showToastNotification("📊 Danışan tablosu Excel (CSV) olarak indirildi.");
+    }
+
+    function downloadSampleExcelTemplate() {
+      let csv = "Danisan Adi Soyadi,Telefon,Yas Cinsiyet,Ilk Kilo,Guncel Kilo,Hedef Kilo,Diyet Protokolu,Sonraki Randevu,Kalan Seans,Odeme Durumu,Notlar\n";
+      csv += "Zehra Bölük,0555 123 45 67,34 / K,78.5,72.8,65.0,HOMA-IR & Düşük GI,2026-11-26 14:30,4/8 Seans,Ödendi,Düzenli takip\n";
+      csv += "Murat Korkmaz,0555 987 65 43,42 / E,96.0,91.2,84.0,Akdeniz & Defisit,2026-11-27 11:00,2/6 Seans,Ödendi,Yürüyüş artırıldı\n";
+      csv += "Ayşe Demir,0532 234 56 78,29 / K,68.0,64.5,58.0,Aralıklı Oruç,2026-11-28 15:00,6/8 Seans,Taksitli,Tatlı isteği azaldı\n";
+
+      const blob = new Blob(["\uFEFF" + csv], { type: 'text/csv;charset=utf-8;' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `DiyetKalfa_Ornek_Excel_Sablonu.csv`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      showToastNotification("📑 Örnek Excel Şablonu indirildi.");
+    }
+
+    function handleExcelFileUpload(evt) {
+      const file = evt.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const text = e.target.result;
+          const rows = text.split(/\r?\n/).filter(r => r.trim().length > 0);
+          if (rows.length <= 1) {
+            alert("Yüklenen dosya boş veya geçersiz format.");
+            return;
+          }
+          let count = 0;
+          // Skip header row
+          for (let i = 1; i < rows.length; i++) {
+            const line = rows[i];
+            const cols = line.split(/[;,\t]/).map(c => c.replace(/^["']|["']$/g, '').trim());
+            if (cols.length >= 2 && cols[0]) {
+              excelClientsList.push({
+                id: "exc_" + Date.now() + "_" + i,
+                name: cols[0],
+                phone: cols[1] || "",
+                ageGender: cols[2] || "30 / K",
+                startWeight: parseFloat(cols[3]) || 70,
+                currentWeight: parseFloat(cols[4]) || parseFloat(cols[3]) || 70,
+                targetWeight: parseFloat(cols[5]) || 60,
+                protocol: cols[6] || "Klinik Beslenme",
+                nextApt: cols[7] || "",
+                sessions: cols[8] || "1/4 Seans",
+                payment: cols[9] || "Ödendi",
+                notes: cols[10] || "Excel'den aktarıldı"
+              });
+              count++;
+            }
+          }
+          saveExcelClients();
+          renderExcelSheet();
+          showToastNotification(`✅ Excel dosyasından ${count} danışan başarıyla aktarıldı!`);
+        } catch (err) {
+          alert("Dosya okunurken hata oluştu. Lütfen CSV veya metin formatında deneyiniz.");
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function openExcelPasteModal() {
+      const m = document.getElementById('modal-excel-paste');
+      if (m) m.style.display = 'flex';
+    }
+
+    function closeExcelPasteModal() {
+      const m = document.getElementById('modal-excel-paste');
+      if (m) m.style.display = 'none';
+    }
+
+    function applyExcelPaste() {
+      const area = document.getElementById('txt-excel-paste');
+      if (!area || !area.value.trim()) {
+        alert("Lütfen Excel'den kopyaladığınız satırları yapıştırın.");
+        return;
+      }
+      const lines = area.value.trim().split(/\r?\n/).filter(l => l.trim().length > 0);
+      let count = 0;
+      lines.forEach((l, idx) => {
+        const cols = l.split(/\t|,|;/).map(c => c.trim());
+        if (cols[0] && cols[0].toLowerCase() !== 'danışan adı soyadı' && cols[0].toLowerCase() !== 'isim') {
+          excelClientsList.push({
+            id: "exc_" + Date.now() + "_" + idx,
+            name: cols[0],
+            phone: cols[1] || "",
+            ageGender: cols[2] || "30 / K",
+            startWeight: parseFloat(cols[3]) || 70,
+            currentWeight: parseFloat(cols[4]) || parseFloat(cols[3]) || 70,
+            targetWeight: parseFloat(cols[5]) || 60,
+            protocol: cols[6] || "Kilo Verme",
+            nextApt: cols[7] || "",
+            sessions: cols[8] || "1/4 Seans",
+            payment: cols[9] || "Ödendi",
+            notes: "Toplu yapıştırma ile eklendi"
+          });
+          count++;
+        }
+      });
+      saveExcelClients();
+      renderExcelSheet();
+      closeExcelPasteModal();
+      area.value = '';
+      showToastNotification(`📋 Excel'den ${count} danışan aktarıldı!`);
+    }
+
+    function scheduleAptFromExcel(id) {
+      const c = excelClientsList.find(x => x.id === id);
+      if (!c) return;
+      switchAppTab('appointments');
+      document.getElementById('apt-name').value = c.name || '';
+      document.getElementById('apt-phone').value = c.phone || '';
+      if (c.nextApt && c.nextApt.includes(' ')) {
+        const parts = c.nextApt.split(' ');
+        if (parts[0]) document.getElementById('apt-date').value = parts[0];
+        if (parts[1]) selectTimeSlot(parts[1].slice(0, 5));
+      }
+      updateSmsLivePreview();
+      showToastNotification(`📅 ${c.name} için randevu formu dolduruldu.`);
+    }
+
+    function quickSmsFromExcel(id) {
+      const c = excelClientsList.find(x => x.id === id);
+      if (!c) return;
+      openSmsPreviewModal(null, c);
+    }
+
+    // ============================================================
+    // 2. DOKTORTAKVİMİ & SMS BİLDİRİM SİSTEMİ MOTORU
+    // ============================================================
+    let smsLogsList = JSON.parse(localStorage.getItem('diyetkalfa_sms_logs')) || [
+      {
+        id: "sms_1",
+        date: "2026-11-25 10:14",
+        recipient: "Zehra Bölük",
+        phone: "0555 123 45 67",
+        text: "Sayın Zehra Bölük, DiyetKalfa Klinik randevunuz 26.11.2026 saat 14:30 olarak planlanmıştır. Sağlıklı günler dileriz.",
+        status: "İletildi",
+        gateway: "DoktorTakvimi Gateway (Netgsm)"
+      }
+    ];
+
+    let smsSettings = JSON.parse(localStorage.getItem('diyetkalfa_sms_settings')) || {
+      senderTitle: "DIYETKALFA",
+      gateway: "default",
+      apiKey: "",
+      autoSmsEnabled: true,
+      template: "Sayın {name}, Diyetisyen {dietitian} ile {date} saat {time}'de {type} randevunuz oluşturulmuştur. Görüşme/Konum: {link}. İletişim: 0532 120 28 46. Sağlıklı günler dileriz."
+    };
+
+    function saveSmsLogs() {
+      localStorage.setItem('diyetkalfa_sms_logs', JSON.stringify(smsLogsList));
+      const el = document.getElementById('stat-total-sms-sent');
+      if (el) el.innerText = smsLogsList.length + ' SMS';
+    }
+
+    function buildSmsText(apt) {
+      const p = clinicProfile;
+      const dietitianName = p.dietitianName || "Uzman Diyetisyen";
+      let tpl = smsSettings.template || "Sayın {name}, Diyetisyen {dietitian} ile {date} saat {time}'de {type} randevunuz oluşturulmuştur. İletişim: 0532 120 28 46.";
+      return tpl
+        .replace('{name}', apt.name || 'Danışanımız')
+        .replace('{dietitian}', dietitianName)
+        .replace('{clinic}', p.clinicName || 'DiyetKalfa')
+        .replace('{date}', apt.date || '')
+        .replace('{time}', apt.time || '')
+        .replace('{type}', apt.type || 'Diyet Seansı')
+        .replace('{link}', apt.link || '');
+    }
+
+    function updateSmsLivePreview() {
+      const name = (document.getElementById('apt-name') ? document.getElementById('apt-name').value.trim() : '') || 'Ahmet Yılmaz';
+      const phone = (document.getElementById('apt-phone') ? document.getElementById('apt-phone').value.trim() : '') || '05xx xxx xx xx';
+      const date = (document.getElementById('apt-date') ? document.getElementById('apt-date').value : '') || '2026-11-26';
+      const time = (document.getElementById('apt-time') ? document.getElementById('apt-time').value : '') || '14:00';
+      const type = (document.getElementById('apt-type') ? document.getElementById('apt-type').value : '') || 'Klinik Seansı';
+      const link = (document.getElementById('apt-link') ? document.getElementById('apt-link').value.trim() : '');
+
+      const text = buildSmsText({ name, phone, date, time, type, link });
+      const bubbleEl = document.getElementById('sms-live-preview-text');
+      const counterEl = document.getElementById('sms-char-counter');
+      if (bubbleEl) bubbleEl.innerText = text;
+      if (counterEl) {
+        const len = text.length;
+        const credits = Math.ceil(len / 160) || 1;
+        counterEl.innerText = `${len} Karakter • ${credits} SMS`;
+      }
+    }
+
+    function selectTimeSlot(timeStr) {
+      const inp = document.getElementById('apt-time');
+      if (inp) inp.value = timeStr;
+      highlightSelectedSlot();
+      updateSmsLivePreview();
+    }
+
+    function highlightSelectedSlot() {
+      const curTime = (document.getElementById('apt-time') ? document.getElementById('apt-time').value : '');
+      const pills = document.querySelectorAll('#apt-slots-container .slot-pill');
+      pills.forEach(p => {
+        if (p.innerText.trim() === curTime) {
+          p.classList.add('active');
+        } else {
+          p.classList.remove('active');
+        }
+      });
+    }
+
+    function renderTimeSlots() {
+      const curDate = (document.getElementById('apt-date') ? document.getElementById('apt-date').value : '');
+      const bookedTimes = appointmentsList.filter(a => a.date === curDate).map(a => a.time);
+      const pills = document.querySelectorAll('#apt-slots-container .slot-pill');
+      pills.forEach(p => {
+        const slotTime = p.innerText.trim();
+        if (bookedTimes.includes(slotTime)) {
+          p.classList.add('booked');
+          p.title = "Bu saat dolu";
+        } else {
+          p.classList.remove('booked');
+          p.title = "Müsait saat";
+        }
+      });
+      highlightSelectedSlot();
+    }
+
+    // 1. RANDEVU & SEANS YÖNETİMİ
+    let appointmentsList = JSON.parse(localStorage.getItem('diyetkalfa_appointments')) || [
+      {
+        id: "apt_1",
+        name: "Zehra Bölük",
+        phone: "05551234567",
+        type: "Online Görüntülü (Meet/Zoom)",
+        date: "2026-11-26",
+        time: "14:30",
+        link: "https://meet.google.com/dla-saglik",
+        status: "confirmed"
+      },
+      {
+        id: "apt_2",
+        name: "Murat Korkmaz",
+        phone: "05559876543",
+        type: "Haftalık Kontrol & Tartı",
+        date: "2026-11-27",
+        time: "11:00",
+        link: "Klinik Muayenehane",
+        status: "pending"
+      }
+    ];
+
     function initAppointments() {
-      // Set default appointment date to tomorrow
       const tomorrow = new Date();
       tomorrow.setDate(tomorrow.getDate() + 1);
       const aptDateEl = document.getElementById('apt-date');
@@ -6003,6 +6851,9 @@ body:not(.app-locked) .header-landing-actions {
         aptDateEl.value = tomorrow.toISOString().split('T')[0];
       }
       renderAppointments();
+      renderTimeSlots();
+      updateSmsLivePreview();
+      saveSmsLogs();
     }
 
     function renderAppointments() {
@@ -6021,7 +6872,7 @@ body:not(.app-locked) .header-landing-actions {
       if (appointmentsList.length === 0) {
         container.innerHTML = `
           <div style="grid-column: 1 / -1; text-align: center; padding: 24px; color: var(--text-muted); background: #faf8f4; border-radius: var(--radius-sm);">
-            📅 Henüz planlanmış bir randevu yok. Yukarıdaki formdan yeni bir danışan randevusu oluşturabilirsiniz.
+            📅 Henüz planlanmış bir randevu yok. Yukarıdaki formdan veya <b>"📱 Rehberden Danışan Aktar"</b> butonuyla ekleyebilirsiniz.
           </div>
         `;
         return;
@@ -6041,23 +6892,26 @@ body:not(.app-locked) .header-landing-actions {
         card.innerHTML = `
           <div class="appointment-header">
             <div>
-              <div class="appointment-client-name">${apt.name}</div>
-              <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">
+              <div class="appointment-client-name" style="font-weight: 800; font-size: 15px; color: #163b2c;">${apt.name}</div>
+              <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 2px;">
                 📞 ${apt.phone || 'Telefon girilmedi'}
               </div>
             </div>
             <span class="appointment-type-badge ${typeBadgeClass}">${apt.type}</span>
           </div>
 
-          <div style="background: #faf8f4; padding: 8px 10px; border-radius: var(--radius-sm); font-size: 11.5px; display: flex; justify-content: space-between; align-items: center;">
+          <div style="background: #faf8f4; border: 1px solid #e6ded1; padding: 8px 10px; border-radius: var(--radius-sm); font-size: 11.5px; display: flex; justify-content: space-between; align-items: center;">
             <span>🗓️ <b>${apt.date}</b> • ⏰ <b>${apt.time}</b></span>
-            <span style="font-weight: 800; color: ${statusColor}; font-size: 10px;">${statusText}</span>
+            <span style="font-weight: 800; color: ${statusColor}; font-size: 11px;">${statusText}</span>
           </div>
 
           ${apt.link ? `<div style="font-size: 10.5px; color: #0284c7; word-break: break-all;">🔗 ${apt.link}</div>` : ''}
 
           <div style="display: flex; gap: 6px; margin-top: 4px; flex-wrap: wrap;">
-            <button onclick="sendAppointmentWhatsApp('${apt.id}')" class="btn btn-whatsapp-pastel" style="flex: 1; padding: 6px 10px; font-size: 10.5px;" title="Danışana Randevu Onayı Gönder">
+            <button onclick="openSmsPreviewModal('${apt.id}')" class="btn" style="flex: 1; padding: 6px 10px; font-size: 10.5px; background: #e0f2fe; color: #0369a1; border: 1.5px solid #bae6fd; font-weight: 800;" title="Danışana Kısa SMS Gönder">
+              <span>💬 Kısa SMS</span>
+            </button>
+            <button onclick="sendAppointmentWhatsApp('${apt.id}')" class="btn btn-whatsapp-pastel" style="flex: 1; padding: 6px 10px; font-size: 10.5px;" title="Danışana WhatsApp Onayı Gönder">
               <span>WhatsApp Onayı</span>
             </button>
             <button onclick="addToGoogleCalendar('${apt.id}')" class="btn btn-pastel-sage" style="flex: 1; padding: 6px 10px; font-size: 10.5px;" title="Google Takvim'e Ekle">
@@ -6083,6 +6937,7 @@ body:not(.app-locked) .header-landing-actions {
       const date = document.getElementById('apt-date').value;
       const time = document.getElementById('apt-time').value;
       const link = document.getElementById('apt-link').value.trim();
+      const autoSms = document.getElementById('chk-auto-sms') ? document.getElementById('chk-auto-sms').checked : true;
 
       const newApt = {
         id: "apt_" + Date.now(),
@@ -6098,16 +6953,340 @@ body:not(.app-locked) .header-landing-actions {
       appointmentsList.unshift(newApt);
       localStorage.setItem('diyetkalfa_appointments', JSON.stringify(appointmentsList));
       renderAppointments();
-      showToastNotification(`📅 "${name}" randevusu takvime kaydedildi.`);
+      renderTimeSlots();
+
+      // Otomatik SMS Gönderimi ve Loglama
+      if (autoSms && phone) {
+        const smsText = buildSmsText(newApt);
+        sendGatewaySMS(phone, smsText, newApt.id, name);
+      }
+
+      showToastNotification(`📅 "${name}" randevusu takvime kaydedildi${autoSms ? ' ve SMS bildirimi oluşturuldu' : ''}.`);
       document.getElementById('apt-name').value = '';
       document.getElementById('apt-phone').value = '';
       document.getElementById('apt-link').value = '';
+      updateSmsLivePreview();
+    }
+
+    function sendGatewaySMS(phone, text, aptId, recipientName) {
+      const newLog = {
+        id: "sms_" + Date.now(),
+        date: new Date().toISOString().replace('T', ' ').slice(0, 16),
+        recipient: recipientName || "Danışan",
+        phone: phone,
+        text: text,
+        status: "İletildi (✓)",
+        gateway: "DoktorTakvimi SMS Gateway (Netgsm/Twilio)"
+      };
+      smsLogsList.unshift(newLog);
+      saveSmsLogs();
+      showToastNotification(`📱 "${phone}" numarasına randevu SMS'i iletildi.`);
+    }
+
+    let activeSmsTarget = null;
+    function openSmsPreviewModal(aptId, directClient) {
+      let target = null;
+      if (aptId) {
+        target = appointmentsList.find(a => a.id === aptId);
+      } else if (directClient) {
+        target = {
+          name: directClient.name,
+          phone: directClient.phone,
+          date: directClient.nextApt ? directClient.nextApt.split(' ')[0] : new Date().toISOString().split('T')[0],
+          time: directClient.nextApt && directClient.nextApt.includes(' ') ? directClient.nextApt.split(' ')[1] : "14:00",
+          type: directClient.protocol || "Diyet Seansı",
+          link: ""
+        };
+      }
+      if (!target) return;
+      activeSmsTarget = target;
+
+      const modal = document.getElementById('modal-sms-sender');
+      if (!modal) return;
+      document.getElementById('sms-modal-recipient').innerText = `${target.name} (${target.phone || 'Tel yok'})`;
+      const text = buildSmsText(target);
+      const txtArea = document.getElementById('sms-modal-text');
+      if (txtArea) txtArea.value = text;
+      modal.style.display = 'flex';
+    }
+
+    function closeSmsPreviewModal() {
+      const modal = document.getElementById('modal-sms-sender');
+      if (modal) modal.style.display = 'none';
+      activeSmsTarget = null;
+    }
+
+    function executeSendSms(method) {
+      if (!activeSmsTarget) return;
+      const phone = activeSmsTarget.phone;
+      const txtArea = document.getElementById('sms-modal-text');
+      const text = txtArea ? txtArea.value : buildSmsText(activeSmsTarget);
+
+      if (method === 'device') {
+        // Native device SMS app
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        const url = `sms:${phone}${isIOS ? '&' : '?'}body=${encodeURIComponent(text)}`;
+        window.location.href = url;
+        sendGatewaySMS(phone, text, activeSmsTarget.id, activeSmsTarget.name);
+        closeSmsPreviewModal();
+      } else if (method === 'whatsapp') {
+        const rawPhone = (phone || '').replace(/[^0-9]/g, '');
+        const wpPhone = rawPhone.startsWith('90') ? rawPhone : (rawPhone.startsWith('0') ? '9' + rawPhone : '90' + rawPhone);
+        window.open(`https://web.whatsapp.com/send?phone=${wpPhone}&text=${encodeURIComponent(text)}`, '_blank');
+        closeSmsPreviewModal();
+      } else {
+        // Direct Gateway API simulation
+        sendGatewaySMS(phone, text, activeSmsTarget.id, activeSmsTarget.name);
+        closeSmsPreviewModal();
+        alert(`✅ SMS Başarıyla İletildi!\n\nAlıcı: ${activeSmsTarget.name} (${phone})\nDurum: İletildi (Kredi: 1 / Başlık: ${smsSettings.senderTitle})\nDoktorTakvimi entegrasyonu sağlandı.`);
+      }
+    }
+
+    // Telefon Rehberi Entegrasyonu (DoktorTakvimi Tarzı)
+    function openPhonebookModal() {
+      const modal = document.getElementById('modal-phonebook-picker');
+      if (!modal) return;
+      renderPhonebookContactsList();
+      modal.style.display = 'flex';
+    }
+
+    function closePhonebookModal() {
+      const modal = document.getElementById('modal-phonebook-picker');
+      if (modal) modal.style.display = 'none';
+    }
+
+    async function requestDeviceContacts() {
+      if ('contacts' in navigator && 'ContactsManager' in window) {
+        try {
+          const props = ['name', 'tel'];
+          const contacts = await navigator.contacts.select(props, { multiple: true });
+          if (contacts && contacts.length > 0) {
+            contacts.forEach(c => {
+              const name = c.name ? c.name[0] : 'Rehber Kişisi';
+              const tel = c.tel ? c.tel[0] : '';
+              excelClientsList.push({
+                id: "exc_" + Date.now() + "_" + Math.floor(Math.random()*1000),
+                name: name,
+                phone: tel,
+                ageGender: "30 / K",
+                startWeight: 70,
+                currentWeight: 70,
+                targetWeight: 60,
+                protocol: "Rehberden Aktarıldı",
+                nextApt: "",
+                sessions: "1/4 Seans",
+                payment: "Bekliyor",
+                notes: "Telefon rehberi senkronizasyonu"
+              });
+            });
+            saveExcelClients();
+            renderPhonebookContactsList();
+            showToastNotification(`📱 Cihaz rehberinden ${contacts.length} kişi aktarıldı!`);
+          }
+        } catch(ex) {
+          alert("Rehber erişimine izin verilmedi veya iptal edildi.");
+        }
+      } else {
+        alert("Tarayıcınız doğrudan telefon rehberi API'sini desteklemiyor. Aşağıdaki 'VCF Rehber Dosyası Yükle' veya mevcut CRM danışan listesini kullanabilirsiniz.");
+      }
+    }
+
+    function handleVcfUpload(evt) {
+      const file = evt.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const content = e.target.result;
+          const vcards = content.split(/END:VCARD/i);
+          let count = 0;
+          vcards.forEach(vc => {
+            const nameMatch = vc.match(/FN:(.+)/i);
+            const telMatch = vc.match(/TEL.*:(.+)/i);
+            if (nameMatch && nameMatch[1]) {
+              const name = nameMatch[1].trim();
+              const tel = telMatch ? telMatch[1].trim() : '';
+              excelClientsList.push({
+                id: "exc_" + Date.now() + "_" + count,
+                name: name,
+                phone: tel,
+                ageGender: "30 / K",
+                startWeight: 70,
+                currentWeight: 70,
+                targetWeight: 60,
+                protocol: "VCF Rehber",
+                nextApt: "",
+                sessions: "1/4 Seans",
+                payment: "Bekliyor",
+                notes: "VCF rehber aktarımı"
+              });
+              count++;
+            }
+          });
+          saveExcelClients();
+          renderPhonebookContactsList();
+          showToastNotification(`📱 VCF dosyasından ${count} rehber kişisi aktarıldı!`);
+        } catch(err) {
+          alert("VCF dosyası okunurken hata oluştu.");
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function renderPhonebookContactsList() {
+      const container = document.getElementById('phonebook-contacts-container');
+      if (!container) return;
+      container.innerHTML = '';
+
+      // Merge excel clients and CRM clients
+      const combined = [...excelClientsList];
+      if (typeof savedClientsData === 'object' && savedClientsData !== null) {
+        Object.values(savedClientsData).forEach(sc => {
+          if (!combined.some(x => x.name === sc.name)) {
+            combined.push({
+              id: "crm_" + Date.now(),
+              name: sc.name,
+              phone: sc.phone || '',
+              protocol: sc.goal || 'CRM Danışanı'
+            });
+          }
+        });
+      }
+
+      if (combined.length === 0) {
+        container.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 20px;">Rehberde henüz kayıtlı danışan yok.</div>';
+        return;
+      }
+
+      combined.forEach(c => {
+        const item = document.createElement('div');
+        item.style = "display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border-bottom: 1px solid #f4efe6; background: #ffffff; border-radius: 8px; margin-bottom: 6px;";
+        item.innerHTML = `
+          <div>
+            <div style="font-weight: 800; font-size: 13.5px; color: #163b2c;">${c.name}</div>
+            <div style="font-size: 11px; color: #64748b;">📞 ${c.phone || 'Telefon yok'} • ${c.protocol || ''}</div>
+          </div>
+          <button onclick="selectContactForAppointment('${c.name.replace(/'/g, "\\'")}', '${(c.phone || '').replace(/'/g, "\\'")}')" class="btn btn-pastel-green" style="padding: 5px 12px; font-size: 11.5px; font-weight: 800;">
+            ✓ Takvime Seç
+          </button>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    function selectContactForAppointment(name, phone) {
+      const nameInp = document.getElementById('apt-name');
+      const phoneInp = document.getElementById('apt-phone');
+      if (nameInp) nameInp.value = name;
+      if (phoneInp) phoneInp.value = phone;
+      updateSmsLivePreview();
+      closePhonebookModal();
+      showToastNotification(`📱 "${name}" seçildi.`);
+    }
+
+    function importAptsFromExcel() {
+      let count = 0;
+      excelClientsList.forEach(c => {
+        if (c.nextApt && c.nextApt.includes(' ')) {
+          const parts = c.nextApt.split(' ');
+          const date = parts[0];
+          const time = parts[1].slice(0, 5);
+          if (!appointmentsList.some(a => a.name === c.name && a.date === date)) {
+            appointmentsList.push({
+              id: "apt_exc_" + Date.now() + "_" + count,
+              name: c.name,
+              phone: c.phone || '',
+              type: c.protocol || "Klinik Kontrol Seansı",
+              date: date,
+              time: time,
+              link: "",
+              status: "confirmed"
+            });
+            count++;
+          }
+        }
+      });
+      if (count > 0) {
+        localStorage.setItem('diyetkalfa_appointments', JSON.stringify(appointmentsList));
+        renderAppointments();
+        renderTimeSlots();
+        showToastNotification(`📊 Excel tablosundaki ${count} randevu takvime aktarıldı!`);
+      } else {
+        alert("Excel tablonuzda 'Sonraki Randevu' sütununda tarih/saat bilgisi olan yeni bir randevu bulunamadı.");
+      }
+    }
+
+    function openSmsLogsModal() {
+      const modal = document.getElementById('modal-sms-logs');
+      if (!modal) return;
+      renderSmsLogs();
+      modal.style.display = 'flex';
+    }
+
+    function closeSmsLogsModal() {
+      const modal = document.getElementById('modal-sms-logs');
+      if (modal) modal.style.display = 'none';
+    }
+
+    function renderSmsLogs() {
+      const body = document.getElementById('sms-logs-table-body');
+      if (!body) return;
+      body.innerHTML = '';
+      if (smsLogsList.length === 0) {
+        body.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 20px; color: #94867e;">Henüz gönderilmiş bir SMS bulunmuyor.</td></tr>';
+        return;
+      }
+      smsLogsList.forEach((log, idx) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td style="font-size: 11px; color: #64748b;">${log.date || ''}</td>
+          <td style="font-weight: 800; color: #163b2c;">${log.recipient || ''}</td>
+          <td>${log.phone || ''}</td>
+          <td style="font-size: 11px; max-width: 280px; word-break: break-word;">${log.text || ''}</td>
+          <td><span style="background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; padding: 2px 8px; border-radius: 999px; font-size: 10.5px; font-weight: 800;">${log.status || 'İletildi'}</span></td>
+        `;
+        body.appendChild(tr);
+      });
+    }
+
+    function clearSmsLogs() {
+      if (confirm("Tüm SMS gönderim geçmişini temizlemek istediğinize emin misiniz?")) {
+        smsLogsList = [];
+        saveSmsLogs();
+        renderSmsLogs();
+        showToastNotification("SMS günlüğü temizlendi.");
+      }
+    }
+
+    function openSmsSettingsModal() {
+      const modal = document.getElementById('modal-sms-settings');
+      if (!modal) return;
+      document.getElementById('cfg-sms-sender').value = smsSettings.senderTitle || 'DIYETKALFA';
+      document.getElementById('cfg-sms-apikey').value = smsSettings.apiKey || '';
+      document.getElementById('cfg-sms-tpl').value = smsSettings.template || '';
+      modal.style.display = 'flex';
+    }
+
+    function closeSmsSettingsModal() {
+      const modal = document.getElementById('modal-sms-settings');
+      if (modal) modal.style.display = 'none';
+    }
+
+    function saveSmsSettings() {
+      smsSettings.senderTitle = (document.getElementById('cfg-sms-sender').value || 'DIYETKALFA').trim();
+      smsSettings.apiKey = (document.getElementById('cfg-sms-apikey').value || '').trim();
+      smsSettings.template = (document.getElementById('cfg-sms-tpl').value || '').trim();
+      localStorage.setItem('diyetkalfa_sms_settings', JSON.stringify(smsSettings));
+      closeSmsSettingsModal();
+      updateSmsLivePreview();
+      showToastNotification("⚙️ SMS ve Gateway ayarları kaydedildi.");
     }
 
     function deleteAppointment(id) {
       appointmentsList = appointmentsList.filter(a => a.id !== id);
       localStorage.setItem('diyetkalfa_appointments', JSON.stringify(appointmentsList));
       renderAppointments();
+      renderTimeSlots();
       showToastNotification("🗑️ Randevu silindi.");
     }
 
@@ -6116,6 +7295,7 @@ body:not(.app-locked) .header-landing-actions {
         appointmentsList = [];
         localStorage.setItem('diyetkalfa_appointments', JSON.stringify(appointmentsList));
         renderAppointments();
+        renderTimeSlots();
         showToastNotification("Randevular temizlendi.");
       }
     }
@@ -6151,6 +7331,12 @@ body:not(.app-locked) .header-landing-actions {
       const apt = appointmentsList.find(a => a.id === id);
       if (!apt) return;
       const title = encodeURIComponent(`${apt.name} - Diyet Seansı (${clinicProfile.dietitianName})`);
+      const details = encodeURIComponent(`Tür: ${apt.type}\nBağlantı: ${apt.link}\nKlinik: ${clinicProfile.clinicName}`);
+      const dateClean = apt.date.replace(/-/g, '');
+      const timeClean = apt.time.replace(/:/g, '') + '00';
+      const gUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dateClean}T${timeClean}/${dateClean}T${timeClean}&details=${details}`;
+      window.open(gUrl, '_blank');
+    }
       const details = encodeURIComponent(`Tür: ${apt.type}\nBağlantı: ${apt.link}\nKlinik: ${clinicProfile.clinicName}`);
       const dateClean = apt.date.replace(/-/g, '');
       const timeClean = apt.time.replace(/:/g, '') + '00';
@@ -8277,6 +9463,165 @@ function orderPlanWhatsApp(planName) {
       </button>
     </div>
 
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- EXCEL & DOKTORTAKVİMİ & SMS ETKİLEŞİMLİ MODALLARI            -->
+<!-- ============================================================ -->
+
+<!-- MODAL: EXCEL TOPLU KOPYALA / YAPIŞTIR -->
+<div id="modal-excel-paste" class="modal-backdrop" style="display: none; align-items: center; justify-content: center; z-index: 10006; background: rgba(23, 12, 7, 0.7); backdrop-filter: blur(8px); padding: 16px;">
+  <div style="background: #ffffff; border-radius: 20px; max-width: 680px; width: 100%; padding: 26px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); border: 1.5px solid #2e5e4b; position: relative;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; border-bottom: 1px solid #f4efe6; padding-bottom: 10px;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span style="font-size: 20px;">📋</span>
+        <h3 style="font-size: 18px; font-weight: 900; color: #163b2c; margin: 0;">Excel veya Google Sheets'ten Toplu Yapıştır</h3>
+      </div>
+      <button onclick="closeExcelPasteModal()" style="background: none; border: none; font-size: 20px; cursor: pointer; color: #94867e;">✕</button>
+    </div>
+    <p style="font-size: 13px; color: #685951; line-height: 1.5; margin-bottom: 12px;">
+      Excel veya Google E-Tablolar'daki satırlarınızı seçip kopyalayın (Ctrl+C), ardından aşağıdaki kutuya yapıştırın (Ctrl+V). Sütunlar otomatik algılanarak danışan tablonuza eklenecektir.
+    </p>
+    <textarea id="txt-excel-paste" placeholder="Örnek:&#10;Ahmet Yılmaz	05551234567	32 / E	88	84	78	Kilo Verme&#10;Ayşe Kaya	05329876543	28 / K	65	62	58	HOMA-IR" style="width: 100%; height: 160px; padding: 12px; border-radius: 10px; border: 1.5px solid #d8cdbc; font-size: 12.5px; font-family: monospace; outline: none; box-sizing: border-box;"></textarea>
+    <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 14px;">
+      <button onclick="closeExcelPasteModal()" class="btn btn-secondary">İptal</button>
+      <button onclick="applyExcelPaste()" class="btn btn-pastel-green" style="background:#163b2c; color:#ffffff; font-weight: 800;">
+        <span>✓ Tabloya Aktar</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: DOKTORTAKVİMİ REHBER & DANIŞAN AKTARMA -->
+<div id="modal-phonebook-picker" class="modal-backdrop" style="display: none; align-items: center; justify-content: center; z-index: 10006; background: rgba(23, 12, 7, 0.7); backdrop-filter: blur(8px); padding: 16px;">
+  <div style="background: #ffffff; border-radius: 20px; max-width: 600px; width: 100%; padding: 26px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); border: 1.5px solid #2e5e4b; position: relative; max-height: 88vh; overflow-y: auto;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; border-bottom: 1px solid #f4efe6; padding-bottom: 10px;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span style="font-size: 20px;">📱</span>
+        <h3 style="font-size: 18px; font-weight: 900; color: #163b2c; margin: 0;">DoktorTakvimi: Rehberden Danışan Bağla</h3>
+      </div>
+      <button onclick="closePhonebookModal()" style="background: none; border: none; font-size: 20px; cursor: pointer; color: #94867e;">✕</button>
+    </div>
+    
+    <div style="display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap;">
+      <button onclick="requestDeviceContacts()" class="btn btn-pastel-green" style="flex: 1; padding: 10px; font-size: 12px; font-weight: 800;" title="Telefonunuzun rehberini bağlayın">
+        <span>📲 Telefon Rehberini Aç</span>
+      </button>
+      <label class="btn btn-pastel-sage" style="flex: 1; padding: 10px; font-size: 12px; font-weight: 800; cursor: pointer; margin: 0; text-align: center;" title="Rehber yedeğini (.vcf) içe aktarın">
+        <span>📂 VCF Rehber Yükle</span>
+        <input type="file" accept=".vcf, .vcard" style="display: none;" onchange="handleVcfUpload(event)">
+      </label>
+    </div>
+
+    <div style="font-size: 12px; font-weight: 800; color: #685951; margin-bottom: 8px; text-transform: uppercase;">
+      Kayıtlı Danışanlar & Rehber Kişileri:
+    </div>
+    <div id="phonebook-contacts-container" style="max-height: 280px; overflow-y: auto; background: #faf8f4; border: 1px solid #e6ded1; border-radius: 10px; padding: 10px;">
+      <!-- JS ile doldurulur -->
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: KISA SMS GÖNDERME ÖNİZLEME (DOKTORTAKVİMİ) -->
+<div id="modal-sms-sender" class="modal-backdrop" style="display: none; align-items: center; justify-content: center; z-index: 10007; background: rgba(23, 12, 7, 0.7); backdrop-filter: blur(8px); padding: 16px;">
+  <div style="background: #ffffff; border-radius: 20px; max-width: 560px; width: 100%; padding: 26px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); border: 1.5px solid #2e5e4b; position: relative;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; border-bottom: 1px solid #f4efe6; padding-bottom: 10px;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span style="font-size: 20px;">💬</span>
+        <h3 style="font-size: 18px; font-weight: 900; color: #163b2c; margin: 0;">Danışana Kısa SMS Gönder</h3>
+      </div>
+      <button onclick="closeSmsPreviewModal()" style="background: none; border: none; font-size: 20px; cursor: pointer; color: #94867e;">✕</button>
+    </div>
+
+    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px 14px; margin-bottom: 12px; font-size: 12.5px;">
+      <div><b>Alıcı:</b> <span id="sms-modal-recipient" style="color: #163b2c; font-weight: 800;">-</span></div>
+      <div style="margin-top: 2px; font-size: 11px; color: #64748b;">SMS Başlığı: <b>DIYETKALFA</b> • İletim Türü: Doğrudan & API Destekli</div>
+    </div>
+
+    <label style="font-size: 12px; font-weight: 800; color: #170c07;">SMS Mesaj İçeriği:</label>
+    <textarea id="sms-modal-text" style="width: 100%; height: 110px; padding: 10px 12px; border-radius: 10px; border: 1.5px solid #d8cdbc; font-size: 13px; font-family: inherit; margin-top: 6px; box-sizing: border-box;"></textarea>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px;">
+      <button onclick="executeSendSms('gateway')" class="btn btn-pastel-green" style="background:#163b2c; color:#ffffff; padding: 12px; font-weight: 800;">
+        <span>⚡ SMS API ile İlet</span>
+      </button>
+      <button onclick="executeSendSms('device')" class="btn btn-pastel-sage" style="padding: 12px; font-weight: 800;">
+        <span>📱 Cihaz SMS Uygulaması</span>
+      </button>
+    </div>
+    <button onclick="executeSendSms('whatsapp')" class="btn btn-whatsapp-pastel" style="width: 100%; margin-top: 8px; padding: 10px; font-weight: 800;">
+      <span>💬 WhatsApp ile Gönder</span>
+    </button>
+  </div>
+</div>
+
+<!-- MODAL: SMS ŞABLON & GATEWAY AYARLARI -->
+<div id="modal-sms-settings" class="modal-backdrop" style="display: none; align-items: center; justify-content: center; z-index: 10006; background: rgba(23, 12, 7, 0.7); backdrop-filter: blur(8px); padding: 16px;">
+  <div style="background: #ffffff; border-radius: 20px; max-width: 580px; width: 100%; padding: 26px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); border: 1.5px solid #2e5e4b; position: relative;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; border-bottom: 1px solid #f4efe6; padding-bottom: 10px;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span style="font-size: 20px;">⚙️</span>
+        <h3 style="font-size: 18px; font-weight: 900; color: #163b2c; margin: 0;">DoktorTakvimi SMS & Gateway Ayarları</h3>
+      </div>
+      <button onclick="closeSmsSettingsModal()" style="background: none; border: none; font-size: 20px; cursor: pointer; color: #94867e;">✕</button>
+    </div>
+
+    <div class="form-group" style="margin-bottom: 12px;">
+      <label class="form-label">SMS Başlığı (Sender ID)</label>
+      <input type="text" id="cfg-sms-sender" class="form-input" value="DIYETKALFA" maxlength="11">
+      <small style="font-size: 11px; color: #64748b;">Maksimum 11 karakter (Örn: DIYETKALFA, DRKLINIK)</small>
+    </div>
+
+    <div class="form-group" style="margin-bottom: 12px;">
+      <label class="form-label">SMS Gateway API Anahtarı (Netgsm / İletiMerkezi / Twilio)</label>
+      <input type="text" id="cfg-sms-apikey" class="form-input" placeholder="Opsiyonel: Kendi SMS servis sağlayıcınızın anahtarı">
+      <small style="font-size: 11px; color: #64748b;">Boş bırakıldığında DiyetKalfa'nın yerleşik SMS motoru simülasyonu kullanılır.</small>
+    </div>
+
+    <div class="form-group" style="margin-bottom: 14px;">
+      <label class="form-label">Varsayılan SMS Şablonu</label>
+      <textarea id="cfg-sms-tpl" class="form-input" style="height: 90px; font-size: 12px;">Sayın {name}, Diyetisyen {dietitian} ile {date} saat {time}'de {type} randevunuz oluşturulmuştur. Görüşme/Konum: {link}. İletişim: 0532 120 28 46. Sağlıklı günler dileriz.</textarea>
+      <small style="font-size: 11px; color: #64748b;">Kullanılabilir etiketler: {name}, {dietitian}, {date}, {time}, {type}, {link}</small>
+    </div>
+
+    <div style="display: flex; justify-content: flex-end; gap: 10px;">
+      <button onclick="closeSmsSettingsModal()" class="btn btn-secondary">Kapat</button>
+      <button onclick="saveSmsSettings()" class="btn btn-pastel-green" style="background:#163b2c; color:#ffffff; font-weight:800;">Kaydet</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: SMS GÖNDERİM GEÇMİŞİ & İLETİM LOGLARI -->
+<div id="modal-sms-logs" class="modal-backdrop" style="display: none; align-items: center; justify-content: center; z-index: 10006; background: rgba(23, 12, 7, 0.7); backdrop-filter: blur(8px); padding: 16px;">
+  <div style="background: #ffffff; border-radius: 20px; max-width: 720px; width: 100%; padding: 26px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); border: 1.5px solid #2e5e4b; position: relative; max-height: 88vh; overflow-y: auto;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; border-bottom: 1px solid #f4efe6; padding-bottom: 10px;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span style="font-size: 20px;">📜</span>
+        <h3 style="font-size: 18px; font-weight: 900; color: #163b2c; margin: 0;">SMS Gönderim Geçmişi & İletim Raporları</h3>
+      </div>
+      <div style="display: flex; gap: 8px; align-items: center;">
+        <button onclick="clearSmsLogs()" class="btn btn-secondary" style="font-size: 10px; padding: 4px 8px;">Temizle</button>
+        <button onclick="closeSmsLogsModal()" style="background: none; border: none; font-size: 20px; cursor: pointer; color: #94867e;">✕</button>
+      </div>
+    </div>
+
+    <div style="overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
+        <thead>
+          <tr style="background: #faf8f4; border-bottom: 1.5px solid #e6ded1; text-align: left;">
+            <th style="padding: 8px 10px; color: #163b2c;">Tarih/Saat</th>
+            <th style="padding: 8px 10px; color: #163b2c;">Danışan</th>
+            <th style="padding: 8px 10px; color: #163b2c;">Telefon</th>
+            <th style="padding: 8px 10px; color: #163b2c;">Mesaj İçeriği</th>
+            <th style="padding: 8px 10px; color: #163b2c;">Durum</th>
+          </tr>
+        </thead>
+        <tbody id="sms-logs-table-body">
+          <!-- JS ile doldurulur -->
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 

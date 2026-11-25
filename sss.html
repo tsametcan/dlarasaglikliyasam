@@ -646,6 +646,28 @@
       </div>
     </div>
 
+    <!-- SORU 10.1: EXCEL ENTEGRASYONU -->
+    <div class="faq-item" data-category="tech">
+      <button type="button" class="faq-question-btn" onclick="toggleFaqItem(this)">
+        <span>Daha önce Excel'de tuttuğum danışanlarımı DiyetKalfa'ya nasıl aktarırım?</span>
+        <span class="faq-toggle-icon">+</span>
+      </button>
+      <div class="faq-answer-body">
+        DiyetKalfa, diyetisyenlerin Excel alışkanlığına %100 duyarlı olarak geliştirilmiştir. Klinik panelindeki <strong>"Excel Danışan Takip"</strong> sekmesinden mevcut .xlsx veya .csv dosyanızı doğrudan yükleyebilir ya da Google E-Tablolar/Excel'deki satırlarınızı kopyalayıp tek tıkla topluca yapıştırabilirsiniz. Sistem isim, telefon, başlangıç ve güncel kilo, seans paketlerini otomatik ayrıştırır. Tablo üzerinde tıpkı Excel gibi hücreleri canlı düzenleyebilir, net kilo kaybı değişimlerini anında görebilir ve tek tıkla seans planlayıp SMS gönderebilirsiniz.
+      </div>
+    </div>
+
+    <!-- SORU 10.2: DOKTORTAKVİMİ & SMS BİLDİRİMİ -->
+    <div class="faq-item" data-category="tech">
+      <button type="button" class="faq-question-btn" onclick="toggleFaqItem(this)">
+        <span>DoktorTakvimi randevu sistemi ve otomatik SMS bildirimi nasıl çalışır? Telefon rehberimi bağlayabilir miyim?</span>
+        <span class="faq-toggle-icon">+</span>
+      </button>
+      <div class="faq-answer-body">
+        Evet! DiyetKalfa DoktorTakvimi modülü sayesinde tek tıkla telefon rehberinizi (veya .vcf rehber yedeğinizi) sisteme bağlayabilirsiniz. Danışanınızın seansını saatlik takvimden seçip kaydettiğinizde, sistem danışanınızın cep telefonuna <strong>otomatik randevu onay ve seans hatırlatma SMS'i</strong> iletir. İster telefonunuzun kendi SMS uygulamasını, ister yerleşik SMS API gateway'ini (Netgsm, İletiMerkezi vb.) kullanabilirsiniz. Bu sayede danışanların seans kaçırma ve geç kalma oranı %85 azalır.
+      </div>
+    </div>
+
     <!-- SORU 11: WHATSAPP ENTEGRASYONU -->
     <div class="faq-item" data-category="tech">
       <button type="button" class="faq-question-btn" onclick="toggleFaqItem(this)">
@@ -1027,6 +1049,20 @@
 
     function getAiResponse(rawQuery) {
       var q = rawQuery.toLowerCase();
+      if (q.includes('excel') || q.includes('tablo') || q.includes('çizelge') || q.includes('csv') || q.includes('aktar')) {
+        return '<div><strong>📊 Diyetisyen Excel Danışan Çizelgesi:</strong></div>' +
+          '<div style="margin-top: 6px; color: #475569;">' +
+            'DiyetKalfa, diyetisyenlerin Excel alışkanlığına tam uyumludur! Mevcut .xlsx veya .csv dosyalarınızı tek tıkla içeri aktarabilir, Google Sheets\'ten topluca yapıştırabilir, satır içi hücreleri Excel gibi düzenleyebilir ve tek tıkla randevu oluşturup SMS gönderebilirsiniz.' +
+          '</div>' +
+          '<a href="ozellikler.html" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">📊 Excel Özelliklerini İncele →</a>';
+      }
+      if (q.includes('sms') || q.includes('takvim') || q.includes('doktortakvimi') || q.includes('randevu') || q.includes('rehber') || q.includes('hatırlat')) {
+        return '<div><strong>📅 DoktorTakvimi & Otomatik SMS Takvimi:</strong></div>' +
+          '<div style="margin-top: 6px; color: #475569;">' +
+            'Telefon rehberinizi bağlayarak danışanlarınızı takvime ekleyebilir; randevu kaydedildiğinde danışanınızın cep telefonuna <strong>otomatik randevu onay ve seans hatırlatma SMS\'i</strong> gönderebilirsiniz. Seans kaçırmalarını %85 oranında azaltın!' +
+          '</div>' +
+          '<a href="ozellikler.html" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">📅 Randevu & SMS Detayları →</a>';
+      }
       if (q.includes('fiyat') || q.includes('ücret') || q.includes('paket') || q.includes('kaç para') || q.includes('kampanya') || q.includes('yıllık') || q.includes('maliyet')) {
         return '<div>DiyetKalfa lisans seçenekleri şu şekildedir:</div>' +
           '<div style="margin-top: 6px; line-height: 1.5;">' +

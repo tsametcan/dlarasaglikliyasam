@@ -2215,8 +2215,9 @@ body:not(.app-locked) .header-clinical-actions {
           <a href="javascript:void(0)" onclick="openSolutionModal('ai_assistant')" class="solution-item"><span class="sol-icon">🤖</span><div class="sol-text"><div class="sol-title">Yapay Zeka Asistanı</div><div class="sol-desc">Klinik vaka analizi, besin etkileşimi ve akıllı menü revizyonu</div></div></a>
           <a href="javascript:void(0)" onclick="openSolutionModal('clinic_mgmt')" class="solution-item"><span class="sol-icon">🏢</span><div class="sol-text"><div class="sol-title">Klinik Yönetimi</div><div class="sol-desc">White-label logo, faturalama, yetkilendirme ve klinik ayarları</div></div></a>
           <a href="javascript:void(0)" onclick="openSolutionModal('client_tracking')" class="solution-item"><span class="sol-icon">👥</span><div class="sol-text"><div class="sol-title">Diyetisyen Danışan Takip Programı</div><div class="sol-desc">Kilo grafiği, çevre ölçümleri, seans geçmişi ve uyum skoru</div></div></a>
+          <a href="javascript:void(0)" onclick="openSolutionModal('excel_tracking')" class="solution-item"><span class="sol-icon">📊</span><div class="sol-text"><div class="sol-title">Excel Danışan Takip & Akıllı Çizelge</div><div class="sol-desc">Mevcut Excel dosyalarınızı tek tıkla aktarın, satır içi düzenleyin</div></div></a>
           <a href="javascript:void(0)" onclick="openSolutionModal('online_diet')" class="solution-item"><span class="sol-icon">💻</span><div class="sol-text"><div class="sol-title">Online Diyetisyen Programı</div><div class="sol-desc">Uzaktan görüntülü seans, WhatsApp bildirimleri ve mobil portal</div></div></a>
-          <a href="javascript:void(0)" onclick="openSolutionModal('appointments')" class="solution-item"><span class="sol-icon">📅</span><div class="sol-text"><div class="sol-title">Diyetisyen Randevu Programı</div><div class="sol-desc">Seans takvimi, Google Takvim senkronizasyonu ve otomatik SMS</div></div></a>
+          <a href="javascript:void(0)" onclick="openSolutionModal('appointments')" class="solution-item"><span class="sol-icon">📅</span><div class="sol-text"><div class="sol-title">DoktorTakvimi & Otomatik SMS Takvimi</div><div class="sol-desc">Rehberinizi bağlayın, üyelere otomatik seans onay ve hatırlatma SMS'i gitsin</div></div></a>
           <a href="javascript:void(0)" onclick="openSolutionModal('enabiz')" class="solution-item"><span class="sol-icon">🏥</span><div class="sol-text"><div class="sol-title">e-Nabız Uyumlu Diyetisyen Yazılımı</div><div class="sol-desc">Bakanlık laboratuvar tetkik formatları ve otomatik tahlil aktarımı</div></div></a>
           <a href="javascript:void(0)" onclick="openSolutionModal('anamnez')" class="solution-item"><span class="sol-icon">📋</span><div class="sol-text"><div class="sol-title">Dijital Onam ve Anamnez Formu</div><div class="sol-desc">KVKK onaylı, cep telefonundan tek tıkla doldurulan form</div></div></a>
           <a href="javascript:void(0)" onclick="openSolutionModal('website')" class="solution-item"><span class="sol-icon">🌐</span><div class="sol-text"><div class="sol-title">Diyetisyen Web Sitesi</div><div class="sol-desc">Kliniğinize özel alan adı, Instagram BioLink ve randevu vitrini</div></div></a>
@@ -9260,6 +9261,22 @@ function orderPlanWhatsApp(planName) {
           '<a href="ozellikler.html" class="ai-link-btn" style="background: #0f766e; color: #fff; margin-top: 8px;">🔬 Klinik Özellikleri Gör →</a>';
       }
 
+      if (q.includes('excel') || q.includes('tablo') || q.includes('çizelge') || q.includes('csv') || q.includes('aktar')) {
+        return '<div><strong>📊 Diyetisyen Excel Danışan Çizelgesi:</strong></div>' +
+          '<div style="margin-top: 6px; color: #475569;">' +
+            'DiyetKalfa, diyetisyenlerin Excel alışkanlığına tam uyumludur! Mevcut .xlsx veya .csv dosyalarınızı tek tıkla içeri aktarabilir, Google Sheets\'ten topluca yapıştırabilir, satır içi hücreleri Excel gibi düzenleyebilir ve tek tıkla randevu oluşturup SMS gönderebilirsiniz.' +
+          '</div>' +
+          '<a href="ozellikler.html" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">📊 Excel Özelliklerini İncele →</a>';
+      }
+
+      if (q.includes('sms') || q.includes('takvim') || q.includes('doktortakvimi') || q.includes('randevu') || q.includes('rehber') || q.includes('hatırlat')) {
+        return '<div><strong>📅 DoktorTakvimi & Otomatik SMS Takvimi:</strong></div>' +
+          '<div style="margin-top: 6px; color: #475569;">' +
+            'Telefon rehberinizi bağlayarak danışanlarınızı takvime ekleyebilir; randevu kaydedildiğinde danışanınızın cep telefonuna <strong>otomatik randevu onay ve seans hatırlatma SMS\'i</strong> gönderebilirsiniz. Seans kaçırmalarını %85 oranında azaltın!' +
+          '</div>' +
+          '<a href="ozellikler.html" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">📅 Randevu & SMS Detayları →</a>';
+      }
+
       if (q.includes('türkomp') || q.includes('besin') || q.includes('değişim') || q.includes('tarif') || q.includes('kalori')) {
         return '<div><strong>Türkomp & USDA Destekli Besin Veritabanı:</strong></div>' +
           '<div style="margin-top: 6px; color: #475569;">' +
@@ -9795,32 +9812,82 @@ var SOLUTIONS_DATA = {
     }
   },
 
-  'appointments': {
-    icon: '📅',
-    title: 'Diyetisyen Randevu Programı',
-    desc: 'Haftalık seans ajandası, saat dilimleri ve Google Takvim entegrasyonu',
+  'excel_tracking': {
+    icon: '📊',
+    title: 'Excel Danışan Takip & Akıllı Tablo',
+    desc: 'Excel dosyalarınızı doğrudan yükleyin, satır içi düzenleyin ve tek tıkla SMS gönderin',
     render: function() {
       return `
         <div style="background: #faf8f4; border: 1.5px solid #e6ded1; border-radius: 16px; padding: 16px;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-            <strong style="font-size: 14px; color: #170c07;">Bugünkü Seans Ajandası</strong>
-            <button type="button" onclick="alert('Yeni Randevu Ekleme Penceresi');" style="background: #163b2c; color: #fff; border: none; padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: 800; cursor: pointer;">+ Randevu Ekle</button>
+            <strong style="font-size: 14px; color: #170c07;">📊 Excel Danışan Çizelgesi (Önizleme)</strong>
+            <span style="background: #dcfce7; color: #166534; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 6px;">Excel/CSV Uyumlu</span>
+          </div>
+          <div style="overflow-x: auto; background: #ffffff; border: 1px solid #e6ded1; border-radius: 8px; margin-bottom: 10px;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 11.5px;">
+              <tr style="background: #163b2c; color: #fff; font-weight: 800;">
+                <th style="padding: 6px 10px;">Danışan</th>
+                <th style="padding: 6px 10px;">Telefon</th>
+                <th style="padding: 6px 10px;">Başlangıç</th>
+                <th style="padding: 6px 10px;">Güncel</th>
+                <th style="padding: 6px 10px;">Fark</th>
+                <th style="padding: 6px 10px;">Protokol</th>
+              </tr>
+              <tr style="border-bottom: 1px solid #f4efe6;">
+                <td style="padding: 6px 10px; font-weight: 800; color: #163b2c;">Zehra Bölük</td>
+                <td style="padding: 6px 10px;">0555 123 45 67</td>
+                <td style="padding: 6px 10px;">78.5 kg</td>
+                <td style="padding: 6px 10px; font-weight: 800;">72.8 kg</td>
+                <td style="padding: 6px 10px;"><span style="color:#166534; font-weight:800;">-5.7 kg 🔻</span></td>
+                <td style="padding: 6px 10px;">HOMA-IR / Düşük GI</td>
+              </tr>
+              <tr>
+                <td style="padding: 6px 10px; font-weight: 800; color: #163b2c;">Murat Korkmaz</td>
+                <td style="padding: 6px 10px;">0555 987 65 43</td>
+                <td style="padding: 6px 10px;">96.0 kg</td>
+                <td style="padding: 6px 10px; font-weight: 800;">91.2 kg</td>
+                <td style="padding: 6px 10px;"><span style="color:#166534; font-weight:800;">-4.8 kg 🔻</span></td>
+                <td style="padding: 6px 10px;">Akdeniz & Defisit</td>
+              </tr>
+            </table>
+          </div>
+          <p style="font-size: 12px; color: #685951; line-height: 1.5; margin: 0;">
+            Excel alışkanlığınızı bozmadan danışanlarınızı takip edebilir; tek tıkla seans takvimine randevu ekleyip danışanınıza otomatik SMS gönderebilirsiniz.
+          </p>
+        </div>
+      `;
+    }
+  },
+
+  'appointments': {
+    icon: '📅',
+    title: 'DoktorTakvimi & Otomatik SMS Takvimi',
+    desc: 'Haftalık seans ajandası, rehber bağlama ve danışana anında onay/hatırlatma SMS bildirimi',
+    render: function() {
+      return `
+        <div style="background: #faf8f4; border: 1.5px solid #e6ded1; border-radius: 16px; padding: 16px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <strong style="font-size: 14px; color: #170c07;">📅 DoktorTakvimi Seans Ajandası</strong>
+            <span style="background: #dcfce7; color: #166534; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 6px;">SMS Onayı Aktif</span>
           </div>
           <div style="display: flex; flex-direction: column; gap: 8px;">
             <div style="background: #ffffff; border-left: 4px solid #163b2c; border-radius: 8px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #e6ded1; border-right: 1px solid #e6ded1; border-bottom: 1px solid #e6ded1;">
               <div>
                 <strong style="font-size: 13px; color: #170c07;">10:00 - Zeynep Kaya (Online)</strong>
-                <div style="font-size: 11.5px; color: #685951;">2. Kontrol Seansı • Tartı ve Menü Revizyonu</div>
+                <div style="font-size: 11.5px; color: #685951;">2. Kontrol Seansı • SMS Bildirimi İletildi (✓)</div>
               </div>
-              <span style="background: #edf5f0; color: #163b2c; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 6px;">Tamamlandı</span>
+              <span style="background: #edf5f0; color: #163b2c; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 6px;">SMS İletildi</span>
             </div>
             <div style="background: #ffffff; border-left: 4px solid #94593f; border-radius: 8px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #e6ded1; border-right: 1px solid #e6ded1; border-bottom: 1px solid #e6ded1;">
               <div>
                 <strong style="font-size: 13px; color: #170c07;">14:30 - Caner Demir (Yüz Yüze)</strong>
-                <div style="font-size: 11.5px; color: #685951;">İlk Görüşme & Anamnez • InBody Ölçümü</div>
+                <div style="font-size: 11.5px; color: #685951;">İlk Görüşme & Anamnez • Rehberden Aktarıldı</div>
               </div>
-              <span style="background: #fbf4f0; color: #94593f; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 6px;">Bekliyor</span>
+              <span style="background: #fbf4f0; color: #94593f; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 6px;">Onay Bekliyor</span>
             </div>
+          </div>
+          <div style="margin-top: 10px; font-size: 11.5px; color: #166534; font-weight: 700;">
+            💬 Yeni randevu oluşturulduğunda danışanınızın cep telefonuna otomatik SMS gider.
           </div>
         </div>
       `;
