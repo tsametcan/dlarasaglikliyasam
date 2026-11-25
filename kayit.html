@@ -532,44 +532,206 @@
     }
 
     function getAiResponse(rawQuery) {
+      if (!rawQuery) return '<div>Size nasıl yardımcı olabilirim? Paketlerimiz, klinik paneli, diyet planlayıcı veya randevu takvimimiz hakkında sorabilirsiniz.</div>';
+      
       var q = rawQuery.toLowerCase();
-      if (q.includes('fiyat') || q.includes('ücret') || q.includes('paket') || q.includes('kaç para') || q.includes('kampanya') || q.includes('yıllık') || q.includes('maliyet')) {
-        return '<div>DiyetKalfa lisans seçenekleri şu şekildedir:</div>' +
-          '<div style="margin-top: 6px; line-height: 1.5;">' +
+      var qNorm = q.replace(/ı/g, 'i').replace(/ğ/g, 'g').replace(/ü/g, 'u').replace(/ş/g, 's').replace(/ö/g, 'o').replace(/ç/g, 'c');
+
+      // 1. PANELE GİRİŞ / SİSTEMİ AÇMA / ŞİFRE / DEMO PANELİNE NASIL GEÇERİZ?
+      if (qNorm.includes('panel') || qNorm.includes('giris') || qNorm.includes('sistemi nasil') || qNorm.includes('nasil acacagiz') || qNorm.includes('nasil acariz') || qNorm.includes('nasil girerim') || qNorm.includes('nasil gec') || qNorm.includes('nereden gir') || qNorm.includes('sifre') || qNorm.includes('parola') || qNorm.includes('hesap') || qNorm.includes('demo nasil') || qNorm.includes('acilmiyor')) {
+        return '<div><strong>🚀 Klinik Paneline Erişim Rehberi:</strong></div>' +
+          '<div style="margin-top: 6px; line-height: 1.5; color: #475569;">' +
+            'DiyetKalfa klinik paneline geçiş yapmak çok kolay ve anında gerçekleşir:' +
+            '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
+              '<li><strong>Anında Canlı Demo:</strong> Kurulum veya şifre gerekmeden tek tıkla canlı paneli açabilirsiniz.</li>' +
+              '<li><strong>Satın Alma / Lisans:</strong> Lisansınızı başlattığınızda sisteminiz anında tam yetkiyle açılır ve danışan verileriniz güvenle saklanır.</li>' +
+              '<li><strong>Birebir Canlı Sunum:</strong> 0532 120 28 46 WhatsApp hattımızdan danışmanlarımızla 15 dakikalık rehberli canlı tur yapabilirsiniz.</li>' +
+            '</ul>' +
+          '</div>' +
+          '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
+            '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">🚀 Klinik Demo Panelini Aç →</a>' +
+            '<a href="kayit.html" class="ai-link-btn" style="background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0;">✨ Hemen Kayıt Ol</a>' +
+          '</div>';
+      }
+
+      // 2. SELAMLAŞMA & SOHBET (MERHABA, SELAM, GÜNAYDIN, NASILSIN...)
+      if (qNorm.match(/^(merhaba|selam|selamlar|gunaydin|iyi gunler|iyi aksamlar|hey|hi|hello|nasilsin|kolay gelsin)\b/) || qNorm === 'merhaba' || qNorm === 'selam' || qNorm === 'slm') {
+        return '<div><strong>👋 Merhaba! DiyetKalfa Yapay Zeka Asistanına Hoş Geldiniz.</strong></div>' +
+          '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
+            'Klinikler ve profesyonel diyetisyenler için geliştirdiğimiz yeni nesil yapay zeka işletim sistemiyiz. Size hangi konuda yardımcı olabilirim?' +
+          '</div>' +
+          '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
+            '<button type="button" onclick="triggerQuickPrompt(\'Klinik paneline nasıl geçeceğiz?\')" class="ai-link-btn" style="background: #163b2c; color: #fff;">🚀 Paneli Nasıl Açarım?</button>' +
+            '<button type="button" onclick="triggerQuickPrompt(\'Paketler ve fiyatlar ne kadar?\')" class="ai-link-btn" style="background: #0f766e; color: #fff;">💎 Fiyatlar & Kampanyalar</button>' +
+            '<button type="button" onclick="triggerQuickPrompt(\'Randevu takvimi ve SMS nasıl çalışır?\')" class="ai-link-btn" style="background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0;">📅 Randevu & SMS</button>' +
+          '</div>';
+      }
+
+      // 3. DİYETKALFA NEDİR / NE İŞE YARAR / KİMLER İÇİN
+      if (qNorm.includes('nedir') || qNorm.includes('ne ise yarar') || qNorm.includes('ne yapar') || qNorm.includes('kimsiniz') || qNorm.includes('hakkinda') || qNorm.includes('tanit') || qNorm.includes('kimler')) {
+        return '<div><strong>🌟 DiyetKalfa AI Nedir?</strong></div>' +
+          '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
+            'DiyetKalfa; klinik sahibi diyetisyenlerin danışan kabulünden diyet listesi oluşturmaya, tahlil yorumlamadan randevu ve SMS yönetimine kadar tüm süreçlerini tek ekrandan yürüten <strong>Yapay Zeka Destekli Klinik İşletim Sistemi</strong>dir.' +
+            '<div style="margin-top: 6px;">• 🥗 <strong>DSÖ 2024 Diyet Planlayıcı:</strong> Saniyeler içinde kişiye özel 7 günlük reçete.</div>' +
+            '<div>• 🩸 <strong>HOMA-IR Laboratuvar Analizi:</strong> Açlık glukoz & insülin metabolik risk analizi.</div>' +
+            '<div>• 📅 <strong>Akıllı Randevu Takvimi:</strong> Telefon rehberi bağlama & otomatik seans SMS bildirimi.</div>' +
+            '<div>• 📊 <strong>Excel Danışan Çizelgesi:</strong> Excel’den toplu yapıştırma ve anlık kilo takibi.</div>' +
+          '</div>' +
+          '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
+            '<a href="ozellikler.html" class="ai-link-btn" style="background: #163b2c; color: #fff;">🔬 Tüm Özellikleri İncele →</a>' +
+            '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0;">🚀 Canlı Demoyu Başlat</a>' +
+          '</div>';
+      }
+
+      // 4. RANDEVU TAKVİMİ & OTOMATİK SMS
+      if (qNorm.includes('randevu') || qNorm.includes('sms') || qNorm.includes('takvim') || qNorm.includes('seans') || qNorm.includes('rehber') || qNorm.includes('hatirlat') || qNorm.includes('doktortakvimi') || qNorm.includes('onay')) {
+        return '<div><strong>📅 Akıllı Randevu Takvimi & Otomatik SMS Sistemi:</strong></div>' +
+          '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
+            '• <strong>Telefon Rehberi Entegrasyonu:</strong> Akıllı telefon rehberinizi veya .vcf listenizi tek tıkla takvime bağlayın.<br>' +
+            '• <strong>Saatlik Seans Matrisi:</strong> 09:00 - 18:00 arası seansları pratik slot butonlarıyla anında planlayın.<br>' +
+            '• <strong>Otomatik Seans SMS\'i:</strong> Randevu oluşturulduğunda veya saati güncellendiğinde danışanınızın cebine canlı SMS bildirimi gönderilir.<br>' +
+            '• <strong>Kaçırma Oranını Düşürün:</strong> Otomatik hatırlatma sayesinde danışanların seans kaçırma oranı %85 azalır.' +
+          '</div>' +
+          '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
+            '<a href="ozellikler.html" class="ai-link-btn" style="background: #163b2c; color: #fff;">📅 Takvim Detaylarını Gör →</a>' +
+            '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #0f766e; color: #fff;">🚀 Takvimi Panelde Dene</a>' +
+          '</div>';
+      }
+
+      // 5. EXCEL DANIŞAN ÇİZELGESİ & İÇE/DIŞA AKTARIM
+      if (qNorm.includes('excel') || qNorm.includes('tablo') || qNorm.includes('cizelge') || qNorm.includes('csv') || qNorm.includes('sheets') || qNorm.includes('yapistir') || qNorm.includes('aktar')) {
+        return '<div><strong>📊 Excel\'e Duyarlı Akıllı Danışan Çizelgesi:</strong></div>' +
+          '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
+            'Yıllardır tuttuğunuz Excel tablolarını geride bırakmanıza gerek yok! DiyetKalfa tam uyumludur:<br>' +
+            '• <strong>Toplu Yapıştır (Ctrl+V):</strong> Excel veya Google Sheets\'teki danışan tablonuzu tek tıkla kopyalayıp aktarın.<br>' +
+            '• <strong>Doğrudan Hücre Düzenleme:</strong> Tablo üzerinden danışan kilosu, hedefi ve seans notlarını doğrudan tıklayarak güncelleyin.<br>' +
+            '• <strong>Otomatik Kilo Kaybı Hesaplama:</strong> Verilen net kilo (Δ kg) ve danışan durumu otomatik hesaplanır.<br>' +
+            '• <strong>Tek Tıkla SMS & Randevu:</strong> Tablodaki herhangi bir danışana anında randevu oluşturup SMS iletin.' +
+          '</div>' +
+          '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
+            '<a href="ozellikler.html" class="ai-link-btn" style="background: #163b2c; color: #fff;">📊 Excel Özelliklerini Gör →</a>' +
+            '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #0f766e; color: #fff;">🚀 Panelde Tabloyu Aç</a>' +
+          '</div>';
+      }
+
+      // 6. FİYATLAR & LİSANS PAKETLERİ
+      if (qNorm.includes('fiyat') || qNorm.includes('ucret') || qNorm.includes('paket') || qNorm.includes('kac para') || qNorm.includes('kampanya') || qNorm.includes('yillik') || qNorm.includes('maliyet') || qNorm.includes('odeme') || qNorm.includes('taksit') || qNorm.includes('pesin')) {
+        return '<div><strong>💎 DiyetKalfa Lisans & Fiyatlandırma:</strong></div>' +
+          '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
             '• <strong>Giriş Paketi:</strong> 1.500 TL/ay (12 aylıkta 1.080 TL/ay)<br>' +
             '• <strong>Profesyonel Paket:</strong> 2.900 TL/ay (12 aylıkta 2.088 TL/ay)<br>' +
             '• <strong>Sınırsız Paket:</strong> Normalde 50.000 TL, 12 aylık yıllık kampanyamızla <strong>36.000 TL</strong> (Aylık sadece 3.000 TL).' +
           '</div>' +
+          '<div style="margin-top: 6px; font-size: 11.5px; color: #64748b;">* Tüm paketlerde ilk 7 gün ücretsizdir. İstediğiniz zaman iptal edebilirsiniz.</div>' +
           '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-            '<a href="fiyatlar.html" class="ai-link-btn" style="background: #0f766e; color: #fff;">💳 Fiyatları Gör →</a>' +
+            '<a href="fiyatlar.html" class="ai-link-btn" style="background: #0f766e; color: #fff;">💳 Tüm Fiyatları İncele →</a>' +
+            '<a href="kayit.html" class="ai-link-btn" style="background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0;">✨ 7 Gün Ücretsiz Başla</a>' +
           '</div>';
       }
-      if (q.includes('deneme') || q.includes('ücretsiz') || q.includes('7 gün') || q.includes('bedava') || q.includes('test') || q.includes('kayıt')) {
-        return '<div>Şu an bulunduğunuz sayfadaki formu doldurarak <strong>7 gün boyunca kredi kartı bilgisi girmeden</strong> anında başlayabilirsiniz!</div>' +
-          '<div style="margin-top: 6px; color: #475569;">' +
-            'Tüm özellikler (DSÖ diyet reçeteleri, HOMA-IR tahlil, Türkomp veritabanı) anında sınırsız olarak açılacaktır.' +
-          '</div>';
-      }
-      if (q.includes('demo') || q.includes('sunum') || q.includes('tanıtım')) {
-        return '<div>Klinik ekibimiz size canlı sistem üzerinden 15 dakikalık birebir demo sunumu yapmaktan mutluluk duyar!</div>' +
-          '<a href="https://wa.me/905321202846?text=Merhaba%2C%20DiyetKalfa%20AI%20klinik%20demo%20sunumu%20talep%20ediyorum." target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff; margin-top: 8px;">💬 0532 120 28 46 Demo WhatsApp Hattı →</a>';
-      }
-      if (q.includes('iletişim') || q.includes('telefon') || q.includes('numara') || q.includes('whatsapp') || q.includes('destek')) {
-        return '<div><strong>DiyetKalfa 7/24 İletişim & Destek Bilgileri:</strong></div>' +
-          '<div style="margin-top: 6px; line-height: 1.5;">' +
-            '📞 <strong>WhatsApp & Tel:</strong> 0532 120 28 46<br>' +
-            '📧 <strong>E-Posta:</strong> destek@diyetkalfa.com<br>' +
-            '⚡ <strong>Çalışma Saatleri:</strong> 7/24 Kesintisiz Canlı Destek' +
+
+      // 7. 7 GÜN ÜCRETSİZ DENEME & SATIN ALMA
+      if (qNorm.includes('deneme') || qNorm.includes('ucretsiz') || qNorm.includes('7 gun') || qNorm.includes('bedava') || qNorm.includes('test') || qNorm.includes('kartsiz') || qNorm.includes('satin al') || qNorm.includes('kayit')) {
+        return '<div><strong>✨ 7 Gün Kartsız Ücretsiz Deneme:</strong></div>' +
+          '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
+            'Şu an bulunduğunuz sayfadaki formu doldurarak <strong>hiçbir kredi kartı veya banka bilgisi vermeden</strong> 7 gün boyunca tam yetkiyle deneyebilirsiniz.<br>' +
+            'Diyet Planlayıcı, HOMA-IR Laboratuvar Analizi, Randevu Takvimi, Otomatik SMS ve Excel Danışan Çizelgesi anında açılır. Süre bitiminde siz onay vermedikçe hiçbir ücret çekilmez.' +
           '</div>' +
           '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-            '<a href="https://wa.me/905321202846?text=Merhaba%20DiyetKalfa%20kay%C4%B1t%20s%C3%BCrecinde%20destek%20almak%20istiyorum." target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 WhatsApp\'tan Yaz</a>' +
-            '<button type="button" onclick="openContactModal()" class="ai-link-btn" style="background: #0f766e; color: #fff; border: none; cursor: pointer;">📞 Biz Sizi Arayalım</button>' +
+            '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff;">⚡ Doğrudan Paneli Aç</a>' +
           '</div>';
       }
-      return '<div>Kaydınızla veya sistemle ilgili her türlü sorunuz için <strong>0532 120 28 46</strong> WhatsApp hattımız veya çağrı merkezimiz 7/24 aktiftir.</div>' +
+
+      // 8. DEMO TALEBİ & BİREBİR REHBERLİ SUNUM
+      if (qNorm.includes('demo') || qNorm.includes('sunum') || qNorm.includes('tanitim') || qNorm.includes('ornegi') || qNorm.includes('canli goster')) {
+        return '<div><strong>🎯 DiyetKalfa Canlı Demo Seçenekleri:</strong></div>' +
+          '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
+            'Demoyu iki şekilde deneyimleyebilirsiniz:<br>' +
+            '1. <strong>Anında Kendi Kendine Deneme:</strong> Aşağıdaki butona basarak paneli şifresiz ve anında test edebilirsiniz.<br>' +
+            '2. <strong>Birebir Uzman Sunumu:</strong> 0532 120 28 46 WhatsApp hattımızdan 15 dakikalık canlı ekran paylaşımı talep edebilirsiniz.' +
+          '</div>' +
+          '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
+            '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">🚀 Anında Demo Panelini Aç →</a>' +
+            '<a href="https://wa.me/905321202846?text=Merhaba%2C%20DiyetKalfa%20AI%20klinik%20demo%20sunumu%20talep%20ediyorum." target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 0532 120 28 46 WhatsApp Sunumu</a>' +
+          '</div>';
+      }
+
+      // 9. TAHLİL, KAN, HOMA-IR & LABORATUVAR
+      if (qNorm.includes('tahlil') || qNorm.includes('laboratuvar') || qNorm.includes('homa') || qNorm.includes('kan') || qNorm.includes('insulin') || qNorm.includes('glukoz') || qNorm.includes('glisemik') || qNorm.includes('dso') || qNorm.includes('who')) {
+        return '<div><strong>🩺 DSÖ 2024 & HOMA-IR Akıllı Analiz Motoru:</strong></div>' +
+          '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
+            'Danışanınızın açlık kan şekeri (glukoz) ve açlık insülin değerlerini girerek saniyeler içinde <strong>HOMA-IR metabolik risk skoru</strong>nu ve insülin direnci seviyesini hesaplayabilirsiniz. Sistem, değere göre düşük glisemik indeksli bilimsel beslenme protokolleri önerir.' +
+          '</div>' +
+          '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
+            '<a href="ozellikler.html" class="ai-link-btn" style="background: #163b2c; color: #fff;">🔬 Klinik Özellikleri İncele →</a>' +
+            '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #0f766e; color: #fff;">🧪 Panelde Tahlil Modülü</a>' +
+          '</div>';
+      }
+
+      // 10. DİYET PLANLAYICI, REÇETE, BESİN, TÜRKOMP & TARİFLER
+      if (qNorm.includes('diyet') || qNorm.includes('recete') || qNorm.includes('liste') || qNorm.includes('menu') || qNorm.includes('ogun') || qNorm.includes('tarif') || qNorm.includes('besin') || qNorm.includes('turkomp') || qNorm.includes('kalori') || qNorm.includes('detoks') || qNorm.includes('degisim')) {
+        return '<div><strong>🥗 Akıllı Diyet Planlayıcı & Türkomp Besin Motoru:</strong></div>' +
+          '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
+            '• <strong>Kişiye Özel Metrikler:</strong> Yaş, boy, kilo, cinsiyet ve PAL aktivite düzeyine göre BMR ve TDEE otomatik hesaplanır.<br>' +
+            '• <strong>7 Günlük Zengin Reçete:</strong> Sabah, Öğle, Akşam, 3 Ara Öğün (biri gece metabolik ara öğünü), Günün Detoks Suyu ve Sağlıklı Tatlısı.<br>' +
+            '• <strong>Türkomp & Değişim Listesi:</strong> Türkiye\'ye özgü 100+ klinik tarif, gramajlar ve resmi gıda değerleri entegredir.<br>' +
+            '• <strong>Sınırsız Tarif Yenileme:</strong> "Menüyü Değiştir" butonlarıyla her defasında yepyeni alternatif tarifler üretilir.' +
+          '</div>' +
+          '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
+            '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff;">🚀 Diyet Planlayıcıyı Dene →</a>' +
+            '<a href="ozellikler.html" class="ai-link-btn" style="background: #0f766e; color: #fff;">🍏 Besin Veritabanı Detayları</a>' +
+          '</div>';
+      }
+
+      // 11. İLETİŞİM, TELEFON, WHATSAPP & DESTEK
+      if (qNorm.includes('iletisim') || qNorm.includes('telefon') || qNorm.includes('numara') || qNorm.includes('whatsapp') || qNorm.includes('destek') || qNorm.includes('ara') || qNorm.includes('nerede') || qNorm.includes('ulas')) {
+        return '<div><strong>📞 DiyetKalfa 7/24 Klinik İletişim Hattı:</strong></div>' +
+          '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
+            '• <strong>Telefon & WhatsApp:</strong> 0532 120 28 46<br>' +
+            '• <strong>E-Posta:</strong> destek@diyetkalfa.com<br>' +
+            '• <strong>Çalışma Saatleri:</strong> 7/24 Kesintisiz Klinik Destek' +
+          '</div>' +
+          '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
+            '<a href="https://wa.me/905321202846?text=Merhaba%20DiyetKalfa%20canl%C4%B1%20destek%20almak%20istiyorum." target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 WhatsApp\'tan Yaz</a>' +
+            '<button type="button" onclick="openContactModal()" class="ai-link-btn" style="background: #163b2c; color: #fff; border: none; cursor: pointer;">📞 Biz Sizi Arayalım</button>' +
+          '</div>';
+      }
+
+      // 12. MOBİL UYUM, APP, UYGULAMA, IOS, ANDROID
+      if (qNorm.includes('mobil') || qNorm.includes('app') || qNorm.includes('uygulama') || qNorm.includes('ios') || qNorm.includes('android') || qNorm.includes('tablet') || qNorm.includes('telefon')) {
+        return '<div><strong>📱 Mobil & Tablet & PC %100 Tam Uyum:</strong></div>' +
+          '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
+            'DiyetKalfa yeni nesil PWA ve Cloud web altyapısıyla çalışır. App Store veya Google Play Store indirmesi yapmanıza gerek kalmadan tüm iPhone, iPad, Android telefon, tablet ve bilgisayarlarınızda tarayıcınızdan anında çalışır. Dilerseniz ana ekranınıza tek tıkla ikon olarak ekleyebilirsiniz.' +
+          '</div>' +
+          '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">📲 Mobilde Canlı Dene →</a>';
+      }
+
+      // 13. GÜVENLİK, KVKK, MBYS, E-NABIZ
+      if (qNorm.includes('guvenli') || qNorm.includes('kvkk') || qNorm.includes('gizlilik') || qNorm.includes('mbys') || qNorm.includes('e-nabiz') || qNorm.includes('enabiz') || qNorm.includes('yedek')) {
+        return '<div><strong>🔒 Klinik Veri Güvenliği, KVKK & MBYS Uyumu:</strong></div>' +
+          '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
+            'DiyetKalfa; Sağlık Bakanlığı MBYS entegrasyonuna, e-Nabız protokollerine ve 6698 sayılı KVKK sağlık verisi gizliliği yönergelerine tam uyumludur. Tüm verileriniz 256-Bit SSL şifrelemeyle korunur, üçüncü şahıslarla asla paylaşılmaz.' +
+          '</div>' +
+          '<a href="sss.html" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🛡️ Güvenlik Detaylarını Gör →</a>';
+      }
+
+      // 14. INBODY, TARTI, VÜCUT ANALİZİ
+      if (qNorm.includes('inbody') || qNorm.includes('tarti') || qNorm.includes('vucut') || qNorm.includes('tanita') || qNorm.includes('yag') || qNorm.includes('kas')) {
+        return '<div><strong>⚖️ InBody & Tanita Vücut Analiz Motoru:</strong></div>' +
+          '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
+            'Danışanınızın InBody, Tanita veya Visbody cihazından çıkan kilo, yağ yüzdesi, kas kütlesi, sıvı oranı, iç organ yağı ve bel/kalça oranını sisteme girebilir; danışanınız için zaman içindeki değişim grafiklerini tek tıkla görebilirsiniz.' +
+          '</div>' +
+          '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">📊 Panelde Vücut Analizini Aç →</a>';
+      }
+
+      // 15. DİNAMİK AKILLI FALLBACK (Kullanıcının sorusuna özel bağlamsal yönlendirme)
+      return '<div><strong>\"' + rawQuery.replace(/</g, '&lt;').replace(/>/g, '&gt;') + '\"</strong> konulu sorunuz için teşekkür ederiz!</div>' +
+        '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
+          'DiyetKalfa klinik işletim sistemi; diyetisyenlerin klinik yönetimini, tahlil yorumlamasını, randevu takvimini ve danışan takip süreçlerini kolaylaştırmak üzere tasarlanmıştır. Bu sorunuz hakkında detaylı rehberlik almak ve kliniğinize özel canlı demoyu görmek için:' +
+        '</div>' +
         '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-          '<a href="https://wa.me/905321202846?text=' + encodeURIComponent('Merhaba, kayıt esnasında bilgi almak istiyorum: ' + rawQuery) + '" target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 0532 120 28 46 WhatsApp\'a Sor</a>' +
-          '<button type="button" onclick="openContactModal()" class="ai-link-btn" style="background: #0f172a; color: #fff; border: none; cursor: pointer;">📞 Biz Sizi Arayalım</button>' +
+          '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">🚀 Klinik Demo Panelini Aç</a>' +
+          '<a href="fiyatlar.html" class="ai-link-btn" style="background: #0f766e; color: #fff;">💎 Fiyatları İncele</a>' +
+          '<a href="https://wa.me/905321202846?text=' + encodeURIComponent('Merhaba, ' + rawQuery + ' hakkında detaylı bilgi almak istiyorum.') + '" target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 0532 120 28 46 WhatsApp Destek</a>' +
         '</div>';
     }
 

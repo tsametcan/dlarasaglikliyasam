@@ -2035,7 +2035,7 @@ body:not(.app-locked) .header-landing-actions {
 }
 
   /* ============================================================ */
-  /* 12. EXCEL AKILLI ÇİZELGE, DOKTORTAKVİMİ & SMS ENTEGRASYON     */
+  /* 12. EXCEL AKILLI ÇİZELGE, RANDEVU TAKVİMİ & SMS ENTEGRASYON */
   /* ============================================================ */
   .excel-toolbar {
     display: flex;
@@ -2137,7 +2137,7 @@ body:not(.app-locked) .header-landing-actions {
     font-size: 11px;
     white-space: nowrap;
   }
-  /* DoktorTakvimi Saat Slotları */
+  /* Randevu Takvimi Saat Slotları */
   .slot-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
@@ -2303,7 +2303,7 @@ body:not(.app-locked) .header-landing-actions {
       </button>
       <button class="saas-tab-btn" id="btn-tab-appointments" onclick="switchAppTab('appointments')">
         <span>📅</span>
-        <span>DoktorTakvimi & SMS</span>
+        <span>Randevu Takvimi & SMS</span>
         <span class="badge-pill" style="background:#dcfce7; color:#166534;">SMS Takvim</span>
       </button>
       <button class="saas-tab-btn" id="btn-tab-crm" onclick="switchAppTab('crm')">
@@ -2332,6 +2332,21 @@ body:not(.app-locked) .header-landing-actions {
   <!-- 2. ANA İÇERİK                                                -->
   <!-- ============================================================ -->
   <main class="main-container">
+
+    <!-- DİYETKALFA CANLI DEMO BİLGİLENDİRME BARI -->
+    <div id="demo-mode-banner" style="display: none; background: linear-gradient(135deg, #163b2c 0%, #0d261d 100%); color: #ffffff; padding: 14px 22px; border-radius: 16px; margin-bottom: 22px; border: 1.5px solid #d4af37; box-shadow: 0 4px 20px rgba(22, 59, 44, 0.2); align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span style="font-size: 24px;">🌟</span>
+        <div>
+          <div style="font-weight: 900; color: #d4af37; font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em;">DiyetKalfa™ Canlı Demo Modu Aktif</div>
+          <div style="font-size: 12.5px; color: #edf5f0; margin-top: 2px;">Tüm klinik özelliklerini (Diyet Planlayıcı, Randevu Takvimi, Otomatik SMS, Excel Çizelgesi) 7 gün boyunca sınırsız ve ücretsiz deneyimleyebilirsiniz.</div>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="fiyatlar.html" target="_blank" class="btn" style="background: #d4af37; color: #163b2c; font-weight: 900; font-size: 12px; padding: 8px 18px; border-radius: 8px; text-decoration: none; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">💳 Lisans Paketlerini İncele</a>
+        <button type="button" onclick="document.getElementById('demo-mode-banner').style.display='none'" style="background: rgba(255,255,255,0.15); border: none; color: #ffffff; border-radius: 50%; width: 28px; height: 28px; cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center;">✕</button>
+      </div>
+    </div>
 
     <!-- 1. GÖRÜNÜM: 7 GÜNLÜK KLİNİK DİYET & DANIŞAN YÖNETİMİ -->
     <!-- ============================================================== -->
@@ -3113,7 +3128,7 @@ body:not(.app-locked) .header-landing-actions {
         <div class="hero-tag">📊 Excel Alışkanlığınıza Uyumlu Akıllı Danışan Çizelgesi</div>
         <h2 class="hero-title">Diyetisyen Excel Danışan Takip & Akıllı Tablo Sistemi</h2>
         <p class="hero-desc">
-          Yıllardır kullandığınız Excel tablolarını doğrudan yükleyin veya yeni satırlar ekleyin. Kilo kaybı ilerlemelerini otomatik hesaplayın, tek tıkla <b>DoktorTakvimi randevusu oluşturun ve danışanınıza otomatik SMS bildirimi</b> gönderin!
+          Yıllardır kullandığınız Excel tablolarını doğrudan yükleyin veya yeni satırlar ekleyin. Kilo kaybı ilerlemelerini otomatik hesaplayın, tek tıkla <b>Randevu Takvimi seansı oluşturun ve danışanınıza otomatik SMS bildirimi</b> gönderin!
         </p>
       </div>
 
@@ -3198,18 +3213,18 @@ body:not(.app-locked) .header-landing-actions {
     </div>
 
     <!-- ============================================================ -->
-    <!-- 3. GÖRÜNÜM: DOKTORTAKVİMİ & SMS ENTEGRASYONLU SEANS TAKVİMİ   -->
+    <!-- 3. GÖRÜNÜM: AKILLI RANDEVU TAKVİMİ & SMS ENTEGRASYONLU SEANS TAKVİMİ -->
     <!-- ============================================================ -->
     <div id="view-appointments" style="display: none;">
       <div class="hero-banner">
-        <div class="hero-tag">📅 DoktorTakvimi Standartlarında Seans Motoru & Otomatik SMS Entegrasyonu</div>
+        <div class="hero-tag">📅 Akıllı Seans & Randevu Takvimi Motoru & Otomatik SMS Entegrasyonu</div>
         <h2 class="hero-title">Diyetisyen Akıllı Randevu Takvimi & SMS Sistemi</h2>
         <p class="hero-desc">
           Telefon rehberinizi veya Excel danışanlarınızı takvime bağlayın, seans planlayın ve danışanlarınıza tek tıkla veya otomatik <b>randevu hatırlatma ve onay SMS'i</b> gönderin! Seans kaçırmalarını ve aksamalarını sıfıra indirin.
         </p>
       </div>
 
-      <!-- DoktorTakvimi Hızlı Aksiyon Araç Çubuğu -->
+      <!-- Randevu Takvimi Hızlı Aksiyon Araç Çubuğu -->
       <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 12px 18px; margin-bottom: 16px;">
         <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
           <button onclick="openPhonebookModal()" class="btn btn-pastel-green" style="background:#163b2c; color:#ffffff;" title="Telefon rehberinden veya VCF dosyasından danışan aktarın">
@@ -3227,7 +3242,7 @@ body:not(.app-locked) .header-landing-actions {
         </div>
         <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 800; color: #166534; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 6px 12px; border-radius: 999px;">
           <span>⚡ Otomatik SMS Motoru:</span>
-          <span id="sms-status-pill">AKTİF (DoktorTakvimi)</span>
+          <span id="sms-status-pill">AKTİF (Randevu Takvimi)</span>
         </div>
       </div>
 
@@ -3246,14 +3261,14 @@ body:not(.app-locked) .header-landing-actions {
           <div style="font-size: 22px; font-weight: 900; color: #0284c7; margin-top: 2px;" id="stat-total-sms-sent">0 SMS</div>
         </div>
         <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 14px; text-align: center;">
-          <div style="font-size: 11px; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">DoktorTakvimi & MBYS</div>
+          <div style="font-size: 11px; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">Randevu Takvimi & MBYS</div>
           <div style="font-size: 12px; font-weight: 900; color: #163b2c; margin-top: 6px; display: inline-flex; align-items: center; gap: 4px;">
             <span class="pulsing-dot"></span> TAM ENTEGRE
           </div>
         </div>
       </div>
 
-      <!-- Yeni Randevu Ekleme Kartı (DoktorTakvimi ve SMS Uyumlu) -->
+      <!-- Yeni Randevu Ekleme Kartı (Randevu Takvimi ve SMS Uyumlu) -->
       <div class="card" style="margin-bottom: 18px;">
         <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
           <span class="card-title">
@@ -3295,7 +3310,7 @@ body:not(.app-locked) .header-landing-actions {
             <div class="form-group">
               <label class="form-label">Randevu Saati (Hızlı Slot Seçin)</label>
               <input type="time" id="apt-time" value="14:00" class="form-input" onchange="updateSmsLivePreview(); highlightSelectedSlot();">
-              <!-- DoktorTakvimi Saat Slotları -->
+              <!-- Randevu Takvimi Saat Slotları -->
               <div class="slot-grid" id="apt-slots-container">
                 <div class="slot-pill" onclick="selectTimeSlot('09:00')">09:00</div>
                 <div class="slot-pill" onclick="selectTimeSlot('10:00')">10:00</div>
@@ -6472,7 +6487,7 @@ body:not(.app-locked) .header-landing-actions {
             </select>
           </td>
           <td style="text-align: center; white-space: nowrap;">
-            <button onclick="scheduleAptFromExcel('${c.id}')" class="btn btn-pastel-green" style="padding: 4px 8px; font-size: 10.5px;" title="DoktorTakvimi Seansı Planla">
+            <button onclick="scheduleAptFromExcel('${c.id}')" class="btn btn-pastel-green" style="padding: 4px 8px; font-size: 10.5px;" title="Randevu Takvimine Ekle">
               📅 Takvim
             </button>
             <button onclick="quickSmsFromExcel('${c.id}')" class="btn" style="padding: 4px 8px; font-size: 10.5px; background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; font-weight: 800;" title="Kısa SMS Gönder">
@@ -6694,7 +6709,7 @@ body:not(.app-locked) .header-landing-actions {
     }
 
     // ============================================================
-    // 2. DOKTORTAKVİMİ & SMS BİLDİRİM SİSTEMİ MOTORU
+    // 2. RANDEVU TAKVİMİ & SMS BİLDİRİM SİSTEMİ MOTORU
     // ============================================================
     let smsLogsList = JSON.parse(localStorage.getItem('diyetkalfa_sms_logs')) || [
       {
@@ -6704,7 +6719,7 @@ body:not(.app-locked) .header-landing-actions {
         phone: "0555 123 45 67",
         text: "Sayın Zehra Bölük, DiyetKalfa Klinik randevunuz 26.11.2026 saat 14:30 olarak planlanmıştır. Sağlıklı günler dileriz.",
         status: "İletildi",
-        gateway: "DoktorTakvimi Gateway (Netgsm)"
+        gateway: "Randevu SMS Gateway (Netgsm)"
       }
     ];
 
@@ -6948,7 +6963,7 @@ body:not(.app-locked) .header-landing-actions {
         phone: phone,
         text: text,
         status: "İletildi (✓)",
-        gateway: "DoktorTakvimi SMS Gateway (Netgsm/Twilio)"
+        gateway: "Randevu SMS Gateway (Netgsm/Twilio)"
       };
       smsLogsList.unshift(newLog);
       saveSmsLogs();
@@ -7010,11 +7025,11 @@ body:not(.app-locked) .header-landing-actions {
         // Direct Gateway API simulation
         sendGatewaySMS(phone, text, activeSmsTarget.id, activeSmsTarget.name);
         closeSmsPreviewModal();
-        alert(`✅ SMS Başarıyla İletildi!\n\nAlıcı: ${activeSmsTarget.name} (${phone})\nDurum: İletildi (Kredi: 1 / Başlık: ${smsSettings.senderTitle})\nDoktorTakvimi entegrasyonu sağlandı.`);
+        alert(`✅ SMS Başarıyla İletildi!\n\nAlıcı: ${activeSmsTarget.name} (${phone})\nDurum: İletildi (Kredi: 1 / Başlık: ${smsSettings.senderTitle})\nRandevu Takvimi entegrasyonu sağlandı.`);
       }
     }
 
-    // Telefon Rehberi Entegrasyonu (DoktorTakvimi Tarzı)
+    // Telefon Rehberi Entegrasyonu (Randevu Takvimi Tarzı)
     function openPhonebookModal() {
       const modal = document.getElementById('modal-phonebook-picker');
       if (!modal) return;
@@ -9433,7 +9448,7 @@ function orderPlanWhatsApp(planName) {
 </div>
 
 <!-- ============================================================ -->
-<!-- EXCEL & DOKTORTAKVİMİ & SMS ETKİLEŞİMLİ MODALLARI            -->
+<!-- EXCEL & RANDEVU TAKVİMİ & SMS ETKİLEŞİMLİ MODALLARI -->
 <!-- ============================================================ -->
 
 <!-- MODAL: EXCEL TOPLU KOPYALA / YAPIŞTIR -->
@@ -9459,13 +9474,13 @@ function orderPlanWhatsApp(planName) {
   </div>
 </div>
 
-<!-- MODAL: DOKTORTAKVİMİ REHBER & DANIŞAN AKTARMA -->
+<!-- MODAL: RANDEVU TAKVİMİ REHBER & DANIŞAN AKTARMA -->
 <div id="modal-phonebook-picker" class="modal-backdrop" style="display: none; align-items: center; justify-content: center; z-index: 10006; background: rgba(23, 12, 7, 0.7); backdrop-filter: blur(8px); padding: 16px;">
   <div style="background: #ffffff; border-radius: 20px; max-width: 600px; width: 100%; padding: 26px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); border: 1.5px solid #2e5e4b; position: relative; max-height: 88vh; overflow-y: auto;">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; border-bottom: 1px solid #f4efe6; padding-bottom: 10px;">
       <div style="display: flex; align-items: center; gap: 8px;">
         <span style="font-size: 20px;">📱</span>
-        <h3 style="font-size: 18px; font-weight: 900; color: #163b2c; margin: 0;">DoktorTakvimi: Rehberden Danışan Bağla</h3>
+        <h3 style="font-size: 18px; font-weight: 900; color: #163b2c; margin: 0;">Randevu Takvimi: Rehberden Danışan Bağla</h3>
       </div>
       <button onclick="closePhonebookModal()" style="background: none; border: none; font-size: 20px; cursor: pointer; color: #94867e;">✕</button>
     </div>
@@ -9489,7 +9504,7 @@ function orderPlanWhatsApp(planName) {
   </div>
 </div>
 
-<!-- MODAL: KISA SMS GÖNDERME ÖNİZLEME (DOKTORTAKVİMİ) -->
+<!-- MODAL: KISA SMS GÖNDERME ÖNİZLEME (RANDEVU TAKVİMİ) -->
 <div id="modal-sms-sender" class="modal-backdrop" style="display: none; align-items: center; justify-content: center; z-index: 10007; background: rgba(23, 12, 7, 0.7); backdrop-filter: blur(8px); padding: 16px;">
   <div style="background: #ffffff; border-radius: 20px; max-width: 560px; width: 100%; padding: 26px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); border: 1.5px solid #2e5e4b; position: relative;">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; border-bottom: 1px solid #f4efe6; padding-bottom: 10px;">
@@ -9528,7 +9543,7 @@ function orderPlanWhatsApp(planName) {
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; border-bottom: 1px solid #f4efe6; padding-bottom: 10px;">
       <div style="display: flex; align-items: center; gap: 8px;">
         <span style="font-size: 20px;">⚙️</span>
-        <h3 style="font-size: 18px; font-weight: 900; color: #163b2c; margin: 0;">DoktorTakvimi SMS & Gateway Ayarları</h3>
+        <h3 style="font-size: 18px; font-weight: 900; color: #163b2c; margin: 0;">Randevu Takvimi SMS & Gateway Ayarları</h3>
       </div>
       <button onclick="closeSmsSettingsModal()" style="background: none; border: none; font-size: 20px; cursor: pointer; color: #94867e;">✕</button>
     </div>
@@ -9638,6 +9653,13 @@ window.addEventListener('DOMContentLoaded', function() {
     switchAppTab('diet');
   }
   document.title = "DiyetKalfa - Klinik İşletim Sistemi & Diyetisyen Paneli";
+
+  // Demo modu kontrolü ve banner gösterimi
+  const p = new URLSearchParams(window.location.search);
+  if (p.get('demo') === 'true' || p.get('unlock') === 'true') {
+    const banner = document.getElementById('demo-mode-banner');
+    if (banner) banner.style.display = 'flex';
+  }
 });
 </script>
 </body>
