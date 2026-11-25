@@ -7309,12 +7309,6 @@ body:not(.app-locked) .header-landing-actions {
       const gUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dateClean}T${timeClean}/${dateClean}T${timeClean}&details=${details}`;
       window.open(gUrl, '_blank');
     }
-      const details = encodeURIComponent(`Tür: ${apt.type}\nBağlantı: ${apt.link}\nKlinik: ${clinicProfile.clinicName}`);
-      const dateClean = apt.date.replace(/-/g, '');
-      const timeClean = apt.time.replace(/:/g, '') + '00';
-      const gUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dateClean}T${timeClean}/${dateClean}T${timeClean}&details=${details}`;
-      window.open(gUrl, '_blank');
-    }
 
     // 2. INBODY & VÜCUT ANALİZİ MOTORU
     let inbodyHistory = JSON.parse(localStorage.getItem('diyetkalfa_inbody_history')) || [
