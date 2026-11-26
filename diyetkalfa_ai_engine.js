@@ -1,4 +1,4 @@
-/**
+﻿/**
  * ============================================================================
  * DIYETKALFA AI ULTRA ENGINE 2026 - TÜRKİYE'NİN EN GELİŞMİŞ KLİNİK AI ASİSTANI
  * ============================================================================
@@ -39,8 +39,8 @@
       .replace(/</g, '&lt;').replace(/>/g, '&gt;')
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
       .replace(/\*(.*?)\*/g, '<em>$1</em>')
-      .replace(/^### (.*$)/gm, '<div style="font-weight:800; color:#163b2c; margin-top:8px;">$1</div>')
-      .replace(/^## (.*$)/gm, '<div style="font-weight:900; color:#163b2c; font-size:14px; margin-top:8px;">$1</div>')
+      .replace(/^### (.*$)/gm, '<div style="font-weight:800; color:#1e3a8a; margin-top:8px;">$1</div>')
+      .replace(/^## (.*$)/gm, '<div style="font-weight:900; color:#1e3a8a; font-size:14px; margin-top:8px;">$1</div>')
       .replace(/\n\n/g, '<br/><br/>')
       .replace(/\n- /g, '<br/>• ')
       .replace(/\n\* /g, '<br/>• ')
@@ -158,7 +158,7 @@
           'Hem klinik vaka analizlerinizde (HOMA-IR, Tiroid, PCOS, Gut, Anemi, Sporcu makroları vb.) hem de DiyetKalfa yazılımımız hakkında bana her türlü soruyu manuel olarak sorabilirsiniz.' +
         '</div>' +
         '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-          '<button type="button" onclick="triggerQuickPrompt(\'Klinik paneline nasıl geçeceğiz?\')" class="ai-link-btn" style="background: #163b2c; color: #fff;">🚀 Paneli Nasıl Açarım?</button>' +
+          '<button type="button" onclick="triggerQuickPrompt(\'Klinik paneline nasıl geçeceğiz?\')" class="ai-link-btn" style="background: #1e3a8a; color: #fff;">🚀 Paneli Nasıl Açarım?</button>' +
           '<button type="button" onclick="triggerQuickPrompt(\'Paketler ve fiyatlar ne kadar?\')" class="ai-link-btn" style="background: #0f766e; color: #fff;">💎 Fiyatlar & Paketler</button>' +
           '<button type="button" onclick="triggerQuickPrompt(\'1 günlük örnek diyet listesi verir misin?\')" class="ai-link-btn" style="background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0;">🥗 Örnek Menü Yaz</button>' +
         '</div>';
@@ -176,7 +176,7 @@
           '</ul>' +
         '</div>' +
         '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-          '<a href="kayit.html" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">✨ Kayıt Ol & 7 Gün Başlat →</a>' +
+          '<a href="kayit.html" class="ai-link-btn" style="background: #1e3a8a; color: #fff; font-weight: bold;">✨ Kayıt Ol & 7 Gün Başlat →</a>' +
           '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0;">🚀 Klinik Paneli Gör</a>' +
         '</div>';
     }
@@ -194,7 +194,7 @@
           '</ul>' +
         '</div>' +
         '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-          '<a href="fiyatlar.html" class="ai-link-btn" style="background: #163b2c; color: #fff;">📦 Fiyatları & Tabloyu Aç →</a>' +
+          '<a href="fiyatlar.html" class="ai-link-btn" style="background: #1e3a8a; color: #fff;">📦 Fiyatları & Tabloyu Aç →</a>' +
           '<a href="kayit.html" class="ai-link-btn" style="background: #0f766e; color: #fff;">🚀 7 Gün Ücretsiz Dene</a>' +
         '</div>';
     }
@@ -209,7 +209,7 @@
           '</ul>' +
         '</div>' +
         '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-          '<a href="fiyatlar.html" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">💳 Paket Seç & Satın Al →</a>' +
+          '<a href="fiyatlar.html" class="ai-link-btn" style="background: #1e3a8a; color: #fff; font-weight: bold;">💳 Paket Seç & Satın Al →</a>' +
           '<a href="https://wa.me/905321202846?text=Merhaba,%20DiyetKalfa%20lisans%20satın%20alma%20ve%20havale%20bilgisi%20almak%20istiyorum." target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 WhatsApp 0532 120 28 46</a>' +
         '</div>';
     }
@@ -513,7 +513,7 @@
         '</div>' +
         '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
           '<a href="https://wa.me/905321202846?text=Merhaba,%20DiyetKalfa%20canlı%20destek%20almak%20istiyorum." target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 0532 120 28 46 WhatsApp</a>' +
-          '<a href="kayit.html" class="ai-link-btn" style="background: #163b2c; color: #fff;">🚀 7 Gün Ücretsiz Başlat</a>' +
+          '<a href="kayit.html" class="ai-link-btn" style="background: #1e3a8a; color: #fff;">🚀 7 Gün Ücretsiz Başlat</a>' +
         '</div>';
     }
 

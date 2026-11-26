@@ -1,4 +1,4 @@
-/**
+﻿/**
  * ============================================================================
  * DIYETKALFA LICENSE, USER DATABASE & PACKAGE FEATURE GATING ENGINE (2026)
  * ============================================================================
@@ -89,7 +89,7 @@
       monthlyPrice: '3.000 TL',
       yearlyTotal: '36.000 TL',
       maxClients: 999999,
-      badgeColor: '#163b2c',
+      badgeColor: '#1e3a8a',
       allowWhiteLabel: true,
       allowMultiDietitian: false,
       smsQuota: 500,
