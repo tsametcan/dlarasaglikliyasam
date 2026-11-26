@@ -124,6 +124,33 @@
       .replace(/ö/g, 'o')
       .replace(/ç/g, 'c');
 
+    // 0. ÖZEL SAYISAL KİLO / SU / PROTEİN / KALORİ VAKA HESAPLAYICISI (Örn: "78 kilo danışan için su ve protein ihtiyacı")
+    var specificWeightMatch = qNorm.match(/(\d+)\s*(kg|kilo)/);
+    if (specificWeightMatch && !qNorm.includes('maraton')) {
+      var wVal = parseInt(specificWeightMatch[1]);
+      if (wVal >= 20 && wVal <= 250) {
+        var waterLiters = ((wVal * 35) / 1000).toFixed(2);
+        var waterMl = wVal * 35;
+        var pSedentary = Math.round(wVal * 1.0);
+        var pWeightLoss = Math.round(wVal * 1.3);
+        var pSport = Math.round(wVal * 1.8);
+        var bmrEst = Math.round(wVal * 22);
+        var tdeeEst = Math.round(bmrEst * 1.4);
+        var deficitCal = Math.max(1200, tdeeEst - 500);
+
+        return '<div><strong>📊 ' + wVal + ' kg Danışan İçin Hesaplanan Klinik Su, Protein & Kalori Protokolü:</strong></div>' +
+          '<div style="margin-top: 6px; line-height: 1.55; color: #334155;">' +
+            'Sorduğunuz <strong>' + wVal + ' kg</strong> vücut ağırlığına sahip danışan için DSÖ 2024 ve ESPEN formülleriyle hesaplanan bireysel hedefler:' +
+            '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
+              '<li><strong>💧 Günlük Zorunlu Su İhtiyacı (' + wVal + ' x 35 ml):</strong> Günde <strong>' + waterLiters + ' Litre (' + waterMl + ' ml)</strong> saf su tüketilmelidir. (İçilen her fincan kahve/çay için +200 ml eklenmelidir).</li>' +
+              '<li><strong>🥩 Günlük Protein Hedefi:</strong> Sedanter koruma için <strong>' + pSedentary + 'g/gün</strong>, kas kayıpsız yağ yakımı (diyet) için <strong>' + pWeightLoss + 'g/gün</strong> (1.3 g/kg), aktif spor/direnç egzersizinde ise <strong>' + pSport + 'g/gün</strong> (1.8 g/kg) saf protein alınmalıdır.</li>' +
+              '<li><strong>🔥 Günlük Enerji & Kalori Açığı:</strong> Tahmini bazal metabolizma (BMR) <strong>~' + bmrEst + ' kcal</strong>, günlük harcama (TDEE) <strong>~' + tdeeEst + ' kcal</strong> ve sağlıklı yağ yakımı diyet hedefi <strong>~' + deficitCal + ' kcal/gün</strong> olarak hesaplanmıştır.</li>' +
+              '<li><strong>🌿 Günlük Lif (Posa) Hedefi:</strong> Bağırsak motilitesi ve glisemik kontrol için <strong>28 - 32 gram/gün</strong> diyet lifi.</li>' +
+            '</ul>' +
+          '</div>';
+      }
+    }
+
     // 1. SELAMLAŞMA & PLATFORM KİMLİĞİ
     if (qNorm.match(/^(merhaba|selam|selamlar|gunaydin|iyi gunler|iyi aksamlar|hey|hi|hello|nasilsin|kolay gelsin)\b/) && qNorm.split(/\s+/).length <= 4) {
       return '<div><strong>👋 Merhaba! DiyetKalfa Klinik Yapay Zeka Asistanına Hoş Geldiniz.</strong></div>' +

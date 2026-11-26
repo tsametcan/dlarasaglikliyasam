@@ -131,6 +131,7 @@ var SOL_INFINITE_MEAL_POOLS = {
 
 window._solDietGenCounter = 1;
 window._solLastMealPicks = [0, 0, 0, 0, 0, 0];
+window._solDeckQueues = {};
 window._solCurrentMeals = [
   SOL_INFINITE_MEAL_POOLS.breakfast[0],
   SOL_INFINITE_MEAL_POOLS.snack1[0],
@@ -139,6 +140,36 @@ window._solCurrentMeals = [
   SOL_INFINITE_MEAL_POOLS.dinner[0],
   SOL_INFINITE_MEAL_POOLS.night[0]
 ];
+
+function getNextNonRepeatingPoolIndex(slotKey, poolLen, lastIdx) {
+  if (poolLen <= 1) return 0;
+  if (!window._solDeckQueues[slotKey] || window._solDeckQueues[slotKey].length === 0) {
+    var indices = [];
+    for (var i = 0; i < poolLen; i++) {
+      indices.push(i);
+    }
+    // Fisher-Yates Shuffle
+    for (var j = indices.length - 1; j > 0; j--) {
+      var r = Math.floor(Math.random() * (j + 1));
+      var tmp = indices[j];
+      indices[j] = indices[r];
+      indices[r] = tmp;
+    }
+    // Eğer yeni destenin ilk elemanı bir önceki seçilenle aynıysa sona al
+    if (indices[0] === lastIdx && indices.length > 1) {
+      var first = indices.shift();
+      indices.push(first);
+    }
+    window._solDeckQueues[slotKey] = indices;
+  }
+  var nextIdx = window._solDeckQueues[slotKey].shift();
+  if (nextIdx === lastIdx && window._solDeckQueues[slotKey].length > 0) {
+    var altIdx = window._solDeckQueues[slotKey].shift();
+    window._solDeckQueues[slotKey].push(nextIdx);
+    return altIdx;
+  }
+  return nextIdx;
+}
 
 function getProtocolLabelAndMacros(protoKey, totalCal) {
   var cal = parseInt(totalCal) || 1650;
@@ -224,7 +255,7 @@ function runSolDietGen() {
   var keys = ['breakfast', 'snack1', 'lunch', 'snack2', 'dinner', 'night'];
   for (var i = 0; i < keys.length; i++) {
     var pool = SOL_INFINITE_MEAL_POOLS[keys[i]];
-    var newIdx = pickUniqueRandomIndex(pool.length, window._solLastMealPicks[i]);
+    var newIdx = getNextNonRepeatingPoolIndex(keys[i], pool.length, window._solLastMealPicks[i]);
     window._solLastMealPicks[i] = newIdx;
     window._solCurrentMeals[i] = pool[newIdx];
   }
@@ -247,7 +278,7 @@ function swapSingleSolMeal(slotIndex) {
   var key = keys[slotIndex];
   if (!key) return;
   var pool = SOL_INFINITE_MEAL_POOLS[key];
-  var newIdx = pickUniqueRandomIndex(pool.length, window._solLastMealPicks[slotIndex]);
+  var newIdx = getNextNonRepeatingPoolIndex(key, pool.length, window._solLastMealPicks[slotIndex]);
   window._solLastMealPicks[slotIndex] = newIdx;
   window._solCurrentMeals[slotIndex] = pool[newIdx];
   window._solDietGenCounter = (window._solDietGenCounter || 1) + 1;
