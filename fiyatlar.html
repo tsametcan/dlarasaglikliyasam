@@ -530,6 +530,7 @@
     display: inline-block !important;
   }
 </style>
+  <link rel="stylesheet" href="diyetkalfa_luxury_showcase.css">
 </head>
 <body>
 
@@ -840,123 +841,177 @@
   </section>
 
   <!-- 3. PRICING CARDS (4 PAKET) -->
-  <section class="pricing-grid-section">
-    <div class="pricing-grid">
-      <!-- 1. GİRİŞ PAKETİ (STARTER) -->
-      <div class="price-card">
-        <h3 class="card-tier-name">Giriş Paketi</h3>
-        <p class="card-tier-desc">Yeni mezun ve kliniğini yeni açan diyetisyenler için ideal başlangıç.</p>
-        <div class="price-wrap">
-          <span class="orig-price" id="orig-starter">2.500 TL</span>
-          <div>
-            <span class="main-price" id="price-starter">1.500</span>
-            <span class="price-period">TL / ay</span>
-          </div>
-          <div class="billed-text" id="billed-starter">Yıllık 18.000 TL faturalandırılır</div>
-        </div>
-        <ul class="features-list">
-          <li><span class="check">✓</span> <strong>10 Danışana Kadar</strong> Aktif Takip</li>
-          <li><span class="check">✓</span> DSÖ 2024 Diyet Planlayıcı</li>
-          <li><span class="check">✓</span> Temel Türkomp Besin Değişimi</li>
-          <li><span class="check">✓</span> Dijital Onam & Anamnez</li>
-          <li><span class="check">✓</span> WhatsApp ile Liste Paylaşımı</li>
-        </ul>
-        <button type="button" onclick="openCheckoutModal('Giriş Paketi')" class="btn-buy-card btn-buy-green">
-          <span>Satın Al / Başla</span>
-          <span>→</span>
-        </button>
-        <a href="kayit.html" target="_blank" rel="noopener noreferrer" class="btn-trial-sub">veya 7 Gün Ücretsiz Dene</a>
-      </div>
+  <!-- DIYETKALFA LÜKS FİYATLANDIRMA PAKETLERİ (IMAGE 1)               -->
+<!-- ============================================================== -->
+<section class="dk-pricing-suite-section" id="section-saas-pricing">
+  
+  <!-- Üst Bilgi Bandı -->
+  <div class="dk-pricing-top-banner">
+    Fiyatlarımıza KDV dahildir. <strong>7 gün boyunca Ücretsiz deneyin!</strong> Kredi kartı gerekmez ve devam etmek zorunda değilsiniz. Üstelik kredi kartına 12 taksit imkanı!
+  </div>
 
-      <!-- 2. TEMEL PAKET (CORE) -->
-      <div class="price-card">
-        <h3 class="card-tier-name">Temel Paket</h3>
-        <p class="card-tier-desc">Klinik hasta hacmini büyüten aktif diyetisyenler için sınırsız güç.</p>
-        <div class="price-wrap">
-          <span class="orig-price" id="orig-core">3.200 TL</span>
-          <div>
-            <span class="main-price" id="price-core">2.200</span>
-            <span class="price-period">TL / ay</span>
-          </div>
-          <div class="billed-text" id="billed-core">Yıllık 26.400 TL faturalandırılır</div>
-        </div>
-        <ul class="features-list">
-          <li><span class="check">✓</span> <strong>Sınırsız Danışan</strong> ve Dosya</li>
-          <li><span class="check">✓</span> DSÖ 2024 & Sonsuz Tarif Motoru</li>
-          <li><span class="check">✓</span> Biyokimya & HOMA-IR Labı</li>
-          <li><span class="check">✓</span> InBody & Tanita Grafikleri</li>
-          <li><span class="check">✓</span> Otomatik Pazar Listesi</li>
-        </ul>
-        <button type="button" onclick="openCheckoutModal('Temel Paket')" class="btn-buy-card btn-buy-green">
-          <span>Satın Al / Başla</span>
-          <span>→</span>
-        </button>
-        <a href="kayit.html" target="_blank" rel="noopener noreferrer" class="btn-trial-sub">veya 7 Gün Ücretsiz Dene</a>
-      </div>
-
-      <!-- 3. PROFESYONEL PAKET (PRO) - EN ÇOK TERCİH EDİLEN -->
-      <div class="price-card featured">
-        <div class="featured-badge">⭐ EN ÇOK TERCİH EDİLEN</div>
-        <h3 class="card-tier-name" style="color: var(--luxury-green);">Profesyonel Paket</h3>
-        <p class="card-tier-desc">Sınırsız Danışan + Özel Web Sitesi & SEO + Sosyal Medya AI.</p>
-        <div class="price-wrap">
-          <span class="orig-price" id="orig-pro">4.166 TL</span>
-          <div>
-            <span class="main-price" id="price-pro">3.000</span>
-            <span class="price-period">TL / ay</span>
-          </div>
-          <div class="billed-text" id="billed-pro" style="color: var(--luxury-green); font-weight: 800;">
-            Kampanyalı 36.000 TL / yıl (50.000 TL yerine)
-          </div>
-        </div>
-        <ul class="features-list">
-          <li><span class="check">✓</span> <strong>Sınırsız Danışan</strong> + Özel Web Sitesi</li>
-          <li><span class="check">✓</span> <strong>Google SEO & BioLink Vitrini</strong></li>
-          <li><span class="check">✓</span> Viral Reels & Video İçerik AI</li>
-          <li><span class="check">✓</span> White-Label Kendi Logonuz & PDF</li>
-          <li><span class="check">✓</span> Danışan Kasası & Finans Takibi</li>
-          <li><span class="check">✓</span> Akıllı Danışan Eşleştirme Ağı</li>
-        </ul>
-        <button type="button" onclick="openCheckoutModal('Profesyonel Paket')" class="btn-buy-card btn-buy-gold">
-          <span>💳 Kampanyalı Satın Al</span>
-          <span>→</span>
-        </button>
-        <a href="kayit.html" target="_blank" rel="noopener noreferrer" class="btn-trial-sub" style="font-weight: 800; color: var(--luxury-green);">
-          ✨ Kredi Kartsız 7 Gün Dene
-        </a>
-      </div>
-
-      <!-- 4. SINIRSIZ PAKET (ENTERPRISE) -->
-      <div class="price-card">
-        <h3 class="card-tier-name">Sınırsız Paket</h3>
-        <p class="card-tier-desc">Büyük tıp merkezleri, poliklinikler ve çoklu diyetisyen klinikleri.</p>
-        <div class="price-wrap">
-          <span class="orig-price" id="orig-enterprise">6.500 TL</span>
-          <div>
-            <span class="main-price" id="price-enterprise">4.500</span>
-            <span class="price-period">TL / ay</span>
-          </div>
-          <div class="billed-text" id="billed-enterprise">Yıllık 54.000 TL faturalandırılır</div>
-        </div>
-        <ul class="features-list">
-          <li><span class="check">✓</span> <strong>Sınırsız Danışan + Çoklu Diyetisyen</strong></li>
-          <li><span class="check">✓</span> Sınırsız Randevu & Google Takvim</li>
-          <li><span class="check">✓</span> Özel Alan Adı (.com) & Barındırma</li>
-          <li><span class="check">✓</span> Öncelikli VIP WhatsApp Destek</li>
-          <li><span class="check">✓</span> Özel AI Model Eğitimi & Şablonlar</li>
-        </ul>
-        <button type="button" onclick="openCheckoutModal('Sınırsız Paket')" class="btn-buy-card btn-buy-green">
-          <span>Satın Al / Başla</span>
-          <span>→</span>
-        </button>
-        <a href="kayit.html" target="_blank" rel="noopener noreferrer" class="btn-trial-sub">veya 7 Gün Ücretsiz Dene</a>
-      </div>
+  <!-- Kontrol Barı (Aylık/Yıllık Switch + Detay Bağlantısı) -->
+  <div class="dk-pricing-control-bar">
+    <div class="dk-toggle-wrap">
+      <span>Aylık</span>
+      <label class="dk-switch">
+        <input type="checkbox" id="dk-pricing-cycle-toggle" onchange="togglePricingCycle(this)">
+        <span class="dk-slider"></span>
+      </label>
+      <span>Yıllık</span>
+      <span class="dk-free-badge">Yıllık alımlarda 2 Ay Ücretsiz!</span>
     </div>
-  </section>
 
-  <!-- ============================================================== -->
-  <!-- 4. DETAYLI ÖZELLİK KARŞILAŞTIRMA TABLOSU (MANGOLIF GÖRSELİ ŞABLONU) -->
-  <!-- ============================================================== -->
+    <div>
+      <button type="button" class="dk-details-trigger" id="dk-details-trigger-btn" onclick="togglePricingMatrix()">
+        ▽ Paket detaylarını görüntüle ▽
+      </button>
+    </div>
+  </div>
+
+  <!-- 4 Paket Kartı -->
+  <div class="dk-pricing-4grid">
+    
+    <!-- 1. BAŞLANGIÇ -->
+    <div class="dk-pcard">
+      <h3 class="dk-pcard-title">Başlangıç</h3>
+      <div class="dk-pcard-price-row">
+        <span class="dk-pcard-price" data-monthly="₺1.570" data-yearly="₺1.308">₺1.570</span>
+        <span class="dk-pcard-unit">/ Ay</span>
+      </div>
+      <div class="dk-pcard-kdv" data-yearly-note="* Yıllık alımda ₺15.700 / Yıl">* KDV Dahildir</div>
+      <p class="dk-pcard-desc">İşletmenizin temel ihtiyaçlarını karşılayan paket</p>
+      <button type="button" class="dk-btn-cyan-outline" onclick="openCheckoutModal('Başlangıç Paketi', '12')">
+        7 GÜN ÜCRETSİZ DENE
+      </button>
+    </div>
+
+    <!-- 2. STANDART -->
+    <div class="dk-pcard">
+      <h3 class="dk-pcard-title">Standart</h3>
+      <div class="dk-pcard-price-row">
+        <span class="dk-pcard-price" data-monthly="₺2.280" data-yearly="₺1.900">₺2.280</span>
+        <span class="dk-pcard-unit">/ Ay</span>
+      </div>
+      <div class="dk-pcard-kdv" data-yearly-note="* Yıllık alımda ₺22.800 / Yıl">* KDV Dahildir</div>
+      <p class="dk-pcard-desc">İşinizi büyütmenize yardımcı, kapsamlı özellikler</p>
+      <button type="button" class="dk-btn-cyan-outline" onclick="openCheckoutModal('Standart Paket', '12')">
+        7 GÜN ÜCRETSİZ DENE
+      </button>
+    </div>
+
+    <!-- 3. PROFESYONEL (ÖNE ÇIKAN KOYU MOR KART) -->
+    <div class="dk-pcard dk-pcard-pro-featured">
+      <h3 class="dk-pcard-title">Profesyonel</h3>
+      <div class="dk-pcard-price-row">
+        <span class="dk-pcard-price" data-monthly="₺2.930" data-yearly="₺2.440">₺2.930</span>
+        <span class="dk-pcard-unit">/ Ay</span>
+      </div>
+      <div class="dk-pcard-kdv" data-yearly-note="* Yıllık alımda ₺29.300 / Yıl">* KDV Dahildir</div>
+      <p class="dk-pcard-desc">Tüm ihtiyaçlarınız için eksiksiz profesyonel paket</p>
+      <button type="button" class="dk-btn-orange-solid" onclick="openCheckoutModal('Profesyonel Paket', '12')">
+        7 GÜN ÜCRETSİZ DENE
+      </button>
+    </div>
+
+    <!-- 4. KURUMSAL -->
+    <div class="dk-pcard">
+      <h3 class="dk-pcard-title">Kurumsal</h3>
+      <div class="dk-pcard-price-row">
+        <span class="dk-pcard-price" style="font-size: 28px;">Bizi Arayın</span>
+      </div>
+      <div class="dk-pcard-kdv">Fiyat bilgisi için</div>
+      <p class="dk-pcard-desc">Tüm özelliklere ek ihtiyacınız olan kurumsal çözümler</p>
+      <button type="button" class="dk-btn-cyan-outline" onclick="openContactModal()">
+        TEKLİF AL
+      </button>
+    </div>
+
+  </div>
+
+  <!-- AÇILIR KAPANIR PAKET DETAY TABLOSU (IMAGE 1 AKORDİYONU) -->
+  <div class="dk-matrix-collapse" id="dk-pricing-matrix-table" style="display: none;">
+    <table class="dk-matrix-table">
+      <thead>
+        <tr>
+          <th>Özellikler & Karşılaştırma</th>
+          <th>Başlangıç</th>
+          <th>Standart</th>
+          <th style="color: #4338ca;">Profesyonel</th>
+          <th>Kurumsal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Aktif Danışan Takip Kapasitesi</td>
+          <td>15 Danışan</td>
+          <td>50 Danışan</td>
+          <td><strong>Sınırsız Danışan</strong></td>
+          <td><strong>Sınırsız & Çoklu Şube</strong></td>
+        </tr>
+        <tr>
+          <td>DSÖ 2024 ve TÜBER Menü Algoritması</td>
+          <td>✓ Var</td>
+          <td>✓ Var</td>
+          <td>✓ Var (Sonsuz Varyasyon)</td>
+          <td>✓ Var (Klinik Özel)</td>
+        </tr>
+        <tr>
+          <td>TÜRKOMP 2.400+ Besin Değişimi</td>
+          <td>✓ Var</td>
+          <td>✓ Var</td>
+          <td>✓ Var</td>
+          <td>✓ Var</td>
+        </tr>
+        <tr>
+          <td>Danışan Mobil Uygulaması (Öğün & Su)</td>
+          <td>Temel</td>
+          <td>✓ Var</td>
+          <td>✓ Var (Kliniğinizin Logosuyla)</td>
+          <td>✓ Özel White-Label</td>
+        </tr>
+        <tr>
+          <td>Otomatik SMS Hatırlatma (1 Gün Önce)</td>
+          <td>—</td>
+          <td>✓ Var</td>
+          <td>✓ Sınırsız SMS</td>
+          <td>✓ Sınırsız SMS & WhatsApp API</td>
+        </tr>
+        <tr>
+          <td>Adisyon, Kasa & Ön Muhasebe Yönetimi</td>
+          <td>—</td>
+          <td>Temel</td>
+          <td>✓ Tam Entegre</td>
+          <td>✓ ERP & Şube Konsolidasyonu</td>
+        </tr>
+        <tr>
+          <td>Ürün ve Stok / Besin Deposu Takibi</td>
+          <td>—</td>
+          <td>✓ Var</td>
+          <td>✓ Var</td>
+          <td>✓ Gelişmiş Şube Stoğu</td>
+        </tr>
+        <tr>
+          <td>White-Label PDF Çıktısı (Kendi Logonuz)</td>
+          <td>—</td>
+          <td>✓ Var</td>
+          <td>✓ Var</td>
+          <td>✓ Var</td>
+        </tr>
+        <tr>
+          <td>Klinik ve Teknik Destek</td>
+          <td>E-Posta</td>
+          <td>Mesai İçi Telefon</td>
+          <td><strong>7/24 Kesintisiz VIP Destek</strong></td>
+          <td><strong>Özel Müşteri Yöneticisi</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</section>
+
+
   <section class="comparison-section">
     <div class="comp-header">
       <span style="font-size: 12px; font-weight: 900; color: #1e3a8a; background: #eff6ff; border: 1px solid #bfdbfe; padding: 4px 14px; border-radius: 999px; text-transform: uppercase;">
@@ -2454,6 +2509,7 @@ function handleModalLogin(e) {
 function quickDemoLogin() { window.location.href = "kayit.html"; }
 </script>
   <script src="diyetkalfa_legal_modal.js"></script>
+  <script src="diyetkalfa_luxury_showcase.js"></script>
 </body>
 </html>
 

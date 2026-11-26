@@ -1,0 +1,1001 @@
+/* ========================================================================== */
+/* DIYETKALFA - LUXURY SHOWCASE, 3D ISOMETRIC FEATURES & PRICING SUITE       */
+/* Inspired by Executive SaaS Standards: Bento Grid, Multi-Device, 3D Icons   */
+/* ========================================================================== */
+
+/* --- 1. MULTI-DEVICE INTERACTIVE SAAS SHOWCASE (Image 3) --- */
+.dk-showcase-section {
+  max-width: 1240px;
+  margin: 30px auto 70px;
+  padding: 0 20px;
+  position: relative;
+}
+
+.dk-showcase-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.dk-showcase-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #eff6ff;
+  color: #1e3a8a;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 6px 16px;
+  border-radius: 999px;
+  border: 1px solid #93c5fd;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+
+.dk-showcase-title {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 900;
+  color: #0f172a;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.03em;
+}
+
+.dk-showcase-subtitle {
+  font-size: 16px;
+  color: #64748b;
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.dk-device-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+  padding: 20px 0;
+  perspective: 1000px;
+}
+
+/* Phone Mockup (Left & Right) */
+.dk-phone-mockup {
+  width: 275px;
+  min-width: 250px;
+  background: #ffffff;
+  border-radius: 38px;
+  border: 9px solid #0f172a;
+  box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.25), 0 0 0 1px rgba(255,255,255,0.8) inset;
+  overflow: hidden;
+  position: relative;
+  z-index: 5;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+  user-select: none;
+}
+
+.dk-phone-mockup:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 32px 70px -12px rgba(15, 23, 42, 0.32);
+}
+
+.dk-phone-notch {
+  width: 105px;
+  height: 20px;
+  background: #0f172a;
+  margin: 0 auto;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+  position: relative;
+}
+
+.dk-phone-content {
+  padding: 16px 18px 24px;
+  background: #f8fafc;
+  min-height: 390px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Left Phone: Meals List */
+.dk-meal-header-date {
+  font-size: 11px;
+  font-weight: 800;
+  color: #94a3b8;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.dk-meal-header-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 17px;
+  font-weight: 900;
+  color: #0f172a;
+  margin-bottom: 18px;
+  letter-spacing: -0.02em;
+}
+
+.dk-meal-header-badge {
+  background: #fef3c7;
+  color: #b45309;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 8px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.dk-meal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dk-meal-item {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.dk-meal-item:hover {
+  border-color: #38bdf8;
+  background: #f0f9ff;
+  transform: translateX(3px);
+}
+
+.dk-meal-item.checked {
+  background: #ecfdf5;
+  border-color: #10b981;
+  color: #065f46;
+}
+
+.dk-meal-checkbox {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: #ffffff;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.dk-meal-item.checked .dk-meal-checkbox {
+  background: #10b981;
+  border-color: #10b981;
+}
+
+/* Center Desktop Browser Frame */
+.dk-desktop-mockup {
+  flex: 1;
+  max-width: 630px;
+  background: #0f172a;
+  border-radius: 20px;
+  box-shadow: 0 35px 80px -20px rgba(15, 23, 42, 0.4), 0 0 0 1px rgba(255,255,255,0.1);
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dk-desktop-mockup:hover {
+  transform: translateY(-4px);
+}
+
+.dk-desktop-bar {
+  background: #1e293b;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dk-window-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dk-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dk-dot-red { background: #ef4444; }
+.dk-dot-yellow { background: #f59e0b; }
+.dk-dot-green { background: #10b981; }
+
+.dk-desktop-address {
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 6px;
+  padding: 4px 14px;
+  font-size: 11px;
+  color: #94a3b8;
+  font-family: monospace;
+  margin-left: 8px;
+}
+
+.dk-desktop-body {
+  background: #ffffff;
+  padding: 24px;
+  color: #0f172a;
+}
+
+.dk-dashboard-head {
+  margin-bottom: 20px;
+}
+
+.dk-dashboard-title {
+  font-size: 21px;
+  font-weight: 900;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  margin: 0 0 4px 0;
+}
+
+.dk-dashboard-sub {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Metric Trio */
+.dk-metric-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.dk-metric-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 14px;
+  position: relative;
+}
+
+.dk-metric-lbl {
+  font-size: 11px;
+  font-weight: 800;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dk-metric-val {
+  font-size: 26px;
+  font-weight: 900;
+  color: #0f172a;
+  line-height: 1.1;
+}
+
+.dk-badge-pos {
+  font-size: 11px;
+  font-weight: 800;
+  color: #10b981;
+  background: #ecfdf5;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+/* Revenue Chart Card */
+.dk-chart-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 16px 18px;
+}
+
+.dk-chart-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 14px;
+}
+
+.dk-chart-rev-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.dk-chart-rev-val {
+  font-size: 24px;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.dk-chart-rev-sub {
+  font-size: 11.5px;
+  color: #10b981;
+  font-weight: 700;
+}
+
+.dk-bars-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10px;
+  height: 90px;
+  padding-top: 10px;
+}
+
+.dk-bar-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.dk-bar {
+  width: 100%;
+  background: #e2e8f0;
+  border-radius: 6px 6px 0 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  position: relative;
+}
+
+.dk-bar:hover {
+  background: #93c5fd;
+}
+
+.dk-bar.active {
+  background: linear-gradient(180deg, #f97316 0%, #ea580c 100%);
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
+}
+
+.dk-bar-lbl {
+  font-size: 11px;
+  font-weight: 800;
+  color: #64748b;
+}
+
+/* Right Phone: Water Tracker */
+.dk-water-header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.dk-water-icon {
+  width: 44px;
+  height: 44px;
+  background: #e0f2fe;
+  color: #0284c7;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.dk-water-title {
+  font-size: 16px;
+  font-weight: 900;
+  color: #0f172a;
+  margin: 0 0 2px 0;
+}
+
+.dk-water-sub {
+  font-size: 11.5px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.dk-water-gauge-container {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 10px auto 16px;
+}
+
+.dk-water-gauge-svg {
+  transform: rotate(-90deg);
+  width: 100%;
+  height: 100%;
+}
+
+.dk-water-gauge-bg {
+  fill: none;
+  stroke: #e2e8f0;
+  stroke-width: 11;
+}
+
+.dk-water-gauge-fill {
+  fill: none;
+  stroke: #0284c7;
+  stroke-width: 11;
+  stroke-linecap: round;
+  stroke-dasharray: 408;
+  stroke-dashoffset: 102; /* 75% default */
+  transition: stroke-dashoffset 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dk-water-gauge-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dk-water-pct {
+  font-size: 30px;
+  font-weight: 900;
+  color: #0f172a;
+  line-height: 1;
+}
+
+.dk-water-amount {
+  font-size: 12px;
+  font-weight: 700;
+  color: #0284c7;
+  margin-top: 4px;
+}
+
+.dk-water-btn {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.dk-water-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.45);
+}
+
+.dk-water-btn:active {
+  transform: scale(0.97);
+}
+
+
+/* --- 2. NEDEN DİYETKALFA? BENTO GRID (Image 4) --- */
+.dk-bento-section {
+  max-width: 1240px;
+  margin: 60px auto 70px;
+  padding: 0 20px;
+}
+
+.dk-bento-title {
+  text-align: center;
+  font-size: clamp(30px, 4.5vw, 44px);
+  font-weight: 900;
+  color: #0f172a;
+  margin-bottom: 40px;
+  letter-spacing: -0.03em;
+}
+
+.dk-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 24px;
+}
+
+.dk-bento-card {
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1.5px solid #e2e8f0;
+  padding: 32px 28px;
+  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.05);
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.dk-bento-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 45px -5px rgba(15, 23, 42, 0.1);
+}
+
+.dk-bento-icon-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fff7ed;
+  color: #ea580c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+
+.dk-bento-card-title {
+  font-size: 22px;
+  font-weight: 900;
+  color: #0f172a;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.02em;
+}
+
+.dk-bento-card-desc {
+  font-size: 14.5px;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0 0 24px 0;
+}
+
+.dk-bento-inner-trio {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.dk-bento-inner-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 14px 10px;
+  text-align: left;
+}
+
+.dk-bento-inner-lbl {
+  font-size: 10px;
+  font-weight: 800;
+  color: #94a3b8;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.dk-bento-inner-val {
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.dk-bento-inner-sub {
+  font-size: 11px;
+  color: #64748b;
+  line-height: 1.3;
+}
+
+
+/* --- 3. 3D ISOMETRIC FEATURES GRID (Image 2) --- */
+.dk-iso-features-section {
+  max-width: 1240px;
+  margin: 60px auto 80px;
+  padding: 0 20px;
+}
+
+.dk-iso-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px 30px;
+}
+
+.dk-iso-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 24px;
+  border: 1px solid #f1f5f9;
+  transition: all 0.25s ease;
+}
+
+.dk-iso-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px -4px rgba(15, 23, 42, 0.08);
+}
+
+.dk-iso-icon-wrap {
+  width: 72px;
+  height: 72px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.dk-iso-icon-wrap svg {
+  width: 64px;
+  height: 64px;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.1));
+}
+
+.dk-iso-title {
+  font-size: 19px;
+  font-weight: 900;
+  color: #0f172a;
+  margin: 0 0 10px 0;
+  letter-spacing: -0.02em;
+}
+
+.dk-iso-desc {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0 0 16px 0;
+  flex: 1;
+}
+
+.dk-iso-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #0f172a;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.dk-iso-link:hover {
+  color: #0284c7;
+  transform: translateX(4px);
+}
+
+
+/* --- 4. EXACT PRICING SECTION OVERHAUL (Image 1) --- */
+.dk-pricing-suite-section {
+  max-width: 1240px;
+  margin: 60px auto 90px;
+  padding: 0 20px;
+}
+
+/* Top Banner */
+.dk-pricing-top-banner {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 18px 24px;
+  text-align: center;
+  font-size: 14.5px;
+  color: #334155;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  line-height: 1.5;
+}
+
+.dk-pricing-top-banner strong {
+  color: #4338ca;
+  font-weight: 800;
+}
+
+/* Control Bar (Toggle + Details Link) */
+.dk-pricing-control-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.dk-toggle-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14.5px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+/* iOS Style Pill Switch */
+.dk-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+
+.dk-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.dk-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #cbd5e1;
+  transition: .3s;
+  border-radius: 34px;
+}
+
+.dk-slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .3s;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+input:checked + .dk-slider {
+  background-color: #0284c7;
+}
+
+input:checked + .dk-slider:before {
+  transform: translateX(22px);
+}
+
+.dk-free-badge {
+  background: #ffedd5;
+  color: #c2410c;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid #fdba74;
+}
+
+.dk-details-trigger {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #4338ca;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+.dk-details-trigger:hover {
+  color: #312e81;
+  text-decoration: underline;
+}
+
+/* 4 Pricing Cards Grid */
+.dk-pricing-4grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+.dk-pcard {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1.5px solid #e2e8f0;
+  padding: 36px 24px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.dk-pcard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+}
+
+.dk-pcard-title {
+  font-size: 21px;
+  font-weight: 900;
+  color: #0284c7;
+  margin: 0 0 20px 0;
+  letter-spacing: -0.02em;
+}
+
+.dk-pcard-price-row {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px;
+}
+
+.dk-pcard-price {
+  font-size: 34px;
+  font-weight: 900;
+  color: #0f172a;
+  letter-spacing: -0.03em;
+}
+
+.dk-pcard-unit {
+  font-size: 14px;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.dk-pcard-kdv {
+  font-size: 11.5px;
+  color: #94a3b8;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.dk-pcard-desc {
+  font-size: 13.5px;
+  color: #475569;
+  line-height: 1.5;
+  margin: 0 0 32px 0;
+  flex: 1;
+}
+
+/* Button Variants */
+.dk-btn-cyan-outline {
+  background: #ffffff;
+  color: #0284c7;
+  border: 1.5px solid #06b6d4;
+  border-radius: 999px;
+  padding: 12px 20px;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  letter-spacing: 0.03em;
+}
+
+.dk-btn-cyan-outline:hover {
+  background: #ecfeff;
+  border-color: #0891b2;
+  color: #0891b2;
+  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.2);
+}
+
+/* Solid Purple Featured Card */
+.dk-pcard-pro-featured {
+  background: linear-gradient(155deg, #4c3b88 0%, #312565 60%, #1f1742 100%);
+  border: 1.5px solid #5b47a0;
+  box-shadow: 0 16px 40px rgba(49, 37, 101, 0.35);
+  color: #ffffff;
+}
+
+.dk-pcard-pro-featured .dk-pcard-title {
+  color: #ffffff;
+}
+
+.dk-pcard-pro-featured .dk-pcard-price {
+  color: #ffffff;
+}
+
+.dk-pcard-pro-featured .dk-pcard-unit {
+  color: #e2e8f0;
+}
+
+.dk-pcard-pro-featured .dk-pcard-kdv {
+  color: #cbd5e1;
+}
+
+.dk-pcard-pro-featured .dk-pcard-desc {
+  color: #e2e8f0;
+}
+
+.dk-btn-orange-solid {
+  background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 13px 20px;
+  font-size: 13px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  box-shadow: 0 6px 18px rgba(234, 88, 12, 0.45);
+  letter-spacing: 0.03em;
+}
+
+.dk-btn-orange-solid:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(234, 88, 12, 0.6);
+}
+
+/* Comparison Matrix Collapsible Table */
+.dk-matrix-collapse {
+  margin-top: 35px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1.5px solid #e2e8f0;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  overflow-x: auto;
+}
+
+.dk-matrix-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  text-align: center;
+}
+
+.dk-matrix-table th, .dk-matrix-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.dk-matrix-table th:first-child, .dk-matrix-table td:first-child {
+  text-align: left;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.dk-matrix-table th {
+  background: #f8fafc;
+  font-weight: 900;
+  color: #0f172a;
+  font-size: 14px;
+}
+
+.dk-matrix-table tr:hover td {
+  background: #fafaf9;
+}
+
+
+/* --- RESPONSIVE BREAKPOINTS --- */
+@media (max-width: 1080px) {
+  .dk-device-stage {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .dk-desktop-mockup {
+    width: 100%;
+    max-width: 680px;
+  }
+  .dk-pricing-4grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .dk-iso-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .dk-pricing-4grid {
+    grid-template-columns: 1fr;
+  }
+  .dk-iso-grid {
+    grid-template-columns: 1fr;
+  }
+  .dk-bento-grid {
+    grid-template-columns: 1fr;
+  }
+  .dk-bento-inner-trio {
+    grid-template-columns: 1fr;
+  }
+  .dk-phone-mockup {
+    width: 100%;
+    max-width: 320px;
+  }
+}
