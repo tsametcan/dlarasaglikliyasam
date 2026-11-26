@@ -6591,116 +6591,7 @@ body:not(.app-locked) .header-clinical-actions {
             return '<div class="meal"><span class="cals">' + m.calories + ' kcal</span><div class="meal-title">' + m.type + ': ' + m.title + '</div><div style="font-size: 9.5pt; color: #64748b; margin-top: 2px;"><b>Malzemeler:</b> ' + m.usedPantry.join(', ') + '</div><div style="margin: 3px 0; font-size: 10pt;"><b>Tarif:</b> ' + m.recipe + '</div></div>';
           }).join('') +
           '<div style="background: #faf8f4; border: 1px solid #e6ded1; padding: 9px 12px; border-radius: 6px; margin-top: 12px;"><b style="color: #94593f;">🍓 SAĞLIKLI TATLI (' + dayData.healthyDessert.calories + ' kcal):</b> ' + dayData.healthyDessert.title + '<br/><i>Hazırlanış:</i> ' + dayData.healthyDessert.recipe + '</div>' +
-          '<div class="footer"><b>' + p.clinicName + ' • ' + p.dietitianName + '</b><br/>' + p.slogan + ' • Şifa ve afiyet olsun. 🌸</div>' +
-          '<!-- ========================================================================== -->
-<!-- DIYETKALFA - KLİNİK & DİYETİSYEN GİRİŞ MODALI                              -->
-<!-- ========================================================================== -->
-<div id="modal-login" class="modal-backdrop" onclick="if(event.target === this) closeLoginModal();" style="display: none; align-items: center; justify-content: center; z-index: 10008; background: rgba(23, 12, 7, 0.75); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 16px; position: fixed; inset: 0;">
-  <div style="background: #ffffff; border-radius: 24px; max-width: 440px; width: 100%; max-height: 92vh; overflow-y: auto; padding: 32px 28px; box-shadow: 0 25px 60px -15px rgba(23, 12, 7, 0.4); border: 1.5px solid #e6ded1; position: relative;">
-    
-    <!-- Kapatma Butonu -->
-    <button type="button" onclick="closeLoginModal()" style="position: absolute; top: 18px; right: 18px; background: #f4efe6; border: none; width: 34px; height: 34px; border-radius: 50%; font-size: 16px; font-weight: 800; color: #24150e; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s;">✕</button>
-
-    <!-- Modal Başlık Alanı -->
-    <div style="text-align: center; margin-bottom: 22px;">
-      <div style="width: 54px; height: 54px; border-radius: 18px; background: #edf5f0; color: #163b2c; font-size: 26px; display: inline-flex; align-items: center; justify-content: center; border: 1.5px solid #2e5e4b; margin-bottom: 12px; box-shadow: 0 4px 12px rgba(22, 59, 44, 0.15);">
-        🔐
-      </div>
-      <h2 style="font-size: 22px; font-weight: 900; color: #170c07; margin: 0 0 6px 0; letter-spacing: -0.02em;">
-        Klinik & Diyetisyen Girişi
-      </h2>
-      <p style="font-size: 13px; color: #685951; margin: 0; line-height: 1.5;">
-        Lisanslı uzmanlar ve klinik personeli için güvenli çalışma alanı portalı
-      </p>
-    </div>
-
-    <!-- Giriş Formu -->
-    <form id="modal-login-form" onsubmit="handleModalLogin(event)" style="display: flex; flex-direction: column; gap: 15px;">
-      <div>
-        <label style="font-size: 11.5px; font-weight: 800; color: #170c07; display: block; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em;">E-Posta veya Diyetisyen Sicil No</label>
-        <input type="text" id="modal-login-email" placeholder="ornek@klinik.com veya Sicil No" style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 12px; border: 1.5px solid #d8cdbc; font-size: 13.5px; outline: none; background: #faf8f4; color: #170c07; font-family: inherit;">
-      </div>
-
-      <div>
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-          <label style="font-size: 11.5px; font-weight: 800; color: #170c07; text-transform: uppercase; letter-spacing: 0.04em;">Lisans Anahtarı veya Şifre</label>
-          <a href="https://wa.me/905321202846?text=Merhaba,%20DiyetKalfa%20lisans%20şifremi%20unuttum,%20yardımcı%20olur%20musunuz?" target="_blank" rel="noopener noreferrer" style="font-size: 11px; color: #163b2c; font-weight: 700; text-decoration: underline;">Şifremi Unuttum</a>
-        </div>
-        <input type="password" id="modal-login-password" placeholder="••••••••••••" style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 12px; border: 1.5px solid #d8cdbc; font-size: 13.5px; outline: none; background: #faf8f4; color: #170c07; font-family: inherit;">
-      </div>
-
-      <div style="display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #685951;">
-        <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
-          <input type="checkbox" id="modal-login-remember" checked style="accent-color: #163b2c;">
-          <span>Beni Hatırla</span>
-        </label>
-        <span style="color: #059669; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">🛡️ 256-Bit SSL</span>
-      </div>
-
-      <button type="submit" style="background: linear-gradient(135deg, #163b2c 0%, #0d241b 100%); color: #ffffff; border: none; padding: 13px; border-radius: 14px; font-weight: 800; font-size: 14.5px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 6px 18px rgba(22, 59, 44, 0.35); margin-top: 2px;">
-        <span>Giriş Yap & Panele Geç</span>
-        <span style="font-size: 16px;">→</span>
-      </button>
-
-      <button type="button" onclick="quickDemoLogin()" style="background: #f0fdf4; color: #163b2c; border: 1.5px dashed #2e5e4b; padding: 10px; border-radius: 12px; font-weight: 800; font-size: 12.5px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px;">
-        <span>⚡ Tek Tıkla Demo Panelini Aç</span>
-      </button>
-    </form>
-
-    <!-- Kayıt / Lisans Bilgisi -->
-    <div style="margin-top: 20px; padding-top: 14px; border-top: 1px solid #f4efe6; text-align: center; font-size: 12.5px; color: #685951;">
-      Klinik lisansınız henüz yok mu? <br>
-      <a href="kayit.html" target="_blank" rel="noopener noreferrer" style="color: #163b2c; font-weight: 800; text-decoration: underline;">7 Gün Ücretsiz Deneyin</a> veya <a href="fiyatlar.html" style="color: #163b2c; font-weight: 800; text-decoration: underline;">Paketleri İnceleyin</a>
-    </div>
-
-  </div>
-</div>
-
-<script>
-function openLoginModal() {
-  var modal = document.getElementById('modal-login');
-  if (modal) {
-    modal.style.display = 'flex';
-    var emailInput = document.getElementById('modal-login-email');
-    if (emailInput) setTimeout(function() { emailInput.focus(); }, 100);
-  }
-}
-
-function closeLoginModal() {
-  var modal = document.getElementById('modal-login');
-  if (modal) modal.style.display = 'none';
-}
-
-function handleModalLogin(e) {
-  if (e) e.preventDefault();
-  var email = document.getElementById('modal-login-email') ? document.getElementById('modal-login-email').value.trim() : '';
-  var pass = document.getElementById('modal-login-password') ? document.getElementById('modal-login-password').value.trim() : '';
-
-  if (email || pass) {
-    try {
-      localStorage.setItem('diyetkalfa_licensed', 'true');
-      localStorage.setItem('diyetkalfa_unlocked', 'true');
-      localStorage.setItem('diyetkalfa_dietitian_name', (email ? email.split('@')[0] : 'Klinik Uzmanı'));
-      if (email) localStorage.setItem('diyetkalfa_user_email', email);
-    } catch(err) {}
-
-    window.location.href = 'panel.html';
-  } else {
-    alert('Lütfen e-posta adresinizi veya lisans şifrenizi girin (veya Demo Panelini Aç butonuna tıklayın).');
-  }
-}
-
-function quickDemoLogin() {
-  try {
-    localStorage.setItem('diyetkalfa_licensed', 'true');
-    localStorage.setItem('diyetkalfa_unlocked', 'true');
-    localStorage.setItem('diyetkalfa_dietitian_name', 'Demo Diyetisyen');
-    localStorage.setItem('diyetkalfa_user_email', 'demo@diyetkalfa.com');
-  } catch(err) {}
-  window.location.href = 'panel.html';
-}
-</script>
-</body></html>';
+          '<div class="footer"><b>' + p.clinicName + ' • ' + p.dietitianName + '</b><br/>' + p.slogan + ' • Şifa ve afiyet olsun. 🌸</div>' + '</body></html>';
           
         printWindow.document.write(html);
         printWindow.document.close();
@@ -10818,6 +10709,70 @@ function runSolDietGen() {
 }
 
 </script>
+<!-- ========================================================================== -->
+<!-- DIYETKALFA - KLİNİK & DİYETİSYEN GİRİŞ MODALI                              -->
+<!-- ========================================================================== -->
+<div id="modal-login" class="modal-backdrop" onclick="if(event.target === this) closeLoginModal();" style="display: none; align-items: center; justify-content: center; z-index: 10008; background: rgba(23, 12, 7, 0.75); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 16px; position: fixed; inset: 0;">
+  <div style="background: #ffffff; border-radius: 24px; max-width: 440px; width: 100%; max-height: 92vh; overflow-y: auto; padding: 32px 28px; box-shadow: 0 25px 60px -15px rgba(23, 12, 7, 0.4); border: 1.5px solid #e6ded1; position: relative;">
+    
+    <!-- Kapatma Butonu -->
+    <button type="button" onclick="closeLoginModal()" style="position: absolute; top: 18px; right: 18px; background: #f4efe6; border: none; width: 34px; height: 34px; border-radius: 50%; font-size: 16px; font-weight: 800; color: #24150e; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s;">✕</button>
+
+    <!-- Modal Başlık Alanı -->
+    <div style="text-align: center; margin-bottom: 22px;">
+      <div style="width: 54px; height: 54px; border-radius: 18px; background: #edf5f0; color: #163b2c; font-size: 26px; display: inline-flex; align-items: center; justify-content: center; border: 1.5px solid #2e5e4b; margin-bottom: 12px; box-shadow: 0 4px 12px rgba(22, 59, 44, 0.15);">
+        🔐
+      </div>
+      <h2 style="font-size: 22px; font-weight: 900; color: #170c07; margin: 0 0 6px 0; letter-spacing: -0.02em;">
+        Klinik & Diyetisyen Girişi
+      </h2>
+      <p style="font-size: 13px; color: #685951; margin: 0; line-height: 1.5;">
+        Lisanslı uzmanlar ve klinik personeli için güvenli çalışma alanı portalı
+      </p>
+    </div>
+
+    <!-- Giriş Formu -->
+    <form id="modal-login-form" onsubmit="handleModalLogin(event)" style="display: flex; flex-direction: column; gap: 15px;">
+      <div>
+        <label style="font-size: 11.5px; font-weight: 800; color: #170c07; display: block; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em;">E-Posta veya Diyetisyen Sicil No</label>
+        <input type="text" id="modal-login-email" placeholder="ornek@klinik.com veya Sicil No" style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 12px; border: 1.5px solid #d8cdbc; font-size: 13.5px; outline: none; background: #faf8f4; color: #170c07; font-family: inherit;">
+      </div>
+
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+          <label style="font-size: 11.5px; font-weight: 800; color: #170c07; text-transform: uppercase; letter-spacing: 0.04em;">Lisans Anahtarı veya Şifre</label>
+          <a href="https://wa.me/905321202846?text=Merhaba,%20DiyetKalfa%20lisans%20şifremi%20unuttum,%20yardımcı%20olur%20musunuz?" target="_blank" rel="noopener noreferrer" style="font-size: 11px; color: #163b2c; font-weight: 700; text-decoration: underline;">Şifremi Unuttum</a>
+        </div>
+        <input type="password" id="modal-login-password" placeholder="••••••••••••" style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 12px; border: 1.5px solid #d8cdbc; font-size: 13.5px; outline: none; background: #faf8f4; color: #170c07; font-family: inherit;">
+      </div>
+
+      <div style="display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #685951;">
+        <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+          <input type="checkbox" id="modal-login-remember" checked style="accent-color: #163b2c;">
+          <span>Beni Hatırla</span>
+        </label>
+        <span style="color: #059669; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">🛡️ 256-Bit SSL</span>
+      </div>
+
+      <button type="submit" style="background: linear-gradient(135deg, #163b2c 0%, #0d241b 100%); color: #ffffff; border: none; padding: 13px; border-radius: 14px; font-weight: 800; font-size: 14.5px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 6px 18px rgba(22, 59, 44, 0.35); margin-top: 2px;">
+        <span>Giriş Yap & Panele Geç</span>
+        <span style="font-size: 16px;">→</span>
+      </button>
+
+      <button type="button" onclick="quickDemoLogin()" style="background: #f0fdf4; color: #163b2c; border: 1.5px dashed #2e5e4b; padding: 10px; border-radius: 12px; font-weight: 800; font-size: 12.5px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px;">
+        <span>⚡ Tek Tıkla Demo Panelini Aç</span>
+      </button>
+    </form>
+
+    <!-- Kayıt / Lisans Bilgisi -->
+    <div style="margin-top: 20px; padding-top: 14px; border-top: 1px solid #f4efe6; text-align: center; font-size: 12.5px; color: #685951;">
+      Klinik lisansınız henüz yok mu? <br>
+      <a href="kayit.html" target="_blank" rel="noopener noreferrer" style="color: #163b2c; font-weight: 800; text-decoration: underline;">7 Gün Ücretsiz Deneyin</a> veya <a href="fiyatlar.html" style="color: #163b2c; font-weight: 800; text-decoration: underline;">Paketleri İnceleyin</a>
+    </div>
+
+  </div>
+</div>
+
 <!-- ========================================================================== -->
 <!-- DIYETKALFA - KLİNİK & DİYETİSYEN GİRİŞ MODALI                              -->
 <!-- ========================================================================== -->
