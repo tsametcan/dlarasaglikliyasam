@@ -477,7 +477,7 @@ body:not(.app-locked) .header-clinical-actions {
       color: var(--dark-slate);
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 3px !important;
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
@@ -573,7 +573,7 @@ body:not(.app-locked) .header-clinical-actions {
     .hero-tag {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 3px !important;
       font-size: 10px;
       font-weight: 800;
       text-transform: uppercase;
@@ -682,7 +682,7 @@ body:not(.app-locked) .header-clinical-actions {
     }
 
     /* Form Elemanları */
-    .form-group { display: flex; flex-direction: column; gap: 4px; width: 100%; }
+    .form-group { display: flex; flex-direction: column; gap: 3px !important; width: 100%; }
     .form-label { font-size: 10px; font-weight: 800; color: var(--text-pink); text-transform: uppercase; letter-spacing: 0.5px; }
     .form-row {
       display: grid;
@@ -781,7 +781,7 @@ body:not(.app-locked) .header-clinical-actions {
     .chip {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 3px !important;
       background: #eef2ff;
       color: #743f29;
       border: 1px solid #e6d3c9;
@@ -849,7 +849,7 @@ body:not(.app-locked) .header-clinical-actions {
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 4px;
+      gap: 3px !important;
     }
     .meal-tag-group { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
     .meal-type-pill {
@@ -1150,7 +1150,7 @@ body:not(.app-locked) .header-clinical-actions {
     .badge-reels-tag {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 3px !important;
       padding: 3px 9px;
       border-radius: 6px;
       font-size: 11px;
@@ -1501,7 +1501,7 @@ body:not(.app-locked) .header-clinical-actions {
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 3px !important;
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
@@ -1536,7 +1536,7 @@ body:not(.app-locked) .header-clinical-actions {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 4px;
+      gap: 3px !important;
       flex-wrap: wrap;
     }
     .water-glass-btn {
@@ -1787,7 +1787,7 @@ body:not(.app-locked) .header-clinical-actions {
     .accounting-pill {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 3px !important;
       padding: 3px 8px;
       border-radius: 10px;
       font-size: 10px;
@@ -1983,7 +1983,7 @@ body:not(.app-locked) .header-clinical-actions {
     }
     .food-macro-pills {
       display: flex;
-      gap: 4px;
+      gap: 3px !important;
       flex-wrap: wrap;
       margin-top: 4px;
     }
@@ -2173,7 +2173,7 @@ body:not(.app-locked) .header-clinical-actions {
 .ai-link-btn {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 3px !important;
   margin-top: 8px;
   padding: 6px 12px;
   border-radius: 999px;
@@ -2302,7 +2302,7 @@ body:not(.app-locked) .header-clinical-actions {
     padding: 5px;
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 3px !important;
   }
   .dk-nav-pill {
     color: #cbd5e1;
@@ -2467,18 +2467,12 @@ body:not(.app-locked) .header-clinical-actions {
   <!-- Tier 2: Floating Glassmorphic Capsule Command Bar -->
   <div class="dk-main-command-header">
     <div class="dk-command-inner">
-      <!-- Brand Pod -->
-      <a href="index.html" class="dk-brand-pod">
-        <div class="dk-brand-logo-box">
-          <img src="logo.png" alt="DiyetKalfa" style="height: 44px; width: auto; object-fit: contain;">
+            <!-- Brand Pod -->
+      <a href="index.html" class="dk-brand-pod" style="gap: 8px;">
+        <div class="dk-brand-logo-box" style="padding: 3px 9px;">
+          <img src="logo.png" alt="DiyetKalfa" style="height: 40px; width: auto; object-fit: contain;">
         </div>
-        <div style="display: flex; flex-direction: column;">
-          <div style="display: flex; align-items: center; gap: 6px;">
-            <span style="font-size: 18px; font-weight: 900; color: #ffffff; letter-spacing: -0.02em;">Diyet<span style="color: #38bdf8;">Kalfa</span></span>
-            <span style="font-size: 9.5px; font-weight: 900; background: rgba(56, 189, 248, 0.18); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35); padding: 1px 6px; border-radius: 6px;">AI PRO</span>
-          </div>
-          <span style="font-size: 10.5px; color: #94a3b8; font-weight: 700;">Klinik İşletim Platformu</span>
-        </div>
+        <span style="font-size: 9.5px; font-weight: 900; background: rgba(56, 189, 248, 0.16); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35); padding: 3px 7px; border-radius: 6px; letter-spacing: 0.04em;">AI OS</span>
       </a>
 
       <!-- Center Segmented Pill Navigation Dock -->
@@ -3152,7 +3146,7 @@ body:not(.app-locked) .header-clinical-actions {
           </div>
         </div>
                 <div style="display: flex; align-items: center; gap: 8px;">
-          <button type="button" onclick="promptGeminiKey()" title="Google Gemini AI Entegrasyonu (İsteğe Bağlı)" style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); color: #38bdf8; font-size: 11px; font-weight: 800; padding: 4px 8px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 4px; transition: all 0.2s;">
+          <button type="button" onclick="promptGeminiKey()" title="Google Gemini AI Entegrasyonu (İsteğe Bağlı)" style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); color: #38bdf8; font-size: 11px; font-weight: 800; padding: 4px 8px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 3px !important; transition: all 0.2s;">
             <span>✨</span><span>Gemini AI</span>
           </button>
           <button type="button" onclick="toggleAiChat()" style="background: rgba(255, 255, 255, 0.1); border: none; width: 28px; height: 28px; border-radius: 50%; color: #ffffff; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center;">✕</button>
@@ -3491,7 +3485,7 @@ body:not(.app-locked) .header-clinical-actions {
                 <button onclick="clearPantry()" style="background:none; border:none; color: var(--dusty-pink); font-size: 10px; font-weight:700; cursor:pointer;">Temizle</button>
               </div>
               <div class="chips-container" id="pantry-chips-box"></div>
-              <div style="display: flex; gap: 4px; margin-top: 4px;">
+              <div style="display: flex; gap: 3px !important; margin-top: 4px;">
                 <input type="text" id="manual-add-chip" class="form-input" placeholder="Gıda ekle..." onkeypress="if(event.key==='Enter') addChipManual()">
                 <button onclick="addChipManual()" class="btn btn-secondary">Ekle</button>
               </div>
@@ -3631,7 +3625,7 @@ body:not(.app-locked) .header-clinical-actions {
 
 
             <!-- Klinik Diyetisyen İmzası -->
-            <div style="background: #eef2ff; border: 1px solid #e6d3c9; border-radius: var(--radius-sm); padding: 8px 10px; display: flex; align-items: center; justify-content: space-between; font-size: 10px; color: #743f29; flex-wrap: wrap; gap: 4px;">
+            <div style="background: #eef2ff; border: 1px solid #e6d3c9; border-radius: var(--radius-sm); padding: 8px 10px; display: flex; align-items: center; justify-content: space-between; font-size: 10px; color: #743f29; flex-wrap: wrap; gap: 3px !important;">
               <span>🌸 <b class="dynamic-clinic-name">DiyetKalfa Klinik:</b> <b class="dynamic-dietitian-name">Uzman Diyetisyen</b> onaylı klinik beslenme reçetesidir.</span>
               <span class="clinic-signature dynamic-dietitian-name">Uzman Diyetisyen</span>
             </div>
@@ -3829,7 +3823,7 @@ body:not(.app-locked) .header-clinical-actions {
             </div>
 
             <!-- Klinik Footer İmzası -->
-            <div style="background: #eef2ff; border-top: 1px solid #e6d3c9; padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: #743f29; flex-wrap: wrap; gap: 4px;">
+            <div style="background: #eef2ff; border-top: 1px solid #e6d3c9; padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: #743f29; flex-wrap: wrap; gap: 3px !important;">
               <span>🌸 <b class="dynamic-clinic-name">DiyetKalfa:</b> Viral İçerik & Reels Üretim Motoru</span>
               <span class="clinic-signature dynamic-instagram">@diyetkalfaklinik</span>
             </div>
@@ -3956,7 +3950,7 @@ body:not(.app-locked) .header-clinical-actions {
         </div>
         <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 14px; text-align: center;">
           <div style="font-size: 11px; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">e-Nabız & MBYS Durumu</div>
-          <div style="font-size: 12px; font-weight: 900; color: #0f172a; margin-top: 6px; display: inline-flex; align-items: center; gap: 4px;">
+          <div style="font-size: 12px; font-weight: 900; color: #0f172a; margin-top: 6px; display: inline-flex; align-items: center; gap: 3px !important;">
             <span class="pulsing-dot"></span> USBS UYUMLU
           </div>
         </div>
@@ -5174,7 +5168,7 @@ body:not(.app-locked) .header-clinical-actions {
             <td><span class="crm-badge crm-badge-target">${c.targetCal || 'Hesaplandı'} kcal</span></td>
             <td>${dateStr}</td>
             <td>
-              <div style="display: flex; gap: 4px;">
+              <div style="display: flex; gap: 3px !important;">
                 <button onclick="loadClientFromCRM('${c.name}')" class="btn btn-pastel-green" style="padding: 3px 8px; font-size: 10.5px;">Aç</button>
                 <button onclick="deleteClientFromCRM('${c.name}')" class="btn btn-outline-pink" style="padding: 3px 6px; font-size: 10.5px; color: #dc2626;">Sil</button>
               </div>
@@ -8339,7 +8333,7 @@ DİYETİSYEN KLİNİK TAVSİYELERİ:
                 "${item.hook}"
               </div>
             </div>
-            <div style="display: flex; gap: 4px; flex-shrink: 0;">
+            <div style="display: flex; gap: 3px !important; flex-shrink: 0;">
               <button onclick="toggleAgendaDone(${idx})" class="btn ${item.done ? 'btn-pastel-sage' : 'btn-pastel-green'}" style="padding: 4px 8px; font-size: 10px;" title="${item.done ? 'Çekilmedi Yap' : 'Çekildi Olarak İşaretle'}">
                 ${item.done ? '↩️' : '✅ Çekildi'}
               </button>
@@ -9585,7 +9579,7 @@ function closeDirectCheckout() {
           <div id="checkout-amount" style="font-size: 24px; font-weight: 900; color: #1e3a8a;">36.000 TL</div>
         </div>
         <div style="text-align: right;">
-          <span style="background: #1e3a8a; color: #d4af37; font-size: 11px; font-weight: 800; padding: 5px 12px; border-radius: 999px; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
+          <span style="background: #1e3a8a; color: #d4af37; font-size: 11px; font-weight: 800; padding: 5px 12px; border-radius: 999px; display: inline-flex; align-items: center; gap: 3px !important; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
             🔒 Anında Lisans Aktivasyonu
           </span>
           <div style="font-size: 11px; color: #059669; font-weight: 700; margin-top: 4px;">✓ Sanal POS / Kart Bilgisi İstemez</div>
@@ -9889,7 +9883,7 @@ function closeDirectCheckout() {
           <input type="checkbox" id="modal-login-remember" checked style="accent-color: #1e3a8a;">
           <span>Beni Hatırla</span>
         </label>
-        <span style="color: #059669; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">🛡️ 256-Bit SSL</span>
+        <span style="color: #059669; font-weight: 700; display: inline-flex; align-items: center; gap: 3px !important;">🛡️ 256-Bit SSL</span>
       </div>
 
       <button type="submit" style="background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%); color: #ffffff; border: none; padding: 13px; border-radius: 14px; font-weight: 800; font-size: 14.5px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 6px 18px rgba(30, 58, 138, 0.35); margin-top: 2px;">
@@ -9953,7 +9947,7 @@ function closeDirectCheckout() {
           <input type="checkbox" id="modal-login-remember" checked style="accent-color: #1e3a8a;">
           <span>Beni Hatırla</span>
         </label>
-        <span style="color: #059669; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">🛡️ 256-Bit SSL</span>
+        <span style="color: #059669; font-weight: 700; display: inline-flex; align-items: center; gap: 3px !important;">🛡️ 256-Bit SSL</span>
       </div>
 
       <button type="submit" style="background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%); color: #ffffff; border: none; padding: 13px; border-radius: 14px; font-weight: 800; font-size: 14.5px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 6px 18px rgba(30, 58, 138, 0.35); margin-top: 2px;">
