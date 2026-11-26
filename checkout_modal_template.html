@@ -1,0 +1,155 @@
+<!-- ============================================================ -->
+<!-- DIYETKALFA - KARTSIZ, VERGİ/POS MASRAFSIZ GÜVENLİ LİSANS MODALI -->
+<!-- ============================================================ -->
+<div id="modal-checkout" class="modal-backdrop" style="display: none; align-items: center; justify-content: center; z-index: 10005; background: rgba(10, 24, 18, 0.82); backdrop-filter: blur(8px); padding: 16px;">
+  <div class="modal-box" style="max-width: 580px; width: 100%; max-height: 92vh; overflow-y: auto; border-radius: 20px; border: 1.5px solid #2e5e4b; background: #ffffff; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4); padding: 26px; position: relative;">
+    
+    <button type="button" style="position: absolute; top: 18px; right: 20px; background: #f1f5f3; border: none; width: 34px; height: 34px; border-radius: 50%; font-size: 16px; font-weight: 800; color: #163b2c; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s;" onclick="closeCheckoutModal()">✕</button>
+
+    <!-- FORM VE SEÇENEKLER KAPSAYICISI -->
+    <div id="checkout-form-container">
+      
+      <!-- MODAL BAŞLIĞI -->
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+        <div style="width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, #163b2c 0%, #0f766e 100%); display: flex; align-items: center; justify-content: center; font-size: 22px; color: #fff; box-shadow: 0 4px 12px rgba(22, 59, 44, 0.3);">👑</div>
+        <div>
+          <h3 id="checkout-title" style="font-size: 20px; font-weight: 900; color: #163b2c; margin: 0; line-height: 1.2;">Profesyonel Paket Satın Al</h3>
+          <div id="checkout-subtitle" style="font-size: 12.5px; color: #047857; font-weight: 700; margin-top: 3px;">12 Ay Yıllık Kampanyalı Plan • 0 Komisyon / Vergi Bariyersiz</div>
+        </div>
+      </div>
+
+      <!-- FİYAT & GÜVENLİK ÖZET BANDI -->
+      <div style="background: linear-gradient(135deg, #edf5f0 0%, #f4fbf7 100%); border: 1.5px solid #c8e0d1; border-radius: 14px; padding: 14px 18px; margin-bottom: 18px; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <div style="font-size: 11.5px; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">Ödenecek Tutar:</div>
+          <div id="checkout-amount" style="font-size: 24px; font-weight: 900; color: #163b2c;">36.000 TL</div>
+        </div>
+        <div style="text-align: right;">
+          <span style="background: #163b2c; color: #d4af37; font-size: 11px; font-weight: 800; padding: 5px 12px; border-radius: 999px; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
+            🔒 Anında Lisans Aktivasyonu
+          </span>
+          <div style="font-size: 11px; color: #059669; font-weight: 700; margin-top: 4px;">✓ Sanal POS / Kart Bilgisi İstemez</div>
+        </div>
+      </div>
+
+      <!-- DİYETİSYEN BİLGİLERİ FORMU -->
+      <div style="background: #fbfbfa; border: 1px solid #e2e8f0; border-radius: 12px; padding: 14px; margin-bottom: 16px;">
+        <div style="font-size: 12px; font-weight: 800; color: #334155; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
+          <span>👤</span> Diyetisyen & Lisans Sahibi Bilgileri
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+          <div>
+            <label style="font-size: 11px; font-weight: 700; color: #475569; display: block; margin-bottom: 3px;">Ad Soyad *</label>
+            <input type="text" id="co-name" placeholder="Uzm. Dyt. Zehra Bölük" value="Uzm. Dyt. Zehra Bölük" required style="width: 100%; padding: 9px 12px; border-radius: 8px; border: 1.5px solid #cbd5e1; font-size: 13px; font-family: inherit; box-sizing: border-box;">
+          </div>
+          <div>
+            <label style="font-size: 11px; font-weight: 700; color: #475569; display: block; margin-bottom: 3px;">Klinik / Merkez Adı</label>
+            <input type="text" id="co-clinic" placeholder="DiyetKalfa Sağlıklı Yaşam" value="DiyetKalfa Sağlıklı Yaşam" style="width: 100%; padding: 9px 12px; border-radius: 8px; border: 1.5px solid #cbd5e1; font-size: 13px; font-family: inherit; box-sizing: border-box;">
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+          <div>
+            <label style="font-size: 11px; font-weight: 700; color: #475569; display: block; margin-bottom: 3px;">WhatsApp Telefon No *</label>
+            <input type="tel" id="co-phone" placeholder="0532 120 28 46" value="0532 120 28 46" required style="width: 100%; padding: 9px 12px; border-radius: 8px; border: 1.5px solid #cbd5e1; font-size: 13px; font-family: inherit; box-sizing: border-box;">
+          </div>
+          <div>
+            <label style="font-size: 11px; font-weight: 700; color: #475569; display: block; margin-bottom: 3px;">Şehir</label>
+            <input type="text" id="co-city" placeholder="İstanbul" value="İstanbul" style="width: 100%; padding: 9px 12px; border-radius: 8px; border: 1.5px solid #cbd5e1; font-size: 13px; font-family: inherit; box-sizing: border-box;">
+          </div>
+        </div>
+      </div>
+
+      <!-- ÖDEME YÖNTEMİ SEÇİCİ SEKMELERİ -->
+      <div style="display: flex; gap: 6px; margin-bottom: 14px;">
+        <button type="button" id="tab-btn-whatsapp" onclick="switchCheckoutTab('whatsapp')" class="active" style="flex: 1; padding: 10px 8px; border-radius: 10px; border: 1.5px solid #163b2c; font-weight: 800; font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s; background: #163b2c; color: #ffffff;">
+          <span>💬</span> WhatsApp VIP Sipariş
+        </button>
+        <button type="button" id="tab-btn-bank" onclick="switchCheckoutTab('bank')" style="flex: 1; padding: 10px 8px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800; font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s; background: #ffffff; color: #475569;">
+          <span>🏦</span> Havale / EFT / FAST
+        </button>
+        <button type="button" id="tab-btn-key" onclick="switchCheckoutTab('key')" style="flex: 0.9; padding: 10px 8px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800; font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s; background: #ffffff; color: #475569;">
+          <span>🔑</span> Lisans Kodu Gir
+        </button>
+      </div>
+
+      <!-- SEÇENEK 1: WHATSAPP VIP SİPARİŞ & ANINDA AKTİVASYON -->
+      <div id="checkout-section-whatsapp" style="display: block;">
+        <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px; padding: 14px; margin-bottom: 14px; font-size: 12.5px; color: #166534; line-height: 1.5;">
+          <strong>⚡ Doğrudan & Masrafsız Aktivasyon:</strong><br>
+          Aşağıdaki butona bastığınızda sipariş detaylarınız doğrudan <strong>0532 120 28 46 WhatsApp Lisans Hattımıza</strong> iletilir. Lisans kodunuz anında üretilir ve klinik paneliniz hemen tam lisanslı moda geçer.
+        </div>
+        <button type="button" onclick="handleCheckoutWhatsAppOrder(event)" style="width: 100%; background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: #ffffff; border: none; padding: 15px; border-radius: 14px; font-weight: 900; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 18px rgba(37, 211, 102, 0.35); transition: all 0.2s;">
+          <span style="font-size: 18px;">💬</span> WhatsApp ile Siparişi Tamamla & Lisansı Aktive Et →
+        </button>
+      </div>
+
+      <!-- SEÇENEK 2: HAVALE / EFT / FAST DOĞRUDAN BANKA TRANSFERİ -->
+      <div id="checkout-section-bank" style="display: none;">
+        <div style="background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 14px; margin-bottom: 14px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span style="font-size: 12px; font-weight: 800; color: #1e293b;">Banka: Garanti BBVA / Akbank</span>
+            <span style="font-size: 11px; background: #e2e8f0; color: #334155; padding: 2px 8px; border-radius: 6px; font-weight: 700;">7/24 FAST Aktif</span>
+          </div>
+          <div style="font-size: 11.5px; color: #64748b; margin-bottom: 2px;">Alıcı Ünvanı:</div>
+          <div style="font-size: 12.5px; font-weight: 800; color: #163b2c; margin-bottom: 8px;">DiyetKalfa Sağlıklı Yaşam ve Yazılım Teknolojileri</div>
+          <div style="font-size: 11.5px; color: #64748b; margin-bottom: 2px;">IBAN:</div>
+          <div style="display: flex; align-items: center; gap: 8px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 8px 12px; margin-bottom: 8px;">
+            <code style="font-size: 13px; font-weight: 800; color: #0f172a; flex: 1; letter-spacing: 0.04em;">TR56 0006 2000 0001 2345 6789 01</code>
+            <button type="button" onclick="copyIban()" style="background: #163b2c; color: #fff; border: none; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 800; cursor: pointer;">📋 Kopyala</button>
+          </div>
+          <div style="font-size: 11.5px; color: #64748b;">Açıklama Kodu: <strong id="checkout-desc-code" style="color: #163b2c; font-family: monospace;">DK-8492</strong> (veya Diyetisyen Adınız)</div>
+        </div>
+        <button type="button" onclick="handleCheckoutBankOrder(event)" style="width: 100%; background: linear-gradient(135deg, #163b2c 0%, #0d241b 100%); color: #ffffff; border: none; padding: 15px; border-radius: 14px; font-weight: 900; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 18px rgba(22, 59, 44, 0.35);">
+          <span>✓</span> Havale / EFT Yaptım, Lisansımı Aktive Et & Panele Geç →
+        </button>
+      </div>
+
+      <!-- SEÇENEK 3: MEVCUT LİSANS KODU GİRİŞİ -->
+      <div id="checkout-section-key" style="display: none;">
+        <div style="background: #fdfbf7; border: 1px solid #fde68a; border-radius: 12px; padding: 14px; margin-bottom: 14px; font-size: 12px; color: #92400e; line-height: 1.5;">
+          WhatsApp veya yetkilimiz tarafından size iletilen <strong>VIP Lisans Anahtarını</strong> girerek sisteminizi tek tıkla tam yetkili hale getirebilirsiniz.
+        </div>
+        <div style="margin-bottom: 14px;">
+          <input type="text" id="co-license-key" placeholder="Örn: DK-2026-PRO-9842 veya VIP365" style="width: 100%; padding: 12px 14px; border-radius: 10px; border: 2px solid #163b2c; font-size: 15px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; font-family: monospace; box-sizing: border-box;">
+        </div>
+        <button type="button" onclick="handleCheckoutKeyActivation(event)" style="width: 100%; background: linear-gradient(135deg, #d4af37 0%, #b89320 100%); color: #163b2c; border: none; padding: 15px; border-radius: 14px; font-weight: 900; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);">
+          <span>🔑</span> Lisans Kodunu Doğrula ve Sistemi Aç →
+        </button>
+      </div>
+
+    </div>
+
+    <!-- BAŞARI / AKTİVASYON TAMAMLANDI GÖRÜNÜMÜ -->
+    <div id="checkout-success-view" style="display: none; text-align: center; padding: 15px 5px;">
+      <div style="width: 64px; height: 64px; border-radius: 50%; background: #dcfce7; color: #16a34a; font-size: 34px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; box-shadow: 0 4px 15px rgba(22, 163, 74, 0.25);">✓</div>
+      <h3 style="font-size: 22px; font-weight: 900; color: #163b2c; margin-bottom: 6px;">Tebrikler! Lisansınız Aktifleştirildi</h3>
+      <p style="font-size: 13.5px; color: #475569; margin-bottom: 18px; line-height: 1.5;">
+        Klinik işletim sisteminiz seçilen paket ve süre dahilinde tam yetkiyle açıldı. Tüm verileriniz güvenle saklanmaktadır.
+      </p>
+
+      <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 16px; margin-bottom: 22px; text-align: left;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+          <span style="font-size: 12px; color: #64748b;">Aktif Paket:</span>
+          <strong id="co-success-plan" style="font-size: 13px; color: #163b2c;">Profesyonel Paket</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+          <span style="font-size: 12px; color: #64748b;">Kalan Süre:</span>
+          <strong id="co-success-days" style="font-size: 13px; color: #047857;">365 Gün Kesintisiz Lisans</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+          <span style="font-size: 12px; color: #64748b;">Son Geçerlilik:</span>
+          <strong id="co-success-expiry" style="font-size: 13px; color: #334155;">26 Kasım 2027</strong>
+        </div>
+        <div style="border-top: 1px dashed #cbd5e1; padding-top: 10px; margin-top: 10px;">
+          <div style="font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 700;">Lisans Anahtarınız:</div>
+          <div id="co-success-key" style="font-size: 17px; font-weight: 900; color: #163b2c; font-family: monospace; letter-spacing: 0.08em; margin-top: 3px;">DK-2026-PRO-9842</div>
+        </div>
+      </div>
+
+      <a href="panel.html" style="background: linear-gradient(135deg, #163b2c 0%, #0d241b 100%); color: #ffffff; padding: 16px 32px; border-radius: 14px; font-weight: 900; font-size: 16px; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 18px rgba(22, 59, 44, 0.4);">
+        <span>🚀</span> Klinik Paneline Giriş Yap →
+      </a>
+    </div>
+
+  </div>
+</div>

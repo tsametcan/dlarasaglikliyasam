@@ -8700,157 +8700,306 @@ function unlockWithSimulatedCase() {
 
 
 /* ========================================================================== */
-/* DIYETKALFA - DOĞRUDAN KART ÖDEME VE LİSANS İŞLEME MOTORU                   */
-/* ========================================================================== */
+/**
+ * DIYETKALFA LİSANS, SÜRE VE KARTSIZ ÖDEME MOTORU (CHECKOUT & LICENSE ENGINE 2026)
+ * - WhatsApp VIP Sipariş & Anında Lisans Aktivasyonu
+ * - Havale / EFT / FAST Doğrudan Banka Ödemesi
+ * - Kalan Gün Sayacı & Süre Dolum Bildirimleri
+ */
 
-var currentCheckoutPlan = 'Enterprise Klinik';
-var currentCheckoutCycle = '12';
+var DIYETKALFA_PRICING_MATRIX = {
+  '1': {
+    starter: { orig: '2.500 TL', price: '2.500', billed: 'Aylık 2.500 TL faturalandırılır', total: '2.500 TL', days: 30 },
+    core: { orig: '3.500 TL', price: '3.500', billed: 'Aylık 3.500 TL faturalandırılır', total: '3.500 TL', days: 30 },
+    pro: { orig: '5.000 TL', price: '4.800', billed: 'Aylık 4.800 TL faturalandırılır', total: '4.800 TL', days: 30 },
+    enterprise: { orig: '7.500 TL', price: '7.500', billed: 'Aylık 7.500 TL faturalandırılır', total: '7.500 TL', days: 30 }
+  },
+  '3': {
+    starter: { orig: '2.500 TL', price: '2.125', billed: '3 Aylık 6.375 TL faturalandırılır', total: '6.375 TL', days: 90 },
+    core: { orig: '3.500 TL', price: '2.975', billed: '3 Aylık 8.925 TL faturalandırılır', total: '8.925 TL', days: 90 },
+    pro: { orig: '5.000 TL', price: '4.080', billed: '3 Aylık 12.240 TL faturalandırılır', total: '12.240 TL', days: 90 },
+    enterprise: { orig: '7.500 TL', price: '6.375', billed: '3 Aylık 19.125 TL faturalandırılır', total: '19.125 TL', days: 90 }
+  },
+  '6': {
+    starter: { orig: '2.500 TL', price: '1.875', billed: '6 Aylık 11.250 TL faturalandırılır', total: '11.250 TL', days: 180 },
+    core: { orig: '3.500 TL', price: '2.625', billed: '6 Aylık 15.750 TL faturalandırılır', total: '15.750 TL', days: 180 },
+    pro: { orig: '5.000 TL', price: '3.600', billed: '6 Aylık 21.600 TL faturalandırılır', total: '21.600 TL', days: 180 },
+    enterprise: { orig: '7.500 TL', price: '5.625', billed: '6 Aylık 33.750 TL faturalandırılır', total: '33.750 TL', days: 180 }
+  },
+  '12': {
+    starter: { orig: '2.500 TL', price: '1.500', billed: 'Yıllık 18.000 TL faturalandırılır', total: '18.000 TL', days: 365 },
+    core: { orig: '3.500 TL', price: '2.200', billed: 'Yıllık 26.400 TL faturalandırılır', total: '26.400 TL', days: 365 },
+    pro: { orig: '4.166 TL', price: '3.000', billed: 'Kampanyalı 36.000 TL / yıl (50.000 TL yerine)', total: '36.000 TL', days: 365 },
+    enterprise: { orig: '7.500 TL', price: '4.500', billed: 'Yıllık 54.000 TL faturalandırılır', total: '54.000 TL', days: 365 }
+  }
+};
 
-function openDirectCheckout(planName, cycle) {
-  if (planName) currentCheckoutPlan = planName;
-  if (cycle) currentCheckoutCycle = cycle;
-  else if (typeof currentBillingCycle !== 'undefined') currentCheckoutCycle = currentBillingCycle;
+var DiyetKalfaLicenseEngine = {
+  getLicense: function() {
+    try {
+      var raw = localStorage.getItem('diyetkalfa_license');
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        if (parsed && parsed.expiryDate) return parsed;
+      }
+    } catch(e) {}
 
-  var modal = document.getElementById('modal-direct-checkout');
+    // Fallback: Eğer diyetkalfa_licensed veya diyetkalfa_unlocked varsa otomatik 30 günlük aktif lisans başlat
+    var isOldLicensed = (localStorage.getItem('diyetkalfa_licensed') === 'true' || localStorage.getItem('diyetkalfa_unlocked') === 'true');
+    if (isOldLicensed) {
+      return this.activateLicense('Profesyonel Paket', 1, 'Uzm. Dyt. Zehra Bölük', 'DiyetKalfa Klinik', '05321202846');
+    }
+    return null;
+  },
+
+  calculateDaysLeft: function(lic) {
+    if (!lic || !lic.expiryDate) return 0;
+    var now = new Date();
+    var expiry = new Date(lic.expiryDate);
+    var diffMs = expiry.getTime() - now.getTime();
+    return Math.max(0, Math.ceil(diffMs / (1000 * 60 * 60 * 24)));
+  },
+
+  activateLicense: function(tierName, cycleMonths, dietitianName, clinicName, phone, customKey) {
+    var months = parseInt(cycleMonths) || 1;
+    var days = (months === 12) ? 365 : (months === 6) ? 180 : (months === 3) ? 90 : 30;
+    var key = customKey || ('DK-2026-' + (tierName.indexOf('Giriş') >= 0 ? 'START' : tierName.indexOf('Temel') >= 0 ? 'CORE' : tierName.indexOf('Sınırsız') >= 0 ? 'ENT' : 'PRO') + '-' + Math.floor(1000 + Math.random() * 9000));
+    
+    var now = new Date();
+    var expiry = new Date(now.getTime() + days * 24 * 60 * 60 * 1000);
+
+    var licObj = {
+      status: 'active',
+      tier: tierName || 'Profesyonel Paket',
+      tierCode: (tierName.indexOf('Giriş') >= 0 ? 'starter' : tierName.indexOf('Temel') >= 0 ? 'core' : tierName.indexOf('Sınırsız') >= 0 ? 'enterprise' : 'pro'),
+      cycleMonths: months,
+      cycleDays: days,
+      startDate: now.toISOString(),
+      expiryDate: expiry.toISOString(),
+      licenseKey: key,
+      dietitianName: dietitianName || 'Uzm. Diyetisyen',
+      clinicName: clinicName || 'Diyet & Sağlık Kliniği',
+      phone: phone || '0532 120 28 46'
+    };
+
+    try {
+      localStorage.setItem('diyetkalfa_license', JSON.stringify(licObj));
+      localStorage.setItem('diyetkalfa_licensed', 'true');
+      localStorage.setItem('diyetkalfa_unlocked', 'true');
+      localStorage.setItem('diyetkalfa_plan', licObj.tier);
+      localStorage.setItem('diyetkalfa_tier', licObj.tier);
+      localStorage.setItem('diyetkalfa_license_key', key);
+    } catch(err) {}
+
+    return licObj;
+  },
+
+  renewLicense: function(extraDays) {
+    var lic = this.getLicense();
+    if (!lic) {
+      return this.activateLicense('Profesyonel Paket', 1);
+    }
+    var addDays = extraDays || 30;
+    var currentExp = new Date(lic.expiryDate);
+    var baseDate = (currentExp > new Date()) ? currentExp : new Date();
+    var newExp = new Date(baseDate.getTime() + addDays * 24 * 60 * 60 * 1000);
+    
+    lic.expiryDate = newExp.toISOString();
+    lic.status = 'active';
+    try {
+      localStorage.setItem('diyetkalfa_license', JSON.stringify(lic));
+    } catch(e) {}
+    return lic;
+  },
+
+  setTestDaysLeft: function(days) {
+    var lic = this.getLicense() || this.activateLicense('Profesyonel Paket', 1);
+    var now = new Date();
+    var newExp = new Date(now.getTime() + days * 24 * 60 * 60 * 1000);
+    lic.expiryDate = newExp.toISOString();
+    try {
+      localStorage.setItem('diyetkalfa_license', JSON.stringify(lic));
+    } catch(e) {}
+    return lic;
+  }
+};
+
+// CHECKOUT MODAL UI CONTROLLER
+var activeCheckoutPlan = 'Profesyonel Paket';
+var activeCheckoutCycle = '12';
+
+function openCheckoutModal(planName, cycle) {
+  if (planName) activeCheckoutPlan = planName;
+  if (cycle) activeCheckoutCycle = cycle;
+  else if (typeof activeCycle !== 'undefined') activeCheckoutCycle = activeCycle;
+
+  var modal = document.getElementById('modal-checkout') || document.getElementById('modal-direct-checkout');
   if (!modal) return;
 
-  // Form containerı aç, processing ve success'i sıfırla
   var formCont = document.getElementById('checkout-form-container');
-  var procView = document.getElementById('checkout-processing-view');
   var succView = document.getElementById('checkout-success-view');
-
   if (formCont) formCont.style.display = 'block';
-  if (procView) procView.style.display = 'none';
   if (succView) succView.style.display = 'none';
 
-  // Fiyat ve paket verilerini doldur
-  var dataCycle = (typeof DIYETKALFA_PRICING_MATRIX !== 'undefined') ? 
-    (DIYETKALFA_PRICING_MATRIX[currentCheckoutCycle] || DIYETKALFA_PRICING_MATRIX['12']) : null;
+  // Fiyat ve paket verilerini eşle
+  var cycleData = DIYETKALFA_PRICING_MATRIX[activeCheckoutCycle] || DIYETKALFA_PRICING_MATRIX['12'];
+  var planKey = 'pro';
+  if (activeCheckoutPlan.indexOf('Giriş') >= 0 || activeCheckoutPlan.toLowerCase().indexOf('starter') >= 0) planKey = 'starter';
+  else if (activeCheckoutPlan.indexOf('Temel') >= 0 || activeCheckoutPlan.toLowerCase().indexOf('core') >= 0) planKey = 'core';
+  else if (activeCheckoutPlan.indexOf('Sınırsız') >= 0 || activeCheckoutPlan.toLowerCase().indexOf('enterprise') >= 0) planKey = 'enterprise';
 
-  var planKey = 'enterprise';
-  if (currentCheckoutPlan.toLowerCase().indexOf('starter') >= 0) planKey = 'starter';
-  else if (currentCheckoutPlan.toLowerCase().indexOf('pro') >= 0) planKey = 'pro';
-
-  var planNameEl = document.getElementById('checkout-plan-name');
-  var planCycleEl = document.getElementById('checkout-plan-cycle');
-  var origPriceEl = document.getElementById('checkout-orig-price');
-  var planPriceEl = document.getElementById('checkout-plan-price');
+  var pData = cycleData[planKey] || cycleData.pro;
 
   var cycleLabels = {
-    '1': '1 Aylık Taahhütsüz Plan',
-    '3': '3 Aylık İndirimli Plan',
-    '6': '6 Aylık İndirimli Plan',
-    '12': '12 Aylık Yıllık Kampanyalı Plan'
+    '1': '1 Ay (Aylık Taahhütsüz)',
+    '3': '3 Ay (%15 İndirimli)',
+    '6': '6 Ay (%25 Tasarruflu)',
+    '12': '12 Ay Yıllık Kampanyalı Plan'
   };
 
-  if (planNameEl) planNameEl.textContent = currentCheckoutPlan;
-  if (planCycleEl) planCycleEl.textContent = cycleLabels[currentCheckoutCycle] || '12 Aylık Yıllık Plan';
+  var titleEl = document.getElementById('checkout-title') || document.getElementById('checkout-plan-name');
+  var subEl = document.getElementById('checkout-subtitle') || document.getElementById('checkout-plan-cycle');
+  var amountEl = document.getElementById('checkout-amount') || document.getElementById('checkout-plan-price');
 
-  if (dataCycle && dataCycle[planKey]) {
-    var pData = dataCycle[planKey];
-    if (origPriceEl) {
-      origPriceEl.textContent = pData.originalTotal;
-      origPriceEl.style.display = (pData.originalTotal !== pData.billedTotal) ? 'inline' : 'none';
-    }
-    if (planPriceEl) {
-      planPriceEl.textContent = (currentCheckoutCycle === '1') ? (pData.monthly + ' TL / ay') : (pData.billedTotal + ' / ' + currentCheckoutCycle + ' ay');
-    }
-  }
+  if (titleEl) titleEl.textContent = activeCheckoutPlan;
+  if (subEl) subEl.textContent = (cycleLabels[activeCheckoutCycle] || '12 Ay Yıllık') + ' • Vergi/POS Masrafsız';
+  if (amountEl) amountEl.textContent = pData.total;
+
+  var codePreview = document.getElementById('checkout-desc-code');
+  if (codePreview) codePreview.textContent = 'DK-' + Math.floor(1000 + Math.random() * 9000);
 
   modal.style.display = 'flex';
-  
-  setTimeout(function() {
-    var fnInput = document.getElementById('card-fullname');
-    if (fnInput) fnInput.focus();
-  }, 200);
 }
 
-function closeDirectCheckout() {
-  var modal = document.getElementById('modal-direct-checkout');
+function closeCheckoutModal() {
+  var modal = document.getElementById('modal-checkout') || document.getElementById('modal-direct-checkout');
   if (modal) modal.style.display = 'none';
 }
 
-function formatCreditCardNumber(input) {
-  var val = input.value.replace(/\D/g, '');
-  var newVal = '';
-  for (var i = 0; i < val.length; i++) {
-    if (i > 0 && i % 4 === 0) newVal += ' ';
-    newVal += val[i];
-  }
-  input.value = newVal;
+function switchCheckoutTab(tab) {
+  var btnWa = document.getElementById('tab-btn-whatsapp');
+  var btnBank = document.getElementById('tab-btn-bank');
+  var btnKey = document.getElementById('tab-btn-key');
+
+  var secWa = document.getElementById('checkout-section-whatsapp');
+  var secBank = document.getElementById('checkout-section-bank');
+  var secKey = document.getElementById('checkout-section-key');
+
+  if (btnWa) btnWa.className = (tab === 'whatsapp' ? 'active' : '');
+  if (btnBank) btnBank.className = (tab === 'bank' ? 'active' : '');
+  if (btnKey) btnKey.className = (tab === 'key' ? 'active' : '');
+
+  if (secWa) secWa.style.display = (tab === 'whatsapp' ? 'block' : 'none');
+  if (secBank) secBank.style.display = (tab === 'bank' ? 'block' : 'none');
+  if (secKey) secKey.style.display = (tab === 'key' ? 'block' : 'none');
 }
 
-function formatCardExpiry(input) {
-  var val = input.value.replace(/\D/g, '');
-  if (val.length >= 2) {
-    input.value = val.substring(0, 2) + ' / ' + val.substring(2, 4);
-  } else {
-    input.value = val;
-  }
+function handleCheckoutWhatsAppOrder(e) {
+  if (e) e.preventDefault();
+  
+  var name = document.getElementById('co-name') ? document.getElementById('co-name').value.trim() : 'Uzm. Diyetisyen';
+  var clinic = document.getElementById('co-clinic') ? document.getElementById('co-clinic').value.trim() : 'Diyet Kliniği';
+  var phone = document.getElementById('co-phone') ? document.getElementById('co-phone').value.trim() : '0532 120 28 46';
+  var city = document.getElementById('co-city') ? document.getElementById('co-city').value.trim() : '';
+
+  if (!name) { alert('Lütfen Adınızı ve Soyadınızı giriniz.'); return; }
+  if (!phone) { alert('Lütfen WhatsApp Telefon Numaranızı giriniz.'); return; }
+
+  // Lisansı hemen aktifleştir
+  var months = parseInt(activeCheckoutCycle) || 12;
+  var lic = DiyetKalfaLicenseEngine.activateLicense(activeCheckoutPlan, months, name, clinic, phone);
+
+  // WhatsApp Mesajını Hazırla
+  var cycleText = (months === 12) ? '12 Aylık Yıllık' : (months + ' Aylık');
+  var amount = document.getElementById('checkout-amount') ? document.getElementById('checkout-amount').innerText : '36.000 TL';
+  
+  var waText = "Merhaba DiyetKalfa Yetkilisi,\n\n" +
+    "💎 Paket: " + activeCheckoutPlan + " (" + cycleText + ", Tutar: " + amount + ")\n" +
+    "🔑 Lisans Kodum: " + lic.licenseKey + "\n" +
+    "👩‍⚕️ Diyetisyen: " + name + "\n" +
+    "🏥 Klinik: " + clinic + "\n" +
+    "📞 İletişim: " + phone + (city ? " / " + city : "") + "\n\n" +
+    "Lisansımı aktive etmek ve siparişimi onaylamak istiyorum. Teşekkürler!";
+
+  var waUrl = "https://wa.me/905321202846?text=" + encodeURIComponent(waText);
+  window.open(waUrl, '_blank');
+
+  // Başarı ekranını göster
+  showCheckoutSuccess(lic);
 }
 
-function processCardPaymentAndUnlock(e) {
+function handleCheckoutBankOrder(e) {
   if (e) e.preventDefault();
 
-  var fullname = document.getElementById('card-fullname') ? document.getElementById('card-fullname').value.trim() : 'Diyetisyen';
-  var email = document.getElementById('card-email') ? document.getElementById('card-email').value.trim() : '';
+  var name = document.getElementById('co-name') ? document.getElementById('co-name').value.trim() : 'Uzm. Diyetisyen';
+  var clinic = document.getElementById('co-clinic') ? document.getElementById('co-clinic').value.trim() : 'Diyet Kliniği';
+  var phone = document.getElementById('co-phone') ? document.getElementById('co-phone').value.trim() : '0532 120 28 46';
 
+  if (!name) { alert('Lütfen Adınızı ve Soyadınızı giriniz.'); return; }
+
+  var months = parseInt(activeCheckoutCycle) || 12;
+  var lic = DiyetKalfaLicenseEngine.activateLicense(activeCheckoutPlan, months, name, clinic, phone);
+  showCheckoutSuccess(lic);
+}
+
+function handleCheckoutKeyActivation(e) {
+  if (e) e.preventDefault();
+  var keyInput = document.getElementById('co-license-key');
+  var key = keyInput ? keyInput.value.trim().toUpperCase() : '';
+
+  if (!key) { alert('Lütfen geçerli bir lisans kodu giriniz.'); return; }
+
+  var plan = 'Profesyonel Paket';
+  var months = 12;
+
+  if (key.indexOf('START') >= 0 || key === 'DEMO30') { plan = 'Giriş Paketi'; months = 1; }
+  else if (key.indexOf('CORE') >= 0) { plan = 'Temel Paket'; months = 3; }
+  else if (key.indexOf('ENT') >= 0 || key === 'VIP365') { plan = 'Sınırsız Paket'; months = 12; }
+
+  var lic = DiyetKalfaLicenseEngine.activateLicense(plan, months, 'Uzm. Diyetisyen', 'DiyetKalfa Lisanslı Klinik', '0532 120 28 46', key);
+  showCheckoutSuccess(lic);
+}
+
+function showCheckoutSuccess(lic) {
   var formCont = document.getElementById('checkout-form-container');
-  var procView = document.getElementById('checkout-processing-view');
   var succView = document.getElementById('checkout-success-view');
 
   if (formCont) formCont.style.display = 'none';
-  if (procView) procView.style.display = 'block';
+  if (succView) {
+    succView.style.display = 'block';
+    var keyEl = document.getElementById('co-success-key');
+    var planEl = document.getElementById('co-success-plan');
+    var daysEl = document.getElementById('co-success-days');
+    var expEl = document.getElementById('co-success-expiry');
 
-  var pTitle = document.getElementById('checkout-proc-title');
-  var pDesc = document.getElementById('checkout-proc-desc');
-
-  // Adım 1: Bağlantı
-  setTimeout(function() {
-    if (pTitle) pTitle.textContent = "3D Secure Provizyonu Alınıyor...";
-    if (pDesc) pDesc.textContent = "Banka 256-Bit SSL doğrulaması yapıldı (0,00 TL ilk 7 gün provizyonu)...";
-  }, 800);
-
-  // Adım 2: Lisans üretimi
-  setTimeout(function() {
-    if (pTitle) pTitle.textContent = "DiyetKalfa Lisansınız Üretiliyor...";
-    if (pDesc) pDesc.textContent = "Klinik lisans anahtarı ve faturanız oluşturuluyor...";
-  }, 1600);
-
-  // Adım 3: Başarı
-  setTimeout(function() {
-    if (procView) procView.style.display = 'none';
-    if (succView) succView.style.display = 'block';
-
-    var key = 'DK-2026-KLINIK-' + Math.floor(1000 + Math.random() * 9000);
-    var keyEl = document.getElementById('checkout-generated-key');
-    if (keyEl) keyEl.textContent = key;
-
-    try {
-      localStorage.setItem('diyetkalfa_unlocked', 'true');
-      localStorage.setItem('diyetkalfa_license_key', key);
-      localStorage.setItem('diyetkalfa_user_fullname', fullname);
-      if (email) localStorage.setItem('diyetkalfa_user_email', email);
-      localStorage.setItem('diyetkalfa_plan', currentCheckoutPlan);
-    } catch(err) {}
-
-  }, 2400);
-}
-
-function finalizeCheckoutUnlock() {
-  closeDirectCheckout();
-  return;
-  closeDirectCheckout();
-  if (typeof unlockApplication === 'function') {
-    unlockApplication(currentCheckoutPlan, false);
+    if (keyEl) keyEl.textContent = lic.licenseKey;
+    if (planEl) planEl.textContent = lic.tier;
+    if (daysEl) daysEl.textContent = lic.cycleDays + ' Gün Kesintisiz Lisans';
+    if (expEl) {
+      var d = new Date(lic.expiryDate);
+      expEl.textContent = d.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+    }
   }
 }
 
-// Eski WhatsApp yönlendirme fonksiyonunu da doğrudan Kart Ödeme ekranına yönlendir
-function orderPlanWhatsApp(planName) {
-  openDirectCheckout(planName, currentBillingCycle);
+function copyIban() {
+  var iban = "TR56 0006 2000 0001 2345 6789 01";
+  navigator.clipboard.writeText(iban.replace(/\s+/g, '')).then(function() {
+    alert("✅ IBAN Numarası Panoya Kopyalandı:\n" + iban);
+  }).catch(function() {
+    alert("IBAN: " + iban);
+  });
 }
 
+function orderPlanWhatsApp(planName) {
+  openCheckoutModal(planName, (typeof currentBillingCycle !== 'undefined' ? currentBillingCycle : '12'));
+}
+function openDirectCheckout(planName, cycle) {
+  openCheckoutModal(planName, cycle);
+}
+function closeDirectCheckout() {
+  closeCheckoutModal();
+}
 </script>
     <!-- Mobil Kullanıcılar İçin Lüks Alt Eylem Çubuğu (Sadece Mobilde) -->
   <div class="landing-mobile-bar">
@@ -9240,365 +9389,538 @@ function orderPlanWhatsApp(planName) {
       }, 400);
     }
 
-    function getAiResponse(rawQuery) {
-      if (!rawQuery) return '<div>Size nasıl yardımcı olabilirim? Paketlerimiz, klinik paneli, diyet planlayıcı veya randevu takvimimiz hakkında sorabilirsiniz.</div>';
-      
-      var q = rawQuery.toLowerCase();
-      var qNorm = q.replace(/ı/g, 'i').replace(/ğ/g, 'g').replace(/ü/g, 'u').replace(/ş/g, 's').replace(/ö/g, 'o').replace(/ç/g, 'c');
+    /**
+ * DIYETKALFA YENİ NESİL KLİNİK & SİSTEM YAPAY ZEKA MOTORU (AI CORE 2026)
+ * 40+ Klinik & Operasyonel Niyet (Intent) + Dinamik Vaka & Soru Sentezleyicisi
+ */
+function getAiResponse(rawQuery) {
+  if (!rawQuery || !rawQuery.trim()) {
+    return '<div>Size nasıl yardımcı olabilirim? Paketlerimiz, klinik paneli, diyet planlayıcı, randevu takvimi veya danışan vakalarınız hakkında dilediğinizi sorabilirsiniz.</div>';
+  }
 
-      // 1. PANELE GİRİŞ / SİSTEMİ AÇMA / ŞİFRE / DEMO PANELİNE NASIL GEÇERİZ?
-      if (qNorm.includes('panel') || qNorm.includes('giris') || qNorm.includes('sistemi nasil') || qNorm.includes('nasil acacagiz') || qNorm.includes('nasil acariz') || qNorm.includes('nasil girerim') || qNorm.includes('nasil gec') || qNorm.includes('nereden gir') || qNorm.includes('sifre') || qNorm.includes('parola') || qNorm.includes('hesap') || qNorm.includes('demo nasil') || qNorm.includes('acilmiyor')) {
-        return '<div><strong>🚀 Klinik Paneline Erişim Rehberi:</strong></div>' +
-          '<div style="margin-top: 6px; line-height: 1.5; color: #475569;">' +
-            'DiyetKalfa klinik paneline geçiş yapmak çok kolay ve anında gerçekleşir:' +
-            '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
-              '<li><strong>Anında Canlı Demo:</strong> Kurulum veya şifre gerekmeden tek tıkla canlı paneli açabilirsiniz.</li>' +
-              '<li><strong>Satın Alma / Lisans:</strong> Lisansınızı başlattığınızda sisteminiz anında tam yetkiyle açılır ve danışan verileriniz güvenle saklanır.</li>' +
-              '<li><strong>Birebir Canlı Sunum:</strong> 0532 120 28 46 WhatsApp hattımızdan danışmanlarımızla 15 dakikalık rehberli canlı tur yapabilirsiniz.</li>' +
-            '</ul>' +
-          '</div>' +
-          '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-            '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">🚀 Klinik Demo Panelini Aç →</a>' +
-            '<a href="kayit.html" target="_blank" rel="noopener noreferrer" class="ai-link-btn" style="background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0;">✨ 7 Gün Ücretsiz Başla</a>' +
-          '</div>';
-      }
+  var rawClean = rawQuery.trim();
+  var q = rawClean.toLowerCase();
+  var qNorm = q.replace(/ı/g, 'i').replace(/ğ/g, 'g').replace(/ü/g, 'u').replace(/ş/g, 's').replace(/ö/g, 'o').replace(/ç/g, 'c');
 
-      // 2. SELAMLAŞMA & SOHBET (MERHABA, SELAM, GÜNAYDIN, NASILSIN...)
-      if (qNorm.match(/^(merhaba|selam|selamlar|gunaydin|iyi gunler|iyi aksamlar|hey|hi|hello|nasilsin|kolay gelsin)\b/) || qNorm === 'merhaba' || qNorm === 'selam' || qNorm === 'slm') {
-        return '<div><strong>👋 Merhaba! DiyetKalfa Yapay Zeka Asistanına Hoş Geldiniz.</strong></div>' +
-          '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
-            'Klinikler ve profesyonel diyetisyenler için geliştirdiğimiz yeni nesil yapay zeka işletim sistemiyiz. Size hangi konuda yardımcı olabilirim?' +
-          '</div>' +
-          '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-            '<button type="button" onclick="triggerQuickPrompt(\'Klinik paneline nasıl geçeceğiz?\')" class="ai-link-btn" style="background: #163b2c; color: #fff;">🚀 Paneli Nasıl Açarım?</button>' +
-            '<button type="button" onclick="triggerQuickPrompt(\'Paketler ve fiyatlar ne kadar?\')" class="ai-link-btn" style="background: #0f766e; color: #fff;">💎 Fiyatlar & Kampanyalar</button>' +
-            '<button type="button" onclick="triggerQuickPrompt(\'Randevu takvimi ve SMS nasıl çalışır?\')" class="ai-link-btn" style="background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0;">📅 Randevu & SMS</button>' +
-          '</div>';
-      }
+  // 1. PANELE GİRİŞ / SİSTEMİ AÇMA / ŞİFRE / DEMO PANELİNE NASIL GEÇERİZ?
+  if (qNorm.includes('panel') || qNorm.includes('giris') || qNorm.includes('sistemi nasil') || qNorm.includes('nasil acacagiz') || qNorm.includes('nasil acariz') || qNorm.includes('nasil girerim') || qNorm.includes('nasil gec') || qNorm.includes('nereden gir') || qNorm.includes('sifre') || qNorm.includes('parola') || qNorm.includes('hesap') || qNorm.includes('demo nasil') || qNorm.includes('acilmiyor')) {
+    return '<div><strong>🚀 Klinik Paneline Erişim Rehberi:</strong></div>' +
+      '<div style="margin-top: 6px; line-height: 1.5; color: #475569;">' +
+        'DiyetKalfa klinik paneline geçiş yapmak çok kolay ve anında gerçekleşir:' +
+        '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
+          '<li><strong>Anında Canlı Demo:</strong> Kurulum veya şifre gerekmeden tek tıkla canlı paneli açabilirsiniz.</li>' +
+          '<li><strong>Satın Alma / Lisans:</strong> Lisansınızı başlattığınızda sisteminiz anında tam yetkiyle açılır ve danışan verileriniz güvenle saklanır.</li>' +
+          '<li><strong>Birebir Canlı Sunum:</strong> 0532 120 28 46 WhatsApp hattımızdan danışmanlarımızla 15 dakikalık rehberli canlı tur yapabilirsiniz.</li>' +
+        '</ul>' +
+      '</div>' +
+      '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
+        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">🚀 Klinik Demo Panelini Aç →</a>' +
+        '<a href="kayit.html" target="_blank" rel="noopener noreferrer" class="ai-link-btn" style="background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0;">✨ 7 Gün Ücretsiz Başla</a>' +
+      '</div>';
+  }
 
-      // 3. DİYETKALFA NEDİR / NE İŞE YARAR / KİMLER İÇİN
-      if (qNorm.includes('nedir') || qNorm.includes('ne ise yarar') || qNorm.includes('ne yapar') || qNorm.includes('kimsiniz') || qNorm.includes('hakkinda') || qNorm.includes('tanit') || qNorm.includes('kimler')) {
-        return '<div><strong>🌟 DiyetKalfa AI Nedir?</strong></div>' +
-          '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
-            'DiyetKalfa; klinik sahibi diyetisyenlerin danışan kabulünden diyet listesi oluşturmaya, tahlil yorumlamadan randevu ve SMS yönetimine kadar tüm süreçlerini tek ekrandan yürüten <strong>Yapay Zeka Destekli Klinik İşletim Sistemi</strong>dir.' +
-            '<div style="margin-top: 6px;">• 🥗 <strong>DSÖ 2024 Diyet Planlayıcı:</strong> Saniyeler içinde kişiye özel 7 günlük reçete.</div>' +
-            '<div>• 🩸 <strong>HOMA-IR Laboratuvar Analizi:</strong> Açlık glukoz & insülin metabolik risk analizi.</div>' +
-            '<div>• 📅 <strong>Akıllı Randevu Takvimi:</strong> Telefon rehberi bağlama & otomatik seans SMS bildirimi.</div>' +
-            '<div>• 📊 <strong>Excel Danışan Çizelgesi:</strong> Excel’den toplu yapıştırma ve anlık kilo takibi.</div>' +
-          '</div>' +
-          '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-            '<a href="ozellikler.html" class="ai-link-btn" style="background: #163b2c; color: #fff;">🔬 Tüm Özellikleri İncele →</a>' +
-            '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0;">🚀 Canlı Demoyu Başlat</a>' +
-          '</div>';
-      }
+  // 2. SELAMLAŞMA & SOHBET (MERHABA, SELAM, GÜNAYDIN, NASILSIN...)
+  if (qNorm.match(/^(merhaba|selam|selamlar|gunaydin|iyi gunler|iyi aksamlar|hey|hi|hello|nasilsin|kolay gelsin)\b/) || qNorm === 'merhaba' || qNorm === 'selam' || qNorm === 'slm') {
+    return '<div><strong>👋 Merhaba! DiyetKalfa Klinik Yapay Zeka Asistanına Hoş Geldiniz.</strong></div>' +
+      '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
+        'Klinikler ve profesyonel diyetisyenler için geliştirdiğimiz yeni nesil yapay zeka işletim sistemiyiz. Size hangi konuda yardımcı olabilirim?' +
+      '</div>' +
+      '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
+        '<button type="button" onclick="triggerQuickPrompt(\'Klinik paneline nasıl geçeceğiz?\')" class="ai-link-btn" style="background: #163b2c; color: #fff;">🚀 Paneli Nasıl Açarım?</button>' +
+        '<button type="button" onclick="triggerQuickPrompt(\'Paketler ve fiyatlar ne kadar?\')" class="ai-link-btn" style="background: #0f766e; color: #fff;">💎 Fiyatlar & Kampanyalar</button>' +
+        '<button type="button" onclick="triggerQuickPrompt(\'Randevu takvimi ve SMS nasıl çalışır?\')" class="ai-link-btn" style="background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0;">📅 Randevu & SMS</button>' +
+      '</div>';
+  }
 
-      // 4. RANDEVU TAKVİMİ & OTOMATİK SMS
-      if (qNorm.includes('randevu') || qNorm.includes('sms') || qNorm.includes('takvim') || qNorm.includes('seans') || qNorm.includes('rehber') || qNorm.includes('hatirlat') || qNorm.includes('doktortakvimi') || qNorm.includes('onay')) {
-        return '<div><strong>📅 Akıllı Randevu Takvimi & Otomatik SMS Sistemi:</strong></div>' +
-          '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
-            '• <strong>Telefon Rehberi Entegrasyonu:</strong> Akıllı telefon rehberinizi veya .vcf listenizi tek tıkla takvime bağlayın.<br>' +
-            '• <strong>Saatlik Seans Matrisi:</strong> 09:00 - 18:00 arası seansları pratik slot butonlarıyla anında planlayın.<br>' +
-            '• <strong>Otomatik Seans SMS\'i:</strong> Randevu oluşturulduğunda veya saati güncellendiğinde danışanınızın cebine canlı SMS bildirimi gönderilir.<br>' +
-            '• <strong>Kaçırma Oranını Düşürün:</strong> Otomatik hatırlatma sayesinde danışanların seans kaçırma oranı %85 azalır.' +
-          '</div>' +
-          '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-            '<a href="ozellikler.html" class="ai-link-btn" style="background: #163b2c; color: #fff;">📅 Takvim Detaylarını Gör →</a>' +
-            '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #0f766e; color: #fff;">🚀 Takvimi Panelde Dene</a>' +
-          '</div>';
-      }
+  // 3. DİYETKALFA NEDİR / NE İŞE YARAR / KİMLER İÇİN / MANGOLİF FARKI
+  if (qNorm.includes('nedir') || qNorm.includes('ne ise yarar') || qNorm.includes('ne yapar') || qNorm.includes('kimsiniz') || qNorm.includes('hakkinda') || qNorm.includes('tanit') || qNorm.includes('kimler') || qNorm.includes('mangolif fark')) {
+    return '<div><strong>🌟 DiyetKalfa AI Nedir ve Neden Tercih Edilir?</strong></div>' +
+      '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
+        'DiyetKalfa; klinik sahibi diyetisyenlerin danışan kabulünden diyet listesi oluşturmaya, tahlil yorumlamadan randevu ve SMS yönetimine kadar tüm süreçlerini tek ekrandan yürüten <strong>Yapay Zeka Destekli Klinik İşletim Sistemi</strong>dir.' +
+        '<div style="margin-top: 6px;">• 🥗 <strong>DSÖ 2024 Diyet Planlayıcı:</strong> Saniyeler içinde kişiye özel 7 günlük reçete ve sonsuz menü değişimi.</div>' +
+        '<div>• 🩸 <strong>HOMA-IR Laboratuvar Analizi:</strong> Açlık glukoz & insülin metabolik risk analizi.</div>' +
+        '<div>• 📅 <strong>Akıllı Randevu Takvimi:</strong> Telefon rehberi bağlama & otomatik seans SMS bildirimi.</div>' +
+        '<div>• 📊 <strong>Excel Danışan Çizelgesi:</strong> Excel’den toplu kopyala-yapıştır ve canlı kilo takibi.</div>' +
+      '</div>' +
+      '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
+        '<a href="ozellikler.html" class="ai-link-btn" style="background: #163b2c; color: #fff;">🔬 Tüm Özellikleri İncele →</a>' +
+        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0;">🚀 Canlı Demoyu Başlat</a>' +
+      '</div>';
+  }
 
-      // 5. EXCEL DANIŞAN ÇİZELGESİ & İÇE/DIŞA AKTARIM
-      if (qNorm.includes('excel') || qNorm.includes('tablo') || qNorm.includes('cizelge') || qNorm.includes('csv') || qNorm.includes('sheets') || qNorm.includes('yapistir') || qNorm.includes('aktar')) {
-        return '<div><strong>📊 Excel\'e Duyarlı Akıllı Danışan Çizelgesi:</strong></div>' +
-          '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
-            'Yıllardır tuttuğunuz Excel tablolarını geride bırakmanıza gerek yok! DiyetKalfa tam uyumludur:<br>' +
-            '• <strong>Toplu Yapıştır (Ctrl+V):</strong> Excel veya Google Sheets\'teki danışan tablonuzu tek tıkla kopyalayıp aktarın.<br>' +
-            '• <strong>Doğrudan Hücre Düzenleme:</strong> Tablo üzerinden danışan kilosu, hedefi ve seans notlarını doğrudan tıklayarak güncelleyin.<br>' +
-            '• <strong>Otomatik Kilo Kaybı Hesaplama:</strong> Verilen net kilo (Δ kg) ve danışan durumu otomatik hesaplanır.<br>' +
-            '• <strong>Tek Tıkla SMS & Randevu:</strong> Tablodaki herhangi bir danışana anında randevu oluşturup SMS iletin.' +
-          '</div>' +
-          '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-            '<a href="ozellikler.html" class="ai-link-btn" style="background: #163b2c; color: #fff;">📊 Excel Özelliklerini Gör →</a>' +
-            '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #0f766e; color: #fff;">🚀 Panelde Tabloyu Aç</a>' +
-          '</div>';
-      }
+  // 4. ÖDEME YÖNTEMLERİ, KARTSIZ ÖDEME, HAVALE, EFT, FAST & WHATSAPP
+  if (qNorm.includes('odeme') || qNorm.includes('havale') || qNorm.includes('eft') || qNorm.includes('fast') || qNorm.includes('iban') || qNorm.includes('kart') || qNorm.includes('pos') || qNorm.includes('vergi') || qNorm.includes('nasil oderim') || qNorm.includes('odeme secenekleri')) {
+    return '<div><strong>💳 Kolay, Kartsız & Masrafsız Ödeme Yöntemleri:</strong></div>' +
+      '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
+        'DiyetKalfa, klinisyenleri sanal POS komisyonları veya karmaşık vergi bürokrasisiyle uğraştırmaz:' +
+        '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
+          '<li><strong>💬 WhatsApp VIP Lisanslama:</strong> 0532 120 28 46 hattımız üzerinden doğrudan sipariş verip lisansınızı anında açabilirsiniz.</li>' +
+          '<li><strong>🏦 Havale / EFT / FAST:</strong> Resmi şirket IBAN hesabımıza doğrudan masrafsız transfer yapabilirsiniz. Dekont sonrası sistem anında aktifleşir.</li>' +
+          '<li><strong>⚡ Anında Aktivasyon:</strong> Ödemeniz teyit edildiği anda benzersiz lisans kodunuz üretilir ve klinik paneliniz tam yetkiyle çalışmaya başlar.</li>' +
+        '</ul>' +
+      '</div>' +
+      '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
+        '<a href="javascript:void(0)" onclick="openCheckoutModal(\'Profesyonel Paket\')" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">💳 Güvenli Satın Al & Lisansı Aç →</a>' +
+        '<a href="https://wa.me/905321202846?text=Merhaba%2C%20DiyetKalfa%20lisans%20sat%C4%B1n%20alma%20ve%20havale%20bilgisi%20almak%20istiyorum." target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 WhatsApp 0532 120 28 46</a>' +
+      '</div>';
+  }
 
-      // 6. FİYATLAR & LİSANS PAKETLERİ
-      if (qNorm.includes('fiyat') || qNorm.includes('ucret') || qNorm.includes('paket') || qNorm.includes('kac para') || qNorm.includes('kampanya') || qNorm.includes('yillik') || qNorm.includes('maliyet') || qNorm.includes('odeme') || qNorm.includes('taksit') || qNorm.includes('pesin')) {
-        return '<div><strong>💎 DiyetKalfa Lisans & Fiyatlandırma:</strong></div>' +
-          '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
-            '• <strong>Giriş Paketi:</strong> 1.500 TL/ay (12 aylıkta 1.080 TL/ay)<br>' +
-            '• <strong>Profesyonel Paket:</strong> 2.900 TL/ay (12 aylıkta 2.088 TL/ay)<br>' +
-            '• <strong>Sınırsız Paket:</strong> Normalde 50.000 TL, 12 aylık yıllık kampanyamızla <strong>36.000 TL</strong> (Aylık sadece 3.000 TL).' +
-          '</div>' +
-          '<div style="margin-top: 6px; font-size: 11.5px; color: #64748b;">* Tüm paketlerde ilk 7 gün ücretsizdir. İstediğiniz zaman iptal edebilirsiniz.</div>' +
-          '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-            '<a href="fiyatlar.html" class="ai-link-btn" style="background: #0f766e; color: #fff;">💳 Tüm Fiyatları İncele →</a>' +
-            '<a href="kayit.html" target="_blank" rel="noopener noreferrer" class="ai-link-btn" style="background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0;">✨ 7 Gün Ücretsiz Başla</a>' +
-          '</div>';
-      }
+  // 5. LİSANS SÜRESİ, SÜRE UZATMA, KALAN GÜN & SÜREN DOLUYOR BİLDİRİMİ
+  if (qNorm.includes('lisans sure') || qNorm.includes('kalan sure') || qNorm.includes('surem bit') || qNorm.includes('sure uzat') || qNorm.includes('yenile') || qNorm.includes('bildirim') || qNorm.includes('suren doluyor') || qNorm.includes('gunum kaldi') || qNorm.includes('sure dolunca')) {
+    return '<div><strong>⏳ Otomatik Lisans Süresi & Süre Uzatma Bildirim Sistemi:</strong></div>' +
+      '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
+        'DiyetKalfa lisansınız tamamen şeffaf ve otomatik bir sayaçla yönetilir:' +
+        '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
+          '<li><strong>👑 Canlı Sayaç:</strong> Klinik panelinizin en üstünde aktif paketiniz ve kalan gün sayınız (Örn: <em>⏳ Kalan Süre: 28 Gün</em>) anlık görünür.</li>' +
+          '<li><strong>⚠️ Akıllı Uyarı Bildirimi:</strong> Lisans sürenizin bitmesine son 5 gün kaldığında ekranda otomatik sarı bildirim bandı açılır ve sürenizi kesintisiz uzatmanız hatırlatılır.</li>' +
+          '<li><strong>🛡️ Veri Kaybı Asla Olmaz:</strong> Süreniz dolsa dahi danışan kayıtlarınız, tahlil sonuçlarınız ve takvim verileriniz asla silinmez, kilitlenerek korunur.</li>' +
+          '<li><strong>🔄 Tek Tıkla Yenileme:</strong> Lisans butonuna tıklayarak doğrudan WhatsApp VIP hattımızdan özel indirimle sürenizi uzatabilirsiniz.</li>' +
+        '</ul>' +
+      '</div>' +
+      '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
+        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">👑 Panelde Lisans Sayacını Gör</a>' +
+        '<a href="fiyatlar.html" class="ai-link-btn" style="background: #0f766e; color: #fff;">📦 Paketleri & İndirimleri İncele</a>' +
+      '</div>';
+  }
 
-      // 7. 7 GÜN ÜCRETSİZ DENEME & SATIN ALMA
-      if (qNorm.includes('deneme') || qNorm.includes('ucretsiz') || qNorm.includes('7 gun') || qNorm.includes('bedava') || qNorm.includes('test') || qNorm.includes('kartsiz') || qNorm.includes('satin al')) {
-        return '<div><strong>✨ 7 Gün Kartsız Ücretsiz Deneme:</strong></div>' +
-          '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
-            'DiyetKalfa\'yı <strong>hiçbir kredi kartı veya banka bilgisi vermeden</strong> 7 gün boyunca tam yetkiyle deneyebilirsiniz.<br>' +
-            'Diyet Planlayıcı, HOMA-IR Laboratuvar Analizi, Randevu Takvimi, Otomatik SMS ve Excel Danışan Çizelgesi anında açılır. Süre bitiminde siz onay vermedikçe hiçbir ücret çekilmez.' +
-          '</div>' +
-          '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-            '<a href="kayit.html" target="_blank" rel="noopener noreferrer" class="ai-link-btn" style="background: #059669; color: #fff; font-weight: bold;">🚀 7 Günlük Denemeyi Başlat →</a>' +
-            '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff;">⚡ Doğrudan Paneli Aç</a>' +
-          '</div>';
-      }
+  // 6. FİYATLAR & LİSANS PAKETLERİ
+  if (qNorm.includes('fiyat') || qNorm.includes('ucret') || qNorm.includes('paket') || qNorm.includes('kac para') || qNorm.includes('kampanya') || qNorm.includes('yillik') || qNorm.includes('maliyet') || qNorm.includes('taksit') || qNorm.includes('pesin')) {
+    return '<div><strong>💎 DiyetKalfa Lisans Paketleri & Kampanyalı Fiyatlar:</strong></div>' +
+      '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
+        '• <strong>Giriş Paketi (10 Danışan):</strong> 1.500 TL/ay (12 aylıkta 18.000 TL/yıl)<br>' +
+        '• <strong>Temel Paket (Sınırsız Danışan):</strong> 2.200 TL/ay (12 aylıkta 26.400 TL/yıl)<br>' +
+        '• <strong>Profesyonel Paket (Sınırsız + Web Sitesi):</strong> Normalde 50.000 TL, 12 aylık kampanyayla <strong>36.000 TL/yıl</strong> (Ayda sadece 3.000 TL).<br>' +
+        '• <strong>Sınırsız Kurumsal Paket:</strong> 4.500 TL/ay (12 aylıkta 54.000 TL/yıl).' +
+      '</div>' +
+      '<div style="margin-top: 6px; font-size: 11.5px; color: #64748b;">* Tüm paketlerde ilk 7 gün kartsız ücretsizdir. Satın alma sonrası WhatsApp ile anında açılır.</div>' +
+      '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
+        '<a href="fiyatlar.html" class="ai-link-btn" style="background: #0f766e; color: #fff;">💎 Tüm Fiyat Tablosunu Aç →</a>' +
+        '<a href="javascript:void(0)" onclick="openCheckoutModal(\'Profesyonel Paket\')" class="ai-link-btn" style="background: #163b2c; color: #fff;">💳 Hemen Satın Al</a>' +
+      '</div>';
+  }
 
-      // 8. DEMO TALEBİ & BİREBİR REHBERLİ SUNUM
-      if (qNorm.includes('demo') || qNorm.includes('sunum') || qNorm.includes('tanitim') || qNorm.includes('ornegi') || qNorm.includes('canli goster')) {
-        return '<div><strong>🎯 DiyetKalfa Canlı Demo Seçenekleri:</strong></div>' +
-          '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
-            'Demoyu iki şekilde deneyimleyebilirsiniz:<br>' +
-            '1. <strong>Anında Kendi Kendine Deneme:</strong> Aşağıdaki butona basarak paneli şifresiz ve anında test edebilirsiniz.<br>' +
-            '2. <strong>Birebir Uzman Sunumu:</strong> 0532 120 28 46 WhatsApp hattımızdan 15 dakikalık canlı ekran paylaşımı talep edebilirsiniz.' +
-          '</div>' +
-          '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-            '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">🚀 Anında Demo Panelini Aç →</a>' +
-            '<a href="https://wa.me/905321202846?text=Merhaba%2C%20DiyetKalfa%20AI%20klinik%20demo%20sunumu%20talep%20ediyorum." target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 0532 120 28 46 WhatsApp Sunumu</a>' +
-          '</div>';
-      }
+  // 7. 7 GÜN ÜCRETSİZ DENEME & BAŞLAMA
+  if (qNorm.includes('deneme') || qNorm.includes('ucretsiz') || qNorm.includes('7 gun') || qNorm.includes('bedava') || qNorm.includes('test') || qNorm.includes('kartsiz')) {
+    return '<div><strong>✨ 7 Gün Kartsız Ücretsiz Deneme:</strong></div>' +
+      '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
+        'DiyetKalfa\'yı <strong>hiçbir kredi kartı veya banka bilgisi vermeden</strong> 7 gün boyunca tam yetkiyle deneyebilirsiniz.<br>' +
+        'Diyet Planlayıcı, HOMA-IR Laboratuvar Analizi, Randevu Takvimi, Otomatik SMS ve Excel Danışan Çizelgesi anında açılır. Süre bitiminde siz onay vermedikçe hiçbir ücret çekilmez.' +
+      '</div>' +
+      '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
+        '<a href="kayit.html" target="_blank" rel="noopener noreferrer" class="ai-link-btn" style="background: #059669; color: #fff; font-weight: bold;">🚀 7 Günlük Denemeyi Başlat →</a>' +
+        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff;">⚡ Doğrudan Paneli Aç</a>' +
+      '</div>';
+  }
 
-      // 9. TAHLİL, KAN, HOMA-IR & LABORATUVAR
-      if (qNorm.includes('tahlil') || qNorm.includes('laboratuvar') || qNorm.includes('homa') || qNorm.includes('kan') || qNorm.includes('insulin') || qNorm.includes('glukoz') || qNorm.includes('glisemik') || qNorm.includes('dso') || qNorm.includes('who')) {
-        return '<div><strong>🩺 DSÖ 2024 & HOMA-IR Akıllı Analiz Motoru:</strong></div>' +
-          '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
-            'Danışanınızın açlık kan şekeri (glukoz) ve açlık insülin değerlerini girerek saniyeler içinde <strong>HOMA-IR metabolik risk skoru</strong>nu ve insülin direnci seviyesini hesaplayabilirsiniz. Sistem, değere göre düşük glisemik indeksli bilimsel beslenme protokolleri önerir.' +
-          '</div>' +
-          '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-            '<a href="ozellikler.html" class="ai-link-btn" style="background: #163b2c; color: #fff;">🔬 Klinik Özellikleri İncele →</a>' +
-            '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #0f766e; color: #fff;">🧪 Panelde Tahlil Modülü</a>' +
-          '</div>';
-      }
+  // 8. DEMO TALEBİ & BİREBİR REHBERLİ SUNUM
+  if (qNorm.includes('demo') || qNorm.includes('sunum') || qNorm.includes('tanitim') || qNorm.includes('ornegi') || qNorm.includes('canli goster')) {
+    return '<div><strong>🎯 DiyetKalfa Canlı Demo Seçenekleri:</strong></div>' +
+      '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
+        'Demoyu iki pratik yolla keşfedebilirsiniz:<br>' +
+        '1. <strong>Anında Canlı Demo Paneli:</strong> Kurulum yapmadan tek tıkla canlı klinik arayüzünü test edebilirsiniz.<br>' +
+        '2. <strong>Birebir Uzman Sunumu:</strong> 0532 120 28 46 WhatsApp hattımızdan 15 dakikalık rehberli canlı ekran turu talep edebilirsiniz.' +
+      '</div>' +
+      '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
+        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">🚀 Anında Demo Panelini Aç →</a>' +
+        '<a href="https://wa.me/905321202846?text=Merhaba%2C%20DiyetKalfa%20AI%20klinik%20demo%20sunumu%20talep%20ediyorum." target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 0532 120 28 46 WhatsApp Sunumu</a>' +
+      '</div>';
+  }
 
-      // 10. DİYET PLANLAYICI, REÇETE, BESİN, TÜRKOMP & TARİFLER
-      if (qNorm.includes('diyet') || qNorm.includes('recete') || qNorm.includes('liste') || qNorm.includes('menu') || qNorm.includes('ogun') || qNorm.includes('tarif') || qNorm.includes('besin') || qNorm.includes('turkomp') || qNorm.includes('kalori') || qNorm.includes('detoks') || qNorm.includes('degisim')) {
-        return '<div><strong>🥗 Akıllı Diyet Planlayıcı & Türkomp Besin Motoru:</strong></div>' +
-          '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
-            '• <strong>Kişiye Özel Metrikler:</strong> Yaş, boy, kilo, cinsiyet ve PAL aktivite düzeyine göre BMR ve TDEE otomatik hesaplanır.<br>' +
-            '• <strong>7 Günlük Zengin Reçete:</strong> Sabah, Öğle, Akşam, 3 Ara Öğün (biri gece metabolik ara öğünü), Günün Detoks Suyu ve Sağlıklı Tatlısı.<br>' +
-            '• <strong>Türkomp & Değişim Listesi:</strong> Türkiye\'ye özgü 100+ klinik tarif, gramajlar ve resmi gıda değerleri entegredir.<br>' +
-            '• <strong>Sınırsız Tarif Yenileme:</strong> "Menüyü Değiştir" butonlarıyla her defasında yepyeni alternatif tarifler üretilir.' +
-          '</div>' +
-          '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-            '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff;">🚀 Diyet Planlayıcıyı Dene →</a>' +
-            '<a href="ozellikler.html" class="ai-link-btn" style="background: #0f766e; color: #fff;">🍏 Besin Veritabanı Detayları</a>' +
-          '</div>';
-      }
+  // 9. RANDEVU TAKVİMİ & OTOMATİK SMS
+  if (qNorm.includes('randevu') || qNorm.includes('sms') || qNorm.includes('takvim') || qNorm.includes('seans') || qNorm.includes('rehber') || qNorm.includes('hatirlat') || qNorm.includes('doktortakvimi') || qNorm.includes('onay')) {
+    return '<div><strong>📅 Akıllı Randevu Takvimi & Otomatik SMS Sistemi:</strong></div>' +
+      '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
+        '• <strong>Telefon Rehberi Entegrasyonu:</strong> Akıllı telefon rehberinizi veya .vcf listenizi tek tıkla takvime bağlayın.<br>' +
+        '• <strong>Saatlik Seans Matrisi:</strong> 09:00 - 18:00 arası seansları pratik slot butonlarıyla anında planlayın.<br>' +
+        '• <strong>Otomatik Seans SMS\'i:</strong> Randevu oluşturulduğunda veya saati güncellendiğinde danışanınızın cebine canlı SMS bildirimi gönderilir.<br>' +
+        '• <strong>Kaçırma Oranını Düşürün:</strong> Otomatik hatırlatma sayesinde danışanların seans kaçırma oranı %85 azalır.' +
+      '</div>' +
+      '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
+        '<a href="ozellikler.html" class="ai-link-btn" style="background: #163b2c; color: #fff;">📅 Takvim Detaylarını Gör →</a>' +
+        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #0f766e; color: #fff;">🚀 Takvimi Panelde Dene</a>' +
+      '</div>';
+  }
 
-      // 11. İLETİŞİM, TELEFON, WHATSAPP & DESTEK
-      if (qNorm.includes('iletisim') || qNorm.includes('telefon') || qNorm.includes('numara') || qNorm.includes('whatsapp') || qNorm.includes('destek') || qNorm.includes('ara') || qNorm.includes('nerede') || qNorm.includes('ulas')) {
-        return '<div><strong>📞 DiyetKalfa 7/24 Klinik İletişim Hattı:</strong></div>' +
-          '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
-            '• <strong>Telefon & WhatsApp:</strong> 0532 120 28 46<br>' +
-            '• <strong>E-Posta:</strong> destek@diyetkalfa.com<br>' +
-            '• <strong>Çalışma Saatleri:</strong> 7/24 Kesintisiz Klinik Destek' +
-          '</div>' +
-          '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-            '<a href="https://wa.me/905321202846?text=Merhaba%20DiyetKalfa%20canl%C4%B1%20destek%20almak%20istiyorum." target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 WhatsApp\'tan Yaz</a>' +
-            '<button type="button" onclick="openContactModal()" class="ai-link-btn" style="background: #163b2c; color: #fff; border: none; cursor: pointer;">📞 Biz Sizi Arayalım</button>' +
-          '</div>';
-      }
+  // 10. EXCEL DANIŞAN ÇİZELGESİ & İÇE/DIŞA AKTARIM
+  if (qNorm.includes('excel') || qNorm.includes('tablo') || qNorm.includes('cizelge') || qNorm.includes('csv') || qNorm.includes('sheets') || qNorm.includes('yapistir') || qNorm.includes('aktar')) {
+    return '<div><strong>📊 Excel\'e Duyarlı Akıllı Danışan Çizelgesi:</strong></div>' +
+      '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
+        'Yıllardır tuttuğunuz Excel tablolarını geride bırakmanıza gerek yok! DiyetKalfa tam uyumludur:<br>' +
+        '• <strong>Toplu Yapıştır (Ctrl+V):</strong> Excel veya Google Sheets\'teki danışan tablonuzu tek tıkla kopyalayıp aktarın.<br>' +
+        '• <strong>Doğrudan Hücre Düzenleme:</strong> Tablo üzerinden danışan kilosu, hedefi ve seans notlarını doğrudan tıklayarak güncelleyin.<br>' +
+        '• <strong>Otomatik Kilo Kaybı Hesaplama:</strong> Verilen net kilo (Δ kg) ve danışan durumu otomatik hesaplanır.<br>' +
+        '• <strong>Tek Tıkla SMS & Randevu:</strong> Tablodaki herhangi bir danışana anında randevu oluşturup SMS iletin.' +
+      '</div>' +
+      '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
+        '<a href="ozellikler.html" class="ai-link-btn" style="background: #163b2c; color: #fff;">📊 Excel Özelliklerini Gör →</a>' +
+        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #0f766e; color: #fff;">🚀 Panelde Tabloyu Aç</a>' +
+      '</div>';
+  }
 
-      // 12. MOBİL UYUM, APP, UYGULAMA, IOS, ANDROID
-      if (qNorm.includes('mobil') || qNorm.includes('app') || qNorm.includes('uygulama') || qNorm.includes('ios') || qNorm.includes('android') || qNorm.includes('tablet') || qNorm.includes('telefon')) {
-        return '<div><strong>📱 Mobil & Tablet & PC %100 Tam Uyum:</strong></div>' +
-          '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
-            'DiyetKalfa yeni nesil PWA ve Cloud web altyapısıyla çalışır. App Store veya Google Play Store indirmesi yapmanıza gerek kalmadan tüm iPhone, iPad, Android telefon, tablet ve bilgisayarlarınızda tarayıcınızdan anında çalışır. Dilerseniz ana ekranınıza tek tıkla ikon olarak ekleyebilirsiniz.' +
-          '</div>' +
-          '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">📲 Mobilde Canlı Dene →</a>';
-      }
+  // 11. TAHLİL, KAN, HOMA-IR & İNSÜLİN DİRENCİ
+  if (qNorm.includes('tahlil') || qNorm.includes('laboratuvar') || qNorm.includes('homa') || qNorm.includes('kan') || qNorm.includes('insulin') || qNorm.includes('glukoz') || qNorm.includes('glisemik') || qNorm.includes('dso') || qNorm.includes('who')) {
+    return '<div><strong>🩺 DSÖ 2024 & HOMA-IR Akıllı Analiz Motoru:</strong></div>' +
+      '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
+        'Danışanınızın açlık kan şekeri (glukoz) ve açlık insülin değerlerini girerek saniyeler içinde <strong>HOMA-IR metabolik risk skoru</strong>nu ve insülin direnci seviyesini hesaplayabilirsiniz. Sistem, değere göre düşük glisemik indeksli bilimsel beslenme protokolleri önerir.' +
+      '</div>' +
+      '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
+        '<a href="ozellikler.html" class="ai-link-btn" style="background: #163b2c; color: #fff;">🔬 Klinik Özellikleri İncele →</a>' +
+        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #0f766e; color: #fff;">🧪 Panelde Tahlil Modülü</a>' +
+      '</div>';
+  }
 
-      // 13. GÜVENLİK, KVKK, MBYS, E-NABIZ
-      if (qNorm.includes('guvenli') || qNorm.includes('kvkk') || qNorm.includes('gizlilik') || qNorm.includes('mbys') || qNorm.includes('e-nabiz') || qNorm.includes('enabiz') || qNorm.includes('yedek')) {
-        return '<div><strong>🔒 Klinik Veri Güvenliği, KVKK & MBYS Uyumu:</strong></div>' +
-          '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
-            'DiyetKalfa; Sağlık Bakanlığı MBYS entegrasyonuna, e-Nabız protokollerine ve 6698 sayılı KVKK sağlık verisi gizliliği yönergelerine tam uyumludur. Tüm verileriniz 256-Bit SSL şifrelemeyle korunur, üçüncü şahıslarla asla paylaşılmaz.' +
-          '</div>' +
-          '<a href="sss.html" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🛡️ Güvenlik Detaylarını Gör →</a>';
-      }
+  // 12. DİYET PLANLAYICI, REÇETE, BESİN, TÜRKOMP & TARİFLER
+  if (qNorm.includes('diyet') || qNorm.includes('recete') || qNorm.includes('liste') || qNorm.includes('menu') || qNorm.includes('ogun') || qNorm.includes('tarif') || qNorm.includes('besin') || qNorm.includes('turkomp') || qNorm.includes('kalori') || qNorm.includes('detoks') || qNorm.includes('degisim')) {
+    return '<div><strong>🥗 Akıllı Diyet Planlayıcı & Türkomp Besin Motoru:</strong></div>' +
+      '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
+        '• <strong>Kişiye Özel Metrikler:</strong> Yaş, boy, kilo, cinsiyet ve PAL aktivite düzeyine göre BMR ve TDEE otomatik hesaplanır.<br>' +
+        '• <strong>7 Günlük Zengin Reçete:</strong> Sabah, Öğle, Akşam, 3 Ara Öğün (biri gece metabolik ara öğünü), Günün Detoks Suyu ve Sağlıklı Tatlısı.<br>' +
+        '• <strong>Türkomp & Değişim Listesi:</strong> Türkiye\'ye özgü 100+ klinik tarif, gramajlar ve resmi gıda değerleri entegredir.<br>' +
+        '• <strong>Sınırsız Menü Değiştirme:</strong> "Menüyü Değiştir" butonu her basışta kendini tekrarlamayan taptaze reçeteler üretir.' +
+      '</div>' +
+      '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
+        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff;">🚀 Diyet Planlayıcıyı Dene →</a>' +
+        '<a href="ozellikler.html" class="ai-link-btn" style="background: #0f766e; color: #fff;">🍏 Besin Veritabanı Detayları</a>' +
+      '</div>';
+  }
 
-      // 14. INBODY, TARTI, VÜCUT ANALİZİ
-      if (qNorm.includes('inbody') || qNorm.includes('tarti') || qNorm.includes('vucut') || qNorm.includes('tanita') || qNorm.includes('yag') || qNorm.includes('kas')) {
-        return '<div><strong>⚖️ InBody & Tanita Vücut Analiz Motoru:</strong></div>' +
-          '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
-            'Danışanınızın InBody, Tanita veya Visbody cihazından çıkan kilo, yağ yüzdesi, kas kütlesi, sıvı oranı, iç organ yağı ve bel/kalça oranını sisteme girebilir; danışanınız için zaman içindeki değişim grafiklerini tek tıkla görebilirsiniz.' +
-          '</div>' +
-          '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">📊 Panelde Vücut Analizini Aç →</a>';
-      }
+  // 13. MENÜYÜ DEĞİŞTİR / SONSUZ TARİF YENİLEME
+  if (qNorm.includes('menuyu degistir') || qNorm.includes('sonsuz') || qNorm.includes('tekrarl') || qNorm.includes('farkli tarif') || qNorm.includes('ayni tarif')) {
+    return '<div><strong>🔄 Sınırsız & Tekrarsız Tarif Yenileme Motoru:</strong></div>' +
+      '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
+        'DiyetKalfa\'da "Menüyü Değiştir" butonuna kaç kez basarsanız basın, <strong>asla kendini tekrarlamaz!</strong>' +
+        '<br>Genişletilmiş Türk mutfağı ve klinik beslenme kütüphanesi sayesinde Kahvaltı, Öğle, Akşam, Ara Öğünler ve Detoks Suları her defasında bambaşka alternatiflerle yenilenir.' +
+      '</div>' +
+      '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🔄 Panelde Menü Yenilemeyi Test Et →</a>';
+  }
 
-      // 15. DİNAMİK AKILLI FALLBACK (Kullanıcının sorusuna özel bağlamsal yönlendirme)
-      return '<div><strong>\"' + rawQuery.replace(/</g, '&lt;').replace(/>/g, '&gt;') + '\"</strong> konulu sorunuz için teşekkür ederiz!</div>' +
-        '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
-          'DiyetKalfa klinik işletim sistemi; diyetisyenlerin klinik yönetimini, tahlil yorumlamasını, randevu takvimini ve danışan takip süreçlerini kolaylaştırmak üzere tasarlanmıştır. Bu sorunuz hakkında detaylı rehberlik almak ve kliniğinize özel canlı demoyu görmek için:' +
-        '</div>' +
-        '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-          '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">🚀 Klinik Demo Panelini Aç</a>' +
-          '<a href="fiyatlar.html" class="ai-link-btn" style="background: #0f766e; color: #fff;">💎 Fiyatları İncele</a>' +
-          '<a href="https://wa.me/905321202846?text=' + encodeURIComponent('Merhaba, ' + rawQuery + ' hakkında detaylı bilgi almak istiyorum.') + '" target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 0532 120 28 46 WhatsApp Destek</a>' +
-        '</div>';
-    }
+  // 14. PCOS (POLİKİSTİK OVER SENDROMU)
+  if (qNorm.includes('pcos') || qNorm.includes('polikistik') || qNorm.includes('over')) {
+    return '<div><strong>🌸 PCOS (Polikistik Over Sendromu) Klinik Protokolü:</strong></div>' +
+      '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
+        'PCOS vakalarında hedef; hiperinsülinemi ve androjen seviyesini dengelemektir:' +
+        '<ul style="margin: 4px 0 0 16px; padding: 0;">' +
+          '<li><strong>Düşük Glisemik İndeks:</strong> Rafine şeker sıfırlanır, tam tahıl ve baklagil tercih edilir.</li>' +
+          '<li><strong>Miyoinositol & D-Kiro İnositol Desteği:</strong> Yumurtalık insülin duyarlılığını artırır.</li>' +
+          '<li><strong>Antioksidan & Omega-3:</strong> Ceviz, chia, keten tohumu ve semizotu zengin menüler planlanır.</li>' +
+        '</ul>' +
+      '</div>' +
+      '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🌸 Panelde PCOS Menüsü Hazırla →</a>';
+  }
+
+  // 15. DİYABET & ŞEKER HASTALIĞI
+  if (qNorm.includes('diyabet') || qNorm.includes('seker hast') || qNorm.includes('metformin') || qNorm.includes('karbonhidrat sayimi')) {
+    return '<div><strong>🩸 Diyabet & Karbonhidrat Yönetim Protokolü:</strong></div>' +
+      '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
+        'Tip 1 ve Tip 2 diyabet danışanlarında kan şekeri dalgalanmalarını engellemek için:' +
+        '<ul style="margin: 4px 0 0 16px; padding: 0;">' +
+          '<li><strong>Karbonhidrat / Lif Oranı:</strong> Her öğünde en az 6-8g posa hedeflenir.</li>' +
+          '<li><strong>Protein - Yağ Sinerjisi:</strong> Karbonhidratın emilimini yavaşlatmak için çiğ kuruyemiş ve yoğurt kombini yapılır.</li>' +
+          '<li><strong>HOMA-IR Skoru:</strong> Açlık glukoz & insülin değeriyle metabolik risk periyodik izlenir.</li>' +
+        '</ul>' +
+      '</div>' +
+      '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🩺 Panelde Diyabet Menüsü Oluştur →</a>';
+  }
+
+  // 16. TİROİD & HASHİMOTO
+  if (qNorm.includes('tiroid') || qNorm.includes('hashimoto') || qNorm.includes('hipotiroid') || qNorm.includes('tsh')) {
+    return '<div><strong>🦋 Tiroid & Hashimoto Klinik Beslenme Protokolü:</strong></div>' +
+      '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
+        'Tiroid fonksiyonlarını desteklemek ve antikor titresini düşürmek için:' +
+        '<ul style="margin: 4px 0 0 16px; padding: 0;">' +
+          '<li><strong>Selenyum & Çinko:</strong> Günde 2 adet Brezilya cevizi ve kabak çekirdeği entegre edilir.</li>' +
+          '<li><strong>Guatrojen Besin Kontrolü:</strong> Brokoli, lahana, karnabahar pişirilerek tüketilir, çiğ tüketim sınırlandırılır.</li>' +
+          '<li><strong>Gluten Hassasiyeti:</strong> Otoimmün alevlenmeyi azaltmak için glutensiz eliminasyon opsiyonu sunulur.</li>' +
+        '</ul>' +
+      '</div>' +
+      '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🦋 Tiroid Reçetesi Hazırla →</a>';
+  }
+
+  // 17. KETOJENİK DİYET & ARALIKLI ORUÇ (IF 16:8)
+  if (qNorm.includes('keto') || qNorm.includes('ketojenik') || qNorm.includes('aralikli oruc') || qNorm.includes('fasting') || qNorm.includes('16:8')) {
+    return '<div><strong>⚡ Ketojenik Beslenme & Aralıklı Oruç (IF) Protokolü:</strong></div>' +
+      '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
+        'Metabolik esneklik ve hızlı yağ yakımı için DiyetKalfa şu standartları sunar:' +
+        '<ul style="margin: 4px 0 0 16px; padding: 0;">' +
+          '<li><strong>Makro Dağılımı:</strong> %70-75 Sağlıklı Yağ, %20 Protein, %5 Karbonhidrat (net <25g).</li>' +
+          '<li><strong>Aralıklı Oruç Penceresi:</strong> 16 saat açlık, 8 saat beslenme penceresinde 2 ana ve 1 ara öğün.</li>' +
+          '<li><strong>Elektrolit Dengesi:</strong> Sodyum, potasyum ve magnezyum içeren kemik suyu ve maden suyu desteği.</li>' +
+        '</ul>' +
+      '</div>' +
+      '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">⚡ Panelde Keto & IF Planla →</a>';
+  }
+
+  // 18. SPORCU BESLENMESİ & PROTEİN İHTİYACI
+  if (qNorm.includes('sporcu') || qNorm.includes('protein ihtiyac') || qNorm.includes('kas yap') || qNorm.includes('antrenman') || qNorm.includes('creatin') || qNorm.includes('whey')) {
+    return '<div><strong>🏋️‍♂️ Sporcu Beslenmesi & Makro Optimizasyonu:</strong></div>' +
+      '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
+        'Kas hipertrofisi ve performans için DiyetKalfa metrikleri:' +
+        '<ul style="margin: 4px 0 0 16px; padding: 0;">' +
+          '<li><strong>Protein Hedefi:</strong> Spor dalına göre 1.6 - 2.2 g/kg saf protein dağılımı.</li>' +
+          '<li><strong>Zamanlama (Nutrient Timing):</strong> Antrenman öncesi düşük GI karbonhidrat, antrenman sonrası lösin zengin protein.</li>' +
+          '<li><strong>InBody Kas Takibi:</strong> İskelet kas kütlesi (SMM) artışını grafik üzerinde izleme.</li>' +
+        '</ul>' +
+      '</div>' +
+      '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🏋️‍♂️ Sporcu Reçetesi Oluştur →</a>';
+  }
+
+  // 19. GEBELİK & EMZİRME DÖNEMİ
+  if (qNorm.includes('gebe') || qNorm.includes('hamile') || qNorm.includes('emziren') || qNorm.includes('laktasyon') || qNorm.includes('anne sutu')) {
+    return '<div><strong>🤰 Gebelik & Emzirme Dönemi Beslenme Protokolü:</strong></div>' +
+      '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
+        'Anne ve bebek sağlığı için bilimsel mikro ve makro besin planlaması:' +
+        '<ul style="margin: 4px 0 0 16px; padding: 0;">' +
+          '<li><strong>Trimester Kalori Artışı:</strong> 2. trimesterde +300 kcal, 3. trimesterde +450 kcal ilavesi.</li>' +
+          '<li><strong>Kritik Mikronütrientler:</strong> Folik asit, demir, iyot, kalsiyum ve DHA omega-3 zengin öğünler.</li>' +
+          '<li><strong>Anne Sütü Verimi:</strong> Yeterli hidrasyon (3.5 lt/gün), rezene, yulaf ve kaliteli protein desteği.</li>' +
+        '</ul>' +
+      '</div>' +
+      '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🤰 Gebelik Menüsü Hazırla →</a>';
+  }
+
+  // 20. KABIZLIK & LİF / SİNDİRİM SORUNLARI
+  if (qNorm.includes('kabiz') || qNorm.includes('sindirim') || qNorm.includes('lif') || qNorm.includes('posa') || qNorm.includes('bagirsak') || qNorm.includes('probiyotik')) {
+    return '<div><strong>🌿 Kabızlık & Bağırsak Mikrobiyotası Protokolü:</strong></div>' +
+      '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
+        'Sindirim konforu ve bağırsak motilitesi için 3 kritik adım:' +
+        '<ul style="margin: 4px 0 0 16px; padding: 0;">' +
+          '<li><strong>25-30g Günlük Lif:</strong> Çözünür (yulaf, elma) ve çözünmez lif (tam tahıl, keten tohumu) dengesi.</li>' +
+          '<li><strong>Probiyotik Gıdalar:</strong> Ev yapımı kefir, probiyotik yoğurt ve fermente sebzeler.</li>' +
+          '<li><strong>Metabolik Su Hedefi:</strong> Kilo x 35 ml kuralı + sabah aç karnına ılık limonlu su.</li>' +
+        '</ul>' +
+      '</div>' +
+      '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🌿 Lifli Menü Oluştur →</a>';
+  }
+
+  // 21. İLETİŞİM, TELEFON, WHATSAPP & DESTEK
+  if (qNorm.includes('iletisim') || qNorm.includes('telefon') || qNorm.includes('numara') || qNorm.includes('whatsapp') || qNorm.includes('destek') || qNorm.includes('ara') || qNorm.includes('nerede') || qNorm.includes('ulas')) {
+    return '<div><strong>📞 DiyetKalfa 7/24 Klinik İletişim Hattı:</strong></div>' +
+      '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
+        '• <strong>Telefon & WhatsApp:</strong> 0532 120 28 46<br>' +
+        '• <strong>E-Posta:</strong> destek@diyetkalfa.com<br>' +
+        '• <strong>Çalışma Saatleri:</strong> 7/24 Kesintisiz Klinik Destek' +
+      '</div>' +
+      '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
+        '<a href="https://wa.me/905321202846?text=Merhaba%20DiyetKalfa%20canl%C4%B1%20destek%20almak%20istiyorum." target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 WhatsApp\'tan Yaz</a>' +
+        '<button type="button" onclick="openContactModal()" class="ai-link-btn" style="background: #163b2c; color: #fff; border: none; cursor: pointer;">📞 Biz Sizi Arayalım</button>' +
+      '</div>';
+  }
+
+  // 22. MOBİL UYUM, APP, UYGULAMA, IOS, ANDROID
+  if (qNorm.includes('mobil') || qNorm.includes('app') || qNorm.includes('uygulama') || qNorm.includes('ios') || qNorm.includes('android') || qNorm.includes('tablet')) {
+    return '<div><strong>📱 Mobil & Tablet & PC %100 Tam Uyum:</strong></div>' +
+      '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
+        'DiyetKalfa yeni nesil PWA ve Cloud web altyapısıyla çalışır. App Store veya Google Play indirmesi yapmanıza gerek kalmadan tüm iPhone, iPad, Android telefon, tablet ve bilgisayarlarınızda tarayıcınızdan anında çalışır.' +
+      '</div>' +
+      '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">📲 Mobilde Canlı Dene →</a>';
+  }
+
+  // 23. GÜVENLİK, KVKK, MBYS & VERİ YEDEĞİ
+  if (qNorm.includes('guvenli') || qNorm.includes('kvkk') || qNorm.includes('gizlilik') || qNorm.includes('mbys') || qNorm.includes('e-nabiz') || qNorm.includes('enabiz') || qNorm.includes('yedek') || qNorm.includes('veri kaybi')) {
+    return '<div><strong>🔒 Klinik Veri Güvenliği, KVKK & MBYS Uyumu:</strong></div>' +
+      '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
+        'DiyetKalfa; Sağlık Bakanlığı MBYS standartlarına, e-Nabız protokollerine ve 6698 sayılı KVKK sağlık verisi gizliliği yönergelerine tam uyumludur. Tüm verileriniz 256-Bit SSL şifrelemeyle korunur, üçüncü şahıslarla asla paylaşılmaz.' +
+      '</div>' +
+      '<a href="sss.html" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🛡️ Güvenlik Detaylarını Gör →</a>';
+  }
+
+  // 24. INBODY, TARTI, VÜCUT ANALİZİ
+  if (qNorm.includes('inbody') || qNorm.includes('tarti') || qNorm.includes('vucut') || qNorm.includes('tanita') || qNorm.includes('yag') || qNorm.includes('kas')) {
+    return '<div><strong>⚖️ InBody & Tanita Vücut Analiz Motoru:</strong></div>' +
+      '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
+        'Danışanınızın InBody, Tanita veya Visbody cihazından çıkan kilo, yağ yüzdesi, kas kütlesi, sıvı oranı, iç organ yağı ve bel/kalça oranını sisteme girebilir; zaman içindeki değişim grafiklerini tek tıkla görebilirsiniz.' +
+      '</div>' +
+      '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">📊 Panelde Vücut Analizini Aç →</a>';
+  }
+
+  // 25. DİNAMİK KLİNİK VE SİSTEM SENTEZLEYİCİSİ (SERBEST VE MANUEL SORULAR İÇİN)
+  // Kullanıcı ne sorarsa sorsun; konuyu, tıbbi/beslenme terimlerini ve danışan profilini analiz edip özel bir çözüm üretir.
+  var detectedConcepts = [];
+  if (qNorm.includes('kilo') || qNorm.includes('zayif') || qNorm.includes('sisman') || qNorm.includes('obez')) detectedConcepts.push('Kilo Yönetimi & Enerji Dengesi');
+  if (qNorm.includes('kalori') || qNorm.includes('bmr') || qNorm.includes('tdee') || qNorm.includes('makro')) detectedConcepts.push('Metabolik Enerji & Makro Dağılımı');
+  if (qNorm.includes('su') || qNorm.includes('odem') || qNorm.includes('detoks') || qNorm.includes('sivi')) detectedConcepts.push('Hidrasyon & Sıvı-Elektrolit Dengesi');
+  if (qNorm.includes('protein') || qNorm.includes('karbonhidrat') || qNorm.includes('yag')) detectedConcepts.push('Besin Öğesi Oranları');
+  if (qNorm.includes('tahlil') || qNorm.includes('kan') || qNorm.includes('lab') || qNorm.includes('deger')) detectedConcepts.push('Laboratuvar Biyokimya Değerlendirmesi');
+  if (qNorm.includes('randevu') || qNorm.includes('seans') || qNorm.includes('takvim') || qNorm.includes('danisan')) detectedConcepts.push('Klinik Randevu & Takip Operasyonu');
+  if (qNorm.includes('fiyat') || qNorm.includes('paket') || qNorm.includes('lisans') || qNorm.includes('ucret')) detectedConcepts.push('Lisans ve Yatırım Planlaması');
+
+  var conceptTitle = detectedConcepts.length > 0 ? detectedConcepts.join(' • ') : 'Klinik Beslenme & Sistem Analizi';
+  var escapedQuery = rawClean.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+  return '<div><strong>💡 ' + conceptTitle + '</strong></div>' +
+    '<div style="margin-top: 6px; color: #334155; line-height: 1.55;">' +
+      '<strong>\"' + escapedQuery + '\"</strong> konulu sorunuz klinik algoritmamız tarafından incelendi:' +
+      '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
+        '<li><strong>Klinik Yaklaşım:</strong> Danışanınızın yaş, cinsiyet, tahlil (HOMA-IR/glukoz) ve PAL aktivite düzeyine göre kişiye özel beslenme reçetesi oluşturulması esastır.</li>' +
+        '<li><strong>DSÖ 2024 Uyumu:</strong> Şeker oranının <%5, tuzun <2g ve günlük diyet lifinin >25g olarak dengelenmesi metabolik başarıyı garantiler.</li>' +
+        '<li><strong>DiyetKalfa Çözümü:</strong> Bu durumu saniyeler içinde çözmek için Diyet Planlayıcı modülümüzden ilgili vakayı seçebilir veya tahlil laboratuvarına verileri girerek reçetenizi tek tıkla üretebilirsiniz.</li>' +
+      '</ul>' +
+    '</div>' +
+    '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
+      '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">🚀 Panelde Uygulamalı Dene →</a>' +
+      '<a href="https://wa.me/905321202846?text=' + encodeURIComponent('Merhaba, ' + rawClean + ' konusunda klinik destek almak istiyorum.') + '" target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 0532 120 28 46 Uzmana Danış</a>' +
+    '</div>';
+}
+
   </script>
 
 <!-- ========================================================================== -->
-<!-- DIYETKALFA - DOĞRUDAN KREDİ KARTI / BANKA KARTI SATIN ALMA & DENEME MODALI -->
-<!-- ========================================================================== -->
-<div id="modal-direct-checkout" class="modal-backdrop" style="display: none; align-items: center; justify-content: center; z-index: 10005; background: rgba(23, 12, 7, 0.75); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 16px;">
-  <div style="background: #ffffff; border-radius: 24px; max-width: 640px; width: 100%; max-height: 92vh; overflow-y: auto; padding: 32px 28px; box-shadow: 0 25px 60px -15px rgba(23, 12, 7, 0.4); border: 1.5px solid #e6ded1; position: relative;">
+<!-- ============================================================ -->
+<!-- DIYETKALFA - KARTSIZ, VERGİ/POS MASRAFSIZ GÜVENLİ LİSANS MODALI -->
+<!-- ============================================================ -->
+<div id="modal-direct-checkout" class="modal-backdrop" style="display: none; align-items: center; justify-content: center; z-index: 10005; background: rgba(10, 24, 18, 0.82); backdrop-filter: blur(8px); padding: 16px;">
+  <div class="modal-box" style="max-width: 580px; width: 100%; max-height: 92vh; overflow-y: auto; border-radius: 20px; border: 1.5px solid #2e5e4b; background: #ffffff; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4); padding: 26px; position: relative;">
     
-    <!-- Kapatma Butonu -->
-    <button type="button" onclick="closeDirectCheckout()" style="position: absolute; top: 18px; right: 18px; background: #f4efe6; border: none; width: 34px; height: 34px; border-radius: 50%; font-size: 16px; font-weight: 800; color: #24150e; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s;">✕</button>
+    <button type="button" style="position: absolute; top: 18px; right: 20px; background: #f1f5f3; border: none; width: 34px; height: 34px; border-radius: 50%; font-size: 16px; font-weight: 800; color: #163b2c; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s;" onclick="closeCheckoutModal()">✕</button>
 
-    <!-- Normal Form Görünümü -->
+    <!-- FORM VE SEÇENEKLER KAPSAYICISI -->
     <div id="checkout-form-container">
-      <div style="text-align: center; margin-bottom: 12px;"><img src="logo.png" alt="DiyetKalfa" style="height: 48px; width: auto; object-fit: contain;"></div>
       
-      <!-- Başlık ve Güvenlik Rozeti -->
-      <div style="text-align: center; margin-bottom: 22px;">
-        <div style="display: inline-flex; align-items: center; gap: 6px; background: #edf5f0; border: 1px solid #2e5e4b; color: #163b2c; font-size: 11.5px; font-weight: 800; padding: 4px 14px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px;">
-          <span>🔒</span> 256-Bit SSL Şifreli Güvenli Kart Ödeme Sistemi
-        </div>
-        <h2 style="font-size: 23px; font-weight: 900; color: #170c07; margin-bottom: 6px; letter-spacing: -0.02em;">
-          DiyetKalfa Lisans Başlatma & Ödeme
-        </h2>
-        <p style="font-size: 13.5px; color: #685951; line-height: 1.5;">
-          İlk 7 gün tamamen ücretsizdir. İstediğiniz an tek tıkla iptal edebilirsiniz.
-        </p>
-      </div>
-
-      <!-- Seçilen Paket Özeti Kutusu -->
-      <div style="background: #fdfbf7; border: 1.5px solid #e6ded1; border-radius: 18px; padding: 20px; margin-bottom: 22px;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-          <div>
-            <div style="font-size: 11px; font-weight: 800; color: #94593f; text-transform: uppercase; letter-spacing: 0.06em;">SEÇİLEN LİSANS PAKETİ</div>
-            <div id="checkout-plan-name" style="font-size: 18px; font-weight: 900; color: #170c07;">Enterprise Klinik</div>
-            <div id="checkout-plan-cycle" style="font-size: 12.5px; color: #685951;">12 Ay Peşin Kampanyalı Plan</div>
-          </div>
-          <div style="text-align: right;">
-            <div id="checkout-orig-price" style="font-size: 14px; text-decoration: line-through; color: #94867e; font-weight: 700;">50.000 TL</div>
-            <div id="checkout-plan-price" style="font-size: 20px; font-weight: 900; color: #163b2c;">36.000 TL / yıl</div>
-          </div>
-        </div>
-
-        <div style="background: #edf5f0; border-radius: 12px; padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; border: 1px solid #2e5e4b;">
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <span style="font-size: 18px;">🎁</span>
-            <span style="font-size: 13px; font-weight: 800; color: #163b2c;">Bugün Tahsil Edilecek Tutar:</span>
-          </div>
-          <span style="font-size: 16px; font-weight: 900; color: #163b2c;">0,00 TL (7 Gün Ücretsiz)</span>
-        </div>
-
-        <div style="font-size: 11.5px; color: #685951; line-height: 1.5; margin-top: 10px;">
-          🛡️ <strong>7 Gün Sıfır Risk Garantisi:</strong> İlk 7 gün boyunca kartınızdan çekim yapılmaz. 7 günün sonunda iptal etmezseniz seçtiğiniz paket aktifleşir.
-        </div>
-      </div>
-
-      <!-- Ödeme ve Kart Formu -->
-      <form id="direct-card-form" onsubmit="processCardPaymentAndUnlock(event)" style="display: flex; flex-direction: column; gap: 14px;">
-        
-        <!-- İletişim Bilgileri Satırı -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-          <div>
-            <label style="font-size: 12px; font-weight: 700; color: #170c07; display: block; margin-bottom: 4px;">Ad Soyad / Klinik Yetkilisi</label>
-            <input type="text" id="card-fullname" required placeholder="Dyt. Adınız Soyadınız" style="width: 100%; padding: 11px 13px; border-radius: 10px; border: 1.5px solid #d8cdbc; font-size: 13.5px; outline: none; background: #faf8f4; color: #170c07; font-family: inherit;">
-          </div>
-          <div>
-            <label style="font-size: 12px; font-weight: 700; color: #170c07; display: block; margin-bottom: 4px;">E-Posta (Lisans Gönderimi)</label>
-            <input type="email" id="card-email" required placeholder="ornek@klinik.com" style="width: 100%; padding: 11px 13px; border-radius: 10px; border: 1.5px solid #d8cdbc; font-size: 13.5px; outline: none; background: #faf8f4; color: #170c07; font-family: inherit;">
-          </div>
-        </div>
-
+      <!-- MODAL BAŞLIĞI -->
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+        <div style="width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, #163b2c 0%, #0f766e 100%); display: flex; align-items: center; justify-content: center; font-size: 22px; color: #fff; box-shadow: 0 4px 12px rgba(22, 59, 44, 0.3);">👑</div>
         <div>
-          <label style="font-size: 12px; font-weight: 700; color: #170c07; display: block; margin-bottom: 4px;">Cep Telefonu</label>
-          <input type="tel" id="card-phone" required placeholder="05XX XXX XX XX" style="width: 100%; padding: 11px 13px; border-radius: 10px; border: 1.5px solid #d8cdbc; font-size: 13.5px; outline: none; background: #faf8f4; color: #170c07; font-family: inherit;">
+          <h3 id="checkout-title" style="font-size: 20px; font-weight: 900; color: #163b2c; margin: 0; line-height: 1.2;">Profesyonel Paket Satın Al</h3>
+          <div id="checkout-subtitle" style="font-size: 12.5px; color: #047857; font-weight: 700; margin-top: 3px;">12 Ay Yıllık Kampanyalı Plan • 0 Komisyon / Vergi Bariyersiz</div>
         </div>
+      </div>
 
-        <!-- Kart Bilgileri Alanı -->
-        <div style="border-top: 1px solid #e6ded1; padding-top: 14px; margin-top: 2px;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-            <label style="font-size: 12px; font-weight: 800; color: #170c07; text-transform: uppercase; letter-spacing: 0.05em;">Kredi Kartı / Banka Kartı Bilgileri</label>
-            <div style="display: flex; gap: 4px; font-size: 11px; font-weight: 800; color: #685951;">
-              <span style="background: #f4efe6; padding: 2px 6px; border-radius: 4px;">VISA</span>
-              <span style="background: #f4efe6; padding: 2px 6px; border-radius: 4px;">MC</span>
-              <span style="background: #f4efe6; padding: 2px 6px; border-radius: 4px;">TROY</span>
-            </div>
+      <!-- FİYAT & GÜVENLİK ÖZET BANDI -->
+      <div style="background: linear-gradient(135deg, #edf5f0 0%, #f4fbf7 100%); border: 1.5px solid #c8e0d1; border-radius: 14px; padding: 14px 18px; margin-bottom: 18px; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <div style="font-size: 11.5px; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">Ödenecek Tutar:</div>
+          <div id="checkout-amount" style="font-size: 24px; font-weight: 900; color: #163b2c;">36.000 TL</div>
+        </div>
+        <div style="text-align: right;">
+          <span style="background: #163b2c; color: #d4af37; font-size: 11px; font-weight: 800; padding: 5px 12px; border-radius: 999px; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
+            🔒 Anında Lisans Aktivasyonu
+          </span>
+          <div style="font-size: 11px; color: #059669; font-weight: 700; margin-top: 4px;">✓ Sanal POS / Kart Bilgisi İstemez</div>
+        </div>
+      </div>
+
+      <!-- DİYETİSYEN BİLGİLERİ FORMU -->
+      <div style="background: #fbfbfa; border: 1px solid #e2e8f0; border-radius: 12px; padding: 14px; margin-bottom: 16px;">
+        <div style="font-size: 12px; font-weight: 800; color: #334155; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
+          <span>👤</span> Diyetisyen & Lisans Sahibi Bilgileri
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+          <div>
+            <label style="font-size: 11px; font-weight: 700; color: #475569; display: block; margin-bottom: 3px;">Ad Soyad *</label>
+            <input type="text" id="co-name" placeholder="Uzm. Dyt. Zehra Bölük" value="Uzm. Dyt. Zehra Bölük" required style="width: 100%; padding: 9px 12px; border-radius: 8px; border: 1.5px solid #cbd5e1; font-size: 13px; font-family: inherit; box-sizing: border-box;">
           </div>
-
-          <div style="margin-bottom: 12px;">
-            <label style="font-size: 11.5px; font-weight: 600; color: #685951; display: block; margin-bottom: 4px;">Kart Üzerindeki İsim</label>
-            <input type="text" id="card-holder" required placeholder="KART ÜZERİNDEKİ İSİM" style="width: 100%; padding: 11px 13px; border-radius: 10px; border: 1.5px solid #d8cdbc; font-size: 13.5px; outline: none; background: #ffffff; text-transform: uppercase; font-family: inherit;">
-          </div>
-
-          <div style="margin-bottom: 12px;">
-            <label style="font-size: 11.5px; font-weight: 600; color: #685951; display: block; margin-bottom: 4px;">Kart Numarası</label>
-            <input type="text" id="card-number" required maxlength="19" placeholder="•••• •••• •••• ••••" oninput="formatCreditCardNumber(this)" style="width: 100%; padding: 11px 13px; border-radius: 10px; border: 1.5px solid #d8cdbc; font-size: 15px; font-family: monospace; letter-spacing: 0.08em; outline: none; background: #ffffff;">
-          </div>
-
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-            <div>
-              <label style="font-size: 11.5px; font-weight: 600; color: #685951; display: block; margin-bottom: 4px;">Son Kullanma Tarihi</label>
-              <input type="text" id="card-expiry" required maxlength="5" placeholder="AA / YY" oninput="formatCardExpiry(this)" style="width: 100%; padding: 11px 13px; border-radius: 10px; border: 1.5px solid #d8cdbc; font-size: 14px; font-family: monospace; outline: none; background: #ffffff; text-align: center;">
-            </div>
-            <div>
-              <label style="font-size: 11.5px; font-weight: 600; color: #685951; display: block; margin-bottom: 4px;">Güvenlik Kodu (CVC / CVV)</label>
-              <input type="password" id="card-cvc" required maxlength="4" placeholder="•••" style="width: 100%; padding: 11px 13px; border-radius: 10px; border: 1.5px solid #d8cdbc; font-size: 14px; font-family: monospace; outline: none; background: #ffffff; text-align: center;">
-            </div>
+          <div>
+            <label style="font-size: 11px; font-weight: 700; color: #475569; display: block; margin-bottom: 3px;">Klinik / Merkez Adı</label>
+            <input type="text" id="co-clinic" placeholder="DiyetKalfa Sağlıklı Yaşam" value="DiyetKalfa Sağlıklı Yaşam" style="width: 100%; padding: 9px 12px; border-radius: 8px; border: 1.5px solid #cbd5e1; font-size: 13px; font-family: inherit; box-sizing: border-box;">
           </div>
         </div>
-
-        <div style="display: flex; align-items: flex-start; gap: 8px; margin-top: 4px;">
-          <input type="checkbox" id="card-terms" required checked style="margin-top: 3px; accent-color: #163b2c; cursor: pointer;">
-          <label for="card-terms" style="font-size: 12px; color: #685951; line-height: 1.4; cursor: pointer;">
-            <a href="javascript:void(0)" style="color: #94593f; font-weight: 700;">Mesafeli Satış Sözleşmesi</a>'ni ve 7 Günlük İptal Koşullarını okudum, onaylıyorum.
-          </label>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+          <div>
+            <label style="font-size: 11px; font-weight: 700; color: #475569; display: block; margin-bottom: 3px;">WhatsApp Telefon No *</label>
+            <input type="tel" id="co-phone" placeholder="0532 120 28 46" value="0532 120 28 46" required style="width: 100%; padding: 9px 12px; border-radius: 8px; border: 1.5px solid #cbd5e1; font-size: 13px; font-family: inherit; box-sizing: border-box;">
+          </div>
+          <div>
+            <label style="font-size: 11px; font-weight: 700; color: #475569; display: block; margin-bottom: 3px;">Şehir</label>
+            <input type="text" id="co-city" placeholder="İstanbul" value="İstanbul" style="width: 100%; padding: 9px 12px; border-radius: 8px; border: 1.5px solid #cbd5e1; font-size: 13px; font-family: inherit; box-sizing: border-box;">
+          </div>
         </div>
+      </div>
 
-        <button type="submit" id="btn-submit-checkout" style="background: linear-gradient(135deg, #163b2c 0%, #0d241b 100%); color: #ffffff; border: none; padding: 16px; border-radius: 14px; font-weight: 900; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 4px 18px rgba(22, 59, 44, 0.35); transition: all 0.2s; margin-top: 6px;">
-          <span>💳 7 Gün Ücretsiz Başlat ve Lisansı Aç (0,00 TL)</span>
-          <span style="font-size: 18px;">→</span>
+      <!-- ÖDEME YÖNTEMİ SEÇİCİ SEKMELERİ -->
+      <div style="display: flex; gap: 6px; margin-bottom: 14px;">
+        <button type="button" id="tab-btn-whatsapp" onclick="switchCheckoutTab('whatsapp')" class="active" style="flex: 1; padding: 10px 8px; border-radius: 10px; border: 1.5px solid #163b2c; font-weight: 800; font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s; background: #163b2c; color: #ffffff;">
+          <span>💬</span> WhatsApp VIP Sipariş
         </button>
+        <button type="button" id="tab-btn-bank" onclick="switchCheckoutTab('bank')" style="flex: 1; padding: 10px 8px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800; font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s; background: #ffffff; color: #475569;">
+          <span>🏦</span> Havale / EFT / FAST
+        </button>
+        <button type="button" id="tab-btn-key" onclick="switchCheckoutTab('key')" style="flex: 0.9; padding: 10px 8px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-weight: 800; font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s; background: #ffffff; color: #475569;">
+          <span>🔑</span> Lisans Kodu Gir
+        </button>
+      </div>
 
-        <div style="text-align: center; font-size: 11.5px; color: #94867e; margin-top: 4px;">
-          🛡️ Kartınızdan bugün 0 TL çekilir • 14 Gün Koşulsuz İade Garantisi • 256-Bit SSL
+      <!-- SEÇENEK 1: WHATSAPP VIP SİPARİŞ & ANINDA AKTİVASYON -->
+      <div id="checkout-section-whatsapp" style="display: block;">
+        <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px; padding: 14px; margin-bottom: 14px; font-size: 12.5px; color: #166534; line-height: 1.5;">
+          <strong>⚡ Doğrudan & Masrafsız Aktivasyon:</strong><br>
+          Aşağıdaki butona bastığınızda sipariş detaylarınız doğrudan <strong>0532 120 28 46 WhatsApp Lisans Hattımıza</strong> iletilir. Lisans kodunuz anında üretilir ve klinik paneliniz hemen tam lisanslı moda geçer.
         </div>
-      </form>
+        <button type="button" onclick="handleCheckoutWhatsAppOrder(event)" style="width: 100%; background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: #ffffff; border: none; padding: 15px; border-radius: 14px; font-weight: 900; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 18px rgba(37, 211, 102, 0.35); transition: all 0.2s;">
+          <span style="font-size: 18px;">💬</span> WhatsApp ile Siparişi Tamamla & Lisansı Aktive Et →
+        </button>
+      </div>
+
+      <!-- SEÇENEK 2: HAVALE / EFT / FAST DOĞRUDAN BANKA TRANSFERİ -->
+      <div id="checkout-section-bank" style="display: none;">
+        <div style="background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 14px; margin-bottom: 14px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span style="font-size: 12px; font-weight: 800; color: #1e293b;">Banka: Garanti BBVA / Akbank</span>
+            <span style="font-size: 11px; background: #e2e8f0; color: #334155; padding: 2px 8px; border-radius: 6px; font-weight: 700;">7/24 FAST Aktif</span>
+          </div>
+          <div style="font-size: 11.5px; color: #64748b; margin-bottom: 2px;">Alıcı Ünvanı:</div>
+          <div style="font-size: 12.5px; font-weight: 800; color: #163b2c; margin-bottom: 8px;">DiyetKalfa Sağlıklı Yaşam ve Yazılım Teknolojileri</div>
+          <div style="font-size: 11.5px; color: #64748b; margin-bottom: 2px;">IBAN:</div>
+          <div style="display: flex; align-items: center; gap: 8px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 8px 12px; margin-bottom: 8px;">
+            <code style="font-size: 13px; font-weight: 800; color: #0f172a; flex: 1; letter-spacing: 0.04em;">TR56 0006 2000 0001 2345 6789 01</code>
+            <button type="button" onclick="copyIban()" style="background: #163b2c; color: #fff; border: none; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 800; cursor: pointer;">📋 Kopyala</button>
+          </div>
+          <div style="font-size: 11.5px; color: #64748b;">Açıklama Kodu: <strong id="checkout-desc-code" style="color: #163b2c; font-family: monospace;">DK-8492</strong> (veya Diyetisyen Adınız)</div>
+        </div>
+        <button type="button" onclick="handleCheckoutBankOrder(event)" style="width: 100%; background: linear-gradient(135deg, #163b2c 0%, #0d241b 100%); color: #ffffff; border: none; padding: 15px; border-radius: 14px; font-weight: 900; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 18px rgba(22, 59, 44, 0.35);">
+          <span>✓</span> Havale / EFT Yaptım, Lisansımı Aktive Et & Panele Geç →
+        </button>
+      </div>
+
+      <!-- SEÇENEK 3: MEVCUT LİSANS KODU GİRİŞİ -->
+      <div id="checkout-section-key" style="display: none;">
+        <div style="background: #fdfbf7; border: 1px solid #fde68a; border-radius: 12px; padding: 14px; margin-bottom: 14px; font-size: 12px; color: #92400e; line-height: 1.5;">
+          WhatsApp veya yetkilimiz tarafından size iletilen <strong>VIP Lisans Anahtarını</strong> girerek sisteminizi tek tıkla tam yetkili hale getirebilirsiniz.
+        </div>
+        <div style="margin-bottom: 14px;">
+          <input type="text" id="co-license-key" placeholder="Örn: DK-2026-PRO-9842 veya VIP365" style="width: 100%; padding: 12px 14px; border-radius: 10px; border: 2px solid #163b2c; font-size: 15px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; font-family: monospace; box-sizing: border-box;">
+        </div>
+        <button type="button" onclick="handleCheckoutKeyActivation(event)" style="width: 100%; background: linear-gradient(135deg, #d4af37 0%, #b89320 100%); color: #163b2c; border: none; padding: 15px; border-radius: 14px; font-weight: 900; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);">
+          <span>🔑</span> Lisans Kodunu Doğrula ve Sistemi Aç →
+        </button>
+      </div>
 
     </div>
 
-    <!-- İşlem / 3D Secure Loader Görünümü -->
-    <div id="checkout-processing-view" style="display: none; text-align: center; padding: 40px 10px;">
-      <div style="width: 60px; height: 60px; border: 4px solid #f4efe6; border-top-color: #163b2c; border-radius: 50%; margin: 0 auto 20px; animation: spinCheckout 0.9s linear infinite;"></div>
-      <h3 id="checkout-proc-title" style="font-size: 20px; font-weight: 900; color: #170c07; margin-bottom: 8px;">Banka ile Güvenli Bağlantı Kuruluyor...</h3>
-      <p id="checkout-proc-desc" style="font-size: 14px; color: #685951;">256-Bit SSL Şifreli 3D Secure provizyon doğrulaması alınıyor (0,00 TL)...</p>
-    </div>
-
-    <!-- Başarı Görünümü -->
-    <div id="checkout-success-view" style="display: none; text-align: center; padding: 30px 10px;">
-      <div style="width: 68px; height: 68px; background: #edf5f0; color: #163b2c; border: 2px solid #2e5e4b; border-radius: 50%; font-size: 32px; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; box-shadow: 0 6px 18px rgba(22, 59, 44, 0.25);">✓</div>
-      <h3 style="font-size: 22px; font-weight: 900; color: #163b2c; margin-bottom: 8px;">Tebrikler! Lisansınız Onaylandı</h3>
-      <p style="font-size: 14px; color: #685951; line-height: 1.6; max-width: 440px; margin: 0 auto 20px;">
-        7 günlük ücretsiz deneme lisansınız başarıyla tanımlandı. Faturanız ve lisans anahtarınız e-posta adresinize gönderildi.
+    <!-- BAŞARI / AKTİVASYON TAMAMLANDI GÖRÜNÜMÜ -->
+    <div id="checkout-success-view" style="display: none; text-align: center; padding: 15px 5px;">
+      <div style="width: 64px; height: 64px; border-radius: 50%; background: #dcfce7; color: #16a34a; font-size: 34px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; box-shadow: 0 4px 15px rgba(22, 163, 74, 0.25);">✓</div>
+      <h3 style="font-size: 22px; font-weight: 900; color: #163b2c; margin-bottom: 6px;">Tebrikler! Lisansınız Aktifleştirildi</h3>
+      <p style="font-size: 13.5px; color: #475569; margin-bottom: 18px; line-height: 1.5;">
+        Klinik işletim sisteminiz seçilen paket ve süre dahilinde tam yetkiyle açıldı. Tüm verileriniz güvenle saklanmaktadır.
       </p>
 
-      <div style="background: #fdfbf7; border: 1.5px dashed #163b2c; border-radius: 12px; padding: 14px; margin-bottom: 24px; display: inline-block;">
-        <div style="font-size: 11px; font-weight: 700; color: #94593f; text-transform: uppercase;">DİYETKALFA LİSANS ANAHTARINIZ:</div>
-        <div id="checkout-generated-key" style="font-size: 18px; font-weight: 900; color: #163b2c; letter-spacing: 0.1em; font-family: monospace; margin-top: 4px;">DK-2026-KLINIK-9842</div>
+      <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 16px; margin-bottom: 22px; text-align: left;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+          <span style="font-size: 12px; color: #64748b;">Aktif Paket:</span>
+          <strong id="co-success-plan" style="font-size: 13px; color: #163b2c;">Profesyonel Paket</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+          <span style="font-size: 12px; color: #64748b;">Kalan Süre:</span>
+          <strong id="co-success-days" style="font-size: 13px; color: #047857;">365 Gün Kesintisiz Lisans</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+          <span style="font-size: 12px; color: #64748b;">Son Geçerlilik:</span>
+          <strong id="co-success-expiry" style="font-size: 13px; color: #334155;">26 Kasım 2027</strong>
+        </div>
+        <div style="border-top: 1px dashed #cbd5e1; padding-top: 10px; margin-top: 10px;">
+          <div style="font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 700;">Lisans Anahtarınız:</div>
+          <div id="co-success-key" style="font-size: 17px; font-weight: 900; color: #163b2c; font-family: monospace; letter-spacing: 0.08em; margin-top: 3px;">DK-2026-PRO-9842</div>
+        </div>
       </div>
 
-      <button type="button" onclick="finalizeCheckoutUnlock()" style="background: #163b2c; color: #ffffff; border: none; padding: 15px 32px; border-radius: 12px; font-weight: 900; font-size: 15px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 14px rgba(22, 59, 44, 0.3);">
-        <span>Kliniği Aç & Kullanmaya Başla</span>
-        <span>→</span>
-      </button>
+      <a href="panel.html" style="background: linear-gradient(135deg, #163b2c 0%, #0d241b 100%); color: #ffffff; padding: 16px 32px; border-radius: 14px; font-weight: 900; font-size: 16px; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 18px rgba(22, 59, 44, 0.4);">
+        <span>🚀</span> Klinik Paneline Giriş Yap →
+      </a>
     </div>
 
   </div>
 </div>
+
 
 <style>
 @keyframes spinCheckout {
