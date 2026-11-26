@@ -1366,6 +1366,10 @@
  * DIYETKALFA YENİ NESİL KLİNİK & SİSTEM YAPAY ZEKA MOTORU (AI CORE 2026)
  * 40+ Klinik & Operasyonel Niyet (Intent) + Dinamik Vaka & Soru Sentezleyicisi
  */
+/**
+ * DIYETKALFA YENİ NESİL KLİNİK & SİSTEM YAPAY ZEKA MOTORU (AI CORE 2026)
+ * 40+ Klinik & Operasyonel Niyet (Intent) + Dinamik Vaka & Soru Sentezleyicisi
+ */
 function getAiResponse(rawQuery) {
   if (!rawQuery || !rawQuery.trim()) {
     return '<div>Size nasıl yardımcı olabilirim? Paketlerimiz, klinik paneli, diyet planlayıcı, randevu takvimi veya danışan vakalarınız hakkında dilediğinizi sorabilirsiniz.</div>';
@@ -1530,7 +1534,25 @@ function getAiResponse(rawQuery) {
       '</div>';
   }
 
-  // 11. TAHLİL, KAN, HOMA-IR & İNSÜLİN DİRENCİ
+    // 10.5. METFORMİN, TİP 2 DİYABET & İNSÜLİN DİRENCİ BESLENME PROTOKOLÜ
+  if (qNorm.includes('metformin') || qNorm.includes('diyabet') || qNorm.includes('seker hast') || (qNorm.includes('insulin') && (qNorm.includes('direnc') || qNorm.includes('menu') || qNorm.includes('recete') || qNorm.includes('beslen')))) {
+    return '<div><strong>🩺 Tip 2 Diyabet, İnsülin Direnci & Metformin Beslenme Protokolü:</strong></div>' +
+      '<div style="margin-top: 6px; color: #475569; line-height: 1.55;">' +
+        'Metformin kullanan veya insülin direnci tespit edilen danışanlar için klinik yönergelerimiz:' +
+        '<ul style="margin: 4px 0 0 16px; padding: 0;">' +
+          '<li><strong>Düşük Glisemik İndeks (GI):</strong> Diyet Planlayıcı modülünden <em>\"İnsülin Direnci & HOMA-IR > 2.5\"</em> hazır klinik protokolünü seçebilirsiniz.</li>' +
+          '<li><strong>Kompleks Posa & Lif Dağılımı:</strong> Günlük en az 28-30g posa hedeflenir; rafine karbonhidratlar yerine kinoa, karabuğday ve baklagil entegre edilir.</li>' +
+          '<li><strong>Gece Hipoglisemi Kalkanı:</strong> Metformin kaynaklı gece açlık krizlerini önlemek için tarçınlı kefir veya cevizli yoğurt gece metabolik ara öğünü olarak verilir.</li>' +
+          '<li><strong>HOMA-IR Takibi:</strong> Tahlil & Laboratuvar modülünden açlık glukoz ve insülin değerlerini kaydederek metabolik düzelmeyi grafik üzerinden takip edebilirsiniz.</li>' +
+        '</ul>' +
+      '</div>' +
+      '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
+        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">🩺 Panelde İnsülin Direnci Menüsünü Aç →</a>' +
+        '<a href="ozellikler.html" class="ai-link-btn" style="background: #0f766e; color: #fff;">🔬 HOMA-IR Modülü Detayları</a>' +
+      '</div>';
+  }
+
+  // 11. TAHLİL, KAN, HOMA-IR & LABORATUVAR
   if (qNorm.includes('tahlil') || qNorm.includes('laboratuvar') || qNorm.includes('homa') || qNorm.includes('kan') || qNorm.includes('insulin') || qNorm.includes('glukoz') || qNorm.includes('glisemik') || qNorm.includes('dso') || qNorm.includes('who')) {
     return '<div><strong>🩺 DSÖ 2024 & HOMA-IR Akıllı Analiz Motoru:</strong></div>' +
       '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
