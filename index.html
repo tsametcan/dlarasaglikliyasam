@@ -6877,65 +6877,7 @@ body:not(.app-locked) .header-clinical-actions {
           '.directive-box { background: #f4f7fb; border-left: 4px solid #1e3a8a; padding: 10px 14px; border-radius: 4px; margin: 14px 0; font-size: 10pt; }' +
           '.who-pill { display: inline-block; background: #eff6ff; color: #1e3a8a; font-size: 9pt; font-weight: 800; padding: 3px 8px; border-radius: 4px; border: 1px solid #3b82f6; margin-right: 6px; }' +
           '.footer { margin-top: 24px; border-top: 2px solid #1e3a8a; padding-top: 10px; font-size: 9.5pt; text-align: center; color: #475569; }' +
-          '</style><style id="dk-luxury-logo-guaranteed-styles">
-  .dk-brand-pod {
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 8px !important;
-    text-decoration: none !important;
-    flex-shrink: 0 !important;
-    padding: 2px 6px !important;
-    border-radius: 12px !important;
-    background: transparent !important;
-    transition: all 0.2s ease !important;
-    max-height: 48px !important;
-  }
-  .dk-brand-pod:hover {
-    transform: translateY(-1px) !important;
-  }
-  .dk-original-logo-img,
-  img.dk-original-logo-img,
-  a.dk-brand-pod img {
-    height: 42px !important;
-    max-height: 42px !important;
-    width: auto !important;
-    max-width: 160px !important;
-    object-fit: contain !important;
-    display: inline-block !important;
-    vertical-align: middle !important;
-    filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.45)) !important;
-    transition: transform 0.2s ease, filter 0.2s ease !important;
-  }
-  .dk-brand-pod:hover .dk-original-logo-img,
-  .dk-brand-pod:hover img {
-    filter: drop-shadow(0 4px 14px rgba(56, 189, 248, 0.4)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6)) !important;
-    transform: scale(1.02) !important;
-  }
-  .dk-logo-edition-tag {
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 4px !important;
-    font-size: 10px !important;
-    font-weight: 800 !important;
-    letter-spacing: 0.05em !important;
-    color: #38bdf8 !important;
-    background: rgba(30, 58, 138, 0.4) !important;
-    border: 1px solid rgba(56, 189, 248, 0.35) !important;
-    padding: 2px 8px !important;
-    border-radius: 999px !important;
-    text-decoration: none !important;
-    white-space: nowrap !important;
-  }
-  .dk-tag-pulse {
-    width: 6px !important;
-    height: 6px !important;
-    border-radius: 50% !important;
-    background: #38bdf8 !important;
-    box-shadow: 0 0 6px #38bdf8 !important;
-    display: inline-block !important;
-  }
-</style>
-</head><body>' +
+          '</style></head><body>' +
           '<div class="header"><div><div class="brand">' + p.clinicName + '</div><div style="font-weight: 800; color: #1e3a8a;">' + p.dietitianName + ' • ' + p.title + '</div></div><div style="text-align: right;"><span class="badge">' + activeDay + '. Gün (' + dayData.dayName + ') Reçetesi</span></div></div>' +
           '<div class="info-box"><b>Danışan Adı:</b> ' + name + ' | <b>Hedef:</b> ' + targetCal + ' | <b>Günlük Su:</b> ' + water + '<br/><div style="margin-top: 5px;"><span class="who-pill">✓ DSÖ Standardı: Tuz &lt;2g</span><span class="who-pill">✓ Rafine Şeker %0</span><span class="who-pill">✓ Yüksek Lif &gt;25g</span></div></div>' +
           (directive ? '<div class="directive-box"><b style="color: #1e3a8a;">📋 DİYETİSYENİN ÖZEL KLİNİK TALİMATI:</b><br/><div style="margin-top: 4px;">' + directive.replace(/\n/g, '<br/>') + '</div></div>' : '') +
@@ -10020,6 +9962,7 @@ function quickDemoLogin() {
 </script>
 </body>
 </html>
+
 
 
 
