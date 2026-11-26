@@ -23,7 +23,7 @@ function getAiResponse(rawQuery) {
         '</ul>' +
       '</div>' +
       '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">🚀 Klinik Demo Panelini Aç →</a>' +
+        '<a href="kayit.html" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">🚀 7 Günlük Ücretsiz Kliniğinde Başlat →</a>' +
         '<a href="kayit.html" target="_blank" rel="noopener noreferrer" class="ai-link-btn" style="background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0;">✨ 7 Gün Ücretsiz Başla</a>' +
       '</div>';
   }
@@ -41,8 +41,8 @@ function getAiResponse(rawQuery) {
       '</div>';
   }
 
-  // 3. DİYETKALFA NEDİR / NE İŞE YARAR / KİMLER İÇİN / MANGOLİF FARKI
-  if (qNorm.includes('nedir') || qNorm.includes('ne ise yarar') || qNorm.includes('ne yapar') || qNorm.includes('kimsiniz') || qNorm.includes('hakkinda') || qNorm.includes('tanit') || qNorm.includes('kimler') || qNorm.includes('mangolif fark')) {
+  // 3. DİYETKALFA NEDİR / NE İŞE YARAR / KİMLER İÇİN / KLİNİK FARKI
+  if (qNorm.includes('nedir') || qNorm.includes('ne ise yarar') || qNorm.includes('ne yapar') || qNorm.includes('kimsiniz') || qNorm.includes('hakkinda') || qNorm.includes('tanit') || qNorm.includes('kimler') || qNorm.includes('farkiniz nedir')) {
     return '<div><strong>🌟 DiyetKalfa AI Nedir ve Neden Tercih Edilir?</strong></div>' +
       '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
         'DiyetKalfa; klinik sahibi diyetisyenlerin danışan kabulünden diyet listesi oluşturmaya, tahlil yorumlamadan randevu ve SMS yönetimine kadar tüm süreçlerini tek ekrandan yürüten <strong>Yapay Zeka Destekli Klinik İşletim Sistemi</strong>dir.' +
@@ -53,7 +53,7 @@ function getAiResponse(rawQuery) {
       '</div>' +
       '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
         '<a href="ozellikler.html" class="ai-link-btn" style="background: #163b2c; color: #fff;">🔬 Tüm Özellikleri İncele →</a>' +
-        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0;">🚀 Canlı Demoyu Başlat</a>' +
+        '<a href="kayit.html" target="_blank" class="ai-link-btn" style="background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0;">🚀 Ücretsiz Kliniğinde Başlat</a>' +
       '</div>';
   }
 
@@ -80,14 +80,14 @@ function getAiResponse(rawQuery) {
       '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
         'DiyetKalfa lisansınız tamamen şeffaf ve otomatik bir sayaçla yönetilir:' +
         '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
-          '<li><strong>👑 Canlı Sayaç:</strong> Klinik panelinizin en üstünde aktif paketiniz ve kalan gün sayınız (Örn: <em>⏳ Kalan Süre: 28 Gün</em>) anlık görünür.</li>' +
+          '<li><strong>👑 Canlı Sayaç:</strong> Klinik panelinizin en üstünde aktif paketiniz ve kalan gün sayınız (<em>⏳ Kalan Süre: 28 Gün</em>) anlık görünür.</li>' +
           '<li><strong>⚠️ Akıllı Uyarı Bildirimi:</strong> Lisans sürenizin bitmesine son 5 gün kaldığında ekranda otomatik sarı bildirim bandı açılır ve sürenizi kesintisiz uzatmanız hatırlatılır.</li>' +
           '<li><strong>🛡️ Veri Kaybı Asla Olmaz:</strong> Süreniz dolsa dahi danışan kayıtlarınız, tahlil sonuçlarınız ve takvim verileriniz asla silinmez, kilitlenerek korunur.</li>' +
           '<li><strong>🔄 Tek Tıkla Yenileme:</strong> Lisans butonuna tıklayarak doğrudan WhatsApp VIP hattımızdan özel indirimle sürenizi uzatabilirsiniz.</li>' +
         '</ul>' +
       '</div>' +
       '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">👑 Panelde Lisans Sayacını Gör</a>' +
+        '<a href="kayit.html" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">👑 7 Günlük Lisansı Başlat</a>' +
         '<a href="fiyatlar.html" class="ai-link-btn" style="background: #0f766e; color: #fff;">📦 Paketleri & İndirimleri İncele</a>' +
       '</div>';
   }
@@ -117,7 +117,7 @@ function getAiResponse(rawQuery) {
       '</div>' +
       '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
         '<a href="kayit.html" target="_blank" rel="noopener noreferrer" class="ai-link-btn" style="background: #059669; color: #fff; font-weight: bold;">🚀 7 Günlük Denemeyi Başlat →</a>' +
-        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff;">⚡ Doğrudan Paneli Aç</a>' +
+        '<a href="kayit.html" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff;">⚡ Ücretsiz Kliniğinde Başlat</a>' +
       '</div>';
   }
 
@@ -130,7 +130,7 @@ function getAiResponse(rawQuery) {
         '2. <strong>Birebir Uzman Sunumu:</strong> 0532 120 28 46 WhatsApp hattımızdan 15 dakikalık rehberli canlı ekran turu talep edebilirsiniz.' +
       '</div>' +
       '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">🚀 Anında Demo Panelini Aç →</a>' +
+        '<a href="kayit.html" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">🚀 7 Gün Ücretsiz Başlat →</a>' +
         '<a href="https://wa.me/905321202846?text=Merhaba%2C%20DiyetKalfa%20AI%20klinik%20demo%20sunumu%20talep%20ediyorum." target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 0532 120 28 46 WhatsApp Sunumu</a>' +
       '</div>';
   }
@@ -146,7 +146,7 @@ function getAiResponse(rawQuery) {
       '</div>' +
       '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
         '<a href="ozellikler.html" class="ai-link-btn" style="background: #163b2c; color: #fff;">📅 Takvim Detaylarını Gör →</a>' +
-        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #0f766e; color: #fff;">🚀 Takvimi Panelde Dene</a>' +
+        '<a href="kayit.html" target="_blank" class="ai-link-btn" style="background: #0f766e; color: #fff;">🚀 Randevu Takvimini Başlat</a>' +
       '</div>';
   }
 
@@ -162,7 +162,7 @@ function getAiResponse(rawQuery) {
       '</div>' +
       '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
         '<a href="ozellikler.html" class="ai-link-btn" style="background: #163b2c; color: #fff;">📊 Excel Özelliklerini Gör →</a>' +
-        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #0f766e; color: #fff;">🚀 Panelde Tabloyu Aç</a>' +
+        '<a href="kayit.html" target="_blank" class="ai-link-btn" style="background: #0f766e; color: #fff;">🚀 Çizelgeyi Başlat</a>' +
       '</div>';
   }
 
@@ -179,7 +179,7 @@ function getAiResponse(rawQuery) {
         '</ul>' +
       '</div>' +
       '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">🩺 Panelde İnsülin Direnci Menüsünü Aç →</a>' +
+        '<a href="kayit.html" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">🩺 İnsülin Direnci Protokolünü Başlat →</a>' +
         '<a href="ozellikler.html" class="ai-link-btn" style="background: #0f766e; color: #fff;">🔬 HOMA-IR Modülü Detayları</a>' +
       '</div>';
   }
@@ -192,7 +192,7 @@ function getAiResponse(rawQuery) {
       '</div>' +
       '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
         '<a href="ozellikler.html" class="ai-link-btn" style="background: #163b2c; color: #fff;">🔬 Klinik Özellikleri İncele →</a>' +
-        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #0f766e; color: #fff;">🧪 Panelde Tahlil Modülü</a>' +
+        '<a href="kayit.html" target="_blank" class="ai-link-btn" style="background: #0f766e; color: #fff;">🧪 Tahlil Modülünü Başlat</a>' +
       '</div>';
   }
 
@@ -206,7 +206,7 @@ function getAiResponse(rawQuery) {
         '• <strong>Sınırsız Menü Değiştirme:</strong> "Menüyü Değiştir" butonu her basışta kendini tekrarlamayan taptaze reçeteler üretir.' +
       '</div>' +
       '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff;">🚀 Diyet Planlayıcıyı Dene →</a>' +
+        '<a href="kayit.html" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff;">🚀 Diyet Planlayıcıyı Başlat →</a>' +
         '<a href="ozellikler.html" class="ai-link-btn" style="background: #0f766e; color: #fff;">🍏 Besin Veritabanı Detayları</a>' +
       '</div>';
   }
@@ -218,7 +218,7 @@ function getAiResponse(rawQuery) {
         'DiyetKalfa\'da "Menüyü Değiştir" butonuna kaç kez basarsanız basın, <strong>asla kendini tekrarlamaz!</strong>' +
         '<br>Genişletilmiş Türk mutfağı ve klinik beslenme kütüphanesi sayesinde Kahvaltı, Öğle, Akşam, Ara Öğünler ve Detoks Suları her defasında bambaşka alternatiflerle yenilenir.' +
       '</div>' +
-      '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🔄 Panelde Menü Yenilemeyi Test Et →</a>';
+      '<a href="kayit.html" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🔄 Menü Motorunu Başlat →</a>';
   }
 
   // 14. PCOS (POLİKİSTİK OVER SENDROMU)
@@ -232,7 +232,7 @@ function getAiResponse(rawQuery) {
           '<li><strong>Antioksidan & Omega-3:</strong> Ceviz, chia, keten tohumu ve semizotu zengin menüler planlanır.</li>' +
         '</ul>' +
       '</div>' +
-      '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🌸 Panelde PCOS Menüsü Hazırla →</a>';
+      '<a href="kayit.html" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🌸 PCOS Menüsünü Başlat →</a>';
   }
 
   // 15. DİYABET & ŞEKER HASTALIĞI
@@ -246,7 +246,7 @@ function getAiResponse(rawQuery) {
           '<li><strong>HOMA-IR Skoru:</strong> Açlık glukoz & insülin değeriyle metabolik risk periyodik izlenir.</li>' +
         '</ul>' +
       '</div>' +
-      '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🩺 Panelde Diyabet Menüsü Oluştur →</a>';
+      '<a href="kayit.html" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🩺 Diyabet Menüsünü Başlat →</a>';
   }
 
   // 16. TİROİD & HASHİMOTO
@@ -260,7 +260,7 @@ function getAiResponse(rawQuery) {
           '<li><strong>Gluten Hassasiyeti:</strong> Otoimmün alevlenmeyi azaltmak için glutensiz eliminasyon opsiyonu sunulur.</li>' +
         '</ul>' +
       '</div>' +
-      '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🦋 Tiroid Reçetesi Hazırla →</a>';
+      '<a href="kayit.html" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🦋 Tiroid Reçetesini Başlat →</a>';
   }
 
   // 17. KETOJENİK DİYET & ARALIKLI ORUÇ (IF 16:8)
@@ -274,7 +274,7 @@ function getAiResponse(rawQuery) {
           '<li><strong>Elektrolit Dengesi:</strong> Sodyum, potasyum ve magnezyum içeren kemik suyu ve maden suyu desteği.</li>' +
         '</ul>' +
       '</div>' +
-      '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">⚡ Panelde Keto & IF Planla →</a>';
+      '<a href="kayit.html" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">⚡ Keto & IF Menüsünü Başlat →</a>';
   }
 
   // 18. SPORCU BESLENMESİ & PROTEİN İHTİYACI
@@ -288,7 +288,7 @@ function getAiResponse(rawQuery) {
           '<li><strong>InBody Kas Takibi:</strong> İskelet kas kütlesi (SMM) artışını grafik üzerinde izleme.</li>' +
         '</ul>' +
       '</div>' +
-      '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🏋️‍♂️ Sporcu Reçetesi Oluştur →</a>';
+      '<a href="kayit.html" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🏋️‍♂️ Sporcu Menüsünü Başlat →</a>';
   }
 
   // 19. GEBELİK & EMZİRME DÖNEMİ
@@ -302,7 +302,7 @@ function getAiResponse(rawQuery) {
           '<li><strong>Anne Sütü Verimi:</strong> Yeterli hidrasyon (3.5 lt/gün), rezene, yulaf ve kaliteli protein desteği.</li>' +
         '</ul>' +
       '</div>' +
-      '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🤰 Gebelik Menüsü Hazırla →</a>';
+      '<a href="kayit.html" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🤰 Gebelik Menüsünü Başlat →</a>';
   }
 
   // 20. KABIZLIK & LİF / SİNDİRİM SORUNLARI
@@ -316,7 +316,7 @@ function getAiResponse(rawQuery) {
           '<li><strong>Metabolik Su Hedefi:</strong> Kilo x 35 ml kuralı + sabah aç karnına ılık limonlu su.</li>' +
         '</ul>' +
       '</div>' +
-      '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🌿 Lifli Menü Oluştur →</a>';
+      '<a href="kayit.html" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🌿 Lifli Menüyü Başlat →</a>';
   }
 
   // 21. İLETİŞİM, TELEFON, WHATSAPP & DESTEK
@@ -339,7 +339,7 @@ function getAiResponse(rawQuery) {
       '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
         'DiyetKalfa yeni nesil PWA ve Cloud web altyapısıyla çalışır. App Store veya Google Play indirmesi yapmanıza gerek kalmadan tüm iPhone, iPad, Android telefon, tablet ve bilgisayarlarınızda tarayıcınızdan anında çalışır.' +
       '</div>' +
-      '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">📲 Mobilde Canlı Dene →</a>';
+      '<a href="kayit.html" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">📲 Mobil Kliniğini Başlat →</a>';
   }
 
   // 23. GÜVENLİK, KVKK, MBYS & VERİ YEDEĞİ
@@ -357,7 +357,7 @@ function getAiResponse(rawQuery) {
       '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
         'Danışanınızın InBody, Tanita veya Visbody cihazından çıkan kilo, yağ yüzdesi, kas kütlesi, sıvı oranı, iç organ yağı ve bel/kalça oranını sisteme girebilir; zaman içindeki değişim grafiklerini tek tıkla görebilirsiniz.' +
       '</div>' +
-      '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">📊 Panelde Vücut Analizini Aç →</a>';
+      '<a href="kayit.html" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">📊 Vücut Analizini Başlat →</a>';
   }
 
   // 25. DİNAMİK KLİNİK VE SİSTEM SENTEZLEYİCİSİ (SERBEST VE MANUEL SORULAR İÇİN)
@@ -384,7 +384,8 @@ function getAiResponse(rawQuery) {
       '</ul>' +
     '</div>' +
     '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-      '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">🚀 Panelde Uygulamalı Dene →</a>' +
+      '<a href="kayit.html" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">🚀 Kliniğinde Ücretsiz Başlat →</a>' +
       '<a href="https://wa.me/905321202846?text=' + encodeURIComponent('Merhaba, ' + rawClean + ' konusunda klinik destek almak istiyorum.') + '" target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 0532 120 28 46 Uzmana Danış</a>' +
     '</div>';
 }
+

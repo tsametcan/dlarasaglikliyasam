@@ -124,7 +124,7 @@
       .replace(/ö/g, 'o')
       .replace(/ç/g, 'c');
 
-    // 0. ÖZEL SAYISAL KİLO / SU / PROTEİN / KALORİ VAKA HESAPLAYICISI (Örn: "78 kilo danışan için su ve protein ihtiyacı")
+    // 0. ÖZEL SAYISAL KİLO / SU / PROTEİN / KALORİ VAKA HESAPLAYICISI ("78 kilo danışan için su ve protein ihtiyacı")
     var specificWeightMatch = qNorm.match(/(\d+)\s*(kg|kilo)/);
     if (specificWeightMatch && !qNorm.includes('maraton')) {
       var wVal = parseInt(specificWeightMatch[1]);
@@ -160,7 +160,7 @@
         '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
           '<button type="button" onclick="triggerQuickPrompt(\'Klinik paneline nasıl geçeceğiz?\')" class="ai-link-btn" style="background: #1e3a8a; color: #fff;">🚀 Paneli Nasıl Açarım?</button>' +
           '<button type="button" onclick="triggerQuickPrompt(\'Paketler ve fiyatlar ne kadar?\')" class="ai-link-btn" style="background: #0284c7; color: #fff;">💎 Fiyatlar & Paketler</button>' +
-          '<button type="button" onclick="triggerQuickPrompt(\'1 günlük örnek diyet listesi verir misin?\')" class="ai-link-btn" style="background: #eff6ff; color: #1e3a8a; border: 1px solid #bfdbfe;">🥗 Örnek Menü Yaz</button>' +
+          '<button type="button" onclick="triggerQuickPrompt(\'1 günlük DSÖ diyet reçetesi verir misin?\')" class="ai-link-btn" style="background: #eff6ff; color: #1e3a8a; border: 1px solid #bfdbfe;">🥗 Günlük Reçete Yaz</button>' +
         '</div>';
     }
 
@@ -177,7 +177,7 @@
         '</div>' +
         '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
           '<a href="kayit.html" class="ai-link-btn" style="background: #1e3a8a; color: #fff; font-weight: bold;">✨ Kayıt Ol & 7 Gün Başlat →</a>' +
-          '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #eff6ff; color: #1e3a8a; border: 1px solid #bfdbfe;">🚀 Klinik Paneli Gör</a>' +
+          '<a href="kayit.html" target="_blank" class="ai-link-btn" style="background: #eff6ff; color: #1e3a8a; border: 1px solid #bfdbfe;">🚀 Klinik Paneli Gör</a>' +
         '</div>';
     }
 
@@ -466,9 +466,9 @@
         '</div>';
     }
 
-    // 25. 1 GÜNLÜK ÖRNEK DİYET LİSTESİ
+    // 25. 1 GÜNLÜK DSÖ KLİNİK DİYET REÇETESİ
     if (qNorm.includes('ornek diyet') || qNorm.includes('diyet listesi') || qNorm.includes('bana liste') || qNorm.includes('ornek menu') || qNorm.includes('bir gunluk')) {
-      return '<div><strong>🥗 1 Günlük DSÖ 2024 Uyumlu Örnek Klinik Diyet Listesi (1.600 kcal):</strong></div>' +
+      return '<div><strong>🥗 1 Günlük DSÖ 2024 Uyumlu Klinik Diyet Listesi (1.600 kcal):</strong></div>' +
         '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
           '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
             '<li><strong>🍳 Kahvaltı (08:30):</strong> 2 adet haşlanmış yumurta, 50g az tuzlu lor peyniri, 5 adet zeytin, bol yeşillik ve 1 dilim ekşi mayalı siyez ekmeği.</li>' +
@@ -743,3 +743,5 @@
   window.promptGeminiKey = promptGeminiKey;
 
 })(window);
+
+

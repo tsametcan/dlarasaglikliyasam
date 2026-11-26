@@ -354,7 +354,7 @@ var SOLUTIONS_DATA = {
           </div>
           <button type="button" onclick="runSolDietGen()" style="background: linear-gradient(135deg, #1e3a8a 0%, #0284c7 100%); color: #ffffff; border: none; padding: 10px 18px; border-radius: 10px; font-weight: 800; font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(30, 58, 138, 0.25);">
             <span>🔄</span>
-            <span>Örnek Günlük Menü Üret / Sonsuz Yenile</span>
+            <span>Kişiselleştirilmiş Menü Üret / Sonsuz Yenile</span>
           </button>
           
           <div id="sol-diet-preview-box" style="margin-top: 14px; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 14px;">
@@ -387,7 +387,7 @@ var SOLUTIONS_DATA = {
           </div>
 
           <div style="display: flex; gap: 8px;">
-            <input type="text" id="ai-sim-input" placeholder="Herhangi bir klinik soru yazın (Örn: Gut hastası ne yememeli, 75 kg su ihtiyacı...)" style="flex: 1; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #94a3b8; font-size: 13px; outline: none;" onkeydown="if(event.key==='Enter') sendLegacyAiSimulationMessage();">
+            <input type="text" id="ai-sim-input" placeholder="Herhangi bir klinik soru yazın (Gut hastası ne yememeli, 75 kg su ihtiyacı...)" style="flex: 1; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #94a3b8; font-size: 13px; outline: none;" onkeydown="if(event.key==='Enter') sendLegacyAiSimulationMessage();">
             <button type="button" onclick="sendLegacyAiSimulationMessage()" style="background: #1e3a8a; color: #ffffff; border: none; padding: 10px 18px; border-radius: 10px; font-weight: 800; font-size: 13px; cursor: pointer;">Gönder</button>
           </div>
         </div>
@@ -663,7 +663,7 @@ var SOLUTIONS_DATA = {
             <div style="display: flex; flex-direction: column; gap: 8px;">
               <a href="javascript:void(0)" onclick="startClinicTrialOrRegister('Profesyonel Paket')" style="background: #eff6ff; border: 1px solid #3b82f6; color: #1e3a8a; padding: 10px; border-radius: 10px; text-decoration: none; font-weight: 800; font-size: 12.5px;">📅 Online Randevu Al</a>
               <a href="https://wa.me/905321202846" target="_blank" style="background: #eef2ff; border: 1px solid #e6d3c9; color: #4f46e5; padding: 10px; border-radius: 10px; text-decoration: none; font-weight: 800; font-size: 12.5px;">💬 WhatsApp ile Danış</a>
-              <a href="javascript:void(0)" onclick="openSolutionModal('diet_program')" style="background: #f4f7fb; border: 1px solid #cbd5e1; color: #0f172a; padding: 10px; border-radius: 10px; text-decoration: none; font-weight: 800; font-size: 12.5px;">🥗 7 Günlük Örnek Diyet Listesi</a>
+              <a href="javascript:void(0)" onclick="openSolutionModal('diet_program')" style="background: #f4f7fb; border: 1px solid #cbd5e1; color: #0f172a; padding: 10px; border-radius: 10px; text-decoration: none; font-weight: 800; font-size: 12.5px;">🥗 7 Günlük Klinik Diyet Listesi</a>
             </div>
           </div>
         </div>
@@ -813,7 +813,7 @@ var SOLUTIONS_DATA = {
             <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 10px; padding: 12px;">
               <span style="font-size: 10.5px; font-weight: 800; color: #1e3a8a; text-transform: uppercase;">DSÖ RAPORU</span>
               <h4 style="font-size: 14px; font-weight: 800; color: #0f172a; margin: 3px 0 5px;">Serbest Şeker Tüketiminin Günlük Kalorinin %5'i ile Sınırlandırılması</h4>
-              <p style="font-size: 12px; color: #475569; line-height: 1.5; margin: 0;">DSÖ'nün kronik inflamasyon ve karaciğer yağlanmasını önleme yönergeleri çerçevesinde rafine şeker oranı 0 olan örnek menü modelleri.</p>
+              <p style="font-size: 12px; color: #475569; line-height: 1.5; margin: 0;">DSÖ'nün kronik inflamasyon ve karaciğer yağlanmasını önleme yönergeleri çerçevesinde rafine şeker oranı 0 olan klinik beslenme modelleri.</p>
             </div>
           </div>
         </div>
@@ -1013,3 +1013,5 @@ async function sendLegacyAiSimulationMessage() {
     hist.scrollTop = hist.scrollHeight;
   }
 }
+
+
