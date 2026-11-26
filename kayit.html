@@ -243,7 +243,7 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.03);
     }
     .ai-msg-user {
-      background: linear-gradient(135deg, #0f766e 0%, #059669 100%);
+      background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
       color: #ffffff;
       align-self: flex-end;
       border-bottom-right-radius: 4px;
@@ -251,7 +251,7 @@
     .ai-chip-btn {
       background: #ffffff;
       border: 1px solid #cbd5e1;
-      color: #0f766e;
+      color: #0284c7;
       font-size: 11.5px;
       font-weight: 700;
       padding: 6px 12px;
@@ -261,8 +261,8 @@
       transition: all 0.15s;
     }
     .ai-chip-btn:hover {
-      background: #f0fdf4;
-      border-color: #0f766e;
+      background: #eff6ff;
+      border-color: #0284c7;
     }
     .ai-link-btn {
       display: inline-flex;
@@ -281,9 +281,11 @@
 
   <!-- HEADER -->
   <!-- ========================================================================== -->
-<!-- DIYETKALFA NEXT-GEN COMMAND BAR (2026 ROYAL SAPPHIRE & CYAN GLASS ARCHITECTURE) -->
+<!-- DIYETKALFA 3D EMBOSSED LUXURY COMMAND HEADER (TEK KATMANLI MODERN MİMARİ)  -->
 <!-- ========================================================================== -->
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap');
+
   .dk-top-architecture {
     position: sticky;
     top: 0;
@@ -291,70 +293,13 @@
     width: 100%;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   }
-  .dk-exec-topbar {
-    background: linear-gradient(90deg, #020617 0%, #0f172a 50%, #020617 100%);
-    border-bottom: 1px solid rgba(56, 189, 248, 0.18);
-    padding: 6px 20px;
-    color: #94a3b8;
-    font-size: 11.5px;
-  }
-  .dk-exec-topbar-inner {
-    max-width: 1320px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-  .dk-exec-status {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 700;
-    color: #cbd5e1;
-  }
-  .dk-pulse-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #38bdf8;
-    box-shadow: 0 0 10px #38bdf8;
-    display: inline-block;
-  }
-  .dk-exec-utilities {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-  .dk-util-pill {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    color: #e2e8f0;
-    padding: 3px 10px;
-    border-radius: 999px;
-    font-size: 11px;
-    font-weight: 800;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    text-decoration: none;
-    transition: all 0.2s ease;
-  }
-  .dk-util-pill:hover {
-    background: rgba(56, 189, 248, 0.15);
-    border-color: #38bdf8;
-    color: #38bdf8;
-  }
   .dk-main-command-header {
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.96) 0%, rgba(23, 37, 84, 0.96) 55%, rgba(15, 23, 42, 0.97) 100%);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1.5px solid rgba(56, 189, 248, 0.28);
-    box-shadow: 0 14px 36px -10px rgba(2, 6, 23, 0.45);
-    padding: 10px 20px;
+    background: linear-gradient(135deg, #060d1f 0%, #0f172a 45%, #172554 100%);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    border-bottom: 1.5px solid rgba(56, 189, 248, 0.32);
+    box-shadow: 0 14px 36px -8px rgba(2, 6, 23, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+    padding: 11px 18px;
   }
   .dk-command-inner {
     max-width: 1320px;
@@ -362,33 +307,101 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 16px;
+    gap: 10px;
   }
+  /* 3D Kabartmalı (Embossed) Logo Stili */
   .dk-brand-pod {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     text-decoration: none;
     flex-shrink: 0;
+    padding: 3px 8px 3px 4px;
+    border-radius: 16px;
+    background: linear-gradient(145deg, rgba(30, 58, 138, 0.45), rgba(15, 23, 42, 0.85));
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.25), 0 6px 16px rgba(2, 6, 23, 0.5);
+    transition: all 0.22s ease;
   }
-  .dk-brand-logo-box {
-    background: rgba(255, 255, 255, 0.96);
-    padding: 4px 10px;
-    border-radius: 14px;
-    border: 1.5px solid rgba(56, 189, 248, 0.45);
-    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2);
+  .dk-brand-pod:hover {
+    transform: translateY(-1px);
+    border-color: rgba(251, 191, 36, 0.65);
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.35), 0 8px 22px rgba(14, 165, 233, 0.35);
+  }
+  .dk-3d-crest-box {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: radial-gradient(circle at 30% 25%, #1e3a8a 0%, #091024 100%);
+    border: 1.5px solid rgba(251, 191, 36, 0.65);
+    box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.45), inset 0 -3px 5px rgba(0, 0, 0, 0.8), 0 4px 10px rgba(0, 0, 0, 0.5);
     display: flex;
     align-items: center;
-    transition: transform 0.2s ease;
+    justify-content: center;
+    flex-shrink: 0;
   }
-  .dk-brand-pod:hover .dk-brand-logo-box {
-    transform: translateY(-1px) scale(1.02);
+  .dk-3d-wordmark-wrap {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.05;
+  }
+  .dk-3d-wordmark {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 0.03em;
+    display: flex;
+    align-items: center;
+  }
+  .dk-3d-diyet {
+    color: #f8fafc;
+    text-shadow: 0 1px 0 #cbd5e1, 0 2px 0 #475569, 0 3px 6px rgba(0, 0, 0, 0.75);
+  }
+  .dk-3d-kalfa {
+    background: linear-gradient(180deg, #fef08a 0%, #f59e0b 55%, #d97706 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.65));
+    margin-left: 1px;
+  }
+  .dk-3d-sub {
+    font-size: 8.5px;
+    font-weight: 800;
+    color: #38bdf8;
+    letter-spacing: 0.16em;
+    margin-top: 2px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  }
+  /* 3D Kabartmalı Buton İkon Podları */
+  .dk-3d-btn-svg, .dk-3d-icon-pod {
+    width: 24px;
+    height: 24px;
+    border-radius: 8px;
+    background: linear-gradient(145deg, rgba(56, 189, 248, 0.22), rgba(15, 23, 42, 0.75));
+    border: 1px solid rgba(125, 211, 252, 0.35);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.35), 0 2px 5px rgba(0, 0, 0, 0.35);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #38bdf8;
+    flex-shrink: 0;
+  }
+  .dk-nav-pill.active .dk-3d-btn-svg, .dk-btn-start .dk-3d-btn-svg {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.28), rgba(15, 23, 42, 0.35));
+    border-color: rgba(255, 255, 255, 0.5);
+    color: #ffffff;
+  }
+  .dk-btn-login .dk-3d-btn-svg {
+    background: linear-gradient(145deg, rgba(251, 191, 36, 0.25), rgba(15, 23, 42, 0.75));
+    border-color: rgba(251, 191, 36, 0.5);
+    color: #fbbf24;
   }
   .dk-segmented-nav {
-    background: rgba(2, 6, 23, 0.55);
-    border: 1px solid rgba(148, 163, 184, 0.2);
-    border-radius: 16px;
-    padding: 5px;
+    background: rgba(2, 6, 23, 0.62);
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.55), 0 1px 0 rgba(255, 255, 255, 0.08);
+    border-radius: 15px;
+    padding: 4px;
     display: flex;
     align-items: center;
     gap: 3px !important;
@@ -396,10 +409,10 @@
   .dk-nav-pill {
     color: #cbd5e1;
     text-decoration: none;
-    font-size: 12.5px;
+    font-size: 12px;
     font-weight: 800;
-    padding: 7px 10px;
-    border-radius: 10px;
+    padding: 6px 10px;
+    border-radius: 11px;
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -412,73 +425,79 @@
   .dk-nav-pill:hover {
     color: #ffffff;
     background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(56, 189, 248, 0.25);
   }
   .dk-nav-pill.active {
-    background: linear-gradient(135deg, #0284c7 0%, #4f46e5 100%);
+    background: linear-gradient(135deg, #0284c7 0%, #2563eb 55%, #4f46e5 100%);
     color: #ffffff !important;
-    border-color: rgba(125, 211, 252, 0.4);
-    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+    border-color: rgba(125, 211, 252, 0.5);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.35), 0 4px 14px rgba(2, 132, 199, 0.45);
   }
   .dk-action-pod {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     flex-shrink: 0;
   }
   .dk-btn-sim {
-    background: rgba(56, 189, 248, 0.12);
-    color: #38bdf8;
-    border: 1.5px solid rgba(56, 189, 248, 0.4);
-    padding: 8px 14px;
+    background: linear-gradient(145deg, rgba(14, 165, 233, 0.16), rgba(15, 23, 42, 0.8));
+    color: #e0f2fe;
+    border: 1.5px solid rgba(56, 189, 248, 0.45);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2), 0 4px 10px rgba(0, 0, 0, 0.3);
+    padding: 6px 11px;
     border-radius: 12px;
     font-weight: 800;
-    font-size: 12.5px;
+    font-size: 12px;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     gap: 6px;
     transition: all 0.2s ease;
+    white-space: nowrap;
   }
   .dk-btn-sim:hover {
-    background: rgba(56, 189, 248, 0.22);
+    background: linear-gradient(145deg, rgba(14, 165, 233, 0.28), rgba(30, 58, 138, 0.85));
     transform: translateY(-1px);
   }
   .dk-btn-login {
-    background: rgba(245, 158, 11, 0.12);
-    color: #fbbf24;
-    border: 1.5px solid rgba(245, 158, 11, 0.45);
-    padding: 7px 12px;
+    background: linear-gradient(145deg, rgba(245, 158, 11, 0.16), rgba(15, 23, 42, 0.8));
+    color: #fef08a;
+    border: 1.5px solid rgba(251, 191, 36, 0.5);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2), 0 4px 10px rgba(0, 0, 0, 0.3);
+    padding: 6px 11px;
     border-radius: 12px;
     font-weight: 800;
-    font-size: 12.5px;
+    font-size: 12px;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     gap: 6px;
     transition: all 0.2s ease;
+    white-space: nowrap;
   }
   .dk-btn-login:hover {
-    background: rgba(245, 158, 11, 0.22);
+    background: linear-gradient(145deg, rgba(245, 158, 11, 0.28), rgba(30, 58, 138, 0.85));
     transform: translateY(-1px);
   }
   .dk-btn-start {
-    background: linear-gradient(135deg, #0ea5e9 0%, #4f46e5 100%);
+    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 50%, #4f46e5 100%);
     color: #ffffff !important;
     text-decoration: none;
-    padding: 8px 14px;
+    padding: 6px 13px;
     border-radius: 12px;
     font-weight: 900;
-    font-size: 13px;
+    font-size: 12px;
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    border: 1px solid rgba(125, 211, 252, 0.45);
-    box-shadow: 0 6px 18px rgba(14, 165, 233, 0.38);
+    border: 1px solid rgba(125, 211, 252, 0.55);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 6px 18px rgba(37, 99, 235, 0.45);
     transition: all 0.2s ease;
+    white-space: nowrap;
   }
   .dk-btn-start:hover {
     transform: translateY(-1px);
-    box-shadow: 0 8px 24px rgba(79, 70, 229, 0.5);
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.5), 0 8px 24px rgba(79, 70, 229, 0.6);
   }
   /* 2-Column Bento Mega-Menu for Solutions */
   .dk-bento-mega-menu {
@@ -491,7 +510,7 @@
     background: #ffffff;
     border: 1.5px solid #cbd5e1;
     border-radius: 22px;
-    box-shadow: 0 25px 60px -12px rgba(15, 23, 42, 0.35);
+    box-shadow: 0 25px 60px -12px rgba(15, 23, 42, 0.45);
     padding: 16px;
     z-index: 10005;
     max-height: 82vh;
@@ -518,6 +537,19 @@
     border-color: #38bdf8;
     transform: translateY(-1px);
   }
+  .dk-bento-mega-menu .sol-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: linear-gradient(145deg, #1e3a8a, #0f172a);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.25), 0 3px 8px rgba(15,23,42,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
   @media (max-width: 1120px) {
     .dk-command-inner { flex-wrap: wrap; justify-content: center; }
     .dk-segmented-nav { flex-wrap: wrap; justify-content: center; }
@@ -527,44 +559,41 @@
 </style>
 
 <header class="app-header dk-top-architecture">
-  <!-- Tier 1: Executive Telemetry & Clinical Utility Bar -->
-  <div class="dk-exec-topbar">
-    <div class="dk-exec-topbar-inner">
-      <div class="dk-exec-status">
-        <span class="dk-pulse-dot"></span>
-        <span>DİYETKALFA AI OS 4.5</span>
-        <span style="color:#475569;">|</span>
-        <span style="color:#94a3b8; font-weight:600;">DSÖ 2024 & TÜBER Akredite Klinik Karar Destek Sistemi</span>
-      </div>
-      <div class="dk-exec-utilities">
-        <button type="button" onclick="openSolutionModal('calorie')" class="dk-util-pill">
-          <span>🧮</span>
-          <span>BMR & TDEE Kalori Motoru</span>
-        </button>
-        <button type="button" onclick="openSolutionModal('enabiz')" class="dk-util-pill">
-          <span>🩸</span>
-          <span>HOMA-IR Simülatörü</span>
-        </button>
-        <a href="https://wa.me/905321202846" target="_blank" class="dk-util-pill" style="color:#38bdf8; border-color:rgba(56,189,248,0.3);">
-          <span>📞</span>
-          <span>7/24 VIP Hat: 0532 120 28 46</span>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Tier 2: Floating Glassmorphic Capsule Command Bar -->
   <div class="dk-main-command-header">
     <div class="dk-command-inner">
-            <!-- Brand Pod -->
-      <a href="index.html" class="dk-brand-pod" style="gap: 8px;">
-        <div class="dk-brand-logo-box" style="padding: 3px 9px;">
-          <img src="logo.png" alt="DiyetKalfa" style="height: 40px; width: auto; object-fit: contain;">
+      <!-- 3D Kabartmalı (Embossed) Lüks Vektör Marka Logosu -->
+      <a href="index.html" class="dk-brand-pod" title="DiyetKalfa Klinik İşletim Sistemi">
+        <div class="dk-3d-crest-box">
+          <svg viewBox="0 0 44 44" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 2px 3px rgba(0,0,0,0.65));">
+            <defs>
+              <linearGradient id="dkGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fef08a"/>
+                <stop offset="45%" stop-color="#f59e0b"/>
+                <stop offset="100%" stop-color="#b45309"/>
+              </linearGradient>
+              <linearGradient id="dkCyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#e0f2fe"/>
+                <stop offset="50%" stop-color="#38bdf8"/>
+                <stop offset="100%" stop-color="#0284c7"/>
+              </linearGradient>
+            </defs>
+            <!-- 3D Kabartma Kalkan Çerçevesi -->
+            <path d="M22 3L38 9.5V21.5C38 31.2 31.1 38.8 22 41C12.9 38.8 6 31.2 6 21.5V9.5L22 3Z" fill="rgba(15,23,42,0.85)" stroke="url(#dkGoldGrad)" stroke-width="2.4"/>
+            <!-- Kabartmalı D Monogramı & Biyomedikal Yaprak -->
+            <path d="M15 13H22.5C27.5 13 31 16.5 31 22C31 27.5 27.5 31 22.5 31H15V13Z" stroke="url(#dkCyanGrad)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M19 22C19 18.5 22.5 15.5 27 15.5C27 20 24 23.5 19 23.5" fill="url(#dkGoldGrad)"/>
+            <circle cx="19" cy="22" r="2.2" fill="#fef08a"/>
+          </svg>
         </div>
-        <span style="font-size: 9.5px; font-weight: 900; background: rgba(56, 189, 248, 0.16); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35); padding: 3px 7px; border-radius: 6px; letter-spacing: 0.04em;">AI OS</span>
+        <div class="dk-3d-wordmark-wrap">
+          <div class="dk-3d-wordmark">
+            <span class="dk-3d-diyet">DİYET</span><span class="dk-3d-kalfa">KALFA</span>
+          </div>
+          <span class="dk-3d-sub">CLINICAL AI OS</span>
+        </div>
       </a>
 
-      <!-- Center Segmented Pill Navigation Dock -->
+      <!-- Center Segmented Pill Navigation Dock (3D Embossed Vector Icons) -->
       <nav class="header-nav header-nav-links dk-segmented-nav">
         <a href="index.html" class="dk-nav-pill"><span>⚡</span><span>Ana Sayfa</span></a>
         <a href="ozellikler.html" class="dk-nav-pill"><span>🧬</span><span>Özellikler</span></a>
@@ -607,9 +636,10 @@
         <a href="fiyatlar.html" class="dk-nav-pill"><span>💎</span><span>Fiyatlar</span></a>
         <a href="sss.html" class="dk-nav-pill"><span>📘</span><span>SSS</span></a>
         <a href="javascript:void(0)" onclick="openContactModal()" class="dk-nav-pill"><span>💬</span><span>İletişim</span></a>
+        <a href="javascript:void(0)" onclick="openSolutionModal('calorie')" class="dk-nav-pill" title="BMR & TDEE Kalori Hesaplama"><span>🧮</span><span>Kalori</span></a>
       </nav>
 
-      <!-- Right Executive Action Pod -->
+      <!-- Right Executive Action Pod (3D Embossed Vector Icons) -->
       <div class="header-actions dk-action-pod">
         <button type="button" onclick="openDemoModal()" class="dk-btn-sim">
           <span>🖥️</span>
@@ -729,7 +759,7 @@
             <input type="password" id="reg-password" required minlength="6" placeholder="En az 6 karakter">
           </div>
 
-          <div style="background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 12px; padding: 10px 12px; margin-bottom: 14px; font-size: 11.5px; color: #166534; line-height: 1.45;">
+          <div style="background: #eff6ff; border: 1.5px solid #7dd3fc; border-radius: 12px; padding: 10px 12px; margin-bottom: 14px; font-size: 11.5px; color: #1e3a8a; line-height: 1.45;">
             <strong>🛡️ 7 Gün Ücretsiz & Otomatik Lisans Koruması:</strong> Kayıt olduğunuz an seçtiğiniz paket özellikleriyle paneliniz açılır. <strong>7. günün sonunda</strong> devam etmek için ödeme/para çekim onayı talep edilir; ödeme yapılmazsa erişim otomatik durdurulur.
           </div>
 
@@ -816,20 +846,21 @@
 
     </script>
 <script src="diyetkalfa_ai_engine.js"></script>
+<script src="diyetkalfa_luxury_ui.js"></script>
 
   <!-- 5. 7/24 AI KLİNİK ASİSTANI & WHATSAPP FLOATING DOCK -->
   <div style="position: fixed; bottom: 22px; right: 22px; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; z-index: 99999;">
     <!-- AI CHAT PENCERESİ (WIDGET) -->
-    <div id="diyetkalfa-ai-widget" style="display: none; width: 370px; max-width: 90vw; height: 520px; max-height: 80vh; background: #ffffff; border-radius: 20px; box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3); border: 1.5px solid #0f766e; flex-direction: column; overflow: hidden; animation: popIn 0.25s ease-out;">
-      <div style="background: #0f172a; padding: 14px 16px; color: #ffffff; display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #0f766e;">
+    <div id="diyetkalfa-ai-widget" style="display: none; width: 370px; max-width: 90vw; height: 520px; max-height: 80vh; background: #ffffff; border-radius: 20px; box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3); border: 1.5px solid #0284c7; flex-direction: column; overflow: hidden; animation: popIn 0.25s ease-out;">
+      <div style="background: #0f172a; padding: 14px 16px; color: #ffffff; display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #0284c7;">
         <div style="display: flex; align-items: center; gap: 10px;">
-          <div style="width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, #0f766e 0%, #059669 100%); display: flex; align-items: center; justify-content: center; font-size: 18px; box-shadow: 0 2px 8px rgba(15, 118, 110, 0.4);">
+          <div style="width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%); display: flex; align-items: center; justify-content: center; font-size: 18px; box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4);">
             🤖
           </div>
           <div>
             <div style="font-weight: 800; font-size: 13.5px; display: flex; align-items: center; gap: 6px;">
               <span>DiyetKalfa AI™</span>
-              <span style="font-size: 10px; background: rgba(16, 185, 129, 0.2); color: #38bdf8; padding: 2px 6px; border-radius: 999px; border: 1px solid rgba(56, 189, 248, 0.3);">7/24 Aktif</span>
+              <span style="font-size: 10px; background: rgba(14, 165, 233, 0.2); color: #38bdf8; padding: 2px 6px; border-radius: 999px; border: 1px solid rgba(56, 189, 248, 0.3);">7/24 Aktif</span>
             </div>
             <div style="font-size: 11px; color: #94a3b8;">Kayıt & Deneme Asistanı</div>
           </div>
@@ -858,16 +889,16 @@
 
       <form onsubmit="handleAiChatSubmit(event)" style="display: flex; align-items: center; gap: 6px; padding: 10px; background: #ffffff; border-top: 1px solid #e2e8f0; margin: 0;">
         <input type="text" id="ai-chat-input" placeholder="Bir soru sorun veya konu yazın..." style="flex: 1; padding: 9px 12px; border-radius: 999px; border: 1.5px solid #cbd5e1; font-size: 13px; outline: none; font-family: inherit;">
-        <button type="submit" style="background: #0f766e; color: #ffffff; border: none; width: 36px; height: 36px; border-radius: 50%; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 6px rgba(15, 118, 110, 0.3);">➔</button>
+        <button type="submit" style="background: #0284c7; color: #ffffff; border: none; width: 36px; height: 36px; border-radius: 50%; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 6px rgba(2, 132, 199, 0.3);">➔</button>
       </form>
     </div>
 
     <!-- FLOATING TETIKLEYICILER (AI BUTON + WHATSAPP) -->
     <div style="display: flex; align-items: center; gap: 10px;">
-      <button type="button" onclick="toggleAiChat()" style="background: linear-gradient(135deg, #0f172a 0%, #0f766e 100%); color: #ffffff; border: 1.5px solid #5eead4; padding: 10px 16px; border-radius: 999px; font-weight: 800; font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 6px 20px rgba(15, 23, 42, 0.35); transition: all 0.2s;" title="7/24 DiyetKalfa Yapay Zeka Canlı Destek">
+      <button type="button" onclick="toggleAiChat()" style="background: linear-gradient(135deg, #0f172a 0%, #0284c7 100%); color: #ffffff; border: 1.5px solid #38bdf8; padding: 10px 16px; border-radius: 999px; font-weight: 800; font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 6px 20px rgba(15, 23, 42, 0.35); transition: all 0.2s;" title="7/24 DiyetKalfa Yapay Zeka Canlı Destek">
         <span style="font-size: 18px;">🤖</span>
         <span>7/24 AI Asistan</span>
-        <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 8px #4ade80;"></span>
+        <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #38bdf8; box-shadow: 0 0 8px #38bdf8;"></span>
       </button>
 
       <a href="https://wa.me/905321202846?text=Merhaba%2C%20DiyetKalfa%20AI%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" style="background: #25d366; width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45); transition: transform 0.2s, box-shadow 0.2s; color: #ffffff; text-decoration: none;" title="WhatsApp Canlı Klinik Destek Hattı">
@@ -886,8 +917,8 @@
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));">
         <!-- SOL FORM -->
         <div style="padding: 36px 32px; background: #ffffff;">
-          <div style="display: inline-flex; align-items: center; gap: 6px; background: #f0fdf4; color: #166534; font-size: 11px; font-weight: 800; padding: 4px 12px; border-radius: 999px; border: 1px solid #bbf7d0; text-transform: uppercase; margin-bottom: 12px;">
-            <span style="display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #16a34a;"></span>
+          <div style="display: inline-flex; align-items: center; gap: 6px; background: #eff6ff; color: #1e3a8a; font-size: 11px; font-weight: 800; padding: 4px 12px; border-radius: 999px; border: 1px solid #bfdbfe; text-transform: uppercase; margin-bottom: 12px;">
+            <span style="display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #2563eb;"></span>
             7/24 Kesintisiz Klinik Destek
           </div>
           <h3 style="font-size: 22px; font-weight: 900; color: #0f172a; margin: 0 0 6px 0; letter-spacing: -0.02em;">Biz Sizi Arayalım</h3>
@@ -917,7 +948,7 @@
               <label style="font-size: 12px; font-weight: 700; color: #334155; display: block; margin-bottom: 4px;">Notunuz (Opsiyonel)</label>
               <textarea id="cb-note" rows="2" placeholder="Klinik ihtiyaçlarınız veya sorularınız..." style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 13.5px; outline: none; font-family: inherit; resize: none;"></textarea>
             </div>
-            <button type="submit" style="background: linear-gradient(135deg, #0f766e 0%, #059669 100%); color: #ffffff; border: none; padding: 13px; border-radius: 12px; font-weight: 800; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(15, 118, 110, 0.35); margin-top: 4px;">
+            <button type="submit" style="background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%); color: #ffffff; border: none; padding: 13px; border-radius: 12px; font-weight: 800; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35); margin-top: 4px;">
               <span>📞 Hemen Aranma Talebi Gönder</span>
               <span>→</span>
             </button>
@@ -927,7 +958,7 @@
         <!-- SAĞ BİLGİ & DOĞRUDAN CANLI DESTEK -->
         <div style="background: #0f172a; padding: 36px 32px; color: #ffffff; display: flex; flex-direction: column; justify-content: space-between;">
           <div>
-            <div style="font-size: 11.5px; font-weight: 800; color: #5eead4; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">
+            <div style="font-size: 11.5px; font-weight: 800; color: #38bdf8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">
               DOĞRUDAN İLETİŞİM & 7/24 CANLI DESTEK
             </div>
             <h4 style="font-size: 20px; font-weight: 800; color: #ffffff; margin: 0 0 16px 0;">
@@ -944,12 +975,12 @@
                 </div>
                 <div>
                   <div style="font-size: 11px; color: #94a3b8; font-weight: 700; text-transform: uppercase;">WhatsApp Canlı Destek</div>
-                  <div style="font-size: 15px; font-weight: 900; color: #4ade80;">0532 120 28 46</div>
+                  <div style="font-size: 15px; font-weight: 900; color: #38bdf8;">0532 120 28 46</div>
                 </div>
               </a>
 
               <a href="tel:05321202846" style="display: flex; align-items: center; gap: 14px; padding: 14px 16px; background: rgba(255, 255, 255, 0.06); border: 1.5px solid rgba(255, 255, 255, 0.12); border-radius: 14px; text-decoration: none; color: #ffffff; transition: all 0.2s;">
-                <div style="width: 40px; height: 40px; border-radius: 50%; background: #0f766e; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; color: #ffffff;">
+                <div style="width: 40px; height: 40px; border-radius: 50%; background: #0284c7; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; color: #ffffff;">
                   📞
                 </div>
                 <div>
@@ -1131,7 +1162,7 @@
 
       <!-- Tab Seçicisi -->
       <div style="display: flex; border-bottom: 1.5px solid #cbd5e1; background: #ffffff;">
-        <button type="button" id="tab-demo-expert" onclick="switchDemoTab('expert')" style="flex: 1; padding: 13px; background: #f4fbf7; border: none; font-size: 14px; font-weight: 800; color: #1e3a8a; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; border-bottom: 2.5px solid #1e3a8a;">
+        <button type="button" id="tab-demo-expert" onclick="switchDemoTab('expert')" style="flex: 1; padding: 13px; background: #f0f9ff; border: none; font-size: 14px; font-weight: 800; color: #1e3a8a; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; border-bottom: 2.5px solid #1e3a8a;">
           <span>🩺</span> <span>Uzmanım (Diyetisyen)</span>
         </button>
         <button type="button" id="tab-demo-client" onclick="switchDemoTab('client')" style="flex: 1; padding: 13px; background: transparent; border: none; font-size: 14px; font-weight: 800; color: #64748b; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; border-bottom: 2.5px solid transparent;">
@@ -1185,7 +1216,7 @@
 
       <!-- TAB 2: DANIŞANIM (YARATICI AKILLI KLİNİK EŞLEŞTİRME MOTORU) -->
       <div id="demo-content-client" style="padding: 24px; display: none;">
-        <div style="background: #eff6ff; border: 1px solid #c8e0d1; border-radius: 14px; padding: 14px; margin-bottom: 18px;">
+        <div style="background: #eff6ff; border: 1px solid #bae6fd; border-radius: 14px; padding: 14px; margin-bottom: 18px;">
           <div style="display: flex; align-items: center; gap: 8px; font-weight: 800; color: var(--luxury-green); font-size: 13.5px;">
             <span>🤝</span> <span>DiyetKalfa Akıllı Danışan Yönlendirme Ağı</span>
           </div>
@@ -1247,12 +1278,12 @@ function switchDemoTab(tab) {
   var contentExpert = document.getElementById('demo-content-expert');
   var contentClient = document.getElementById('demo-content-client');
   if (tab === 'expert') {
-    if (btnExpert) { btnExpert.style.background = '#f4fbf7'; btnExpert.style.color = '#1e3a8a'; btnExpert.style.borderBottom = '2.5px solid #1e3a8a'; }
+    if (btnExpert) { btnExpert.style.background = '#f0f9ff'; btnExpert.style.color = '#1e3a8a'; btnExpert.style.borderBottom = '2.5px solid #1e3a8a'; }
     if (btnClient) { btnClient.style.background = 'transparent'; btnClient.style.color = '#64748b'; btnClient.style.borderBottom = '2.5px solid transparent'; }
     if (contentExpert) contentExpert.style.display = 'block';
     if (contentClient) contentClient.style.display = 'none';
   } else {
-    if (btnClient) { btnClient.style.background = '#f4fbf7'; btnClient.style.color = '#1e3a8a'; btnClient.style.borderBottom = '2.5px solid #1e3a8a'; }
+    if (btnClient) { btnClient.style.background = '#f0f9ff'; btnClient.style.color = '#1e3a8a'; btnClient.style.borderBottom = '2.5px solid #1e3a8a'; }
     if (btnExpert) { btnExpert.style.background = 'transparent'; btnExpert.style.color = '#64748b'; btnExpert.style.borderBottom = '2.5px solid transparent'; }
     if (contentClient) contentClient.style.display = 'block';
     if (contentExpert) contentExpert.style.display = 'none';
@@ -1311,7 +1342,7 @@ function handleExpertDemoSubmit(e) {
           <input type="checkbox" id="modal-login-remember" checked style="accent-color: #1e3a8a;">
           <span>Beni Hatırla</span>
         </label>
-        <span style="color: #059669; font-weight: 700; display: inline-flex; align-items: center; gap: 3px !important;">🛡️ 256-Bit SSL</span>
+        <span style="color: #2563eb; font-weight: 700; display: inline-flex; align-items: center; gap: 3px !important;">🛡️ 256-Bit SSL</span>
       </div>
 
       <button type="submit" style="background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%); color: #ffffff; border: none; padding: 13px; border-radius: 14px; font-weight: 800; font-size: 14.5px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 6px 18px rgba(30, 58, 138, 0.35); margin-top: 2px;">
@@ -1319,7 +1350,7 @@ function handleExpertDemoSubmit(e) {
         <span style="font-size: 16px;">→</span>
       </button>
 
-      <button type="button" onclick="quickDemoLogin()" style="background: #f0fdf4; color: #1e3a8a; border: 1.5px dashed #3b82f6; padding: 10px; border-radius: 12px; font-weight: 800; font-size: 12.5px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px;">
+      <button type="button" onclick="quickDemoLogin()" style="background: #eff6ff; color: #1e3a8a; border: 1.5px dashed #3b82f6; padding: 10px; border-radius: 12px; font-weight: 800; font-size: 12.5px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px;">
         <span>⚡ Tek Tıkla Demo Panelini Aç</span>
       </button>
     </form>

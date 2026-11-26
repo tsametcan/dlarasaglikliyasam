@@ -85,7 +85,7 @@
     if (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts) {
       var candidateText = data.candidates[0].content.parts.map(function(p) { return p.text; }).join('\n');
       return '<div style="line-height:1.55; color:#1e293b;">' + formatMarkdownToHtml(candidateText) + '</div>' +
-        '<div style="margin-top: 8px; font-size: 11px; color: #059669; font-weight: 700;">✨ Google Gemini 1.5 Flash ile Canlı Analiz Edildi</div>';
+        '<div style="margin-top: 8px; font-size: 11px; color: #2563eb; font-weight: 700;">✨ Google Gemini 1.5 Flash ile Canlı Analiz Edildi</div>';
     }
     throw new Error('Yanıt boş döndü');
   }
@@ -159,8 +159,8 @@
         '</div>' +
         '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
           '<button type="button" onclick="triggerQuickPrompt(\'Klinik paneline nasıl geçeceğiz?\')" class="ai-link-btn" style="background: #1e3a8a; color: #fff;">🚀 Paneli Nasıl Açarım?</button>' +
-          '<button type="button" onclick="triggerQuickPrompt(\'Paketler ve fiyatlar ne kadar?\')" class="ai-link-btn" style="background: #0f766e; color: #fff;">💎 Fiyatlar & Paketler</button>' +
-          '<button type="button" onclick="triggerQuickPrompt(\'1 günlük örnek diyet listesi verir misin?\')" class="ai-link-btn" style="background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0;">🥗 Örnek Menü Yaz</button>' +
+          '<button type="button" onclick="triggerQuickPrompt(\'Paketler ve fiyatlar ne kadar?\')" class="ai-link-btn" style="background: #0284c7; color: #fff;">💎 Fiyatlar & Paketler</button>' +
+          '<button type="button" onclick="triggerQuickPrompt(\'1 günlük örnek diyet listesi verir misin?\')" class="ai-link-btn" style="background: #eff6ff; color: #1e3a8a; border: 1px solid #bfdbfe;">🥗 Örnek Menü Yaz</button>' +
         '</div>';
     }
 
@@ -177,7 +177,7 @@
         '</div>' +
         '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
           '<a href="kayit.html" class="ai-link-btn" style="background: #1e3a8a; color: #fff; font-weight: bold;">✨ Kayıt Ol & 7 Gün Başlat →</a>' +
-          '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0;">🚀 Klinik Paneli Gör</a>' +
+          '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #eff6ff; color: #1e3a8a; border: 1px solid #bfdbfe;">🚀 Klinik Paneli Gör</a>' +
         '</div>';
     }
 
@@ -195,7 +195,7 @@
         '</div>' +
         '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
           '<a href="fiyatlar.html" class="ai-link-btn" style="background: #1e3a8a; color: #fff;">📦 Fiyatları & Tabloyu Aç →</a>' +
-          '<a href="kayit.html" class="ai-link-btn" style="background: #0f766e; color: #fff;">🚀 7 Gün Ücretsiz Dene</a>' +
+          '<a href="kayit.html" class="ai-link-btn" style="background: #0284c7; color: #fff;">🚀 7 Gün Ücretsiz Dene</a>' +
         '</div>';
     }
 
@@ -681,7 +681,7 @@
     var typingEl = document.createElement('div');
     typingEl.className = 'ai-msg-bubble ai-msg-bot';
     typingEl.id = 'ai-typing-indicator';
-    typingEl.innerHTML = '<span style="color:#0f766e; font-style:italic;">DiyetKalfa AI sorunuzu analiz ediyor...</span>';
+    typingEl.innerHTML = '<span style="color:#0284c7; font-style:italic;">DiyetKalfa AI sorunuzu analiz ediyor...</span>';
     messagesContainer.appendChild(typingEl);
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 

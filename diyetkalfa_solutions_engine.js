@@ -223,7 +223,7 @@ function renderSolDietPreviewBox() {
   ];
 
   var listHtml = slots.map(function(s, idx) {
-    var calBadge = s.kcal > 0 ? '<span style="color:#1e3a8a; font-weight:800; font-size:11px;">' + s.kcal + ' kcal</span>' : '<span style="color:#059669; font-weight:800; font-size:11px;">0 kcal • Detoks</span>';
+    var calBadge = s.kcal > 0 ? '<span style="color:#1e3a8a; font-weight:800; font-size:11px;">' + s.kcal + ' kcal</span>' : '<span style="color:#2563eb; font-weight:800; font-size:11px;">0 kcal • Detoks</span>';
     return '<li style="padding: 7px 0; border-bottom: 1px dashed #cbd5e1; display: flex; justify-content: space-between; align-items: flex-start; gap: 10px;">' +
       '<div style="flex: 1;"><strong>' + s.label + ':</strong> ' + s.text + '</div>' +
       '<div style="display: flex; align-items: center; gap: 6px; flex-shrink: 0;">' +
@@ -244,7 +244,7 @@ function renderSolDietPreviewBox() {
     '<ul style="font-size: 12.5px; color: #334155; line-height: 1.55; list-style: none; padding: 0; margin: 0;">' +
       listHtml +
     '</ul>' +
-    '<div style="margin-top: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: #047857; font-weight: 700;">' +
+    '<div style="margin-top: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: #1d4ed8; font-weight: 700;">' +
       '<span>✓ DSÖ 2024 & TÜBER Tam Uyumlu • Serbest Şeker %0 • Sodyum <2g</span>' +
       '<span>Her tıklamada benzersiz yeni menü üretilir</span>' +
     '</div>';
@@ -264,7 +264,7 @@ function runSolDietGen() {
   if (box) {
     box.style.transition = 'all 0.18s ease';
     box.style.transform = 'scale(0.985)';
-    box.style.background = '#f0fdf4';
+    box.style.background = '#eff6ff';
     renderSolDietPreviewBox();
     setTimeout(function() {
       box.style.transform = 'scale(1)';
@@ -331,7 +331,7 @@ var SOLUTIONS_DATA = {
         <div style="background: #f4f7fb; border: 1.5px solid #cbd5e1; border-radius: 16px; padding: 18px; margin-bottom: 16px;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 8px;">
             <h4 style="font-size: 15px; font-weight: 800; color: #1e3a8a; margin: 0;">⚡ Hızlı Klinik Reçete Simülatörü (Sonsuz Menü Motoru)</h4>
-            <span style="font-size: 11px; background: #dcfce7; color: #166534; font-weight: 800; padding: 3px 10px; border-radius: 999px;">∞ Tekrarsız Kombinasyon</span>
+            <span style="font-size: 11px; background: #e0f2fe; color: #1e3a8a; font-weight: 800; padding: 3px 10px; border-radius: 999px;">∞ Tekrarsız Kombinasyon</span>
           </div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 12px;">
             <div>
@@ -352,7 +352,7 @@ var SOLUTIONS_DATA = {
               <input type="number" id="sol-diet-cal" value="1650" onchange="renderSolDietPreviewBox()" style="width: 100%; padding: 8px; border-radius: 8px; border: 1.5px solid #94a3b8; font-size: 12.5px; font-weight: 700;">
             </div>
           </div>
-          <button type="button" onclick="runSolDietGen()" style="background: linear-gradient(135deg, #1e3a8a 0%, #0f766e 100%); color: #ffffff; border: none; padding: 10px 18px; border-radius: 10px; font-weight: 800; font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(30, 58, 138, 0.25);">
+          <button type="button" onclick="runSolDietGen()" style="background: linear-gradient(135deg, #1e3a8a 0%, #0284c7 100%); color: #ffffff; border: none; padding: 10px 18px; border-radius: 10px; font-weight: 800; font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(30, 58, 138, 0.25);">
             <span>🔄</span>
             <span>Örnek Günlük Menü Üret / Sonsuz Yenile</span>
           </button>
@@ -420,7 +420,7 @@ var SOLUTIONS_DATA = {
           </div>
           <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
             <button type="button" onclick="saveSolClinicBrandPreview()" style="background: #1e3a8a; color: #fff; border: none; padding: 10px 18px; border-radius: 10px; font-weight: 800; font-size: 13px; cursor: pointer;">✓ Klinik Markasını Kaydet</button>
-            <span id="sol-clinic-brand-saved-msg" style="font-size: 12px; font-weight: 800; color: #059669; display: none;">✅ Marka kimliğiniz kaydedildi!</span>
+            <span id="sol-clinic-brand-saved-msg" style="font-size: 12px; font-weight: 800; color: #2563eb; display: none;">✅ Marka kimliğiniz kaydedildi!</span>
           </div>
         </div>
       `;
@@ -510,7 +510,7 @@ var SOLUTIONS_DATA = {
         <div style="background: #f4f7fb; border: 1.5px solid #cbd5e1; border-radius: 16px; padding: 16px;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
             <strong style="font-size: 14px; color: #0f172a;">📊 Excel Danışan Çizelgesi (Önizleme)</strong>
-            <span style="background: #dcfce7; color: #166534; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 6px;">Excel/CSV Uyumlu</span>
+            <span style="background: #e0f2fe; color: #1e3a8a; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 6px;">Excel/CSV Uyumlu</span>
           </div>
           <div style="overflow-x: auto; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; margin-bottom: 10px;">
             <table style="width: 100%; border-collapse: collapse; font-size: 11.5px;">
@@ -527,7 +527,7 @@ var SOLUTIONS_DATA = {
                 <td style="padding: 6px 10px;">0555 123 45 67</td>
                 <td style="padding: 6px 10px;">78.5 kg</td>
                 <td style="padding: 6px 10px; font-weight: 800;">72.8 kg</td>
-                <td style="padding: 6px 10px;"><span style="color:#166534; font-weight:800;">-5.7 kg 🔻</span></td>
+                <td style="padding: 6px 10px;"><span style="color:#1e3a8a; font-weight:800;">-5.7 kg 🔻</span></td>
                 <td style="padding: 6px 10px;">HOMA-IR / Düşük GI</td>
               </tr>
               <tr>
@@ -535,7 +535,7 @@ var SOLUTIONS_DATA = {
                 <td style="padding: 6px 10px;">0555 987 65 43</td>
                 <td style="padding: 6px 10px;">96.0 kg</td>
                 <td style="padding: 6px 10px; font-weight: 800;">91.2 kg</td>
-                <td style="padding: 6px 10px;"><span style="color:#166534; font-weight:800;">-4.8 kg 🔻</span></td>
+                <td style="padding: 6px 10px;"><span style="color:#1e3a8a; font-weight:800;">-4.8 kg 🔻</span></td>
                 <td style="padding: 6px 10px;">Akdeniz & Defisit</td>
               </tr>
             </table>
@@ -557,7 +557,7 @@ var SOLUTIONS_DATA = {
         <div style="background: #f4f7fb; border: 1.5px solid #cbd5e1; border-radius: 16px; padding: 16px;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
             <strong style="font-size: 14px; color: #0f172a;">📅 Akıllı Randevu & Seans Ajandası</strong>
-            <span style="background: #dcfce7; color: #166534; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 6px;">SMS Onayı Aktif</span>
+            <span style="background: #e0f2fe; color: #1e3a8a; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 6px;">SMS Onayı Aktif</span>
           </div>
           <div style="display: flex; flex-direction: column; gap: 8px;">
             <div style="background: #ffffff; border-left: 4px solid #1e3a8a; border-radius: 8px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #cbd5e1; border-right: 1px solid #cbd5e1; border-bottom: 1px solid #cbd5e1;">
@@ -575,7 +575,7 @@ var SOLUTIONS_DATA = {
               <span style="background: #eef2ff; color: #4f46e5; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 6px;">Onay Bekliyor</span>
             </div>
           </div>
-          <div style="margin-top: 10px; font-size: 11.5px; color: #166534; font-weight: 700;">
+          <div style="margin-top: 10px; font-size: 11.5px; color: #1e3a8a; font-weight: 700;">
             💬 Yeni randevu oluşturulduğunda danışanınızın cep telefonuna otomatik SMS gider.
           </div>
         </div>
@@ -897,12 +897,30 @@ function openSolutionModal(key) {
   var desc = document.getElementById('sol-modal-desc');
   var body = document.getElementById('sol-modal-body');
 
-  if (iconBadge) iconBadge.textContent = data.icon;
+  if (iconBadge) {
+    iconBadge.textContent = data.icon;
+    if (window.DiyetKalfaLuxuryUI && window.DiyetKalfaLuxuryUI.SVG_ICONS) {
+      var mapKey = {
+        'diet_program': 'diet', 'ai_assistant': 'ai', 'clinic_mgmt': 'clinic',
+        'client_tracking': 'users', 'excel_tracking': 'excel', 'online_diet': 'demo',
+        'appointments': 'calendar', 'enabiz': 'lab', 'anamnez': 'doc',
+        'website': 'globe', 'calorie': 'calc', 'branches': 'shield',
+        'experts': 'features', 'blog': 'doc', 'recipes': 'diet'
+      }[key] || 'features';
+      iconBadge.innerHTML = window.DiyetKalfaLuxuryUI.SVG_ICONS[mapKey];
+      iconBadge.style.background = 'linear-gradient(145deg, #1e3a8a, #0f172a)';
+      iconBadge.style.color = '#38bdf8';
+      iconBadge.style.boxShadow = 'inset 0 2px 3px rgba(255,255,255,0.35), 0 6px 14px rgba(15,23,42,0.35)';
+    }
+  }
   if (title) title.textContent = data.title;
   if (desc) desc.textContent = data.desc;
   if (body) body.innerHTML = data.render();
 
   modal.style.display = 'flex';
+  if (window.DiyetKalfaLuxuryUI && typeof window.DiyetKalfaLuxuryUI.upgradeButtonsAndIconsTo3DEmbossed === 'function') {
+    window.DiyetKalfaLuxuryUI.upgradeButtonsAndIconsTo3DEmbossed();
+  }
 }
 
 function closeSolutionModal() {
