@@ -6520,7 +6520,7 @@ body:not(.app-locked) .header-landing-actions {
             return '<div class="meal"><span class="cals">' + m.calories + ' kcal</span><div class="meal-title">' + m.type + ': ' + m.title + '</div><div style="font-size: 9.5pt; color: #64748b; margin-top: 2px;"><b>Malzemeler:</b> ' + m.usedPantry.join(', ') + '</div><div style="margin: 3px 0; font-size: 10pt;"><b>Tarif:</b> ' + m.recipe + '</div></div>';
           }).join('') +
           '<div style="background: #f4f7fb; border: 1px solid #cbd5e1; padding: 9px 12px; border-radius: 6px; margin-top: 12px;"><b style="color: #0284c7;">🍓 SAĞLIKLI TATLI (' + dayData.healthyDessert.calories + ' kcal):</b> ' + dayData.healthyDessert.title + '<br/><i>Hazırlanış:</i> ' + dayData.healthyDessert.recipe + '</div>' +
-          '<div class="footer"><b>' + p.clinicName + ' • ' + p.dietitianName + '</b><br/>' + p.slogan + ' • Şifa ve afiyet olsun. 🌸</div> '</body></html>';
+          '<div class="footer"><b>' + p.clinicName + ' • ' + p.dietitianName + '</b><br/>' + p.slogan + ' • Şifa ve afiyet olsun. 🌸</div>' + '</body></html>';
           
         printWindow.document.write(html);
         printWindow.document.close();
