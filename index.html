@@ -7420,8 +7420,7 @@ body:not(.app-locked) .header-clinical-actions {
           '.directive-box { background: #f4f7fb; border-left: 4px solid #1e3a8a; padding: 10px 14px; border-radius: 4px; margin: 14px 0; font-size: 10pt; }' +
           '.who-pill { display: inline-block; background: #eff6ff; color: #1e3a8a; font-size: 9pt; font-weight: 800; padding: 3px 8px; border-radius: 4px; border: 1px solid #3b82f6; margin-right: 6px; }' +
           '.footer { margin-top: 24px; border-top: 2px solid #1e3a8a; padding-top: 10px; font-size: 9.5pt; text-align: center; color: #475569; }' +
-          '</style>  <link rel="stylesheet" href="diyetkalfa_luxury_showcase.css">
-</head><body>' +
+          '</style></head><body>' +
           '<div class="header"><div><div class="brand">' + p.clinicName + '</div><div style="font-weight: 800; color: #1e3a8a;">' + p.dietitianName + ' • ' + p.title + '</div></div><div style="text-align: right;"><span class="badge">' + activeDay + '. Gün (' + dayData.dayName + ') Reçetesi</span></div></div>' +
           '<div class="info-box"><b>Danışan Adı:</b> ' + name + ' | <b>Hedef:</b> ' + targetCal + ' | <b>Günlük Su:</b> ' + water + '<br/><div style="margin-top: 5px;"><span class="who-pill">✓ DSÖ Standardı: Tuz &lt;2g</span><span class="who-pill">✓ Rafine Şeker %0</span><span class="who-pill">✓ Yüksek Lif &gt;25g</span></div></div>' +
           (directive ? '<div class="directive-box"><b style="color: #1e3a8a;">📋 DİYETİSYENİN ÖZEL KLİNİK TALİMATI:</b><br/><div style="margin-top: 4px;">' + directive.replace(/\n/g, '<br/>') + '</div></div>' : '') +
@@ -7430,8 +7429,7 @@ body:not(.app-locked) .header-clinical-actions {
             return '<div class="meal"><span class="cals">' + m.calories + ' kcal</span><div class="meal-title">' + m.type + ': ' + m.title + '</div><div style="font-size: 9.5pt; color: #64748b; margin-top: 2px;"><b>Malzemeler:</b> ' + m.usedPantry.join(', ') + '</div><div style="margin: 3px 0; font-size: 10pt;"><b>Tarif:</b> ' + m.recipe + '</div></div>';
           }).join('') +
           '<div style="background: #f4f7fb; border: 1px solid #cbd5e1; padding: 9px 12px; border-radius: 6px; margin-top: 12px;"><b style="color: #4f46e5;">🍓 SAĞLIKLI TATLI (' + dayData.healthyDessert.calories + ' kcal):</b> ' + dayData.healthyDessert.title + '<br/><i>Hazırlanış:</i> ' + dayData.healthyDessert.recipe + '</div>' +
-          '<div class="footer"><b>' + p.clinicName + ' • ' + p.dietitianName + '</b><br/>' + p.slogan + ' • Şifa ve afiyet olsun. 🌸</div>' + '  <script src="diyetkalfa_luxury_showcase.js"></script>
-</body></html>';
+          '<div class="footer"><b>' + p.clinicName + ' • ' + p.dietitianName + '</b><br/>' + p.slogan + ' • Şifa ve afiyet olsun. 🌸</div></body></html>';
           
         printWindow.document.write(html);
         printWindow.document.close();
