@@ -6812,7 +6812,7 @@ body:not(.app-locked) .header-landing-actions {
       const blob = new Blob(["\uFEFF" + csv], { type: 'text/csv;charset=utf-8;' });
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
-      a.download = `DiyetKalfa_Ornek_Excel_Sablonu.csv`;
+      a.download = `DiyetKalfa_Klinik_Excel_Sablonu.csv`;
       document.body.appendChild(a);
       a.click();
       a.remove();

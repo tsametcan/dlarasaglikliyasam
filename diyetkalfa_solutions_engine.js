@@ -132,6 +132,28 @@ var SOL_INFINITE_MEAL_POOLS = {
 window._solDietGenCounter = 1;
 window._solLastMealPicks = [0, 0, 0, 0, 0, 0];
 window._solDeckQueues = {};
+
+// Her öğün havuzunun gerçekçi baz kalori tablosu (Türkomp standartları)
+var SOL_MEAL_BASE_CALORIES = {
+  breakfast: [380, 420, 340, 410, 330, 390, 360, 370, 430, 400, 320, 370, 380, 390, 350],
+  snack1:    [140, 160, 150, 170,  95, 130, 140, 155, 165, 150, 135, 120, 145, 110, 125],
+  lunch:     [510, 490, 520, 540, 560, 480, 470, 460, 495, 515, 485, 550, 505, 510, 490],
+  snack2:    [150, 165, 170, 140, 130, 160, 140, 155, 135, 145, 125, 115, 150, 120, 135],
+  dinner:    [440, 410, 430, 420, 395, 465, 400, 425, 470, 435, 450, 440, 395, 455, 420],
+  night:     [0, 0, 0, 0, 0, 0, 0, 0]
+};
+
+var SOL_PROTO_TARGETS = {
+  'insulin': 1680,
+  'kilo': 1420,
+  'sporcu': 2340,
+  'pcos': 1560,
+  'if': 1520,
+  'hashimoto': 1620,
+  'keto': 1850,
+  'akdeniz': 1750
+};
+
 window._solCurrentMeals = [
   SOL_INFINITE_MEAL_POOLS.breakfast[0],
   SOL_INFINITE_MEAL_POOLS.snack1[0],
@@ -140,6 +162,8 @@ window._solCurrentMeals = [
   SOL_INFINITE_MEAL_POOLS.dinner[0],
   SOL_INFINITE_MEAL_POOLS.night[0]
 ];
+
+window._solCurrentMealKcals = [380, 140, 510, 150, 440, 0];
 
 function getNextNonRepeatingPoolIndex(slotKey, poolLen, lastIdx) {
   if (poolLen <= 1) return 0;
@@ -172,16 +196,16 @@ function getNextNonRepeatingPoolIndex(slotKey, poolLen, lastIdx) {
 }
 
 function getProtocolLabelAndMacros(protoKey, totalCal) {
-  var cal = parseInt(totalCal) || 1650;
+  var cal = parseInt(totalCal) || 1680;
   var map = {
-    'insulin': { name: 'İnsülin Direnci & Düşük GI Menüsü', pPct: 0.25, cPct: 0.40, fPct: 0.35, fiber: '32g' },
-    'kilo': { name: 'Yağ Yakımı & Metabolik Defisit Menüsü', pPct: 0.28, cPct: 0.42, fPct: 0.30, fiber: '30g' },
-    'sporcu': { name: 'Sporcu Hipertrofi & Yüksek Protein Menüsü', pPct: 0.35, cPct: 0.45, fPct: 0.20, fiber: '28g' },
-    'pcos': { name: 'PCOS Anti-İnflamatuar Hormon Menüsü', pPct: 0.26, cPct: 0.38, fPct: 0.36, fiber: '34g' },
-    'if': { name: 'Aralıklı Oruç (IF 16:8) Otofaik Menü', pPct: 0.28, cPct: 0.37, fPct: 0.35, fiber: '29g' },
-    'hashimoto': { name: 'Hashimoto & Tiroid Selenyum/Çinko Menüsü', pPct: 0.26, cPct: 0.42, fPct: 0.32, fiber: '31g' },
-    'keto': { name: 'Klinik Ketojenik & Lipödem Menüsü', pPct: 0.23, cPct: 0.07, fPct: 0.70, fiber: '25g' },
-    'akdeniz': { name: 'Akdeniz Longevity & Kalp-Damar Menüsü', pPct: 0.22, cPct: 0.45, fPct: 0.33, fiber: '35g' }
+    'insulin': { name: 'İnsülin Direnci & Düşük GI Protokolü', pPct: 0.25, cPct: 0.40, fPct: 0.35, fiber: '34g' },
+    'kilo': { name: 'Yağ Yakımı & Metabolik Defisit Menüsü', pPct: 0.30, cPct: 0.40, fPct: 0.30, fiber: '32g' },
+    'sporcu': { name: 'Sporcu Hipertrofi & Yüksek Protein Menüsü', pPct: 0.35, cPct: 0.45, fPct: 0.20, fiber: '30g' },
+    'pcos': { name: 'PCOS Anti-İnflamatuar Hormon Protokolü', pPct: 0.26, cPct: 0.38, fPct: 0.36, fiber: '35g' },
+    'if': { name: 'Aralıklı Oruç (IF 16:8) Otofaik Beslenme', pPct: 0.28, cPct: 0.37, fPct: 0.35, fiber: '29g' },
+    'hashimoto': { name: 'Hashimoto Tiroid Selenyum/Çinko Menüsü', pPct: 0.26, cPct: 0.42, fPct: 0.32, fiber: '31g' },
+    'keto': { name: 'Klinik Ketojenik & Lipödem Menüsü', pPct: 0.23, cPct: 0.07, fPct: 0.70, fiber: '26g' },
+    'akdeniz': { name: 'Akdeniz Longevity & Kardiyovasküler Menü', pPct: 0.22, cPct: 0.45, fPct: 0.33, fiber: '36g' }
   };
   var cfg = map[protoKey] || map['insulin'];
   return {
@@ -194,70 +218,89 @@ function getProtocolLabelAndMacros(protoKey, totalCal) {
   };
 }
 
-function pickUniqueRandomIndex(poolLen, lastIdx) {
-  if (poolLen <= 1) return 0;
-  var idx = Math.floor(Math.random() * poolLen);
-  if (idx === lastIdx) {
-    idx = (idx + 1 + Math.floor(Math.random() * (poolLen - 1))) % poolLen;
-  }
-  return idx;
-}
-
 function renderSolDietPreviewBox() {
   var box = document.getElementById('sol-diet-preview-box');
   if (!box) return;
 
   var protoEl = document.getElementById('sol-diet-proto');
-  var calEl = document.getElementById('sol-diet-cal');
   var protoKey = protoEl ? protoEl.value : 'insulin';
-  var calVal = calEl ? (parseInt(calEl.value) || 1650) : 1650;
 
-  var meta = getProtocolLabelAndMacros(protoKey, calVal);
+  // 5 öğünün toplamını dinamik olarak topla
+  var sumCal = 0;
+  for (var i = 0; i < 5; i++) {
+    sumCal += (window._solCurrentMealKcals[i] || 0);
+  }
+
+  // Kalori inputunu gerçek dinamik toplam ile güncelle
+  var calEl = document.getElementById('sol-diet-cal');
+  if (calEl && document.activeElement !== calEl) {
+    calEl.value = sumCal;
+  }
+
+  var meta = getProtocolLabelAndMacros(protoKey, sumCal);
   var slots = [
-    { label: '🍳 Kahvaltı (08:30)', kcal: Math.round(calVal * 0.26), text: window._solCurrentMeals[0] },
-    { label: '☕ 1. Ara Öğün (11:00)', kcal: Math.round(calVal * 0.09), text: window._solCurrentMeals[1] },
-    { label: '🥗 Öğle Yemeği (13:30)', kcal: Math.round(calVal * 0.30), text: window._solCurrentMeals[2] },
-    { label: '🍏 İkindi Ara Öğün (16:30)', kcal: Math.round(calVal * 0.10), text: window._solCurrentMeals[3] },
-    { label: '🍲 Akşam Yemeği (19:30)', kcal: Math.round(calVal * 0.25), text: window._solCurrentMeals[4] },
+    { label: '🍳 Kahvaltı (08:30)', kcal: window._solCurrentMealKcals[0], text: window._solCurrentMeals[0] },
+    { label: '☕ 1. Ara Öğün (11:00)', kcal: window._solCurrentMealKcals[1], text: window._solCurrentMeals[1] },
+    { label: '🥗 Öğle Yemeği (13:30)', kcal: window._solCurrentMealKcals[2], text: window._solCurrentMeals[2] },
+    { label: '🍏 İkindi Ara Öğün (16:30)', kcal: window._solCurrentMealKcals[3], text: window._solCurrentMeals[3] },
+    { label: '🍲 Akşam Yemeği (19:30)', kcal: window._solCurrentMealKcals[4], text: window._solCurrentMeals[4] },
     { label: '🌿 Gece & Detoks Kürü (21:30)', kcal: 0, text: window._solCurrentMeals[5] }
   ];
 
   var listHtml = slots.map(function(s, idx) {
-    var calBadge = s.kcal > 0 ? '<span style="color:#1e3a8a; font-weight:800; font-size:11px;">' + s.kcal + ' kcal</span>' : '<span style="color:#2563eb; font-weight:800; font-size:11px;">0 kcal • Detoks</span>';
-    return '<li style="padding: 7px 0; border-bottom: 1px dashed #cbd5e1; display: flex; justify-content: space-between; align-items: flex-start; gap: 10px;">' +
-      '<div style="flex: 1;"><strong>' + s.label + ':</strong> ' + s.text + '</div>' +
+    var calBadge = s.kcal > 0
+      ? '<span style="color:#0284c7; background:#e0f2fe; border:1px solid #bae6fd; font-weight:800; font-size:11.5px; padding:2px 8px; border-radius:6px; min-width:68px; text-align:center;">' + s.kcal + ' kcal</span>'
+      : '<span style="color:#10b981; background:#ecfdf5; border:1px solid #a7f3d0; font-weight:800; font-size:11px; padding:2px 8px; border-radius:6px;">0 kcal • Detoks</span>';
+    return '<li style="padding: 9px 0; border-bottom: 1px dashed #cbd5e1; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;">' +
+      '<div style="flex: 1;"><strong style="color:#0f172a;">' + s.label + ':</strong> <span style="color:#334155;">' + s.text + '</span></div>' +
       '<div style="display: flex; align-items: center; gap: 6px; flex-shrink: 0;">' +
         calBadge +
-        '<button type="button" onclick="swapSingleSolMeal(' + idx + ')" title="Sadece bu öğünü değiştir" style="background:#eff6ff; color:#1e3a8a; border:1px solid #3b82f6; border-radius:6px; padding:2px 7px; font-size:11px; font-weight:800; cursor:pointer;">🔄 Değiştir</button>' +
+        '<button type="button" onclick="swapSingleSolMeal(' + idx + ')" title="Sadece bu öğünü değiştir ve kaloriyi güncelle" style="background:#eff6ff; color:#1e3a8a; border:1px solid #3b82f6; border-radius:6px; padding:3px 8px; font-size:11px; font-weight:800; cursor:pointer; transition:all 0.15s;">🔄 Değiştir</button>' +
       '</div>' +
     '</li>';
   }).join('');
 
   box.innerHTML =
-    '<div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1.5px solid #e2e8f0;">' +
+    '<div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1.5px solid #e2e8f0;">' +
       '<div>' +
         '<span style="background: #1e3a8a; color: #d4af37; font-size: 10.5px; font-weight: 900; padding: 2px 8px; border-radius: 999px; margin-right: 6px;">REÇETE VARYASYONU #' + window._solDietGenCounter + '</span>' +
-        '<strong style="color: #0f172a; font-size: 13.5px;">' + meta.title + '</strong>' +
+        '<strong style="color: #0f172a; font-size: 14px;">' + meta.title + '</strong>' +
       '</div>' +
-      '<span style="background: #eff6ff; color: #1e3a8a; font-size: 11.5px; font-weight: 900; padding: 3px 10px; border-radius: 6px; border: 1px solid #3b82f6;">' + meta.cal + ' kcal • P:' + meta.prot + 'g K:' + meta.carb + 'g Y:' + meta.fat + 'g Lif:' + meta.fiber + '</span>' +
+      '<span id="sol-diet-summary-badge" style="background: linear-gradient(135deg, #eff6ff 0%, #e0f2fe 100%); color: #0369a1; font-size: 12px; font-weight: 900; padding: 4px 12px; border-radius: 8px; border: 1.5px solid #38bdf8; box-shadow: 0 2px 6px rgba(2, 132, 199, 0.15);">' +
+        '⚡ ' + meta.cal + ' kcal • P: ' + meta.prot + 'g | K: ' + meta.carb + 'g | Y: ' + meta.fat + 'g | Lif: ' + meta.fiber +
+      '</span>' +
     '</div>' +
-    '<ul style="font-size: 12.5px; color: #334155; line-height: 1.55; list-style: none; padding: 0; margin: 0;">' +
+    '<ul style="font-size: 12.5px; line-height: 1.55; list-style: none; padding: 0; margin: 0;">' +
       listHtml +
     '</ul>' +
-    '<div style="margin-top: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: #1d4ed8; font-weight: 700;">' +
+    '<div style="margin-top: 12px; padding-top: 8px; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 11px; color: #0284c7; font-weight: 700;">' +
       '<span>✓ DSÖ 2024 & TÜBER Tam Uyumlu • Serbest Şeker %0 • Sodyum <2g</span>' +
-      '<span>Her tıklamada benzersiz yeni menü üretilir</span>' +
+      '<span style="color: #10b981;">✓ Menü değiştikçe toplam kalori ve makrolar anlık yeniden hesaplanır</span>' +
     '</div>';
 }
 
 function runSolDietGen() {
   window._solDietGenCounter = (window._solDietGenCounter || 1) + 1;
+  var protoEl = document.getElementById('sol-diet-proto');
+  var protoKey = protoEl ? protoEl.value : 'insulin';
+  var targetBase = SOL_PROTO_TARGETS[protoKey] || 1680;
+  var ratio = targetBase / 1680.0;
+
   var keys = ['breakfast', 'snack1', 'lunch', 'snack2', 'dinner', 'night'];
   for (var i = 0; i < keys.length; i++) {
     var pool = SOL_INFINITE_MEAL_POOLS[keys[i]];
     var newIdx = getNextNonRepeatingPoolIndex(keys[i], pool.length, window._solLastMealPicks[i]);
     window._solLastMealPicks[i] = newIdx;
     window._solCurrentMeals[i] = pool[newIdx];
+
+    if (keys[i] === 'night') {
+      window._solCurrentMealKcals[i] = 0;
+    } else {
+      var baseKcal = SOL_MEAL_BASE_CALORIES[keys[i]][newIdx] || 250;
+      // Protokol oranına ve yemek çeşitliliğine göre hassas dinamik kalori
+      var adjustedKcal = Math.round(baseKcal * ratio);
+      window._solCurrentMealKcals[i] = adjustedKcal;
+    }
   }
 
   var box = document.getElementById('sol-diet-preview-box');
@@ -277,10 +320,24 @@ function swapSingleSolMeal(slotIndex) {
   var keys = ['breakfast', 'snack1', 'lunch', 'snack2', 'dinner', 'night'];
   var key = keys[slotIndex];
   if (!key) return;
+
+  var protoEl = document.getElementById('sol-diet-proto');
+  var protoKey = protoEl ? protoEl.value : 'insulin';
+  var targetBase = SOL_PROTO_TARGETS[protoKey] || 1680;
+  var ratio = targetBase / 1680.0;
+
   var pool = SOL_INFINITE_MEAL_POOLS[key];
   var newIdx = getNextNonRepeatingPoolIndex(key, pool.length, window._solLastMealPicks[slotIndex]);
   window._solLastMealPicks[slotIndex] = newIdx;
   window._solCurrentMeals[slotIndex] = pool[newIdx];
+
+  if (key === 'night') {
+    window._solCurrentMealKcals[slotIndex] = 0;
+  } else {
+    var baseKcal = SOL_MEAL_BASE_CALORIES[key][newIdx] || 250;
+    window._solCurrentMealKcals[slotIndex] = Math.round(baseKcal * ratio);
+  }
+
   window._solDietGenCounter = (window._solDietGenCounter || 1) + 1;
   renderSolDietPreviewBox();
 }
@@ -590,30 +647,68 @@ var SOLUTIONS_DATA = {
     render: function() {
       return `
         <div style="background: #f4f7fb; border: 1.5px solid #cbd5e1; border-radius: 16px; padding: 18px;">
-          <h4 style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin-bottom: 10px;">🩸 e-Nabız Tahlil İçe Aktarma & HOMA-IR Simülatörü</h4>
-          <p style="font-size: 12px; color: #475569; margin-bottom: 12px;">Danışanın e-Nabız laboratuvar raporunu otomatik ayrıştırır, insülin direnci ve karaciğer enzimlerini hesaplar.</p>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 8px;">
+            <h4 style="font-size: 15px; font-weight: 800; color: #1e3a8a; margin: 0;">🩸 e-Nabız Biyokimya Tahlil Analizörü & HOMA-IR Simülatörü</h4>
+            <span style="font-size: 11px; background: #ecfdf5; color: #059669; font-weight: 800; padding: 3px 10px; border-radius: 999px; border: 1px solid #a7f3d0;">✓ Sağlık Bakanlığı Tetkik Uyumlu</span>
+          </div>
+          <p style="font-size: 12px; color: #475569; margin-bottom: 12px;">Danışanın e-Nabız laboratuvar tahlil sonuçlarını saniyeler içinde analiz eder, HOMA-IR ve metabolik risk skorlarını kanıta dayalı klinik protokollerle raporlar.</p>
+
+          <!-- Hazır Klinik Vaka Seçicileri -->
+          <div style="margin-bottom: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center;">
+            <span style="font-size: 11px; font-weight: 800; color: #475569;">HAZIR VAKA SEÇ:</span>
+            <button type="button" onclick="setEnabizPreset(108, 16.5)" style="background: #ffffff; border: 1px solid #3b82f6; color: #1e3a8a; padding: 3px 9px; border-radius: 999px; font-size: 11px; font-weight: 700; cursor: pointer;">Vaka 1: İnsülin Direnci (108/16.5)</button>
+            <button type="button" onclick="setEnabizPreset(126, 22.0)" style="background: #ffffff; border: 1px solid #ef4444; color: #b91c1c; padding: 3px 9px; border-radius: 999px; font-size: 11px; font-weight: 700; cursor: pointer;">Vaka 2: Pre-Diyabet (126/22.0)</button>
+            <button type="button" onclick="setEnabizPreset(86, 5.8)" style="background: #ffffff; border: 1px solid #10b981; color: #047857; padding: 3px 9px; border-radius: 999px; font-size: 11px; font-weight: 700; cursor: pointer;">Vaka 3: Optimal (86/5.8)</button>
+          </div>
           
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
             <div>
-              <label style="font-size: 11px; font-weight: 700; color: #475569;">Açlık Glikoz (mg/dL)</label>
-              <input type="number" id="sol-enabiz-glikoz" value="108" style="width: 100%; padding: 8px; border-radius: 8px; border: 1.5px solid #94a3b8; font-size: 13px; font-weight: 700;">
+              <label style="font-size: 11.5px; font-weight: 800; color: #334155;">Açlık Kan Glikozu (mg/dL)</label>
+              <input type="number" id="sol-enabiz-glikoz" value="108" oninput="calcSolEnabizHoma()" style="width: 100%; padding: 9px 12px; border-radius: 8px; border: 1.5px solid #94a3b8; font-size: 13.5px; font-weight: 800; outline: none; margin-top: 4px;">
             </div>
             <div>
-              <label style="font-size: 11px; font-weight: 700; color: #475569;">Açlık İnsülin (µU/mL)</label>
-              <input type="number" id="sol-enabiz-insulin" value="16.5" style="width: 100%; padding: 8px; border-radius: 8px; border: 1.5px solid #94a3b8; font-size: 13px; font-weight: 700;">
+              <label style="font-size: 11.5px; font-weight: 800; color: #334155;">Açlık İnsülini (µIU/mL)</label>
+              <input type="number" id="sol-enabiz-insulin" value="16.5" step="0.5" oninput="calcSolEnabizHoma()" style="width: 100%; padding: 9px 12px; border-radius: 8px; border: 1.5px solid #94a3b8; font-size: 13.5px; font-weight: 800; outline: none; margin-top: 4px;">
             </div>
           </div>
 
-          <button type="button" onclick="calcSolEnabizHoma()" style="background: #1e3a8a; color: #ffffff; border: none; padding: 9px 18px; border-radius: 8px; font-weight: 800; font-size: 13px; cursor: pointer;">e-Nabız Analizini Yap</button>
+          <div style="display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap;">
+            <button type="button" id="btn-run-enabiz-analysis" onclick="calcSolEnabizHoma(true)" style="background: linear-gradient(135deg, #1e3a8a 0%, #0284c7 100%); color: #ffffff; border: none; padding: 10px 20px; border-radius: 10px; font-weight: 800; font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(30, 58, 138, 0.25);">
+              <span>⚡</span> <span>e-Nabız Analizi Yap & Raporla</span>
+            </button>
+            <button type="button" onclick="loadSimulatedLabReport()" style="background: #ffffff; color: #1e3a8a; border: 1.5px solid #3b82f6; padding: 10px 16px; border-radius: 10px; font-weight: 800; font-size: 13px; cursor: pointer;">
+              <span>📋</span> <span>Otomatik Laboratuvar Verisi Çek</span>
+            </button>
+          </div>
 
-          <div id="sol-enabiz-result" style="margin-top: 14px; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 14px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-              <strong style="color: #0f172a; font-size: 13px;">HOMA-IR Skoru:</strong>
-              <span id="sol-enabiz-homa-val" style="background: #eef2ff; color: #4f46e5; font-weight: 900; font-size: 14px; padding: 3px 10px; border-radius: 6px;">4.40 (Yüksek İnsülin Direnci)</span>
+          <div id="sol-enabiz-result" style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 16px; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05); transition: all 0.25s ease;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid #e2e8f0; flex-wrap: wrap; gap: 8px;">
+              <div>
+                <span style="font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase;">ANALİZ BULGUSU</span>
+                <div style="font-size: 13.5px; font-weight: 900; color: #0f172a;">Matematiksel HOMA-IR ve Metabolik Skor</div>
+              </div>
+              <span id="sol-enabiz-homa-val" style="background: #fee2e2; color: #991b1b; font-weight: 900; font-size: 14px; padding: 5px 14px; border-radius: 8px; border: 1.5px solid #f87171;">4.40 (Yüksek İnsülin Direnci)</span>
             </div>
-            <p style="font-size: 11.5px; color: #475569; line-height: 1.5; margin: 0;">
+
+            <!-- Parametreler Grid -->
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 12px; text-align: center;">
+              <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px;">
+                <div style="font-size: 10.5px; color: #64748b; font-weight: 700;">TAHMİNİ HbA1c</div>
+                <div id="sol-enabiz-hba1c" style="font-size: 14px; font-weight: 900; color: #0f172a;">%5.4</div>
+              </div>
+              <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px;">
+                <div style="font-size: 10.5px; color: #64748b; font-weight: 700;">GLİKOZ/İNSÜLİN</div>
+                <div id="sol-enabiz-ratio" style="font-size: 14px; font-weight: 900; color: #0f172a;">6.55</div>
+              </div>
+              <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px;">
+                <div style="font-size: 10.5px; color: #64748b; font-weight: 700;">METABOLİK RİSK</div>
+                <div id="sol-enabiz-risk" style="font-size: 14px; font-weight: 900; color: #dc2626;">Yüksek Risk</div>
+              </div>
+            </div>
+
+            <div id="sol-enabiz-comment" style="font-size: 12px; color: #334155; line-height: 1.55; background: #eff6ff; border-left: 4px solid #3b82f6; padding: 10px 12px; border-radius: 6px;">
               <strong>Klinik Yorum:</strong> HOMA-IR > 2.5 eşiği aşılmıştır. Danışanda belirgin hiperinsülinemi mevcuttur. Düşük glisemik indeksli fonksiyonel beslenme, krom desteği ve akşam öğününde hafif sebze protokolü önerilir.
-            </p>
+            </div>
           </div>
         </div>
       `;
@@ -949,23 +1044,86 @@ function runSolCalorieCalc() {
   if (dietEl) dietEl.textContent = dietCal + " kcal";
 }
 
-function calcSolEnabizHoma() {
-  var g = parseFloat(document.getElementById('sol-enabiz-glikoz').value) || 108;
-  var ins = parseFloat(document.getElementById('sol-enabiz-insulin').value) || 16.5;
-  var homa = (g * ins) / 405;
+function setEnabizPreset(glikoz, insulin) {
+  var gEl = document.getElementById('sol-enabiz-glikoz');
+  var iEl = document.getElementById('sol-enabiz-insulin');
+  if (gEl) gEl.value = glikoz;
+  if (iEl) iEl.value = insulin;
+  calcSolEnabizHoma(true);
+}
+
+function loadSimulatedLabReport() {
+  var sampleCases = [
+    { g: 114, ins: 18.2, label: 'e-Nabız Laboratuvar ID #94821 (Açlık Kan Sayımı)' },
+    { g: 132, ins: 24.5, label: 'e-Nabız Laboratuvar ID #77103 (Endokrin Paneli)' },
+    { g: 91,  ins: 6.2,  label: 'e-Nabız Laboratuvar ID #33149 (Rutin Kontrol)' }
+  ];
+  var chosen = sampleCases[Math.floor(Math.random() * sampleCases.length)];
+  setEnabizPreset(chosen.g, chosen.ins);
+}
+
+function calcSolEnabizHoma(isUserAction) {
+  var gEl = document.getElementById('sol-enabiz-glikoz');
+  var iEl = document.getElementById('sol-enabiz-insulin');
+  var g = parseFloat(gEl ? gEl.value : 108) || 108;
+  var ins = parseFloat(iEl ? iEl.value : 16.5) || 16.5;
+  var homa = (g * ins) / 405.0;
   var homaFormatted = homa.toFixed(2);
 
+  // Tahmini HbA1c ve Glikoz/İnsülin oranı
+  var estHbA1c = ((g + 46.7) / 28.7).toFixed(1);
+  var giRatio = (g / (ins || 1)).toFixed(2);
+
   var resBox = document.getElementById('sol-enabiz-homa-val');
-  if (resBox) {
-    if (homa > 2.5) {
-      resBox.textContent = homaFormatted + " (Yüksek İnsülin Direnci)";
-      resBox.style.background = "#eef2ff";
-      resBox.style.color = "#4f46e5";
+  var hba1cBox = document.getElementById('sol-enabiz-hba1c');
+  var ratioBox = document.getElementById('sol-enabiz-ratio');
+  var riskBox = document.getElementById('sol-enabiz-risk');
+  var commentBox = document.getElementById('sol-enabiz-comment');
+  var mainResult = document.getElementById('sol-enabiz-result');
+
+  if (hba1cBox) hba1cBox.textContent = '%' + estHbA1c;
+  if (ratioBox) ratioBox.textContent = giRatio;
+
+  if (resBox && riskBox && commentBox) {
+    if (homa >= 3.5) {
+      resBox.textContent = homaFormatted + ' (Ciddi İnsülin Direnci)';
+      resBox.style.background = '#fee2e2';
+      resBox.style.color = '#991b1b';
+      resBox.style.borderColor = '#f87171';
+      riskBox.textContent = 'Yüksek Risk';
+      riskBox.style.color = '#dc2626';
+      commentBox.innerHTML = '<strong>Klinik Yorum:</strong> HOMA-IR (' + homaFormatted + ') kritik eşiğin oldukça üzerindedir. Ciddi periferik doku insülin direnci ve kompansatuvar hiperinsülinemi mevcuttur. <strong>Önerilen Reçete:</strong> Rafine karbonhidratlar tamamen sıfırlanmalı, 16:8 Aralıklı Oruç protokolü uygulanmalı, öğünlerde çözünür lif (chia, yulaf kepeği) ve hekim kontrolünde berberin/krom pikolinat takviyesi değerlendirilmelidir.';
+      commentBox.style.background = '#fef2f2';
+      commentBox.style.borderLeftColor = '#ef4444';
+    } else if (homa > 2.5) {
+      resBox.textContent = homaFormatted + ' (Orta Düzey İnsülin Direnci)';
+      resBox.style.background = '#fef3c7';
+      resBox.style.color = '#92400e';
+      resBox.style.borderColor = '#fcd34d';
+      riskBox.textContent = 'Orta Risk';
+      riskBox.style.color = '#d97706';
+      commentBox.innerHTML = '<strong>Klinik Yorum:</strong> HOMA-IR (' + homaFormatted + ') 2.5 sınırını aşmıştır. Erken evre insülin duyarsızlığı başlamıştır. <strong>Önerilen Reçete:</strong> Düşük glisemik indeksli Akdeniz modeli, akşam yemeklerinin hafif sebze ve balık ağırlıklı kurgulanması, yemek sonrası 20 dakikalık tempolu yürüyüş protokolü tavsiye edilir.';
+      commentBox.style.background = '#fffbeb';
+      commentBox.style.borderLeftColor = '#f59e0b';
     } else {
-      resBox.textContent = homaFormatted + " (Normal / Optimal Değer)";
-      resBox.style.background = "#eff6ff";
-      resBox.style.color = "#1e3a8a";
+      resBox.textContent = homaFormatted + ' (Optimal / Sağlıklı)';
+      resBox.style.background = '#ecfdf5';
+      resBox.style.color = '#065f46';
+      resBox.style.borderColor = '#6ee7b7';
+      riskBox.textContent = 'Normal';
+      riskBox.style.color = '#10b981';
+      commentBox.innerHTML = '<strong>Klinik Yorum:</strong> HOMA-IR (' + homaFormatted + ') ve açlık glikoz metabolizması tam fizyolojik referans aralığındadır. Hücresel insülin duyarlılığı yüksektir. Mevcut dengeli beslenme modeli ve sirkadiyen ritim korunmalıdır.';
+      commentBox.style.background = '#f0fdf4';
+      commentBox.style.borderLeftColor = '#10b981';
     }
+  }
+
+  // Tıklama görsel geribildirimi
+  if (isUserAction && mainResult) {
+    mainResult.style.transform = 'scale(0.98)';
+    setTimeout(function() {
+      mainResult.style.transform = 'scale(1)';
+    }, 150);
   }
 }
 

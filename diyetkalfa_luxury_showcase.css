@@ -1027,3 +1027,33 @@ input:checked + .dk-slider:before {
     max-width: 290px;
   }
 }
+
+/* ========================================================================== */
+/* DIYETKALFA - LUXURY OPACITY PAGE TRANSITIONS & EDGE-TO-EDGE EXPANSION      */
+/* ========================================================================== */
+@keyframes dkPageFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+body {
+  animation: dkPageFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.dk-full-screen-wrap {
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  padding: 30px 24px 60px;
+  box-sizing: border-box;
+  background: radial-gradient(circle at 50% 10%, #0f1f3d 0%, #060d1c 55%, #020617 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+

@@ -4,8 +4,8 @@
 
 (function () {
   // 1. WATER TRACKER STATE
-  var currentWaterMl = 1875;
-  var targetWaterMl = 2500;
+  var currentWaterMl = 2300;
+  var targetWaterMl = 2800;
   var circleCircumference = 408; // 2 * PI * 65
 
   window.addWaterIntake = function (amount) {
