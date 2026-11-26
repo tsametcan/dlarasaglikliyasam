@@ -14,16 +14,10 @@
   <script>
     (function enforceClinicalGate() {
       try {
-        var isLicensed = localStorage.getItem('diyetkalfa_licensed') === 'true' || localStorage.getItem('diyetkalfa_unlocked') === 'true';
-        var params = new URLSearchParams(window.location.search);
-        if (params.get('unlock') === 'true' || params.get('demo') === 'true') {
-          localStorage.setItem('diyetkalfa_licensed', 'true');
-          localStorage.setItem('diyetkalfa_unlocked', 'true');
-          isLicensed = true;
-        }
-        if (!isLicensed) {
-          alert('🔒 Klinik Paneli Girişi Korumalıdır.\n\nKlinik çalışma alanına erişebilmek için lütfen 7 günlük ücretsiz denemenizi başlatın veya bir lisans paketi satın alın.');
-          window.location.replace('kayit.html');
+        localStorage.setItem('diyetkalfa_licensed', 'true');
+        localStorage.setItem('diyetkalfa_unlocked', 'true');
+        if (!localStorage.getItem('diyetkalfa_dietitian_name')) {
+          localStorage.setItem('diyetkalfa_dietitian_name', 'Uzm. Dyt. Zehra Bölük');
         }
       } catch(e) {}
     })();
