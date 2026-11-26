@@ -2351,6 +2351,33 @@ body:not(.app-locked) .header-landing-actions {
   <!-- ============================================================ -->
   <main class="main-container">
 
+    <!-- PAKET YETKİ, KAPASİTE & 7. GÜN LİSANS YÖNETİM KONSOLU -->
+    <div id="dk-package-control-strip" style="background: linear-gradient(135deg, #163b2c 0%, #0d241b 100%); color: #ffffff; padding: 14px 20px; border-radius: 16px; margin-bottom: 18px; border: 1.5px solid #d4af37; box-shadow: 0 8px 25px rgba(22, 59, 44, 0.18); display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+        <div id="dk-strip-badge" style="background: #d4af37; color: #163b2c; font-weight: 900; font-size: 12px; padding: 6px 14px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.04em; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+          ⭐ PROFESYONEL PAKET
+        </div>
+        <div>
+          <div id="dk-strip-title" style="font-weight: 800; font-size: 13.5px; color: #ffffff;">
+            ✅ Ödemesi Onaylanmış Aktif Lisans • 10/10 Modül Açık • Sınırsız Danışan
+          </div>
+          <div id="dk-strip-sub" style="font-size: 11.5px; color: #a7f3d0; margin-top: 2px;">
+            Her paket yalnızca kendi fiyat tablosundaki özellikleri açar. Sağdaki butonlarla paket yetkilerini ve 7. gün ödeme kilidini canlı test edebilirsiniz.
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+        <span style="font-size: 11px; color: #fef08a; font-weight: 800; margin-right: 4px;">🎛️ Paket Yetkisi Testi:</span>
+        <button type="button" onclick="simulatePaidPackageSwitch('starter')" style="background: rgba(255,255,255,0.12); color: #ffffff; border: 1px solid rgba(255,255,255,0.3); padding: 6px 10px; border-radius: 8px; font-size: 11.5px; font-weight: 800; cursor: pointer; transition: all 0.15s;">📦 Giriş (1.500₺)</button>
+        <button type="button" onclick="simulatePaidPackageSwitch('core')" style="background: rgba(255,255,255,0.12); color: #ffffff; border: 1px solid rgba(255,255,255,0.3); padding: 6px 10px; border-radius: 8px; font-size: 11.5px; font-weight: 800; cursor: pointer; transition: all 0.15s;">🌿 Temel (2.200₺)</button>
+        <button type="button" onclick="simulatePaidPackageSwitch('pro')" style="background: rgba(212,175,55,0.25); color: #fef08a; border: 1px solid #d4af37; padding: 6px 10px; border-radius: 8px; font-size: 11.5px; font-weight: 800; cursor: pointer; transition: all 0.15s;">⭐ Profesyonel (3.000₺)</button>
+        <button type="button" onclick="simulatePaidPackageSwitch('enterprise')" style="background: rgba(255,255,255,0.12); color: #ffffff; border: 1px solid rgba(255,255,255,0.3); padding: 6px 10px; border-radius: 8px; font-size: 11.5px; font-weight: 800; cursor: pointer; transition: all 0.15s;">👑 Sınırsız (4.500₺)</button>
+        <button type="button" onclick="simulateSeventhDayEnd()" style="background: #dc2626; color: #ffffff; border: 1px solid #fca5a5; padding: 6px 11px; border-radius: 8px; font-size: 11.5px; font-weight: 900; cursor: pointer; box-shadow: 0 2px 8px rgba(220,38,38,0.4);">⏱️ 7. Gün Sonu (Para Çekim Talebi)</button>
+        <button type="button" onclick="showPaidWelcomeModal()" style="background: #059669; color: #ffffff; border: 1px solid #6ee7b7; padding: 6px 10px; border-radius: 8px; font-size: 11.5px; font-weight: 800; cursor: pointer;">🎉 Hoş Geldiniz Ekranı</button>
+      </div>
+    </div>
+
     <!-- DİYETKALFA CANLI DEMO BİLGİLENDİRME BARI -->
     <div id="demo-mode-banner" style="display: none; background: linear-gradient(135deg, #163b2c 0%, #0d261d 100%); color: #ffffff; padding: 14px 22px; border-radius: 16px; margin-bottom: 22px; border: 1.5px solid #d4af37; box-shadow: 0 4px 20px rgba(22, 59, 44, 0.2); align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;">
       <div style="display: flex; align-items: center; gap: 12px;">
@@ -4356,6 +4383,11 @@ body:not(.app-locked) .header-landing-actions {
     // Gelişmiş Nav Switcher (9 Modlu Enterprise Klinik İşletim Sistemi)
     // ============================================================
     function switchAppTab(mode) {
+      if (typeof window.checkTabPermissionAndGate === 'function') {
+        if (!window.checkTabPermissionAndGate(mode)) {
+          return;
+        }
+      }
       const views = {
         landing: document.getElementById('view-landing'),
         pricing: document.getElementById('view-landing'),
@@ -9963,6 +9995,491 @@ window.addEventListener('DOMContentLoaded', function() {
     const banner = document.getElementById('demo-mode-banner');
     if (banner) banner.style.display = 'flex';
   }
+});
+</script>
+<!-- ========================================================================== -->
+<!-- 1. ÖDEME SONRASI "DİYETKALFA'YA HOŞ GELDİNİZ" KARŞILAMA VE YETKİ PANELİ   -->
+<!-- ========================================================================== -->
+<div id="modal-paid-welcome" class="modal-backdrop" style="display: none; align-items: center; justify-content: center; z-index: 100020; background: rgba(10, 24, 18, 0.85); backdrop-filter: blur(10px); padding: 16px; position: fixed; inset: 0;">
+  <div style="background: #ffffff; border-radius: 24px; max-width: 680px; width: 100%; max-height: 92vh; overflow-y: auto; padding: 32px 28px; box-shadow: 0 25px 70px rgba(0,0,0,0.5); border: 2px solid #d4af37; position: relative;">
+    <button type="button" onclick="closePaidWelcomeModal()" style="position: absolute; top: 18px; right: 18px; background: #f1f5f3; border: none; width: 36px; height: 36px; border-radius: 50%; font-size: 16px; font-weight: 800; color: #163b2c; cursor: pointer;">✕</button>
+
+    <div style="text-align: center; margin-bottom: 22px;">
+      <div style="display: inline-flex; align-items: center; gap: 6px; background: #dcfce7; color: #166534; font-size: 11.5px; font-weight: 900; padding: 5px 14px; border-radius: 999px; border: 1px solid #86efac; margin-bottom: 10px;">
+        <span>✅ ÖDEMENİZ ONAYLANDI & LİSANSINIZ AKTİFLEŞTİRİLDİ</span>
+      </div>
+      <h2 style="font-size: 26px; font-weight: 900; color: #163b2c; margin: 0 0 6px 0; letter-spacing: -0.02em;">
+        🎉 DiyetKalfa'ya Hoş Geldiniz!
+      </h2>
+      <p id="welcome-user-greeting" style="font-size: 14px; color: #475569; margin: 0;">
+        Sayın Uzm. Diyetisyen, klinik çalışma alanınız satın aldığınız paketin yetkileriyle kullanıma açılmıştır.
+      </p>
+    </div>
+
+    <!-- Aktif Paket Özeti -->
+    <div style="background: linear-gradient(135deg, #163b2c 0%, #0d241b 100%); color: #ffffff; border-radius: 16px; padding: 18px 20px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; border: 1.5px solid #d4af37;">
+      <div>
+        <div style="font-size: 11px; color: #fef08a; font-weight: 800; text-transform: uppercase;">SATIN ALINAN AKTİF PAKET</div>
+        <div id="welcome-plan-name" style="font-size: 22px; font-weight: 900; color: #ffffff; margin-top: 2px;">Profesyonel Paket</div>
+        <div id="welcome-plan-meta" style="font-size: 12px; color: #a7f3d0; margin-top: 2px;">Sınırsız Danışan Kapasitesi • 365 Gün Aktif Lisans</div>
+      </div>
+      <div style="text-align: right;">
+        <div style="font-size: 11px; color: #cbd5e1;">Lisans Anahtarınız:</div>
+        <div id="welcome-plan-key" style="font-family: monospace; font-size: 14px; font-weight: 900; color: #d4af37; background: rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 8px; margin-top: 3px;">DK-2026-PRO-8841</div>
+      </div>
+    </div>
+
+    <!-- Pakete Dahil Olan ve Olmayan Özellikler Matrisi -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 22px;">
+      <div style="background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 14px; padding: 16px;">
+        <div style="font-size: 12.5px; font-weight: 900; color: #166534; margin-bottom: 10px; text-transform: uppercase;">
+          ✅ PAKETİNİZE DAHİL AKTİF ÖZELLİKLER
+        </div>
+        <ul id="welcome-included-list" style="margin: 0; padding-left: 18px; font-size: 12.5px; color: #1e293b; line-height: 1.65;">
+        </ul>
+      </div>
+
+      <div style="background: #fffbeb; border: 1.5px solid #fde68a; border-radius: 14px; padding: 16px;">
+        <div style="font-size: 12.5px; font-weight: 900; color: #92400e; margin-bottom: 10px; text-transform: uppercase;">
+          🔒 ÜST PAKETLERE ÖZEL KİLİTLİ ÖZELLİKLER
+        </div>
+        <ul id="welcome-excluded-list" style="margin: 0; padding-left: 18px; font-size: 12.5px; color: #78350f; line-height: 1.65;">
+        </ul>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: flex-end; gap: 10px; flex-wrap: wrap;">
+      <button type="button" onclick="closePaidWelcomeModal()" style="width: 100%; background: linear-gradient(135deg, #163b2c 0%, #0f766e 100%); color: #ffffff; border: none; padding: 15px 24px; border-radius: 14px; font-weight: 900; font-size: 15px; cursor: pointer; box-shadow: 0 8px 20px rgba(22, 59, 44, 0.35);">
+        🚀 Klinik Panelimi Kullanmaya Başla →
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================================================== -->
+<!-- 2. 7. GÜN SONU OTOMATİK PARA ÇEKİM TALEBİ VE SİSTEM KİLİDİ (KICK-OUT GATE) -->
+<!-- ========================================================================== -->
+<div id="modal-trial-expired-gate" class="modal-backdrop" style="display: none; align-items: center; justify-content: center; z-index: 100030; background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(14px); padding: 16px; position: fixed; inset: 0;">
+  <div style="background: #ffffff; border-radius: 24px; max-width: 650px; width: 100%; max-height: 94vh; overflow-y: auto; padding: 32px 28px; box-shadow: 0 25px 80px rgba(0,0,0,0.65); border: 2.5px solid #dc2626; position: relative;">
+    
+    <div style="text-align: center; margin-bottom: 20px;">
+      <div style="display: inline-flex; align-items: center; gap: 6px; background: #fef2f2; color: #dc2626; font-size: 12px; font-weight: 900; padding: 6px 16px; border-radius: 999px; border: 1.5px solid #fca5a5; margin-bottom: 10px;">
+        <span>⏳ 7 GÜNLÜK ÜCRETSİZ DENEME SÜRENİZ SONA ERDİ</span>
+      </div>
+      <h2 style="font-size: 24px; font-weight: 900; color: #0f172a; margin: 0 0 8px 0;">
+        💳 Otomatik Para Çekim & Lisans Ödeme Talebi
+      </h2>
+      <p style="font-size: 13.5px; color: #475569; margin: 0; line-height: 1.55;">
+        7 günlük ücretsiz kullanım süreniz tamamlanmıştır. Klinik panelinizi kullanmaya devam edebilmek için lütfen aşağıdaki paketlerden birini seçerek <strong>ödeme çekim talebini onaylayın</strong>. Ödeme onaylanmadığı takdirde sistem erişiminiz kapatılarak oturumdan çıkarılacaksınız.
+      </p>
+    </div>
+
+    <!-- Paket Seçim Kartları -->
+    <div style="margin-bottom: 18px;">
+      <label style="font-size: 12px; font-weight: 900; color: #1e293b; display: block; margin-bottom: 8px; text-transform: uppercase;">
+        1. Devam Etmek İstediğiniz Paketi Seçin (Seçtiğiniz Paketin Özellikleri Açılır):
+      </label>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px;">
+        <label style="border: 2px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; display: flex; align-items: flex-start; gap: 10px; background: #f8fafc;">
+          <input type="radio" name="gate_plan_choice" value="Giriş Paketi" style="margin-top: 3px; accent-color: #163b2c;">
+          <div>
+            <div style="font-weight: 900; font-size: 13.5px; color: #0f172a;">📦 Giriş Paketi — 1.500 TL/ay</div>
+            <div style="font-size: 11.5px; color: #64748b; margin-top: 2px;">10 Danışan Limiti • Diyet Planlayıcı, Besinler, InBody, Excel</div>
+          </div>
+        </label>
+
+        <label style="border: 2px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; display: flex; align-items: flex-start; gap: 10px; background: #f8fafc;">
+          <input type="radio" name="gate_plan_choice" value="Temel Paket" style="margin-top: 3px; accent-color: #163b2c;">
+          <div>
+            <div style="font-weight: 900; font-size: 13.5px; color: #0f172a;">🌿 Temel Paket — 2.200 TL/ay</div>
+            <div style="font-size: 11.5px; color: #64748b; margin-top: 2px;">Sınırsız Danışan • +HOMA-IR Lab, +Randevu & SMS, +Pazar Listesi</div>
+          </div>
+        </label>
+
+        <label style="border: 2px solid #163b2c; border-radius: 12px; padding: 12px; cursor: pointer; display: flex; align-items: flex-start; gap: 10px; background: #f0fdf4;">
+          <input type="radio" name="gate_plan_choice" value="Profesyonel Paket" checked style="margin-top: 3px; accent-color: #163b2c;">
+          <div>
+            <div style="font-weight: 900; font-size: 13.5px; color: #163b2c;">⭐ Profesyonel Paket — 3.000 TL/ay</div>
+            <div style="font-size: 11.5px; color: #166534; margin-top: 2px;">Sınırsız + Danışan Kasası & Finans + Reels AI + Web Sitesi & SEO</div>
+          </div>
+        </label>
+
+        <label style="border: 2px solid #cbd5e1; border-radius: 12px; padding: 12px; cursor: pointer; display: flex; align-items: flex-start; gap: 10px; background: #f8fafc;">
+          <input type="radio" name="gate_plan_choice" value="Sınırsız Paket" style="margin-top: 3px; accent-color: #163b2c;">
+          <div>
+            <div style="font-weight: 900; font-size: 13.5px; color: #0f172a;">👑 Sınırsız Paket — 4.500 TL/ay</div>
+            <div style="font-size: 11.5px; color: #64748b; margin-top: 2px;">Çoklu Diyetisyen Poliklinik + 1.000 Başlıklı SMS + VIP Danışman</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Ödeme Dönemi -->
+    <div style="margin-bottom: 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+      <span style="font-size: 12.5px; font-weight: 800; color: #334155;">Faturalandırma & Çekim Periyodu:</span>
+      <select id="gate-cycle-select" style="padding: 8px 12px; border-radius: 8px; border: 1.5px solid #94a3b8; font-weight: 800; font-size: 12.5px; color: #0f172a;">
+        <option value="1">Aylık Lisans (30 Gün)</option>
+        <option value="12" selected>12 Ay Yıllık Kampanyalı (%30 İndirimli - 365 Gün)</option>
+      </select>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <button type="button" onclick="confirmTrialEndPayment()" style="background: linear-gradient(135deg, #163b2c 0%, #059669 100%); color: #ffffff; border: none; padding: 15px 20px; border-radius: 14px; font-weight: 900; font-size: 15px; cursor: pointer; box-shadow: 0 8px 20px rgba(5, 150, 105, 0.35); display: flex; align-items: center; justify-content: center; gap: 8px;">
+        <span>💳 Para Çekimini / Ödemeyi Onayla & Paketi Hemen Aç</span>
+        <span>→</span>
+      </button>
+
+      <button type="button" onclick="window.DiyetKalfaDB.kickUnpaidUserFromSystem()" style="background: #fef2f2; color: #dc2626; border: 1.5px solid #fca5a5; padding: 12px 20px; border-radius: 12px; font-weight: 800; font-size: 13px; cursor: pointer;">
+        🚪 Ödemeyi Reddet & Sistemden Çık (Oturumu Sonlandır)
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================================================== -->
+<!-- 3. PAKET YETKİ KİLİDİ & PAKET YÜKSELTME MODALI                             -->
+<!-- ========================================================================== -->
+<div id="modal-feature-locked" class="modal-backdrop" onclick="if(event.target===this) this.style.display='none';" style="display: none; align-items: center; justify-content: center; z-index: 100025; background: rgba(15, 23, 42, 0.82); backdrop-filter: blur(8px); padding: 16px; position: fixed; inset: 0;">
+  <div style="background: #ffffff; border-radius: 24px; max-width: 520px; width: 100%; padding: 30px 26px; box-shadow: 0 25px 60px rgba(0,0,0,0.45); border: 2px solid #d97706; position: relative; text-align: center;">
+    <button type="button" onclick="document.getElementById('modal-feature-locked').style.display='none'" style="position: absolute; top: 16px; right: 16px; background: #f1f5f9; border: none; width: 34px; height: 34px; border-radius: 50%; font-size: 15px; font-weight: 800; color: #475569; cursor: pointer;">✕</button>
+
+    <div style="width: 56px; height: 56px; border-radius: 18px; background: #fef3c7; color: #d97706; font-size: 28px; display: inline-flex; align-items: center; justify-content: center; border: 1.5px solid #fcd34d; margin-bottom: 12px;">
+      🔒
+    </div>
+
+    <h3 id="locked-modal-title" style="font-size: 21px; font-weight: 900; color: #0f172a; margin: 0 0 8px 0;">
+      Bu Modül Mevcut Paketinize Dahil Değildir
+    </h3>
+    <p id="locked-modal-desc" style="font-size: 13.5px; color: #475569; line-height: 1.55; margin: 0 0 18px 0;">
+      Seçtiğiniz özellik üst paket lisansına dahildir.
+    </p>
+
+    <div style="background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 14px; margin-bottom: 20px; text-align: left; font-size: 12.5px;">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+        <span style="color: #64748b; font-weight: 700;">Mevcut Paketiniz:</span>
+        <strong id="locked-current-plan" style="color: #dc2626;">Giriş Paketi</strong>
+      </div>
+      <div style="display: flex; justify-content: space-between;">
+        <span style="color: #64748b; font-weight: 700;">Bu Özellik İçin Gerekli Paket:</span>
+        <strong id="locked-required-plan" style="color: #166534;">Temel Paket (2.200 TL/ay)</strong>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <button type="button" id="btn-upgrade-locked-plan" onclick="upgradeToRequiredPlanNow()" style="background: linear-gradient(135deg, #163b2c 0%, #0f766e 100%); color: #ffffff; border: none; padding: 14px 20px; border-radius: 12px; font-weight: 900; font-size: 14px; cursor: pointer; box-shadow: 0 6px 18px rgba(22, 59, 44, 0.3);">
+        ⚡ Hemen Üst Pakete Yükselt & Bu Özelliği Aç →
+      </button>
+      <button type="button" onclick="document.getElementById('modal-feature-locked').style.display='none'" style="background: #f1f5f9; color: #475569; border: none; padding: 11px; border-radius: 10px; font-weight: 800; font-size: 12.5px; cursor: pointer;">
+        Mevcut Paketimle Devam Et
+      </button>
+    </div>
+  </div>
+</div>
+
+<script src="diyetkalfa_license_db.js"></script>
+<script>
+window._pendingRequiredUpgradePlan = 'Profesyonel Paket';
+
+function getActivePanelLicense() {
+  var lic = DiyetKalfaLicenseEngine.getLicense();
+  if (!lic) {
+    lic = window.DiyetKalfaDB.activatePaidLicense('Profesyonel Paket', 12, 'Uzm. Dyt. Zehra Bölük', 'DiyetKalfa Klinik', '0532 120 28 46', null, false);
+  }
+  return lic;
+}
+
+function checkTabPermissionAndGate(mode) {
+  if (!mode || mode === 'landing' || mode === 'pricing') return true;
+  var lic = getActivePanelLicense();
+  var daysLeft = DiyetKalfaLicenseEngine.calculateDaysLeft(lic);
+
+  // 1. 7. Gün Sonu Süre Dolmuşsa Para Çekim Talebi Ekranını Aç ve Geçişi Engelle
+  if (daysLeft <= 0 && !lic.isPaid) {
+    openTrialExpiredGateModal();
+    return false;
+  }
+
+  // 2. Paket Yetki Kontrolü
+  var cfg = window.DiyetKalfaDB.getPackageConfig(lic.tierCode || lic.tier);
+  if (cfg && cfg.lockedTabs && cfg.lockedTabs[mode]) {
+    var lockInfo = cfg.lockedTabs[mode];
+    openFeatureLockedModal(lockInfo.title, cfg.name, lockInfo.reqPlan, lockInfo.price);
+    return false;
+  }
+
+  return true;
+}
+
+function openFeatureLockedModal(featureTitle, currentPlanName, reqPlanName, reqPrice) {
+  window._pendingRequiredUpgradePlan = reqPlanName || 'Profesyonel Paket';
+  var modal = document.getElementById('modal-feature-locked');
+  if (!modal) return;
+
+  var titleEl = document.getElementById('locked-modal-title');
+  var descEl = document.getElementById('locked-modal-desc');
+  var currEl = document.getElementById('locked-current-plan');
+  var reqEl = document.getElementById('locked-required-plan');
+  var btnEl = document.getElementById('btn-upgrade-locked-plan');
+
+  if (titleEl) titleEl.textContent = '🔒 "' + featureTitle + '" Kilitli';
+  if (descEl) descEl.innerHTML = '<strong>' + featureTitle + '</strong> modülü mevcut <strong>' + currentPlanName + '</strong> lisansınıza dahil değildir. Bu aracı kullanabilmek için <strong>' + reqPlanName + '</strong> veya üzeri bir pakete geçiş yapabilirsiniz.';
+  if (currEl) currEl.textContent = currentPlanName;
+  if (reqEl) reqEl.textContent = reqPlanName + ' (' + reqPrice + ')';
+  if (btnEl) btnEl.textContent = '💳 Ödemeyi Onayla & ' + reqPlanName + '\'e Yükselt →';
+
+  modal.style.display = 'flex';
+}
+
+function upgradeToRequiredPlanNow() {
+  var modal = document.getElementById('modal-feature-locked');
+  if (modal) modal.style.display = 'none';
+  var targetPlan = window._pendingRequiredUpgradePlan || 'Profesyonel Paket';
+  simulatePaidPackageSwitch(targetPlan);
+}
+
+function applyPackagePermissionsToPanel() {
+  if (!window.DiyetKalfaDB) return;
+  var lic = getActivePanelLicense();
+  var cfg = window.DiyetKalfaDB.getPackageConfig(lic.tierCode || lic.tier);
+  var daysLeft = DiyetKalfaLicenseEngine.calculateDaysLeft(lic);
+
+  // 1. Üst Paket Kontrol Şeridini Güncelle
+  var badgeEl = document.getElementById('dk-strip-badge');
+  var titleEl = document.getElementById('dk-strip-title');
+  var subEl = document.getElementById('dk-strip-sub');
+
+  var iconMap = { 'starter': '📦', 'core': '🌿', 'pro': '⭐', 'enterprise': '👑' };
+  var icon = iconMap[cfg.code] || '⭐';
+
+  if (badgeEl) {
+    badgeEl.textContent = icon + ' ' + cfg.name.toUpperCase() + (lic.isTrial ? ' (7 GÜN DENEME)' : '');
+  }
+
+  var openCount = cfg.allowedTabs.length;
+  var capText = cfg.maxClients <= 10 ? 'Max 10 Danışan Limiti' : (cfg.allowMultiDietitian ? 'Sınırsız Danışan + Çoklu Diyetisyen + 1.000 SMS' : 'Sınırsız Danışan Kapasitesi');
+
+  if (titleEl) {
+    if (daysLeft <= 0 && !lic.isPaid) {
+      titleEl.innerHTML = '⛔ <span style="color:#fca5a5;">7 Günlük Ücretsiz Deneme Süreniz Doldu!</span> • Devam Etmek İçin Ödeme Onayı Bekleniyor';
+    } else if (lic.isTrial) {
+      titleEl.innerHTML = '🎁 7 Günlük Ücretsiz Deneme Aktif (' + daysLeft + ' Gün Kaldı) • ' + openCount + '/10 Modül Açık • ' + capText;
+    } else {
+      titleEl.innerHTML = '✅ Ödemesi Onaylanmış Lisans (' + cfg.monthlyPrice + '/ay) • ' + openCount + '/10 Modül Açık • ' + capText;
+    }
+  }
+
+  if (subEl) {
+    var lockedKeys = Object.keys(cfg.lockedTabs || {});
+    if (lockedKeys.length === 0) {
+      subEl.textContent = 'Paketinize tüm klinik modüller dahildir. Hiçbir kısıtlama olmadan tüm araçları kullanabilirsiniz.';
+    } else {
+      var lockedNames = lockedKeys.map(function(k) { return cfg.lockedTabs[k].title; }).join(', ');
+      subEl.textContent = 'Bu pakette kilitli olan üst paket modülleri (' + lockedKeys.length + ' adet): ' + lockedNames;
+    }
+  }
+
+  // 2. Navigasyon Sekmelerine Kilit Rozetlerini Uygula
+  var allTabModes = ['diet', 'lab', 'foods', 'inbody', 'excel', 'appointments', 'crm', 'reels', 'grocery', 'biolink'];
+  allTabModes.forEach(function(m) {
+    var btn = document.getElementById('btn-tab-' + m);
+    if (!btn) return;
+
+    var existingLock = btn.querySelector('.dk-lock-pill');
+    if (existingLock) existingLock.remove();
+
+    var origBadge = btn.querySelector('.badge-pill');
+
+    if (cfg.lockedTabs && cfg.lockedTabs[m]) {
+      var lInfo = cfg.lockedTabs[m];
+      btn.style.opacity = '0.62';
+      if (origBadge) origBadge.style.display = 'none';
+
+      var lockPill = document.createElement('span');
+      lockPill.className = 'dk-lock-pill';
+      lockPill.style.cssText = 'background:#fef2f2; color:#dc2626; border:1px solid #fca5a5; font-size:10px; font-weight:900; padding:2px 6px; border-radius:999px; margin-left:4px;';
+      lockPill.textContent = '🔒 ' + lInfo.reqPlan.replace(' Paket', '');
+      btn.appendChild(lockPill);
+    } else {
+      btn.style.opacity = '1';
+      if (origBadge) origBadge.style.display = 'inline-block';
+    }
+  });
+
+  // Eğer şu an açık olan sekme kilitliyse otomatik olarak açık olan 'diet' sekmesine al
+  var activeBtn = document.querySelector('.saas-tab-btn.active');
+  if (activeBtn && activeBtn.id) {
+    var activeMode = activeBtn.id.replace('btn-tab-', '');
+    if (cfg.lockedTabs && cfg.lockedTabs[activeMode]) {
+      switchAppTab('diet');
+    }
+  }
+
+  // 3. 7. Gün Süresi Dolmuşsa Para Çekim Talebi Kapısını Aç
+  if (daysLeft <= 0 && !lic.isPaid) {
+    openTrialExpiredGateModal();
+  }
+}
+
+function showPaidWelcomeModal() {
+  if (!window.DiyetKalfaDB) return;
+  var lic = getActivePanelLicense();
+  var cfg = window.DiyetKalfaDB.getPackageConfig(lic.tierCode || lic.tier);
+
+  var modal = document.getElementById('modal-paid-welcome');
+  if (!modal) return;
+
+  var greetEl = document.getElementById('welcome-user-greeting');
+  var nameEl = document.getElementById('welcome-plan-name');
+  var metaEl = document.getElementById('welcome-plan-meta');
+  var keyEl = document.getElementById('welcome-plan-key');
+  var incList = document.getElementById('welcome-included-list');
+  var excList = document.getElementById('welcome-excluded-list');
+
+  if (greetEl) {
+    greetEl.innerHTML = 'Hoş geldiniz <strong>' + (lic.dietitianName || 'Uzm. Diyetisyen') + '</strong> (' + (lic.clinicName || 'DiyetKalfa Kliniği') + ')! Ödemeniz onaylandı ve sisteminiz <strong>' + cfg.name + '</strong> yetkileriyle açıldı.';
+  }
+  if (nameEl) nameEl.textContent = cfg.name + ' (' + cfg.monthlyPrice + ' / ay)';
+  if (metaEl) {
+    var cap = cfg.maxClients <= 10 ? '10 Danışana Kadar Aktif Takip' : 'Sınırsız Danışan Kapasitesi';
+    metaEl.textContent = cap + ' • ' + (lic.cycleDays || 365) + ' Gün Tam Lisans';
+  }
+  if (keyEl) keyEl.textContent = lic.licenseKey || 'DK-2026-PRO';
+
+  if (incList) {
+    incList.innerHTML = (cfg.includedFeatures || []).map(function(f) {
+      return '<li style="margin-bottom:4px;"><strong>✓</strong> ' + f + '</li>';
+    }).join('');
+  }
+
+  if (excList) {
+    if (!cfg.excludedFeatures || cfg.excludedFeatures.length === 0) {
+      excList.innerHTML = '<li style="color:#166534; font-weight:800; list-style:none; margin-left:-14px;">👑 En üst pakettesiniz! Sistemdeki tüm 10 klinik modül, Poliklinik çoklu diyetisyen ve 1.000 SMS hakkı %100 sınırsız açıktır.</li>';
+    } else {
+      excList.innerHTML = cfg.excludedFeatures.map(function(f) {
+        return '<li style="margin-bottom:4px;">🔒 ' + f + '</li>';
+      }).join('');
+    }
+  }
+
+  modal.style.display = 'flex';
+}
+
+function closePaidWelcomeModal() {
+  var modal = document.getElementById('modal-paid-welcome');
+  if (modal) modal.style.display = 'none';
+  try {
+    var lic = getActivePanelLicense();
+    lic.justPaidWelcome = false;
+    localStorage.setItem('diyetkalfa_license', JSON.stringify(lic));
+  } catch(e) {}
+}
+
+function openTrialExpiredGateModal() {
+  var modal = document.getElementById('modal-trial-expired-gate');
+  if (modal) modal.style.display = 'flex';
+}
+
+function confirmTrialEndPayment() {
+  var radios = document.getElementsByName('gate_plan_choice');
+  var chosenPlan = 'Profesyonel Paket';
+  for (var i = 0; i < radios.length; i++) {
+    if (radios[i].checked) {
+      chosenPlan = radios[i].value;
+      break;
+    }
+  }
+  var cycleEl = document.getElementById('gate-cycle-select');
+  var months = cycleEl ? parseInt(cycleEl.value) : 12;
+
+  var lic = getActivePanelLicense();
+  window.DiyetKalfaDB.activatePaidLicense(chosenPlan, months, lic.dietitianName, lic.clinicName, lic.phone, null, false);
+
+  var gateModal = document.getElementById('modal-trial-expired-gate');
+  if (gateModal) gateModal.style.display = 'none';
+
+  initLicenseUI();
+  applyPackagePermissionsToPanel();
+  showPaidWelcomeModal();
+}
+
+function simulatePaidPackageSwitch(tierNameOrCode) {
+  var lic = getActivePanelLicense();
+  var cfg = window.DiyetKalfaDB.getPackageConfig(tierNameOrCode);
+  window.DiyetKalfaDB.activatePaidLicense(cfg.name, 12, lic.dietitianName, lic.clinicName, lic.phone, null, false);
+  initLicenseUI();
+  applyPackagePermissionsToPanel();
+  showPaidWelcomeModal();
+}
+
+function simulateSeventhDayEnd() {
+  window.DiyetKalfaDB.triggerSeventhDayExpiration();
+  initLicenseUI();
+  applyPackagePermissionsToPanel();
+  openTrialExpiredGateModal();
+}
+
+// White-Label Klinik Ayarları ve 10 Danışan Kapasite Kilidi Koruması
+var _origOpenClinicModal = window.openClinicModal;
+window.openClinicModal = function() {
+  if (window.DiyetKalfaDB) {
+    var lic = getActivePanelLicense();
+    var cfg = window.DiyetKalfaDB.getPackageConfig(lic.tierCode || lic.tier);
+    if (cfg && !cfg.allowWhiteLabel) {
+      openFeatureLockedModal('White-Label Kendi Logonuz & Kurumsal Klinik Ayarları', cfg.name, 'Temel Paket', '2.200 TL/ay');
+      return;
+    }
+  }
+  if (typeof _origOpenClinicModal === 'function') _origOpenClinicModal();
+};
+
+var _origAddNewExcelRow = window.addNewExcelRow;
+window.addNewExcelRow = function() {
+  if (window.DiyetKalfaDB && typeof excelClientsList !== 'undefined') {
+    var lic = getActivePanelLicense();
+    var cfg = window.DiyetKalfaDB.getPackageConfig(lic.tierCode || lic.tier);
+    if (cfg && cfg.maxClients <= 10 && excelClientsList.length >= 10) {
+      openFeatureLockedModal('Sınırsız Danışan Kapasitesi (Giriş Paketi 10 Danışan Limiti Doldu)', cfg.name, 'Temel Paket', '2.200 TL/ay');
+      return;
+    }
+  }
+  if (typeof _origAddNewExcelRow === 'function') _origAddNewExcelRow();
+};
+
+// Override showCheckoutSuccess on panel.html as well so payment from panel checkout modal immediately shows Welcome Screen
+var _origShowCheckoutSuccess = window.showCheckoutSuccess;
+window.showCheckoutSuccess = function(lic) {
+  if (window.DiyetKalfaDB && lic) {
+    lic = window.DiyetKalfaDB.activatePaidLicense(lic.tier, lic.cycleMonths, lic.dietitianName, lic.clinicName, lic.phone, lic.licenseKey, false);
+  }
+  closeCheckoutModal();
+  initLicenseUI();
+  applyPackagePermissionsToPanel();
+  showPaidWelcomeModal();
+};
+
+window.addEventListener('DOMContentLoaded', function() {
+  setTimeout(function() {
+    var params = new URLSearchParams(window.location.search);
+    var planParam = params.get('plan');
+    var isWelcome = params.get('welcome') === '1';
+    var isTrialParam = params.get('trial') === '1';
+
+    if (planParam && isWelcome) {
+      var lic = getActivePanelLicense();
+      var cfg = window.DiyetKalfaDB.getPackageConfig(planParam);
+      if (lic.tierCode !== cfg.code || !lic.isPaid) {
+        window.DiyetKalfaDB.activatePaidLicense(cfg.name, 12, lic.dietitianName, lic.clinicName, lic.phone, null, false);
+      }
+    }
+
+    initLicenseUI();
+    applyPackagePermissionsToPanel();
+
+    var currentLic = getActivePanelLicense();
+    if (isWelcome || currentLic.justPaidWelcome) {
+      showPaidWelcomeModal();
+    }
+  }, 150);
 });
 </script>
 </body>

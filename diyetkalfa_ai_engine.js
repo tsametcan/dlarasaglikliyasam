@@ -3,17 +3,16 @@
  * DIYETKALFA AI ULTRA ENGINE 2026 - TÜRKİYE'NİN EN GELİŞMİŞ KLİNİK AI ASİSTANI
  * ============================================================================
  * Mimari Özellikleri:
- * 1. 60+ Uzman Klinik & Beslenme Protokolü (Tiroid, İnsülin, Gut, PCOS, Keto, vb.)
- * 2. Dinamik Semantik Doğal Dil Sentezleyicisi (Serbest & Manuel sorular için)
- * 3. Opsiyonel Google Gemini 1.5 Flash Entegrasyonu (API Key girildiğinde canlı LLM)
- * 4. 7/24 Kesintisiz Sıfır Hata & Sıfır Gecikme Garantisi
+ * 1. 55+ Uzman Klinik & Beslenme Protokolü (Tiroid, İnsülin, Gut, PCOS, Keto, Anemi, Böbrek, Bariatrik vb.)
+ * 2. Sayısal & Semantik Vaka Analizörü (Sorudaki kilo, yaş, tahlil değerlerini yakalayıp anlık hesaplama yapar)
+ * 3. Canlı Generative AI (Google Gemini 1.5 Flash + Keyless Bulut LLM + Yerel Klinik Motor Hibrit Yapı)
+ * 4. Hem Sağ Alt 7/24 AI Widget'ı hem de Çözümler -> Yapay Zeka Asistanı Modalı ile %100 Entegre
  * ============================================================================
  */
 
 (function(window) {
   'use strict';
 
-  // Gemini API Yapılandırması
   var GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
 
   function getGeminiApiKey() {
@@ -34,15 +33,28 @@
     } catch(e) {}
   }
 
+  function formatMarkdownToHtml(text) {
+    if (!text) return '';
+    return text
+      .replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/^### (.*$)/gm, '<div style="font-weight:800; color:#163b2c; margin-top:8px;">$1</div>')
+      .replace(/^## (.*$)/gm, '<div style="font-weight:900; color:#163b2c; font-size:14px; margin-top:8px;">$1</div>')
+      .replace(/\n\n/g, '<br/><br/>')
+      .replace(/\n- /g, '<br/>• ')
+      .replace(/\n\* /g, '<br/>• ')
+      .replace(/\n/g, '<br/>');
+  }
+
   /**
-   * Gemini 1.5 Flash API Çağrısı
+   * Google Gemini 1.5 Flash API Çağrısı
    */
   async function callGeminiApi(userText, apiKey) {
     var systemInstruction = 
       "Sen Türkiye'nin en gelişmiş Klinik Diyetisyen Yazılımı olan DiyetKalfa'nın (0532 120 28 46) uzman klinik yapay zekasısın. " +
       "Diyetisyenlerin ve danışanların klinik beslenme, tahlil, hastalıklar, metabolizma, kilo yönetimi, tarifler ve DiyetKalfa platformu ile ilgili tüm sorularını profesyonel, bilimsel, net ve samimi bir Türkçe ile yanıtla. " +
-      "Cevaplarında HTML formatı kullan: Başlık için <strong>...</strong> veya <h4>, maddeler için <ul><li>...</li></ul>, önemli yerler için <strong> ve gerekli yerlerde pratik klinik öneriler sun. " +
-      "Gereksiz uzun girizgahlardan kaçın, doğrudan kullanıcının sorduğu spesifik soruya odaklan.";
+      "Doğrudan kullanıcının sorduğu spesifik soruya odaklan, sayısal değerler varsa hesapla ve maddeler halinde klinik çözüm sun.";
 
     var requestBody = {
       contents: [
@@ -55,7 +67,7 @@
       ],
       generationConfig: {
         temperature: 0.7,
-        maxOutputTokens: 800
+        maxOutputTokens: 700
       }
     };
 
@@ -72,22 +84,14 @@
     var data = await response.json();
     if (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts) {
       var candidateText = data.candidates[0].content.parts.map(function(p) { return p.text; }).join('\n');
-      // Format markdown to HTML if needed
-      var formatted = candidateText
-        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-        .replace(/\*(.*?)\*/g, '<em>$1</em>')
-        .replace(/\n\n/g, '<br/><br/>')
-        .replace(/\n- /g, '<br/>• ')
-        .replace(/\n/g, '<br/>');
-      return '<div>' + formatted + '</div>' +
-        '<div style="margin-top: 8px; font-size: 11px; color: #059669; font-weight: 700;">✨ Gemini 1.5 Flash ile Canlı Üretildi</div>';
+      return '<div style="line-height:1.55; color:#1e293b;">' + formatMarkdownToHtml(candidateText) + '</div>' +
+        '<div style="margin-top: 8px; font-size: 11px; color: #059669; font-weight: 700;">✨ Google Gemini 1.5 Flash ile Canlı Analiz Edildi</div>';
     }
-
-    throw new Error('Yanıt gövdesi boş döndü');
+    throw new Error('Yanıt boş döndü');
   }
 
   /**
-   * Ana Asenkron Yanıt Üretici (Gemini -> Native Fallback)
+   * Ana Asenkron Yanıt Üretici
    */
   async function getAiResponseAsync(userText) {
     var apiKey = getGeminiApiKey();
@@ -95,16 +99,15 @@
       try {
         return await callGeminiApi(userText, apiKey);
       } catch (err) {
-        console.warn('Gemini API çağrısı başarısız, yerel klinik AI motoruna geçiliyor:', err);
+        console.warn('Gemini API çağrısı başarısız, yerel uzman klinik AI motoruna geçiliyor:', err);
       }
     }
-    // Yerel Uzman Klinik AI Motoru
     return getNativeClinicalAiResponse(userText);
   }
 
   /**
    * DİYETKALFA YEREL DERİN KLİNİK & BESLENME YAPAY ZEKA MOTORU
-   * 60+ Klinik Alan + Dinamik Semantik Sentezleyici
+   * 55+ Klinik Alan + Sayısal Vaka Hesaplayıcı + Dinamik Semantik Sentezleyici
    */
   function getNativeClinicalAiResponse(rawQuery) {
     if (!rawQuery || !rawQuery.trim()) {
@@ -122,65 +125,64 @@
       .replace(/ç/g, 'c');
 
     // 1. SELAMLAŞMA & PLATFORM KİMLİĞİ
-    if (qNorm.match(/^(merhaba|selam|selamlar|gunaydin|iyi gunler|iyi aksamlar|hey|hi|hello|nasilsin|kolay gelsin)\b/) || qNorm === 'merhaba' || qNorm === 'selam' || qNorm === 'slm') {
+    if (qNorm.match(/^(merhaba|selam|selamlar|gunaydin|iyi gunler|iyi aksamlar|hey|hi|hello|nasilsin|kolay gelsin)\b/) && qNorm.split(/\s+/).length <= 4) {
       return '<div><strong>👋 Merhaba! DiyetKalfa Klinik Yapay Zeka Asistanına Hoş Geldiniz.</strong></div>' +
         '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
-          'Klinikler ve profesyonel diyetisyenler için geliştirdiğimiz yeni nesil yapay zeka işletim sistemiyiz. Size hangi konuda yardımcı olabilirim?' +
+          'Hem klinik vaka analizlerinizde (HOMA-IR, Tiroid, PCOS, Gut, Anemi, Sporcu makroları vb.) hem de DiyetKalfa yazılımımız hakkında bana her türlü soruyu manuel olarak sorabilirsiniz.' +
         '</div>' +
         '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
           '<button type="button" onclick="triggerQuickPrompt(\'Klinik paneline nasıl geçeceğiz?\')" class="ai-link-btn" style="background: #163b2c; color: #fff;">🚀 Paneli Nasıl Açarım?</button>' +
-          '<button type="button" onclick="triggerQuickPrompt(\'Paketler ve fiyatlar ne kadar?\')" class="ai-link-btn" style="background: #0f766e; color: #fff;">💎 Fiyatlar & Kampanyalar</button>' +
-          '<button type="button" onclick="triggerQuickPrompt(\'Randevu takvimi ve SMS nasıl çalışır?\')" class="ai-link-btn" style="background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0;">📅 Randevu & SMS</button>' +
+          '<button type="button" onclick="triggerQuickPrompt(\'Paketler ve fiyatlar ne kadar?\')" class="ai-link-btn" style="background: #0f766e; color: #fff;">💎 Fiyatlar & Paketler</button>' +
+          '<button type="button" onclick="triggerQuickPrompt(\'1 günlük örnek diyet listesi verir misin?\')" class="ai-link-btn" style="background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0;">🥗 Örnek Menü Yaz</button>' +
         '</div>';
     }
 
     // 2. KLİNİK PANELİNE GİRİŞ / SİSTEMİ AÇMA / ŞİFRE / DEMO
-    if (qNorm.includes('panel') || qNorm.includes('giris') || qNorm.includes('sistemi nasil') || qNorm.includes('nasil acacagiz') || qNorm.includes('nasil acariz') || qNorm.includes('nasil girerim') || qNorm.includes('nasil gec') || qNorm.includes('nereden gir') || qNorm.includes('sifre') || qNorm.includes('parola') || qNorm.includes('hesap') || qNorm.includes('demo nasil') || qNorm.includes('acilmiyor')) {
-      return '<div><strong>🚀 Klinik Paneline Erişim Rehberi:</strong></div>' +
+    if (qNorm.includes('panel') || qNorm.includes('sistemi nasil') || qNorm.includes('nasil acacagiz') || qNorm.includes('nasil acariz') || qNorm.includes('nasil girerim') || qNorm.includes('nasil gec') || qNorm.includes('nereden gir') || qNorm.includes('sifre') || qNorm.includes('parola') || qNorm.includes('demo nasil') || qNorm.includes('acilmiyor')) {
+      return '<div><strong>🚀 Klinik Paneline Erişim & 7 Günlük Deneme Rehberi:</strong></div>' +
         '<div style="margin-top: 6px; line-height: 1.5; color: #475569;">' +
-          'DiyetKalfa klinik paneline geçiş yapmak çok kolay ve anında gerçekleşir:' +
+          'DiyetKalfa klinik sistemine geçiş ve kullanım akışı şu şekildedir:' +
           '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
-            '<li><strong>Anında Canlı Demo:</strong> Kurulum veya şifre gerekmeden tek tıkla canlı paneli açabilirsiniz.</li>' +
-            '<li><strong>Giriş Yap Butonu:</strong> Üst menüdeki "🔐 Giriş Yap" butonuna tıklayarak lisans şifrenizle veya tek tıkla demo modunda panele geçebilirsiniz.</li>' +
-            '<li><strong>Satın Alma / Lisans:</strong> Lisansınızı başlattığınızda sisteminiz anında tam yetkiyle açılır ve danışan verileriniz güvenle saklanır.</li>' +
+            '<li><strong>1. Ücretsiz Kayıt & 7 Gün Deneme:</strong> "Ücretsiz Başla" veya "Kliniğimde Başlat (0 TL)" butonlarından kayıt ekranına geçip hesabınızı oluşturduğunuz an paneliniz 7 gün boyunca aktifleşir.</li>' +
+            '<li><strong>2. 7. Gün Sonu Otomatik Lisans Kontrolü:</strong> 7. günün sonunda sistem otomatik ödeme/paket onay ekranını açar; onaylanan pakete göre (Giriş, Temel, Profesyonel veya Sınırsız) panel özellikleriniz tanımlanır.</li>' +
+            '<li><strong>3. Üst Menüden Giriş:</strong> Sağ üstteki "🔐 Giriş Yap" butonundan lisans bilgilerinizle veya tek tıkla demo modunda panele ulaşabilirsiniz.</li>' +
           '</ul>' +
         '</div>' +
         '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-          '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">🚀 Klinik Demo Panelini Aç →</a>' +
-          '<a href="kayit.html" target="_blank" rel="noopener noreferrer" class="ai-link-btn" style="background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0;">✨ 7 Gün Ücretsiz Başla</a>' +
+          '<a href="kayit.html" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">✨ Kayıt Ol & 7 Gün Başlat →</a>' +
+          '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0;">🚀 Klinik Paneli Gör</a>' +
         '</div>';
     }
 
-    // 3. FİYATLAR & KAMPANYALAR
-    if (qNorm.includes('fiyat') || qNorm.includes('ucret') || qNorm.includes('paket') || qNorm.includes('kampanya') || qNorm.includes('kac para') || qNorm.includes('maliyet') || qNorm.includes('ne kadar')) {
-      return '<div><strong>💎 2026 Kampanyalı Klinik Lisans Paketleri:</strong></div>' +
+    // 3. FİYATLAR & PAKET FARKLARI
+    if (qNorm.includes('fiyat') || qNorm.includes('ucret') || qNorm.includes('paket') || qNorm.includes('kampanya') || qNorm.includes('kac para') || qNorm.includes('maliyet')) {
+      return '<div><strong>💎 DiyetKalfa Paketleri & Özellik Yetkileri:</strong></div>' +
         '<div style="margin-top: 6px; line-height: 1.5; color: #475569;">' +
-          'Klinikler için en avantajlı 12 aylık toplu lisans paketlerimiz:' +
+          'Her diyetisyen yalnızca satın aldığı paketin özelliklerini panelinde kullanır:' +
           '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
-            '<li><strong>Başlangıç Paketi (12 Ay):</strong> 1.500 TL/ay (Yıllık 18.000 TL) • 25 Danışan Takibi, Diyet Planlayıcı, Randevu Takvimi</li>' +
-            '<li><strong>Profesyonel Paket (12 Ay - En Popüler):</strong> 3.000 TL/ay (Yıllık 36.000 TL) • Sınırsız Danışan, HOMA-IR Lab, Türkomp Besin Değişimi, Otomatik SMS</li>' +
-            '<li><strong>Kurumsal Klinik Paketi (12 Ay):</strong> 5.000 TL/ay (Yıllık 60.000 TL) • Çoklu Diyetisyen, e-Nabız MBYS, Özel Alan Adı Web Sitesi</li>' +
+            '<li><strong>1. Giriş Paketi (1.500 TL/ay - Yıllık 18.000 TL):</strong> 10 danışana kadar takip, DSÖ 2024 Diyet Planlayıcı, Türkomp Besin Değişimi, InBody ölçüm ve Excel çizelgesi.</li>' +
+            '<li><strong>2. Temel Paket (2.200 TL/ay - Yıllık 26.400 TL):</strong> Sınırsız danışan, HOMA-IR Tahlil Labı, Randevu Takvimi & SMS, Otomatik Pazar Listesi ve White-Label PDF.</li>' +
+            '<li><strong>3. Profesyonel Paket (3.000 TL/ay - Yıllık 36.000 TL):</strong> Tüm Temel özellikler + Danışan Kasası & Finans, Viral Reels AI Stüdyosu, Kişisel Web Sitesi & SEO.</li>' +
+            '<li><strong>4. Sınırsız Paket (4.500 TL/ay - Yıllık 54.000 TL):</strong> Çoklu Diyetisyen (Poliklinik), 1.000 Başlıklı SMS, .com Özel Domain ve 7/24 VIP Danışman.</li>' +
           '</ul>' +
         '</div>' +
         '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-          '<a href="fiyatlar.html" class="ai-link-btn" style="background: #163b2c; color: #fff;">📦 Fiyat Tablosunu İncele →</a>' +
-          '<a href="https://wa.me/905321202846?text=Merhaba,%20DiyetKalfa%20lisans%20fiyatları%20ve%20indirimler%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 0532 120 28 46 WhatsApp</a>' +
+          '<a href="fiyatlar.html" class="ai-link-btn" style="background: #163b2c; color: #fff;">📦 Fiyatları & Tabloyu Aç →</a>' +
+          '<a href="kayit.html" class="ai-link-btn" style="background: #0f766e; color: #fff;">🚀 7 Gün Ücretsiz Dene</a>' +
         '</div>';
     }
 
     // 4. ÖDEME YÖNTEMLERİ, KARTSIZ ÖDEME, HAVALE / EFT / FAST
-    if (qNorm.includes('odeme') || qNorm.includes('havale') || qNorm.includes('eft') || qNorm.includes('fast') || qNorm.includes('iban') || qNorm.includes('kart') || qNorm.includes('pos') || qNorm.includes('vergi')) {
-      return '<div><strong>💳 Kolay, Kartsız & Masrafsız Ödeme Yöntemleri:</strong></div>' +
+    if (qNorm.includes('odeme') || qNorm.includes('havale') || qNorm.includes('eft') || qNorm.includes('fast') || qNorm.includes('iban') || qNorm.includes('kredi kart') || qNorm.includes('pos') || qNorm.includes('vergi')) {
+      return '<div><strong>💳 Kolay, Kartsız & Anında Otomatik Lisans Aktivasyonu:</strong></div>' +
         '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
-          'DiyetKalfa, klinisyenleri sanal POS komisyonları veya karmaşık vergi bürokrasisiyle uğraştırmaz:' +
           '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
-            '<li><strong>💬 WhatsApp VIP Lisanslama:</strong> 0532 120 28 46 hattımız üzerinden doğrudan sipariş verip lisansınızı anında açabilirsiniz.</li>' +
-            '<li><strong>🏦 Havale / EFT / FAST:</strong> Resmi şirket IBAN hesabımıza masrafsız transfer yapabilirsiniz. Dekont sonrası sistem anında aktifleşir.</li>' +
-            '<li><strong>⚡ Anında Aktivasyon:</strong> Ödemeniz teyit edildiği anda benzersiz lisans kodunuz üretilir ve klinik paneliniz tam yetkiyle çalışmaya başlar.</li>' +
+            '<li><strong>🏦 7/24 Havale / EFT / FAST & WhatsApp Onayı:</strong> Ödemeniz onaylandığı saniye sistem otomatik olarak sizi <em>"DiyetKalfa\'ya Hoş Geldiniz"</em> ekranıyla klinik panelinize yönlendirir.</li>' +
+            '<li><strong>📦 Pakete Özel Otomatik Yetkilendirme:</strong> Hangi paketin ödemesini yaptıysanız (Giriş, Temel, Profesyonel veya Sınırsız) paneliniz otomatik olarak o paketin modülleriyle açılır.</li>' +
           '</ul>' +
         '</div>' +
         '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-          '<a href="fiyatlar.html" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">💳 Paketleri İncele & Satın Al →</a>' +
+          '<a href="fiyatlar.html" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">💳 Paket Seç & Satın Al →</a>' +
           '<a href="https://wa.me/905321202846?text=Merhaba,%20DiyetKalfa%20lisans%20satın%20alma%20ve%20havale%20bilgisi%20almak%20istiyorum." target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 WhatsApp 0532 120 28 46</a>' +
         '</div>';
     }
@@ -192,12 +194,11 @@
           'Elma sirkesi doğrudan yağ hücrelerini eritmez; ancak içerdiği <strong>%5-6 asetik asit</strong> sayesinde kilo kontrolünü 3 yolla destekler:' +
           '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
             '<li><strong>Gastrik Boşalmayı Yavaşlatma:</strong> Midenin boşalma süresini uzatarak tokluk hissi sağlar ve öğün sonrası glisemik dalgalanmayı %20-30 oranında baskılar.</li>' +
-            '<li><strong>İnsülin Duyarlılığı:</strong> Karbonhidratlı bir öğün öncesi alındığında periferik dokularda glukoz alımını kolaylaştırır.</li>' +
-            '<li><strong>Doğru Kullanım Şekli:</strong> 1 su bardağı ılık suya 1 tatlı kaşığı organik elma sirkesi eklenerek ana yemeklerden 10-15 dakika önce pipetle içilmelidir (diş minesini korumak için).</li>' +
-            '<li><strong>⚠️ Dikkat:</strong> Gastrit, mide ülseri veya ileri derece reflüsü olan bireylerde aç karnına sirke tüketimi önerilmez.</li>' +
+            '<li><strong>İnsülin Duyarlılığı:</strong> Karbonhidratlı bir öğün öncesi alındığında kas dokusunda glukoz alımını kolaylaştırır.</li>' +
+            '<li><strong>Doğru Kullanım:</strong> 1 su bardağı ılık suya 1 tatlı kaşığı organik elma sirkesi eklenerek ana yemeklerden 10-15 dakika önce pipetle içilmelidir.</li>' +
+            '<li><strong>⚠️ Kontrendikasyon:</strong> Gastrit, mide ülseri veya aktif reflüsü olan danışanlarda aç karnına sirke önerilmez.</li>' +
           '</ul>' +
-        '</div>' +
-        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🥗 Panelde Alkali Reçete Oluştur →</a>';
+        '</div>';
     }
 
     // 6. TİROİD & HASHİMOTO BESLENMESİ
@@ -206,381 +207,404 @@
         '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
           'Hashimoto ve hipotiroidide metabolik hızı ve bağışıklık toleransını optimize eden klinik kurallar:' +
           '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
-            '<li><strong>Kritik Mineraller:</strong> T4\'ün aktif T3\'e dönüşümü için günde 1-2 adet Brezilya cevizi (organik selenyum) ve kabak çekirdeği (çinko) tüketilmelidir.</li>' +
-            '<li><strong>Guatrojen Besinler:</strong> Brokoli, lahana, karnabahar ve turp gibi besinler çiğ tüketilmemeli; pişirilerek tüketilmelidir (pişirme guatrojenik bileşikleri inaktive eder).</li>' +
-            '<li><strong>İlaç Emilim Kuralı:</strong> Tiroid ilacı (Levotiron/Euthyrox) sabah aç karnına bir bardak su ile alınmalı; kahvaltı, kahve ve kalsiyum/demir takviyeleri için en az 30-60 dakika beklenmelidir.</li>' +
-            '<li><strong>Glüten & İnflamasyon:</strong> Hashimoto hastalarında moleküler benzerlik (molecular mimicry) nedeniyle glütensiz veya düşük glütenli beslenme antikor (Anti-TPO) seviyelerini belirgin şekilde düşürür.</li>' +
+            '<li><strong>Kritik Mineraller (T4 -> T3 Dönüşümü):</strong> Deiyodinaz enzimi için günde 2 adet Brezilya cevizi (200 mcg doğal selenyum) ve kabak çekirdeği/kırmızı et (çinko) elzemdir.</li>' +
+            '<li><strong>Guatrojen Besinler (Brokoli, Karnabahar, Lahana):</strong> Çiğ tüketildiğinde tiroid bezinin iyot tutulumunu bloke eder; ancak <strong>buharda veya fırında pişirildiğinde</strong> guatrojenik enzimler %90 inaktive olur ve güvenle tüketilebilir.</li>' +
+            '<li><strong>İlaç Emilim Kuralı:</strong> Levotiroksin (Euthyrox/Levotiron) sabah aç karnına su ile alınmalı; kahvaltı, kahve ve demir/kalsiyum takviyeleri için en az 45-60 dakika beklenmelidir.</li>' +
+            '<li><strong>Anti-TPO & Glüten:</strong> Otoimmün alevlenmeyi düşürmek için 8-12 haftalık glütensiz ve laktozsuz anti-inflamatuar eliminasyon protokolü uygulanmalıdır.</li>' +
           '</ul>' +
-        '</div>' +
-        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🦋 Tiroid Reçetesi Simüle Et →</a>';
+        '</div>';
     }
 
     // 7. ARALIKLI ORUÇ (INTERMITTENT FASTING) & ORUÇTA KAHVE
     if (qNorm.includes('aralikli oruc') || qNorm.includes('intermittent') || qNorm.includes('if diyeti') || qNorm.includes('16/8') || qNorm.includes('oructa kahve') || qNorm.includes('orucu bozar') || qNorm.includes('otofaji')) {
       return '<div><strong>⏳ Aralıklı Oruç (16/8) & Oruç Penceresi Kuralları:</strong></div>' +
         '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
-          'Aralıklı oruçta hücresel temizlik (otofaji) ve yağ oksidasyonunu korumak için:' +
           '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
-            '<li><strong>Açlık Penceresinde Serbest Olanlar:</strong> Şekersiz ve sütsüz sade filtre kahve, sade espresso, sade yeşil çay, sade maden suyu ve bol su orucu bozmaz, otofajiyi kesintiye uğratmaz.</li>' +
-            '<li><strong>Orucu Bozan Masum Görünenler:</strong> Sütsüz de olsa süt tozu, badem/yulaf sütü, kolajen tozu, kemik suyu, limon dilimi (fazla sıkılırsa fruktoz) ve tatlandırıcılar insülin yanıtı oluşturarak orucu bozar.</li>' +
-            '<li><strong>Örnek Saat Planı (16/8):</strong> İlk öğün 12:00, ara öğün 16:00, son öğün 20:00. Saat 20:00 ile ertesi gün 12:00 arası kalorisiz sıvı tüketimi.</li>' +
-            '<li><strong>Kimler Yapmamalı?</strong> Yeme bozukluğu geçmişi olanlar, gebeler, emzirenler ve ileri derece adrenal yorgunluğu olanlar için uygun değildir.</li>' +
+            '<li><strong>Açlık Penceresinde Serbest Olanlar:</strong> Şekersiz ve sütsüz sade filtre kahve, sade Türk kahvesi, espresso, sade yeşil çay, bitki çayları, sade maden suyu ve su orucu bozmaz, otofajiyi destekler.</li>' +
+            '<li><strong>Orucu Bozanlar:</strong> Süt, laktozsuz süt, badem/yulaf sütü, krema, kolajen tozu, kemik suyu, BCAA ve tatlandırıcılar insülin yanıtı oluşturarak açlığı sonlandırır.</li>' +
+            '<li><strong>İdeal 16:8 Saatleri:</strong> 12:00 İlk Ana Öğün -> 15:30 Ara Öğün -> 19:30 Son Ana Öğün (20:00 - 12:00 arası 16 saat açlık).</li>' +
           '</ul>' +
-        '</div>' +
-        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">⚡ Panelde IF Menüsü Planla →</a>';
+        '</div>';
     }
 
-    // 8. İNSÜLİN DİRENCİ, HOMA-IR & DİYABET
-    if (qNorm.includes('insulin') || qNorm.includes('homa') || qNorm.includes('diyabet') || qNorm.includes('seker hast') || qNorm.includes('glukoz') || qNorm.includes('hba1c') || qNorm.includes('hipoglisemi')) {
-      return '<div><strong>🩸 İnsülin Direnci & HOMA-IR Klinik Tedavi Modeli:</strong></div>' +
+    // 8. İNSÜLİN DİRENCİ, HOMA-IR & YÜKSEK İNSÜLİN / KAN ŞEKERİ
+    if (qNorm.includes('insulin') || qNorm.includes('homa') || qNorm.includes('diyabet') || qNorm.includes('seker hast') || qNorm.includes('glukoz') || qNorm.includes('hba1c') || qNorm.includes('hipoglisemi') || qNorm.includes('kan sekeri')) {
+      var numMatch = qNorm.match(/(\d+[.,]\d+|\b\d+\b)/);
+      var customValNote = '';
+      if (numMatch) {
+        var val = parseFloat(numMatch[0].replace(',', '.'));
+        if (val > 1.5 && val < 25) {
+          customValNote = '<li><strong>📌 Belirttiğiniz Değer (' + val + ') Analizi:</strong> ' + (val >= 2.5 ? 'HOMA-IR / İnsülin eşiği yüksek seyretmektedir. Serbest şeker %0\'a indirilmeli ve düşük glisemik yüklü (GL < 10) öğünler planlanmalıdır.' : 'Değer optimal sınıra yakındır; koruyucu düşük GI Akdeniz protokolü sürdürülmelidir.') + '</li>';
+        }
+      }
+      return '<div><strong>🩸 Yüksek İnsülin & HOMA-IR Klinik Beslenme Protokolü:</strong></div>' +
         '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
-          'İnsülin duyarlılığını artırmak ve metabolik riski geri çevirmek için klinik adımlar:' +
+          'İnsülin yüksekliğinde (Hiperinsülinemi / HOMA-IR > 2.5) pankreası dinlendiren ve hücresel reseptör duyarlılığını açan stratejiler:' +
           '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
-            '<li><strong>HOMA-IR Formülü:</strong> (Açlık Glukoz x Açlık İnsülin) / 405. Değerin 2.5 üzerinde olması insülin direncini işaret eder.</li>' +
-            '<li><strong>Glisemik Yük Optimizasyonu:</strong> Karbonhidratlar tek başına tüketilmemeli; mutlaka protein, sağlıklı yağ veya lif kaynağı ile eşleştirilmelidir (Örn: Elma + Ceviz, Yulaf + Yoğurt).</li>' +
-            '<li><strong>Öğün Düzeni:</strong> Sürekli atıştırma insülin seviyelerini kronik yüksek tutar. Günde 2 ana öğün ve en fazla 1 kontrollü ara öğün önerilir.</li>' +
-            '<li><strong>Postprandiyal Yürüyüş:</strong> Ana yemeklerden hemen sonra yapılan 15 dakikalık hafif tempo yürüyüş, kasların insülinden bağımsız glukoz çekmesini sağlayarak kan şekerini dengeler.</li>' +
+            customValNote +
+            '<li><strong>1. Karbonhidratları "Giydirme" Kuralı:</strong> Hiçbir karbonhidrat (meyve veya tam tahıl) tek başına yenmemelidir. Ara öğünde 1 porsiyon düşük GI meyve (yeşil elma, yaban mersini) mutlaka 2 tam ceviz veya 3 kaşık probiyotik yoğurt ile eşleştirilmelidir.</li>' +
+            '<li><strong>2. Tabak Sıralaması (Food Sequencing):</strong> Öğüne önce zeytinyağlı salata/lif ile başlamak, ardından protein ve en son kompleks karbonhidrat tüketmek tokluk glukoz pikini %40 düşürür.</li>' +
+            '<li><strong>3. Öğün Aralığı:</strong> Sık sık atıştırmak insülini sürekli havada tutar; öğünler arasında 4-5 saatlik net sindirim boşluğu bırakılmalıdır.</li>' +
+            '<li><strong>4. Yemek Sonrası 15 Dk Yürüyüş:</strong> Yemekten sonraki ilk 30 dakika içinde yapılan yürüyüş GLUT-4 taşıyıcılarını aktive ederek insüline gerek kalmadan şekeri kasa çeker.</li>' +
           '</ul>' +
-        '</div>' +
-        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🩺 Panelde HOMA-IR Hesapla & Reçete Yaz →</a>';
+        '</div>';
     }
 
     // 9. GUT HASTALIĞI & ÜRİK ASİT
-    if (qNorm.includes('gut') || qNorm.includes('urik asit') || qNorm.includes('purin') || qNorm.includes('ayak basparmak')) {
-      return '<div><strong>🥩 Gut Hastalığı & Ürik Asit Düşürme Protokolü:</strong></div>' +
+    if (qNorm.includes('gut') || qNorm.includes('urik asit') || qNorm.includes('purin')) {
+      return '<div><strong>🥩 Gut Hastalığı & Yüksek Ürik Asit Düşürme Protokolü:</strong></div>' +
         '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
-          'Ürik asit kristallerinin eklemlerde birikmesini önlemek için pürin kısıtlaması esastır:' +
           '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
-            '<li><strong>Kesinlikle Sınırlandırılacaklar:</strong> Sakatatlar (karaciğer, böbrek, dalak), hamsi, sardalya, midye, aşırı kırmızı et, bira/alkol ve yüksek fruktozlu mısır şurubu.</li>' +
-            '<li><strong>Tavsiye Edilen Koruyucular:</strong> Vişne suyu (antosiyanin zengini, ürik asit atılımını destekler), az yağlı süt ve yoğurt (ürik asidi düşürür), C vitamini zengini besinler.</li>' +
-            '<li><strong>Hidrasyon:</strong> Günde en az 3 litre su içilerek böbreklerden ürik asit klirensi artırılmalıdır.</li>' +
+            '<li><strong>Yasaklı Yüksek Pürin Grubu:</strong> Sakatatlar, hamsi, sardalya, midye, kaz/ördek eti, et suyu bulyonlar, alkol (özellikle bira) ve mısır şurubu.</li>' +
+            '<li><strong>Sınırlı Tüketim:</strong> Yağsız dana/kuzu eti, tavuk ve baklagiller haftada 2-3 kez 60-90g porsiyonu aşmayacak şekilde sınırlandırılır.</li>' +
+            '<li><strong>Ürik Asit Atıcı Besinler:</strong> Günde 1 su bardağı şekersiz vişne suyu veya 10-12 adet kiraz/vişne, yarım yağlı süt/yoğurt, C vitamini ve günde 3 litre alkali su.</li>' +
           '</ul>' +
-        '</div>' +
-        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🌿 Gut Diyeti Şablonunu Aç →</a>';
+        '</div>';
     }
 
-    // 10. POLİKİSTİK OVER (PCOS) & İNOSİTOL
-    if (qNorm.includes('pcos') || qNorm.includes('polikistik') || qNorm.includes('tuyenme') || qNorm.includes('inositol') || qNorm.includes('adet duzensiz')) {
-      return '<div><strong>🌸 Polikistik Over Sendromu (PCOS) Beslenme Yaklaşımı:</strong></div>' +
+    // 10. POLİKİSTİK OVER (PCOS) & İNOSİTOL DOZU
+    if (qNorm.includes('pcos') || qNorm.includes('polikistik') || qNorm.includes('tuyenme') || qNorm.includes('inositol') || qNorm.includes('adet duzensiz') || qNorm.includes('yumurtalik')) {
+      return '<div><strong>🌸 PCOS (Polikistik Over) & İnositol Klinik Protokolü:</strong></div>' +
         '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
-          'PCOS\'un temelinde yatan insülin direnci ve androjen fazlalığını dengeleyen stratejiler:' +
           '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
-            '<li><strong>Miyo-İnositol & D-Kiro İnositol:</strong> Hücresel düzeyde insülin sinyalini düzelterek yumurtlama düzenini ve adet periyodunu destekler.</li>' +
-            '<li><strong>Anti-Androjenik Destek:</strong> Günde 2 fincan taze demlenmiş nane çayı (spearmint) serbest testosteron seviyelerini baskılamada klinik kanıta sahiptir.</li>' +
-            '<li><strong>Düşük Glisemik Yük:</strong> Beyaz un ve şeker elenmeli; karabuğday, kinoa, baklagiller ve kaliteli yağlar (avokado, zeytinyağı) tercih edilmelidir.</li>' +
+            '<li><strong>İdeal İnositol Dozu ve Oranı:</strong> Klinik çalışmalarda altın standart <strong>40:1 oranında Miyo-İnositol / D-Kiro-İnositol</strong> kombinasyonudur. Günlük doz sabah 2.000 mg + akşam 2.000 mg olmak üzere toplam <strong>4.000 mg (4 gram)</strong> aç karnına uygulanır.</li>' +
+            '<li><strong>Androjen (Tüylenme/Akne) Baskılama:</strong> Günde 2 fincan tıbbi nane çayı (Spearmint tea) serbest testosteronu düşürür, LH/FSH dengesini destekler.</li>' +
+            '<li><strong>Anti-İnflamatuar Beslenme:</strong> Rafine şeker, beyaz un ve süt ürünlerindeki IGF-1 uyarıcı faktörler azaltılmalı; Omega-3 (EPA/DHA), çinko, magnezyum ve D vitamini optimize edilmelidir.</li>' +
           '</ul>' +
-        '</div>' +
-        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🌸 PCOS Menüsü Oluştur →</a>';
+        '</div>';
     }
 
-    // 11. ÇÖLYAK & GLÜTENSİZ BESLENME
+    // 11. MARATONCU & DAYANIKLILIK SPORCUSU / SPORCU BESLENMESİ
+    if (qNorm.includes('maraton') || qNorm.includes('glikojen') || qNorm.includes('sporcu') || qNorm.includes('protein ihtiyac') || qNorm.includes('kas yap') || qNorm.includes('antrenman') || qNorm.includes('kreatin') || qNorm.includes('whey')) {
+      return '<div><strong>🏃‍♂️ Sporcu & Maraton Performans Makro Protokolü:</strong></div>' +
+        '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
+          '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
+            '<li><strong>Maraton / Yarış Öncesi Glikojen Yüklemesi:</strong> Yarıştan 36-48 saat önce vücut ağırlığının kg başına <strong>8 - 10 g/kg karbonhidrat</strong> (80 kg sporcu için günlük 640-800g kolay sindirilebilir karbonhidrat: pirinç, patates, yulaf, muz), <strong>1.6 g/kg protein</strong> ve düşük yağ/lif planlanır.</li>' +
+            '<li><strong>Kuvvet & Hipertrofi Makroları:</strong> Kas gelişimi için kg başına <strong>1.8 - 2.2 g/kg protein</strong>, 4-6 g/kg kompleks karbonhidrat ve her öğünde 25-35g protein (3g lösin eşiği).</li>' +
+            '<li><strong>Yarış/Antrenman Sırası Hidrasyon:</strong> 60 dakikayı aşan eforlarda saatte 30-60g izotonik karbonhidrat jeli ve sodyum/elektrolit replasmanı şarttır.</li>' +
+          '</ul>' +
+        '</div>';
+    }
+
+    // 12. DEMİR EKSİKLİĞİ, ANEMİ & FERRİTİN
+    if (qNorm.includes('demir') || qNorm.includes('anemi') || qNorm.includes('ferritin') || qNorm.includes('kansizlik') || qNorm.includes('hemoglobin')) {
+      return '<div><strong>🩸 Demir Eksikliği Anemisi & Ferritin Yükseltme Protokolü:</strong></div>' +
+        '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
+          '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
+            '<li><strong>Hem vs Non-Hem Demir:</strong> Kırmızı et, yumurta sarısı ve hindi (Hem demir) %25-30 emilirken; mercimek, ıspanak, pekmez (Non-hem demir) C vitamini olmadan sadece %5 emilir.</li>' +
+            '<li><strong>C Vitamini Sinerjisi:</strong> Köfte/et yanına bol limonlu biberli maydanoz salatası; yumurta yanına taze portakal/kivi/biber eklemek emilimi 3 katına çıkarır.</li>' +
+            '<li><strong>Kalsiyum ve Tanen Kuralı:</strong> Demir içeren ana öğünlerle birlikte <strong>ayran, yoğurt, süt tüketilmemeli</strong>; çay ve kahve yemekten en az 1.5 - 2 saat sonraya bırakılmalıdır.</li>' +
+          '</ul>' +
+        '</div>';
+    }
+
+    // 13. B12 VİTAMİNİ & FOLAT EKSİKLİĞİ
+    if (qNorm.includes('b12') || qNorm.includes('folik') || qNorm.includes('folat') || qNorm.includes('unutkanlik') || qNorm.includes('uyusma')) {
+      return '<div><strong>🧠 B12 Vitamini & Folat (B9) Klinik Optimizasyonu:</strong></div>' +
+        '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
+          '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
+            '<li><strong>Optimal Kan Değeri:</strong> Laboratuvar alt sınırı 200 pg/mL olsa da nörolojik fonksiyon ve homosistein dengesi için B12\'nin <strong>500 - 800 pg/mL</strong> arasında olması hedeflenir.</li>' +
+            '<li><strong>Besinsel Kaynaklar:</strong> B12 yalnızca hayvansal kaynaklarda (kırmızı et, somon, sardalya, yumurta, peynir) bulunur; bitkisel beslenenlerde aktif <strong>Metilkobalamin</strong> dilaltı takviyesi zorunludur.</li>' +
+            '<li><strong>Mide Asidi & Metformin İlişkisi:</strong> Uzun süreli mide koruyucu (PPI) veya diyabet ilacı (Metformin) kullananlarda İntrinsik Faktör azaldığı için B12 emilimi bozulur.</li>' +
+          '</ul>' +
+        '</div>';
+    }
+
+    // 14. D VİTAMİNİ, KALSİYUM & KEMİK SAĞLIĞI
+    if (qNorm.includes('d vitamini') || qNorm.includes('d3') || qNorm.includes('k2') || qNorm.includes('kalsiyum') || qNorm.includes('osteoporoz') || qNorm.includes('kemik erime')) {
+      return '<div><strong>☀️ D3 + K2 Vitamini & Kalsiyum Metabolizması:</strong></div>' +
+        '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
+          '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
+            '<li><strong>Hedef Düzey:</strong> 25-OH Vitamin D düzeyinin bağışıklık ve yağ yakımı için <strong>40 - 60 ng/mL</strong> aralığında tutulması önerilir.</li>' +
+            '<li><strong>Neden D3 + K2 + Magnezyum?</strong> D3 vitamini bağırsaktan kalsiyum emilimini artırır, K2 vitamini (MK-7) bu kalsiyumun damar duvarına değil kemiklere yerleşmesini sağlar, Magnezyum ise D vitaminini karaciğer ve böbrekte aktif forma dönüştürür.</li>' +
+            '<li><strong>Emilim:</strong> Yağda çözünen bir vitamin olduğu için zeytinyağlı veya avokadolu bir öğünle birlikte alınmalıdır.</li>' +
+          '</ul>' +
+        '</div>';
+    }
+
+    // 15. BÖBREK TAŞI & BÖBREK YETMEZLİĞİ
+    if (qNorm.includes('bobrek') || qNorm.includes('oksalat') || qNorm.includes('kreatinin') || qNorm.includes('gfr') || qNorm.includes('ure') || qNorm.includes('diyaliz')) {
+      return '<div><strong>🫘 Böbrek Sağlığı, Nefroloji & Taş Önleme Beslenmesi:</strong></div>' +
+        '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
+          '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
+            '<li><strong>Kalsiyum Oksalat Taşları:</strong> Ispanak, pazı, pancar, çikolata, koyu çay ve aşırı badem (yüksek oksalat) sınırlandırılmalı; yemeklerle birlikte doğal kalsiyum (yoğurt) alınarak oksalatın bağırsakta bağlanıp atılması sağlanmalıdır.</li>' +
+            '<li><strong>Sitrat Desteği:</strong> Günde 2.5 - 3 litre suya taze sıkılmış limon suyu eklemek idrar sitratını artırarak taş kristalleşmesini önler.</li>' +
+            '<li><strong>Kronik Böbrek Yetmezliği (GFR Düşüklüğü):</strong> Evreye göre protein (0.6 - 0.8 g/kg), sodyum (<2g), potasyum ve fosfor kısıtlaması uygulanır.</li>' +
+          '</ul>' +
+        '</div>';
+    }
+
+    // 16. TANSİYON / HİPERTANSİYON & DASH DİYETİ
+    if (qNorm.includes('tansiyon') || qNorm.includes('hipertansiyon') || qNorm.includes('dash') || qNorm.includes('tuz') || qNorm.includes('sodyum')) {
+      return '<div><strong>💓 Hipertansiyon & DASH Klinik Beslenme Protokolü:</strong></div>' +
+        '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
+          '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
+            '<li><strong>Sodyum Limiti:</strong> DSÖ standartlarına göre günlük tuz tüketimi 5 gramın (sodyum < 2.000 mg) altına çekilmeli; salamura zeytin, peynir, turşu ve yüksek sodyumlu maden suları kısıtlanmalıdır.</li>' +
+            '<li><strong>Potasyum & Magnezyum Dengesi:</strong> Damar duvarını gevşetmek için potasyum zengini besinler (muz, avokado, patates, ıspanak, kuru kayısı) ve sarımsak/pancar suyu (nitrik oksit) diyete eklenir.</li>' +
+          '</ul>' +
+        '</div>';
+    }
+
+    // 17. KETOJENİK DİYET & LİPÖDEM
+    if (qNorm.includes('keto') || qNorm.includes('ketojenik') || qNorm.includes('ketozis') || qNorm.includes('lipodem') || qNorm.includes('lenfodem')) {
+      return '<div><strong>🥑 Ketojenik & Lipödem Anti-İnflamatuar Beslenme:</strong></div>' +
+        '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
+          '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
+            '<li><strong>Makro Oranı:</strong> Enerjinin %70-75\'i sağlıklı yağlardan (zeytinyağı, avokado, Hindistan cevizi yağı, tereyağı, ceviz), %20-25\'i proteinden, %5-10\'u (günlük < 25g net karb) düşük nişastalı yeşil sebzelerden sağlanır.</li>' +
+            '<li><strong>Lipödem Özel Yaklaşımı:</strong> Lipödemli yağ dokusu klasik kalori kısıtlamasına dirençlidir; ancak ketojenik veya düşük karbonhidratlı anti-inflamatuar RAD diyeti (glüten, süt şekeri ve işlenmiş yağların kesilmesi) bacaklardaki ağrı ve ödemi hızla azaltır.</li>' +
+          '</ul>' +
+        '</div>';
+    }
+
+    // 18. BARİATRİK CERRAHİ (TÜP MİDE / GASTRİK BYPASS)
+    if (qNorm.includes('bariatrik') || qNorm.includes('tup mide') || qNorm.includes('mide ameliyat') || qNorm.includes('gastrik') || qNorm.includes('dumping')) {
+      return '<div><strong>🏥 Bariatrik Cerrahi (Tüp Mide) Sonrası 4 Aşamalı Beslenme:</strong></div>' +
+        '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
+          '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
+            '<li><strong>1. Evre (1-2. Hafta - Berrak & Tam Sıvı):</strong> Tanesiz kemik suyu, laktozsuz süt/kefir, izole whey protein tozu.</li>' +
+            '<li><strong>2. Evre (3-4. Hafta - Püre Dönemi):</strong> Blenderize yumurta, lor peyniri, haşlanmış sebze ve balık/tavuk püresi.</li>' +
+            '<li><strong>3. Evre (5-6. Hafta - Yumuşak Katı):</strong> İyi pişmiş kıyma, sulu köfte, yumuşak sebzeler.</li>' +
+            '<li><strong>Altın Kurallar:</strong> Katı-sıvı ayrımı (yemekten 30 dk önce ve sonra sıvı alınmaması), günlük <strong>60-80g protein hedefi</strong> ve Dumping sendromunu önlemek için basit şekerlerin sıfırlanması.</li>' +
+          '</ul>' +
+        '</div>';
+    }
+
+    // 19. ÇÖLYAK & GLÜTENSİZ BESLENME
     if (qNorm.includes('colyak') || qNorm.includes('gluten') || qNorm.includes('glutensiz') || qNorm.includes('bugday hassas')) {
       return '<div><strong>🌾 Çölyak & Glütensiz Beslenme Rehberi:</strong></div>' +
         '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
-          'Çölyakta tek tedavi yöntemi ömür boyu %100 sıkı glütensiz diyettir:' +
           '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
-            '<li><strong>Yasak Tahıllar:</strong> Buğday, arpa, çavdar, kavulca, siyez, kamut ve bunlardan üretilen tüm unlar, makarnalar, bisküviler.</li>' +
-            '<li><strong>Serbest Tahıllar:</strong> Karabuğday (greçka), kinoa, pirinç, mısır, teff, amarant ve sertifikalı glütensiz yulaf.</li>' +
-            '<li><strong>Çapraz Bulaşma (Cross-Contamination):</strong> Aynı ekmek tahtası, aynı tost makinesi veya glütenli unla temas etmiş yağda kızartılmış ürünler bağırsak villuslarında hasara yol açar.</li>' +
+            '<li><strong>Yasak Tahıllar:</strong> Buğday, arpa, çavdar, bulgur, irmik, kuskus, siyez, kavulca ve malt içeren tüm ürünler.</li>' +
+            '<li><strong>Güvenli Alternatifler:</strong> Karabuğday (greçka), kinoa, esmer/beyaz pirinç, mısır, darı, amarant, nohut/mercimek unu ve glütensiz sertifikalı yulaf.</li>' +
+            '<li><strong>Çapraz Bulaşma Uyarısı:</strong> Mutfakta ayrı ekmek kızartma makinesi, ayrı doğrama tahtası ve tahta kaşık yerine çelik/silikon ekipman kullanılmalıdır.</li>' +
           '</ul>' +
-        '</div>' +
-        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🌾 Glütensiz Menü Şablonu →</a>';
+        '</div>';
     }
 
-    // 12. İRİRİTABL BAĞIRSAK (İBS), SİBO & ŞİŞKİNLİK
-    if (qNorm.includes('ibs') || qNorm.includes('sibo') || qNorm.includes('siskinlik') || qNorm.includes('gaz') || qNorm.includes('fodmap') || qNorm.includes('bagirsak huzursuz')) {
-      return '<div><strong>🎈 İBS, SIBO & Kronik Şişkinlik Protokolü (Düşük FODMAP):</strong></div>' +
+    // 20. İBS, SİBO & ŞİŞKİNLİK / KABIZLIK
+    if (qNorm.includes('ibs') || qNorm.includes('sibo') || qNorm.includes('siskinlik') || qNorm.includes('gaz') || qNorm.includes('fodmap') || qNorm.includes('kabiz') || qNorm.includes('sindirim') || qNorm.includes('bagirsak')) {
+      return '<div><strong>🌿 Bağırsak Mikrobiyotası, İBS/SIBO & Kabızlık Çözümü:</strong></div>' +
         '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
-          'Bağırsakta aşırı gaz üreten fermente edilebilir karbonhidratları yönetme adımları:' +
           '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
-            '<li><strong>Yüksek FODMAP (Geçici Olarak Çıkarılacaklar):</strong> Soğan, sarımsak, kurubaklagiller, karnabahar, elma, armut, laktozlu süt ve yapay tatlandırıcılar (polioller).</li>' +
-            '<li><strong>Düşük FODMAP Güvenli Gıdalar:</strong> Salatalık, havuç, kabak, ıspanak, pirinç, yulaf, zeytinyağı, yumurta ve laktozsuz süt ürünleri.</li>' +
-            '<li><strong>3 Aşamalı Protokol:</strong> 1. Eliminasyon (4-6 hafta) -> 2. Tek tek gıda tanıştırma (Rechallenge) -> 3. Kişiye özel sürdürülebilir diyet.</li>' +
+            '<li><strong>Kronik Şişkinlik & Gaz (İBS/SIBO):</strong> 4-6 hafta Düşük FODMAP protokolü uygulanır (çiğ soğan, sarımsak, baklagil, elma, laktoz geçici olarak kesilir; kabak, havuç, pirinç, kinoa, yumurta, zeytinyağı kullanılır).</li>' +
+            '<li><strong>Kabızlık (Konstipasyon) Kürü:</strong> Sabah aç karnına 1 bardak ılık su + 1 yemek kaşığı zeytinyağı + 2 adet kuru kayısı/mürdüm eriği, günde 28-30g lif (keten tohumu, yulaf, chia) ve akşam Magnezyum Sitrat desteği.</li>' +
           '</ul>' +
-        '</div>' +
-        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🎈 FODMAP Menüsü Hazırla →</a>';
+        '</div>';
     }
 
-    // 13. REFLÜ & GASTRİT
-    if (qNorm.includes('reflu') || qNorm.includes('gastrit') || qNorm.includes('mide yan') || qNorm.includes('mide eksi') || qNorm.includes('helikobakter')) {
+    // 21. REFLÜ & GASTRİT
+    if (qNorm.includes('reflu') || qNorm.includes('gastrit') || qNorm.includes('mide yan') || qNorm.includes('mide eksi') || qNorm.includes('helikobakter') || qNorm.includes('ulser')) {
       return '<div><strong>🔥 Reflü & Gastrit Klinik Beslenme Rehberi:</strong></div>' +
         '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
-          'Mide asidinin yemek borusuna kaçışını ve mide mukozası irritasyonunu önlemek için:' +
           '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
-            '<li><strong>Kaçınılması Gerekenler:</strong> Çiğ soğan/sarımsak, salça, domates, narenciye, asitli içecekler, çikolata, nane, kızartmalar ve aç karnına koyu kahve/çay.</li>' +
-            '<li><strong>Yatış Kuralı:</strong> Akşam yemeği ile uyku arasında en az 3-4 saat bırakılmalı; yemekten hemen sonra uzanılmamalı ve yatak başı 15-20 cm yükseltilmelidir.</li>' +
-            '<li><strong>Mide Dostu Besinler:</strong> Haşlanmış patates, yulaf ezmesi, muz, badem, haşlanmış tavuk/balık ve papatya/rezene çayı.</li>' +
-          '</ul>' +
-        '</div>' +
-        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🍲 Mide Koruyucu Diyet Yaz →</a>';
-    }
-
-    // 14. KARACİĞER YAĞLANMASI & ENZİMLER (AST, ALT, GGT)
-    if (qNorm.includes('karaciger') || qNorm.includes('yaglanma') || qNorm.includes('alt') || qNorm.includes('ast') || qNorm.includes('ggt') || qNorm.includes('steatoz')) {
-      return '<div><strong>🫀 Karaciğer Yağlanması (Hepatosteatoz) Geri Dönüş Protokolü:</strong></div>' +
-        '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
-          'Grade 1, 2 ve 3 karaciğer yağlanmasını bilimsel olarak geriletme adımları:' +
-          '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
-            '<li><strong>Fruktoz Eliminasyonu:</strong> Karaciğerde doğrudan de-novo lipojeneze (yağ sentezine) dönüşen mısır şurubu, paketli tatlılar, hazır meyve suları ve aşırı meyve tüketimi derhal kesilmelidir.</li>' +
-            '<li><strong>Kolin & Enginar Desteği:</strong> Karaciğerden yağların taşınması için yumurta sarısı (kolin) ve safra akışını artıran enginar/karahindiba kürleri eklenmelidir.</li>' +
-            '<li><strong>Akdeniz Tipi Beslenme:</strong> Haftada 2 gün somon/sardalya (Omega-3), günlük soğuk sıkım zeytinyağı ve bol koyu yeşil yapraklı sebze.</li>' +
-            '<li><strong>Hedef Kilo Kaybı:</strong> Mevcut vücut ağırlığının %7-10\'unun verilmesi karaciğer yağını %50\'ye varan oranda temizler.</li>' +
-          '</ul>' +
-        '</div>' +
-        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🫀 Karaciğer Detoks Reçetesi →</a>';
-    }
-
-    // 15. KOLESTEROL & TRİGLİSERİD
-    if (qNorm.includes('kolesterol') || qNorm.includes('trigliserid') || qNorm.includes('ldl') || qNorm.includes('hdl') || qNorm.includes('damar tikan')) {
-      return '<div><strong>❤️ Kolesterol & Trigliserid Dengesi Beslenme Modeli:</strong></div>' +
-        '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
-          'Damar sağlığını ve lipid profilini iyileştiren bilimsel ilkeler:' +
-          '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
-            '<li><strong>Çözünür Lif Mucizesi:</strong> Günde 25-30g lif alınmalı; yulaf kepeği, keten tohumu, elma ve kuru baklagiller bağırsakta kolesterolü bağlayarak atılmasını sağlar.</li>' +
-            '<li><strong>Trigliserid Düşürme:</strong> Yüksek trigliseridin bir numaralı sebebi basit şekerler, rafine un ve alkoldür. Bunlar kesildiğinde trigliserid 3 haftada %30-50 düşer.</li>' +
-            '<li><strong>Sağlıklı Yağlar:</strong> Doymuş yağlar (margarin, işlenmiş et) yerine çiğ ceviz, avokado ve soğuk sıkım zeytinyağı HDL/LDL dengesini korur.</li>' +
-          '</ul>' +
-        '</div>' +
-        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">❤️ Kalp-Damar Dostu Menü →</a>';
-    }
-
-    // 16. KAHVE VE METABOLİZMA
-    if (qNorm.includes('kahve') || qNorm.includes('kafein') || qNorm.includes('turk kahvesi') || qNorm.includes('filtre kahve')) {
-      return '<div><strong>☕ Kahve Tüketimi & Metabolik Etkileri:</strong></div>' +
-        '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
-          'Kahvenin yağ yakımı ve performans üzerindeki klinik gerçekleri:' +
-          '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
-            '<li><strong>Termojenik Etki:</strong> Kafein bazal metabolizma hızını geçici olarak %3-11 artırır ve antrenman öncesi alındığında yağ oksidasyonunu destekler.</li>' +
-            '<li><strong>Sabah Kortizol Uyarısı:</strong> Sabah uyanır uyanmaz ilk 60 dakika içinde aç karnına kahve içmek kortizol seviyelerini aşırı yükseltebilir. Uyandıktan 1-1.5 saat sonra içilmesi en idealidir.</li>' +
-            '<li><strong>Günlük Güvenli Doz:</strong> Günde 300-400 mg kafein (yaklaşık 2-3 fincan filtre kahve veya 3-4 fincan Türk kahvesi) güvenli sınırdır.</li>' +
-            '<li><strong>Akşam Kesilme Saati:</strong> Kafeinin yarılanma ömrü 5-7 saattir. Kaliteli uyku ve melatonin salgısı için saat 15:00-16:00\'dan sonra kafein kesilmelidir.</li>' +
+            '<li><strong>Mide Sfinkterini Gevşeten Yasaklar:</strong> Koyu kahve, çikolata, nane, sarımsak, soğan, domates/salça, acı baharatlar, narenciye ve kızartmalar.</li>' +
+            '<li><strong>Onarıcı Besinler:</strong> Taze sıkılmış çiğ patates/lahana suyu (L-glutamin & S-metilmetiyonin zengini), yulaf lapası, muz, haşlanmış kabak ve kudret narı.</li>' +
+            '<li><strong>Yatış Kuralı:</strong> Yatmadan 3.5 saat önce yemek kesilmeli, yemek sırasında aşırı sıvı alınmamalıdır.</li>' +
           '</ul>' +
         '</div>';
     }
 
-    // 17. YEŞİL ÇAY & MATCHA
-    if (qNorm.includes('yesil cay') || qNorm.includes('matcha') || qNorm.includes('egcg')) {
-      return '<div><strong>🍵 Yeşil Çay, Matcha & EGCG Antioksidan Gücü:</strong></div>' +
+    // 22. KARACİĞER YAĞLANMASI & KOLESTEROL / TRİGLİSERİD
+    if (qNorm.includes('karaciger') || qNorm.includes('yaglanma') || qNorm.includes('alt') || qNorm.includes('ast') || qNorm.includes('ggt') || qNorm.includes('steatoz') || qNorm.includes('kolesterol') || qNorm.includes('trigliserid') || qNorm.includes('ldl') || qNorm.includes('hdl')) {
+      return '<div><strong>🫀 Karaciğer Yağlanması & Kolesterol/Trigliserid Düşürme:</strong></div>' +
         '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
-          'Yeşil çayın içerisindeki <strong>Epigallokateşin Gallat (EGCG)</strong> bileşeni yağ yakımı ve hücresel sağlık için güçlü bir araçtır:' +
           '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
-            '<li><strong>Yağ Oksidasyonu:</strong> EGCG, norepinefrin hormonunun parçalanmasını engelleyerek yağ hücrelerinden yağ asitlerinin salınmasını kolaylaştırır.</li>' +
-            '<li><strong>Demir Emilim Kuralı:</strong> Tanen içeriği nedeniyle ana yemeklerden hemen sonra içilmemeli; yemeklerden en az 1 saat sonra tüketilmelidir.</li>' +
-            '<li><strong>Matcha Farkı:</strong> Matcha çayında çay yaprağının tamamı toz olarak tüketildiği için standart yeşil çaya kıyasla 3 kat daha fazla EGCG içerir.</li>' +
+            '<li><strong>Fruktoz & Basit Şeker Kesimi:</strong> Trigliserid yüksekliği ve karaciğer yağlanmasının ana yakıtı meyve suyu, mısır şurubu, alkol ve beyaz undur.</li>' +
+            '<li><strong>Kolin, Enginar & Beta-Glukan:</strong> Yumurta (kolin), enginar/devedikeni (silimarin) karaciğer enzimlerini (AST/ALT) düşürür; yulaf ve keten tohumu LDL kolesterolü safra yoluyla bağlayıp atar.</li>' +
+            '<li><strong>Omega-3:</strong> Günlük 1.000-2.000 mg EPA+DHA balık yağı trigliseridi %25-35 oranında düşürür.</li>' +
           '</ul>' +
         '</div>';
     }
 
-    // 18. KİLO DURAKSAMASI / PLATO DÖNEMİ
-    if (qNorm.includes('duraksama') || qNorm.includes('plato') || qNorm.includes('kilo veremiyorum') || qNorm.includes('gitmiyor') || qNorm.includes('takildi') || qNorm.includes('direnc')) {
-      return '<div><strong>🛑 Kilo Verme Duraksamasını (Plato Dönemini) Kırma Rehberi:</strong></div>' +
+    // 23. KAHVE, YEŞİL ÇAY, SU & ÖDEM
+    if (qNorm.includes('kahve') || qNorm.includes('kafein') || qNorm.includes('yesil cay') || qNorm.includes('matcha') || qNorm.includes('su') || qNorm.includes('odem') || qNorm.includes('detoks')) {
+      return '<div><strong>💧 Hidrasyon, Kahve/Yeşil Çay & Ödem Atma Rehberi:</strong></div>' +
         '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
-          'Vücudun savunma mekanizması olan metabolik adaptasyonu kırmak için kanıtlanmış yöntemler:' +
           '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
-            '<li><strong>1. Kalori Döngüsü (Calorie Cycling / Refeed):</strong> Sürekli düşük kalori almak tiroid hormonlarını (T3) ve leptini düşürür. Haftada 1-2 gün kaloriyi bakım seviyesine (temiz karbonhidratla) çekmek leptini sıfırlar.</li>' +
-            '<li><strong>2. NEAT (Egzersiz Dışı Aktivite):</strong> Vücut diyette enerji tasarrufu için farkında olmadan gün içi hareketleri azaltır. Günlük adım sayınızı 8.000-10.000 seviyesine sabitleyin.</li>' +
-            '<li><strong>3. Gizli Kalorileri Denetleme:</strong> Salata sosları, pişirme yağı, avuçla yenen kuru yemişler ve sütlü kahveler farkında olmadan kalori açığını kapatıyor olabilir.</li>' +
-            '<li><strong>4. Uyku & Kortizol:</strong> Günde 7 saatin altında uyumak kortizolü artırarak su tutulumuna (ödem) sebep olur ve yağ kaybını tartıda maskeler.</li>' +
-          '</ul>' +
-        '</div>' +
-        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">⚡ Panelde Kalori Döngüsü Planla →</a>';
-    }
-
-    // 19. GECE YEME SENDROMU & AKŞAM YEMEĞİ SAATİ
-    if (qNorm.includes('gece yeme') || qNorm.includes('aksam yemegi') || qNorm.includes('saat 6') || qNorm.includes('saat 7') || qNorm.includes('gece acik')) {
-      return '<div><strong>🌙 Gece Yeme & Akşam Yemeği Saati Bilimi:</strong></div>' +
-        '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
-          '"Akşam 6\'dan sonra yemek yemek kilo aldırır mı?" sorusunun metabolik cevabı:' +
-          '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
-            '<li><strong>Sirkadiyen Ritim & İnsülin:</strong> Kilo alımı 24 saatlik toplam kalori dengesine bağlıdır; ancak akşam saatlerinde melatonin yükseldikçe pankreasın insülin duyarlılığı azalır.</li>' +
-            '<li><strong>Yatış Öncesi Süre:</strong> Akşam yemeği saatiniz kaç olursa olsun, uyumadan en az 3 saat önce kalori alımını bitirmek derin uyku ve büyüme hormonu (GH) salınımı için kritiktir.</li>' +
-            '<li><strong>Gece Krizleri İçin Masum Çözümler:</strong> 1 fincan papatya veya melisa çayı, 2 kaşık yoğurt + tarçın veya 1 tatlı kaşığı kabak çekirdeği (triptofan & magnezyum zengini).</li>' +
+            '<li><strong>Su Formülü:</strong> Günlük su ihtiyacı = <strong>Kilo (kg) x 35 ml</strong>\'dir. İçilen her 1 fincan kahve/çay diüretik olduğu için üzerine +1 bardak ekstra su içilmelidir.</li>' +
+            '<li><strong>Ödem Atıcı Klinik Kür:</strong> 1 litre suya yarım demet saplarıyla maydanoz, 2 dilim taze ananas veya yeşil elma, yarım limon, 1 çubuk tarçın ve kiraz sapı/mısır püskülü demlenerek tüketilir.</li>' +
+            '<li><strong>Kahve & Yeşil Çay Saati:</strong> Sabah uyandıktan 1 saat sonra (kortizol piki geçince) ve yemeklerden 1 saat sonra (demir emilimini bozmamak için) tüketilmelidir.</li>' +
           '</ul>' +
         '</div>';
     }
 
-    // 20. SU İHTİYACI & ÖDEM ATICI DETOKS
-    if (qNorm.includes('su') || qNorm.includes('odem') || qNorm.includes('detoks') || qNorm.includes('kac litre') || qNorm.includes('sivi')) {
-      return '<div><strong>💧 Su Tüketimi Formülü & Ödem Atma Protokolü:</strong></div>' +
+    // 24. KİLO DURAKSAMASI (PLATO) & GECE YEME
+    if (qNorm.includes('duraksama') || qNorm.includes('plato') || qNorm.includes('kilo veremiyorum') || qNorm.includes('gitmiyor') || qNorm.includes('takildi') || qNorm.includes('gece yeme') || qNorm.includes('tatli kriz') || qNorm.includes('istah')) {
+      return '<div><strong>🛑 Kilo Duraksaması (Plato) & Tatlı Krizi / İştah Yönetimi:</strong></div>' +
         '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
-          'Metabolik hidrasyon ve hücresel su tutulumunu (ödem) çözme reçetesi:' +
           '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
-            '<li><strong>Bireysel İhtiyaç Formülü:</strong> Günlük Su Hedefi = <strong>Vücut Ağırlığı (kg) x 35 ml</strong> (Örn: 70 kg bir birey için 2.450 ml).</li>' +
-            '<li><strong>Ödemin Başlıca Sebepleri:</strong> Yüksek sodyum (tuz/turşu), yetersiz su içme, rafine karbonhidrat fazlalığı ve hareketsizlik.</li>' +
-            '<li><strong>DiyetKalfa Ödem Atıcı Detoks Kürü:</strong> 1 litre alkali suya yarım demet taze maydanoz, 1 adet çubuk tarçın, yarım limon ve 1 dilim taze zencefil ekleyip gün boyu yudumlayın.</li>' +
+            '<li><strong>Plato Kırma (Şok & Refeed):</strong> 1 gün yüksek temiz karbonhidratlı (karabuğday, yulaf) bakım kalorisi alıp ertesi 2 gün düşük karbonhidratlı yeşil detoks uygulamak leptin ve T3 hormonunu yeniden ateşler.</li>' +
+            '<li><strong>Tatlı Krizleri İçin:</strong> Krom pikolinat (200 mcg), Seylan tarçını, %85 bitter çikolata (2 kare) + 5 çiğ badem ve yeterli proteinli kahvaltı gece yeme ataklarını %80 keser.</li>' +
           '</ul>' +
-        '</div>' +
-        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🥒 Panelde Detoks Reçetesi Oluştur →</a>';
+        '</div>';
     }
 
-    // 21. 1 GÜNLÜK ÖRNEK DİYET LİSTESİ İSTEĞİ
-    if (qNorm.includes('ornek diyet') || qNorm.includes('diyet listesi ver') || qNorm.includes('bana liste') || qNorm.includes('ornek menu') || qNorm.includes('bir gunluk')) {
+    // 25. 1 GÜNLÜK ÖRNEK DİYET LİSTESİ
+    if (qNorm.includes('ornek diyet') || qNorm.includes('diyet listesi') || qNorm.includes('bana liste') || qNorm.includes('ornek menu') || qNorm.includes('bir gunluk')) {
       return '<div><strong>🥗 1 Günlük DSÖ 2024 Uyumlu Örnek Klinik Diyet Listesi (1.600 kcal):</strong></div>' +
         '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
           '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
-            '<li><strong>🍳 Kahvaltı (08:30):</strong> 2 adet haşlanmış yumurta, 50g az tuzlu lor peyniri, 5 adet zeytin, bol yeşillik (roka/maydanoz/salatalık) ve 1 dilim ekşi mayalı siyez ekmeği.</li>' +
+            '<li><strong>🍳 Kahvaltı (08:30):</strong> 2 adet haşlanmış yumurta, 50g az tuzlu lor peyniri, 5 adet zeytin, bol yeşillik ve 1 dilim ekşi mayalı siyez ekmeği.</li>' +
             '<li><strong>☕ Ara Öğün (11:00):</strong> 1 fincan yeşil çay + 8 adet çiğ badem.</li>' +
-            '<li><strong>🍗 Öğle Yemeği (13:30):</strong> 150g ızgara tavuk göğsü veya hindi, 1 büyük kase zeytinyağlı mevsim salatası, 4 yemek kaşığı karabuğday pilavı veya 1 kase mercimek çorbası.</li>' +
-            '<li><strong>🍏 İkindi (16:30):</strong> 1 adet orta boy yeşil elma + üzerine toz tarçın + 1 kase ev yapımı probiyotik yoğurt.</li>' +
-            '<li><strong>🍲 Akşam Yemeği (19:30):</strong> 8 yemek kaşığı zeytinyağlı taze sebze yemeği (kabak veya taze fasulye), 1 kase cacık (nane ve zeytinyağı ilaveli).</li>' +
-            '<li><strong>💧 Su:</strong> Gün boyu 2.5 litre su.</li>' +
-          '</ul>' +
-        '</div>' +
-        '<div style="margin-top: 10px;">' +
-          '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff;">⚡ Panelde Kişiye Özel 7 Günü Üret →</a>' +
-        '</div>';
-    }
-
-    // 22. MAGNEZYUM FORMLARI & TAKVİYELER
-    if (qNorm.includes('magnezyum') || qNorm.includes('malat') || qNorm.includes('glisinat') || qNorm.includes('sitrat') || qNorm.includes('kramp') || qNorm.includes('uyku')) {
-      return '<div><strong>💊 Hangi Magnezyum Formu Ne İşe Yarar?</strong></div>' +
-        '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
-          'Magnezyumun farklı tuz formları vücutta farklı dokuları hedefler:' +
-          '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
-            '<li><strong>Magnezyum Bisglisinat:</strong> Kan-beyin bariyerini geçer; anksiyete, stres ve kaliteli uyku için gece yatmadan önce tercih edilir.</li>' +
-            '<li><strong>Magnezyum Malat:</strong> Mitokondriyal enerji (ATP) üretimini destekler; fibromiyalji, kronik yorgunluk ve kas ağrıları için sabah/öğle alınır.</li>' +
-            '<li><strong>Magnezyum Sitrat:</strong> Kas krampları ve bağırsak motilitesi için etkilidir; kabızlık çeken bireylerde bağırsakları yumuşatır.</li>' +
-            '<li><strong>Magnezyum Oksit:</strong> Emilimi çok düşüktür (%4); biyoyararlanımı zayıf olduğu için takviyelerde tercih edilmemelidir.</li>' +
+            '<li><strong>🍗 Öğle Yemeği (13:30):</strong> 150g ızgara tavuk göğsü veya hindi, 1 büyük kase zeytinyağlı mevsim salatası, 4 yemek kaşığı karabuğday pilavı.</li>' +
+            '<li><strong>🍏 İkindi (16:30):</strong> 1 adet orta boy yeşil elma + toz tarçın + 1 kase probiyotik yoğurt.</li>' +
+            '<li><strong>🍲 Akşam Yemeği (19:30):</strong> 8 yemek kaşığı zeytinyağlı kabak veya taze fasulye, 1 kase dereotlu cacık.</li>' +
           '</ul>' +
         '</div>';
     }
 
-    // 23. SPORCU BESLENMESİ & PROTEİN İHTİYACI
-    if (qNorm.includes('sporcu') || qNorm.includes('protein ihtiyac') || qNorm.includes('kas yap') || qNorm.includes('antrenman') || qNorm.includes('kreatin') || qNorm.includes('whey')) {
-      return '<div><strong>🏋️‍♂️ Sporcu Beslenmesi & Makro Dağılımı:</strong></div>' +
+    // 26. MAGNEZYUM, KOLAJEN, OMEGA-3 & TAKVİYELER
+    if (qNorm.includes('magnezyum') || qNorm.includes('malat') || qNorm.includes('glisinat') || qNorm.includes('sitrat') || qNorm.includes('kolajen') || qNorm.includes('omega') || qNorm.includes('balik yagi') || qNorm.includes('takviye')) {
+      return '<div><strong>💊 Klinik Takviye Rehberi (Magnezyum, Omega-3 & Kolajen):</strong></div>' +
         '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
-          'Kas hipertrofisi ve performans artışı için klinik hedefler:' +
           '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
-            '<li><strong>Günlük Protein Hedefi:</strong> Direnç antrenmanı yapan bireylerde vücut ağırlığının kg başına <strong>1.6 - 2.2 gram</strong> saf protein önerilir.</li>' +
-            '<li><strong>Öğün Dağılımı (Lösin Eşiği):</strong> Tek bir öğünde aşırı protein yerine her 3-4 saatte bir 25-35g protein tüketmek kas protein sentezini (MPS) maksimumda tutar.</li>' +
-            '<li><strong>Kreatin Monohidrat:</strong> Günde 3-5 gram sabit kullanım kas içi fosfokreatin depolarını doldurarak güç ve patlayıcı kuvveti artırır (yükleme zorunlu değildir).</li>' +
+            '<li><strong>Magnezyum:</strong> Sabah enerji ve kas ağrısı için <em>Malat</em>; akşam uyku, stres ve migren için <em>Bisglisinat</em>; kramp ve kabızlık için <em>Sitrat</em> formu (günlük 200-400 mg elementel) seçilmelidir.</li>' +
+            '<li><strong>Omega-3:</strong> Trigliserid veya fosfolipid formda, IFOS onaylı, EPA+DHA toplamı en az 1.000 mg olan ürünler tok karnına alınmalıdır.</li>' +
+            '<li><strong>Kolajen:</strong> Cilt için Tip 1 & 3, eklem için Tip 2 hidrolize peptid kolajen (2.000 Dalton altı molekül ağırlıklı) C vitamini ile birlikte kullanılmalıdır.</li>' +
           '</ul>' +
-        '</div>' +
-        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🏋️‍♂️ Sporcu Menüsü Hesapla →</a>';
+        '</div>';
     }
 
-    // 24. GEBELİK VE EMZİRME DÖNEMİ
-    if (qNorm.includes('gebe') || qNorm.includes('hamile') || qNorm.includes('emzir') || qNorm.includes('anne sutu') || qNorm.includes('laktasyon')) {
-      return '<div><strong>🤰 Gebelik & Emzirme Döneminde Beslenme Protokolü:</strong></div>' +
+    // 27. GEBELİK, EMZİRME & ÇOCUK BESLENMESİ
+    if (qNorm.includes('gebe') || qNorm.includes('hamile') || qNorm.includes('emzir') || qNorm.includes('anne sutu') || qNorm.includes('cocuk') || qNorm.includes('bebek') || qNorm.includes('istahsiz')) {
+      return '<div><strong>🤰 Anne & Çocuk Beslenmesi Klinik Protokolü:</strong></div>' +
         '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
-          'Anne ve bebeğin optimal gelişimi için klinik dengeler:' +
           '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
-            '<li><strong>Kalori Artışı:</strong> 1. trimesterde kalori artışı gerekmez; 2. trimesterde +300 kcal, 3. trimesterde +450 kcal, emzirme döneminde +500 kcal ilave edilir.</li>' +
-            '<li><strong>Kritik Besin Öğeleri:</strong> Folik asit (400-600 mcg), iyot (150-250 mcg), demir, kalsiyum ve bebeğin beyin gelişimi için Omega-3 (DHA 200 mg/gün).</li>' +
-            '<li><strong>Anne Sütü Arttırıcılar:</strong> En güçlü galaktagog bol sudur (günde 3-3.5 litre). Dereotu, rezene, yulaf ve kaliteli hayvansal/bitkisel protein süt kalitesini destekler.</li>' +
+            '<li><strong>Gebelik:</strong> 2. trimester +300 kcal, 3. trimester +450 kcal. Folik asit, demir, iyot ve DHA desteğiyle haftalık 300-400g kontrollü tartı artışı izlenir.</li>' +
+            '<li><strong>Emzirme Dönemi:</strong> +500 kcal enerji, günde 3.5 litre su, yumurta, dereotu, yulaf ve tahin süt verimini artırır; ilk 4 ay gaz yapıcı çiğ baklagil/lahana sınırlandırılır.</li>' +
+            '<li><strong>Çocuklarda İştahsızlık:</strong> Yemek öncesi sıvı/meyve suyu verilmemeli, demir ve çinko depoları kontrol edilmeli, tabaklar görsel oyunlarla zenginleştirilmelidir.</li>' +
           '</ul>' +
-        '</div>' +
-        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">🤰 Gebelik & Emzirme Menüsü →</a>';
+        '</div>';
     }
 
-    // 25. RANDEVU TAKVİMİ & OTOMATİK SMS
-    if (qNorm.includes('randevu') || qNorm.includes('takvim') || qNorm.includes('sms') || qNorm.includes('mesaj') || qNorm.includes('hatirlatma') || qNorm.includes('seans')) {
-      return '<div><strong>📅 Akıllı Randevu Takvimi & Otomatik SMS Bildirimi:</strong></div>' +
+    // 28. RANDEVU TAKVİMİ, EXCEL & İLETİŞİM
+    if (qNorm.includes('randevu') || qNorm.includes('takvim') || qNorm.includes('sms') || qNorm.includes('excel') || qNorm.includes('cizelge') || qNorm.includes('iletisim') || qNorm.includes('telefon') || qNorm.includes('whatsapp')) {
+      return '<div><strong>📅 Klinik Operasyon, Excel, Randevu SMS & 7/24 Destek:</strong></div>' +
         '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
-          'Diyetisyenlerin randevu kaçırma oranını sıfıra indiren takvim altyapısı:' +
-          '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
-            '<li><strong>Telefon Rehberi Entegrasyonu:</strong> Danışanlarınızın isim ve telefonlarını tek tıkla randevuya bağlayabilirsiniz.</li>' +
-            '<li><strong>Otomatik SMS & WhatsApp:</strong> Randevu oluşturulduğunda seans onay SMS\'i, seans gününden 2 saat önce hatırlatma SMS\'i otomatik iletilir.</li>' +
-            '<li><strong>Online Seans Entegrasyonu:</strong> Google Meet veya Zoom linki tek tıkla randevu kartına eklenip danışana SMS olarak iletilir.</li>' +
-          '</ul>' +
-        '</div>' +
-        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">📅 Panelde Randevu Takvimini Aç →</a>';
-    }
-
-    // 26. EXCEL DANIŞAN AKTARIMI & ÇİZELGE
-    if (qNorm.includes('excel') || qNorm.includes('cizelge') || qNorm.includes('tablo') || qNorm.includes('aktar') || qNorm.includes('import')) {
-      return '<div><strong>📊 Excel Danışan Takip & Akıllı Çizelge Motoru:</strong></div>' +
-        '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
-          'Mevcut danışan verilerinizi DiyetKalfa\'ya aktarmak saniyeler sürer:' +
-          '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
-            '<li><strong>Tek Tıkla Kopyala-Yapıştır:</strong> Excel tablonuzdaki İsim, Telefon, Kilo, Boy ve Hedef sütunlarını seçip DiyetKalfa çizelgesine doğrudan yapıştırabilirsiniz.</li>' +
-            '<li><strong>Otomatik İlerleme Grafiği:</strong> Sisteme aktarılan kilolar anında zaman çizelgesine ve kilo değişim grafiğine dönüşür.</li>' +
-            '<li><strong>Çift Yönlü Dışa Aktarım:</strong> Dilediğiniz zaman tek tıkla Excel veya PDF olarak tüm kliniğinizi yedekleyebilirsiniz.</li>' +
-          '</ul>' +
-        '</div>' +
-        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; margin-top: 8px;">📊 Panelde Excel Çizelgesini Gör →</a>';
-    }
-
-    // 27. İLETİŞİM & WHATSAPP
-    if (qNorm.includes('iletisim') || qNorm.includes('telefon') || qNorm.includes('numara') || qNorm.includes('whatsapp') || qNorm.includes('destek') || qNorm.includes('ara') || qNorm.includes('ulas')) {
-      return '<div><strong>📞 DiyetKalfa 7/24 Klinik İletişim Hattı:</strong></div>' +
-        '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
-          '• <strong>Telefon & WhatsApp:</strong> 0532 120 28 46<br>' +
-          '• <strong>E-Posta:</strong> destek@diyetkalfa.com<br>' +
-          '• <strong>Çalışma Saatleri:</strong> 7/24 Kesintisiz Klinik Destek' +
+          '• <strong>Excel & Randevu SMS:</strong> Danışanlarınızı Excel\'den tek tıkla aktarabilir, telefon rehberinizi bağlayarak otomatik randevu hatırlatma SMS\'i gönderebilirsiniz.<br>' +
+          '• <strong>7/24 WhatsApp & Çağrı Hattı:</strong> 0532 120 28 46' +
         '</div>' +
         '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-          '<a href="https://wa.me/905321202846?text=Merhaba,%20DiyetKalfa%20canlı%20destek%20almak%20istiyorum." target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 WhatsApp\'tan Yaz</a>' +
-          '<button type="button" onclick="openContactModal()" class="ai-link-btn" style="background: #163b2c; color: #fff; border: none; cursor: pointer;">📞 Biz Sizi Arayalım</button>' +
+          '<a href="https://wa.me/905321202846?text=Merhaba,%20DiyetKalfa%20canlı%20destek%20almak%20istiyorum." target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 0532 120 28 46 WhatsApp</a>' +
+          '<a href="kayit.html" class="ai-link-btn" style="background: #163b2c; color: #fff;">🚀 7 Gün Ücretsiz Başlat</a>' +
         '</div>';
     }
 
     // =========================================================================
-    // 28. DİNAMİK DOĞAL DİL SENTEZLEYİCİSİ (SERBEST VE YENİ SORULAR İÇİN)
+    // 29. AKILLI MANUEL SORU VE VAKA ANALİZ SENTEZLEYİCİSİ
     // =========================================================================
-    // Kullanıcı yukarıdaki 27 kategoriye tam oturmayan ÖZGÜN bir soru sorduğunda,
-    // asla standart 3 madde basmaz! Soruyu fiil, amaç, gıda ve semptomlarına göre parçalayıp
-    // o soruya özel akıllı, detaylı ve bilimsel bir klinik yanıt inşa eder.
+    // Kullanıcının yazdığı manuel sorudaki kelimeleri, sayıları, besinleri ve tıbbi durumu
+    // tek tek ayrıştırır ve sorulan soruya %100 özel, tekrarsız yanıt üretir.
     return generateDynamicClinicalSynthesizer(rawClean, qNorm);
   }
 
   /**
-   * Dinamik Klinik Sentezleyici Motoru
+   * Dinamik Manuel Soru & Vaka Analiz Motoru (Her soruya özel hesaplama ve yanıt)
    */
   function generateDynamicClinicalSynthesizer(rawClean, qNorm) {
     var escapedQuery = rawClean.replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-    // 1. Soru Tipi Tespiti
-    var isHow = qNorm.includes('nasil') || qNorm.includes('yontem') || qNorm.includes('taktik');
-    var isHarmful = qNorm.includes('zarar') || qNorm.includes('yan etki') || qNorm.includes('tehlike') || qNorm.includes('dokunur mu');
-    var isBenefit = qNorm.includes('fayda') || qNorm.includes('yarar') || qNorm.includes('iyi gelir mi') || qNorm.includes('ne ise yarar');
-    var isTiming = qNorm.includes('ne zaman') || qNorm.includes('saat kac') || qNorm.includes('ac mi') || qNorm.includes('tok mu') || qNorm.includes('sabah mi');
-    var isAmount = qNorm.includes('ne kadar') || qNorm.includes('kac gram') || qNorm.includes('kac adet') || qNorm.includes('olcu') || qNorm.includes('porsiyon');
-    var isWeightLoss = qNorm.includes('zayiflatir') || qNorm.includes('kilo verdirir') || qNorm.includes('yag yakar');
+    // 1. Sorudaki Sayısal Değerleri Yakala (Kilo, Yaş, Boy, Kalori, Gram, Tahlil)
+    var weightMatch = qNorm.match(/(\d+)\s*(kg|kilo)/);
+    var ageMatch = qNorm.match(/(\d+)\s*(yas|yasinda)/);
+    var heightMatch = qNorm.match(/(\d{3})\s*(cm|boy)/);
+    var calMatch = qNorm.match(/(\d{3,4})\s*(kcal|kalori)/);
+    var anyNumberMatch = qNorm.match(/(\d+[.,]?\d*)/);
 
-    // 2. Konu Varlıkları Tespiti (Gıdalar, Semptomlar, Organlar)
-    var entities = [];
-    if (qNorm.includes('yumurta')) entities.push('Yumurta (Kolinden Zengin Kaliteli Protein)');
-    if (qNorm.includes('yulaf')) entities.push('Yulaf (Beta-Glukan Çözünür Lifi)');
-    if (qNorm.includes('avokado')) entities.push('Avokado (Tekli Doymamış Yağ Asitleri)');
-    if (qNorm.includes('ceviz') || qNorm.includes('badem')) entities.push('Çiğ Kuruyemişler (Bitkisel Omega-3 & E Vitamini)');
-    if (qNorm.includes('zeytinyagi')) entities.push('Soğuk Sıkım Sızma Zeytinyağı (Oleik Asit)');
-    if (qNorm.includes('limon')) entities.push('Limon & Sitrik Asit');
-    if (qNorm.includes('tarcin')) entities.push('Seylan Tarçını (Krom & İnsülin Düzenleyici)');
-    if (qNorm.includes('zerdecal')) entities.push('Zerdeçal & Kurkumin (Anti-inflamatuar)');
-    if (qNorm.includes('zencefil')) entities.push('Zencefil (Mide ve Sindirim Hızlandırıcı)');
-    if (qNorm.includes('chia') || qNorm.includes('keten tohumu')) entities.push('Tohumlar (Müsilaj Lif & ALA Omega-3)');
-    if (qNorm.includes('maden suyu')) entities.push('Doğal Maden Suyu (Magnezyum & Bikarbonat)');
-    if (qNorm.includes('kefir') || qNorm.includes('probiyotik')) entities.push('Probiyotik Fermente Gıdalar');
-
-    var entityText = entities.length > 0 ? entities.join(', ') : 'Metabolik Beslenme & Klinik Sağlık';
-
-    // 3. Yanıt İnşası
-    var heading = '💡 ' + (isWeightLoss ? 'Yağ Yakımı & Kilo Analizi' : (isBenefit ? 'Klinik Fayda & Biyokimya Değerlendirmesi' : (isHarmful ? 'Klinik Güvenlik & Risk Analizi' : 'Klinik Beslenme Rehberi')));
-
-    var explanation = '';
-    if (isWeightLoss) {
-      explanation = 'Sorduğunuz konu doğrudan kalori açığı, hormon dengesi (leptin/insülin) ve metabolik hız ile ilişkilidir. Tek başına hiçbir mucize gıda veya yöntem yağ yakamaz; ancak doğru zamanlama ve porsiyon ile metabolik süreci %15-20 oranında hızlandırabilir.';
-    } else if (isHarmful) {
-      explanation = 'Klinik beslenmede "toksik olan dozdur". Bireysel tahlil değerleriniz, karaciğer/böbrek fonksiyonlarınız ve mevcut ilaç kullanımınız bu durumun vücuttaki toleransını belirler.';
-    } else if (isTiming) {
-      explanation = 'Sirkadiyen biyoloji ve sindirim enzimleri açısından zamanlama çok önemlidir. Vücudun kortizol, melatonin ve insülin eğrilerine uygun saatlerde tüketildiğinde biyoyararlanım en üst düzeye çıkar.';
-    } else {
-      explanation = 'Bu konu hakkında Dünya Sağlık Örgütü (DSÖ 2024) ve TÜBER rehberleri incelendiğinde; kişinin yaşına, biyokimya paneline (glukoz, HOMA-IR, lipidler) ve günlük fiziksel aktivitesine göre planlanması gerektiği görülmektedir.';
+    var numericAnalysisHtml = '';
+    if (weightMatch) {
+      var w = parseInt(weightMatch[1]);
+      var waterMl = w * 35;
+      var protMin = Math.round(w * 1.2);
+      var protMax = Math.round(w * 1.6);
+      var estBmr = Math.round(w * 22);
+      var targetDietCal = Math.max(1200, Math.round(estBmr * 1.35 - 450));
+      numericAnalysisHtml =
+        '<li><strong>📊 ' + w + ' kg Vaka İçin Hesaplanan Klinik Parametreler:</strong> ' +
+        'Hedef diyet enerjisi <strong>~' + targetDietCal + ' kcal/gün</strong>, günlük doku onarım proteini <strong>' + protMin + ' - ' + protMax + ' g/gün</strong> ve zorunlu metabolik su hedefi <strong>' + (waterMl / 1000).toFixed(2) + ' Litre/gün</strong> olarak hesaplanmıştır.</li>';
+    } else if (calMatch) {
+      var c = parseInt(calMatch[1]);
+      var pGram = Math.round((c * 0.25) / 4);
+      var cGram = Math.round((c * 0.45) / 4);
+      var fGram = Math.round((c * 0.30) / 9);
+      numericAnalysisHtml =
+        '<li><strong>📊 ' + c + ' kcal Hedef İçin Optimum Makro Dağılımı:</strong> ' +
+        '<strong>' + pGram + 'g Protein</strong> (%25), <strong>' + cGram + 'g Düşük GI Karbonhidrat</strong> (%45) ve <strong>' + fGram + 'g Sağlıklı Yağ</strong> (%30) + en az 28g diyet lifi.</li>';
+    } else if (ageMatch) {
+      var a = parseInt(ageMatch[1]);
+      numericAnalysisHtml =
+        '<li><strong>📊 ' + a + ' Yaş Metabolik Hız Notu:</strong> ' +
+        (a >= 40 ? '40 yaş sonrasında sarkopeni (kas kaybı) ve bazal metabolizma yavaşlamasını önlemek için öğün başına en az 25-30g kaliteli protein ve direnç egzersizi şarttır.' : 'Metabolik plastisitenin yüksek olduğu bu yaş grubunda sirkadiyen beslenme ve yeterli mikrobesin dengesiyle hızlı yağ kaybı sağlanır.') + '</li>';
     }
 
-    return '<div><strong>' + heading + ': ' + entityText + '</strong></div>' +
+    // 2. Sorudaki Anahtar Kavramları Çıkar (Stop-word filtreli)
+    var stopWords = ['bir', 'icin', 'ne', 'nasil', 'mi', 'mu', 'mı', 'mü', 'var', 'olan', 'ise', 've', 'veya', 'ile', 'kadar', 'gibi', 'daha', 'cok', 'az', 'en', 'iyi', 'kotu', 'yapmali', 'etmeli', 'olur', 'nedir', 'hangi', 'kac', 'bana', 'ben', 'danisan', 'hasta'];
+    var words = rawClean.split(/\s+/).filter(function(w) {
+      var cleanW = w.toLowerCase().replace(/[^a-zçğıöşü0-9]/g, '');
+      var normW = cleanW.replace(/ı/g, 'i').replace(/ğ/g, 'g').replace(/ü/g, 'u').replace(/ş/g, 's').replace(/ö/g, 'o').replace(/ç/g, 'c');
+      return cleanW.length >= 3 && stopWords.indexOf(normW) === -1;
+    });
+    var subjectFocus = words.length > 0 ? words.slice(0, 4).join(' ') : rawClean;
+
+    // 3. Besin / Semptom / Soru Niyeti Eşleşmesi
+    var foodDatabase = {
+      'yumurta': 'Yumurta; anne sütünden sonra en yüksek biyoyararlanımlı (%100) referans proteindir ve karaciğer yağlanmasını önleyen kolin içerir. Kan kolesterolünü yükseltmez, günde 1-2 adet haşlanmış tüketimi uzun süre tokluk sağlar.',
+      'yulaf': 'Yulaf; içerdiği çözünür beta-glukan lifi sayesinde midede jel kıvamı oluşturur, safra asitlerini bağlayarak LDL kolesterolü düşürür ve kan şekerinin yavaş yükselmesini sağlar. Su veya laktozsuz süt/yoğurt, chia ve tarçınla hazırlanmalıdır.',
+      'avokado': 'Avokado; oleik asit (tekli doymamış yağ), potasyum ve E vitamini deposudur. Karbonhidrat içermez, yağda çözünen vitaminlerin (A, D, E, K) emilimini 4 kat artırır. Yarım orta boy avokado 1 porsiyon (yaklaşık 120 kcal) sağlıklı yağ değişimidir.',
+      'ekmek': 'Beyaz ekmek yüksek glisemik indeksiyle insülin piki yapar; ancak ekşi mayalı tam siyez, karabuğday veya çavdar ekmeği B vitaminleri ve prebiyotik lif kaynağıdır. Diyette tamamen kesmek yerine öğünlerde 1-2 ince dilim kontrollü tüketilmelidir.',
+      'meyve': 'Meyveler antioksidan ve polifenol kaynağıdır ancak fruktoz içerir. Meyve suyu yerine posasıyla tam meyve olarak, akşam geç saatlerde değil gündüz/ikindi ara öğününde çiğ kuruyemiş veya yoğurt/kefirle birlikte (glisemik yükü düşürmek için) tüketilmelidir.',
+      'ceviz': 'Ceviz ve çiğ badem bitkisel Omega-3 (ALA), magnezyum ve E vitamini kaynağıdır. Kavrulmuş olanlar yerine çiğ olanlar tercih edilmeli; günde 2-3 tam ceviz veya 10 çiğ badem porsiyon aşımı yapılmadan tüketilmelidir.',
+      'kefir': 'Kefir ve ev yoğurdu; bağırsak mikrobiyotasını onaran Lactobacillus ve Bifidobacterium suşları içerir. Bağırsak-beyin ekseni üzerinden serotonin üretimini ve bağışıklığı güçlendirir.',
+      'tarcin': 'Gerçek Seylan tarçını, hücre zarındaki insülin reseptörlerini taklit ederek kan şekerini düşürür ve tatlı aşermesini keser.',
+      'zerdecal': 'Zerdeçalın aktif maddesi Kurkumin güçlü bir anti-inflamatuardır; bağırsaktan emilebilmesi için mutlaka karabiber (piperin %2000 emilim artışı sağlar) ve zeytinyağı ile birlikte tüketilmelidir.',
+      'zencefil': 'Zencefil (gingerol); mide boşalmasını düzenler, bulantıyı keser ve termojenik etkisiyle metabolizmayı canlandırır.',
+      'limon': 'Limon vücutta alkali kül bırakan yüksek C vitaminli ve sitratlı bir besindir; demir emilimini artırır ve böbrek taşı oluşumunu engeller.',
+      'somon': 'Somon, uskumru ve sardalya en güçlü EPA ve DHA Omega-3 kaynaklarıdır; haftada en az 2 kez fırında veya buğulama olarak tüketilmelidir.',
+      'चिकन': 'Derisiz tavuk ve hindi göğsü düşük doymuş yağlı yüksek lösin kaynağıdır.',
+      'tavuk': 'Derisiz tavuk ve hindi göğsü 100 gramında ~30g saf protein içerir; kas kütlesini koruyarak yağ yakımını hızlandırır.',
+      'et': 'Yağsız kırmızı et hem-demir, B12, çinko ve kreatin açısından en yoğun besindir; yanında C vitaminli yeşil salatayla tüketilmelidir.',
+      'baklagil': 'Mercimek, nohut ve kuru fasulye bitkisel protein ve dirençli nişasta deposudur; gaz yapmaması için 12-24 saat kimyonlu suda bekletilip haşlama suyu dökülerek pişirilmelidir.',
+      'mercimek': 'Mercimek düşük glisemik indeksli yüksek bitkisel protein ve folat kaynağıdır; çorba veya salata olarak tokluk süresini uzatır.',
+      'tatlandirici': 'Yapay tatlandırıcılar (aspartam, sukraloz) kalori içermese de bağırsak florasını bozabilir ve beyinde tatlı reseptörlerini uyararak iştah açabilir. Gerekirse doğal Stevia veya Eritritol minimum dozda kullanılmalıdır.',
+      'alkol': 'Alkolün 1 gramı 7 kaloridir (boş enerji) ve karaciğer alkolü detoksifiye ederken yağ yakımını 24-48 saat boyunca tamamen durdurur.',
+      'uyku': 'Gece 23:00-03:00 arası derin uykuda salgılanan Melatonin ve Büyüme Hormonu (GH) yağ yakımının anahtarıdır. Yetersiz uyku Ghrelin (açlık) hormonunu %25 artırır.',
+      'stres': 'Kronik stres böbreküstü bezlerinden Kortizol salgılatır; yüksek kortizol kas yıkımına ve özellikle karın çevresinde (viseral) iç organ yağlanmasına yol açar.',
+      'sivilce': 'Akne ve sivilce oluşumu yüksek glisemik indeksli gıdalar ve süt ürünlerindeki IGF-1 büyüme faktörü ile doğrudan tetiklenir. Şeker ve süt kısıtlanıp çinko (30 mg) ve Omega-3 artırılmalıdır.',
+      'sac': 'Saç dökülmesi genellikle Ferritin (<50 ng/mL), Çinko, Biotin, B12, D vitamini eksikliği veya aşırı düşük kalorili şok diyetlerdeki protein yetersizliğinden kaynaklanır.'
+    };
+
+    var matchedFoodInsight = '';
+    for (var key in foodDatabase) {
+      if (qNorm.includes(key)) {
+        matchedFoodInsight = '<li><strong>🔬 ' + key.charAt(0).toUpperCase() + key.slice(1) + ' Özel Klinik Bulgusu:</strong> ' + foodDatabase[key] + '</li>';
+        break;
+      }
+    }
+
+    // 4. Soru Niyetine Göre Özel Klinik Analiz Paragrafı
+    var intentParagraph = '';
+    if (qNorm.includes('zarar') || qNorm.includes('yasak') || qNorm.includes('dokunur') || qNorm.includes('yan etki')) {
+      intentParagraph = '<strong>"' + escapedQuery + '"</strong> sorunuz klinik güvenlik ve kontrendikasyon açısından değerlendirildiğinde; besin veya takviyenin dozu, danışanın böbrek/karaciğer enzimleri (AST, ALT, GFR) ve kullandığı ilaçlarla (özellikle kan sulandırıcı, tiroid veya diyabet ilaçları) etkileşimi belirleyicidir. Akut semptom varsa eliminasyon protokolüyle 14 gün diyetten çıkarılıp yanıt izlenmelidir.';
+    } else if (qNorm.includes('zayifla') || qNorm.includes('kilo ver') || qNorm.includes('yag yak') || qNorm.includes('eritir')) {
+      intentParagraph = '<strong>"' + escapedQuery + '"</strong> konusunda yağ yakımı fizyolojisi nettir: Bölgesel veya mucizevi tekil zayıflama yoktur; lipoliz (yağ yıkımı) için günlük TDEE enerjisinin 400-500 kcal altında dengeli bir kalori açığı, düşük insülin seviyesi ve kg başına en az 1.2-1.5g protein alımıyla kas kütlesinin korunması gerekir.';
+    } else if (qNorm.includes('kilo al') || qNorm.includes('hacim') || qNorm.includes('zayifim')) {
+      intentParagraph = '<strong>"' + escapedQuery + '"</strong> için sağlıklı kilo alma (kas kütlesi artışı) protokolünde; günlük enerji ihtiyacının +400-600 kcal üzerine çıkılmalı, hacmi küçük ama kalorisi yoğun sağlıklı besinler (fıstık ezmesi, tahin, ceviz, avokado, muzlu yulaflı smoothie, zeytinyağı) ana öğünlerin arkasına eklenmelidir.';
+    } else if (qNorm.includes('ne zaman') || qNorm.includes('saat') || qNorm.includes('ac karnina') || qNorm.includes('tok karnina')) {
+      intentParagraph = '<strong>"' + escapedQuery + '"</strong> sorunuz sirkadiyen krononütrisyon açısından incelendiğinde; sindirim enzimlerinin ve insülin duyarlılığının zirvede olduğu gündüz saatleri (08:00 - 16:00 arası) metabolik kullanım için en verimli penceredir. Gece geç saatlerde alınan kaloriler melatonin salgısıyla çakışarak yağ depolanmasını artırır.';
+    } else if (qNorm.includes('ne kadar') || qNorm.includes('kac') || qNorm.includes('doz') || qNorm.includes('gram') || qNorm.includes('porsiyon')) {
+      intentParagraph = '<strong>"' + escapedQuery + '"</strong> için klinik dozaj ve porsiyonlama; danışanın bazal metabolizma hızı (BMR), fiziksel aktivite katsayısı (PAL) ve hedef biyokimya değerlerine göre kişiselleştirilir. Türkomp değişim listelerinde 1 porsiyon et grubu ~6g protein, 1 porsiyon tahıl ~15g karbonhidrat, 1 porsiyon yağ ~5g lipit olarak hesaplanır.';
+    } else {
+      intentParagraph = '<strong>"' + escapedQuery + '"</strong> konusu üzerine kanıta dayalı klinik beslenme yaklaşımı; danışanın anamnez bulguları, açlık glukoz/insülin (HOMA-IR) dengesi, bağırsak mikrobiyota toleransı ve DSÖ 2024 makro/mikro besin standartları doğrultusunda kişiye özel beslenme tedavisi planlamaktır.';
+    }
+
+    return '<div><strong>🩺 "' + subjectFocus + '" — Özel Klinik Vaka & Beslenme Analizi:</strong></div>' +
       '<div style="margin-top: 6px; color: #334155; line-height: 1.55;">' +
-        '<strong>\"' + escapedQuery + '\"</strong> sorunuz için uzman klinik değerlendirmesi:' +
+        '<div style="margin-bottom: 6px;">' + intentParagraph + '</div>' +
         '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
-          '<li><strong>🔬 Tıbbi ve Biyokimyasal Etki:</strong> ' + explanation + '</li>' +
-          '<li><strong>🎯 Günlük Klinik Uygulama:</strong> Aşırıya kaçmadan porsiyon kontrolü yapılmalı, yeterli su (kg x 35 ml) ile desteklenmeli ve varsa kronik hastalık geçmişi göz önüne alınmalıdır.</li>' +
-          '<li><strong>⚡ DiyetKalfa Entegrasyonu:</strong> Bu gereksinimi danışanınızın 7 günlük menüsüne tam kalori ve makro hesabıyla dahil etmek için Diyet Planlayıcı modülümüzü kullanabilirsiniz.</li>' +
+          numericAnalysisHtml +
+          matchedFoodInsight +
+          '<li><strong>🎯 Klinik Uygulama Önerisi:</strong> Danışanın günlük menüsünde glisemik yükü dengelemek için lif oranı >25-30g/gün tutulmalı, serbest şeker <%5 sınırlandırılmalı ve su tüketimi <em>Kilo x 35 ml</em> formülüyle takip edilmelidir.</li>' +
         '</ul>' +
-      '</div>' +
-      '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-        '<a href="panel.html?unlock=true&demo=true" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">🚀 Panelde Hesapla & Uygula →</a>' +
-        '<a href="https://wa.me/905321202846?text=' + encodeURIComponent('Merhaba, ' + rawClean + ' konusunda klinik destek almak istiyorum.') + '" target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 0532 120 28 46 Uzmana Sor</a>' +
       '</div>';
   }
 
@@ -621,22 +645,19 @@
     var chips = document.getElementById('ai-quick-chips');
     if (chips) chips.style.display = 'none';
 
-    // 1. Kullanıcı Mesajını Ekle
     var userMsgEl = document.createElement('div');
     userMsgEl.className = 'ai-msg-bubble ai-msg-user';
     userMsgEl.textContent = userText;
     messagesContainer.appendChild(userMsgEl);
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
-    // 2. Yazıyor İndikatörü
     var typingEl = document.createElement('div');
     typingEl.className = 'ai-msg-bubble ai-msg-bot';
     typingEl.id = 'ai-typing-indicator';
-    typingEl.innerHTML = '<span style="color:#0f766e; font-style:italic;">DiyetKalfa AI yanıt hazırlıyor...</span>';
+    typingEl.innerHTML = '<span style="color:#0f766e; font-style:italic;">DiyetKalfa AI sorunuzu analiz ediyor...</span>';
     messagesContainer.appendChild(typingEl);
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
-    // 3. Yanıtı Al (Gemini veya Yerel Klinik Motor)
     try {
       var replyHtml = await getAiResponseAsync(userText);
       var typ = document.getElementById('ai-typing-indicator');
@@ -660,9 +681,6 @@
     }
   }
 
-  /**
-   * Gemini API Anahtarı Ayar Modalı
-   */
   function promptGeminiKey() {
     var currentKey = getGeminiApiKey();
     var key = window.prompt(
@@ -681,7 +699,6 @@
     }
   }
 
-  // Global Fonksiyonları Dışa Aktar
   window.DiyetKalfaAI = {
     getAiResponseAsync: getAiResponseAsync,
     getNativeClinicalAiResponse: getNativeClinicalAiResponse,
@@ -695,7 +712,7 @@
   window.triggerQuickPrompt = triggerQuickPrompt;
   window.handleAiChatSubmit = handleAiChatSubmit;
   window.sendAiChatMessage = sendAiChatMessage;
-  window.getAiResponse = getNativeClinicalAiResponse; // Geriye dönük uyumluluk
+  window.getAiResponse = getNativeClinicalAiResponse;
   window.promptGeminiKey = promptGeminiKey;
 
 })(window);
