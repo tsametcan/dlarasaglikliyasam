@@ -134,21 +134,37 @@
     } catch(e) {}
   }
 
+  function enforceLogoSize() {
+    var logos = document.querySelectorAll('.dk-original-logo-img, .dk-brand-pod img');
+    logos.forEach(function(img) {
+      img.style.setProperty('height', '42px', 'important');
+      img.style.setProperty('max-height', '42px', 'important');
+      img.style.setProperty('width', 'auto', 'important');
+      img.style.setProperty('max-width', '160px', 'important');
+      img.style.setProperty('object-fit', 'contain', 'important');
+      img.style.setProperty('display', 'inline-block', 'important');
+    });
+  }
+
   window.DiyetKalfaLuxuryUI = {
     SVG_ICONS: SVG_ICONS,
     upgradeButtonsAndIconsTo3DEmbossed: upgradeButtonsAndIconsTo3DEmbossed,
-    initDataGuard: initDataGuard
+    initDataGuard: initDataGuard,
+    enforceLogoSize: enforceLogoSize
   };
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function() {
+      enforceLogoSize();
       upgradeButtonsAndIconsTo3DEmbossed();
       initDataGuard();
     });
   } else {
+    enforceLogoSize();
     upgradeButtonsAndIconsTo3DEmbossed();
     initDataGuard();
   }
+  setTimeout(enforceLogoSize, 50);
   setTimeout(upgradeButtonsAndIconsTo3DEmbossed, 250);
 
 })(window, document);

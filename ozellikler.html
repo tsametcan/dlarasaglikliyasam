@@ -586,6 +586,64 @@
       .footer-inner { grid-template-columns: 1fr; }
     }
   </style>
+<style id="dk-luxury-logo-guaranteed-styles">
+  .dk-brand-pod {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    text-decoration: none !important;
+    flex-shrink: 0 !important;
+    padding: 2px 6px !important;
+    border-radius: 12px !important;
+    background: transparent !important;
+    transition: all 0.2s ease !important;
+    max-height: 48px !important;
+  }
+  .dk-brand-pod:hover {
+    transform: translateY(-1px) !important;
+  }
+  .dk-original-logo-img,
+  img.dk-original-logo-img,
+  a.dk-brand-pod img {
+    height: 42px !important;
+    max-height: 42px !important;
+    width: auto !important;
+    max-width: 160px !important;
+    object-fit: contain !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+    filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.45)) !important;
+    transition: transform 0.2s ease, filter 0.2s ease !important;
+  }
+  .dk-brand-pod:hover .dk-original-logo-img,
+  .dk-brand-pod:hover img {
+    filter: drop-shadow(0 4px 14px rgba(56, 189, 248, 0.4)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6)) !important;
+    transform: scale(1.02) !important;
+  }
+  .dk-logo-edition-tag {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    font-size: 10px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.05em !important;
+    color: #38bdf8 !important;
+    background: rgba(30, 58, 138, 0.4) !important;
+    border: 1px solid rgba(56, 189, 248, 0.35) !important;
+    padding: 2px 8px !important;
+    border-radius: 999px !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+  }
+  .dk-tag-pulse {
+    width: 6px !important;
+    height: 6px !important;
+    border-radius: 50% !important;
+    background: #38bdf8 !important;
+    box-shadow: 0 0 6px #38bdf8 !important;
+    display: inline-block !important;
+  }
+</style>
 </head>
 <body>
 
@@ -811,8 +869,8 @@
   <div class="dk-main-command-header">
     <div class="dk-command-inner">
             <!-- Orijinal Yüksek Çözünürlüklü Şeffaf DiyetKalfa Logosu -->
-      <a href="index.html" class="dk-brand-pod" title="DiyetKalfa Klinik Karar Destek Sistemi">
-        <img src="logo.png" alt="DiyetKalfa" class="dk-original-logo-img">
+      <a href="index.html" class="dk-brand-pod" title="DiyetKalfa Klinik Karar Destek Sistemi" style="display: inline-flex !important; align-items: center !important; gap: 8px !important; text-decoration: none !important; max-height: 48px !important;">
+        <img src="logo.png" alt="DiyetKalfa" class="dk-original-logo-img" style="height: 42px !important; width: auto !important; max-height: 42px !important; max-width: 160px !important; object-fit: contain !important; display: inline-block !important; filter: drop-shadow(0 3px 8px rgba(0,0,0,0.45));">
         <div class="dk-logo-edition-tag">
           <span class="dk-tag-pulse"></span>
           <span>AI OS 4.5</span>
@@ -1860,4 +1918,5 @@ function quickDemoLogin() {
 </script>
 </body>
 </html>
+
 

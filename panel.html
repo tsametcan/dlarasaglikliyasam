@@ -419,13 +419,10 @@ body:not(.app-locked) .header-landing-actions {
       box-shadow: 0 2px 6px rgba(56, 189, 248, 0.3);
     }
     .btn-pastel-sage {
-  background: #eff6ff !important;
-  color: #1e3a8a !important;
-  border: 1.5px solid #7dd3fc !important;
-  border-radius: 12px !important;
-  font-weight: 700 !important;
-  box-shadow: 0 2px 6px rgba(56, 189, 248, 0.15) !important;
-}
+      background: #c2d1c8;
+      color: #0f172a;
+      border-color: #1e3a8a;
+    }
     .btn-whatsapp-pastel {
       background: #38bdf8;
       color: #052e16;
@@ -1345,19 +1342,16 @@ body:not(.app-locked) .header-landing-actions {
     }
 
     .btn-pastel-sage {
-  background: #eff6ff !important;
-  color: #1e3a8a !important;
-  border: 1.5px solid #7dd3fc !important;
-  border-radius: 12px !important;
-  font-weight: 700 !important;
-  box-shadow: 0 2px 6px rgba(56, 189, 248, 0.15) !important;
-}
+      background: linear-gradient(135deg, #f1f5f9 0%, #f1f5f9 100%);
+      color: #0f172a;
+      border: 1px solid #7dd3fc;
+      box-shadow: 0 2px 6px rgba(22, 101, 52, 0.08);
+    }
     .btn-pastel-sage:hover {
-  background: linear-gradient(135deg, #1e3a8a 0%, #0284c7 100%) !important;
-  color: #ffffff !important;
-  border-color: #0284c7 !important;
-  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3) !important;
-}
+      background: #bfdbfe;
+      color: #0f172a;
+      box-shadow: 0 4px 10px rgba(22, 101, 52, 0.15);
+    }
 
     .btn-whatsapp-pastel {
       background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
@@ -1754,18 +1748,16 @@ body:not(.app-locked) .header-landing-actions {
       z-index: 99;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
     }
-      .saas-nav-inner {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 6px 14px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(56, 189, 248, 0.3) transparent;
-  }
+    .saas-nav-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 6px 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
     .saas-nav-inner::-webkit-scrollbar { display: none; }
 
     .saas-tab-btn {
@@ -2219,7 +2211,42 @@ body:not(.app-locked) .header-landing-actions {
     letter-spacing: -0.01em;
   }
   /* 3D Embossed Logo in Panel */
-  
+  .dk-brand-pod {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
+    padding: 4px 10px 4px 5px;
+    border-radius: 16px;
+    background: linear-gradient(145deg, rgba(30, 58, 138, 0.55), rgba(15, 23, 42, 0.9));
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.25), 0 6px 16px rgba(2, 6, 23, 0.5);
+    transition: all 0.2s ease;
+  }
+  .dk-3d-crest-box {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: radial-gradient(circle at 30% 25%, #1e3a8a 0%, #091024 100%);
+    border: 1.5px solid rgba(251, 191, 36, 0.65);
+    box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.45), inset 0 -3px 5px rgba(0, 0, 0, 0.8), 0 4px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .dk-3d-wordmark-wrap { display: flex; flex-direction: column; line-height: 1.05; }
+  .dk-3d-wordmark { font-size: 18px; font-weight: 900; letter-spacing: 0.03em; display: flex; align-items: center; }
+  .dk-3d-diyet { color: #f8fafc; text-shadow: 0 1px 0 #cbd5e1, 0 2px 0 #475569, 0 3px 6px rgba(0, 0, 0, 0.75); }
+  .dk-3d-kalfa {
+    background: linear-gradient(180deg, #fef08a 0%, #f59e0b 55%, #d97706 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.65));
+    margin-left: 1px;
+  }
+  .dk-3d-sub { font-size: 8.5px; font-weight: 800; color: #38bdf8; letter-spacing: 0.16em; margin-top: 2px; }
 
   /* 3D Embossed Vector Icon Pods in Panel Tabs & Header */
   .dk-3d-btn-svg {
@@ -2295,11 +2322,11 @@ body:not(.app-locked) .header-landing-actions {
   <div class="header-inner" style="max-width: 1320px; margin: 0 auto; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; gap: 15px;">
     
         <!-- Sol Logo Alanı: 3D Kabartmalı (Embossed) Lüks Marka Logosu -->
-            <!-- Orijinal Yüksek Çözünürlüklü Şeffaf DiyetKalfa Logosu -->
-      <a href="panel.html" class="dk-brand-pod" title="DiyetKalfa Klinik Paneli">
-        <img src="logo.png" alt="DiyetKalfa" class="dk-original-logo-img">
-        <div class="dk-logo-edition-tag">
-          <span class="dk-tag-pulse"></span>
+      <!-- Orijinal Yüksek Çözünürlüklü Şeffaf DiyetKalfa Logosu -->
+      <a href="panel.html" class="dk-brand-pod" title="DiyetKalfa Klinik Paneli" style="display: inline-flex !important; align-items: center !important; gap: 8px !important; text-decoration: none !important; max-height: 48px !important;">
+        <img src="logo.png" alt="DiyetKalfa" class="dk-original-logo-img" style="height: 42px !important; width: auto !important; max-height: 42px !important; max-width: 160px !important; object-fit: contain !important; display: inline-block !important; filter: drop-shadow(0 3px 8px rgba(0,0,0,0.45));">
+        <div class="dk-logo-edition-tag" style="display: inline-flex !important; align-items: center !important; gap: 4px !important; font-size: 10px !important; font-weight: 800 !important; color: #38bdf8 !important; background: rgba(30, 58, 138, 0.4) !important; border: 1px solid rgba(56, 189, 248, 0.35) !important; padding: 2px 8px !important; border-radius: 999px !important; white-space: nowrap !important;">
+          <span class="dk-tag-pulse" style="width: 6px !important; height: 6px !important; border-radius: 50% !important; background: #38bdf8 !important; display: inline-block !important;"></span>
           <span>KLİNİK PANELİ</span>
         </div>
       </a>
@@ -6454,7 +6481,88 @@ body:not(.app-locked) .header-landing-actions {
           '.directive-box { background: #f4f7fb; border-left: 4px solid #1e3a8a; padding: 10px 14px; border-radius: 4px; margin: 14px 0; font-size: 10pt; }' +
           '.who-pill { display: inline-block; background: #eff6ff; color: #1e3a8a; font-size: 9pt; font-weight: 800; padding: 3px 8px; border-radius: 4px; border: 1px solid #3b82f6; margin-right: 6px; }' +
           '.footer { margin-top: 24px; border-top: 2px solid #1e3a8a; padding-top: 10px; font-size: 9.5pt; text-align: center; color: #475569; }' +
-          '</style></head><body>' +
+          '</style><style id="dk-panel-3d-luxury-theme">
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap');
+
+  body, html {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif !important;
+    background-color: #f0f5fc !important;
+    color: #0f172a !important;
+  }
+  h1, h2, h3, h4, .card-title, .dk-3d-wordmark {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif !important;
+    letter-spacing: -0.01em;
+  }
+  /* 3D Embossed Logo in Panel */
+  .dk-brand-pod {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
+    padding: 4px 10px 4px 5px;
+    border-radius: 16px;
+    background: linear-gradient(145deg, rgba(30, 58, 138, 0.55), rgba(15, 23, 42, 0.9));
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.25), 0 6px 16px rgba(2, 6, 23, 0.5);
+    transition: all 0.2s ease;
+  }
+  .dk-3d-crest-box {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: radial-gradient(circle at 30% 25%, #1e3a8a 0%, #091024 100%);
+    border: 1.5px solid rgba(251, 191, 36, 0.65);
+    box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.45), inset 0 -3px 5px rgba(0, 0, 0, 0.8), 0 4px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .dk-3d-wordmark-wrap { display: flex; flex-direction: column; line-height: 1.05; }
+  .dk-3d-wordmark { font-size: 18px; font-weight: 900; letter-spacing: 0.03em; display: flex; align-items: center; }
+  .dk-3d-diyet { color: #f8fafc; text-shadow: 0 1px 0 #cbd5e1, 0 2px 0 #475569, 0 3px 6px rgba(0, 0, 0, 0.75); }
+  .dk-3d-kalfa {
+    background: linear-gradient(180deg, #fef08a 0%, #f59e0b 55%, #d97706 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.65));
+    margin-left: 1px;
+  }
+  .dk-3d-sub { font-size: 8.5px; font-weight: 800; color: #38bdf8; letter-spacing: 0.16em; margin-top: 2px; }
+
+  /* 3D Embossed Vector Icon Pods in Panel Tabs & Header */
+  .dk-3d-btn-svg {
+    width: 24px;
+    height: 24px;
+    border-radius: 8px;
+    background: linear-gradient(145deg, rgba(56, 189, 248, 0.22), rgba(15, 23, 42, 0.75));
+    border: 1px solid rgba(125, 211, 252, 0.35);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.35), 0 2px 5px rgba(0, 0, 0, 0.35);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #38bdf8;
+    flex-shrink: 0;
+  }
+  .saas-tab-btn.active .dk-3d-btn-svg {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.3), rgba(15, 23, 42, 0.35));
+    border-color: rgba(255, 255, 255, 0.6);
+    color: #ffffff;
+  }
+  /* Panel Cards & Surfaces */
+  .card, .panel-card, .glass-card {
+    background: #ffffff !important;
+    border: 1.5px solid #dbe4f0 !important;
+    border-radius: 18px !important;
+    box-shadow: 0 10px 28px -6px rgba(15, 23, 42, 0.06) !important;
+  }
+  .card-header {
+    background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%) !important;
+    border-bottom: 1.5px solid #e2e8f0 !important;
+  }
+</style>
+</head><body>' +
           '<div class="header"><div><div class="brand">' + p.clinicName + '</div><div style="font-weight: 800; color: #1e3a8a;">' + p.dietitianName + ' • ' + p.title + '</div></div><div style="text-align: right;"><span class="badge">' + activeDay + '. Gün (' + dayData.dayName + ') Reçetesi</span></div></div>' +
           '<div class="info-box"><b>Danışan Adı:</b> ' + name + ' | <b>Hedef:</b> ' + targetCal + ' | <b>Günlük Su:</b> ' + water + '<br/><div style="margin-top: 5px;"><span class="who-pill">✓ DSÖ Standardı: Tuz &lt;2g</span><span class="who-pill">✓ Rafine Şeker %0</span><span class="who-pill">✓ Yüksek Lif &gt;25g</span></div></div>' +
           (directive ? '<div class="directive-box"><b style="color: #1e3a8a;">📋 DİYETİSYENİN ÖZEL KLİNİK TALİMATI:</b><br/><div style="margin-top: 4px;">' + directive.replace(/\n/g, '<br/>') + '</div></div>' : '') +
@@ -10576,6 +10684,3 @@ window.addEventListener('DOMContentLoaded', function() {
 <script src="diyetkalfa_luxury_ui.js"></script>
 </body>
 </html>
-
-
-
