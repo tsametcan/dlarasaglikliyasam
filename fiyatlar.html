@@ -506,68 +506,7 @@
     gap: 10px;
   }
   /* 3D Kabartmalı (Embossed) Logo Stili */
-  .dk-brand-pod {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    flex-shrink: 0;
-    padding: 3px 8px 3px 4px;
-    border-radius: 16px;
-    background: linear-gradient(145deg, rgba(30, 58, 138, 0.45), rgba(15, 23, 42, 0.85));
-    border: 1px solid rgba(56, 189, 248, 0.3);
-    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.25), 0 6px 16px rgba(2, 6, 23, 0.5);
-    transition: all 0.22s ease;
-  }
-  .dk-brand-pod:hover {
-    transform: translateY(-1px);
-    border-color: rgba(251, 191, 36, 0.65);
-    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.35), 0 8px 22px rgba(14, 165, 233, 0.35);
-  }
-  .dk-3d-crest-box {
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-    background: radial-gradient(circle at 30% 25%, #1e3a8a 0%, #091024 100%);
-    border: 1.5px solid rgba(251, 191, 36, 0.65);
-    box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.45), inset 0 -3px 5px rgba(0, 0, 0, 0.8), 0 4px 10px rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .dk-3d-wordmark-wrap {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.05;
-  }
-  .dk-3d-wordmark {
-    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
-    font-size: 18px;
-    font-weight: 900;
-    letter-spacing: 0.03em;
-    display: flex;
-    align-items: center;
-  }
-  .dk-3d-diyet {
-    color: #f8fafc;
-    text-shadow: 0 1px 0 #cbd5e1, 0 2px 0 #475569, 0 3px 6px rgba(0, 0, 0, 0.75);
-  }
-  .dk-3d-kalfa {
-    background: linear-gradient(180deg, #fef08a 0%, #f59e0b 55%, #d97706 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.65));
-    margin-left: 1px;
-  }
-  .dk-3d-sub {
-    font-size: 8.5px;
-    font-weight: 800;
-    color: #38bdf8;
-    letter-spacing: 0.16em;
-    margin-top: 2px;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
-  }
+  
   /* 3D Kabartmalı Buton İkon Podları */
   .dk-3d-btn-svg, .dk-3d-icon-pod {
     width: 24px;
@@ -757,35 +696,12 @@
 <header class="app-header dk-top-architecture">
   <div class="dk-main-command-header">
     <div class="dk-command-inner">
-      <!-- 3D Kabartmalı (Embossed) Lüks Vektör Marka Logosu -->
-      <a href="index.html" class="dk-brand-pod" title="DiyetKalfa Klinik İşletim Sistemi">
-        <div class="dk-3d-crest-box">
-          <svg viewBox="0 0 44 44" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 2px 3px rgba(0,0,0,0.65));">
-            <defs>
-              <linearGradient id="dkGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#fef08a"/>
-                <stop offset="45%" stop-color="#f59e0b"/>
-                <stop offset="100%" stop-color="#b45309"/>
-              </linearGradient>
-              <linearGradient id="dkCyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#e0f2fe"/>
-                <stop offset="50%" stop-color="#38bdf8"/>
-                <stop offset="100%" stop-color="#0284c7"/>
-              </linearGradient>
-            </defs>
-            <!-- 3D Kabartma Kalkan Çerçevesi -->
-            <path d="M22 3L38 9.5V21.5C38 31.2 31.1 38.8 22 41C12.9 38.8 6 31.2 6 21.5V9.5L22 3Z" fill="rgba(15,23,42,0.85)" stroke="url(#dkGoldGrad)" stroke-width="2.4"/>
-            <!-- Kabartmalı D Monogramı & Biyomedikal Yaprak -->
-            <path d="M15 13H22.5C27.5 13 31 16.5 31 22C31 27.5 27.5 31 22.5 31H15V13Z" stroke="url(#dkCyanGrad)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M19 22C19 18.5 22.5 15.5 27 15.5C27 20 24 23.5 19 23.5" fill="url(#dkGoldGrad)"/>
-            <circle cx="19" cy="22" r="2.2" fill="#fef08a"/>
-          </svg>
-        </div>
-        <div class="dk-3d-wordmark-wrap">
-          <div class="dk-3d-wordmark">
-            <span class="dk-3d-diyet">DİYET</span><span class="dk-3d-kalfa">KALFA</span>
-          </div>
-          <span class="dk-3d-sub">CLINICAL AI OS</span>
+            <!-- Orijinal Yüksek Çözünürlüklü Şeffaf DiyetKalfa Logosu -->
+      <a href="index.html" class="dk-brand-pod" title="DiyetKalfa Klinik Karar Destek Sistemi">
+        <img src="logo.png" alt="DiyetKalfa" class="dk-original-logo-img">
+        <div class="dk-logo-edition-tag">
+          <span class="dk-tag-pulse"></span>
+          <span>AI OS 4.5</span>
         </div>
       </a>
 
@@ -1205,40 +1121,13 @@
   <footer id="section-contact" class="app-footer" style="background: linear-gradient(180deg, #060d1f 0%, #020617 100%) !important; color: #f8fafc !important; padding: 60px 20px 30px !important; margin-top: 60px; border-top: 2px solid rgba(56, 189, 248, 0.35) !important; scroll-margin-top: 80px;">
     <div style="max-width: 1220px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 42px; margin-bottom: 40px;">
       
-      <!-- Sol Sütun: 3D Kabartmalı Marka ve Misyon -->
+            <!-- Sol Sütun: Orijinal Lüks Marka ve Misyon -->
       <div>
-        <div style="display: inline-flex; margin-bottom: 18px;">
-      <!-- 3D Kabartmalı (Embossed) Lüks Vektör Marka Logosu -->
-      <a href="index.html" class="dk-brand-pod" title="DiyetKalfa Klinik İşletim Sistemi">
-        <div class="dk-3d-crest-box">
-          <svg viewBox="0 0 44 44" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 2px 3px rgba(0,0,0,0.65));">
-            <defs>
-              <linearGradient id="dkGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#fef08a"/>
-                <stop offset="45%" stop-color="#f59e0b"/>
-                <stop offset="100%" stop-color="#b45309"/>
-              </linearGradient>
-              <linearGradient id="dkCyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#e0f2fe"/>
-                <stop offset="50%" stop-color="#38bdf8"/>
-                <stop offset="100%" stop-color="#0284c7"/>
-              </linearGradient>
-            </defs>
-            <!-- 3D Kabartma Kalkan Çerçevesi -->
-            <path d="M22 3L38 9.5V21.5C38 31.2 31.1 38.8 22 41C12.9 38.8 6 31.2 6 21.5V9.5L22 3Z" fill="rgba(15,23,42,0.85)" stroke="url(#dkGoldGrad)" stroke-width="2.4"/>
-            <!-- Kabartmalı D Monogramı & Biyomedikal Yaprak -->
-            <path d="M15 13H22.5C27.5 13 31 16.5 31 22C31 27.5 27.5 31 22.5 31H15V13Z" stroke="url(#dkCyanGrad)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M19 22C19 18.5 22.5 15.5 27 15.5C27 20 24 23.5 19 23.5" fill="url(#dkGoldGrad)"/>
-            <circle cx="19" cy="22" r="2.2" fill="#fef08a"/>
-          </svg>
+        <div style="display: inline-flex; margin-bottom: 16px;">
+          <a href="index.html" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
+            <img src="logo.png" alt="DiyetKalfa" style="height: 52px; width: auto; max-height: 52px; object-fit: contain; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.6));">
+          </a>
         </div>
-        <div class="dk-3d-wordmark-wrap">
-          <div class="dk-3d-wordmark">
-            <span class="dk-3d-diyet">DİYET</span><span class="dk-3d-kalfa">KALFA</span>
-          </div>
-          <span class="dk-3d-sub">CLINICAL AI OS</span>
-        </div>
-      </a>
         </div>
         <p style="font-size: 13.5px; color: #94a3b8; line-height: 1.65; margin-bottom: 20px;">
           Klinikler ve profesyonel diyetisyenler için geliştirilen yeni nesil yapay zeka destekli beslenme ve danışan işletim sistemi. DSÖ 2024 ve resmi Türkomp standartlarıyla tam uyumludur.
@@ -1600,6 +1489,34 @@
         </div>
       </div>
 
+            <!-- PAKET SEÇİMİ VE ÖZEL PAKET YAZMA ALANI -->
+      <div style="background: #ffffff; border: 1.5px solid #bae6fd; border-radius: 12px; padding: 12px 14px; margin-bottom: 16px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+          <label style="font-size: 11.5px; font-weight: 800; color: #1e3a8a; text-transform: uppercase;">Satın Almak İstediğiniz Paket (Yazabilir veya Seçebilirsiniz):</label>
+          <span style="font-size: 10.5px; font-weight: 700; color: #0284c7; background: #e0f2fe; padding: 2px 7px; border-radius: 999px;">Özel Paket Adı Yazabilirsiniz</span>
+        </div>
+        <input type="text" id="co-custom-plan-input" list="all-packages-datalist" value="Profesyonel Paket" oninput="onCheckoutCustomPlanChange(this.value)" placeholder="Paket adınızı girin veya seçin..." style="width: 100%; box-sizing: border-box; padding: 9px 12px; border-radius: 8px; border: 1.5px solid #38bdf8; font-size: 13.5px; font-weight: 700; color: #0f172a; outline: none; background: #f8fafc;">
+        <datalist id="all-packages-datalist">
+          <option value="Profesyonel Paket">⭐ En Çok Tercih Edilen - Sınırsız Danışan & AI Asistan (3.000 TL/ay)</option>
+          <option value="Giriş Paketi">📦 Bireysel / 10 Danışan Kapasiteli Başlangıç (1.500 TL/ay)</option>
+          <option value="Temel Paket">🌿 Tek Diyetisyen • Sınırsız Danışan & Ölçüm (2.200 TL/ay)</option>
+          <option value="Sınırsız Paket">👑 Çoklu Diyetisyen & Şube • Sınırsız SMS & Özel Destek (4.500 TL/ay)</option>
+          <option value="Kurumsal Poliklinik Planı">🏥 Kurumsal Entegrasyon & Çoklu Sekreterya</option>
+          <option value="VIP Özel Klinik Lisansı">💎 Özel White-Label Domain & 7/24 Öncelikli Hat</option>
+          <option value="Online Diyet & Danışan Takip Paketi">🌍 Uzaktan Danışan & Dijital Beslenme Reçetesi</option>
+          <option value="Yeni Mezun Diyetisyen Destek Paketi">🎓 Kariyer Başlangıç İndirimli Lisans</option>
+          <option value="Fonksiyonel Tıp & Bariatrik Beslenme Paketi">🔬 İleri Biyokimya & Detaylı Anamnez Çözümü</option>
+          <option value="Özel Klinik Paketi">✨ Kendi Belirlediğiniz Özel Anlaşma</option>
+        </datalist>
+        <div style="display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px;">
+          <button type="button" onclick="setCheckoutCustomPlan('Profesyonel Paket')" style="background: #1e3a8a; color: #fff; border: 1px solid #1e3a8a; padding: 4px 8px; border-radius: 999px; font-size: 10.5px; font-weight: 700; cursor: pointer;">⭐ Profesyonel</button>
+          <button type="button" onclick="setCheckoutCustomPlan('Giriş Paketi')" style="background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; padding: 4px 8px; border-radius: 999px; font-size: 10.5px; font-weight: 700; cursor: pointer;">📦 Giriş</button>
+          <button type="button" onclick="setCheckoutCustomPlan('Temel Paket')" style="background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; padding: 4px 8px; border-radius: 999px; font-size: 10.5px; font-weight: 700; cursor: pointer;">🌿 Temel</button>
+          <button type="button" onclick="setCheckoutCustomPlan('Sınırsız Paket')" style="background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; padding: 4px 8px; border-radius: 999px; font-size: 10.5px; font-weight: 700; cursor: pointer;">👑 Sınırsız</button>
+          <button type="button" onclick="setCheckoutCustomPlan('Kurumsal Poliklinik Planı')" style="background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; padding: 4px 8px; border-radius: 999px; font-size: 10.5px; font-weight: 700; cursor: pointer;">🏥 Kurumsal</button>
+          <button type="button" onclick="setCheckoutCustomPlan('Özel Klinik Paketi')" style="background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; padding: 4px 8px; border-radius: 999px; font-size: 10.5px; font-weight: 700; cursor: pointer;">✨ Özel Paketim</button>
+        </div>
+      </div>
       <!-- DİYETİSYEN BİLGİLERİ FORMU -->
       <div style="background: #fbfbfa; border: 1px solid #e2e8f0; border-radius: 12px; padding: 14px; margin-bottom: 16px;">
         <div style="font-size: 12px; font-weight: 800; color: #334155; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
@@ -1938,7 +1855,23 @@ var DiyetKalfaLicenseEngine = {
 var activeCheckoutPlan = 'Profesyonel Paket';
 var activeCheckoutCycle = '12';
 
+function onCheckoutCustomPlanChange(val) {
+  if (val) {
+    activeCheckoutPlan = val;
+    var titleEl = document.getElementById('checkout-title');
+    if (titleEl) titleEl.textContent = val + ' Satın Al';
+  }
+}
+
+function setCheckoutCustomPlan(planName) {
+  var input = document.getElementById('co-custom-plan-input');
+  if (input) {
+    input.value = planName;
+    onCheckoutCustomPlanChange(planName);
+  }
+}
 function openCheckoutModal(planName, cycle) {
+  var cInput = document.getElementById('co-custom-plan-input'); if (cInput) cInput.value = planName || 'Profesyonel Paket';
   if (planName) activeCheckoutPlan = planName;
   if (cycle) activeCheckoutCycle = cycle;
   else if (typeof activeCycle !== 'undefined') activeCheckoutCycle = activeCycle;
@@ -2449,3 +2382,5 @@ function quickDemoLogin() {
 </script>
 </body>
 </html>
+
+

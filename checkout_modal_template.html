@@ -1,4 +1,4 @@
-<!-- ============================================================ -->
+﻿<!-- ============================================================ -->
 <!-- DIYETKALFA - KARTSIZ, VERGİ/POS MASRAFSIZ GÜVENLİ LİSANS MODALI -->
 <!-- ============================================================ -->
 <div id="modal-checkout" class="modal-backdrop" style="display: none; align-items: center; justify-content: center; z-index: 10005; background: rgba(10, 24, 18, 0.82); backdrop-filter: blur(8px); padding: 16px;">
@@ -32,6 +32,34 @@
         </div>
       </div>
 
+            <!-- PAKET SEÇİMİ VE ÖZEL PAKET YAZMA ALANI -->
+      <div style="background: #ffffff; border: 1.5px solid #bae6fd; border-radius: 12px; padding: 12px 14px; margin-bottom: 16px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+          <label style="font-size: 11.5px; font-weight: 800; color: #1e3a8a; text-transform: uppercase;">Satın Almak İstediğiniz Paket (Yazabilir veya Seçebilirsiniz):</label>
+          <span style="font-size: 10.5px; font-weight: 700; color: #0284c7; background: #e0f2fe; padding: 2px 7px; border-radius: 999px;">Özel Paket Adı Yazabilirsiniz</span>
+        </div>
+        <input type="text" id="co-custom-plan-input" list="all-packages-datalist" value="Profesyonel Paket" oninput="onCheckoutCustomPlanChange(this.value)" placeholder="Paket adınızı girin veya seçin..." style="width: 100%; box-sizing: border-box; padding: 9px 12px; border-radius: 8px; border: 1.5px solid #38bdf8; font-size: 13.5px; font-weight: 700; color: #0f172a; outline: none; background: #f8fafc;">
+        <datalist id="all-packages-datalist">
+          <option value="Profesyonel Paket">⭐ En Çok Tercih Edilen - Sınırsız Danışan & AI Asistan (3.000 TL/ay)</option>
+          <option value="Giriş Paketi">📦 Bireysel / 10 Danışan Kapasiteli Başlangıç (1.500 TL/ay)</option>
+          <option value="Temel Paket">🌿 Tek Diyetisyen • Sınırsız Danışan & Ölçüm (2.200 TL/ay)</option>
+          <option value="Sınırsız Paket">👑 Çoklu Diyetisyen & Şube • Sınırsız SMS & Özel Destek (4.500 TL/ay)</option>
+          <option value="Kurumsal Poliklinik Planı">🏥 Kurumsal Entegrasyon & Çoklu Sekreterya</option>
+          <option value="VIP Özel Klinik Lisansı">💎 Özel White-Label Domain & 7/24 Öncelikli Hat</option>
+          <option value="Online Diyet & Danışan Takip Paketi">🌍 Uzaktan Danışan & Dijital Beslenme Reçetesi</option>
+          <option value="Yeni Mezun Diyetisyen Destek Paketi">🎓 Kariyer Başlangıç İndirimli Lisans</option>
+          <option value="Fonksiyonel Tıp & Bariatrik Beslenme Paketi">🔬 İleri Biyokimya & Detaylı Anamnez Çözümü</option>
+          <option value="Özel Klinik Paketi">✨ Kendi Belirlediğiniz Özel Anlaşma</option>
+        </datalist>
+        <div style="display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px;">
+          <button type="button" onclick="setCheckoutCustomPlan('Profesyonel Paket')" style="background: #1e3a8a; color: #fff; border: 1px solid #1e3a8a; padding: 4px 8px; border-radius: 999px; font-size: 10.5px; font-weight: 700; cursor: pointer;">⭐ Profesyonel</button>
+          <button type="button" onclick="setCheckoutCustomPlan('Giriş Paketi')" style="background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; padding: 4px 8px; border-radius: 999px; font-size: 10.5px; font-weight: 700; cursor: pointer;">📦 Giriş</button>
+          <button type="button" onclick="setCheckoutCustomPlan('Temel Paket')" style="background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; padding: 4px 8px; border-radius: 999px; font-size: 10.5px; font-weight: 700; cursor: pointer;">🌿 Temel</button>
+          <button type="button" onclick="setCheckoutCustomPlan('Sınırsız Paket')" style="background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; padding: 4px 8px; border-radius: 999px; font-size: 10.5px; font-weight: 700; cursor: pointer;">👑 Sınırsız</button>
+          <button type="button" onclick="setCheckoutCustomPlan('Kurumsal Poliklinik Planı')" style="background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; padding: 4px 8px; border-radius: 999px; font-size: 10.5px; font-weight: 700; cursor: pointer;">🏥 Kurumsal</button>
+          <button type="button" onclick="setCheckoutCustomPlan('Özel Klinik Paketi')" style="background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; padding: 4px 8px; border-radius: 999px; font-size: 10.5px; font-weight: 700; cursor: pointer;">✨ Özel Paketim</button>
+        </div>
+      </div>
       <!-- DİYETİSYEN BİLGİLERİ FORMU -->
       <div style="background: #fbfbfa; border: 1px solid #e2e8f0; border-radius: 12px; padding: 14px; margin-bottom: 16px;">
         <div style="font-size: 12px; font-weight: 800; color: #334155; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
@@ -153,3 +181,4 @@
 
   </div>
 </div>
+

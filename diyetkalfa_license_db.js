@@ -187,7 +187,7 @@
       status: 'trial',
       isTrial: true,
       isPaid: false,
-      tier: cfg.name,
+      tier: (info.planName || cfg.name),
       tierCode: cfg.code,
       cycleMonths: 0,
       cycleDays: 7,
@@ -241,7 +241,7 @@
       status: 'active_paid',
       isTrial: false,
       isPaid: true,
-      tier: cfg.name,
+      tier: (info.planName || cfg.name),
       tierCode: cfg.code,
       cycleMonths: months,
       cycleDays: days,
@@ -335,3 +335,4 @@
   };
 
 })(window);
+

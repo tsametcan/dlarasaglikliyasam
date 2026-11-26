@@ -310,68 +310,7 @@
     gap: 10px;
   }
   /* 3D Kabartmalı (Embossed) Logo Stili */
-  .dk-brand-pod {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    flex-shrink: 0;
-    padding: 3px 8px 3px 4px;
-    border-radius: 16px;
-    background: linear-gradient(145deg, rgba(30, 58, 138, 0.45), rgba(15, 23, 42, 0.85));
-    border: 1px solid rgba(56, 189, 248, 0.3);
-    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.25), 0 6px 16px rgba(2, 6, 23, 0.5);
-    transition: all 0.22s ease;
-  }
-  .dk-brand-pod:hover {
-    transform: translateY(-1px);
-    border-color: rgba(251, 191, 36, 0.65);
-    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.35), 0 8px 22px rgba(14, 165, 233, 0.35);
-  }
-  .dk-3d-crest-box {
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-    background: radial-gradient(circle at 30% 25%, #1e3a8a 0%, #091024 100%);
-    border: 1.5px solid rgba(251, 191, 36, 0.65);
-    box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.45), inset 0 -3px 5px rgba(0, 0, 0, 0.8), 0 4px 10px rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .dk-3d-wordmark-wrap {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.05;
-  }
-  .dk-3d-wordmark {
-    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
-    font-size: 18px;
-    font-weight: 900;
-    letter-spacing: 0.03em;
-    display: flex;
-    align-items: center;
-  }
-  .dk-3d-diyet {
-    color: #f8fafc;
-    text-shadow: 0 1px 0 #cbd5e1, 0 2px 0 #475569, 0 3px 6px rgba(0, 0, 0, 0.75);
-  }
-  .dk-3d-kalfa {
-    background: linear-gradient(180deg, #fef08a 0%, #f59e0b 55%, #d97706 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.65));
-    margin-left: 1px;
-  }
-  .dk-3d-sub {
-    font-size: 8.5px;
-    font-weight: 800;
-    color: #38bdf8;
-    letter-spacing: 0.16em;
-    margin-top: 2px;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
-  }
+  
   /* 3D Kabartmalı Buton İkon Podları */
   .dk-3d-btn-svg, .dk-3d-icon-pod {
     width: 24px;
@@ -561,35 +500,12 @@
 <header class="app-header dk-top-architecture">
   <div class="dk-main-command-header">
     <div class="dk-command-inner">
-      <!-- 3D Kabartmalı (Embossed) Lüks Vektör Marka Logosu -->
-      <a href="index.html" class="dk-brand-pod" title="DiyetKalfa Klinik İşletim Sistemi">
-        <div class="dk-3d-crest-box">
-          <svg viewBox="0 0 44 44" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 2px 3px rgba(0,0,0,0.65));">
-            <defs>
-              <linearGradient id="dkGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#fef08a"/>
-                <stop offset="45%" stop-color="#f59e0b"/>
-                <stop offset="100%" stop-color="#b45309"/>
-              </linearGradient>
-              <linearGradient id="dkCyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#e0f2fe"/>
-                <stop offset="50%" stop-color="#38bdf8"/>
-                <stop offset="100%" stop-color="#0284c7"/>
-              </linearGradient>
-            </defs>
-            <!-- 3D Kabartma Kalkan Çerçevesi -->
-            <path d="M22 3L38 9.5V21.5C38 31.2 31.1 38.8 22 41C12.9 38.8 6 31.2 6 21.5V9.5L22 3Z" fill="rgba(15,23,42,0.85)" stroke="url(#dkGoldGrad)" stroke-width="2.4"/>
-            <!-- Kabartmalı D Monogramı & Biyomedikal Yaprak -->
-            <path d="M15 13H22.5C27.5 13 31 16.5 31 22C31 27.5 27.5 31 22.5 31H15V13Z" stroke="url(#dkCyanGrad)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M19 22C19 18.5 22.5 15.5 27 15.5C27 20 24 23.5 19 23.5" fill="url(#dkGoldGrad)"/>
-            <circle cx="19" cy="22" r="2.2" fill="#fef08a"/>
-          </svg>
-        </div>
-        <div class="dk-3d-wordmark-wrap">
-          <div class="dk-3d-wordmark">
-            <span class="dk-3d-diyet">DİYET</span><span class="dk-3d-kalfa">KALFA</span>
-          </div>
-          <span class="dk-3d-sub">CLINICAL AI OS</span>
+            <!-- Orijinal Yüksek Çözünürlüklü Şeffaf DiyetKalfa Logosu -->
+      <a href="index.html" class="dk-brand-pod" title="DiyetKalfa Klinik Karar Destek Sistemi">
+        <img src="logo.png" alt="DiyetKalfa" class="dk-original-logo-img">
+        <div class="dk-logo-edition-tag">
+          <span class="dk-tag-pulse"></span>
+          <span>AI OS 4.5</span>
         </div>
       </a>
 
@@ -744,14 +660,45 @@
             <input type="text" id="reg-clinic" placeholder="Örn: FitLife Beslenme & Danışmanlık">
           </div>
 
-          <div class="form-group">
-            <label>Başlatmak İstediğiniz Klinik Paketi *</label>
-            <select id="reg-package" required>
-              <option value="Profesyonel Paket">⭐ Profesyonel Paket (7 Gün 0 TL • Sonrasında 3.000 TL/ay)</option>
-              <option value="Giriş Paketi">📦 Giriş Paketi (7 Gün 0 TL • Sonrasında 1.500 TL/ay • 10 Danışan)</option>
-              <option value="Temel Paket">🌿 Temel Paket (7 Gün 0 TL • Sonrasında 2.200 TL/ay • Sınırsız Danışan)</option>
-              <option value="Sınırsız Paket">👑 Sınırsız Paket (7 Gün 0 TL • Sonrasında 4.500 TL/ay • Çoklu Diyetisyen)</option>
-            </select>
+                    <div class="form-group">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <label style="font-size: 13px; font-weight: 800; color: #0f172a; margin: 0;">Başlatmak İstediğiniz Klinik Paketi *</label>
+              <span style="font-size: 11px; font-weight: 700; color: #0284c7; background: #e0f2fe; padding: 2px 8px; border-radius: 999px;">İstediğiniz Paketi Yazabilir veya Seçebilirsiniz</span>
+            </div>
+            
+            <div style="position: relative;">
+              <input type="text" id="reg-package" name="reg-package" required 
+                     list="all-packages-datalist"
+                     placeholder="Örn: Profesyonel Paket, Özel Klinik Paketi veya Paket Adınız..." 
+                     value="Profesyonel Paket"
+                     style="width: 100%; box-sizing: border-box; padding: 13px 16px; border-radius: 12px; border: 1.5px solid #38bdf8; font-size: 14px; font-weight: 700; color: #0f172a; background: #ffffff; box-shadow: 0 2px 8px rgba(56, 189, 248, 0.15); outline: none;">
+              
+              <datalist id="all-packages-datalist">
+                <option value="Profesyonel Paket">⭐ En Çok Tercih Edilen - Sınırsız Danışan & AI Asistan (3.000 TL/ay)</option>
+                <option value="Giriş Paketi">📦 Bireysel / 10 Danışan Kapasiteli Başlangıç (1.500 TL/ay)</option>
+                <option value="Temel Paket">🌿 Tek Diyetisyen • Sınırsız Danışan & Ölçüm (2.200 TL/ay)</option>
+                <option value="Sınırsız Paket">👑 Çoklu Diyetisyen & Şube • Sınırsız SMS & Özel Destek (4.500 TL/ay)</option>
+                <option value="Kurumsal Poliklinik Planı">🏥 Kurumsal Entegrasyon & Çoklu Sekreterya</option>
+                <option value="VIP Özel Klinik Lisansı">💎 Özel White-Label Domain & 7/24 Öncelikli Hat</option>
+                <option value="Online Diyet & Danışan Takip Paketi">🌍 Uzaktan Danışan & Dijital Beslenme Reçetesi</option>
+                <option value="Yeni Mezun Diyetisyen Destek Paketi">🎓 Kariyer Başlangıç İndirimli Lisans</option>
+                <option value="Fonksiyonel Tıp & Bariatrik Beslenme Paketi">🔬 İleri Biyokimya & Detaylı Anamnez Çözümü</option>
+                <option value="Özel Klinik Paketi">✨ Kendi Belirlediğiniz Özel Anlaşma</option>
+              </datalist>
+            </div>
+
+            <!-- Hızlı Seçim Hapları (One-Click Quick Pills) -->
+            <div style="margin-top: 9px;">
+              <div style="font-size: 11.5px; font-weight: 700; color: #64748b; margin-bottom: 6px;">Hızlı Öneriler (Tıklayarak Seçebilir veya Yukarıya Kendiniz Yazabilirsiniz):</div>
+              <div style="display: flex; flex-wrap: wrap; gap: 6px;" id="package-quick-pills">
+                <button type="button" onclick="setCustomPackage('Profesyonel Paket')" class="dk-pkg-pill" style="background: #1e3a8a; color: #ffffff; border: 1px solid #1e3a8a; padding: 6px 11px; border-radius: 999px; font-size: 11.5px; font-weight: 700; cursor: pointer; transition: all 0.2s;">⭐ Profesyonel Paket</button>
+                <button type="button" onclick="setCustomPackage('Giriş Paketi')" class="dk-pkg-pill" style="background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; padding: 6px 11px; border-radius: 999px; font-size: 11.5px; font-weight: 700; cursor: pointer; transition: all 0.2s;">📦 Giriş Paketi</button>
+                <button type="button" onclick="setCustomPackage('Temel Paket')" class="dk-pkg-pill" style="background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; padding: 6px 11px; border-radius: 999px; font-size: 11.5px; font-weight: 700; cursor: pointer; transition: all 0.2s;">🌿 Temel Paket</button>
+                <button type="button" onclick="setCustomPackage('Sınırsız Paket')" class="dk-pkg-pill" style="background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; padding: 6px 11px; border-radius: 999px; font-size: 11.5px; font-weight: 700; cursor: pointer; transition: all 0.2s;">👑 Sınırsız Paket</button>
+                <button type="button" onclick="setCustomPackage('Kurumsal Poliklinik Planı')" class="dk-pkg-pill" style="background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; padding: 6px 11px; border-radius: 999px; font-size: 11.5px; font-weight: 700; cursor: pointer; transition: all 0.2s;">🏥 Kurumsal Plan</button>
+                <button type="button" onclick="setCustomPackage('Özel Klinik Paketi')" class="dk-pkg-pill" style="background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; padding: 6px 11px; border-radius: 999px; font-size: 11.5px; font-weight: 700; cursor: pointer; transition: all 0.2s;">✨ Kendi Özel Paketim</button>
+              </div>
+            </div>
           </div>
 
           <div class="form-group">
@@ -799,6 +746,26 @@
 
     function handleDirectLogin() {
       openLoginModal();
+    }
+
+        function setCustomPackage(pkgName) {
+      var input = document.getElementById('reg-package');
+      if (input) {
+        input.value = pkgName;
+        input.focus();
+      }
+      var pills = document.querySelectorAll('#package-quick-pills .dk-pkg-pill');
+      pills.forEach(function(p) {
+        if (p.textContent.indexOf(pkgName) >= 0) {
+          p.style.background = '#1e3a8a';
+          p.style.color = '#ffffff';
+          p.style.borderColor = '#1e3a8a';
+        } else {
+          p.style.background = '#f1f5f9';
+          p.style.color = '#334155';
+          p.style.borderColor = '#cbd5e1';
+        }
+      });
     }
 
     function handleRegistration(e) {
@@ -1410,3 +1377,4 @@ function quickDemoLogin() {
 </script>
 </body>
 </html>
+
