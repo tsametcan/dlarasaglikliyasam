@@ -2359,10 +2359,7 @@ body:not(.app-locked) .header-landing-actions {
       <!-- Orijinal Yüksek Çözünürlüklü Şeffaf DiyetKalfa Logosu -->
       <a href="panel.html" class="dk-brand-pod" title="DiyetKalfa Klinik Paneli" style="display: inline-flex !important; align-items: center !important; gap: 8px !important; text-decoration: none !important; max-height: 48px !important;">
         <img src="logo.png" alt="DiyetKalfa" class="dk-original-logo-img" style="height: 42px !important; width: auto !important; max-height: 42px !important; max-width: 160px !important; object-fit: contain !important; display: inline-block !important; filter: drop-shadow(0 3px 8px rgba(0,0,0,0.45));">
-        <div class="dk-logo-edition-tag" style="display: inline-flex !important; align-items: center !important; gap: 4px !important; font-size: 10px !important; font-weight: 800 !important; color: #38bdf8 !important; background: rgba(30, 58, 138, 0.4) !important; border: 1px solid rgba(56, 189, 248, 0.35) !important; padding: 2px 8px !important; border-radius: 999px !important; white-space: nowrap !important;">
-          <span class="dk-tag-pulse" style="width: 6px !important; height: 6px !important; border-radius: 50% !important; background: #38bdf8 !important; display: inline-block !important;"></span>
-          <span>KLİNİK PANELİ</span>
-        </div>
+        
       </a>
 
     <!-- Orta Navigasyon Linkleri (DiyetKalfa Akıllı Navigasyon) -->
@@ -2392,27 +2389,26 @@ body:not(.app-locked) .header-landing-actions {
       </div>
 
       <!-- AÇILMIŞ / LİSANSLI DURUMDA GÖRÜNEN BUTONLAR (Modernize Edilmiş Klinik Paneli Kontrolleri) -->
-      <div class="header-clinical-actions" style="display: inline-flex; gap: 6px; flex-wrap: nowrap; align-items: center;">
-        <button onclick="openWhoModal()" style="background: rgba(2, 132, 199, 0.35); color: #38bdf8 !important; border: 1px solid rgba(56, 189, 248, 0.5); padding: 7px 12px; border-radius: 999px; font-weight: 700; font-size: 11.5px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;">
-          <span>🩺 DSÖ Standartları</span>
+      <div class="header-clinical-actions" style="display: inline-flex; gap: 8px; flex-wrap: nowrap; align-items: center;">
+        <button onclick="openWhoModal()" style="background: rgba(56, 189, 248, 0.08); color: #38bdf8 !important; border: 1px solid rgba(56, 189, 248, 0.28); padding: 7px 13px; border-radius: 9px; font-weight: 600; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; transition: all 0.2s ease;">
+          <span>DSÖ Standartları</span>
         </button>
-        <button onclick="openClinicModal()" style="background: rgba(255, 255, 255, 0.15); color: #ffffff !important; border: 1px solid rgba(255, 255, 255, 0.35); padding: 7px 12px; border-radius: 999px; font-weight: 700; font-size: 11.5px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;">
-          <span>⚙️ Klinik Ayarları</span>
+        <button onclick="openClinicModal()" style="background: rgba(255, 255, 255, 0.04); color: #cbd5e1 !important; border: 1px solid rgba(255, 255, 255, 0.12); padding: 7px 13px; border-radius: 9px; font-weight: 600; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; transition: all 0.2s ease;">
+          <span>Klinik Ayarları</span>
         </button>
-        <button id="header-license-btn" onclick="openLicenseModal()" style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.25) 0%, rgba(30, 58, 138, 0.6) 100%); color: #fef08a !important; border: 1.5px solid #d4af37; padding: 7px 14px; border-radius: 999px; font-weight: 800; font-size: 11.5px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 10px rgba(0,0,0,0.25);">
-          <span>👑</span><span id="header-license-tier">Profesyonel Paket</span><span>•</span><span id="header-license-days">⏳ Kalan: 30 Gün</span>
+        <button id="header-license-btn" onclick="openLicenseModal()" style="background: rgba(245, 158, 11, 0.08); color: #fde68a !important; border: 1px solid rgba(245, 158, 11, 0.32); padding: 7px 14px; border-radius: 9px; font-weight: 700; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease;">
+          <span id="header-license-tier">Profesyonel Paket</span><span style="opacity: 0.5;">•</span><span id="header-license-days">30 Gün Kaldı</span>
         </button>
-        <button onclick="printClinicalDossier()" style="background: linear-gradient(135deg, #0284c7 0%, #1d4ed8 100%); color: #ffffff !important; border: none; padding: 7px 14px; border-radius: 999px; font-weight: 800; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(2, 132, 199, 0.3);">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+        <button onclick="printClinicalDossier()" style="background: linear-gradient(135deg, #0284c7 0%, #1d4ed8 100%); color: #ffffff !important; border: 1px solid rgba(125, 211, 252, 0.35); padding: 7px 14px; border-radius: 9px; font-weight: 600; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 10px rgba(2, 132, 199, 0.3); transition: all 0.2s ease;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
           <span>PDF / Yazdır</span>
         </button>
-        <button onclick="saveCurrentClient()" style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color: #ffffff !important; border: none; padding: 7px 14px; border-radius: 999px; font-weight: 800; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        <button onclick="saveCurrentClient()" style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color: #ffffff !important; border: 1px solid rgba(147, 197, 253, 0.35); padding: 7px 14px; border-radius: 9px; font-weight: 600; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 10px rgba(37, 99, 235, 0.3); transition: all 0.2s ease;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
           <span>Kaydet</span>
         </button>
-        
-        <button type="button" onclick="lockApplication()" style="background: rgba(239, 68, 68, 0.25); border: 1px solid rgba(239, 68, 68, 0.45); color: #fca5a5 !important; padding: 7px 12px; border-radius: 999px; font-weight: 700; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
-          <span>🔒 Çıkış</span>
+        <button type="button" onclick="lockApplication()" style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.25); color: #fca5a5 !important; padding: 7px 13px; border-radius: 9px; font-weight: 600; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; transition: all 0.2s ease;">
+          <span>Çıkış</span>
         </button>
       </div>
 
@@ -9706,7 +9702,7 @@ function initLicenseUI() {
   var tierEl = document.getElementById('header-license-tier');
   var daysEl = document.getElementById('header-license-days');
   if (tierEl) tierEl.textContent = lic.tier || 'Profesyonel Paket';
-  if (daysEl) daysEl.textContent = '⏳ Kalan: ' + daysLeft + ' Gün';
+  if (daysEl) daysEl.textContent = daysLeft + ' Gün Kaldı';
 
   // Modal içi alanlar
   var cardTier = document.getElementById('lic-card-tier');

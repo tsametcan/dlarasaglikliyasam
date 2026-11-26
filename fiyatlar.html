@@ -589,108 +589,110 @@
     border-color: rgba(251, 191, 36, 0.5);
     color: #fbbf24;
   }
-  .dk-segmented-nav {
-    background: rgba(2, 6, 23, 0.62);
-    border: 1px solid rgba(148, 163, 184, 0.22);
-    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.55), 0 1px 0 rgba(255, 255, 255, 0.08);
-    border-radius: 15px;
-    padding: 4px;
+    .dk-segmented-nav {
+    background: rgba(15, 23, 42, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 12px;
+    padding: 3px 5px;
     display: flex;
     align-items: center;
-    gap: 3px !important;
+    gap: 2px;
   }
   .dk-nav-pill {
-    color: #cbd5e1;
+    color: #94a3b8;
     text-decoration: none;
-    font-size: 12px;
-    font-weight: 800;
-    padding: 6px 10px;
-    border-radius: 11px;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 13px;
+    border-radius: 9px;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    transition: all 0.2s ease;
+    gap: 4px;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     border: 1px solid transparent;
     background: transparent;
     cursor: pointer;
     white-space: nowrap;
+    letter-spacing: -0.01em;
   }
   .dk-nav-pill:hover {
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(56, 189, 248, 0.25);
+    color: #f8fafc;
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.08);
   }
   .dk-nav-pill.active {
-    background: linear-gradient(135deg, #0284c7 0%, #2563eb 55%, #4f46e5 100%);
-    color: #ffffff !important;
-    border-color: rgba(125, 211, 252, 0.5);
-    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.35), 0 4px 14px rgba(2, 132, 199, 0.45);
+    background: rgba(56, 189, 248, 0.12);
+    color: #38bdf8 !important;
+    border-color: rgba(56, 189, 248, 0.28);
+    font-weight: 700;
   }
   .dk-action-pod {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     flex-shrink: 0;
   }
   .dk-btn-sim {
-    background: linear-gradient(145deg, rgba(14, 165, 233, 0.16), rgba(15, 23, 42, 0.8));
-    color: #e0f2fe;
-    border: 1.5px solid rgba(56, 189, 248, 0.45);
-    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2), 0 4px 10px rgba(0, 0, 0, 0.3);
-    padding: 6px 11px;
-    border-radius: 12px;
-    font-weight: 800;
-    font-size: 12px;
+    background: transparent;
+    color: #94a3b8;
+    border: 1px solid transparent;
+    padding: 7px 13px;
+    border-radius: 9px;
+    font-weight: 600;
+    font-size: 13px;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
     transition: all 0.2s ease;
     white-space: nowrap;
+    letter-spacing: -0.01em;
   }
   .dk-btn-sim:hover {
-    background: linear-gradient(145deg, rgba(14, 165, 233, 0.28), rgba(30, 58, 138, 0.85));
-    transform: translateY(-1px);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.06);
   }
   .dk-btn-login {
-    background: linear-gradient(145deg, rgba(245, 158, 11, 0.16), rgba(15, 23, 42, 0.8));
-    color: #fef08a;
-    border: 1.5px solid rgba(251, 191, 36, 0.5);
-    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2), 0 4px 10px rgba(0, 0, 0, 0.3);
-    padding: 6px 11px;
-    border-radius: 12px;
-    font-weight: 800;
-    font-size: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    color: #e2e8f0;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 7px 15px;
+    border-radius: 9px;
+    font-weight: 600;
+    font-size: 13px;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
     transition: all 0.2s ease;
     white-space: nowrap;
+    letter-spacing: -0.01em;
   }
   .dk-btn-login:hover {
-    background: linear-gradient(145deg, rgba(245, 158, 11, 0.28), rgba(30, 58, 138, 0.85));
-    transform: translateY(-1px);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.24);
   }
   .dk-btn-start {
-    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 50%, #4f46e5 100%);
+    background: linear-gradient(135deg, #0284c7 0%, #1d4ed8 100%);
     color: #ffffff !important;
     text-decoration: none;
-    padding: 6px 13px;
-    border-radius: 12px;
-    font-weight: 900;
-    font-size: 12px;
+    padding: 7px 18px;
+    border-radius: 9px;
+    font-weight: 700;
+    font-size: 13px;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    border: 1px solid rgba(125, 211, 252, 0.55);
-    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 6px 18px rgba(37, 99, 235, 0.45);
+    border: 1px solid rgba(125, 211, 252, 0.4);
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
     transition: all 0.2s ease;
     white-space: nowrap;
+    letter-spacing: -0.01em;
   }
   .dk-btn-start:hover {
     transform: translateY(-1px);
-    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.5), 0 8px 24px rgba(79, 70, 229, 0.6);
+    box-shadow: 0 6px 20px rgba(2, 132, 199, 0.5);
+    background: linear-gradient(135deg, #0369a1 0%, #1e40af 100%);
   }
   /* 2-Column Bento Mega-Menu for Solutions */
   .dk-bento-mega-menu {
@@ -757,23 +759,19 @@
             <!-- Orijinal Yüksek Çözünürlüklü Şeffaf DiyetKalfa Logosu -->
       <a href="index.html" class="dk-brand-pod" title="DiyetKalfa Klinik Karar Destek Sistemi" style="display: inline-flex !important; align-items: center !important; gap: 8px !important; text-decoration: none !important; max-height: 48px !important;">
         <img src="logo.png" alt="DiyetKalfa" class="dk-original-logo-img" style="height: 42px !important; width: auto !important; max-height: 42px !important; max-width: 160px !important; object-fit: contain !important; display: inline-block !important; filter: drop-shadow(0 3px 8px rgba(0,0,0,0.45));">
-        <div class="dk-logo-edition-tag">
-          <span class="dk-tag-pulse"></span>
-          <span>AI OS 4.5</span>
-        </div>
+        
       </a>
 
       <!-- Center Segmented Pill Navigation Dock (3D Embossed Vector Icons) -->
-      <nav class="header-nav header-nav-links dk-segmented-nav">
-        <a href="index.html" class="dk-nav-pill"><span>⚡</span><span>Ana Sayfa</span></a>
-        <a href="ozellikler.html" class="dk-nav-pill"><span>🧬</span><span>Özellikler</span></a>
+            <nav class="header-nav header-nav-links dk-segmented-nav">
+        <a href="index.html" class="dk-nav-pill">Ana Sayfa</a>
+        <a href="ozellikler.html" class="dk-nav-pill">Özellikler</a>
 
         <!-- DIYETKALFA - 2 SÜTUNLU BENTO MEGA ÇÖZÜMLER MENÜSÜ -->
         <div class="dropdown-solutions-container" style="position: relative; display: inline-block;">
           <button type="button" id="btn-toggle-solutions" onclick="toggleSolutionsMenu(event)" class="dk-nav-pill">
-            <span>🧩</span>
             <span>Çözümler</span>
-            <span id="solutions-chevron" style="font-size: 9px; color: #38bdf8; transition: transform 0.25s ease;">▼</span>
+            <span id="solutions-chevron" style="font-size: 8px; opacity: 0.7; transition: transform 0.2s ease;">▾</span>
           </button>
           <div id="solutions-dropdown-panel" class="solutions-dropdown-box dk-bento-mega-menu">
             <div style="display: flex; justify-content: space-between; align-items: center; padding: 4px 8px 10px; border-bottom: 1.5px solid #e2e8f0; margin-bottom: 10px;">
@@ -803,28 +801,16 @@
           </div>
         </div>
 
-        <a href="fiyatlar.html" class="dk-nav-pill active"><span>💎</span><span>Fiyatlar</span></a>
-        <a href="sss.html" class="dk-nav-pill"><span>📘</span><span>SSS</span></a>
-        <a href="javascript:void(0)" onclick="openContactModal()" class="dk-nav-pill"><span>💬</span><span>İletişim</span></a>
-        <a href="javascript:void(0)" onclick="openSolutionModal('calorie')" class="dk-nav-pill" title="BMR & TDEE Kalori Hesaplama"><span>🧮</span><span>Kalori</span></a>
+        <a href="fiyatlar.html" class="dk-nav-pill active">Fiyatlar</a>
+        <a href="sss.html" class="dk-nav-pill">SSS</a>
+        <a href="javascript:void(0)" onclick="openContactModal()" class="dk-nav-pill">İletişim</a>
       </nav>
 
       <!-- Right Executive Action Pod (3D Embossed Vector Icons) -->
-      <div class="header-actions dk-action-pod">
-        <button type="button" onclick="openDemoModal()" class="dk-btn-sim">
-          <span>🖥️</span>
-          <span>Demo Talep Et</span>
-        </button>
-
-        <button type="button" onclick="openLoginModal()" class="dk-btn-login">
-          <span>🔐</span>
-          <span>Giriş Yap</span>
-        </button>
-
-        <a href="kayit.html" class="dk-btn-start">
-          <span>🚀</span>
-          <span>Ücretsiz Başla</span>
-        </a>
+            <div class="header-actions dk-action-pod">
+        <button type="button" onclick="openDemoModal()" class="dk-btn-sim">Demo Talep Et</button>
+        <button type="button" onclick="openLoginModal()" class="dk-btn-login">Giriş Yap</button>
+        <a href="kayit.html" class="dk-btn-start">Ücretsiz Başla</a>
       </div>
     </div>
   </div>
@@ -1187,10 +1173,7 @@
         <div style="display: inline-flex; align-items: center; margin-bottom: 16px;">
           <a href="index.html" class="dk-brand-pod" style="display: inline-flex !important; align-items: center !important; gap: 8px !important; text-decoration: none !important; max-height: 48px !important;">
             <img src="logo.png" alt="DiyetKalfa" class="dk-original-logo-img" style="height: 42px !important; width: auto !important; max-height: 42px !important; max-width: 160px !important; object-fit: contain !important; filter: drop-shadow(0 3px 8px rgba(0,0,0,0.55));">
-            <div class="dk-logo-edition-tag">
-              <span class="dk-tag-pulse"></span>
-              <span>AI OS 4.5</span>
-            </div>
+            
           </a>
         </div>
         <p style="font-size: 13.5px; color: #94a3b8; line-height: 1.7; margin-bottom: 20px; font-weight: 500;">
