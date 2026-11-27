@@ -864,7 +864,7 @@
       var msg = 'Merhaba DiyetKalfa Ekibi, adım ' + name + '. ' + subject + ' konusunda bilgi almak ve aranmak istiyorum. Telefonum: ' + phone + (note ? '. Not: ' + note : '');
       closeContactModal();
       alert('Talebiniz başarıyla alındı Sn. ' + name + '!\n\nKlinik danışmanımız 15 dakika içinde ' + phone + ' numarasından sizi arayacaktır. Dilerseniz WhatsApp üzerinden de hemen yazabilirsiniz.');
-      window.open('https://wa.me/905321202846?text=' + encodeURIComponent(msg), '_blank');
+      window.open('javascript:void(0)" onclick="toggleAiChat(); return false;' + encodeURIComponent(msg), '_blank');
     }
 
     </script>
@@ -906,7 +906,7 @@
         <div id="ai-quick-chips" style="display: flex; flex-direction: column; gap: 6px; margin-top: 4px;">
           <button type="button" onclick="triggerQuickPrompt('7 günlük denemede kart gerekiyor mu?')" class="ai-chip-btn">💳 Kart Bilgisi İsteniyor mu?</button>
           <button type="button" onclick="triggerQuickPrompt('Paketler ve fiyatlar ne kadar?')" class="ai-chip-btn">💎 Paket Fiyatları Nelerdir?</button>
-          <button type="button" onclick="triggerQuickPrompt('0532 120 28 46 canlı destek')" class="ai-chip-btn">💬 0532 120 28 46 Canlı Destek</button>
+          <button type="button" onclick="triggerQuickPrompt('7/24 Canlı Destek Masası canlı destek')" class="ai-chip-btn">💬 7/24 Canlı Destek Masası Canlı Destek</button>
         </div>
       </div>
 
@@ -924,7 +924,7 @@
         <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #38bdf8; box-shadow: 0 0 8px #38bdf8;"></span>
       </button>
 
-      <a href="https://wa.me/905321202846?text=Merhaba%2C%20DiyetKalfa%20AI%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" style="background: #25d366; width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45); transition: transform 0.2s, box-shadow 0.2s; color: #ffffff; text-decoration: none;" title="WhatsApp Canlı Klinik Destek Hattı">
+      <a href="javascript:void(0)" onclick="toggleAiChat(); return false;" target="_blank" style="background: #25d366; width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45); transition: transform 0.2s, box-shadow 0.2s; color: #ffffff; text-decoration: none;" title="WhatsApp Canlı Klinik Destek Hattı">
         <svg width="30" height="30" fill="currentColor" viewBox="0 0 24 24">
           <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.77.83 2.791.83 3.184 0 5.77-2.587 5.77-5.766.001-3.182-2.585-5.786-5.77-5.786zm0-1.84c4.204 0 7.609 3.405 7.609 7.608 0 4.204-3.405 7.609-7.609 7.609-1.294 0-2.518-.33-3.593-.912l-5.438 1.424 1.455-5.319c-.66-1.127-1.033-2.434-1.033-3.802 0-4.203 3.405-7.608 7.609-7.608zm3.808 10.639c-.163.465-.814.86-1.326.918-.512.059-1.174.07-3.896-1.047-2.723-1.116-4.47-3.884-4.609-4.07-.14-.188-1.144-1.523-1.144-2.906 0-1.383.725-2.062.981-2.344.256-.282.558-.353.744-.353.186 0 .372.002.535.01.172.008.403-.065.63.48.232.558.79 1.93.86 2.07.07.14.116.303.023.49-.093.186-.14.302-.279.465-.14.163-.294.364-.42.488-.14.14-.286.292-.123.572.163.28.724 1.194 1.554 1.933 1.068.952 1.968 1.248 2.247 1.388.28.14.442.116.605-.07.163-.186.7-1.002.886-1.342.186-.34.372-.284.628-.188.256.096 1.628.767 1.907.907.28.14.465.21.535.326.07.116.07.674-.174 1.36z"/>
         </svg>
@@ -944,7 +944,7 @@
             <span style="display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #2563eb;"></span>
             7/24 Kesintisiz Klinik Destek
           </div>
-          <h3 style="font-size: 22px; font-weight: 900; color: #0f172a; margin: 0 0 6px 0; letter-spacing: -0.02em;">Biz Sizi Arayalım</h3>
+          <h3 style="font-size: 22px; font-weight: 900; color: #0f172a; margin: 0 0 6px 0; letter-spacing: -0.02em;">Online Danışma Formu</h3>
           <p style="font-size: 13.5px; color: #64748b; margin: 0 0 22px 0; line-height: 1.5;">
             İletişim bilgilerinizi bırakın, klinik danışmanımız <b>15 dakika içinde</b> sizi arasın veya WhatsApp'tan yanıtlasın.
           </p>
@@ -992,23 +992,23 @@
             </p>
 
             <div style="display: flex; flex-direction: column; gap: 14px;">
-              <a href="https://wa.me/905321202846?text=Merhaba%2C%20DiyetKalfa%20canl%C4%B1%20destek%20almak%20istiyorum." target="_blank" style="display: flex; align-items: center; gap: 14px; padding: 14px 16px; background: rgba(255, 255, 255, 0.06); border: 1.5px solid rgba(255, 255, 255, 0.12); border-radius: 14px; text-decoration: none; color: #ffffff; transition: all 0.2s;">
+              <a href="javascript:void(0)" onclick="toggleAiChat(); return false;" target="_blank" style="display: flex; align-items: center; gap: 14px; padding: 14px 16px; background: rgba(255, 255, 255, 0.06); border: 1.5px solid rgba(255, 255, 255, 0.12); border-radius: 14px; text-decoration: none; color: #ffffff; transition: all 0.2s;">
                 <div style="width: 40px; height: 40px; border-radius: 50%; background: #25d366; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; color: #ffffff;">
                   💬
                 </div>
                 <div>
                   <div style="font-size: 11px; color: #94a3b8; font-weight: 700; text-transform: uppercase;">WhatsApp Canlı Destek</div>
-                  <div style="font-size: 15px; font-weight: 900; color: #38bdf8;">0532 120 28 46</div>
+                  <div style="font-size: 15px; font-weight: 900; color: #38bdf8;">7/24 Canlı Destek Masası</div>
                 </div>
               </a>
 
-              <a href="tel:05321202846" style="display: flex; align-items: center; gap: 14px; padding: 14px 16px; background: rgba(255, 255, 255, 0.06); border: 1.5px solid rgba(255, 255, 255, 0.12); border-radius: 14px; text-decoration: none; color: #ffffff; transition: all 0.2s;">
+              <a href="javascript:void(0)" onclick="toggleAiChat(); return false;" style="display: flex; align-items: center; gap: 14px; padding: 14px 16px; background: rgba(255, 255, 255, 0.06); border: 1.5px solid rgba(255, 255, 255, 0.12); border-radius: 14px; text-decoration: none; color: #ffffff; transition: all 0.2s;">
                 <div style="width: 40px; height: 40px; border-radius: 50%; background: #0284c7; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; color: #ffffff;">
                   📞
                 </div>
                 <div>
                   <div style="font-size: 11px; color: #94a3b8; font-weight: 700; text-transform: uppercase;">Doğrudan Çağrı Hattı</div>
-                  <div style="font-size: 15px; font-weight: 900; color: #ffffff;">0532 120 28 46</div>
+                  <div style="font-size: 15px; font-weight: 900; color: #ffffff;">7/24 Canlı Destek Masası</div>
                 </div>
               </a>
 
@@ -1318,7 +1318,7 @@ function handleExpertDemoSubmit(e) {
   var phone = document.getElementById('demo-expert-phone') ? document.getElementById('demo-expert-phone').value : '';
   var time = document.getElementById('demo-expert-time') ? document.getElementById('demo-expert-time').value : '';
   var text = "Merhaba, DiyetKalfa diyetisyen canlı demo sunumu talep ediyorum.\nİsim: " + name + "\nTelefon: " + phone + "\nSaat: " + time;
-  window.open("https://wa.me/905321202846?text=" + encodeURIComponent(text), "_blank");
+  window.open("javascript:void(0)" onclick="toggleAiChat(); return false;" + encodeURIComponent(text), "_blank");
   closeDemoModal();
 }
 </script>
@@ -1355,7 +1355,7 @@ function handleExpertDemoSubmit(e) {
       <div>
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
           <label style="font-size: 11.5px; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: 0.04em;">Lisans Anahtarı veya Şifre</label>
-          <a href="https://wa.me/905321202846?text=Merhaba,%20DiyetKalfa%20lisans%20şifremi%20unuttum,%20yardımcı%20olur%20musunuz?" target="_blank" rel="noopener noreferrer" style="font-size: 11px; color: #1e3a8a; font-weight: 700; text-decoration: underline;">Şifremi Unuttum</a>
+          <a href="javascript:void(0)" onclick="toggleAiChat(); return false;" target="_blank" rel="noopener noreferrer" style="font-size: 11px; color: #1e3a8a; font-weight: 700; text-decoration: underline;">Şifremi Unuttum</a>
         </div>
         <input type="password" id="modal-login-password" placeholder="••••••••••••" style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 12px; border: 1.5px solid #94a3b8; font-size: 13.5px; outline: none; background: #f4f7fb; color: #0f172a; font-family: inherit;">
       </div>

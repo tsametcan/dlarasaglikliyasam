@@ -1,4 +1,4 @@
-/**
+﻿/**
  * ============================================================================
  * DIYETKALFA HUKUKİ METİNLER & POLİTİKA MODALI (KVKK, SÖZLEŞME, ÇEREZ, ISO 27001)
  * ============================================================================
@@ -45,7 +45,7 @@
           Güncelleme Tarihi: <strong>Ocak 2026</strong> • DiyetKalfa Hukuk ve Uyum Birimi
         </div>
         <div style="display: flex; gap: 10px; align-items: center;">
-          <a href="https://wa.me/905321202846?text=Merhaba%20DiyetKalfa%20hukuki%20s%C3%B6zle%C5%9Fme%20ve%20KVKK%20hakk%C4%B1nda%20dan%C4%B1%C5%9Fmak%20istiyorum." target="_blank" rel="noopener noreferrer" style="color: #38bdf8; font-size: 12.5px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
+          <a href="javascript:void(0)" onclick="toggleAiChat(); return false;" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; font-size: 12.5px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
             <span>💬 Hukuki Destek Hattı</span>
           </a>
           <button type="button" onclick="closeLegalModal()" style="background: linear-gradient(135deg, #0284c7 0%, #1d4ed8 100%); color: #ffffff; border: 1px solid rgba(125, 211, 252, 0.4); padding: 8px 20px; border-radius: 10px; font-weight: 700; font-size: 13px; cursor: pointer; transition: all 0.2s;">
@@ -149,7 +149,7 @@
         <p>Sağlık verileri, üçüncü taraf reklam ağlarıyla veya veri simsarlarıyla <u>asla paylaşılmaz</u>. Veriler 256-bit SSL ve ISO/IEC 27001 standartlarında şifrelenir; yerel tarayıcı ortamında koruma altına alınır.</p>
 
         <h4>5. İlgili Kişinin Hakları (KVKK Madde 11)</h4>
-        <p>Kişisel verilerinizin işlenip işlenmediğini öğrenme, işlenmişse bilgi talep etme, amaca uygun kullanılıp kullanılmadığını öğrenme ve verilerin silinmesini / anonim hale getirilmesini talep etme hakkına sahipsiniz. Başvurularınızı <strong>destek@diyetkalfa.com</strong> adresine veya <strong>0532 120 28 46</strong> numaralı destek hattımıza iletebilirsiniz.</p>
+        <p>Kişisel verilerinizin işlenip işlenmediğini öğrenme, işlenmişse bilgi talep etme, amaca uygun kullanılıp kullanılmadığını öğrenme ve verilerin silinmesini / anonim hale getirilmesini talep etme hakkına sahipsiniz. Başvurularınızı <strong>destek@diyetkalfa.com</strong> adresine veya <strong>7/24 Canlı Destek Masası</strong> numaralı destek hattımıza iletebilirsiniz.</p>
       `
     },
 
@@ -235,7 +235,7 @@
         <h4>2. İade Süreci Nasıl İşler?</h4>
         <p>İade talebinde bulunmak için lisans satın alma tarihinizden itibaren 14 gün içinde;</p>
         <ul>
-          <li><strong>0532 120 28 46</strong> WhatsApp hattımıza sipariş bilginizi yazarak, veya</li>
+          <li><strong>7/24 Canlı Destek Masası</strong> WhatsApp hattımıza sipariş bilginizi yazarak, veya</li>
           <li><strong>destek@diyetkalfa.com</strong> adresine e-posta göndererek</li>
         </ul>
         <p>talebinizi iletmeniz yeterlidir. Herhangi bir bürokrasi veya ek şart aranmaz.</p>

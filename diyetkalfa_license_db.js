@@ -197,7 +197,7 @@
       dietitianName: (info.title ? info.title + ' ' : '') + (info.name || 'Uzm. Diyetisyen'),
       clinicName: info.clinic || ((info.name || 'DiyetKalfa') + ' Beslenme Kliniği'),
       email: info.email || 'diyetisyen@klinik.com',
-      phone: info.phone || '0532 120 28 46',
+      phone: info.phone || '7/24 Canlı Destek Masası',
       justPaidWelcome: false,
       justRegisteredTrial: true
     };
@@ -251,7 +251,7 @@
       dietitianName: dietitianName || (existing && existing.dietitianName) || 'Uzm. Diyetisyen',
       clinicName: clinicName || (existing && existing.clinicName) || 'DiyetKalfa Beslenme Kliniği',
       email: (existing && existing.email) || 'lisans@klinik.com',
-      phone: phone || (existing && existing.phone) || '0532 120 28 46',
+      phone: phone || (existing && existing.phone) || '7/24 Canlı Destek Masası',
       paidAmount: (months === 12) ? cfg.yearlyTotal : cfg.monthlyPrice,
       justPaidWelcome: true,
       justRegisteredTrial: false

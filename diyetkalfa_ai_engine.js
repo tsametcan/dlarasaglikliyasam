@@ -52,7 +52,7 @@
    */
   async function callGeminiApi(userText, apiKey) {
     var systemInstruction = 
-      "Sen Türkiye'nin en gelişmiş Klinik Diyetisyen Yazılımı olan DiyetKalfa'nın (0532 120 28 46) uzman klinik yapay zekasısın. " +
+      "Sen Türkiye'nin en gelişmiş Klinik Diyetisyen Yazılımı olan DiyetKalfa'nın (7/24 Canlı Destek Masası) uzman klinik yapay zekasısın. " +
       "Diyetisyenlerin ve danışanların klinik beslenme, tahlil, hastalıklar, metabolizma, kilo yönetimi, tarifler ve DiyetKalfa platformu ile ilgili tüm sorularını profesyonel, bilimsel, net ve samimi bir Türkçe ile yanıtla. " +
       "Doğrudan kullanıcının sorduğu spesifik soruya odaklan, sayısal değerler varsa hesapla ve maddeler halinde klinik çözüm sun.";
 
@@ -210,7 +210,7 @@
         '</div>' +
         '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
           '<a href="fiyatlar.html" class="ai-link-btn" style="background: #1e3a8a; color: #fff; font-weight: bold;">💳 Paket Seç & Satın Al →</a>' +
-          '<a href="https://wa.me/905321202846?text=Merhaba,%20DiyetKalfa%20lisans%20satın%20alma%20ve%20havale%20bilgisi%20almak%20istiyorum." target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 WhatsApp 0532 120 28 46</a>' +
+          '<a href="javascript:void(0)" onclick="toggleAiChat(); return false;" target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 WhatsApp 7/24 Canlı Destek Masası</a>' +
         '</div>';
     }
 
@@ -509,10 +509,10 @@
       return '<div><strong>📅 Klinik Operasyon, Excel, Randevu SMS & 7/24 Destek:</strong></div>' +
         '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
           '• <strong>Excel & Randevu SMS:</strong> Danışanlarınızı Excel\'den tek tıkla aktarabilir, telefon rehberinizi bağlayarak otomatik randevu hatırlatma SMS\'i gönderebilirsiniz.<br>' +
-          '• <strong>7/24 WhatsApp & Çağrı Hattı:</strong> 0532 120 28 46' +
+          '• <strong>7/24 WhatsApp & Çağrı Hattı:</strong> 7/24 Canlı Destek Masası' +
         '</div>' +
         '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-          '<a href="https://wa.me/905321202846?text=Merhaba,%20DiyetKalfa%20canlı%20destek%20almak%20istiyorum." target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 0532 120 28 46 WhatsApp</a>' +
+          '<a href="javascript:void(0)" onclick="toggleAiChat(); return false;" target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 7/24 Canlı Destek Masası WhatsApp</a>' +
           '<a href="kayit.html" class="ai-link-btn" style="background: #1e3a8a; color: #fff;">🚀 7 Gün Ücretsiz Başlat</a>' +
         '</div>';
     }

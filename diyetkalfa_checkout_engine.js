@@ -1,4 +1,4 @@
-/**
+﻿/**
  * DIYETKALFA LİSANS, SÜRE VE KARTSIZ ÖDEME MOTORU (CHECKOUT & LICENSE ENGINE 2026)
  * - WhatsApp VIP Sipariş & Anında Lisans Aktivasyonu
  * - Havale / EFT / FAST Doğrudan Banka Ödemesi
@@ -45,7 +45,7 @@ var DiyetKalfaLicenseEngine = {
     // Fallback: Eğer diyetkalfa_licensed veya diyetkalfa_unlocked varsa otomatik 30 günlük aktif lisans başlat
     var isOldLicensed = (localStorage.getItem('diyetkalfa_licensed') === 'true' || localStorage.getItem('diyetkalfa_unlocked') === 'true');
     if (isOldLicensed) {
-      return this.activateLicense('Profesyonel Paket', 1, 'Uzm. Dyt. Zehra Bölük', 'DiyetKalfa Klinik', '05321202846');
+      return this.activateLicense('Profesyonel Paket', 1, 'Uzm. Dyt. Zehra Bölük', 'DiyetKalfa Klinik', 'destek@diyetkalfa.com');
     }
     return null;
   },
@@ -77,7 +77,7 @@ var DiyetKalfaLicenseEngine = {
       licenseKey: key,
       dietitianName: dietitianName || 'Uzm. Diyetisyen',
       clinicName: clinicName || 'Diyet & Sağlık Kliniği',
-      phone: phone || '0532 120 28 46'
+      phone: phone || '7/24 Canlı Destek Masası'
     };
 
     try {
@@ -197,7 +197,7 @@ function handleCheckoutWhatsAppOrder(e) {
   
   var name = document.getElementById('co-name') ? document.getElementById('co-name').value.trim() : 'Uzm. Diyetisyen';
   var clinic = document.getElementById('co-clinic') ? document.getElementById('co-clinic').value.trim() : 'Diyet Kliniği';
-  var phone = document.getElementById('co-phone') ? document.getElementById('co-phone').value.trim() : '0532 120 28 46';
+  var phone = document.getElementById('co-phone') ? document.getElementById('co-phone').value.trim() : '7/24 Canlı Destek Masası';
   var city = document.getElementById('co-city') ? document.getElementById('co-city').value.trim() : '';
 
   if (!name) { alert('Lütfen Adınızı ve Soyadınızı giriniz.'); return; }
@@ -219,7 +219,7 @@ function handleCheckoutWhatsAppOrder(e) {
     "📞 İletişim: " + phone + (city ? " / " + city : "") + "\n\n" +
     "Lisansımı aktive etmek ve siparişimi onaylamak istiyorum. Teşekkürler!";
 
-  var waUrl = "https://wa.me/905321202846?text=" + encodeURIComponent(waText);
+  var waUrl = "javascript:void(0)" onclick="toggleAiChat(); return false;" + encodeURIComponent(waText);
   window.open(waUrl, '_blank');
 
   // Başarı ekranını göster
@@ -231,7 +231,7 @@ function handleCheckoutBankOrder(e) {
 
   var name = document.getElementById('co-name') ? document.getElementById('co-name').value.trim() : 'Uzm. Diyetisyen';
   var clinic = document.getElementById('co-clinic') ? document.getElementById('co-clinic').value.trim() : 'Diyet Kliniği';
-  var phone = document.getElementById('co-phone') ? document.getElementById('co-phone').value.trim() : '0532 120 28 46';
+  var phone = document.getElementById('co-phone') ? document.getElementById('co-phone').value.trim() : '7/24 Canlı Destek Masası';
 
   if (!name) { alert('Lütfen Adınızı ve Soyadınızı giriniz.'); return; }
 
@@ -254,7 +254,7 @@ function handleCheckoutKeyActivation(e) {
   else if (key.indexOf('CORE') >= 0) { plan = 'Temel Paket'; months = 3; }
   else if (key.indexOf('ENT') >= 0 || key === 'VIP365') { plan = 'Sınırsız Paket'; months = 12; }
 
-  var lic = DiyetKalfaLicenseEngine.activateLicense(plan, months, 'Uzm. Diyetisyen', 'DiyetKalfa Lisanslı Klinik', '0532 120 28 46', key);
+  var lic = DiyetKalfaLicenseEngine.activateLicense(plan, months, 'Uzm. Diyetisyen', 'DiyetKalfa Lisanslı Klinik', '7/24 Canlı Destek Masası', key);
   showCheckoutSuccess(lic);
 }
 

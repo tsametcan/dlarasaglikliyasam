@@ -19,7 +19,7 @@ function getAiResponse(rawQuery) {
         '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
           '<li><strong>Anında Canlı Demo:</strong> Kurulum veya şifre gerekmeden tek tıkla canlı paneli açabilirsiniz.</li>' +
           '<li><strong>Satın Alma / Lisans:</strong> Lisansınızı başlattığınızda sisteminiz anında tam yetkiyle açılır ve danışan verileriniz güvenle saklanır.</li>' +
-          '<li><strong>Birebir Canlı Sunum:</strong> 0532 120 28 46 WhatsApp hattımızdan danışmanlarımızla 15 dakikalık rehberli canlı tur yapabilirsiniz.</li>' +
+          '<li><strong>Birebir Canlı Sunum:</strong> 7/24 Canlı Destek Masası WhatsApp hattımızdan danışmanlarımızla 15 dakikalık rehberli canlı tur yapabilirsiniz.</li>' +
         '</ul>' +
       '</div>' +
       '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
@@ -63,14 +63,14 @@ function getAiResponse(rawQuery) {
       '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
         'DiyetKalfa, klinisyenleri sanal POS komisyonları veya karmaşık vergi bürokrasisiyle uğraştırmaz:' +
         '<ul style="margin: 6px 0 0 16px; padding: 0;">' +
-          '<li><strong>💬 WhatsApp VIP Lisanslama:</strong> 0532 120 28 46 hattımız üzerinden doğrudan sipariş verip lisansınızı anında açabilirsiniz.</li>' +
+          '<li><strong>💬 WhatsApp VIP Lisanslama:</strong> 7/24 Canlı Destek Masası hattımız üzerinden doğrudan sipariş verip lisansınızı anında açabilirsiniz.</li>' +
           '<li><strong>🏦 Havale / EFT / FAST:</strong> Resmi şirket IBAN hesabımıza doğrudan masrafsız transfer yapabilirsiniz. Dekont sonrası sistem anında aktifleşir.</li>' +
           '<li><strong>⚡ Anında Aktivasyon:</strong> Ödemeniz teyit edildiği anda benzersiz lisans kodunuz üretilir ve klinik paneliniz tam yetkiyle çalışmaya başlar.</li>' +
         '</ul>' +
       '</div>' +
       '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
         '<a href="javascript:void(0)" onclick="openCheckoutModal(\'Profesyonel Paket\')" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">💳 Güvenli Satın Al & Lisansı Aç →</a>' +
-        '<a href="https://wa.me/905321202846?text=Merhaba%2C%20DiyetKalfa%20lisans%20sat%C4%B1n%20alma%20ve%20havale%20bilgisi%20almak%20istiyorum." target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 WhatsApp 0532 120 28 46</a>' +
+        '<a href="javascript:void(0)" onclick="toggleAiChat(); return false;" target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 WhatsApp 7/24 Canlı Destek Masası</a>' +
       '</div>';
   }
 
@@ -127,11 +127,11 @@ function getAiResponse(rawQuery) {
       '<div style="margin-top: 6px; color: #475569; line-height: 1.5;">' +
         'Demoyu iki pratik yolla keşfedebilirsiniz:<br>' +
         '1. <strong>Anında Canlı Demo Paneli:</strong> Kurulum yapmadan tek tıkla canlı klinik arayüzünü test edebilirsiniz.<br>' +
-        '2. <strong>Birebir Uzman Sunumu:</strong> 0532 120 28 46 WhatsApp hattımızdan 15 dakikalık rehberli canlı ekran turu talep edebilirsiniz.' +
+        '2. <strong>Birebir Uzman Sunumu:</strong> 7/24 Canlı Destek Masası WhatsApp hattımızdan 15 dakikalık rehberli canlı ekran turu talep edebilirsiniz.' +
       '</div>' +
       '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
         '<a href="kayit.html" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">🚀 7 Gün Ücretsiz Başlat →</a>' +
-        '<a href="https://wa.me/905321202846?text=Merhaba%2C%20DiyetKalfa%20AI%20klinik%20demo%20sunumu%20talep%20ediyorum." target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 0532 120 28 46 WhatsApp Sunumu</a>' +
+        '<a href="javascript:void(0)" onclick="toggleAiChat(); return false;" target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 7/24 Canlı Destek Masası WhatsApp Sunumu</a>' +
       '</div>';
   }
 
@@ -323,13 +323,13 @@ function getAiResponse(rawQuery) {
   if (qNorm.includes('iletisim') || qNorm.includes('telefon') || qNorm.includes('numara') || qNorm.includes('whatsapp') || qNorm.includes('destek') || qNorm.includes('ara') || qNorm.includes('nerede') || qNorm.includes('ulas')) {
     return '<div><strong>📞 DiyetKalfa 7/24 Klinik İletişim Hattı:</strong></div>' +
       '<div style="margin-top: 6px; line-height: 1.5; color: #334155;">' +
-        '• <strong>Telefon & WhatsApp:</strong> 0532 120 28 46<br>' +
+        '• <strong>Telefon & WhatsApp:</strong> 7/24 Canlı Destek Masası<br>' +
         '• <strong>E-Posta:</strong> destek@diyetkalfa.com<br>' +
         '• <strong>Çalışma Saatleri:</strong> 7/24 Kesintisiz Klinik Destek' +
       '</div>' +
       '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
-        '<a href="https://wa.me/905321202846?text=Merhaba%20DiyetKalfa%20canl%C4%B1%20destek%20almak%20istiyorum." target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 WhatsApp\'tan Yaz</a>' +
-        '<button type="button" onclick="openContactModal()" class="ai-link-btn" style="background: #163b2c; color: #fff; border: none; cursor: pointer;">📞 Biz Sizi Arayalım</button>' +
+        '<a href="javascript:void(0)" onclick="toggleAiChat(); return false;" target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 WhatsApp\'tan Yaz</a>' +
+        '<button type="button" onclick="openContactModal()" class="ai-link-btn" style="background: #163b2c; color: #fff; border: none; cursor: pointer;">📞 Online Danışma Formu</button>' +
       '</div>';
   }
 
@@ -385,7 +385,7 @@ function getAiResponse(rawQuery) {
     '</div>' +
     '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
       '<a href="kayit.html" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">🚀 Kliniğinde Ücretsiz Başlat →</a>' +
-      '<a href="https://wa.me/905321202846?text=' + encodeURIComponent('Merhaba, ' + rawClean + ' konusunda klinik destek almak istiyorum.') + '" target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 0532 120 28 46 Uzmana Danış</a>' +
+      '<a href="javascript:void(0)" onclick="toggleAiChat(); return false;' + encodeURIComponent('Merhaba, ' + rawClean + ' konusunda klinik destek almak istiyorum.') + '" target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 7/24 Canlı Destek Masası Uzmana Danış</a>' +
     '</div>';
 }
 

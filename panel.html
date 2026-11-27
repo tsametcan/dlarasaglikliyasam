@@ -17,7 +17,7 @@
         localStorage.setItem('diyetkalfa_licensed', 'true');
         localStorage.setItem('diyetkalfa_unlocked', 'true');
         if (!localStorage.getItem('diyetkalfa_dietitian_name')) {
-          localStorage.setItem('diyetkalfa_dietitian_name', 'Uzm. Dyt. Zehra Bölük');
+          localStorage.setItem('diyetkalfa_dietitian_name', 'Uzm. Dyt. Klinik Danışan Dosyası #101');
         }
       } catch(e) {}
     })();
@@ -2565,11 +2565,11 @@ body:not(.app-locked) .header-landing-actions {
         <div style="display: flex; align-items: center; gap: 10px;">
           <span style="font-size: 12px; font-weight: 700; color: #475569;">Aktif Danışan Dosyası:</span>
           <select id="quick-cockpit-client" onchange="quickSwitchCockpitClient(this.value)" style="padding: 7px 14px; border-radius: 10px; border: 1.5px solid #94a3b8; font-size: 13px; font-weight: 800; color: #0f172a; background: #f4f7fb; cursor: pointer; outline: none;">
-            <option value="insulin">Ahmet Yılmaz (32 Yaş - HOMA-IR > 2.5)</option>
-            <option value="kilo_verme">Ayşe Demir (38 Yaş - İnatçı Kilo & Yavaş Metabolizma)</option>
-            <option value="sporcu">Caner Kara (24 Yaş - Sporcu Hipertrofi)</option>
-            <option value="pcos">Zeynep Kaya (26 Yaş - PCOS & Hormonal Denge)</option>
-            <option value="keto">Mehmet Şahin (45 Yaş - Aralıklı Oruç IF 16:8)</option>
+            <option value="insulin">Protokol A: İnsülin Direnci & Glisemik İndeks (HOMA-IR > 2.5)</option>
+            <option value="kilo_verme">Protokol B: Metabolik Hızlandırma & Yağ Kaybı Programı</option>
+            <option value="sporcu">Protokol C: Sporcu Yüksek Performans & Hipertrofi</option>
+            <option value="pcos">Protokol D: Hormonal Denge & PCOS Eliminasyon Reçetesi</option>
+            <option value="keto">Protokol E: Sirkadiyen Beslenme & Aralıklı Oruç (IF 16:8)</option>
           </select>
         </div>
       </div>
@@ -3258,6 +3258,89 @@ body:not(.app-locked) .header-landing-actions {
 
     <!-- 4. GÖRÜNÜM: DANIŞAN CRM KASASI & KİLO TAKİP MERKEZİ -->
     <div id="view-crm" style="display: none;">
+      <!-- ============================================================ -->
+      <!-- DİYETKALFA KLİNİK ADİSYON & ÇOK BRANŞLI SEANS PAKETİ KASASI  -->
+      <!-- ============================================================ -->
+      <div class="card" style="margin-bottom: 20px; border: 1.5px solid #e2e8f0; border-radius: 16px;">
+        <div class="card-header" style="background: #ffffff; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 20px;">🧾</span>
+              <span style="font-size: 16px; font-weight: 900; color: #0f172a;">Klinik Adisyon, Seans Paketi & Kasa Masası</span>
+              <span style="background: #eff6ff; color: #1e3a8a; font-size: 11px; font-weight: 800; padding: 3px 9px; border-radius: 999px; border: 1px solid #3b82f6;">Pilates • Cihaz • Diyet</span>
+            </div>
+            <div style="font-size: 12px; color: #64748b; margin-top: 2px;">
+              Reformer Pilates, EMSlim/G5 zayıflama cihazları ve diyet paketlerini adisyona kaydedin; termal fiş veya PDF makbuz basın.
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <!-- Yeni Adisyon Giriş Formu -->
+          <form onsubmit="ClinicalAdisyonEngine.createAdisyon(event)" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 16px; margin-bottom: 16px;">
+            <div>
+              <label style="font-size: 11px; font-weight: 800; color: #475569; display: block; margin-bottom: 4px;">Danışan Adı Soyadı *</label>
+              <input type="text" id="ad-client" required placeholder="Danışan Adı Soyadı" style="width: 100%; padding: 8px 12px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13px; outline: none; background: #ffffff;">
+            </div>
+            <div>
+              <label style="font-size: 11px; font-weight: 800; color: #475569; display: block; margin-bottom: 4px;">Branş & Hizmet Türü *</label>
+              <select id="ad-branch" style="width: 100%; padding: 8px 12px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13px; outline: none; background: #ffffff;">
+                <option value="Reformer Pilates Paketi (8 Seans)">🧘 Reformer Pilates (8 Seans)</option>
+                <option value="Reformer Pilates Paketi (12 Seans)">🧘 Reformer Pilates (12 Seans)</option>
+                <option value="Düet Reformer Pilates (8 Seans)">👥 Düet Reformer (8 Seans)</option>
+                <option value="EMSlim Kas & Yağ Yakımı (8 Seans)">⚡ EMSlim Zayıflama (8 Seans)</option>
+                <option value="G5 Selülit & Bölgesel Masaj (10 Seans)">💆 G5 Selülit Masajı (10 Seans)</option>
+                <option value="Kavitasyon & RF İncelme (6 Seans)">🌊 Kavitasyon & RF (6 Seans)</option>
+                <option value="Bireysel Beslenme Danışmanlığı (4 Seans)">🍏 Bireysel Diyet (4 Seans)</option>
+                <option value="Online Diyet Danışmanlığı (Aylık)">💻 Online Diyet (Aylık)</option>
+                <option value="Tanita / InBody Vücut Analizi">📊 Tanita / InBody Vücut Analizi</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size: 11px; font-weight: 800; color: #475569; display: block; margin-bottom: 4px;">Paket Seans Sayısı</label>
+              <input type="number" id="ad-sessions" value="8" min="1" max="100" style="width: 100%; padding: 8px 12px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13px; outline: none; background: #ffffff;">
+            </div>
+            <div>
+              <label style="font-size: 11px; font-weight: 800; color: #475569; display: block; margin-bottom: 4px;">Toplam Tutar (₺)</label>
+              <input type="number" id="ad-price" value="4800" min="0" step="50" style="width: 100%; padding: 8px 12px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13px; outline: none; background: #ffffff;">
+            </div>
+            <div>
+              <label style="font-size: 11px; font-weight: 800; color: #475569; display: block; margin-bottom: 4px;">Ödeme Şekli</label>
+              <select id="ad-paytype" style="width: 100%; padding: 8px 12px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13px; outline: none; background: #ffffff;">
+                <option value="Kredi Kartı / POS">💳 Kredi Kartı / POS</option>
+                <option value="Nakit Tahsilat">💵 Nakit Tahsilat</option>
+                <option value="Havale / FAST / EFT">🏦 Havale / FAST / EFT</option>
+              </select>
+            </div>
+            <div style="display: flex; align-items: flex-end;">
+              <button type="submit" class="btn btn-primary" style="width: 100%; padding: 10px; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                <span>➕ Adisyon Fişi Kes</span>
+              </button>
+            </div>
+          </form>
+
+          <!-- Adisyon Tablosu -->
+          <div class="crm-table-wrapper" style="max-height: 280px; overflow-y: auto;">
+            <table class="crm-table">
+              <thead>
+                <tr>
+                  <th>Fiş No</th>
+                  <th>Tarih</th>
+                  <th>Danışan</th>
+                  <th>Hizmet / Branş</th>
+                  <th>Seans Takibi</th>
+                  <th>Tutar</th>
+                  <th>Durum</th>
+                  <th>İşlemler</th>
+                </tr>
+              </thead>
+              <tbody id="adisyon-table-body">
+                <!-- JS ile doldurulur -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
       <div class="card">
         <div class="card-header" style="background: #ffffff; flex-wrap: wrap; gap: 10px;">
           <div>
@@ -3487,10 +3570,35 @@ body:not(.app-locked) .header-landing-actions {
             <div class="form-group">
               <label class="form-label">Seans Türü</label>
               <select id="apt-type" class="form-select" onchange="updateSmsLivePreview()">
-                <option value="Online Görüntülü (Meet/Zoom)">💻 Online Görüntülü (Meet/Zoom)</option>
-                <option value="Yüz Yüze Klinik Muayene">🏥 Yüz Yüze Klinik Muayene</option>
-                <option value="Haftalık Kontrol & Tartı">⚖️ Haftalık Kontrol & Tartı</option>
-                <option value="Telefon / Sesli Değerlendirme">📞 Telefon / Sesli Görüşme</option>
+                <optgroup label="🍏 Diyet & Beslenme Danışmanlığı">
+                  <option value="Online Beslenme Danışmanlığı (Meet/Zoom)">💻 Online Beslenme Danışmanlığı (Meet/Zoom)</option>
+                  <option value="Yüz Yüze Klinik Muayene & Diyet">🏥 Yüz Yüze Klinik Muayene & Diyet Planı</option>
+                  <option value="Haftalık Vücut Analizi & Tartı">⚖️ Haftalık Vücut Analizi & Tartı Seansı</option>
+                  <option value="Fonksiyonel Tıp & Eliminasyon Seansı">🔬 Fonksiyonel Tıp & Eliminasyon Seansı</option>
+                  <option value="Sporcu Performans Beslenmesi">🏋️ Sporcu Performans Beslenmesi Seansı</option>
+                  <option value="Gebe & Emziren Anne Beslenmesi">🌸 Gebe & Emziren Anne Beslenmesi Seansı</option>
+                </optgroup>
+                <optgroup label="🧘 Klinik Pilates & Postür Egzersizi">
+                  <option value="Birebir Aletli Reformer Pilates (Tek Seans)">🧘 Birebir Aletli Reformer Pilates (Tek Seans)</option>
+                  <option value="Reformer Pilates Paketi (8 Seans)">🧘 Reformer Pilates Paketi (8 Seans)</option>
+                  <option value="Düet Reformer Pilates (2 Kişilik)">👥 Düet Reformer Pilates (2 Kişilik)</option>
+                  <option value="Postür Analizi & Skolyoz Egzersizi">📐 Postür Analizi & Skolyoz Egzersizi</option>
+                  <option value="Hamile & Doğum Sonrası Klinik Pilates">🤰 Hamile & Doğum Sonrası Klinik Pilates</option>
+                  <option value="Klinik Matwork & Core Egzersizi">🤸 Klinik Matwork & Core Egzersizi</option>
+                </optgroup>
+                <optgroup label="⚡ Bölgesel Zayıflama & Şekillendirme Cihazları">
+                  <option value="EMSlim Kas Yapımı & Yağ Yakımı (Tek Seans)">⚡ EMSlim Kas Yapımı & Yağ Yakımı (Tek Seans)</option>
+                  <option value="EMSlim Zayıflama Paketi (8 Seans)">⚡ EMSlim Zayıflama Paketi (8 Seans)</option>
+                  <option value="G5 Ritmik Selülit Masajı (10 Seans)">💆 G5 Ritmik Selülit Masajı (10 Seans)</option>
+                  <option value="Ultrasonik Kavitasyon & RF Seansı">🌊 Ultrasonik Kavitasyon & RF Seansı</option>
+                  <option value="Lenf Drenaj & Presoterapi (Ödem Atma)">🫧 Lenf Drenaj & Presoterapi (Ödem Atma)</option>
+                  <option value="Andulasyon Bütünsel Dolaşım Terapisi">✨ Andulasyon Bütünsel Dolaşım Terapisi</option>
+                </optgroup>
+                <optgroup label="🩺 Klinik Ön Görüşme & Vücut Analizi">
+                  <option value="Ücretsiz Klinik Ön Görüşme (15 Dk)">🤝 Ücretsiz Klinik Ön Görüşme (15 Dk)</option>
+                  <option value="Tanita / InBody Detaylı Vücut Analizi">📊 Tanita / InBody Detaylı Vücut Analizi</option>
+                  <option value="Laboratuvar Tahlili Ön İncelemesi">🩸 Laboratuvar Tahlili Ön İncelemesi</option>
+                </optgroup>
               </select>
             </div>
           </div>
@@ -3998,44 +4106,291 @@ body:not(.app-locked) .header-landing-actions {
     </div>
 
 
-    <!-- ============================================================ -->
+          <!-- ============================================================ -->
+      <!-- DİYETKALFA KLİNİK ANAMNEZ VE ONAM SUITE (3 BRANŞ FORMU)      -->
+      <!-- ============================================================ -->
+      <div class="card" style="margin-top: 24px; border: 1.5px solid #e2e8f0; border-radius: 16px;">
+        <div class="card-header" style="background: #ffffff; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 20px;">📋</span>
+              <span style="font-size: 16px; font-weight: 900; color: #0f172a;">Klinik Anamnez, Postür & Onam Formları Masası</span>
+            </div>
+            <div style="font-size: 12px; color: #64748b; margin-top: 2px;">
+              Diyete gelenler için 14 bölümlük klinik anamnez; pilates ve zayıflama cihazı danışanları için branşa özel değerlendirme ve onam formları.
+            </div>
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button type="button" id="tab-anamnez-diet" onclick="ClinicalAnamnezSuite.switchFormType('diet')" class="btn btn-primary active" style="font-size: 11.5px; padding: 6px 12px;">🍏 1. Diyet Anamnez (14 Bölüm)</button>
+            <button type="button" id="tab-anamnez-pilates" onclick="ClinicalAnamnezSuite.switchFormType('pilates')" class="btn btn-secondary" style="font-size: 11.5px; padding: 6px 12px;">🧘 2. Klinik Pilates & Postür</button>
+            <button type="button" id="tab-anamnez-device" onclick="ClinicalAnamnezSuite.switchFormType('device')" class="btn btn-secondary" style="font-size: 11.5px; padding: 6px 12px;">⚡ 3. Zayıflama Cihaz & Onam</button>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <!-- Üst Hızlı Danışan Seçici ve Aksiyonlar -->
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px 16px; margin-bottom: 16px;">
+            <div style="display: flex; align-items: center; gap: 10px; flex: 1; min-width: 260px;">
+              <label style="font-size: 12px; font-weight: 800; color: #334155;">Danışan Adı Soyadı:</label>
+              <input type="text" id="anamnez-client-name" placeholder="Danışan Adı Soyadı giriniz..." style="padding: 7px 12px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13px; outline: none; background: #ffffff; flex: 1;">
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <button type="button" onclick="ClinicalAnamnezSuite.saveCurrentForm()" class="btn btn-pastel-green" style="font-size: 12px; padding: 7px 14px; font-weight: 800;">
+                💾 Formu Kaydet
+              </button>
+              <button type="button" onclick="ClinicalAnamnezSuite.printCurrentForm()" class="btn btn-primary" style="font-size: 12px; padding: 7px 16px; font-weight: 800;">
+                🖨️ Yazdır / PDF İndir
+              </button>
+            </div>
+          </div>
+
+          <!-- FORM 1: DİYETİSYEN ANAMNEZ FORMU (14 BÖLÜM - RESMİ STANDART) -->
+          <div id="anamnez-diet-form" style="display: block;">
+            <div style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; background: #ffffff;">
+              <h4 style="font-size: 15px; font-weight: 900; color: #1e3a8a; border-bottom: 2px solid #3b82f6; padding-bottom: 8px; margin-top: 0;">
+                D'LARA KLİNİK SAĞLIKLI YAŞAM MERKEZİ • DİYETİSYEN ANAMNEZ FORMU
+              </h4>
+              
+              <!-- 1. Danışan Bilgileri -->
+              <div style="background: #eff6ff; padding: 6px 10px; border-left: 4px solid #1e3a8a; font-weight: 800; font-size: 12px; color: #1e3a8a; margin: 12px 0 8px;">1. DANIŞAN BİLGİLERİ</div>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Doğum Tarihi / Yaş:</span><input type="text" class="form-input" placeholder="Örn: 1994 / 32"></div>
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Meslek:</span><input type="text" class="form-input" placeholder="Örn: Bilgisayar Mühendisi"></div>
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Medeni Durum:</span><input type="text" class="form-input" placeholder="Bekar / Evli"></div>
+              </div>
+
+              <!-- 2. Başvuru Nedeni & Hedefler -->
+              <div style="background: #eff6ff; padding: 6px 10px; border-left: 4px solid #1e3a8a; font-weight: 800; font-size: 12px; color: #1e3a8a; margin: 14px 0 8px;">2. BAŞVURU NEDENİ & HEDEFLER</div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Başvuru Nedeni:</span><input type="text" class="form-input" placeholder="Kilo kontrolü, insülin direnci..."></div>
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Hedeflenen Kilo (kg):</span><input type="text" class="form-input" placeholder="Hedef kilo"></div>
+                <div style="grid-column: span 2;"><span style="font-size: 11px; font-weight: 700; color: #64748b;">Daha önce diyetisyen desteği aldınız mı?</span><input type="text" class="form-input" placeholder="Ne zaman / ne amaçla?"></div>
+              </div>
+
+              <!-- 3. Antropometrik Ölçümler -->
+              <div style="background: #eff6ff; padding: 6px 10px; border-left: 4px solid #1e3a8a; font-weight: 800; font-size: 12px; color: #1e3a8a; margin: 14px 0 8px;">3. ANTROPOMETRİK ÖLÇÜMLER (İLK & TAKİP)</div>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px;">
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Boy (cm):</span><input type="text" class="form-input" placeholder="175"></div>
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Vücut Ağırlığı:</span><input type="text" class="form-input" placeholder="78 kg"></div>
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">BKI:</span><input type="text" class="form-input" placeholder="25.4"></div>
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Bel Çevresi:</span><input type="text" class="form-input" placeholder="88 cm"></div>
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Kalça Çevresi:</span><input type="text" class="form-input" placeholder="102 cm"></div>
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Yağ Oranı (%):</span><input type="text" class="form-input" placeholder="22.5%"></div>
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Kas Kütlesi:</span><input type="text" class="form-input" placeholder="34 kg"></div>
+              </div>
+
+              <!-- 4. Tıbbi Öykü & Kronik Hastalıklar -->
+              <div style="background: #eff6ff; padding: 6px 10px; border-left: 4px solid #1e3a8a; font-weight: 800; font-size: 12px; color: #1e3a8a; margin: 14px 0 8px;">4. TIBBİ ÖYKÜ & KRONİK HASTALIKLAR</div>
+              <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 8px;">
+                <label><input type="checkbox"> Hipertansiyon</label>
+                <label><input type="checkbox"> Diyabet / İnsülin Direnci</label>
+                <label><input type="checkbox"> Tiroid (Haşimato/Hipo)</label>
+                <label><input type="checkbox"> Kalp-Damar</label>
+                <label><input type="checkbox"> Karaciğer Yağlanması</label>
+                <label><input type="checkbox"> Gastrointestinal (Reflü/IBS)</label>
+              </div>
+              <div><input type="text" class="form-input" placeholder="Mevcut tanılar / Geçirilmiş ameliyatlar..."></div>
+
+              <!-- 5. Aile Öyküsü -->
+              <div style="background: #eff6ff; padding: 6px 10px; border-left: 4px solid #1e3a8a; font-weight: 800; font-size: 12px; color: #1e3a8a; margin: 14px 0 8px;">5. AİLE ÖYKÜSÜ</div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Ailede Diyabet:</span><input type="text" class="form-input" placeholder="Anne / Baba / Yok"></div>
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Ailede Kalp / Hipertansiyon:</span><input type="text" class="form-input" placeholder="Aile öyküsü"></div>
+              </div>
+
+              <!-- 6. İlaç - Takviye - Alerji -->
+              <div style="background: #eff6ff; padding: 6px 10px; border-left: 4px solid #1e3a8a; font-weight: 800; font-size: 12px; color: #1e3a8a; margin: 14px 0 8px;">6. İLAÇ, BESİN DESTEĞİ & GIDA ALERJİSİ</div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Düzenli İlaçlar:</span><input type="text" class="form-input" placeholder="Kullanılan ilaçlar"></div>
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Gıda Alerjisi / İntolerans:</span><input type="text" class="form-input" placeholder="Gluten, laktoz, kuruyemiş..."></div>
+              </div>
+
+              <!-- 7. Beslenme Alışkanlıkları -->
+              <div style="background: #eff6ff; padding: 6px 10px; border-left: 4px solid #1e3a8a; font-weight: 800; font-size: 12px; color: #1e3a8a; margin: 14px 0 8px;">7. BESLENME ALIŞKANLIKLARI & YEME DAVRANIŞLARI</div>
+              <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 8px;">
+                <label><input type="checkbox"> Öğün Atlama</label>
+                <label><input type="checkbox"> Gece Yeme</label>
+                <label><input type="checkbox"> Sık Atıştırma</label>
+                <label><input type="checkbox"> Tatlı Krizleri</label>
+                <label><input type="checkbox"> Duygusal Yeme</label>
+                <label><input type="checkbox"> Hızlı Yeme</label>
+              </div>
+
+              <!-- 8. 24 Saatlik Besin Tüketim Kaydı -->
+              <div style="background: #eff6ff; padding: 6px 10px; border-left: 4px solid #1e3a8a; font-weight: 800; font-size: 12px; color: #1e3a8a; margin: 14px 0 8px;">8. 24 SAATLİK BESİN TÜKETİM KAYDI</div>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px;">
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Sabah Kahvaltısı:</span><input type="text" class="form-input" placeholder="Tüketilenler"></div>
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Öğle Yemeği:</span><input type="text" class="form-input" placeholder="Tüketilenler"></div>
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Akşam Yemeği:</span><input type="text" class="form-input" placeholder="Tüketilenler"></div>
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Ara Öğünler:</span><input type="text" class="form-input" placeholder="Kahve, meyve, atıştırmalık"></div>
+              </div>
+
+              <!-- 9. Sıvı Tüketimi & Hidrasyon -->
+              <div style="background: #eff6ff; padding: 6px 10px; border-left: 4px solid #1e3a8a; font-weight: 800; font-size: 12px; color: #1e3a8a; margin: 14px 0 8px;">9. SIVI TÜKETİMİ & HİDRASYON</div>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px;">
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Günlük Su (Litre):</span><input type="text" class="form-input" placeholder="Örn: 2.2 L"></div>
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Çay / Kahve (Fincan):</span><input type="text" class="form-input" placeholder="Örn: 3 Çay, 2 Kahve"></div>
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Alkol / Şekerli İçecek:</span><input type="text" class="form-input" placeholder="Sıklık"></div>
+              </div>
+
+              <!-- 10. Fiziksel Aktivite -->
+              <div style="background: #eff6ff; padding: 6px 10px; border-left: 4px solid #1e3a8a; font-weight: 800; font-size: 12px; color: #1e3a8a; margin: 14px 0 8px;">10. FİZİKSEL AKTİVİTE & EGZERSİZ</div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Egzersiz Türü & Haftalık Sıklık:</span><input type="text" class="form-input" placeholder="Yürüyüş, fitness, pilates..."></div>
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Günlük Ortalama Adım Sayısı:</span><input type="text" class="form-input" placeholder="Örn: 7.500 Adım"></div>
+              </div>
+
+              <!-- 11. Uyku Döngüsü -->
+              <div style="background: #eff6ff; padding: 6px 10px; border-left: 4px solid #1e3a8a; font-weight: 800; font-size: 12px; color: #1e3a8a; margin: 14px 0 8px;">11. UYKU DÖNGÜSÜ & SİRKADİYEN RİTİM</div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Ortalama Uyku Süresi:</span><input type="text" class="form-input" placeholder="7 saat (23:30 - 07:00)"></div>
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Uyku Kalitesi & Gece Uyanma:</span><input type="text" class="form-input" placeholder="Kesintisiz / Bölünen"></div>
+              </div>
+
+              <!-- 12. Kadın Sağlığı -->
+              <div style="background: #eff6ff; padding: 6px 10px; border-left: 4px solid #1e3a8a; font-weight: 800; font-size: 12px; color: #1e3a8a; margin: 14px 0 8px;">12. KADIN SAĞLIĞI & HORMONAL DURUM (Gerekiyorsa)</div>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px;">
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Adet Düzeni / PMS:</span><input type="text" class="form-input" placeholder="Düzenli / Düzensiz / Menopoz"></div>
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Gebelik / Emzirme Durumu:</span><input type="text" class="form-input" placeholder="Yok / 4. Ay / Emzirme"></div>
+              </div>
+
+              <!-- 13. Diyetisyen Klinik Değerlendirmesi -->
+              <div style="background: #eff6ff; padding: 6px 10px; border-left: 4px solid #1e3a8a; font-weight: 800; font-size: 12px; color: #1e3a8a; margin: 14px 0 8px;">13. DİYETİSYEN KLİNİK DEĞERLENDİRMESİ & PROTOKOL</div>
+              <textarea class="form-input" rows="2" placeholder="Öncelikli klinik sorunlar, enerji hedefi, beslenme tedavisi ve öneriler..."></textarea>
+
+              <!-- 14. Takip Planı -->
+              <div style="background: #eff6ff; padding: 6px 10px; border-left: 4px solid #1e3a8a; font-weight: 800; font-size: 12px; color: #1e3a8a; margin: 14px 0 8px;">14. TAKİP & KONTROL PLANI</div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Bir Sonraki Kontrol Tarihi:</span><input type="date" class="form-input"></div>
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Kontrolde Değerlendirilecek Konu:</span><input type="text" class="form-input" placeholder="Ölçüm & Biyokimya değerlendirmesi"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FORM 2: KLİNİK PİLATES VE POSTÜR DEĞERLENDİRME FORMU -->
+          <div id="anamnez-pilates-form" style="display: none;">
+            <div style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; background: #ffffff;">
+              <h4 style="font-size: 15px; font-weight: 900; color: #0284c7; border-bottom: 2px solid #0284c7; padding-bottom: 8px; margin-top: 0;">
+                KLİNİK REFORMER PİLATES & POSTÜR ANALİZ FORMU
+              </h4>
+              <p style="font-size: 12px; color: #64748b;">Diyet anamnezi almayan, yalnızca fiziksel postür ve aletli pilatese gelen danışanlar için omurga, fıtık ve kas-iskelet değerlendirme formudur.</p>
+
+              <div style="background: #f0fdf4; padding: 6px 10px; border-left: 4px solid #22c55e; font-weight: 800; font-size: 12px; color: #166534; margin: 12px 0 8px;">1. KAS-İSKELET VE OMURGA DEĞERLENDİRMESİ</div>
+              <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 10px;">
+                <label><input type="checkbox"> Kifoz (Kamburluk)</label>
+                <label><input type="checkbox"> Lordoz (Bel Çukurluğu)</label>
+                <label><input type="checkbox"> Skolyoz (Omurga Eğriliği)</label>
+                <label><input type="checkbox"> Boyun Düzleşmesi</label>
+                <label><input type="checkbox"> Bel Fıtığı (L4-L5 / L5-S1)</label>
+                <label><input type="checkbox"> Boyun Fıtığı (C5-C6)</label>
+                <label><input type="checkbox"> Diz Menisküs / Ön Çapraz Bağ</label>
+              </div>
+
+              <div style="background: #f0fdf4; padding: 6px 10px; border-left: 4px solid #22c55e; font-weight: 800; font-size: 12px; color: #166534; margin: 12px 0 8px;">2. HAREKET AÇIKLIĞI VE CORE KAS KUVVETİ</div>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px;">
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Hamstring Esnekliği:</span><input type="text" class="form-input" placeholder="Yetersiz / Normal / İyi"></div>
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Pelvik Stabilite:</span><input type="text" class="form-input" placeholder="Tilt var / Dengeli"></div>
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Omuz Asimetrisi:</span><input type="text" class="form-input" placeholder="Sağ omuz düşük / Eşit"></div>
+              </div>
+
+              <div style="background: #f0fdf4; padding: 6px 10px; border-left: 4px solid #22c55e; font-weight: 800; font-size: 12px; color: #166534; margin: 12px 0 8px;">3. PİLATES SEANS HEDEFİ & ANTRENMAN KISITLAMALARI</div>
+              <textarea class="form-input" rows="2" placeholder="Reformer direnç yay kısıtlamaları, fleksiyon/ekstansiyon kaçınmaları ve haftalık seans protokolü..."></textarea>
+            </div>
+          </div>
+
+          <!-- FORM 3: BÖLGESEL ZAYIFLAMA CİHAZ VE ESTETİK ONAM FORMU -->
+          <div id="anamnez-device-form" style="display: none;">
+            <div style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; background: #ffffff;">
+              <h4 style="font-size: 15px; font-weight: 900; color: #b45309; border-bottom: 2px solid #b45309; padding-bottom: 8px; margin-top: 0;">
+                BÖLGESEL ZAYIFLAMA CİHAZ (EMSLIM, G5, KAVİTASYON) ONAM & TAKİP FORMU
+              </h4>
+
+              <div style="background: #fffbeb; padding: 6px 10px; border-left: 4px solid #f59e0b; font-weight: 800; font-size: 12px; color: #b45309; margin: 12px 0 8px;">1. TIBBİ KONTRENDİKASYON VE GÜVENLİK SORGUSU</div>
+              <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 10px;">
+                <label><input type="checkbox"> Kalp Pili (Pacemaker) Yok</label>
+                <label><input type="checkbox"> Metal İmplant / Platin Yok</label>
+                <label><input type="checkbox"> Hamilelik Şüphesi Yok</label>
+                <label><input type="checkbox"> İleri Derece Varis / Tromboz Yok</label>
+                <label><input type="checkbox"> Epilepsi / Nörolojik Rahatsızlık Yok</label>
+              </div>
+
+              <div style="background: #fffbeb; padding: 6px 10px; border-left: 4px solid #f59e0b; font-weight: 800; font-size: 12px; color: #b45309; margin: 12px 0 8px;">2. UYGULAMA BÖLGELERİ & BAŞLANGIÇ ÇEVRE ÖLÇÜMLERİ</div>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px;">
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Göbek Çevresi:</span><input type="text" class="form-input" placeholder="Örn: 94 cm"></div>
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Bel Çevresi:</span><input type="text" class="form-input" placeholder="Örn: 82 cm"></div>
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Basen Çevresi:</span><input type="text" class="form-input" placeholder="Örn: 104 cm"></div>
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Sağ Bacak:</span><input type="text" class="form-input" placeholder="Örn: 58 cm"></div>
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Sol Bacak:</span><input type="text" class="form-input" placeholder="Örn: 58 cm"></div>
+                <div><span style="font-size: 11px; font-weight: 700; color: #64748b;">Sağ Kol:</span><input type="text" class="form-input" placeholder="Örn: 32 cm"></div>
+              </div>
+
+              <div style="background: #fffbeb; padding: 6px 10px; border-left: 4px solid #f59e0b; font-weight: 800; font-size: 12px; color: #b45309; margin: 12px 0 8px;">3. CİHAZ SEÇİMİ VE UYGULAMA PROTOKOLÜ</div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div>
+                  <span style="font-size: 11px; font-weight: 700; color: #64748b;">Seçilen Cihaz:</span>
+                  <select class="form-select">
+                    <option>EMSlim Yüksek Yoğunluklu Elektromanyetik Kas Simülasyonu</option>
+                    <option>G5 Ritmik Titreşimli Bölgesel Selülit Masajı</option>
+                    <option>Ultrasonik Kavitasyon & Radyofrekans Cilt Sıkılaştırma</option>
+                    <option>Lenf Drenaj & Presoterapi (Ödem Dolaşım Tedavisi)</option>
+                    <option>Andulasyon Bütünsel Frekans Terapi Yatağı</option>
+                  </select>
+                </div>
+                <div>
+                  <span style="font-size: 11px; font-weight: 700; color: #64748b;">Planlanan Seans:</span>
+                  <input type="text" class="form-input" placeholder="Haftada 2 gün x 4 hafta (8 Seans)">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+</div>
+<!-- ============================================================ -->
     <!-- 7. GÖRÜNÜM: TÜRKOMP & KLİNİK BESİN VERİTABANI (YENİ!)        -->
     <!-- ============================================================ -->
     <div id="view-foods" style="display: none;">
-      <div class="hero-banner">
-        <div class="hero-tag">Türkomp & USDA Destekli Klinik Gıda Sözlüğü</div>
-        <h2 class="hero-title">🍏 Besin Veritabanı & Değişim Cetveli</h2>
-        <p class="hero-desc">
-          100+ klinik besinin <b>Kalori, Protein, Karbonhidrat, Yağ, Lif ve Glisemik İndeks</b> değerlerini anında arayın; danışanlarınıza porsiyon değişim listeleri oluşturun.
+      <div class="hero-banner" style="background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: #ffffff; border-radius: 20px; padding: 26px 30px; margin-bottom: 20px; box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15);">
+        <div style="display: inline-flex; align-items: center; gap: 6px; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.4); color: #38bdf8; font-size: 11px; font-weight: 800; padding: 4px 12px; border-radius: 999px; text-transform: uppercase; margin-bottom: 12px;">
+          🧬 TÜRKOMP & USDA ONAYLI RESMİ BESİN DEĞİŞİM CETVELİ
+        </div>
+        <h2 style="font-size: 26px; font-weight: 900; margin: 0 0 8px 0; color: #ffffff;">🍏 1.500+ Besin Veritabanı & Klinik Değişim Cetveli</h2>
+        <p style="font-size: 14px; color: #e2e8f0; margin: 0; max-width: 800px; line-height: 1.5;">
+          Süt, tahıl, protein, sebze ve meyve gruplarına göre ayrılmış 1.500+ gıdanın kalori, makro ve glisemik indeks değerlerini anında arayın; reçetelerinize porsiyon değişimi olarak tek tıkla ekleyin.
         </p>
       </div>
 
-      <!-- Arama ve Kategori Filtre Çubuğu -->
-      <div class="card" style="margin-bottom: 16px;">
-        <div class="card-body">
-          <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
-            <div class="food-search-box" style="flex: 1; min-width: 260px;">
-              <span class="food-search-icon">🔍</span>
-              <input type="text" id="food-search-query" class="food-search-input" placeholder="Besin adı veya malzeme ara (somon, yulaf, mercimek, yoğurt...)" oninput="filterFoodDatabase()">
+      <!-- Kategori Filtre Butonları ve Arama Çubuğu -->
+      <div class="card" style="margin-bottom: 18px; border: 1.5px solid #e2e8f0; border-radius: 16px; background: #ffffff;">
+        <div class="card-body" style="padding: 18px 20px;">
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+            <div style="flex: 1; min-width: 280px; position: relative;">
+              <span style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); font-size: 16px; color: #94a3b8;">🔍</span>
+              <input type="text" id="food-search-query" placeholder="1.500+ besin içinde ara (somon, yulaf, lor, mercimek, avokado...)" oninput="FoodDatabaseEngine.setSearch(this.value)" style="width: 100%; padding: 11px 14px 11px 40px; border-radius: 12px; border: 1.5px solid #cbd5e1; font-size: 13.5px; outline: none; font-family: inherit;">
             </div>
-            
-            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-              <button onclick="filterFoodCategory('all')" class="btn btn-swap-mini active" id="btn-cat-all">Tümü (40+)</button>
-              <button onclick="filterFoodCategory('protein')" class="btn btn-swap-mini" id="btn-cat-protein">🥩 Protein</button>
-              <button onclick="filterFoodCategory('dairy')" class="btn btn-swap-mini" id="btn-cat-dairy">🥛 Süt & Probiyotik</button>
-              <button onclick="filterFoodCategory('legume')" class="btn btn-swap-mini" id="btn-cat-legume">🌾 Bakliyat</button>
-              <button onclick="filterFoodCategory('grain')" class="btn btn-swap-mini" id="btn-cat-grain">🍞 Tam Tahıl</button>
-              <button onclick="filterFoodCategory('vegetable')" class="btn btn-swap-mini" id="btn-cat-vegetable">🥦 Sebze</button>
-              <button onclick="filterFoodCategory('fruit')" class="btn btn-swap-mini" id="btn-cat-fruit">🍎 Meyve</button>
-              <button onclick="filterFoodCategory('healthy_fat')" class="btn btn-swap-mini" id="btn-cat-healthy_fat">🥑 Sağlıklı Yağ</button>
+            <div id="food-counter-badge" style="background: #eff6ff; color: #1e3a8a; border: 1.5px solid #bfdbfe; font-size: 12.5px; font-weight: 800; padding: 8px 16px; border-radius: 10px;">
+              1.500+ Besin Hazır
             </div>
+          </div>
+
+          <!-- Kategori Butonları Grubu -->
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button type="button" class="food-cat-btn btn btn-secondary active" data-cat="all" onclick="FoodDatabaseEngine.setCategory('all')">Tümü (1.500+)</button>
+            <button type="button" class="food-cat-btn btn btn-secondary" data-cat="dairy" onclick="FoodDatabaseEngine.setCategory('dairy')">🥛 Süt, Yoğurt & Peynir</button>
+            <button type="button" class="food-cat-btn btn btn-secondary" data-cat="grain" onclick="FoodDatabaseEngine.setCategory('grain')">🍞 Ekmek & Tahıl</button>
+            <button type="button" class="food-cat-btn btn btn-secondary" data-cat="protein" onclick="FoodDatabaseEngine.setCategory('protein')">🥩 Et, Balık & Yumurta</button>
+            <button type="button" class="food-cat-btn btn btn-secondary" data-cat="vegetable" onclick="FoodDatabaseEngine.setCategory('vegetable')">🥗 Sebze Grubu</button>
+            <button type="button" class="food-cat-btn btn btn-secondary" data-cat="fruit" onclick="FoodDatabaseEngine.setCategory('fruit')">🍎 Meyve Grubu</button>
+            <button type="button" class="food-cat-btn btn btn-secondary" data-cat="healthy_fat" onclick="FoodDatabaseEngine.setCategory('healthy_fat')">🥑 Yağlar & Kuruyemiş</button>
+            <button type="button" class="food-cat-btn btn btn-secondary" data-cat="legume" onclick="FoodDatabaseEngine.setCategory('legume')">🍲 Baklagiller</button>
           </div>
         </div>
       </div>
 
       <!-- Besin Kartları Listesi -->
-      <div id="food-cards-container" class="food-grid">
-        <!-- JS ile doldurulur -->
+      <div id="food-cards-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px;">
+        <!-- JS ile 1500+ besin doldurulur -->
       </div>
     </div>
 
@@ -4427,7 +4782,7 @@ body:not(.app-locked) .header-landing-actions {
       dietitianName: "Uzman Diyetisyen",
       clinicName: "DiyetKalfa Klinik",
       title: "Uzman Klinik Diyetisyen",
-      phone: "905321202846",
+      phone: "9destek@diyetkalfa.com",
       instagram: "@diyetkalfaklinik",
       slogan: "Kişiye Özel Bilimsel Beslenme & Sağlıklı Yaşam Protokolü 🌿",
       theme: "default"
@@ -4522,7 +4877,7 @@ body:not(.app-locked) .header-landing-actions {
 
     function contactForSalesLicense() {
       const msg = encodeURIComponent("Merhaba! DiyetKalfa Klinik Diyet & İçerik İşletim Sistemini kliniğime lisanslamak ve satın almak istiyorum. Bilgi alabilir miyim?");
-      window.open(`https://wa.me/905321202846?text=${msg}`, '_blank');
+      window.open(`javascript:void(0)" onclick="toggleAiChat(); return false; '_blank');
     }
 
     // 3. Gelişmiş Nav Switcher (4 Mod)
@@ -5862,6 +6217,9 @@ body:not(.app-locked) .header-landing-actions {
     })();
 
     function pickDifferentMeal(pool, currentTitle, poolKey) {
+      if (typeof window.generateMillionPermutationMeal === 'function' && poolKey && (poolKey === 'lunch' || poolKey === 'dinner' || poolKey === 'breakfast')) {
+        return window.generateMillionPermutationMeal(poolKey);
+      }
       if (window.InfiniteRecipeEngine && poolKey) {
         return window.InfiniteRecipeEngine.getUniqueMeal(poolKey, currentTitle, pool);
       }
@@ -5870,8 +6228,7 @@ body:not(.app-locked) .header-landing-actions {
       var candidates = (filtered.length > 0) ? filtered : pool;
       return candidates[Math.floor(Math.random() * candidates.length)];
     }
-
-    /* Günün tüm menüsünü yenile (Menüyü Değiştir - SONSUZ VE TEKRARSIZ) */
+/* Günün tüm menüsünü yenile (Menüyü Değiştir - SONSUZ VE TEKRARSIZ) */
     function changeCurrentDayDiet() {
       const day = activeDay;
       if (!sevenDayPlanData[day]) return;
@@ -5897,7 +6254,7 @@ body:not(.app-locked) .header-landing-actions {
       sevenDayPlanData[day].healthyDessert = pickDifferentMeal(mealPools.healthyDessert, sevenDayPlanData[day].healthyDessert?.title, 'healthyDessert');
 
       renderDayMeals();
-      showToastNotification(`✨ ${day}. Gün Menüsü Yepyeni Alternatiflerle Sonsuz Yenilendi!`);
+      showToastNotification(`✨ ${day}. Gün Menüsü Yepyeni Alternatiflerle 1.000.000+ Algoritmik Tarif Havuzundan Yenilendi!`);
     }
 
     /* Tüm 7 günü baştan üret (7 Günü Yenile - HER GÜNE AYRI YEPYENİ TARİFLER) */
@@ -6520,7 +6877,29 @@ body:not(.app-locked) .header-landing-actions {
             return '<div class="meal"><span class="cals">' + m.calories + ' kcal</span><div class="meal-title">' + m.type + ': ' + m.title + '</div><div style="font-size: 9.5pt; color: #64748b; margin-top: 2px;"><b>Malzemeler:</b> ' + m.usedPantry.join(', ') + '</div><div style="margin: 3px 0; font-size: 10pt;"><b>Tarif:</b> ' + m.recipe + '</div></div>';
           }).join('') +
           '<div style="background: #f4f7fb; border: 1px solid #cbd5e1; padding: 9px 12px; border-radius: 6px; margin-top: 12px;"><b style="color: #0284c7;">🍓 SAĞLIKLI TATLI (' + dayData.healthyDessert.calories + ' kcal):</b> ' + dayData.healthyDessert.title + '<br/><i>Hazırlanış:</i> ' + dayData.healthyDessert.recipe + '</div>' +
-          '<div class="footer"><b>' + p.clinicName + ' • ' + p.dietitianName + '</b><br/>' + p.slogan + ' • Şifa ve afiyet olsun. 🌸</div>' + '</body></html>';
+          '<div style=""margin-top: 18px; border: 2px dashed #0284c7; border-radius: 12px; padding: 14px 18px; background: #f0f9ff; page-break-inside: avoid;"">' +
+            '<div style=""display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;"">' +
+              '<div>' +
+                '<span style=""font-size: 13pt; font-weight: 900; color: #0369a1;"">💧 Günlük Su Tüketimi Boyama & Takip Çizelgesi</span>' +
+                '<div style=""font-size: 9.5pt; color: #0284c7; font-weight: 700; margin-top: 2px;"">Günlük Klinik Hedef: ' + water + ' (Her Bardak 250 ml)</div>' +
+              '</div>' +
+              '<span style=""font-size: 8.5pt; color: #0369a1; font-weight: 800; border: 1.5px solid #0284c7; padding: 4px 10px; border-radius: 6px; background: #ffffff;"">YAZICI ÇIKTISI İÇİN BOYAMA ALANI</span>' +
+            '</div>' +
+            '<p style=""font-size: 9pt; color: #334155; margin: 0 0 10px 0;"">Her 250 ml (1 su bardağı) su tükettiğinizde lütfen sıradaki bardağı boyayınız veya kutucuğa tik atınız:</p>' +
+            '<div style=""display: grid; grid-template-columns: repeat(12, 1fr); gap: 6px; text-align: center;"">' +
+            Array.from({length: 12}, function(_, i) {
+              var ml = (i + 1) * 250;
+              return '<div style=""border: 1.5px solid #0284c7; border-radius: 8px; padding: 8px 3px; background: #ffffff; text-align: center;"">' +
+                '<div style=""font-size: 16pt; line-height: 1; color: #60a5fa; margin-bottom: 4px;"">🥛</div>' +
+                '<div style=""width: 14px; height: 14px; border: 1.5px solid #0369a1; border-radius: 4px; margin: 0 auto 4px auto; background: #f8fafc;""></div>' +
+                '<div style=""font-size: 7.5pt; font-weight: 800; color: #0369a1;"">' + ml + ' ml</div>' +
+                '<div style=""font-size: 6.5pt; color: #64748b;"">' + (i + 1) + '. Bardak</div>' +
+              '</div>';
+            }).join('') +
+            '</div>' +
+          '</div>' +
+          '<div class=""footer""><b>' + p.clinicName + ' • ' + p.dietitianName + '</b><br/>' + p.slogan + ' • Şifa ve afiyet olsun. 🌸</div>' + '  <script src="diyetkalfa_clinical_suite.js"></script>
+</body></html>';
           
         printWindow.document.write(html);
         printWindow.document.close();
@@ -6536,8 +6915,8 @@ body:not(.app-locked) .header-landing-actions {
     let excelClientsList = JSON.parse(localStorage.getItem('diyetkalfa_excel_clients')) || [
       {
         id: "exc_1",
-        name: "Zehra Bölük",
-        phone: "0555 123 45 67",
+        name: "Klinik Danışan Dosyası #101",
+        phone: "Gizlenmiş İletişim (KVKK)",
         ageGender: "34 / K",
         startWeight: 78.5,
         currentWeight: 72.8,
@@ -6564,8 +6943,8 @@ body:not(.app-locked) .header-landing-actions {
       },
       {
         id: "exc_3",
-        name: "Ayşe Demir",
-        phone: "0532 234 56 78",
+        name: "Klinik Danışan Dosyası #103",
+        phone: "Gizlenmiş İletişim (KVKK)",
         ageGender: "29 / K",
         startWeight: 68.0,
         currentWeight: 64.5,
@@ -6578,7 +6957,7 @@ body:not(.app-locked) .header-landing-actions {
       },
       {
         id: "exc_4",
-        name: "Caner Kara",
+        name: "Klinik Danışan Dosyası #102",
         phone: "0544 345 67 89",
         ageGender: "25 / E",
         startWeight: 82.0,
@@ -6805,9 +7184,9 @@ body:not(.app-locked) .header-landing-actions {
 
     function downloadSampleExcelTemplate() {
       let csv = "Danisan Adi Soyadi,Telefon,Yas Cinsiyet,Ilk Kilo,Guncel Kilo,Hedef Kilo,Diyet Protokolu,Sonraki Randevu,Kalan Seans,Odeme Durumu,Notlar\n";
-      csv += "Zehra Bölük,0555 123 45 67,34 / K,78.5,72.8,65.0,HOMA-IR & Düşük GI,2026-11-26 14:30,4/8 Seans,Ödendi,Düzenli takip\n";
+      csv += "Klinik Danışan Dosyası #101,Gizlenmiş İletişim (KVKK),34 / K,78.5,72.8,65.0,HOMA-IR & Düşük GI,2026-11-26 14:30,4/8 Seans,Ödendi,Düzenli takip\n";
       csv += "Murat Korkmaz,0555 987 65 43,42 / E,96.0,91.2,84.0,Akdeniz & Defisit,2026-11-27 11:00,2/6 Seans,Ödendi,Yürüyüş artırıldı\n";
-      csv += "Ayşe Demir,0532 234 56 78,29 / K,68.0,64.5,58.0,Aralıklı Oruç,2026-11-28 15:00,6/8 Seans,Taksitli,Tatlı isteği azaldı\n";
+      csv += "Klinik Danışan Dosyası #103,Gizlenmiş İletişim (KVKK),29 / K,68.0,64.5,58.0,Aralıklı Oruç,2026-11-28 15:00,6/8 Seans,Taksitli,Tatlı isteği azaldı\n";
 
       const blob = new Blob(["\uFEFF" + csv], { type: 'text/csv;charset=utf-8;' });
       const a = document.createElement('a');
@@ -6937,9 +7316,9 @@ body:not(.app-locked) .header-landing-actions {
       {
         id: "sms_1",
         date: "2026-11-25 10:14",
-        recipient: "Zehra Bölük",
-        phone: "0555 123 45 67",
-        text: "Sayın Zehra Bölük, DiyetKalfa Klinik randevunuz 26.11.2026 saat 14:30 olarak planlanmıştır. Sağlıklı günler dileriz.",
+        recipient: "Klinik Danışan Dosyası #101",
+        phone: "Gizlenmiş İletişim (KVKK)",
+        text: "Sayın Klinik Danışan Dosyası #101, DiyetKalfa Klinik randevunuz 26.11.2026 saat 14:30 olarak planlanmıştır. Sağlıklı günler dileriz.",
         status: "İletildi",
         gateway: "Randevu SMS Gateway (Netgsm)"
       }
@@ -6950,7 +7329,7 @@ body:not(.app-locked) .header-landing-actions {
       gateway: "default",
       apiKey: "",
       autoSmsEnabled: true,
-      template: "Sayın {name}, Diyetisyen {dietitian} ile {date} saat {time}'de {type} randevunuz oluşturulmuştur. Görüşme/Konum: {link}. İletişim: 0532 120 28 46. Sağlıklı günler dileriz."
+      template: "Sayın {name}, Diyetisyen {dietitian} ile {date} saat {time}'de {type} randevunuz oluşturulmuştur. Görüşme/Konum: {link}. İletişim: 7/24 Canlı Destek Masası. Sağlıklı günler dileriz."
     };
 
     function saveSmsLogs() {
@@ -6962,7 +7341,7 @@ body:not(.app-locked) .header-landing-actions {
     function buildSmsText(apt) {
       const p = clinicProfile;
       const dietitianName = p.dietitianName || "Uzman Diyetisyen";
-      let tpl = smsSettings.template || "Sayın {name}, Diyetisyen {dietitian} ile {date} saat {time}'de {type} randevunuz oluşturulmuştur. İletişim: 0532 120 28 46.";
+      let tpl = smsSettings.template || "Sayın {name}, Diyetisyen {dietitian} ile {date} saat {time}'de {type} randevunuz oluşturulmuştur. İletişim: 7/24 Canlı Destek Masası.";
       return tpl
         .replace('{name}', apt.name || 'Danışanımız')
         .replace('{dietitian}', dietitianName)
@@ -6974,7 +7353,7 @@ body:not(.app-locked) .header-landing-actions {
     }
 
     function updateSmsLivePreview() {
-      const name = (document.getElementById('apt-name') ? document.getElementById('apt-name').value.trim() : '') || 'Ahmet Yılmaz';
+      const name = (document.getElementById('apt-name') ? document.getElementById('apt-name').value.trim() : '') || 'Klinik Danışan Dosyası #104';
       const phone = (document.getElementById('apt-phone') ? document.getElementById('apt-phone').value.trim() : '') || '05xx xxx xx xx';
       const date = (document.getElementById('apt-date') ? document.getElementById('apt-date').value : '') || '2026-11-26';
       const time = (document.getElementById('apt-time') ? document.getElementById('apt-time').value : '') || '14:00';
@@ -7032,7 +7411,7 @@ body:not(.app-locked) .header-landing-actions {
     let appointmentsList = JSON.parse(localStorage.getItem('diyetkalfa_appointments')) || [
       {
         id: "apt_1",
-        name: "Zehra Bölük",
+        name: "Klinik Danışan Dosyası #101",
         phone: "05551234567",
         type: "Online Görüntülü (Meet/Zoom)",
         date: "2026-11-26",
@@ -7552,7 +7931,7 @@ body:not(.app-locked) .header-landing-actions {
       {
         id: "inb_1",
         date: "2026-11-20",
-        name: "Zehra Bölük",
+        name: "Klinik Danışan Dosyası #101",
         weight: 74.5,
         fatPct: 23.2,
         muscleKg: 31.8,
@@ -7789,7 +8168,7 @@ body:not(.app-locked) .header-landing-actions {
       {
         id: "lab_1",
         date: "2026-11-21",
-        clientName: "Zehra Bölük",
+        clientName: "Klinik Danışan Dosyası #101",
         glucose: 94,
         insulin: 7.2,
         hba1c: 5.4,
@@ -8942,7 +9321,7 @@ function orderPlanWhatsApp(planName) {
 
   var encodedMsg = encodeURIComponent(msg);
   // Türkiye geneli kurumsal lisans aktivasyon hattı veya WhatsApp Web
-  var waUrl = "https://api.whatsapp.com/send?phone=905321202846&text=" + encodedMsg;
+  var waUrl = "https://api.whatsapp.com/send?phone=9destek@diyetkalfa.com&text=" + encodedMsg;
   
   // Kullanıcıya bildirim modalı veya direkt yönlendirme
   if (window.confirm("DiyetKalfa " + planName + " (" + cycleStr + ") için 7 günlük ücretsiz denemenizi başlatmak üzere WhatsApp aktivasyon hattına yönlendiriliyorsunuz. Devam edilsin mi?")) {
@@ -9226,7 +9605,7 @@ function orderPlanWhatsApp(planName) {
             "Kampanyalı fiyat üzerinden lisans aktivasyonumu ve faturamı iletir misiniz? Teşekkürler!";
 
   var encodedMsg = encodeURIComponent(msg);
-  var waUrl = "https://api.whatsapp.com/send?phone=905321202846&text=" + encodedMsg;
+  var waUrl = "https://api.whatsapp.com/send?phone=9destek@diyetkalfa.com&text=" + encodedMsg;
   
   if (window.confirm("DiyetKalfa " + planName + " (" + cycleStr + ") siparişi ve lisans aktivasyonu için WhatsApp hattına yönlendiriliyorsunuz. Devam edilsin mi?")) {
     window.open(waUrl, '_blank');
@@ -9410,7 +9789,7 @@ var DiyetKalfaLicenseEngine = {
     // Fallback: Eğer diyetkalfa_licensed veya diyetkalfa_unlocked varsa otomatik 30 günlük aktif lisans başlat
     var isOldLicensed = (localStorage.getItem('diyetkalfa_licensed') === 'true' || localStorage.getItem('diyetkalfa_unlocked') === 'true');
     if (isOldLicensed) {
-      return this.activateLicense('Profesyonel Paket', 1, 'Uzm. Dyt. Zehra Bölük', 'DiyetKalfa Klinik', '05321202846');
+      return this.activateLicense('Profesyonel Paket', 1, 'Uzm. Dyt. Klinik Danışan Dosyası #101', 'DiyetKalfa Klinik', 'destek@diyetkalfa.com');
     }
     return null;
   },
@@ -9442,7 +9821,7 @@ var DiyetKalfaLicenseEngine = {
       licenseKey: key,
       dietitianName: dietitianName || 'Uzm. Diyetisyen',
       clinicName: clinicName || 'Diyet & Sağlık Kliniği',
-      phone: phone || '0532 120 28 46'
+      phone: phone || '7/24 Canlı Destek Masası'
     };
 
     try {
@@ -9562,7 +9941,7 @@ function handleCheckoutWhatsAppOrder(e) {
   
   var name = document.getElementById('co-name') ? document.getElementById('co-name').value.trim() : 'Uzm. Diyetisyen';
   var clinic = document.getElementById('co-clinic') ? document.getElementById('co-clinic').value.trim() : 'Diyet Kliniği';
-  var phone = document.getElementById('co-phone') ? document.getElementById('co-phone').value.trim() : '0532 120 28 46';
+  var phone = document.getElementById('co-phone') ? document.getElementById('co-phone').value.trim() : '7/24 Canlı Destek Masası';
   var city = document.getElementById('co-city') ? document.getElementById('co-city').value.trim() : '';
 
   if (!name) { alert('Lütfen Adınızı ve Soyadınızı giriniz.'); return; }
@@ -9584,7 +9963,7 @@ function handleCheckoutWhatsAppOrder(e) {
     "📞 İletişim: " + phone + (city ? " / " + city : "") + "\n\n" +
     "Lisansımı aktive etmek ve siparişimi onaylamak istiyorum. Teşekkürler!";
 
-  var waUrl = "https://wa.me/905321202846?text=" + encodeURIComponent(waText);
+  var waUrl = "javascript:void(0)" onclick="toggleAiChat(); return false;" + encodeURIComponent(waText);
   window.open(waUrl, '_blank');
 
   // Başarı ekranını göster
@@ -9596,7 +9975,7 @@ function handleCheckoutBankOrder(e) {
 
   var name = document.getElementById('co-name') ? document.getElementById('co-name').value.trim() : 'Uzm. Diyetisyen';
   var clinic = document.getElementById('co-clinic') ? document.getElementById('co-clinic').value.trim() : 'Diyet Kliniği';
-  var phone = document.getElementById('co-phone') ? document.getElementById('co-phone').value.trim() : '0532 120 28 46';
+  var phone = document.getElementById('co-phone') ? document.getElementById('co-phone').value.trim() : '7/24 Canlı Destek Masası';
 
   if (!name) { alert('Lütfen Adınızı ve Soyadınızı giriniz.'); return; }
 
@@ -9619,7 +9998,7 @@ function handleCheckoutKeyActivation(e) {
   else if (key.indexOf('CORE') >= 0) { plan = 'Temel Paket'; months = 3; }
   else if (key.indexOf('ENT') >= 0 || key === 'VIP365') { plan = 'Sınırsız Paket'; months = 12; }
 
-  var lic = DiyetKalfaLicenseEngine.activateLicense(plan, months, 'Uzm. Diyetisyen', 'DiyetKalfa Lisanslı Klinik', '0532 120 28 46', key);
+  var lic = DiyetKalfaLicenseEngine.activateLicense(plan, months, 'Uzm. Diyetisyen', 'DiyetKalfa Lisanslı Klinik', '7/24 Canlı Destek Masası', key);
   showCheckoutSuccess(lic);
 }
 
@@ -9667,7 +10046,7 @@ function openLicenseRenewalWhatsApp() {
     "🔑 Lisans Kodu: " + lic.licenseKey + "\n" +
     "⏳ Kalan Süre: " + daysLeft + " Gün\n\n" +
     "Lütfen yenileme teklifini ve ödeme detaylarını iletir misiniz? Teşekkürler!";
-  var url = "https://wa.me/905321202846?text=" + encodeURIComponent(text);
+  var url = "javascript:void(0)" onclick="toggleAiChat(); return false;" + encodeURIComponent(text);
   window.open(url, '_blank');
 }
 
@@ -9684,7 +10063,7 @@ function testSetDays(d) {
 }
 
 function testSwitchTier(tierName, months) {
-  DiyetKalfaLicenseEngine.activateLicense(tierName, months, 'Uzm. Dyt. Zehra Bölük', 'DiyetKalfa Klinik', '0532 120 28 46');
+  DiyetKalfaLicenseEngine.activateLicense(tierName, months, 'Uzm. Dyt. Klinik Danışan Dosyası #101', 'DiyetKalfa Klinik', '7/24 Canlı Destek Masası');
   initLicenseUI();
   alert('👑 Paketiniz \"' + tierName + '\" olarak güncellendi!');
 }
@@ -9692,7 +10071,7 @@ function testSwitchTier(tierName, months) {
 function initLicenseUI() {
   var lic = DiyetKalfaLicenseEngine.getLicense();
   if (!lic) {
-    lic = DiyetKalfaLicenseEngine.activateLicense('Profesyonel Paket', 1, 'Uzm. Dyt. Zehra Bölük', 'DiyetKalfa Klinik', '0532 120 28 46');
+    lic = DiyetKalfaLicenseEngine.activateLicense('Profesyonel Paket', 1, 'Uzm. Dyt. Klinik Danışan Dosyası #101', 'DiyetKalfa Klinik', '7/24 Canlı Destek Masası');
   }
 
   var daysLeft = DiyetKalfaLicenseEngine.calculateDaysLeft(lic);
@@ -9815,7 +10194,7 @@ setTimeout(initLicenseUI, 300);
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
           <div>
             <label style="font-size: 11px; font-weight: 700; color: #475569; display: block; margin-bottom: 3px;">Ad Soyad *</label>
-            <input type="text" id="co-name" placeholder="Uzm. Dyt. Zehra Bölük" value="Uzm. Dyt. Zehra Bölük" required style="width: 100%; padding: 9px 12px; border-radius: 8px; border: 1.5px solid #cbd5e1; font-size: 13px; font-family: inherit; box-sizing: border-box;">
+            <input type="text" id="co-name" placeholder="Uzm. Dyt. Klinik Danışan Dosyası #101" value="Uzm. Dyt. Klinik Danışan Dosyası #101" required style="width: 100%; padding: 9px 12px; border-radius: 8px; border: 1.5px solid #cbd5e1; font-size: 13px; font-family: inherit; box-sizing: border-box;">
           </div>
           <div>
             <label style="font-size: 11px; font-weight: 700; color: #475569; display: block; margin-bottom: 3px;">Klinik / Merkez Adı</label>
@@ -9825,7 +10204,7 @@ setTimeout(initLicenseUI, 300);
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
           <div>
             <label style="font-size: 11px; font-weight: 700; color: #475569; display: block; margin-bottom: 3px;">WhatsApp Telefon No *</label>
-            <input type="tel" id="co-phone" placeholder="0532 120 28 46" value="0532 120 28 46" required style="width: 100%; padding: 9px 12px; border-radius: 8px; border: 1.5px solid #cbd5e1; font-size: 13px; font-family: inherit; box-sizing: border-box;">
+            <input type="tel" id="co-phone" placeholder="7/24 Canlı Destek Masası" value="7/24 Canlı Destek Masası" required style="width: 100%; padding: 9px 12px; border-radius: 8px; border: 1.5px solid #cbd5e1; font-size: 13px; font-family: inherit; box-sizing: border-box;">
           </div>
           <div>
             <label style="font-size: 11px; font-weight: 700; color: #475569; display: block; margin-bottom: 3px;">Şehir</label>
@@ -9851,7 +10230,7 @@ setTimeout(initLicenseUI, 300);
       <div id="checkout-section-whatsapp" style="display: block;">
         <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 14px; margin-bottom: 14px; font-size: 12.5px; color: #1e3a8a; line-height: 1.5;">
           <strong>⚡ Doğrudan & Masrafsız Aktivasyon:</strong><br>
-          Aşağıdaki butona bastığınızda sipariş detaylarınız doğrudan <strong>0532 120 28 46 WhatsApp Lisans Hattımıza</strong> iletilir. Lisans kodunuz anında üretilir ve klinik paneliniz hemen tam lisanslı moda geçer.
+          Aşağıdaki butona bastığınızda sipariş detaylarınız doğrudan <strong>7/24 Canlı Destek Masası WhatsApp Lisans Hattımıza</strong> iletilir. Lisans kodunuz anında üretilir ve klinik paneliniz hemen tam lisanslı moda geçer.
         </div>
         <button type="button" onclick="handleCheckoutWhatsAppOrder(event)" style="width: 100%; background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: #ffffff; border: none; padding: 15px; border-radius: 14px; font-weight: 900; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 18px rgba(37, 211, 102, 0.35); transition: all 0.2s;">
           <span style="font-size: 18px;">💬</span> WhatsApp ile Siparişi Tamamla & Lisansı Aktive Et →
@@ -9946,7 +10325,7 @@ setTimeout(initLicenseUI, 300);
     <p style="font-size: 13px; color: #475569; line-height: 1.5; margin-bottom: 12px;">
       Excel veya Google E-Tablolar'daki satırlarınızı seçip kopyalayın (Ctrl+C), ardından aşağıdaki kutuya yapıştırın (Ctrl+V). Sütunlar otomatik algılanarak danışan tablonuza eklenecektir.
     </p>
-    <textarea id="txt-excel-paste" placeholder="Klinik Danışan Formatı:&#10;Ahmet Yılmaz	05551234567	32 / E	88	84	78	Kilo Verme&#10;Ayşe Kaya	05329876543	28 / K	65	62	58	HOMA-IR" style="width: 100%; height: 160px; padding: 12px; border-radius: 10px; border: 1.5px solid #94a3b8; font-size: 12.5px; font-family: monospace; outline: none; box-sizing: border-box;"></textarea>
+    <textarea id="txt-excel-paste" placeholder="Klinik Danışan Formatı:&#10;Klinik Danışan Dosyası #104	05551234567	32 / E	88	84	78	Kilo Verme&#10;Ayşe Kaya	05329876543	28 / K	65	62	58	HOMA-IR" style="width: 100%; height: 160px; padding: 12px; border-radius: 10px; border: 1.5px solid #94a3b8; font-size: 12.5px; font-family: monospace; outline: none; box-sizing: border-box;"></textarea>
     <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 14px;">
       <button onclick="closeExcelPasteModal()" class="btn btn-secondary">İptal</button>
       <button onclick="applyExcelPaste()" class="btn btn-pastel-green" style="background:#1e3a8a; color:#ffffff; font-weight: 800;">
@@ -10044,7 +10423,7 @@ setTimeout(initLicenseUI, 300);
 
     <div class="form-group" style="margin-bottom: 14px;">
       <label class="form-label">Varsayılan SMS Şablonu</label>
-      <textarea id="cfg-sms-tpl" class="form-input" style="height: 90px; font-size: 12px;">Sayın {name}, Diyetisyen {dietitian} ile {date} saat {time}'de {type} randevunuz oluşturulmuştur. Görüşme/Konum: {link}. İletişim: 0532 120 28 46. Sağlıklı günler dileriz.</textarea>
+      <textarea id="cfg-sms-tpl" class="form-input" style="height: 90px; font-size: 12px;">Sayın {name}, Diyetisyen {dietitian} ile {date} saat {time}'de {type} randevunuz oluşturulmuştur. Görüşme/Konum: {link}. İletişim: 7/24 Canlı Destek Masası. Sağlıklı günler dileriz.</textarea>
       <small style="font-size: 11px; color: #64748b;">Kullanılabilir etiketler: {name}, {dietitian}, {date}, {time}, {type}, {link}</small>
     </div>
 
@@ -10098,9 +10477,9 @@ setTimeout(initLicenseUI, 300);
 <script>
 function quickSwitchCockpitClient(val) {
   var cases = {
-    'insulin': { name: 'Ahmet Yılmaz', gender: 'male', age: 32, height: 178, weight: 88, protocol: 'low_gi', calories: '1.680' },
-    'kilo_verme': { name: 'Ayşe Demir', gender: 'female', age: 38, height: 164, weight: 74, protocol: 'deficit', calories: '1.450' },
-    'sporcu': { name: 'Caner Kara', gender: 'male', age: 24, height: 184, weight: 82, protocol: 'mediterranean', calories: '2.400' },
+    'insulin': { name: 'Klinik Danışan Dosyası #104', gender: 'male', age: 32, height: 178, weight: 88, protocol: 'low_gi', calories: '1.680' },
+    'kilo_verme': { name: 'Klinik Danışan Dosyası #103', gender: 'female', age: 38, height: 164, weight: 74, protocol: 'deficit', calories: '1.450' },
+    'sporcu': { name: 'Klinik Danışan Dosyası #102', gender: 'male', age: 24, height: 184, weight: 82, protocol: 'mediterranean', calories: '2.400' },
     'pcos': { name: 'Zeynep Kaya', gender: 'female', age: 26, height: 168, weight: 68, protocol: 'low_gi', calories: '1.550' },
     'keto': { name: 'Mehmet Şahin', gender: 'male', age: 45, height: 175, weight: 92, protocol: 'deficit', calories: '1.750' }
   };
@@ -10330,7 +10709,7 @@ window._pendingRequiredUpgradePlan = 'Profesyonel Paket';
 function getActivePanelLicense() {
   var lic = DiyetKalfaLicenseEngine.getLicense();
   if (!lic) {
-    lic = window.DiyetKalfaDB.activatePaidLicense('Profesyonel Paket', 12, 'Uzm. Dyt. Zehra Bölük', 'DiyetKalfa Klinik', '0532 120 28 46', null, false);
+    lic = window.DiyetKalfaDB.activatePaidLicense('Profesyonel Paket', 12, 'Uzm. Dyt. Klinik Danışan Dosyası #101', 'DiyetKalfa Klinik', '7/24 Canlı Destek Masası', null, false);
   }
   return lic;
 }
@@ -10631,5 +11010,6 @@ window.addEventListener('DOMContentLoaded', function() {
 </script>
 <script src="diyetkalfa_luxury_ui.js"></script>
   <script src="diyetkalfa_legal_modal.js"></script>
+  <script src="diyetkalfa_clinical_suite.js"></script>
 </body>
 </html>
