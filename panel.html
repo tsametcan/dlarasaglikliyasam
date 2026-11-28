@@ -6877,29 +6877,29 @@ body:not(.app-locked) .header-landing-actions {
             return '<div class="meal"><span class="cals">' + m.calories + ' kcal</span><div class="meal-title">' + m.type + ': ' + m.title + '</div><div style="font-size: 9.5pt; color: #64748b; margin-top: 2px;"><b>Malzemeler:</b> ' + m.usedPantry.join(', ') + '</div><div style="margin: 3px 0; font-size: 10pt;"><b>Tarif:</b> ' + m.recipe + '</div></div>';
           }).join('') +
           '<div style="background: #f4f7fb; border: 1px solid #cbd5e1; padding: 9px 12px; border-radius: 6px; margin-top: 12px;"><b style="color: #0284c7;">🍓 SAĞLIKLI TATLI (' + dayData.healthyDessert.calories + ' kcal):</b> ' + dayData.healthyDessert.title + '<br/><i>Hazırlanış:</i> ' + dayData.healthyDessert.recipe + '</div>' +
-          '<div style=""margin-top: 18px; border: 2px dashed #0284c7; border-radius: 12px; padding: 14px 18px; background: #f0f9ff; page-break-inside: avoid;"">' +
-            '<div style=""display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;"">' +
+          '<div style="margin-top: 18px; border: 2px dashed #0284c7; border-radius: 12px; padding: 14px 18px; background: #f0f9ff; page-break-inside: avoid;">' +
+            '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">' +
               '<div>' +
-                '<span style=""font-size: 13pt; font-weight: 900; color: #0369a1;"">💧 Günlük Su Tüketimi Boyama & Takip Çizelgesi</span>' +
-                '<div style=""font-size: 9.5pt; color: #0284c7; font-weight: 700; margin-top: 2px;"">Günlük Klinik Hedef: ' + water + ' (Her Bardak 250 ml)</div>' +
+                '<span style="font-size: 13pt; font-weight: 900; color: #0369a1;">💧 Günlük Su Tüketimi Boyama & Takip Çizelgesi</span>' +
+                '<div style="font-size: 9.5pt; color: #0284c7; font-weight: 700; margin-top: 2px;">Günlük Klinik Hedef: ' + water + ' (Her Bardak 250 ml)</div>' +
               '</div>' +
-              '<span style=""font-size: 8.5pt; color: #0369a1; font-weight: 800; border: 1.5px solid #0284c7; padding: 4px 10px; border-radius: 6px; background: #ffffff;"">YAZICI ÇIKTISI İÇİN BOYAMA ALANI</span>' +
+              '<span style="font-size: 8.5pt; color: #0369a1; font-weight: 800; border: 1.5px solid #0284c7; padding: 4px 10px; border-radius: 6px; background: #ffffff;">YAZICI ÇIKTISI İÇİN BOYAMA ALANI</span>' +
             '</div>' +
-            '<p style=""font-size: 9pt; color: #334155; margin: 0 0 10px 0;"">Her 250 ml (1 su bardağı) su tükettiğinizde lütfen sıradaki bardağı boyayınız veya kutucuğa tik atınız:</p>' +
-            '<div style=""display: grid; grid-template-columns: repeat(12, 1fr); gap: 6px; text-align: center;"">' +
+            '<p style="font-size: 9pt; color: #334155; margin: 0 0 10px 0;">Her 250 ml (1 su bardağı) su tükettiğinizde lütfen sıradaki bardağı boyayınız veya kutucuğa tik atınız:</p>' +
+            '<div style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 6px; text-align: center;">' +
             Array.from({length: 12}, function(_, i) {
               var ml = (i + 1) * 250;
-              return '<div style=""border: 1.5px solid #0284c7; border-radius: 8px; padding: 8px 3px; background: #ffffff; text-align: center;"">' +
-                '<div style=""font-size: 16pt; line-height: 1; color: #60a5fa; margin-bottom: 4px;"">🥛</div>' +
-                '<div style=""width: 14px; height: 14px; border: 1.5px solid #0369a1; border-radius: 4px; margin: 0 auto 4px auto; background: #f8fafc;""></div>' +
-                '<div style=""font-size: 7.5pt; font-weight: 800; color: #0369a1;"">' + ml + ' ml</div>' +
-                '<div style=""font-size: 6.5pt; color: #64748b;"">' + (i + 1) + '. Bardak</div>' +
+              return '<div style="border: 1.5px solid #0284c7; border-radius: 8px; padding: 8px 3px; background: #ffffff; text-align: center;">' +
+                '<div style="font-size: 16pt; line-height: 1; color: #60a5fa; margin-bottom: 4px;">🥛</div>' +
+                '<div style="width: 14px; height: 14px; border: 1.5px solid #0369a1; border-radius: 4px; margin: 0 auto 4px auto; background: #f8fafc;"></div>' +
+                '<div style="font-size: 7.5pt; font-weight: 800; color: #0369a1;">' + ml + ' ml</div>' +
+                '<div style="font-size: 6.5pt; color: #64748b;">' + (i + 1) + '. Bardak</div>' +
               '</div>';
             }).join('') +
             '</div>' +
           '</div>' +
-          '<div class=""footer""><b>' + p.clinicName + ' • ' + p.dietitianName + '</b><br/>' + p.slogan + ' • Şifa ve afiyet olsun. 🌸</div>' + '  <script src="diyetkalfa_clinical_suite.js"></script>
-</body></html>';
+          '<div class="footer"><b>' + p.clinicName + ' • ' + p.dietitianName + '</b><br/>' + p.slogan + ' • Şifa ve afiyet olsun. 🌸</div>' +
+          '</body></html>';
           
         printWindow.document.write(html);
         printWindow.document.close();
