@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sayfa Bulunamadı • DiyetKalfa Klinik Sistemleri</title>
+  <link rel="icon" href="logo.png" type="image/png">
+  <script>
+    // Akıllı SPA / GitHub Pages Yönlendirici
+    (function() {
+      var path = window.location.pathname;
+      var file = path.split('/').pop().toLowerCase();
+      
+      // Uzantısız yazımları otomatik yönlendir
+      var routes = {
+        'panel': 'panel.html',
+        'demo': 'demo.html',
+        'fiyatlar': 'fiyatlar.html',
+        'iletisim': 'iletisim.html',
+        'ozellikler': 'ozellikler.html',
+        'sss': 'sss.html',
+        'kayit': 'kayit.html'
+      };
+      
+      if (routes[file]) {
+        window.location.replace(routes[file]);
+      }
+    })();
+  </script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(circle at 50% 20%, #0f172a 0%, #020617 100%);
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+    }
+    .box {
+      max-width: 540px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1.5px solid rgba(56, 189, 248, 0.3);
+      border-radius: 24px;
+      padding: 40px 32px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+    h1 { font-size: 32px; font-weight: 900; margin-bottom: 12px; color: #ffffff; }
+    p { font-size: 14.5px; color: #94a3b8; line-height: 1.6; margin-bottom: 28px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 18px;
+      border-radius: 12px;
+      font-size: 13.5px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-main { background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%); color: #ffffff; box-shadow: 0 4px 15px rgba(2, 132, 199, 0.35); }
+    .btn-sub { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: #ffffff; }
+    .btn:hover { transform: translateY(-2px); }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="badge">DİYETKALFA KLİNİK SİSTEMLERİ</div>
+    <h1>Aradığınız Sayfa Bulunamadı</h1>
+    <p>Ulaşmak istediğiniz sayfa taşınmış veya adresi değişmiş olabilir. Aşağıdaki resmi bağlantılardan kliniğinizi yönetmeye devam edebilirsiniz.</p>
+    <div class="grid">
+      <a href="index.html" class="btn btn-main">🏠 Ana Sayfa</a>
+      <a href="panel.html" class="btn btn-main">💻 Klinik Paneli</a>
+      <a href="demo.html" class="btn btn-sub">🖥️ Canlı Demo</a>
+      <a href="fiyatlar.html" class="btn btn-sub">💎 Paketler & Fiyatlar</a>
+    </div>
+  </div>
+</body>
+</html>

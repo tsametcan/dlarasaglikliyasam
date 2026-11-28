@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tsametcan.github.io/dlarasaglikliyasam/sitemap.xml
