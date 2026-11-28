@@ -385,7 +385,7 @@ function getAiResponse(rawQuery) {
     '</div>' +
     '<div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">' +
       '<a href="kayit.html" target="_blank" class="ai-link-btn" style="background: #163b2c; color: #fff; font-weight: bold;">🚀 Kliniğinde Ücretsiz Başlat →</a>' +
-      '<a href="javascript:void(0)" onclick="toggleAiChat(); return false;' + encodeURIComponent('Merhaba, ' + rawClean + ' konusunda klinik destek almak istiyorum.') + '" target="_blank" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 7/24 Canlı Destek Masası Uzmana Danış</a>' +
+      '<a href="javascript:void(0)" onclick="if(typeof toggleAiChat===\'function\')toggleAiChat();return false;" class="ai-link-btn" style="background: #25d366; color: #fff;">💬 7/24 Canlı Destek Masası Uzmana Danış</a>' +
     '</div>';
 }
 

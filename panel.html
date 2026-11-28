@@ -4877,7 +4877,7 @@ body:not(.app-locked) .header-landing-actions {
 
     function contactForSalesLicense() {
       const msg = encodeURIComponent("Merhaba! DiyetKalfa Klinik Diyet & İçerik İşletim Sistemini kliniğime lisanslamak ve satın almak istiyorum. Bilgi alabilir miyim?");
-      window.open(`javascript:void(0)" onclick="toggleAiChat(); return false; '_blank');
+      if(typeof toggleAiChat === 'function') { toggleAiChat(); }
     }
 
     // 3. Gelişmiş Nav Switcher (4 Mod)

@@ -1825,7 +1825,7 @@
       const time = document.getElementById('demo-expert-time').value;
 
       const msg = `Merhaba DiyetKalfa Ekibi, adım ${name}. Diyetisyen yazılımınızı kliniğimde kullanmak için canlı demo randevusu almak istiyorum. Telefon: ${phone}, Şehir: ${city}, Tercih Edilen Saat: ${time}`;
-      window.open(`javascript:void(0)" onclick="toggleAiChat(); return false; '_blank');
+      if(typeof toggleAiChat === 'function') { toggleAiChat(); }
       closeDemoModal();
       if (confirm('Talebiniz başarıyla alındı Sn. ' + name + '!\n\nKlinik koordinatörümüz 15 dakika içinde WhatsApp üzerinden sizinle iletişime geçecektir.\n\nBeklemeden hemen şimdi Canlı Klinik Demo Panelini açıp test etmek ister misiniz?')) {
         window.open('panel.html?unlock=true&demo=true', '_blank');
@@ -1840,7 +1840,7 @@
       const city = document.getElementById('client-match-city').value || 'Online Görüşme';
 
       const msg = `Merhaba DiyetKalfa Danışan Ağı, adım ${name}. '${goal}' hedefim için ${city} lokasyonunda/online bana en uygun DiyetKalfa lisanslı uzman diyetisyenle eşleşmek ve ücretsiz ön değerlendirme almak istiyorum. Tel: ${phone}`;
-      window.open(`javascript:void(0)" onclick="toggleAiChat(); return false; '_blank');
+      if(typeof toggleAiChat === 'function') { toggleAiChat(); }
       closeDemoModal();
       alert('Talebiniz DiyetKalfa Klinik Ağına iletildi! Yapay zeka eşleştirme algoritmamız vakanıza en uygun diyetisyen profilini WhatsApp hattınıza iletmektedir.');
     }
@@ -1863,7 +1863,7 @@
       var msg = 'Merhaba DiyetKalfa Ekibi, adım ' + name + '. ' + subject + ' konusunda bilgi almak ve aranmak istiyorum. Telefonum: ' + phone + (note ? '. Not: ' + note : '');
       closeContactModal();
       alert('Talebiniz başarıyla alındı Sn. ' + name + '!\n\nKlinik danışmanımız 15 dakika içinde ' + phone + ' numarasından sizi arayacaktır. Dilerseniz WhatsApp üzerinden de hemen yazabilirsiniz.');
-      window.open('javascript:void(0)" onclick="toggleAiChat(); return false;' + encodeURIComponent(msg), '_blank');
+      if(typeof toggleAiChat === 'function') { toggleAiChat(); }
     }
 
     </script>

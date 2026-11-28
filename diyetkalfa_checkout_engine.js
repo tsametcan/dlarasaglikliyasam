@@ -219,8 +219,7 @@ function handleCheckoutWhatsAppOrder(e) {
     "📞 İletişim: " + phone + (city ? " / " + city : "") + "\n\n" +
     "Lisansımı aktive etmek ve siparişimi onaylamak istiyorum. Teşekkürler!";
 
-  var waUrl = "javascript:void(0)" onclick="toggleAiChat(); return false;" + encodeURIComponent(waText);
-  window.open(waUrl, '_blank');
+  if(typeof toggleAiChat === 'function') { toggleAiChat(); }
 
   // Başarı ekranını göster
   showCheckoutSuccess(lic);

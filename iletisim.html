@@ -493,16 +493,16 @@
           </div>
         </a>
 
-        <!-- Telefon -->
-        <a href="javascript:void(0)" onclick="toggleAiChat(); return false;" style="text-decoration: none;">
+        <!-- 7/24 AI Klinik Danışmanı -->
+        <a href="javascript:void(0)" onclick="if(typeof toggleAiChat==='function')toggleAiChat();return false;" style="text-decoration: none;">
           <div class="contact-item">
-            <div class="contact-icon-bubble">
-              📞
+            <div class="contact-icon-bubble" style="border-color: #38bdf8; background: rgba(56, 189, 248, 0.15); color: #38bdf8;">
+              🤖
             </div>
             <div>
-              <div class="contact-lbl">MÜŞTERİ VE KLİNİK HATTI</div>
-              <div class="contact-val">7/24 Canlı Destek Masası</div>
-              <div class="contact-sub">Haftanın 7 günü 09:00 - 22:00 sesli arama desteği</div>
+              <div class="contact-lbl" style="color: #38bdf8;">7/24 AI KLİNİK DANIŞMANI</div>
+              <div class="contact-val">Anında Canlı Yanıt</div>
+              <div class="contact-sub">Panel özellikleri, lisanslama ve klinik vaka danışmanlığı</div>
             </div>
           </div>
         </a>
@@ -564,8 +564,8 @@
 
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
           <div class="form-group">
-            <label for="contact-phone">Telefon Numaranız *</label>
-            <input type="tel" id="contact-phone" class="form-control" placeholder="7/24 Canlı Destek Masası" required>
+            <label for="contact-city">Klinik Adı / Şehir</label>
+            <input type="text" id="contact-city" class="form-control" placeholder="Örn: Yaşam Kliniği / İstanbul">
           </div>
           <div class="form-group">
             <label for="contact-email">E-Posta Adresiniz *</label>
@@ -589,10 +589,9 @@
         </div>
 
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; font-size: 12.5px; color: #94a3b8;">
-          <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-            <input type="checkbox" id="contact-call-back" checked style="accent-color: #38bdf8;">
-            <span>Mümkünse beni telefonla hemen geri arayın</span>
-          </label>
+          <span style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: #22c55e;">●</span> <span>Online Klinik Destek Masası Aktif</span>
+          </span>
           <span style="color: #38bdf8; font-weight: 700;">🛡️ KVKK Korumalı</span>
         </div>
 
@@ -602,7 +601,7 @@
         </button>
 
         <div id="contact-alert-box" style="display: none; margin-top: 14px; padding: 14px; border-radius: 12px; background: rgba(34, 197, 94, 0.15); border: 1.5px solid #22c55e; color: #86efac; font-size: 13px; font-weight: 700; line-height: 1.5;">
-          ✓ Talebiniz başarıyla alındı! Klinik koordinatörümüz 15 dakika içinde telefon numaranızdan sizinle iletişime geçecektir.
+          ✓ Talebiniz başarıyla alındı! Klinik koordinatörümüz e-posta adresiniz üzerinden en kısa sürede sizinle iletişime geçecektir.
         </div>
       </form>
     </div>
@@ -696,19 +695,19 @@ function handleModalLogin(e) {
 function handleContactSubmit(e) {
   if (e) e.preventDefault();
   var name = document.getElementById('contact-name').value.trim();
-  var phone = document.getElementById('contact-phone').value.trim();
+  var city = document.getElementById('contact-city') ? document.getElementById('contact-city').value.trim() : '';
   var email = document.getElementById('contact-email').value.trim();
   var subj = document.getElementById('contact-subject').value;
   var msg = document.getElementById('contact-msg').value.trim();
 
-  if (!name || !phone) {
-    alert('Lütfen adınızı ve telefon numaranızı girin.');
+  if (!name || !email) {
+    alert('Lütfen adınızı ve e-posta adresinizi girin.');
     return;
   }
 
   try {
     var inquiries = JSON.parse(localStorage.getItem('diyetkalfa_contact_inquiries') || '[]');
-    inquiries.push({ name: name, phone: phone, email: email, subject: subj, message: msg, date: new Date().toISOString() });
+    inquiries.push({ name: name, city: city, email: email, subject: subj, message: msg, date: new Date().toISOString() });
     localStorage.setItem('diyetkalfa_contact_inquiries', JSON.stringify(inquiries));
   } catch(err) {}
 

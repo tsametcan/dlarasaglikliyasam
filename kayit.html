@@ -864,7 +864,7 @@
       var msg = 'Merhaba DiyetKalfa Ekibi, adım ' + name + '. ' + subject + ' konusunda bilgi almak ve aranmak istiyorum. Telefonum: ' + phone + (note ? '. Not: ' + note : '');
       closeContactModal();
       alert('Talebiniz başarıyla alındı Sn. ' + name + '!\n\nKlinik danışmanımız 15 dakika içinde ' + phone + ' numarasından sizi arayacaktır. Dilerseniz WhatsApp üzerinden de hemen yazabilirsiniz.');
-      window.open('javascript:void(0)" onclick="toggleAiChat(); return false;' + encodeURIComponent(msg), '_blank');
+      if(typeof toggleAiChat === 'function') { toggleAiChat(); }
     }
 
     </script>
@@ -1318,7 +1318,7 @@ function handleExpertDemoSubmit(e) {
   var phone = document.getElementById('demo-expert-phone') ? document.getElementById('demo-expert-phone').value : '';
   var time = document.getElementById('demo-expert-time') ? document.getElementById('demo-expert-time').value : '';
   var text = "Merhaba, DiyetKalfa diyetisyen canlı demo sunumu talep ediyorum.\nİsim: " + name + "\nTelefon: " + phone + "\nSaat: " + time;
-  window.open("javascript:void(0)" onclick="toggleAiChat(); return false;" + encodeURIComponent(text), "_blank");
+  if(typeof toggleAiChat === 'function') { toggleAiChat(); }
   closeDemoModal();
 }
 </script>
