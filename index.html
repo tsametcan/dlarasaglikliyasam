@@ -9522,8 +9522,9 @@ function handleCheckoutWhatsAppOrder(e) {
     "📞 İletişim: " + phone + (city ? " / " + city : "") + "\n\n" +
     "Lisansımı aktive etmek ve siparişimi onaylamak istiyorum. Teşekkürler!";
 
-  var waUrl = "javascript:toggleAiChat()" + encodeURIComponent(waText);
-  window.open(waUrl, '_blank');
+  if (typeof toggleAiChat === 'function') {
+    toggleAiChat();
+  }
 
   // Başarı ekranını göster
   showCheckoutSuccess(lic);
